@@ -38,156 +38,226 @@
 <a name="l00015"></a>00015 <span class="comment"> *</span>
 <a name="l00016"></a>00016 <span class="comment"> */</span>
 <a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;votca/tools/cubicspline.h&gt;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;votca/tools/table.h&gt;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;votca/tools/tokenizer.h&gt;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;boost/program_options.hpp&gt;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;iostream&gt;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include "<a class="code" href="csg_2include_2version_8h.html">version.h</a>"</span>
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">using namespace </span>std;
-<a name="l00026"></a>00026 <span class="keyword">namespace </span>po = boost::program_options;
-<a name="l00027"></a>00027 <span class="keyword">using namespace </span>votca::csg;
-<a name="l00028"></a>00028 <span class="keyword">using namespace </span>votca::tools;
-<a name="l00029"></a>00029 
-<a name="l00030"></a><a class="code" href="csg__resample_8cc.html#9fedf92e62aa487d558c168e8efd78b1">00030</a> <span class="keywordtype">void</span> <a class="code" href="csg__imcrepack_8cc.html#1456a11e9a72f8a5516d19dacd92bb4d">help_text</a>()
-<a name="l00031"></a>00031 {
-<a name="l00032"></a>00032     <a class="code" href="namespacevotca_1_1csg.html#412e9f92c8856987418a022cabe776ec">votca::csg::HelpTextHeader</a>(<span class="stringliteral">"csg_resample"</span>);
-<a name="l00033"></a>00033     cout &lt;&lt; <span class="stringliteral">"Change grid + interval of any sort of table files.\n"</span>
-<a name="l00034"></a>00034             <span class="stringliteral">"Mainly called internally by inverse script, can also be\n"</span>
-<a name="l00035"></a>00035             <span class="stringliteral">"used to manually prepare input files for coarse-grained\n"</span>
-<a name="l00036"></a>00036             <span class="stringliteral">"simulations.\n\n"</span>;     
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="csg__resample_8cc.html#d05f934fff04b7d83971327ce00a16fa">00039</a> <span class="keywordtype">void</span> <a class="code" href="csg__imcrepack_8cc.html#d05f934fff04b7d83971327ce00a16fa">check_option</a>(po::options_description &amp;desc, po::variables_map &amp;vm, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;option)
-<a name="l00040"></a>00040 {
-<a name="l00041"></a>00041     <span class="keywordflow">if</span>(!vm.count(option)) {
-<a name="l00042"></a>00042         cout &lt;&lt; <span class="stringliteral">"csg_resample \n\n"</span>;                
-<a name="l00043"></a>00043         cout &lt;&lt; desc &lt;&lt; endl &lt;&lt; <span class="stringliteral">"parameter "</span> &lt;&lt; option &lt;&lt; <span class="stringliteral">" is not specified\n"</span>;
-<a name="l00044"></a>00044         exit(1);
-<a name="l00045"></a>00045     }
-<a name="l00046"></a>00046 }
-<a name="l00047"></a>00047 
-<a name="l00048"></a><a class="code" href="csg__resample_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00048</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
-<a name="l00049"></a>00049 {
-<a name="l00050"></a>00050     <span class="keywordtype">string</span> in_file, out_file, grid, spfit, comment, boundaries;
-<a name="l00051"></a>00051     <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html" title="A cubic spline class.">CubicSpline</a> spline;
-<a name="l00052"></a>00052     <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> in, out, der;
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;votca/tools/spline.h&gt;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;votca/tools/cubicspline.h&gt;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;votca/tools/akimaspline.h&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;votca/tools/linspline.h&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;votca/tools/table.h&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;votca/tools/tokenizer.h&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;boost/program_options.hpp&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include "<a class="code" href="csg_2include_2version_8h.html">version.h</a>"</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="keyword">using namespace </span>std;
+<a name="l00029"></a>00029 <span class="keyword">namespace </span>po = boost::program_options;
+<a name="l00030"></a>00030 <span class="keyword">using namespace </span>votca::csg;
+<a name="l00031"></a>00031 <span class="keyword">using namespace </span>votca::tools;
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="csg__resample_8cc.html#9fedf92e62aa487d558c168e8efd78b1">00033</a> <span class="keywordtype">void</span> <a class="code" href="csg__imcrepack_8cc.html#1456a11e9a72f8a5516d19dacd92bb4d">help_text</a>()
+<a name="l00034"></a>00034 {
+<a name="l00035"></a>00035     <a class="code" href="namespacevotca_1_1csg.html#412e9f92c8856987418a022cabe776ec">votca::csg::HelpTextHeader</a>(<span class="stringliteral">"csg_resample"</span>);
+<a name="l00036"></a>00036     cout &lt;&lt; <span class="stringliteral">"Change grid + interval of any sort of table files.\n"</span>
+<a name="l00037"></a>00037             <span class="stringliteral">"Mainly called internally by inverse script, can also be\n"</span>
+<a name="l00038"></a>00038             <span class="stringliteral">"used to manually prepare input files for coarse-grained\n"</span>
+<a name="l00039"></a>00039             <span class="stringliteral">"simulations.\n\n"</span>;     
+<a name="l00040"></a>00040 }
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="csg__resample_8cc.html#d05f934fff04b7d83971327ce00a16fa">00042</a> <span class="keywordtype">void</span> <a class="code" href="csg__imcrepack_8cc.html#d05f934fff04b7d83971327ce00a16fa">check_option</a>(po::options_description &amp;desc, po::variables_map &amp;vm, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;option)
+<a name="l00043"></a>00043 {
+<a name="l00044"></a>00044     <span class="keywordflow">if</span>(!vm.count(option)) {
+<a name="l00045"></a>00045         cout &lt;&lt; <span class="stringliteral">"csg_resample \n\n"</span>;                
+<a name="l00046"></a>00046         cout &lt;&lt; desc &lt;&lt; endl &lt;&lt; <span class="stringliteral">"parameter "</span> &lt;&lt; option &lt;&lt; <span class="stringliteral">" is not specified\n"</span>;
+<a name="l00047"></a>00047         exit(1);
+<a name="l00048"></a>00048     }
+<a name="l00049"></a>00049 }
+<a name="l00050"></a>00050 
+<a name="l00051"></a><a class="code" href="csg__resample_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00051</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00052"></a>00052 {
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054     <span class="comment">// program options</span>
-<a name="l00055"></a>00055     po::options_description desc(<span class="stringliteral">"Allowed options"</span>);            
-<a name="l00056"></a>00056     
-<a name="l00057"></a>00057     desc.add_options()
-<a name="l00058"></a>00058       (<span class="stringliteral">"in"</span>, po::value&lt;string&gt;(&amp;in_file), <span class="stringliteral">"table to read"</span>)
-<a name="l00059"></a>00059       (<span class="stringliteral">"out"</span>, po::value&lt;string&gt;(&amp;out_file), <span class="stringliteral">"table to write"</span>)
-<a name="l00060"></a>00060       (<span class="stringliteral">"derivative"</span>, po::value&lt;string&gt;(), <span class="stringliteral">"table to write"</span>)
-<a name="l00061"></a>00061       (<span class="stringliteral">"grid"</span>, po::value&lt;string&gt;(&amp;grid), <span class="stringliteral">"new grid spacing (min:step:max)"</span>)
-<a name="l00062"></a>00062       (<span class="stringliteral">"spfit"</span>, po::value&lt;string&gt;(&amp;spfit), <span class="stringliteral">"specify spline fit grid. if option is not specified, normal spline interpolation is performed"</span>)
-<a name="l00063"></a>00063       <span class="comment">//("bc", po::)</span>
-<a name="l00064"></a>00064       (<span class="stringliteral">"comment"</span>, po::value&lt;string&gt;(&amp;comment), <span class="stringliteral">"store a comment in the output table"</span>)
-<a name="l00065"></a>00065       (<span class="stringliteral">"boundaries"</span>, po::value&lt;string&gt;(&amp;boundaries), <span class="stringliteral">"(natural|periodic|derivativezero) sets boundary conditions"</span>)
-<a name="l00066"></a>00066       (<span class="stringliteral">"help"</span>, <span class="stringliteral">"options file for coarse graining"</span>);
-<a name="l00067"></a>00067     
-<a name="l00068"></a>00068     po::variables_map vm;
-<a name="l00069"></a>00069     <span class="keywordflow">try</span> {
-<a name="l00070"></a>00070         po::store(po::parse_command_line(argc, argv, desc), vm);    
-<a name="l00071"></a>00071         po::notify(vm);
-<a name="l00072"></a>00072     }
-<a name="l00073"></a>00073     <span class="keywordflow">catch</span>(po::error err) {
-<a name="l00074"></a>00074         cout &lt;&lt; <span class="stringliteral">"error parsing command line: "</span> &lt;&lt; err.what() &lt;&lt; endl;
-<a name="l00075"></a>00075         <span class="keywordflow">return</span> -1;
+<a name="l00054"></a>00054     <span class="keywordtype">string</span> in_file, out_file, grid, fitgrid, comment, type, boundaries;
+<a name="l00055"></a>00055     <a class="code" href="classvotca_1_1tools_1_1Spline.html" title="Spline Class.">Spline</a> *spline;
+<a name="l00056"></a>00056     <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> in, out, der;
+<a name="l00057"></a>00057     <span class="comment">// program options</span>
+<a name="l00058"></a>00058     po::options_description desc(<span class="stringliteral">"Allowed options"</span>);            
+<a name="l00059"></a>00059     
+<a name="l00060"></a>00060     desc.add_options()
+<a name="l00061"></a>00061       (<span class="stringliteral">"in"</span>, po::value&lt;string&gt;(&amp;in_file), <span class="stringliteral">"table to read"</span>)
+<a name="l00062"></a>00062       (<span class="stringliteral">"out"</span>, po::value&lt;string&gt;(&amp;out_file), <span class="stringliteral">"table to write"</span>)
+<a name="l00063"></a>00063       (<span class="stringliteral">"derivative"</span>, po::value&lt;string&gt;(), <span class="stringliteral">"table to write"</span>)
+<a name="l00064"></a>00064       (<span class="stringliteral">"grid"</span>, po::value&lt;string&gt;(&amp;grid), <span class="stringliteral">"new grid spacing (min:step:max). If 'grid' is specified only, interpolation is performed."</span>)
+<a name="l00065"></a>00065       (<span class="stringliteral">"type"</span>, po::value&lt;string&gt;(&amp;type)-&gt;default_value(<span class="stringliteral">"akima"</span>), <span class="stringliteral">"[cubic|akima|linear]. If option is not specified, the default type 'akima' is assumed."</span>)
+<a name="l00066"></a>00066       (<span class="stringliteral">"fitgrid"</span>, po::value&lt;string&gt;(&amp;fitgrid), <span class="stringliteral">"specify fit grid (min:step:max). If 'grid' and 'fitgrid' are specified, a fit is performed."</span>)
+<a name="l00067"></a>00067       (<span class="stringliteral">"nocut"</span>, <span class="stringliteral">"Option for fitgrid: Normally, values out of fitgrid boundaries are cut off. If they shouldn't, choose --nocut."</span>)
+<a name="l00068"></a>00068       (<span class="stringliteral">"comment"</span>, po::value&lt;string&gt;(&amp;comment), <span class="stringliteral">"store a comment in the output table"</span>)
+<a name="l00069"></a>00069       (<span class="stringliteral">"boundaries"</span>, po::value&lt;string&gt;(&amp;boundaries), <span class="stringliteral">"(natural|periodic|derivativezero) sets boundary conditions"</span>)
+<a name="l00070"></a>00070       (<span class="stringliteral">"help"</span>, <span class="stringliteral">"options file for coarse graining"</span>);
+<a name="l00071"></a>00071     
+<a name="l00072"></a>00072     po::variables_map vm;
+<a name="l00073"></a>00073     <span class="keywordflow">try</span> {
+<a name="l00074"></a>00074         po::store(po::parse_command_line(argc, argv, desc), vm);    
+<a name="l00075"></a>00075         po::notify(vm);
 <a name="l00076"></a>00076     }
-<a name="l00077"></a>00077     
-<a name="l00078"></a>00078     <span class="comment">// does the user want help?</span>
-<a name="l00079"></a>00079     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"help"</span>)) {
-<a name="l00080"></a>00080         <a class="code" href="csg__imcrepack_8cc.html#1456a11e9a72f8a5516d19dacd92bb4d">help_text</a>();
-<a name="l00081"></a>00081         cout &lt;&lt; desc &lt;&lt; endl;
-<a name="l00082"></a>00082         <span class="keywordflow">return</span> 0;
-<a name="l00083"></a>00083     }
-<a name="l00084"></a>00084     
-<a name="l00085"></a>00085     <a class="code" href="csg__imcrepack_8cc.html#d05f934fff04b7d83971327ce00a16fa">check_option</a>(desc, vm, <span class="stringliteral">"in"</span>);
-<a name="l00086"></a>00086     <a class="code" href="csg__imcrepack_8cc.html#d05f934fff04b7d83971327ce00a16fa">check_option</a>(desc, vm, <span class="stringliteral">"out"</span>);
-<a name="l00087"></a>00087     <a class="code" href="csg__imcrepack_8cc.html#d05f934fff04b7d83971327ce00a16fa">check_option</a>(desc, vm, <span class="stringliteral">"grid"</span>);
+<a name="l00077"></a>00077     <span class="keywordflow">catch</span>(po::error err) {
+<a name="l00078"></a>00078         cout &lt;&lt; <span class="stringliteral">"error parsing command line: "</span> &lt;&lt; err.what() &lt;&lt; endl;
+<a name="l00079"></a>00079         <span class="keywordflow">return</span> -1;
+<a name="l00080"></a>00080     }
+<a name="l00081"></a>00081     
+<a name="l00082"></a>00082     <span class="comment">// does the user want help?</span>
+<a name="l00083"></a>00083     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"help"</span>)) {
+<a name="l00084"></a>00084         <a class="code" href="csg__imcrepack_8cc.html#1456a11e9a72f8a5516d19dacd92bb4d">help_text</a>();
+<a name="l00085"></a>00085         cout &lt;&lt; desc &lt;&lt; endl;
+<a name="l00086"></a>00086         <span class="keywordflow">return</span> 0;
+<a name="l00087"></a>00087     }
 <a name="l00088"></a>00088     
-<a name="l00089"></a>00089     <span class="keywordtype">double</span> min, max, step;
-<a name="l00090"></a>00090     {
-<a name="l00091"></a>00091         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(grid, <span class="stringliteral">":"</span>);
-<a name="l00092"></a>00092         vector&lt;string&gt; toks;
-<a name="l00093"></a>00093         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(toks);
-<a name="l00094"></a>00094         <span class="keywordflow">if</span>(toks.size()!=3) {
-<a name="l00095"></a>00095             cout &lt;&lt; <span class="stringliteral">"wrong range format, use min:step:max\n"</span>;
-<a name="l00096"></a>00096             <span class="keywordflow">return</span> 1;        
-<a name="l00097"></a>00097         }
-<a name="l00098"></a>00098         min = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[0]);
-<a name="l00099"></a>00099         step = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[1]);
-<a name="l00100"></a>00100         max = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[2]);
-<a name="l00101"></a>00101     }
-<a name="l00102"></a>00102         
-<a name="l00103"></a>00103     
-<a name="l00104"></a>00104     in.<a class="code" href="classvotca_1_1tools_1_1Table.html#55a70d0eba652d0fb740cc99e5122ff8">Load</a>(in_file);
-<a name="l00105"></a>00105     
-<a name="l00106"></a>00106     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"boundaries"</span>)){
-<a name="l00107"></a>00107         <span class="keywordflow">if</span> (boundaries==<span class="stringliteral">"periodic"</span>){
-<a name="l00108"></a>00108             spline.<a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#7d5b72f2495ff6fbcf89bdea10323ac4" title="set the boundary type of the spline">setBC</a>(CubicSpline::splinePeriodic);
-<a name="l00109"></a>00109         }
-<a name="l00110"></a>00110         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (boundaries==<span class="stringliteral">"derivativezero"</span>){
-<a name="l00111"></a>00111             spline.<a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#7d5b72f2495ff6fbcf89bdea10323ac4" title="set the boundary type of the spline">setBC</a>(CubicSpline::splineDerivativeZero);
-<a name="l00112"></a>00112         }
-<a name="l00113"></a>00113         <span class="comment">//default: normal</span>
-<a name="l00114"></a>00114     }    
-<a name="l00115"></a>00115     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"spfit"</span>)) {
-<a name="l00116"></a>00116         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(spfit, <span class="stringliteral">":"</span>);
-<a name="l00117"></a>00117         vector&lt;string&gt; toks;
-<a name="l00118"></a>00118         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(toks);
-<a name="l00119"></a>00119         <span class="keywordflow">if</span>(toks.size()!=3) {
-<a name="l00120"></a>00120             cout &lt;&lt; <span class="stringliteral">"wrong range format in spfit, use min:step:max\n"</span>;
-<a name="l00121"></a>00121             <span class="keywordflow">return</span> 1;        
-<a name="l00122"></a>00122         }
-<a name="l00123"></a>00123         <span class="keywordtype">double</span> sp_min, sp_max, sp_step;
-<a name="l00124"></a>00124         sp_min = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[0]);
-<a name="l00125"></a>00125         sp_step = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[1]);
-<a name="l00126"></a>00126         sp_max = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[2]);
-<a name="l00127"></a>00127         cout &lt;&lt; <span class="stringliteral">"doing spline fit "</span> &lt;&lt; sp_min &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; sp_step &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; sp_max &lt;&lt; endl;
-<a name="l00128"></a>00128         spline.<a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#c4aa645bc07569042b4cf48f1898c55e">GenerateGrid</a>(sp_min, sp_max, sp_step);
-<a name="l00129"></a>00129 
-<a name="l00130"></a>00130         spline.<a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#edce4263bd92d5e62fb5ed0290814b17" title="fit spline through noisy data">Fit</a>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), in.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
-<a name="l00131"></a>00131     } <span class="keywordflow">else</span> {
-<a name="l00132"></a>00132         spline.<a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#84ebee51b3f9e6324f247a4d80dfe530" title="construct an interpolation spline">Interpolate</a>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), in.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
+<a name="l00089"></a>00089     <a class="code" href="csg__imcrepack_8cc.html#d05f934fff04b7d83971327ce00a16fa">check_option</a>(desc, vm, <span class="stringliteral">"in"</span>);
+<a name="l00090"></a>00090     <a class="code" href="csg__imcrepack_8cc.html#d05f934fff04b7d83971327ce00a16fa">check_option</a>(desc, vm, <span class="stringliteral">"out"</span>);
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092     <span class="keywordflow">if</span>(!(vm.count(<span class="stringliteral">"grid"</span>) || vm.count(<span class="stringliteral">"fitgrid"</span>))) {
+<a name="l00093"></a>00093             cout &lt;&lt; <span class="stringliteral">"Need grid for interpolation or fitgrid for fit.\n"</span>;
+<a name="l00094"></a>00094             <span class="keywordflow">return</span> 1;
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097     <span class="keywordflow">if</span>((!vm.count(<span class="stringliteral">"grid"</span>)) &amp;&amp; vm.count(<span class="stringliteral">"fitgrid"</span>)) {
+<a name="l00098"></a>00098             cout &lt;&lt; <span class="stringliteral">"Need a grid for fitting as well.\n"</span>;
+<a name="l00099"></a>00099             <span class="keywordflow">return</span> 1;
+<a name="l00100"></a>00100     }
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102     
+<a name="l00103"></a>00103     <span class="keywordtype">double</span> min, max, step;
+<a name="l00104"></a>00104     {
+<a name="l00105"></a>00105         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(grid, <span class="stringliteral">":"</span>);
+<a name="l00106"></a>00106         vector&lt;string&gt; toks;
+<a name="l00107"></a>00107         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(toks);
+<a name="l00108"></a>00108         <span class="keywordflow">if</span>(toks.size()!=3) {
+<a name="l00109"></a>00109             cout &lt;&lt; <span class="stringliteral">"wrong range format, use min:step:max\n"</span>;
+<a name="l00110"></a>00110             <span class="keywordflow">return</span> 1;        
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112         min = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[0]);
+<a name="l00113"></a>00113         step = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[1]);
+<a name="l00114"></a>00114         max = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[2]);
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117    
+<a name="l00118"></a>00118     in.<a class="code" href="classvotca_1_1tools_1_1Table.html#55a70d0eba652d0fb740cc99e5122ff8">Load</a>(in_file);
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"type"</span>)) {
+<a name="l00121"></a>00121         <span class="keywordflow">if</span>(type==<span class="stringliteral">"cubic"</span>) {
+<a name="l00122"></a>00122             spline = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html" title="A cubic spline class.">CubicSpline</a>();
+<a name="l00123"></a>00123         }
+<a name="l00124"></a>00124         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type==<span class="stringliteral">"akima"</span>) {
+<a name="l00125"></a>00125             spline = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html" title="An Akima Spline Class.">AkimaSpline</a>();
+<a name="l00126"></a>00126         }
+<a name="l00127"></a>00127         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(type==<span class="stringliteral">"linear"</span>) {
+<a name="l00128"></a>00128             spline = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1LinSpline.html" title="A Linear Spline Class.">LinSpline</a>();
+<a name="l00129"></a>00129         }
+<a name="l00130"></a>00130         <span class="keywordflow">else</span> {
+<a name="l00131"></a>00131             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"unknown type"</span>);
+<a name="l00132"></a>00132         }
 <a name="l00133"></a>00133     }
-<a name="l00134"></a>00134     
-<a name="l00135"></a>00135     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#44f81f0884b5d0b87161c41ab035a07d">GenerateGridSpacing</a>(min, max, step);
-<a name="l00136"></a>00136     spline.<a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#44c7169567aabba651c0b92666337797" title="Calculate the function value.">Calculate</a>(out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), out.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
-<a name="l00137"></a>00137     
-<a name="l00138"></a>00138     <span class="comment">//store a comment line</span>
-<a name="l00139"></a>00139     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"comment"</span>)){
-<a name="l00140"></a>00140         out.<a class="code" href="classvotca_1_1tools_1_1Table.html#411c90604f9457a98b2527d9e97312c5">set_comment</a>(comment);
-<a name="l00141"></a>00141     }
-<a name="l00142"></a>00142     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>() = out.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>();
-<a name="l00143"></a>00143     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>() = ub::scalar_vector&lt;double&gt;(out.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>().size(), <span class="charliteral">'o'</span>);
-<a name="l00144"></a>00144 
-<a name="l00145"></a>00145     <span class="keywordtype">int</span> i=0;
-<a name="l00146"></a>00146     <span class="keywordflow">for</span>(i=0; out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i) &lt; in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(0) &amp;&amp; i&lt;out.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>(); ++i);
+<a name="l00134"></a>00134     spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#52f1c38489df78642665de73925926cf" title="Set the boundary type of the spline.">setBC</a>(Spline::splineNormal);
+<a name="l00135"></a>00135     
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"boundaries"</span>)) {
+<a name="l00138"></a>00138         <span class="keywordflow">if</span>(boundaries==<span class="stringliteral">"periodic"</span>) {
+<a name="l00139"></a>00139             spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#52f1c38489df78642665de73925926cf" title="Set the boundary type of the spline.">setBC</a>(Spline::splinePeriodic);
+<a name="l00140"></a>00140         }
+<a name="l00141"></a>00141         <span class="keywordflow">if</span>(boundaries==<span class="stringliteral">"derivativezero"</span>) {
+<a name="l00142"></a>00142             spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#52f1c38489df78642665de73925926cf" title="Set the boundary type of the spline.">setBC</a>(Spline::splineDerivativeZero);
+<a name="l00143"></a>00143         }
+<a name="l00144"></a>00144         <span class="comment">//default: normal</span>
+<a name="l00145"></a>00145     }
+<a name="l00146"></a>00146 
 <a name="l00147"></a>00147 
-<a name="l00148"></a>00148     <span class="keywordtype">int</span> j=0;
-<a name="l00149"></a>00149     <span class="keywordflow">for</span>(;i &lt; out.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>(); ++i) {
-<a name="l00150"></a>00150         <span class="keywordflow">for</span>(; j &lt; in.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>(); ++j)
-<a name="l00151"></a>00151             <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(j) &gt;= out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i)  || fabs(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(j)-out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i) ) &lt; 1e-12) <span class="comment">// fix for precison errors</span>
-<a name="l00152"></a>00152                 <span class="keywordflow">break</span>;        
-<a name="l00153"></a>00153         <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>() == j) <span class="keywordflow">break</span>;
-<a name="l00154"></a>00154         out.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>(i) = in.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>(j);
-<a name="l00155"></a>00155     }
-<a name="l00156"></a>00156     
-<a name="l00157"></a>00157     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#e0282abe5afaab2c2cb147f32494fd36">Save</a>(out_file);
-<a name="l00158"></a>00158     
-<a name="l00159"></a>00159     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"derivative"</span>)) {
-<a name="l00160"></a>00160         der.<a class="code" href="classvotca_1_1tools_1_1Table.html#44f81f0884b5d0b87161c41ab035a07d">GenerateGridSpacing</a>(min, max, step);
-<a name="l00161"></a>00161         der.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>() = ub::scalar_vector&lt;double&gt;(der.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>().size(), <span class="charliteral">'o'</span>);
-<a name="l00162"></a>00162         spline.<a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#1660fb76e6cc620d4ef70fc090e934cb" title="Calculate the function derivative.">CalculateDerivative</a>(der.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), der.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
-<a name="l00163"></a>00163         der.<a class="code" href="classvotca_1_1tools_1_1Table.html#e0282abe5afaab2c2cb147f32494fd36">Save</a>(vm[<span class="stringliteral">"derivative"</span>].as&lt;string&gt;());
-<a name="l00164"></a>00164     }
-<a name="l00165"></a>00165     <span class="keywordflow">return</span> 0;
-<a name="l00166"></a>00166 }
-<a name="l00167"></a>00167 
+<a name="l00148"></a>00148     <span class="comment">// in case fit is specified</span>
+<a name="l00149"></a>00149     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"fitgrid"</span>)) {
+<a name="l00150"></a>00150         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(fitgrid, <span class="stringliteral">":"</span>);
+<a name="l00151"></a>00151         vector&lt;string&gt; toks;
+<a name="l00152"></a>00152         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(toks);
+<a name="l00153"></a>00153         <span class="keywordflow">if</span>(toks.size()!=3) {
+<a name="l00154"></a>00154             cout &lt;&lt; <span class="stringliteral">"wrong range format in fitgrid, use min:step:max\n"</span>;
+<a name="l00155"></a>00155             <span class="keywordflow">return</span> 1;        
+<a name="l00156"></a>00156         }
+<a name="l00157"></a>00157         <span class="keywordtype">double</span> sp_min, sp_max, sp_step;
+<a name="l00158"></a>00158         sp_min = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[0]);
+<a name="l00159"></a>00159         sp_step = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[1]);
+<a name="l00160"></a>00160         sp_max = boost::lexical_cast&lt;<span class="keywordtype">double</span>&gt;(toks[2]);
+<a name="l00161"></a>00161         cout &lt;&lt; <span class="stringliteral">"doing "</span> &lt;&lt; type &lt;&lt; <span class="stringliteral">" fit "</span> &lt;&lt; sp_min &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; sp_step &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; sp_max &lt;&lt; endl;
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163         <span class="comment">// cut off any values out of fitgrid boundaries (exception: do nothing in case of --nocut)</span>
+<a name="l00164"></a>00164         ub::vector&lt;double&gt; x_copy;
+<a name="l00165"></a>00165         ub::vector&lt;double&gt; y_copy;
+<a name="l00166"></a>00166         <span class="keywordflow">if</span> (!vm.count(<span class="stringliteral">"nocut"</span>)) {
+<a name="l00167"></a>00167             <span class="comment">// determine vector size</span>
+<a name="l00168"></a>00168             <span class="keywordtype">int</span> minindex=-1, maxindex;
+<a name="l00169"></a>00169             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>().size(); i++) {
+<a name="l00170"></a>00170                 <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i)&lt;sp_min) {
+<a name="l00171"></a>00171                     minindex = i;
+<a name="l00172"></a>00172                 }
+<a name="l00173"></a>00173                 <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i)&lt;sp_max) {
+<a name="l00174"></a>00174                     maxindex = i;
+<a name="l00175"></a>00175                 }
+<a name="l00176"></a>00176             }
+<a name="l00177"></a>00177             <span class="comment">// copy data values in [sp_min,sp_max] into new vectors</span>
+<a name="l00178"></a>00178             minindex++;
+<a name="l00179"></a>00179             x_copy = ub::zero_vector&lt;double&gt;(maxindex-minindex+1);
+<a name="l00180"></a>00180             y_copy = ub::zero_vector&lt;double&gt;(maxindex-minindex+1);
+<a name="l00181"></a>00181             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=minindex; i&lt;=maxindex; i++) {
+<a name="l00182"></a>00182                 x_copy(i-minindex) = in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i);
+<a name="l00183"></a>00183                 y_copy(i-minindex) = in.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>(i);
+<a name="l00184"></a>00184             }
+<a name="l00185"></a>00185         }
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187         <span class="comment">// fitting</span>
+<a name="l00188"></a>00188         spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#3d217f471a44899facb50e5bf986164c" title="Generate the grid for fitting from &amp;quot;min&amp;quot; to &amp;quot;max&amp;quot; in steps of...">GenerateGrid</a>(sp_min, sp_max, sp_step);
+<a name="l00189"></a>00189         <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"nocut"</span>)) {
+<a name="l00190"></a>00190             spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#e2c83a537169f468d0f0773f19506af1" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">Fit</a>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), in.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
+<a name="l00191"></a>00191         } <span class="keywordflow">else</span> {
+<a name="l00192"></a>00192             spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#e2c83a537169f468d0f0773f19506af1" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">Fit</a>(x_copy, y_copy);
+<a name="l00193"></a>00193         }
+<a name="l00194"></a>00194     } <span class="keywordflow">else</span> {
+<a name="l00195"></a>00195         <span class="comment">// otherwise do interpolation (default = cubic)</span>
+<a name="l00196"></a>00196         spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#6ef26f5e5aa8bd3de83ef02a558e1b58" title="Calculate interpolating spline for given (x,y) values. Points on resulting spline...">Interpolate</a>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), in.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
+<a name="l00197"></a>00197     }
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199     
+<a name="l00200"></a>00200     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#44f81f0884b5d0b87161c41ab035a07d">GenerateGridSpacing</a>(min, max, step);
+<a name="l00201"></a>00201     spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#5b11d9b185a5a0514bd1d6475e18c577" title="Calculate spline function value for a given x value on the spline created by Interpolate()...">Calculate</a>(out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), out.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
+<a name="l00202"></a>00202         
+<a name="l00203"></a>00203     
+<a name="l00204"></a>00204     <span class="comment">//store a comment line</span>
+<a name="l00205"></a>00205     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"comment"</span>)){
+<a name="l00206"></a>00206         out.<a class="code" href="classvotca_1_1tools_1_1Table.html#411c90604f9457a98b2527d9e97312c5">set_comment</a>(comment);
+<a name="l00207"></a>00207     }
+<a name="l00208"></a>00208     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>() = out.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>();
+<a name="l00209"></a>00209     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>() = ub::scalar_vector&lt;double&gt;(out.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>().size(), <span class="charliteral">'o'</span>);
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211     <span class="keywordtype">int</span> i=0;
+<a name="l00212"></a>00212     <span class="keywordflow">for</span>(i=0; out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i) &lt; in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(0) &amp;&amp; i&lt;out.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>(); ++i);
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214     <span class="keywordtype">int</span> j=0;
+<a name="l00215"></a>00215     <span class="keywordflow">for</span>(;i &lt; out.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>(); ++i) {
+<a name="l00216"></a>00216         <span class="keywordflow">for</span>(; j &lt; in.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>(); ++j)
+<a name="l00217"></a>00217             <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(j) &gt;= out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i)  || fabs(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(j)-out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i) ) &lt; 1e-12) <span class="comment">// fix for precison errors</span>
+<a name="l00218"></a>00218                 <span class="keywordflow">break</span>;        
+<a name="l00219"></a>00219         <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>() == j) <span class="keywordflow">break</span>;
+<a name="l00220"></a>00220         out.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>(i) = in.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>(j);
+<a name="l00221"></a>00221     }
+<a name="l00222"></a>00222     
+<a name="l00223"></a>00223     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#e0282abe5afaab2c2cb147f32494fd36">Save</a>(out_file);
+<a name="l00224"></a>00224     
+<a name="l00225"></a>00225     <span class="keywordflow">if</span> (vm.count(<span class="stringliteral">"derivative"</span>)) {
+<a name="l00226"></a>00226         der.<a class="code" href="classvotca_1_1tools_1_1Table.html#44f81f0884b5d0b87161c41ab035a07d">GenerateGridSpacing</a>(min, max, step);
+<a name="l00227"></a>00227         der.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>() = ub::scalar_vector&lt;double&gt;(der.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>().size(), <span class="charliteral">'o'</span>);
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229         spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#933fc093c296f636a22537259d9c3fcb" title="Calculate y value for a given x value on the derivative of the spline created by...">CalculateDerivative</a>(der.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), der.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231         der.<a class="code" href="classvotca_1_1tools_1_1Table.html#e0282abe5afaab2c2cb147f32494fd36">Save</a>(vm[<span class="stringliteral">"derivative"</span>].as&lt;string&gt;());
+<a name="l00232"></a>00232     }
+<a name="l00233"></a>00233 
+<a name="l00234"></a>00234     <span class="keyword">delete</span> spline;
+<a name="l00235"></a>00235     <span class="keywordflow">return</span> 0;
+<a name="l00236"></a>00236 }
+<a name="l00237"></a>00237 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
