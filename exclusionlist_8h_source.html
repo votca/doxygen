@@ -80,26 +80,28 @@
 <a name="l00059"></a>00059     
 <a name="l00060"></a>00060     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1d8367709a2e4b70f0764f90eac42e66">IsExcluded</a>(<span class="keywordtype">int</span> bead1, <span class="keywordtype">int</span> bead2);
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062 <span class="keyword">private</span>:
-<a name="l00063"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">00063</a>     list&lt; exclusion_t * &gt; <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>;
-<a name="l00064"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">00064</a>     map&lt;int, exclusion_t *&gt; <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">_excl_by_bead</a>;
-<a name="l00065"></a>00065     
-<a name="l00066"></a>00066     <span class="keyword">friend</span> std::ostream &amp;<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4fe3469db1981f59dfa0af8b60ece8c4">operator&lt;&lt;</a>(std::ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html">ExclusionList</a>&amp; exl);
-<a name="l00067"></a>00067 };
-<a name="l00068"></a>00068 
-<a name="l00069"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#2b607b187c0768e0a2bbf928c47b2b3b">00069</a> <span class="keyword">inline</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">ExclusionList::exclusion_t</a> * <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#2b607b187c0768e0a2bbf928c47b2b3b">ExclusionList::GetExclusions</a>(<span class="keywordtype">int</span> bead)
-<a name="l00070"></a>00070 {
-<a name="l00071"></a>00071    map&lt;int, exclusion_t *&gt;::iterator iter  = <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">_excl_by_bead</a>.find(bead);
-<a name="l00072"></a>00072    <span class="keywordflow">if</span>(iter == <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">_excl_by_bead</a>.end()) <span class="keywordflow">return</span> NULL;
-<a name="l00073"></a>00073    <span class="keywordflow">return</span> (*iter).second;
-<a name="l00074"></a>00074 }
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 std::ostream &amp;<a class="code" href="namespacevotca_1_1csg.html#9be6f44643af1301cff032b5b7c44318">operator&lt;&lt;</a>(std::ostream &amp;out,<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html">ExclusionList</a>&amp; ex);
+<a name="l00062"></a>00062     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#3d04c8d819bfdb5dae7fb627dfb36cfe">InsertExclusion</a>(<span class="keywordtype">int</span> index, list&lt;int&gt; l);
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 <span class="keyword">private</span>:
+<a name="l00065"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">00065</a>     list&lt; exclusion_t * &gt; <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>;
+<a name="l00066"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">00066</a>     map&lt;int, exclusion_t *&gt; <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">_excl_by_bead</a>;
+<a name="l00067"></a>00067     
+<a name="l00068"></a>00068     <span class="keyword">friend</span> std::ostream &amp;<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4fe3469db1981f59dfa0af8b60ece8c4">operator&lt;&lt;</a>(std::ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html">ExclusionList</a>&amp; exl);
+<a name="l00069"></a>00069 };
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#2b607b187c0768e0a2bbf928c47b2b3b">00071</a> <span class="keyword">inline</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">ExclusionList::exclusion_t</a> * <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#2b607b187c0768e0a2bbf928c47b2b3b">ExclusionList::GetExclusions</a>(<span class="keywordtype">int</span> bead)
+<a name="l00072"></a>00072 {
+<a name="l00073"></a>00073    map&lt;int, exclusion_t *&gt;::iterator iter  = <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">_excl_by_bead</a>.find(bead);
+<a name="l00074"></a>00074    <span class="keywordflow">if</span>(iter == <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">_excl_by_bead</a>.end()) <span class="keywordflow">return</span> NULL;
+<a name="l00075"></a>00075    <span class="keywordflow">return</span> (*iter).second;
+<a name="l00076"></a>00076 }
 <a name="l00077"></a>00077 
-<a name="l00078"></a>00078 }}
+<a name="l00078"></a>00078 std::ostream &amp;<a class="code" href="namespacevotca_1_1csg.html#9be6f44643af1301cff032b5b7c44318">operator&lt;&lt;</a>(std::ostream &amp;out,<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html">ExclusionList</a>&amp; ex);
 <a name="l00079"></a>00079 
-<a name="l00080"></a>00080 <span class="preprocessor">#endif  </span><span class="comment">/* _exclusionlist_H */</span>
+<a name="l00080"></a>00080 }}
 <a name="l00081"></a>00081 
+<a name="l00082"></a>00082 <span class="preprocessor">#endif  </span><span class="comment">/* _exclusionlist_H */</span>
+<a name="l00083"></a>00083 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

@@ -285,125 +285,128 @@
 <a name="l00272"></a>00272                 <span class="comment">// Proceed to first frame of interest</span>
 <a name="l00274"></a>00274 <span class="comment"></span>
 <a name="l00275"></a>00275                 _traj_reader-&gt;FirstFrame(master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>);
-<a name="l00276"></a>00276                 <span class="comment">//seek to first frame, let thread0 do that</span>
-<a name="l00277"></a>00277                 <span class="keywordtype">bool</span> bok;
-<a name="l00278"></a>00278                 <span class="keywordflow">for</span> (bok = <span class="keyword">true</span>; bok == <span class="keyword">true</span>; bok = _traj_reader-&gt;NextFrame(master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>)) {
-<a name="l00279"></a>00279                     <span class="keywordflow">if</span> (((master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>.<a class="code" href="classvotca_1_1csg_1_1Topology.html#1c9be221d3a494044d92e3283fe42da6">getTime</a>() &lt; begin) &amp;&amp; has_begin) || first_frame &gt; 1) {
-<a name="l00280"></a>00280                         first_frame--;
-<a name="l00281"></a>00281                         <span class="keywordflow">continue</span>;
-<a name="l00282"></a>00282                     }
-<a name="l00283"></a>00283                     <span class="keywordflow">break</span>;
-<a name="l00284"></a>00284                 }
-<a name="l00285"></a>00285                 <span class="keywordflow">if</span> (!bok) { <span class="comment">// trajectory was too shor and we did not proceed to first frame</span>
-<a name="l00286"></a>00286                     _traj_reader-&gt;Close();
-<a name="l00287"></a>00287                     <span class="keyword">delete</span> _traj_reader;
-<a name="l00288"></a>00288 
-<a name="l00289"></a>00289                     <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"trajectory was too short, did not process a single frame"</span>);
-<a name="l00290"></a>00290                 }
+<a name="l00276"></a>00276                 <span class="keywordflow">if</span>(master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>.<a class="code" href="classvotca_1_1csg_1_1Topology.html#d7bba98fc26b01adc538babbc867da00">getBoxType</a>()==<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#51b6372db30b8292b9d6cf51716af11c395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>) {
+<a name="l00277"></a>00277                     cout &lt;&lt; <span class="stringliteral">"NOTE: You are using OpenBox boundary conditions. Check if this is intended.\n"</span> &lt;&lt; endl;
+<a name="l00278"></a>00278                 }
+<a name="l00279"></a>00279                 <span class="comment">//seek first frame, let thread0 do that</span>
+<a name="l00280"></a>00280                 <span class="keywordtype">bool</span> bok;
+<a name="l00281"></a>00281                 <span class="keywordflow">for</span> (bok = <span class="keyword">true</span>; bok == <span class="keyword">true</span>; bok = _traj_reader-&gt;NextFrame(master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>)) {
+<a name="l00282"></a>00282                     <span class="keywordflow">if</span> (((master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>.<a class="code" href="classvotca_1_1csg_1_1Topology.html#1c9be221d3a494044d92e3283fe42da6">getTime</a>() &lt; begin) &amp;&amp; has_begin) || first_frame &gt; 1) {
+<a name="l00283"></a>00283                         first_frame--;
+<a name="l00284"></a>00284                         <span class="keywordflow">continue</span>;
+<a name="l00285"></a>00285                     }
+<a name="l00286"></a>00286                     <span class="keywordflow">break</span>;
+<a name="l00287"></a>00287                 }
+<a name="l00288"></a>00288                 <span class="keywordflow">if</span> (!bok) { <span class="comment">// trajectory was too short and we did not proceed to first frame</span>
+<a name="l00289"></a>00289                     _traj_reader-&gt;Close();
+<a name="l00290"></a>00290                     <span class="keyword">delete</span> _traj_reader;
 <a name="l00291"></a>00291 
-<a name="l00292"></a>00292                 <span class="comment">// notify all observer that coarse graining has begun</span>
-<a name="l00293"></a>00293                 <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#e99703b43d553fd84952550bab38d05f">_do_mapping</a>) {
-<a name="l00294"></a>00294                     master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#4d703d8467072565f925c795b57751e9">_map</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TopologyMap.html#e790438c57ddd3721244a3c2f427f86f">Apply</a>();
-<a name="l00295"></a>00295                     <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0" title="called before the first frame">BeginEvaluate</a>(&amp;master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62fb7e3b9393a892e67e6d17dcca1dc">_top_cg</a>, &amp;master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>);
-<a name="l00296"></a>00296                 } <span class="keywordflow">else</span>
-<a name="l00297"></a>00297                     <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0" title="called before the first frame">BeginEvaluate</a>(&amp;master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>);
-<a name="l00298"></a>00298 
-<a name="l00299"></a>00299                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#696590e5eac93438118101b5ff5d1d35">_is_first_frame</a> = <span class="keyword">true</span>;
-<a name="l00301"></a>00301                 <span class="comment">//start threads</span>
-<a name="l00302"></a>00302                 <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#fc29487708dadeb129518a5b4bbea8b8">DoThreaded</a>()) {
-<a name="l00303"></a>00303                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++) {
-<a name="l00304"></a>00304 
-<a name="l00305"></a>00305                         <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
-<a name="l00306"></a>00306                             <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> *myMutexIn = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a>;
-<a name="l00307"></a>00307                             <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>.push_back(myMutexIn);
-<a name="l00308"></a>00308                             <span class="comment">// lock each worker for input</span>
-<a name="l00309"></a>00309                             myMutexIn-&gt;<a class="code" href="classvotca_1_1tools_1_1Mutex.html#82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();
-<a name="l00310"></a>00310 
-<a name="l00311"></a>00311                             <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> *myMutexOut = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a>;
-<a name="l00312"></a>00312                             <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>.push_back(myMutexOut);
-<a name="l00313"></a>00313                             <span class="comment">// lock each worker for output</span>
-<a name="l00314"></a>00314                             myMutexOut-&gt;<a class="code" href="classvotca_1_1tools_1_1Mutex.html#82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();
-<a name="l00315"></a>00315                         }
-<a name="l00316"></a>00316                     }
-<a name="l00317"></a>00317                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++)
-<a name="l00318"></a>00318                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread]-&gt;Start();
-<a name="l00319"></a>00319 
-<a name="l00320"></a>00320                     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
-<a name="l00321"></a>00321                         <span class="comment">//unlock first thread and start ordered input/output</span>
-<a name="l00322"></a>00322                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>[0]-&gt;Unlock();
-<a name="l00323"></a>00323                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>[0]-&gt;Unlock();
-<a name="l00324"></a>00324                     }
-<a name="l00325"></a>00325                     <span class="comment">// mutex needed for merging if SynchronizeThreads()==False</span>
-<a name="l00326"></a>00326                     <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> mergeMutex;
-<a name="l00327"></a>00327                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++) {
-<a name="l00328"></a>00328                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread]-&gt;WaitDone();
-<a name="l00329"></a>00329                         <span class="keywordflow">if</span> (!<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
-<a name="l00330"></a>00330                             mergeMutex.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();
-<a name="l00331"></a>00331                             <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#6887a72e95438c0a48be51185e261dcf">MergeWorker</a>(<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread]);
-<a name="l00332"></a>00332                             mergeMutex.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#98b8edeae80de9fa33f06faa55c1c053">Unlock</a>();
-<a name="l00333"></a>00333                         }
-<a name="l00334"></a>00334                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread];
-<a name="l00335"></a>00335                     }
-<a name="l00336"></a>00336                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>.size(); ++thread) {
-<a name="l00337"></a>00337                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>[thread];
-<a name="l00338"></a>00338                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>[thread];
-<a name="l00339"></a>00339                     }
-<a name="l00340"></a>00340 
-<a name="l00341"></a>00341 
-<a name="l00342"></a>00342                 } <span class="keywordflow">else</span> {
-<a name="l00343"></a>00343                     master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#8a7821db2bcb1955dfecda39946dc4d8" title="Run() executes the actual code. Overload it.">Run</a>();
-<a name="l00344"></a>00344                     <span class="keyword">delete</span> master;
-<a name="l00345"></a>00345                 }
-<a name="l00346"></a>00346 
-<a name="l00347"></a>00347                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#47cb152c60480953db3c4d6fe3a48951" title="called after the last frame">EndEvaluate</a>();
-<a name="l00348"></a>00348 
-<a name="l00349"></a>00349                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.clear();
-<a name="l00350"></a>00350                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>.clear();
-<a name="l00351"></a>00351                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>.clear();
-<a name="l00352"></a>00352                 _traj_reader-&gt;Close();
-<a name="l00353"></a>00353 
-<a name="l00354"></a>00354                 <span class="keyword">delete</span> _traj_reader;
-<a name="l00355"></a>00355             }
+<a name="l00292"></a>00292                     <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"trajectory was too short, did not process a single frame"</span>);
+<a name="l00293"></a>00293                 }
+<a name="l00294"></a>00294 
+<a name="l00295"></a>00295                 <span class="comment">// notify all observers that coarse graining has begun</span>
+<a name="l00296"></a>00296                 <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#e99703b43d553fd84952550bab38d05f">_do_mapping</a>) {
+<a name="l00297"></a>00297                     master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#4d703d8467072565f925c795b57751e9">_map</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TopologyMap.html#e790438c57ddd3721244a3c2f427f86f">Apply</a>();
+<a name="l00298"></a>00298                     <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0" title="called before the first frame">BeginEvaluate</a>(&amp;master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62fb7e3b9393a892e67e6d17dcca1dc">_top_cg</a>, &amp;master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>);
+<a name="l00299"></a>00299                 } <span class="keywordflow">else</span>
+<a name="l00300"></a>00300                     <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0" title="called before the first frame">BeginEvaluate</a>(&amp;master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a62a905ab107c210ef18205e017eab01">_top</a>);
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#696590e5eac93438118101b5ff5d1d35">_is_first_frame</a> = <span class="keyword">true</span>;
+<a name="l00304"></a>00304                 <span class="comment">//start threads</span>
+<a name="l00305"></a>00305                 <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#fc29487708dadeb129518a5b4bbea8b8">DoThreaded</a>()) {
+<a name="l00306"></a>00306                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++) {
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308                         <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
+<a name="l00309"></a>00309                             <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> *myMutexIn = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a>;
+<a name="l00310"></a>00310                             <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>.push_back(myMutexIn);
+<a name="l00311"></a>00311                             <span class="comment">// lock each worker for input</span>
+<a name="l00312"></a>00312                             myMutexIn-&gt;<a class="code" href="classvotca_1_1tools_1_1Mutex.html#82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314                             <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> *myMutexOut = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a>;
+<a name="l00315"></a>00315                             <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>.push_back(myMutexOut);
+<a name="l00316"></a>00316                             <span class="comment">// lock each worker for output</span>
+<a name="l00317"></a>00317                             myMutexOut-&gt;<a class="code" href="classvotca_1_1tools_1_1Mutex.html#82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();
+<a name="l00318"></a>00318                         }
+<a name="l00319"></a>00319                     }
+<a name="l00320"></a>00320                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++)
+<a name="l00321"></a>00321                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread]-&gt;Start();
+<a name="l00322"></a>00322 
+<a name="l00323"></a>00323                     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
+<a name="l00324"></a>00324                         <span class="comment">//unlock first thread and start ordered input/output</span>
+<a name="l00325"></a>00325                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>[0]-&gt;Unlock();
+<a name="l00326"></a>00326                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>[0]-&gt;Unlock();
+<a name="l00327"></a>00327                     }
+<a name="l00328"></a>00328                     <span class="comment">// mutex needed for merging if SynchronizeThreads()==False</span>
+<a name="l00329"></a>00329                     <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> mergeMutex;
+<a name="l00330"></a>00330                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++) {
+<a name="l00331"></a>00331                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread]-&gt;WaitDone();
+<a name="l00332"></a>00332                         <span class="keywordflow">if</span> (!<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
+<a name="l00333"></a>00333                             mergeMutex.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();
+<a name="l00334"></a>00334                             <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#6887a72e95438c0a48be51185e261dcf">MergeWorker</a>(<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread]);
+<a name="l00335"></a>00335                             mergeMutex.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#98b8edeae80de9fa33f06faa55c1c053">Unlock</a>();
+<a name="l00336"></a>00336                         }
+<a name="l00337"></a>00337                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread];
+<a name="l00338"></a>00338                     }
+<a name="l00339"></a>00339                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>.size(); ++thread) {
+<a name="l00340"></a>00340                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>[thread];
+<a name="l00341"></a>00341                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>[thread];
+<a name="l00342"></a>00342                     }
+<a name="l00343"></a>00343 
+<a name="l00344"></a>00344 
+<a name="l00345"></a>00345                 } <span class="keywordflow">else</span> {
+<a name="l00346"></a>00346                     master-&gt;<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#8a7821db2bcb1955dfecda39946dc4d8" title="Run() executes the actual code. Overload it.">Run</a>();
+<a name="l00347"></a>00347                     <span class="keyword">delete</span> master;
+<a name="l00348"></a>00348                 }
+<a name="l00349"></a>00349 
+<a name="l00350"></a>00350                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#47cb152c60480953db3c4d6fe3a48951" title="called after the last frame">EndEvaluate</a>();
+<a name="l00351"></a>00351 
+<a name="l00352"></a>00352                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.clear();
+<a name="l00353"></a>00353                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>.clear();
+<a name="l00354"></a>00354                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>.clear();
+<a name="l00355"></a>00355                 _traj_reader-&gt;Close();
 <a name="l00356"></a>00356 
-<a name="l00357"></a>00357             <span class="keyword">delete</span> reader;
-<a name="l00358"></a>00358 
-<a name="l00359"></a>00359         }
-<a name="l00360"></a>00360 
-<a name="l00361"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a01b4f966259229f5c3420519e0e4664">00361</a>         <a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a01b4f966259229f5c3420519e0e4664">CsgApplication::Worker::~Worker</a>() {
-<a name="l00362"></a>00362             <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#4d703d8467072565f925c795b57751e9">_map</a>)
-<a name="l00363"></a>00363                 <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#4d703d8467072565f925c795b57751e9">_map</a>;
-<a name="l00364"></a>00364 
-<a name="l00365"></a>00365         }
-<a name="l00366"></a>00366 
-<a name="l00367"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0">00367</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0" title="called before the first frame">CsgApplication::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> * top_ref) {
-<a name="l00368"></a>00368             list&lt;CGObserver *&gt;::iterator iter;
-<a name="l00369"></a>00369             <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.begin(); iter != <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.end(); ++iter)
-<a name="l00370"></a>00370                 (*iter)-&gt;BeginCG(top, top_ref);
-<a name="l00371"></a>00371         }
-<a name="l00372"></a>00372 
-<a name="l00373"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#47cb152c60480953db3c4d6fe3a48951">00373</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#47cb152c60480953db3c4d6fe3a48951" title="called after the last frame">CsgApplication::EndEvaluate</a>() {
-<a name="l00374"></a>00374             list&lt;CGObserver *&gt;::iterator iter;
-<a name="l00375"></a>00375             <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.begin(); iter != <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.end(); ++iter)
-<a name="l00376"></a>00376                 (*iter)-&gt;EndCG();
-<a name="l00377"></a>00377         }
-<a name="l00378"></a>00378 
-<a name="l00379"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#8df7cdc2c93efe2c9349d01534245389">00379</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#8df7cdc2c93efe2c9349d01534245389">CsgApplication::EvalConfiguration</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> * top_ref) {
-<a name="l00380"></a>00380             list&lt;CGObserver *&gt;::iterator iter;
-<a name="l00381"></a>00381             <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.begin(); iter != <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.end(); ++iter)
-<a name="l00382"></a>00382                 (*iter)-&gt;EvalConfiguration(top, top_ref);
-<a name="l00383"></a>00383         }
-<a name="l00384"></a>00384 
-<a name="l00385"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#ead941af34755dc99299487ea7dbf0c9">00385</a>         <a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html" title="Worker, derived from Thread, does the work.">CsgApplication::Worker</a> *<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#ead941af34755dc99299487ea7dbf0c9">CsgApplication::ForkWorker</a>(<span class="keywordtype">void</span>) {
-<a name="l00386"></a>00386             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"ForkWorker not implemented in application"</span>);
-<a name="l00387"></a>00387             <span class="keywordflow">return</span> NULL;
-<a name="l00388"></a>00388         }
-<a name="l00389"></a>00389 
-<a name="l00390"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#6887a72e95438c0a48be51185e261dcf">00390</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#6887a72e95438c0a48be51185e261dcf">CsgApplication::MergeWorker</a>(<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html" title="Worker, derived from Thread, does the work.">CsgApplication::Worker</a> *worker) {
-<a name="l00391"></a>00391             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"MergeWorker not implemented in application"</span>);
-<a name="l00392"></a>00392         }
-<a name="l00393"></a>00393 
-<a name="l00394"></a>00394     }
-<a name="l00395"></a>00395 }
+<a name="l00357"></a>00357                 <span class="keyword">delete</span> _traj_reader;
+<a name="l00358"></a>00358             }
+<a name="l00359"></a>00359 
+<a name="l00360"></a>00360             <span class="keyword">delete</span> reader;
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362         }
+<a name="l00363"></a>00363 
+<a name="l00364"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a01b4f966259229f5c3420519e0e4664">00364</a>         <a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#a01b4f966259229f5c3420519e0e4664">CsgApplication::Worker::~Worker</a>() {
+<a name="l00365"></a>00365             <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#4d703d8467072565f925c795b57751e9">_map</a>)
+<a name="l00366"></a>00366                 <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html#4d703d8467072565f925c795b57751e9">_map</a>;
+<a name="l00367"></a>00367 
+<a name="l00368"></a>00368         }
+<a name="l00369"></a>00369 
+<a name="l00370"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0">00370</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0" title="called before the first frame">CsgApplication::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> * top_ref) {
+<a name="l00371"></a>00371             list&lt;CGObserver *&gt;::iterator iter;
+<a name="l00372"></a>00372             <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.begin(); iter != <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.end(); ++iter)
+<a name="l00373"></a>00373                 (*iter)-&gt;BeginCG(top, top_ref);
+<a name="l00374"></a>00374         }
+<a name="l00375"></a>00375 
+<a name="l00376"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#47cb152c60480953db3c4d6fe3a48951">00376</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#47cb152c60480953db3c4d6fe3a48951" title="called after the last frame">CsgApplication::EndEvaluate</a>() {
+<a name="l00377"></a>00377             list&lt;CGObserver *&gt;::iterator iter;
+<a name="l00378"></a>00378             <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.begin(); iter != <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.end(); ++iter)
+<a name="l00379"></a>00379                 (*iter)-&gt;EndCG();
+<a name="l00380"></a>00380         }
+<a name="l00381"></a>00381 
+<a name="l00382"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#8df7cdc2c93efe2c9349d01534245389">00382</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#8df7cdc2c93efe2c9349d01534245389">CsgApplication::EvalConfiguration</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> * top_ref) {
+<a name="l00383"></a>00383             list&lt;CGObserver *&gt;::iterator iter;
+<a name="l00384"></a>00384             <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.begin(); iter != <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#96a12fd626637639d37d7263a5f3a6b9">_observers</a>.end(); ++iter)
+<a name="l00385"></a>00385                 (*iter)-&gt;EvalConfiguration(top, top_ref);
+<a name="l00386"></a>00386         }
+<a name="l00387"></a>00387 
+<a name="l00388"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#ead941af34755dc99299487ea7dbf0c9">00388</a>         <a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html" title="Worker, derived from Thread, does the work.">CsgApplication::Worker</a> *<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#ead941af34755dc99299487ea7dbf0c9">CsgApplication::ForkWorker</a>(<span class="keywordtype">void</span>) {
+<a name="l00389"></a>00389             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"ForkWorker not implemented in application"</span>);
+<a name="l00390"></a>00390             <span class="keywordflow">return</span> NULL;
+<a name="l00391"></a>00391         }
+<a name="l00392"></a>00392 
+<a name="l00393"></a><a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#6887a72e95438c0a48be51185e261dcf">00393</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#6887a72e95438c0a48be51185e261dcf">CsgApplication::MergeWorker</a>(<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html" title="Worker, derived from Thread, does the work.">CsgApplication::Worker</a> *worker) {
+<a name="l00394"></a>00394             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"MergeWorker not implemented in application"</span>);
+<a name="l00395"></a>00395         }
+<a name="l00396"></a>00396 
+<a name="l00397"></a>00397     }
+<a name="l00398"></a>00398 }
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

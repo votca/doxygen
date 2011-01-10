@@ -50,31 +50,43 @@
 <a name="l00027"></a><a class="code" href="classCsgDumpApp.html#725e02c904fd700820687a73ca416f6c">00027</a>     <span class="keywordtype">string</span> <a class="code" href="classCsgDumpApp.html#725e02c904fd700820687a73ca416f6c" title="program name">ProgramName</a>() { <span class="keywordflow">return</span> <span class="stringliteral">"csg_dump"</span>; }
 <a name="l00028"></a><a class="code" href="classCsgDumpApp.html#25c2d936fe2a540b0ae449b073f40b9c">00028</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgDumpApp.html#25c2d936fe2a540b0ae449b073f40b9c">HelpText</a>(ostream &amp;out) { out &lt;&lt; <span class="stringliteral">"Print atoms that are read from topology file to help"</span>
 <a name="l00029"></a>00029         <span class="stringliteral">" debugging atom naming."</span>; }
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031     <span class="keywordtype">bool</span> <a class="code" href="classCsgDumpApp.html#748ee86dc4a0bbe84c51f4ae05364279" title="called after topology was loaded">EvaluateTopology</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
-<a name="l00032"></a>00032 };
-<a name="l00033"></a>00033 
-<a name="l00034"></a><a class="code" href="csg__dump_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00034</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
-<a name="l00035"></a>00035 {
-<a name="l00036"></a>00036     <a class="code" href="classCsgDumpApp.html">CsgDumpApp</a> app;
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
-<a name="l00039"></a>00039 }
-<a name="l00040"></a>00040 
-<a name="l00041"></a><a class="code" href="classCsgDumpApp.html#748ee86dc4a0bbe84c51f4ae05364279">00041</a> <span class="keywordtype">bool</span> <a class="code" href="classCsgDumpApp.html#748ee86dc4a0bbe84c51f4ae05364279" title="called after topology was loaded">CsgDumpApp::EvaluateTopology</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref)
-<a name="l00042"></a>00042 {
-<a name="l00043"></a>00043     MoleculeContainer::iterator mol;
-<a name="l00044"></a>00044     <span class="keywordflow">for</span> (mol = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>().begin(); mol != top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>().end(); ++mol) {
-<a name="l00045"></a>00045         cout &lt;&lt; <span class="stringliteral">"molecule: "</span> &lt;&lt; (*mol)-&gt;getId() + 1 &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; (*mol)-&gt;getName()
-<a name="l00046"></a>00046                 &lt;&lt; <span class="stringliteral">" beads: "</span> &lt;&lt; (*mol)-&gt;BeadCount() &lt;&lt; endl;
-<a name="l00047"></a>00047         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (*mol)-&gt;BeadCount(); ++i) {
-<a name="l00048"></a>00048             cout &lt;&lt; (*mol)-&gt;getBeadId(i) &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt;
-<a name="l00049"></a>00049                     (*mol)-&gt;getBeadName(i) &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; (*mol)-&gt;getBead(i)-&gt;getType()-&gt;getName() &lt;&lt; endl;
-<a name="l00050"></a>00050         }
-<a name="l00051"></a>00051     }
-<a name="l00052"></a>00052     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00053"></a>00053 }
-<a name="l00054"></a>00054 
+<a name="l00030"></a><a class="code" href="classCsgDumpApp.html#45a002e17bc0b1277de0e59defdca612">00030</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgDumpApp.html#45a002e17bc0b1277de0e59defdca612" title="Initialize application data.">Initialize</a>() {
+<a name="l00031"></a>00031         <a class="code" href="classCsgDumpApp.html#45a002e17bc0b1277de0e59defdca612" title="Initialize application data.">CsgApplication::Initialize</a>();
+<a name="l00032"></a>00032         <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>(<span class="stringliteral">"Specific options"</span>)
+<a name="l00033"></a>00033             (<span class="stringliteral">"excl"</span>, <span class="stringliteral">"  display exclusion list instead of molecule list"</span>);
+<a name="l00034"></a>00034     }
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036     <span class="keywordtype">bool</span> <a class="code" href="classCsgDumpApp.html#748ee86dc4a0bbe84c51f4ae05364279" title="called after topology was loaded">EvaluateTopology</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
+<a name="l00037"></a>00037 };
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="csg__dump_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00039</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00040"></a>00040 {
+<a name="l00041"></a>00041     <a class="code" href="classCsgDumpApp.html">CsgDumpApp</a> app;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
+<a name="l00044"></a>00044 }
+<a name="l00045"></a>00045 
+<a name="l00046"></a><a class="code" href="classCsgDumpApp.html#748ee86dc4a0bbe84c51f4ae05364279">00046</a> <span class="keywordtype">bool</span> <a class="code" href="classCsgDumpApp.html#748ee86dc4a0bbe84c51f4ae05364279" title="called after topology was loaded">CsgDumpApp::EvaluateTopology</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref)
+<a name="l00047"></a>00047 {
+<a name="l00048"></a>00048     <span class="keywordflow">if</span>(!<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"excl"</span>)) {
+<a name="l00049"></a>00049         cout &lt;&lt; <span class="stringliteral">"\nList of molecules:\n"</span>;
+<a name="l00050"></a>00050         MoleculeContainer::iterator mol;
+<a name="l00051"></a>00051         <span class="keywordflow">for</span> (mol = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>().begin(); mol != top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>().end(); ++mol) {
+<a name="l00052"></a>00052             cout &lt;&lt; <span class="stringliteral">"molecule: "</span> &lt;&lt; (*mol)-&gt;getId() + 1 &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; (*mol)-&gt;getName()
+<a name="l00053"></a>00053                     &lt;&lt; <span class="stringliteral">" beads: "</span> &lt;&lt; (*mol)-&gt;BeadCount() &lt;&lt; endl;
+<a name="l00054"></a>00054             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (*mol)-&gt;BeadCount(); ++i) {
+<a name="l00055"></a>00055                 cout &lt;&lt; (*mol)-&gt;getBeadId(i) &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt;
+<a name="l00056"></a>00056                         (*mol)-&gt;getBeadName(i) &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; (*mol)-&gt;getBead(i)-&gt;getType()-&gt;getName() &lt;&lt; endl;
+<a name="l00057"></a>00057             }
+<a name="l00058"></a>00058         }
+<a name="l00059"></a>00059     }
+<a name="l00060"></a>00060     <span class="keywordflow">else</span> {
+<a name="l00061"></a>00061         cout &lt;&lt; <span class="stringliteral">"\nList of exclusions:\n"</span> &lt;&lt; top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#36fb20d98b9d7ebb7e198ba93224dfb5">getExclusions</a>();
+<a name="l00062"></a>00062     }
+<a name="l00063"></a>00063     
+<a name="l00064"></a>00064     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00065"></a>00065 }
+<a name="l00066"></a>00066 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

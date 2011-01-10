@@ -173,7 +173,31 @@
 <a name="l00150"></a>00150     <span class="keywordflow">return</span> out;
 <a name="l00151"></a>00151 }
 <a name="l00152"></a>00152 
-<a name="l00153"></a>00153 }}
+<a name="l00153"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#3d04c8d819bfdb5dae7fb627dfb36cfe">00153</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#3d04c8d819bfdb5dae7fb627dfb36cfe">ExclusionList::InsertExclusion</a>(<span class="keywordtype">int</span> index, list&lt;int&gt; l) {
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155     list&lt;int&gt;::iterator i;
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157     <span class="comment">//cout &lt;&lt; "atom " &lt;&lt; index &lt;&lt; endl;</span>
+<a name="l00158"></a>00158     <span class="keywordflow">for</span>(i=l.begin(); i!=l.end(); ++i) {
+<a name="l00159"></a>00159         <span class="keywordtype">int</span> bead1 = index;
+<a name="l00160"></a>00160         <span class="keywordtype">int</span> bead2 = *i;
+<a name="l00161"></a>00161         <span class="keywordflow">if</span> (bead2 &lt; bead1) swap(bead1, bead2);
+<a name="l00162"></a>00162         <span class="keywordflow">if</span>(bead1==bead2) <span class="keywordflow">continue</span>;
+<a name="l00163"></a>00163         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1d8367709a2e4b70f0764f90eac42e66">IsExcluded</a>(bead1, bead2)) <span class="keywordflow">continue</span>;
+<a name="l00164"></a>00164         <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a> *e;
+<a name="l00165"></a>00165         <span class="keywordflow">if</span>((e = <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#2b607b187c0768e0a2bbf928c47b2b3b">GetExclusions</a>(bead1)) == NULL) {
+<a name="l00166"></a>00166             e = <span class="keyword">new</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a>;
+<a name="l00167"></a>00167             e-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#b433b309fa5f2fbfb56fc63f2c4b7685">_atom</a> = bead1;
+<a name="l00168"></a>00168             <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.push_back(e);
+<a name="l00169"></a>00169             <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#4cc3d01a28fca9c85bb8de1f7a7e539b">_excl_by_bead</a>[ bead1 ] = e;
+<a name="l00170"></a>00170         }
+<a name="l00171"></a>00171         e-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#4892e52a3940ce7df66c034d908873ab">_exclude</a>.push_back(bead2);
+<a name="l00172"></a>00172         <span class="comment">//cout &lt;&lt; (*i) &lt;&lt; " " &lt;&lt; endl;</span>
+<a name="l00173"></a>00173     }
+<a name="l00174"></a>00174     <span class="comment">//cout &lt;&lt; endl;</span>
+<a name="l00175"></a>00175 }
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

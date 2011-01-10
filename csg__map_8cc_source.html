@@ -71,41 +71,42 @@
 <a name="l00048"></a>00048     
 <a name="l00049"></a><a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a">00049</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a" title="Process command line options.">EvaluateOptions</a>() {
 <a name="l00050"></a>00050         <a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a" title="Process command line options.">CsgApplication::EvaluateOptions</a>();
-<a name="l00051"></a>00051         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"out"</span>, <span class="stringliteral">"need to specify output trajectory"</span>);
-<a name="l00052"></a>00052         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00053"></a>00053     }
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
-<a name="l00056"></a>00056 
-<a name="l00057"></a><a class="code" href="classCsgMapApp.html#523dd905e0617b0e3197f84396b7eeea">00057</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#523dd905e0617b0e3197f84396b7eeea">EvalConfiguration</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref) {
-<a name="l00058"></a>00058         <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#a9fe0851ca3ccb137ea2a31ea6aca268">Write</a>(top);
-<a name="l00059"></a>00059     }
-<a name="l00060"></a><a class="code" href="classCsgMapApp.html#edb7a3f9193b6729ed704928fc9ad60c">00060</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#edb7a3f9193b6729ed704928fc9ad60c" title="called after the last frame">EndEvaluate</a>() {
-<a name="l00061"></a>00061         <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#c92aa96a91750c15485b662db7fbb347">Close</a>();
-<a name="l00062"></a>00062         <span class="keyword">delete</span> <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>;
-<a name="l00063"></a>00063     }
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="keyword">protected</span>:
-<a name="l00066"></a><a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">00066</a>     <a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html">TrajectoryWriter</a> *<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>;
-<a name="l00067"></a>00067 };
-<a name="l00068"></a>00068 
-<a name="l00069"></a><a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e">00069</a> <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">CsgMapApp::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_atom)
-<a name="l00070"></a>00070 {
-<a name="l00071"></a>00071     <span class="keywordtype">string</span> out = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"out"</span>].as&lt;<span class="keywordtype">string</span>&gt;();
-<a name="l00072"></a>00072     cout &lt;&lt; <span class="stringliteral">"writing coarse-grained trajectory to "</span> &lt;&lt; out &lt;&lt; endl;
-<a name="l00073"></a>00073     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> = <a class="code" href="namespacevotca_1_1csg.html#d10337444223adef2933c42500153fde">TrjWriterFactory</a>().Create(out);
-<a name="l00074"></a>00074     <span class="keywordflow">if</span>(<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> == NULL)
-<a name="l00075"></a>00075         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"output format not supported: "</span> + out);
-<a name="l00076"></a>00076         
-<a name="l00077"></a>00077     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#03d43187287006689a328d84af03f45b">Open</a>(out);
-<a name="l00078"></a>00078 };
-<a name="l00079"></a>00079 
-<a name="l00080"></a><a class="code" href="csg__map_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00080</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
-<a name="l00081"></a>00081 {
-<a name="l00082"></a>00082     <a class="code" href="classCsgMapApp.html">CsgMapApp</a> app;
-<a name="l00083"></a>00083     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
-<a name="l00084"></a>00084 }
-<a name="l00085"></a>00085 
+<a name="l00051"></a>00051         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"trj"</span>, <span class="stringliteral">"no trajectory file specified"</span>);
+<a name="l00052"></a>00052         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"out"</span>, <span class="stringliteral">"need to specify output trajectory"</span>);
+<a name="l00053"></a>00053         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00054"></a>00054     }
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="classCsgMapApp.html#523dd905e0617b0e3197f84396b7eeea">00058</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#523dd905e0617b0e3197f84396b7eeea">EvalConfiguration</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref) {
+<a name="l00059"></a>00059         <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#a9fe0851ca3ccb137ea2a31ea6aca268">Write</a>(top);
+<a name="l00060"></a>00060     }
+<a name="l00061"></a><a class="code" href="classCsgMapApp.html#edb7a3f9193b6729ed704928fc9ad60c">00061</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#edb7a3f9193b6729ed704928fc9ad60c" title="called after the last frame">EndEvaluate</a>() {
+<a name="l00062"></a>00062         <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#c92aa96a91750c15485b662db7fbb347">Close</a>();
+<a name="l00063"></a>00063         <span class="keyword">delete</span> <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>;
+<a name="l00064"></a>00064     }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 <span class="keyword">protected</span>:
+<a name="l00067"></a><a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">00067</a>     <a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html">TrajectoryWriter</a> *<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>;
+<a name="l00068"></a>00068 };
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e">00070</a> <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">CsgMapApp::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_atom)
+<a name="l00071"></a>00071 {
+<a name="l00072"></a>00072     <span class="keywordtype">string</span> out = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"out"</span>].as&lt;<span class="keywordtype">string</span>&gt;();
+<a name="l00073"></a>00073     cout &lt;&lt; <span class="stringliteral">"writing coarse-grained trajectory to "</span> &lt;&lt; out &lt;&lt; endl;
+<a name="l00074"></a>00074     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> = <a class="code" href="namespacevotca_1_1csg.html#d10337444223adef2933c42500153fde">TrjWriterFactory</a>().Create(out);
+<a name="l00075"></a>00075     <span class="keywordflow">if</span>(<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> == NULL)
+<a name="l00076"></a>00076         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"output format not supported: "</span> + out);
+<a name="l00077"></a>00077         
+<a name="l00078"></a>00078     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#03d43187287006689a328d84af03f45b">Open</a>(out);
+<a name="l00079"></a>00079 };
+<a name="l00080"></a>00080 
+<a name="l00081"></a><a class="code" href="csg__map_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00081</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
+<a name="l00082"></a>00082 {
+<a name="l00083"></a>00083     <a class="code" href="classCsgMapApp.html">CsgMapApp</a> app;
+<a name="l00084"></a>00084     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
+<a name="l00085"></a>00085 }
+<a name="l00086"></a>00086 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
