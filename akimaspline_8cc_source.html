@@ -55,115 +55,119 @@
 <a name="l00032"></a>00032     <span class="keywordflow">if</span>(x.size() != y.size())
 <a name="l00033"></a>00033         <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error in AkimaSpline::Interpolate : sizes of vectors x and y do not match"</span>);
 <a name="l00034"></a>00034     
-<a name="l00035"></a>00035     <span class="keyword">const</span> <span class="keywordtype">int</span> N = x.size();
-<a name="l00036"></a>00036     
-<a name="l00037"></a>00037     <span class="comment">// adjust the grid</span>
-<a name="l00038"></a>00038     <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>.resize(N);
-<a name="l00039"></a>00039     
-<a name="l00040"></a>00040     <span class="comment">// copy the grid points into f</span>
-<a name="l00041"></a>00041     <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a> = x;
-<a name="l00042"></a>00042     
-<a name="l00043"></a>00043     <span class="comment">// initialize vectors p1,p2,p3,p4 and t</span>
-<a name="l00044"></a>00044     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#b2d0eb699e4bdc449cace9fec7da515f">p0</a> = ub::zero_vector&lt;double&gt;(N);
-<a name="l00045"></a>00045     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#700b90df3567da4715f332e9c26ac494">p1</a> = ub::zero_vector&lt;double&gt;(N);
-<a name="l00046"></a>00046     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#489a7dac08dfdeb52725b0950e35fa11">p2</a> = ub::zero_vector&lt;double&gt;(N);
-<a name="l00047"></a>00047     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#edd78c55e5fafffc54a152ce31189e1d">p3</a> = ub::zero_vector&lt;double&gt;(N);
-<a name="l00048"></a>00048     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a> = ub::zero_vector&lt;double&gt;(N);
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050     <span class="keywordtype">double</span> m1,m2,m3,m4;
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052     <span class="keywordtype">double</span> temp, g0, g1, g2, x1, x2, y1, y2, x4, x5, y4, y5, m5;
-<a name="l00053"></a>00053     
-<a name="l00054"></a>00054     <span class="comment">// boundary conditions</span>
-<a name="l00055"></a>00055     <span class="comment">// &gt;&gt; determine t(0), t(1) and t(N-2), t(N-1)</span>
-<a name="l00056"></a>00056     <span class="keywordflow">switch</span>(<a class="code" href="classvotca_1_1tools_1_1Spline.html#133a09c4561a4474adfa7b1241e086bd">_boundaries</a>) {
-<a name="l00057"></a>00057         <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#daf3067dc9a25e1e02378d1b211a7b21ac5fdf79ff8e65b78c992d621b070cbe" title="normal boundary conditions: ">splineNormal</a>:
-<a name="l00058"></a>00058             <span class="comment">// Akima method: estimation of two more points on each side using a</span>
-<a name="l00059"></a>00059             <span class="comment">// degree two polyomial</span>
-<a name="l00060"></a>00060             <span class="comment">// resulting slopes t(0), t(1), t(N-2), t(N-1) are directly calculated</span>
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062             <span class="comment">// left side: t(0), t(1)</span>
-<a name="l00063"></a>00063             temp = (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
-<a name="l00064"></a>00064             temp = temp*temp;
-<a name="l00065"></a>00065             g0 = y(0);
-<a name="l00066"></a>00066             g1 = ( (y(1)-y(0)) - temp*(y(2)-y(0)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) - temp*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) );
-<a name="l00067"></a>00067             g2 = ( (y(2)-y(0)) - g1*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0))*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) );
-<a name="l00068"></a>00068             x1 = <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0) - (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
-<a name="l00069"></a>00069             x2 = <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1) - (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
-<a name="l00070"></a>00070             y1 = g0 + g1*(x1-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) + g2*(x1-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0))*(x1-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
-<a name="l00071"></a>00071             y2 = g0 + g1*(x2-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) + g2*(x2-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0))*(x2-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
-<a name="l00072"></a>00072             m1 = (y2-y1)/(x2-x1);
-<a name="l00073"></a>00073             m2 = (y(0)-y2)/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)-x2);
-<a name="l00074"></a>00074             m3 = (y(1)-y(0))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
-<a name="l00075"></a>00075             m4 = (y(2)-y(1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1));
-<a name="l00076"></a>00076             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(0) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
-<a name="l00077"></a>00077             m5 = (y(3)-y(2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2));
-<a name="l00078"></a>00078             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(1) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m2,m3,m4,m5);
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080             <span class="comment">// right side: t(N-2), t(N-1)</span>
-<a name="l00081"></a>00081             temp = (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
-<a name="l00082"></a>00082             temp = temp*temp;
-<a name="l00083"></a>00083             g0 = y(N-1);
-<a name="l00084"></a>00084             g1 = ( (y(N-2)-y(N-1)) - temp*(y(N-3)-y(N-1)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) - temp*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) );
-<a name="l00085"></a>00085             g2 = ( (y(N-3)-y(N-1)) - g1*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1))*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) );
-<a name="l00086"></a>00086             x4 = <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2) + (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3));
-<a name="l00087"></a>00087             x5 = <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1) + (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3));
-<a name="l00088"></a>00088             y4 = g0 + g1*(x4-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) + g2*(x4-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1))*(x4-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
-<a name="l00089"></a>00089             y5 = g0 + g1*(x5-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) + g2*(x5-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1))*(x5-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
-<a name="l00090"></a>00090             m1 = (y(N-3)-y(N-4))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-4));
-<a name="l00091"></a>00091             m2 = (y(N-2)-y(N-3))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3));
-<a name="l00092"></a>00092             m3 = (y(N-1)-y(N-2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2));
-<a name="l00093"></a>00093             m4 = (y4-y(N-1))/(x4-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
-<a name="l00094"></a>00094             m5 = (y5-y4)/(x5-x4);
-<a name="l00095"></a>00095             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(N-2) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
-<a name="l00096"></a>00096             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(N-1) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m2,m3,m4,m5);
-<a name="l00097"></a>00097             <span class="keywordflow">break</span>;
-<a name="l00098"></a>00098         <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#daf3067dc9a25e1e02378d1b211a7b2195ad4a8a560453fc3097a04baa110348" title="periodic boundary conditions: ">splinePeriodic</a>:
-<a name="l00099"></a>00099             <span class="comment">// left: last two points determine the slopes t(0), t(1)</span>
-<a name="l00100"></a>00100             m1 = (y(N-1)-y(N-2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2));
-<a name="l00101"></a>00101             m2 = (y(0)-y(N-1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
-<a name="l00102"></a>00102             m3 = (y(1)-y(0))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
-<a name="l00103"></a>00103             m4 = (y(2)-y(1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1));
-<a name="l00104"></a>00104             m5 = (y(3)-y(2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2));
-<a name="l00105"></a>00105             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(0) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
-<a name="l00106"></a>00106             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(1) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m2,m3,m4,m5);
-<a name="l00107"></a>00107             <span class="comment">// right: first two points determine the slopes t(N-2), t(N-1)</span>
-<a name="l00108"></a>00108             m1 = (y(N-3)-y(N-4))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-4));
-<a name="l00109"></a>00109             m2 = (y(N-2)-y(N-3))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3));
-<a name="l00110"></a>00110             m3 = (y(N-1)-y(N-2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2));
-<a name="l00111"></a>00111             m4 = (y(0)-y(N-1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
-<a name="l00112"></a>00112             m5 = (y(1)-y(0))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
-<a name="l00113"></a>00113             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(N-2) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
-<a name="l00114"></a>00114             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(N-1) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m2,m3,m4,m5);
-<a name="l00115"></a>00115             <span class="keywordflow">break</span>;
-<a name="l00116"></a>00116     }
-<a name="l00117"></a>00117     
-<a name="l00118"></a>00118     <span class="comment">// calculate t's for all inner points [2,N-3]</span>
-<a name="l00119"></a>00119     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=2; i&lt;N-2; i++) {
-<a name="l00120"></a>00120         m1 = (y(i-1)-y(i-2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i-2));
-<a name="l00121"></a>00121         m2 = (y(i)-y(i-1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i-1));
-<a name="l00122"></a>00122         m3 = (y(i+1)-y(i))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i));
-<a name="l00123"></a>00123         m4 = (y(i+2)-y(i+1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1));
-<a name="l00124"></a>00124         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
-<a name="l00125"></a>00125     }
-<a name="l00126"></a>00126 
-<a name="l00127"></a>00127     <span class="comment">// calculate p0,p1,p2,p3 for all intervals 0..(N-2), where interval</span>
-<a name="l00128"></a>00128     <span class="comment">// [x(i),x(i+1)] shall have number i (this means that the last interval</span>
-<a name="l00129"></a>00129     <span class="comment">// has number N-2)</span>
-<a name="l00130"></a>00130     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;N-1; i++) {
-<a name="l00131"></a>00131         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#b2d0eb699e4bdc449cace9fec7da515f">p0</a>(i) = y(i);
-<a name="l00132"></a>00132         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#700b90df3567da4715f332e9c26ac494">p1</a>(i) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i);
-<a name="l00133"></a>00133         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#489a7dac08dfdeb52725b0950e35fa11">p2</a>(i) = ( 3.0*(y(i+1)-y(i))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i)) - 2.0*<a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i) - <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i+1) ) / (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i));
-<a name="l00134"></a>00134         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#edd78c55e5fafffc54a152ce31189e1d">p3</a>(i) = ( <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i) + <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i+1) - 2.0*(y(i+1)-y(i))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i))*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i)) );
-<a name="l00135"></a>00135     }
-<a name="l00136"></a>00136 }
-<a name="l00137"></a>00137 
-<a name="l00138"></a><a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#00b072944b7fc656518a7d06a0100e5a">00138</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#00b072944b7fc656518a7d06a0100e5a" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">AkimaSpline::Fit</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>, ub::vector&lt;double&gt; &amp;y)
-<a name="l00139"></a>00139 {
-<a name="l00140"></a>00140     <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Akima fit not implemented."</span>);
-<a name="l00141"></a>00141 }
-<a name="l00142"></a>00142 
-<a name="l00143"></a>00143 }}
+<a name="l00035"></a>00035     <span class="comment">// Akima splines require at least 4 points</span>
+<a name="l00036"></a>00036     <span class="keywordflow">if</span>(x.size()&lt;4)
+<a name="l00037"></a>00037         <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error in AkimaSpline::Interpolate : vectors x and y have to contain at least 4 points"</span>);
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039     <span class="keyword">const</span> <span class="keywordtype">int</span> N = x.size();
+<a name="l00040"></a>00040     
+<a name="l00041"></a>00041     <span class="comment">// adjust the grid</span>
+<a name="l00042"></a>00042     <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>.resize(N);
+<a name="l00043"></a>00043     
+<a name="l00044"></a>00044     <span class="comment">// copy the grid points into f</span>
+<a name="l00045"></a>00045     <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a> = x;
+<a name="l00046"></a>00046     
+<a name="l00047"></a>00047     <span class="comment">// initialize vectors p1,p2,p3,p4 and t</span>
+<a name="l00048"></a>00048     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#b2d0eb699e4bdc449cace9fec7da515f">p0</a> = ub::zero_vector&lt;double&gt;(N);
+<a name="l00049"></a>00049     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#700b90df3567da4715f332e9c26ac494">p1</a> = ub::zero_vector&lt;double&gt;(N);
+<a name="l00050"></a>00050     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#489a7dac08dfdeb52725b0950e35fa11">p2</a> = ub::zero_vector&lt;double&gt;(N);
+<a name="l00051"></a>00051     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#edd78c55e5fafffc54a152ce31189e1d">p3</a> = ub::zero_vector&lt;double&gt;(N);
+<a name="l00052"></a>00052     <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a> = ub::zero_vector&lt;double&gt;(N);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054     <span class="keywordtype">double</span> m1,m2,m3,m4;
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056     <span class="keywordtype">double</span> temp, g0, g1, g2, x1, x2, y1, y2, x4, x5, y4, y5, m5;
+<a name="l00057"></a>00057     
+<a name="l00058"></a>00058     <span class="comment">// boundary conditions</span>
+<a name="l00059"></a>00059     <span class="comment">// &gt;&gt; determine t(0), t(1) and t(N-2), t(N-1)</span>
+<a name="l00060"></a>00060     <span class="keywordflow">switch</span>(<a class="code" href="classvotca_1_1tools_1_1Spline.html#133a09c4561a4474adfa7b1241e086bd">_boundaries</a>) {
+<a name="l00061"></a>00061         <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#daf3067dc9a25e1e02378d1b211a7b21ac5fdf79ff8e65b78c992d621b070cbe" title="normal boundary conditions: ">splineNormal</a>:
+<a name="l00062"></a>00062             <span class="comment">// Akima method: estimation of two more points on each side using a</span>
+<a name="l00063"></a>00063             <span class="comment">// degree two polyomial</span>
+<a name="l00064"></a>00064             <span class="comment">// resulting slopes t(0), t(1), t(N-2), t(N-1) are directly calculated</span>
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066             <span class="comment">// left side: t(0), t(1)</span>
+<a name="l00067"></a>00067             temp = (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
+<a name="l00068"></a>00068             temp = temp*temp;
+<a name="l00069"></a>00069             g0 = y(0);
+<a name="l00070"></a>00070             g1 = ( (y(1)-y(0)) - temp*(y(2)-y(0)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) - temp*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) );
+<a name="l00071"></a>00071             g2 = ( (y(2)-y(0)) - g1*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0))*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) );
+<a name="l00072"></a>00072             x1 = <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0) - (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
+<a name="l00073"></a>00073             x2 = <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1) - (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
+<a name="l00074"></a>00074             y1 = g0 + g1*(x1-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) + g2*(x1-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0))*(x1-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
+<a name="l00075"></a>00075             y2 = g0 + g1*(x2-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)) + g2*(x2-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0))*(x2-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
+<a name="l00076"></a>00076             m1 = (y2-y1)/(x2-x1);
+<a name="l00077"></a>00077             m2 = (y(0)-y2)/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)-x2);
+<a name="l00078"></a>00078             m3 = (y(1)-y(0))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
+<a name="l00079"></a>00079             m4 = (y(2)-y(1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1));
+<a name="l00080"></a>00080             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(0) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
+<a name="l00081"></a>00081             m5 = (y(3)-y(2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2));
+<a name="l00082"></a>00082             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(1) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m2,m3,m4,m5);
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084             <span class="comment">// right side: t(N-2), t(N-1)</span>
+<a name="l00085"></a>00085             temp = (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
+<a name="l00086"></a>00086             temp = temp*temp;
+<a name="l00087"></a>00087             g0 = y(N-1);
+<a name="l00088"></a>00088             g1 = ( (y(N-2)-y(N-1)) - temp*(y(N-3)-y(N-1)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) - temp*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) );
+<a name="l00089"></a>00089             g2 = ( (y(N-3)-y(N-1)) - g1*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1))*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) );
+<a name="l00090"></a>00090             x4 = <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2) + (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3));
+<a name="l00091"></a>00091             x5 = <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1) + (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3));
+<a name="l00092"></a>00092             y4 = g0 + g1*(x4-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) + g2*(x4-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1))*(x4-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
+<a name="l00093"></a>00093             y5 = g0 + g1*(x5-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)) + g2*(x5-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1))*(x5-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
+<a name="l00094"></a>00094             m1 = (y(N-3)-y(N-4))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-4));
+<a name="l00095"></a>00095             m2 = (y(N-2)-y(N-3))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3));
+<a name="l00096"></a>00096             m3 = (y(N-1)-y(N-2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2));
+<a name="l00097"></a>00097             m4 = (y4-y(N-1))/(x4-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
+<a name="l00098"></a>00098             m5 = (y5-y4)/(x5-x4);
+<a name="l00099"></a>00099             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(N-2) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
+<a name="l00100"></a>00100             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(N-1) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m2,m3,m4,m5);
+<a name="l00101"></a>00101             <span class="keywordflow">break</span>;
+<a name="l00102"></a>00102         <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#daf3067dc9a25e1e02378d1b211a7b2195ad4a8a560453fc3097a04baa110348" title="periodic boundary conditions: ">splinePeriodic</a>:
+<a name="l00103"></a>00103             <span class="comment">// left: last two points determine the slopes t(0), t(1)</span>
+<a name="l00104"></a>00104             m1 = (y(N-1)-y(N-2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2));
+<a name="l00105"></a>00105             m2 = (y(0)-y(N-1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
+<a name="l00106"></a>00106             m3 = (y(1)-y(0))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
+<a name="l00107"></a>00107             m4 = (y(2)-y(1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1));
+<a name="l00108"></a>00108             m5 = (y(3)-y(2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(2));
+<a name="l00109"></a>00109             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(0) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
+<a name="l00110"></a>00110             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(1) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m2,m3,m4,m5);
+<a name="l00111"></a>00111             <span class="comment">// right: first two points determine the slopes t(N-2), t(N-1)</span>
+<a name="l00112"></a>00112             m1 = (y(N-3)-y(N-4))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-4));
+<a name="l00113"></a>00113             m2 = (y(N-2)-y(N-3))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-3));
+<a name="l00114"></a>00114             m3 = (y(N-1)-y(N-2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-2));
+<a name="l00115"></a>00115             m4 = (y(0)-y(N-1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(N-1));
+<a name="l00116"></a>00116             m5 = (y(1)-y(0))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(0));
+<a name="l00117"></a>00117             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(N-2) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
+<a name="l00118"></a>00118             <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(N-1) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m2,m3,m4,m5);
+<a name="l00119"></a>00119             <span class="keywordflow">break</span>;
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121     
+<a name="l00122"></a>00122     <span class="comment">// calculate t's for all inner points [2,N-3]</span>
+<a name="l00123"></a>00123     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=2; i&lt;N-2; i++) {
+<a name="l00124"></a>00124         m1 = (y(i-1)-y(i-2))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i-1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i-2));
+<a name="l00125"></a>00125         m2 = (y(i)-y(i-1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i-1));
+<a name="l00126"></a>00126         m3 = (y(i+1)-y(i))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i));
+<a name="l00127"></a>00127         m4 = (y(i+2)-y(i+1))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+2)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1));
+<a name="l00128"></a>00128         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#4cba123439f8b28f9e7b72a4493b3af3" title="Calculate the slope according to the original Akima paper (&amp;quot;A New Method of...">getSlope</a>(m1,m2,m3,m4);
+<a name="l00129"></a>00129     }
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131     <span class="comment">// calculate p0,p1,p2,p3 for all intervals 0..(N-2), where interval</span>
+<a name="l00132"></a>00132     <span class="comment">// [x(i),x(i+1)] shall have number i (this means that the last interval</span>
+<a name="l00133"></a>00133     <span class="comment">// has number N-2)</span>
+<a name="l00134"></a>00134     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;N-1; i++) {
+<a name="l00135"></a>00135         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#b2d0eb699e4bdc449cace9fec7da515f">p0</a>(i) = y(i);
+<a name="l00136"></a>00136         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#700b90df3567da4715f332e9c26ac494">p1</a>(i) = <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i);
+<a name="l00137"></a>00137         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#489a7dac08dfdeb52725b0950e35fa11">p2</a>(i) = ( 3.0*(y(i+1)-y(i))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i)) - 2.0*<a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i) - <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i+1) ) / (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i));
+<a name="l00138"></a>00138         <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#edd78c55e5fafffc54a152ce31189e1d">p3</a>(i) = ( <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i) + <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#116ce09b29373f8db71e84e72b973200">t</a>(i+1) - 2.0*(y(i+1)-y(i))/(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i)) ) / ( (<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i))*(<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i+1)-<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>(i)) );
+<a name="l00139"></a>00139     }
+<a name="l00140"></a>00140 }
+<a name="l00141"></a>00141 
+<a name="l00142"></a><a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#00b072944b7fc656518a7d06a0100e5a">00142</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#00b072944b7fc656518a7d06a0100e5a" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">AkimaSpline::Fit</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>, ub::vector&lt;double&gt; &amp;y)
+<a name="l00143"></a>00143 {
+<a name="l00144"></a>00144     <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Akima fit not implemented."</span>);
+<a name="l00145"></a>00145 }
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
