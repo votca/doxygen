@@ -45,123 +45,140 @@
 <a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#include "config.h"</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#endif</span>
 <a name="l00024"></a>00024 <span class="preprocessor"></span>
-<a name="l00025"></a>00025 <span class="preprocessor">#if GMX == 45</span>
-<a name="l00026"></a>00026 <span class="preprocessor"></span><span class="preprocessor">        #include &lt;gromacs/statutil.h&gt;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">        #include &lt;gromacs/typedefs.h&gt;</span>
-<a name="l00028"></a>00028 <span class="preprocessor">        #include &lt;gromacs/smalloc.h&gt;</span>
-<a name="l00029"></a>00029 <span class="preprocessor">        #include &lt;gromacs/vec.h&gt;</span>
-<a name="l00030"></a>00030 <span class="preprocessor">        #include &lt;gromacs/copyrite.h&gt;</span>
-<a name="l00031"></a>00031 <span class="preprocessor">        #include &lt;gromacs/statutil.h&gt;</span>
-<a name="l00032"></a>00032 <span class="preprocessor">        #include &lt;gromacs/tpxio.h&gt;</span>
-<a name="l00033"></a>00033 <span class="preprocessor">#elif GMX == 40</span>
-<a name="l00034"></a>00034 <span class="preprocessor"></span>    <span class="keyword">extern</span> <span class="stringliteral">"C"</span>
-<a name="l00035"></a>00035     {
-<a name="l00036"></a>00036 <span class="preprocessor">        #include &lt;statutil.h&gt;</span>
-<a name="l00037"></a>00037 <span class="preprocessor">        #include &lt;typedefs.h&gt;</span>
-<a name="l00038"></a>00038 <span class="preprocessor">        #include &lt;smalloc.h&gt;</span>
-<a name="l00039"></a>00039 <span class="preprocessor">        #include &lt;<a class="code" href="vec_8h.html">vec.h</a>&gt;</span>
-<a name="l00040"></a>00040 <span class="preprocessor">        #include &lt;copyrite.h&gt;</span>
-<a name="l00041"></a>00041 <span class="preprocessor">        #include &lt;statutil.h&gt;</span>
-<a name="l00042"></a>00042 <span class="preprocessor">        #include &lt;tpxio.h&gt;</span>
-<a name="l00043"></a>00043     }
-<a name="l00044"></a>00044 <span class="preprocessor">#else</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
-<a name="l00046"></a>00046 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00047"></a>00047 <span class="preprocessor"></span>    <span class="comment">// this one is needed because of bool is defined in one of the headers included by gmx</span>
-<a name="l00048"></a>00048 <span class="preprocessor">    #undef bool</span>
-<a name="l00049"></a>00049 <span class="preprocessor"></span>
-<a name="l00050"></a>00050 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {
-<a name="l00051"></a>00051 
-<a name="l00052"></a><a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html#698740c88e2547a2b4294a1f61dc364b">00052</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html#698740c88e2547a2b4294a1f61dc364b" title="read a topology file">GMXTopologyReader::ReadTopology</a>(<span class="keywordtype">string</span> file, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)
-<a name="l00053"></a>00053 { 
-<a name="l00054"></a>00054     gmx_mtop_t mtop;
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056     <span class="keywordtype">int</span> natoms;
-<a name="l00057"></a>00057     <span class="comment">// cleanup topology to store new data</span>
-<a name="l00058"></a>00058     top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#17c7d87557a60eb03b17a013321b1f5b" title="cleans up all the stored data">Cleanup</a>();
+<a name="l00025"></a>00025 <span class="preprocessor">#if GMX == 50</span>
+<a name="l00026"></a>00026 <span class="preprocessor"></span><span class="preprocessor">        #include &lt;gromacs/legacyheaders/statutil.h&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">        #include &lt;gromacs/legacyheaders/typedefs.h&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">        #include &lt;gromacs/legacyheaders/smalloc.h&gt;</span>
+<a name="l00029"></a>00029 <span class="preprocessor">        #include &lt;gromacs/legacyheaders/vec.h&gt;</span>
+<a name="l00030"></a>00030 <span class="preprocessor">        #include &lt;gromacs/legacyheaders/copyrite.h&gt;</span>
+<a name="l00031"></a>00031 <span class="preprocessor">        #include &lt;gromacs/legacyheaders/statutil.h&gt;</span>
+<a name="l00032"></a>00032 <span class="preprocessor">        #include &lt;gromacs/legacyheaders/tpxio.h&gt;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#elif GMX == 45</span>
+<a name="l00034"></a>00034 <span class="preprocessor"></span><span class="preprocessor">        #include &lt;gromacs/statutil.h&gt;</span>
+<a name="l00035"></a>00035 <span class="preprocessor">        #include &lt;gromacs/typedefs.h&gt;</span>
+<a name="l00036"></a>00036 <span class="preprocessor">        #include &lt;gromacs/smalloc.h&gt;</span>
+<a name="l00037"></a>00037 <span class="preprocessor">        #include &lt;gromacs/vec.h&gt;</span>
+<a name="l00038"></a>00038 <span class="preprocessor">        #include &lt;gromacs/copyrite.h&gt;</span>
+<a name="l00039"></a>00039 <span class="preprocessor">        #include &lt;gromacs/statutil.h&gt;</span>
+<a name="l00040"></a>00040 <span class="preprocessor">        #include &lt;gromacs/tpxio.h&gt;</span>
+<a name="l00041"></a>00041 <span class="preprocessor">#elif GMX == 40</span>
+<a name="l00042"></a>00042 <span class="preprocessor"></span>    <span class="keyword">extern</span> <span class="stringliteral">"C"</span>
+<a name="l00043"></a>00043     {
+<a name="l00044"></a>00044 <span class="preprocessor">        #include &lt;statutil.h&gt;</span>
+<a name="l00045"></a>00045 <span class="preprocessor">        #include &lt;typedefs.h&gt;</span>
+<a name="l00046"></a>00046 <span class="preprocessor">        #include &lt;smalloc.h&gt;</span>
+<a name="l00047"></a>00047 <span class="preprocessor">        #include &lt;<a class="code" href="vec_8h.html">vec.h</a>&gt;</span>
+<a name="l00048"></a>00048 <span class="preprocessor">        #include &lt;copyrite.h&gt;</span>
+<a name="l00049"></a>00049 <span class="preprocessor">        #include &lt;statutil.h&gt;</span>
+<a name="l00050"></a>00050 <span class="preprocessor">        #include &lt;tpxio.h&gt;</span>
+<a name="l00051"></a>00051     }
+<a name="l00052"></a>00052 <span class="preprocessor">#else</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
+<a name="l00054"></a>00054 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00055"></a>00055 <span class="preprocessor"></span>    <span class="comment">// this one is needed because of bool is defined in one of the headers included by gmx</span>
+<a name="l00056"></a>00056 <span class="preprocessor">    #undef bool</span>
+<a name="l00057"></a>00057 <span class="preprocessor"></span>
+<a name="l00058"></a>00058 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060 <span class="preprocessor">#if GMX == 45</span>
-<a name="l00061"></a>00061 <span class="preprocessor"></span>    t_inputrec ir;<a class="code" href="classvotca_1_1tools_1_1matrix.html"></a>
-<a name="l00062"></a>00062 <a class="code" href="classvotca_1_1tools_1_1matrix.html">    ::matrix</a> gbox;
+<a name="l00060"></a><a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html#698740c88e2547a2b4294a1f61dc364b">00060</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html#698740c88e2547a2b4294a1f61dc364b" title="read a topology file">GMXTopologyReader::ReadTopology</a>(<span class="keywordtype">string</span> file, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)
+<a name="l00061"></a>00061 { 
+<a name="l00062"></a>00062     gmx_mtop_t mtop;
 <a name="l00063"></a>00063 
-<a name="l00064"></a>00064     (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;ir,gbox,&amp;natoms,NULL,NULL,NULL,&amp;mtop);
-<a name="l00065"></a>00065 <span class="preprocessor">#elif GMX == 40</span>
-<a name="l00066"></a>00066 <span class="preprocessor"></span>    <span class="keywordtype">int</span> sss;   <span class="comment">// wtf is this</span><a class="code" href="namespacevotca_1_1tools.html#da70206abb34a497ce9e07f0d8129ebf"></a>
-<a name="l00067"></a>00067 <a class="code" href="namespacevotca_1_1tools.html#da70206abb34a497ce9e07f0d8129ebf">    ::real</a>    ttt,lll; <span class="comment">// wtf is this</span>
-<a name="l00068"></a>00068     (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;sss,&amp;ttt,&amp;lll,NULL,NULL,&amp;natoms,NULL,NULL,NULL,&amp;mtop);
-<a name="l00069"></a>00069 <span class="preprocessor">#else</span>
-<a name="l00070"></a>00070 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
-<a name="l00071"></a>00071 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00072"></a>00072 <span class="preprocessor"></span>
-<a name="l00073"></a>00073     <span class="keywordtype">int</span> count=0;
-<a name="l00074"></a>00074     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock)
-<a name="l00075"></a>00075         count+=mtop.molblock[iblock].nmol;
+<a name="l00064"></a>00064     <span class="keywordtype">int</span> natoms;
+<a name="l00065"></a>00065     <span class="comment">// cleanup topology to store new data</span>
+<a name="l00066"></a>00066     top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#17c7d87557a60eb03b17a013321b1f5b" title="cleans up all the stored data">Cleanup</a>();
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 <span class="preprocessor">#if GMX == 50</span>
+<a name="l00069"></a>00069 <span class="preprocessor"></span>    t_inputrec ir;<a class="code" href="classvotca_1_1tools_1_1matrix.html"></a>
+<a name="l00070"></a>00070 <a class="code" href="classvotca_1_1tools_1_1matrix.html">    ::matrix</a> gbox;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072     (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;ir,gbox,&amp;natoms,NULL,NULL,NULL,&amp;mtop);
+<a name="l00073"></a>00073 <span class="preprocessor">#elif GMX == 45</span>
+<a name="l00074"></a>00074 <span class="preprocessor"></span>    t_inputrec ir;<a class="code" href="classvotca_1_1tools_1_1matrix.html"></a>
+<a name="l00075"></a>00075 <a class="code" href="classvotca_1_1tools_1_1matrix.html">    ::matrix</a> gbox;
 <a name="l00076"></a>00076 
-<a name="l00077"></a>00077     <span class="keywordflow">if</span>(count != mtop.mols.nr  ) {
-<a name="l00078"></a>00078         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"gromacs topology contains inconsistency in molecule definitons\n\n"</span>
-<a name="l00079"></a>00079                 <span class="stringliteral">"A possible reason is an outdated .tpr file. Please rerun grompp to generate a new tpr file.\n"</span>
-<a name="l00080"></a>00080                 <span class="stringliteral">"If the problem remains or "</span>
-<a name="l00081"></a>00081                 <span class="stringliteral">"you're missing the files to rerun grompp,\n contact the votca mailing list for a solution."</span>);
-<a name="l00082"></a>00082     }
-<a name="l00083"></a>00083 
-<a name="l00084"></a>00084     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock) {
-<a name="l00085"></a>00085         gmx_moltype_t *mol
-<a name="l00086"></a>00086                 = &amp;(mtop.moltype[mtop.molblock[iblock].type]);
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088         <span class="keywordtype">string</span> molname =  *(mol-&gt;name);
+<a name="l00077"></a>00077     (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;ir,gbox,&amp;natoms,NULL,NULL,NULL,&amp;mtop);
+<a name="l00078"></a>00078 <span class="preprocessor">#elif GMX == 40</span>
+<a name="l00079"></a>00079 <span class="preprocessor"></span>    <span class="keywordtype">int</span> sss;   <span class="comment">// wtf is this</span><a class="code" href="namespacevotca_1_1tools.html#da70206abb34a497ce9e07f0d8129ebf"></a>
+<a name="l00080"></a>00080 <a class="code" href="namespacevotca_1_1tools.html#da70206abb34a497ce9e07f0d8129ebf">    ::real</a>    ttt,lll; <span class="comment">// wtf is this</span>
+<a name="l00081"></a>00081     (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;sss,&amp;ttt,&amp;lll,NULL,NULL,&amp;natoms,NULL,NULL,NULL,&amp;mtop);
+<a name="l00082"></a>00082 <span class="preprocessor">#else</span>
+<a name="l00083"></a>00083 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
+<a name="l00084"></a>00084 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00085"></a>00085 <span class="preprocessor"></span>
+<a name="l00086"></a>00086     <span class="keywordtype">int</span> count=0;
+<a name="l00087"></a>00087     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock)
+<a name="l00088"></a>00088         count+=mtop.molblock[iblock].nmol;
 <a name="l00089"></a>00089 
-<a name="l00090"></a>00090         <span class="keywordtype">int</span> res_offset = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#74c28ddd1b95e242842bd59685bb8663">ResidueCount</a>();
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092         t_atoms *atoms=&amp;(mol-&gt;atoms);
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i &lt; atoms-&gt;nres; i++) {
-<a name="l00095"></a>00095 <span class="preprocessor">#if GMX == 45</span>
-<a name="l00096"></a>00096 <span class="preprocessor"></span>                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(*(atoms-&gt;resinfo[i].name));
-<a name="l00097"></a>00097 <span class="preprocessor">#elif GMX == 40</span>
-<a name="l00098"></a>00098 <span class="preprocessor"></span>                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(*(atoms-&gt;resname[i]));
-<a name="l00099"></a>00099 <span class="preprocessor">#else</span>
-<a name="l00100"></a>00100 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
-<a name="l00101"></a>00101 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00102"></a>00102 <span class="preprocessor"></span>        }
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104         <span class="keywordtype">int</span> ifirstatom = 0;
-<a name="l00105"></a>00105         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> imol=0; imol&lt;mtop.molblock[iblock].nmol; ++imol) {
-<a name="l00106"></a>00106             <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mi = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#87a10bc0957a1465dad5b3899cb6e932" title="creates a new molecule">CreateMolecule</a>(molname);
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108             <span class="comment">// read the atoms</span>
-<a name="l00109"></a>00109             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iatom=0; iatom&lt;mtop.molblock[iblock].natoms_mol; iatom++) {
-<a name="l00110"></a>00110                 t_atom *a = &amp;(atoms-&gt;atom[iatom]);
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112                 <span class="comment">// read exclusions</span>
-<a name="l00113"></a>00113                 t_blocka * excl = &amp;(mol-&gt;excls);
-<a name="l00114"></a>00114                 <span class="comment">// insert exclusions</span>
-<a name="l00115"></a>00115                 list&lt;int&gt; excl_list;
-<a name="l00116"></a>00116                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k=excl-&gt;index[iatom]; k&lt;excl-&gt;index[iatom+1]; k++) {
-<a name="l00117"></a>00117                     excl_list.push_back(excl-&gt;a[k]+ifirstatom);
-<a name="l00118"></a>00118                 }
-<a name="l00119"></a>00119                 top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#de744346ef1ea13159ded6a427c2e2de">InsertExclusion</a>(iatom, excl_list);
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121                 <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(*(atoms-&gt;atomtype[iatom]));
-<a name="l00122"></a>00122 <span class="preprocessor">#if GMX == 45</span>
-<a name="l00123"></a>00123 <span class="preprocessor"></span>                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, *(atoms-&gt;atomname[iatom]), type, a-&gt;resind, a-&gt;m, a-&gt;q);
-<a name="l00124"></a>00124 <span class="preprocessor">#elif GMX == 40</span>
-<a name="l00125"></a>00125 <span class="preprocessor"></span>                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, *(atoms-&gt;atomname[iatom]), type, a-&gt;resnr, a-&gt;m, a-&gt;q);
-<a name="l00126"></a>00126 <span class="preprocessor">#else</span>
-<a name="l00127"></a>00127 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
-<a name="l00128"></a>00128 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00129"></a>00129 <span class="preprocessor"></span>
-<a name="l00130"></a>00130                 stringstream nm;
-<a name="l00131"></a>00131                 nm &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>() + 1 &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#9fec2f8d63ec726bf146ff0c587f5404">getResidue</a>(res_offset + bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>())-&gt;getName() &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>();
-<a name="l00132"></a>00132                 mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bead, nm.str());
-<a name="l00133"></a>00133             }
-<a name="l00134"></a>00134             ifirstatom+=mtop.molblock[iblock].natoms_mol;
-<a name="l00135"></a>00135         }
-<a name="l00136"></a>00136     }
-<a name="l00137"></a>00137 
-<a name="l00138"></a>00138     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00139"></a>00139 }
-<a name="l00140"></a>00140 
-<a name="l00141"></a>00141 }}
+<a name="l00090"></a>00090     <span class="keywordflow">if</span>(count != mtop.mols.nr  ) {
+<a name="l00091"></a>00091         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"gromacs topology contains inconsistency in molecule definitons\n\n"</span>
+<a name="l00092"></a>00092                 <span class="stringliteral">"A possible reason is an outdated .tpr file. Please rerun grompp to generate a new tpr file.\n"</span>
+<a name="l00093"></a>00093                 <span class="stringliteral">"If the problem remains or "</span>
+<a name="l00094"></a>00094                 <span class="stringliteral">"you're missing the files to rerun grompp,\n contact the votca mailing list for a solution."</span>);
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock) {
+<a name="l00098"></a>00098         gmx_moltype_t *mol
+<a name="l00099"></a>00099                 = &amp;(mtop.moltype[mtop.molblock[iblock].type]);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <span class="keywordtype">string</span> molname =  *(mol-&gt;name);
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103         <span class="keywordtype">int</span> res_offset = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#74c28ddd1b95e242842bd59685bb8663">ResidueCount</a>();
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105         t_atoms *atoms=&amp;(mol-&gt;atoms);
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i &lt; atoms-&gt;nres; i++) {
+<a name="l00108"></a>00108 <span class="preprocessor">#if GMX == 50</span>
+<a name="l00109"></a>00109 <span class="preprocessor"></span>                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(*(atoms-&gt;resinfo[i].name));
+<a name="l00110"></a>00110 <span class="preprocessor">#elif GMX == 45</span>
+<a name="l00111"></a>00111 <span class="preprocessor"></span>                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(*(atoms-&gt;resinfo[i].name));
+<a name="l00112"></a>00112 <span class="preprocessor">#elif GMX == 40</span>
+<a name="l00113"></a>00113 <span class="preprocessor"></span>                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(*(atoms-&gt;resname[i]));
+<a name="l00114"></a>00114 <span class="preprocessor">#else</span>
+<a name="l00115"></a>00115 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
+<a name="l00116"></a>00116 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00117"></a>00117 <span class="preprocessor"></span>        }
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119         <span class="keywordtype">int</span> ifirstatom = 0;
+<a name="l00120"></a>00120         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> imol=0; imol&lt;mtop.molblock[iblock].nmol; ++imol) {
+<a name="l00121"></a>00121             <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mi = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#87a10bc0957a1465dad5b3899cb6e932" title="creates a new molecule">CreateMolecule</a>(molname);
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123             <span class="comment">// read the atoms</span>
+<a name="l00124"></a>00124             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iatom=0; iatom&lt;mtop.molblock[iblock].natoms_mol; iatom++) {
+<a name="l00125"></a>00125                 t_atom *a = &amp;(atoms-&gt;atom[iatom]);
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127                 <span class="comment">// read exclusions</span>
+<a name="l00128"></a>00128                 t_blocka * excl = &amp;(mol-&gt;excls);
+<a name="l00129"></a>00129                 <span class="comment">// insert exclusions</span>
+<a name="l00130"></a>00130                 list&lt;int&gt; excl_list;
+<a name="l00131"></a>00131                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k=excl-&gt;index[iatom]; k&lt;excl-&gt;index[iatom+1]; k++) {
+<a name="l00132"></a>00132                     excl_list.push_back(excl-&gt;a[k]+ifirstatom);
+<a name="l00133"></a>00133                 }
+<a name="l00134"></a>00134                 top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#de744346ef1ea13159ded6a427c2e2de">InsertExclusion</a>(iatom, excl_list);
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136                 <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(*(atoms-&gt;atomtype[iatom]));
+<a name="l00137"></a>00137 <span class="preprocessor">#if GMX == 50</span>
+<a name="l00138"></a>00138 <span class="preprocessor"></span>                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, *(atoms-&gt;atomname[iatom]), type, a-&gt;resind, a-&gt;m, a-&gt;q);
+<a name="l00139"></a>00139 <span class="preprocessor">#elif GMX == 45</span>
+<a name="l00140"></a>00140 <span class="preprocessor"></span>                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, *(atoms-&gt;atomname[iatom]), type, a-&gt;resind, a-&gt;m, a-&gt;q);
+<a name="l00141"></a>00141 <span class="preprocessor">#elif GMX == 40</span>
+<a name="l00142"></a>00142 <span class="preprocessor"></span>                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, *(atoms-&gt;atomname[iatom]), type, a-&gt;resnr, a-&gt;m, a-&gt;q);
+<a name="l00143"></a>00143 <span class="preprocessor">#else</span>
+<a name="l00144"></a>00144 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
+<a name="l00145"></a>00145 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00146"></a>00146 <span class="preprocessor"></span>
+<a name="l00147"></a>00147                 stringstream nm;
+<a name="l00148"></a>00148                 nm &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>() + 1 &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#9fec2f8d63ec726bf146ff0c587f5404">getResidue</a>(res_offset + bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>())-&gt;getName() &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>();
+<a name="l00149"></a>00149                 mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bead, nm.str());
+<a name="l00150"></a>00150             }
+<a name="l00151"></a>00151             ifirstatom+=mtop.molblock[iblock].natoms_mol;
+<a name="l00152"></a>00152         }
+<a name="l00153"></a>00153     }
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00156"></a>00156 }
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

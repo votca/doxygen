@@ -46,55 +46,57 @@
 <a name="l00023"></a>00023 <span class="preprocessor"></span><span class="preprocessor">#include "config.h"</span>
 <a name="l00024"></a>00024 <span class="preprocessor">#endif</span>
 <a name="l00025"></a>00025 <span class="preprocessor"></span>
-<a name="l00026"></a>00026 <span class="preprocessor">#if GMX == 45</span>
-<a name="l00027"></a>00027 <span class="preprocessor"></span><span class="preprocessor">#include &lt;gromacs/copyrite.h&gt;</span>
-<a name="l00028"></a>00028 <span class="preprocessor">#elif GMX == 40</span>
-<a name="l00029"></a>00029 <span class="preprocessor"></span>    <span class="keyword">extern</span> <span class="stringliteral">"C"</span>
-<a name="l00030"></a>00030     {
-<a name="l00031"></a>00031 <span class="preprocessor">        #include &lt;copyrite.h&gt;</span>
-<a name="l00032"></a>00032     }
-<a name="l00033"></a>00033 <span class="preprocessor">#endif</span>
-<a name="l00034"></a>00034 <span class="preprocessor"></span>
-<a name="l00035"></a>00035 <span class="preprocessor">#ifdef GMX</span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="comment">// this one is needed because of bool is defined in one of the headers included by gmx</span>
-<a name="l00037"></a>00037 <span class="preprocessor">#undef bool</span>
-<a name="l00038"></a>00038 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00039"></a>00039 <span class="preprocessor"></span>
-<a name="l00040"></a>00040 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="comment">//defines hgversion</span>
-<a name="l00043"></a>00043 <span class="preprocessor">#include "hgversion.h"</span>
-<a name="l00044"></a><a class="code" href="namespacevotca_1_1csg.html#53da75e9e155b924d25b7c66b812bdaa">00044</a> <span class="keyword">static</span> <span class="keyword">const</span> std::string <a class="code" href="namespacevotca_1_1csg.html#53da75e9e155b924d25b7c66b812bdaa">version_str</a> = std::string(VERSION) + <span class="stringliteral">" "</span> + hgversion + <span class="stringliteral">" (compiled "</span> __DATE__ <span class="stringliteral">", "</span> __TIME__ <span class="stringliteral">")"</span>;
-<a name="l00045"></a>00045 
-<a name="l00046"></a><a class="code" href="namespacevotca_1_1csg.html#0429a1e180ee8b38e143cedf9aad5778">00046</a> <span class="keyword">const</span> std::string &amp;<a class="code" href="namespacevotca_1_1csg.html#0429a1e180ee8b38e143cedf9aad5778">CsgVersionStr</a>()
-<a name="l00047"></a>00047 {
-<a name="l00048"></a>00048     <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1csg.html#53da75e9e155b924d25b7c66b812bdaa">version_str</a>;
-<a name="l00049"></a>00049 }
-<a name="l00050"></a>00050 
-<a name="l00051"></a><a class="code" href="namespacevotca_1_1csg.html#412e9f92c8856987418a022cabe776ec">00051</a> <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1csg.html#412e9f92c8856987418a022cabe776ec">HelpTextHeader</a>(<span class="keyword">const</span> std::string &amp;tool_name)
-<a name="l00052"></a>00052 {
-<a name="l00053"></a>00053     std::cout
-<a name="l00054"></a>00054          &lt;&lt; <span class="stringliteral">"==================================================\n"</span>
-<a name="l00055"></a>00055          &lt;&lt; <span class="stringliteral">"========   VOTCA (http://www.votca.org)   ========\n"</span>
-<a name="l00056"></a>00056          &lt;&lt; <span class="stringliteral">"==================================================\n\n"</span>
-<a name="l00057"></a>00057          &lt;&lt; <span class="stringliteral">"please submit bugs to "</span> PACKAGE_BUGREPORT <span class="stringliteral">"\n\n"</span> 
-<a name="l00058"></a>00058          &lt;&lt; tool_name &lt;&lt; <span class="stringliteral">", version "</span> &lt;&lt; <a class="code" href="namespacevotca_1_1csg.html#0429a1e180ee8b38e143cedf9aad5778">votca::csg::CsgVersionStr</a>() 
-<a name="l00059"></a>00059          &lt;&lt; <span class="stringliteral">"\nvotca_tools, version "</span> &lt;&lt; <a class="code" href="namespacevotca_1_1tools.html#60e3bf789161660181a7c0891b1fdd96">votca::tools::ToolsVersionStr</a>()
-<a name="l00060"></a>00060 <span class="preprocessor">#ifdef GMX</span>
-<a name="l00061"></a>00061 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">"\ngromacs, "</span> &lt;&lt; GromacsVersion()
-<a name="l00062"></a>00062 <span class="preprocessor">#ifdef GMX_DOUBLE</span>
-<a name="l00063"></a>00063 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">" (double precision)"</span>
-<a name="l00064"></a>00064 <span class="preprocessor">#else</span>
-<a name="l00065"></a>00065 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">" (single precision)"</span>
-<a name="l00066"></a>00066 <span class="preprocessor">#endif</span>
-<a name="l00067"></a>00067 <span class="preprocessor"></span><span class="preprocessor">#else</span>
-<a name="l00068"></a>00068 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">"\n"</span>
-<a name="l00069"></a>00069 <span class="preprocessor">#endif</span>
-<a name="l00070"></a>00070 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">"\n\n"</span>;
-<a name="l00071"></a>00071 }
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 }}
+<a name="l00026"></a>00026 <span class="preprocessor">#if GMX == 50</span>
+<a name="l00027"></a>00027 <span class="preprocessor"></span><span class="preprocessor">#include &lt;gromacs/legacyheaders/copyrite.h&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#elif GMX == 45</span>
+<a name="l00029"></a>00029 <span class="preprocessor"></span><span class="preprocessor">#include &lt;gromacs/copyrite.h&gt;</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#elif GMX == 40</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>    <span class="keyword">extern</span> <span class="stringliteral">"C"</span>
+<a name="l00032"></a>00032     {
+<a name="l00033"></a>00033 <span class="preprocessor">        #include &lt;copyrite.h&gt;</span>
+<a name="l00034"></a>00034     }
+<a name="l00035"></a>00035 <span class="preprocessor">#endif</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span>
+<a name="l00037"></a>00037 <span class="preprocessor">#ifdef GMX</span>
+<a name="l00038"></a>00038 <span class="preprocessor"></span><span class="comment">// this one is needed because of bool is defined in one of the headers included by gmx</span>
+<a name="l00039"></a>00039 <span class="preprocessor">#undef bool</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span>
+<a name="l00042"></a>00042 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="comment">//defines hgversion</span>
+<a name="l00045"></a>00045 <span class="preprocessor">#include "hgversion.h"</span>
+<a name="l00046"></a><a class="code" href="namespacevotca_1_1csg.html#53da75e9e155b924d25b7c66b812bdaa">00046</a> <span class="keyword">static</span> <span class="keyword">const</span> std::string <a class="code" href="namespacevotca_1_1csg.html#53da75e9e155b924d25b7c66b812bdaa">version_str</a> = std::string(VERSION) + <span class="stringliteral">" "</span> + hgversion + <span class="stringliteral">" (compiled "</span> __DATE__ <span class="stringliteral">", "</span> __TIME__ <span class="stringliteral">")"</span>;
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="namespacevotca_1_1csg.html#0429a1e180ee8b38e143cedf9aad5778">00048</a> <span class="keyword">const</span> std::string &amp;<a class="code" href="namespacevotca_1_1csg.html#0429a1e180ee8b38e143cedf9aad5778">CsgVersionStr</a>()
+<a name="l00049"></a>00049 {
+<a name="l00050"></a>00050     <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1csg.html#53da75e9e155b924d25b7c66b812bdaa">version_str</a>;
+<a name="l00051"></a>00051 }
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="namespacevotca_1_1csg.html#412e9f92c8856987418a022cabe776ec">00053</a> <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1csg.html#412e9f92c8856987418a022cabe776ec">HelpTextHeader</a>(<span class="keyword">const</span> std::string &amp;tool_name)
+<a name="l00054"></a>00054 {
+<a name="l00055"></a>00055     std::cout
+<a name="l00056"></a>00056          &lt;&lt; <span class="stringliteral">"==================================================\n"</span>
+<a name="l00057"></a>00057          &lt;&lt; <span class="stringliteral">"========   VOTCA (http://www.votca.org)   ========\n"</span>
+<a name="l00058"></a>00058          &lt;&lt; <span class="stringliteral">"==================================================\n\n"</span>
+<a name="l00059"></a>00059          &lt;&lt; <span class="stringliteral">"please submit bugs to "</span> PACKAGE_BUGREPORT <span class="stringliteral">"\n\n"</span> 
+<a name="l00060"></a>00060          &lt;&lt; tool_name &lt;&lt; <span class="stringliteral">", version "</span> &lt;&lt; <a class="code" href="namespacevotca_1_1csg.html#0429a1e180ee8b38e143cedf9aad5778">votca::csg::CsgVersionStr</a>() 
+<a name="l00061"></a>00061          &lt;&lt; <span class="stringliteral">"\nvotca_tools, version "</span> &lt;&lt; <a class="code" href="namespacevotca_1_1tools.html#60e3bf789161660181a7c0891b1fdd96">votca::tools::ToolsVersionStr</a>()
+<a name="l00062"></a>00062 <span class="preprocessor">#ifdef GMX</span>
+<a name="l00063"></a>00063 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">"\ngromacs, "</span> &lt;&lt; GromacsVersion()
+<a name="l00064"></a>00064 <span class="preprocessor">#ifdef GMX_DOUBLE</span>
+<a name="l00065"></a>00065 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">" (double precision)"</span>
+<a name="l00066"></a>00066 <span class="preprocessor">#else</span>
+<a name="l00067"></a>00067 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">" (single precision)"</span>
+<a name="l00068"></a>00068 <span class="preprocessor">#endif</span>
+<a name="l00069"></a>00069 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00070"></a>00070 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">"\n"</span>
+<a name="l00071"></a>00071 <span class="preprocessor">#endif</span>
+<a name="l00072"></a>00072 <span class="preprocessor"></span>         &lt;&lt; <span class="stringliteral">"\n\n"</span>;
+<a name="l00073"></a>00073 }
 <a name="l00074"></a>00074 
+<a name="l00075"></a>00075 }}
+<a name="l00076"></a>00076 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
