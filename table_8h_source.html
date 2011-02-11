@@ -96,69 +96,80 @@
 <a name="l00080"></a>00080     
 <a name="l00081"></a>00081     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#0d58e612f77c1963822ca7cc896a735c">push_back</a>(<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#b2ad8ef33b39110a317b25c752d56fbc">x</a>, <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#606b862fd736222aedf56fd1bd34985a">y</a>, <span class="keywordtype">char</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#31cacc791554ba47e1298b9d30aa3432">flags</a>);
 <a name="l00082"></a>00082 
-<a name="l00083"></a>00083 <span class="keyword">private</span>:
-<a name="l00084"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">00084</a>     ub::vector&lt;double&gt; <a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>;
-<a name="l00085"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">00085</a>     ub::vector&lt;double&gt; <a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>;       
-<a name="l00086"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">00086</a>     ub::vector&lt;char&gt;   <a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>;
-<a name="l00087"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">00087</a>     ub::vector&lt;double&gt; <a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">_yerr</a>;
-<a name="l00088"></a>00088 
-<a name="l00089"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">00089</a>     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a>;
-<a name="l00090"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#af4338c1bd54667d826eac1d24e28a4e">00090</a>     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#af4338c1bd54667d826eac1d24e28a4e">_has_comment</a>;
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092     <span class="keyword">friend</span> ostream &amp;<a class="code" href="classvotca_1_1tools_1_1Table.html#85556475a916f942163f0ad343624b83">operator&lt;&lt;</a>(ostream &amp;out, <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a>&amp; v);
-<a name="l00093"></a>00093     <span class="keyword">friend</span> istream &amp;<a class="code" href="classvotca_1_1tools_1_1Table.html#afc0346bb84b7cb782bbb971c3a07e1a">operator&gt;&gt;</a>(istream &amp;out, <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a>&amp; v);
-<a name="l00094"></a>00094 
-<a name="l00095"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#68b912f3c71e1431e28ecb111d236bab">00095</a>     <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#68b912f3c71e1431e28ecb111d236bab">_comment_line</a>;
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 };
-<a name="l00098"></a>00098 
-<a name="l00099"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#1f5cbe8a028a6c208c71e7aaad3a293a">00099</a> <span class="keyword">inline</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#1f5cbe8a028a6c208c71e7aaad3a293a">Table::Table</a>()
-<a name="l00100"></a>00100 {
-<a name="l00101"></a>00101     <a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a> = <span class="keyword">false</span>;
-<a name="l00102"></a>00102 }
+<a name="l00083"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#eadd3578d64ca1fb3694def71c8a39e0">00083</a>     <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<a class="code" href="classvotca_1_1tools_1_1Table.html#eadd3578d64ca1fb3694def71c8a39e0">getErrorDetails</a>() {
+<a name="l00084"></a>00084         <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#6bcc709bfe569f3c0187b760018cf531">_error_details</a>;
+<a name="l00085"></a>00085     }
+<a name="l00086"></a>00086 
+<a name="l00087"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#33b3069c10a4ade7af60f08097a21f0c">00087</a>     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#33b3069c10a4ade7af60f08097a21f0c">setErrorDetails</a>(<span class="keywordtype">string</span> str) {
+<a name="l00088"></a>00088         <a class="code" href="classvotca_1_1tools_1_1Table.html#6bcc709bfe569f3c0187b760018cf531">_error_details</a> = str;
+<a name="l00089"></a>00089     }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="keyword">private</span>:
+<a name="l00092"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">00092</a>     ub::vector&lt;double&gt; <a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>;
+<a name="l00093"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">00093</a>     ub::vector&lt;double&gt; <a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>;       
+<a name="l00094"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">00094</a>     ub::vector&lt;char&gt;   <a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>;
+<a name="l00095"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">00095</a>     ub::vector&lt;double&gt; <a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">_yerr</a>;
+<a name="l00096"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#6bcc709bfe569f3c0187b760018cf531">00096</a>     <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#6bcc709bfe569f3c0187b760018cf531">_error_details</a>;
+<a name="l00097"></a>00097 
+<a name="l00098"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">00098</a>     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a>;
+<a name="l00099"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#af4338c1bd54667d826eac1d24e28a4e">00099</a>     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#af4338c1bd54667d826eac1d24e28a4e">_has_comment</a>;
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101     <span class="keyword">friend</span> ostream &amp;<a class="code" href="classvotca_1_1tools_1_1Table.html#85556475a916f942163f0ad343624b83">operator&lt;&lt;</a>(ostream &amp;out, <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a>&amp; v);
+<a name="l00102"></a>00102     <span class="keyword">friend</span> istream &amp;<a class="code" href="classvotca_1_1tools_1_1Table.html#afc0346bb84b7cb782bbb971c3a07e1a">operator&gt;&gt;</a>(istream &amp;out, <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a>&amp; v);
 <a name="l00103"></a>00103 
-<a name="l00104"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#dc2fcca7efa738e2e33d0aba614428c7">00104</a> <span class="keyword">inline</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#1f5cbe8a028a6c208c71e7aaad3a293a">Table::Table</a>(<a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> &amp;tbl)
-<a name="l00105"></a>00105 {
-<a name="l00106"></a>00106     <a class="code" href="classvotca_1_1tools_1_1Table.html#70585fe9d5244d7facafe607142b01d0">resize</a>(tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>());
-<a name="l00107"></a>00107     <a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>;
-<a name="l00108"></a>00108     <a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>;
-<a name="l00109"></a>00109     <a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>;
-<a name="l00110"></a>00110     <a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a>;
-<a name="l00111"></a>00111     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a>) <a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">_yerr</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">_yerr</a>;
-<a name="l00112"></a>00112     <a class="code" href="classvotca_1_1tools_1_1Table.html#af4338c1bd54667d826eac1d24e28a4e">_has_comment</a> = <span class="keyword">false</span>;
-<a name="l00113"></a>00113 }
-<a name="l00114"></a>00114 
-<a name="l00115"></a><a class="code" href="namespacevotca_1_1tools.html#3b5e3bd8294af946a9ab6b0eb1ca3fe8">00115</a> <span class="keyword">inline</span> ostream &amp;<a class="code" href="namespacevotca_1_1tools.html#dd0da891249d5b7edc7378733bf26bf0">operator&lt;&lt;</a>(ostream &amp;out, <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a>&amp; t)
-<a name="l00116"></a>00116 {
-<a name="l00117"></a>00117     <span class="keywordflow">if</span> ( t.<a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a> ) {
-<a name="l00118"></a>00118         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;t.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>.size(); ++i) {
-<a name="l00119"></a>00119             out &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">_yerr</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>[i] &lt;&lt; endl;
-<a name="l00120"></a>00120         }
-<a name="l00121"></a>00121     }
-<a name="l00122"></a>00122     <span class="keywordflow">else</span> {
-<a name="l00123"></a>00123         <span class="comment">//out &lt;&lt; t.size() &lt;&lt; endl;</span>
-<a name="l00124"></a>00124         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;t.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>.size(); ++i) {
-<a name="l00125"></a>00125             out &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>[i] &lt;&lt; endl;
-<a name="l00126"></a>00126         }
-<a name="l00127"></a>00127     }
-<a name="l00128"></a>00128     <span class="keywordflow">return</span> out;
-<a name="l00129"></a>00129 }
-<a name="l00130"></a>00130 <span class="comment">// TODO: modify this function to be able to treat _has_yerr == true</span>
-<a name="l00131"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#0d58e612f77c1963822ca7cc896a735c">00131</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#0d58e612f77c1963822ca7cc896a735c">Table::push_back</a>(<span class="keywordtype">double</span> <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>, <span class="keywordtype">double</span> y, <span class="keywordtype">char</span> flags)
-<a name="l00132"></a>00132 {
-<a name="l00133"></a>00133     <span class="keywordtype">size_t</span> n=<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>();
-<a name="l00134"></a>00134     <a class="code" href="classvotca_1_1tools_1_1Table.html#70585fe9d5244d7facafe607142b01d0">resize</a>(n+1);
-<a name="l00135"></a>00135     <a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>[n] = x;
-<a name="l00136"></a>00136     <a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>[n] = y;
-<a name="l00137"></a>00137     <a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>[n] = flags;
-<a name="l00138"></a>00138 }
-<a name="l00139"></a>00139 
-<a name="l00140"></a>00140 <span class="keyword">inline</span> istream &amp;<a class="code" href="namespacevotca_1_1tools.html#f69e7f11747171fe6e9f59d81079db42">operator&gt;&gt;</a>(istream &amp;in, <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a>&amp; t);
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 }}
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144 <span class="preprocessor">#endif  </span><span class="comment">/* _TABLE_H */</span>
-<a name="l00145"></a>00145 
+<a name="l00104"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#68b912f3c71e1431e28ecb111d236bab">00104</a>     <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#68b912f3c71e1431e28ecb111d236bab">_comment_line</a>;
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 };
+<a name="l00107"></a>00107 
+<a name="l00108"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#1f5cbe8a028a6c208c71e7aaad3a293a">00108</a> <span class="keyword">inline</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#1f5cbe8a028a6c208c71e7aaad3a293a">Table::Table</a>()
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110     <a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a> = <span class="keyword">false</span>;
+<a name="l00111"></a>00111     <a class="code" href="classvotca_1_1tools_1_1Table.html#6bcc709bfe569f3c0187b760018cf531">_error_details</a> = <span class="stringliteral">""</span>;
+<a name="l00112"></a>00112 }
+<a name="l00113"></a>00113 
+<a name="l00114"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#dc2fcca7efa738e2e33d0aba614428c7">00114</a> <span class="keyword">inline</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#1f5cbe8a028a6c208c71e7aaad3a293a">Table::Table</a>(<a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> &amp;tbl)
+<a name="l00115"></a>00115 {
+<a name="l00116"></a>00116     <a class="code" href="classvotca_1_1tools_1_1Table.html#70585fe9d5244d7facafe607142b01d0">resize</a>(tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>());
+<a name="l00117"></a>00117     <a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>;
+<a name="l00118"></a>00118     <a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>;
+<a name="l00119"></a>00119     <a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>;
+<a name="l00120"></a>00120     <a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a>;
+<a name="l00121"></a>00121     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a>) <a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">_yerr</a> = tbl.<a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">_yerr</a>;
+<a name="l00122"></a>00122     <a class="code" href="classvotca_1_1tools_1_1Table.html#af4338c1bd54667d826eac1d24e28a4e">_has_comment</a> = <span class="keyword">false</span>;
+<a name="l00123"></a>00123     <a class="code" href="classvotca_1_1tools_1_1Table.html#6bcc709bfe569f3c0187b760018cf531">_error_details</a> = <span class="stringliteral">""</span>;
+<a name="l00124"></a>00124 }
+<a name="l00125"></a>00125 
+<a name="l00126"></a><a class="code" href="namespacevotca_1_1tools.html#3b5e3bd8294af946a9ab6b0eb1ca3fe8">00126</a> <span class="keyword">inline</span> ostream &amp;<a class="code" href="namespacevotca_1_1tools.html#dd0da891249d5b7edc7378733bf26bf0">operator&lt;&lt;</a>(ostream &amp;out, <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a>&amp; t)
+<a name="l00127"></a>00127 {
+<a name="l00128"></a>00128     <span class="keywordflow">if</span> ( t.<a class="code" href="classvotca_1_1tools_1_1Table.html#a6ec8ceeed92b7689681f539873f30be">_has_yerr</a> ) {
+<a name="l00129"></a>00129         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;t.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>.size(); ++i) {
+<a name="l00130"></a>00130             out &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#79ee7d03463062c2ea1c156298ba3c64">_yerr</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>[i] &lt;&lt; endl;
+<a name="l00131"></a>00131         }
+<a name="l00132"></a>00132     }
+<a name="l00133"></a>00133     <span class="keywordflow">else</span> {
+<a name="l00134"></a>00134         <span class="comment">//out &lt;&lt; t.size() &lt;&lt; endl;</span>
+<a name="l00135"></a>00135         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;t.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>.size(); ++i) {
+<a name="l00136"></a>00136             out &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>[i] &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; t.<a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>[i] &lt;&lt; endl;
+<a name="l00137"></a>00137         }
+<a name="l00138"></a>00138     }
+<a name="l00139"></a>00139     <span class="keywordflow">return</span> out;
+<a name="l00140"></a>00140 }
+<a name="l00141"></a>00141 <span class="comment">// TODO: modify this function to be able to treat _has_yerr == true</span>
+<a name="l00142"></a><a class="code" href="classvotca_1_1tools_1_1Table.html#0d58e612f77c1963822ca7cc896a735c">00142</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Table.html#0d58e612f77c1963822ca7cc896a735c">Table::push_back</a>(<span class="keywordtype">double</span> <a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>, <span class="keywordtype">double</span> y, <span class="keywordtype">char</span> flags)
+<a name="l00143"></a>00143 {
+<a name="l00144"></a>00144     <span class="keywordtype">size_t</span> n=<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>();
+<a name="l00145"></a>00145     <a class="code" href="classvotca_1_1tools_1_1Table.html#70585fe9d5244d7facafe607142b01d0">resize</a>(n+1);
+<a name="l00146"></a>00146     <a class="code" href="classvotca_1_1tools_1_1Table.html#3833c525f40811bb6a4ae6b5ec565e7b">_x</a>[n] = x;
+<a name="l00147"></a>00147     <a class="code" href="classvotca_1_1tools_1_1Table.html#2c024639cdcd3c67b7036f916a4f1e97">_y</a>[n] = y;
+<a name="l00148"></a>00148     <a class="code" href="classvotca_1_1tools_1_1Table.html#11eaca8a27f233e5d12f8ae0798857c4">_flags</a>[n] = flags;
+<a name="l00149"></a>00149 }
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151 <span class="keyword">inline</span> istream &amp;<a class="code" href="namespacevotca_1_1tools.html#f69e7f11747171fe6e9f59d81079db42">operator&gt;&gt;</a>(istream &amp;in, <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a>&amp; t);
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 }}
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155 <span class="preprocessor">#endif  </span><span class="comment">/* _TABLE_H */</span>
+<a name="l00156"></a>00156 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
