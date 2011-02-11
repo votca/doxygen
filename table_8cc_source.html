@@ -45,7 +45,7 @@
 <a name="l00022"></a>00022 <span class="preprocessor">#include &lt;stdexcept&gt;</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#include &lt;iostream&gt;</span>
 <a name="l00024"></a>00024 <span class="preprocessor">#include &lt;boost/algorithm/string/replace.hpp&gt;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;lexical_cast.h&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;<a class="code" href="lexical__cast_8h.html">lexical_cast.h</a>&gt;</span>
 <a name="l00026"></a>00026 
 <a name="l00027"></a>00027 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
 <a name="l00028"></a>00028 
@@ -114,7 +114,7 @@
 <a name="l00091"></a>00091     <span class="comment">// read till the first data line</span>
 <a name="l00092"></a>00092     <span class="keywordflow">while</span>(getline(in, line)) {
 <a name="l00093"></a>00093         line_number++;
-<a name="l00094"></a>00094         <span class="keywordtype">string</span> conversion_error =  t.<a class="code" href="classvotca_1_1tools_1_1Table.html#eadd3578d64ca1fb3694def71c8a39e0">getErrorDetails</a>() + <span class="stringliteral">", line "</span> + boost::lexical_cast&lt;<span class="keywordtype">string</span>&gt;(line_number);
+<a name="l00094"></a>00094         <span class="keywordtype">string</span> conversion_error =  t.<a class="code" href="classvotca_1_1tools_1_1Table.html#eadd3578d64ca1fb3694def71c8a39e0">getErrorDetails</a>() + <span class="stringliteral">", line "</span> + <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(line_number);
 <a name="l00095"></a>00095 
 <a name="l00096"></a>00096         <span class="comment">// remove comments and xmgrace stuff</span>
 <a name="l00097"></a>00097         line = line.substr(0, line.find(<span class="stringliteral">"#"</span>));
@@ -130,7 +130,7 @@
 <a name="l00107"></a>00107         
 <a name="l00108"></a>00108         <span class="comment">// if first line is only 1 token, it's the size</span>
 <a name="l00109"></a>00109         <span class="keywordflow">if</span>(tokens.size() == 1) {
-<a name="l00110"></a>00110             N = lexical_cast&lt;<span class="keywordtype">int</span>&gt;(tokens[0], conversion_error);
+<a name="l00110"></a>00110             N = <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(tokens[0], conversion_error);
 <a name="l00111"></a>00111             bHasN = <span class="keyword">true</span>;
 <a name="l00112"></a>00112         }
 <a name="l00113"></a>00113         <span class="comment">// it's the first data line with 2 or 3 entries</span>
@@ -150,7 +150,7 @@
 <a name="l00127"></a>00127     <span class="comment">// read the rest</span>
 <a name="l00128"></a>00128     <span class="keywordflow">while</span>(getline(in, line)) {
 <a name="l00129"></a>00129         line_number++;
-<a name="l00130"></a>00130         <span class="keywordtype">string</span> conversion_error =  t.<a class="code" href="classvotca_1_1tools_1_1Table.html#eadd3578d64ca1fb3694def71c8a39e0">getErrorDetails</a>() + <span class="stringliteral">", line "</span> + boost::lexical_cast&lt;<span class="keywordtype">string</span>&gt;(line_number);
+<a name="l00130"></a>00130         <span class="keywordtype">string</span> conversion_error =  t.<a class="code" href="classvotca_1_1tools_1_1Table.html#eadd3578d64ca1fb3694def71c8a39e0">getErrorDetails</a>() + <span class="stringliteral">", line "</span> + <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(line_number);
 <a name="l00131"></a>00131 
 <a name="l00132"></a>00132         <span class="comment">// remove comments and xmgrace stuff</span>
 <a name="l00133"></a>00133         line = line.substr(0, line.find(<span class="stringliteral">"#"</span>));
