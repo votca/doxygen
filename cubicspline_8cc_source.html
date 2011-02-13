@@ -93,57 +93,60 @@
 <a name="l00070"></a>00070             <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#7ee81d2c52c4e378f062b982583f8d0e">A</a>(0,0) = 1; <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#7ee81d2c52c4e378f062b982583f8d0e">A</a>(0,N-1) = -1;
 <a name="l00071"></a>00071             <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#7ee81d2c52c4e378f062b982583f8d0e">A</a>(N-1,0) = 1; <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#7ee81d2c52c4e378f062b982583f8d0e">A</a>(N-1,N-1) = -1;
 <a name="l00072"></a>00072             <span class="keywordflow">break</span>;
-<a name="l00073"></a>00073     }
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075     <a class="code" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb" title="solves A*x=b">votca::tools::linalg_qrsolve</a>(<a class="code" href="classvotca_1_1tools_1_1Spline.html#812433af391b72fcd0d01042c39029b7">_f2</a>, A, <a class="code" href="classvotca_1_1tools_1_1Spline.html#812433af391b72fcd0d01042c39029b7">_f2</a>);
-<a name="l00076"></a>00076 }
+<a name="l00073"></a>00073         <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#daf3067dc9a25e1e02378d1b211a7b215cfc1e0fed791da51b3a251f615be358" title="derivatives and end-points are zero.">splineDerivativeZero</a>:
+<a name="l00074"></a>00074             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"erro in CubicSpline::Interpolate: case splineDerivativeZero not implemented yet"</span>);
+<a name="l00075"></a>00075             <span class="keywordflow">break</span>;
+<a name="l00076"></a>00076     }
 <a name="l00077"></a>00077 
-<a name="l00078"></a><a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#edce4263bd92d5e62fb5ed0290814b17">00078</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#edce4263bd92d5e62fb5ed0290814b17" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">CubicSpline::Fit</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>, ub::vector&lt;double&gt; &amp;y)
-<a name="l00079"></a>00079 {
-<a name="l00080"></a>00080     <span class="keywordflow">if</span>(x.size() != y.size())
-<a name="l00081"></a>00081         <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error in CubicSpline::Fit : sizes of vectors x and y do not match"</span>);
-<a name="l00082"></a>00082     
-<a name="l00083"></a>00083     <span class="keyword">const</span> <span class="keywordtype">int</span> N = x.size();
-<a name="l00084"></a>00084     <span class="keyword">const</span> <span class="keywordtype">int</span> ngrid = <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>.size();
+<a name="l00078"></a>00078     <a class="code" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb" title="solves A*x=b">votca::tools::linalg_qrsolve</a>(<a class="code" href="classvotca_1_1tools_1_1Spline.html#812433af391b72fcd0d01042c39029b7">_f2</a>, A, <a class="code" href="classvotca_1_1tools_1_1Spline.html#812433af391b72fcd0d01042c39029b7">_f2</a>);
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+<a name="l00081"></a><a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#edce4263bd92d5e62fb5ed0290814b17">00081</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#edce4263bd92d5e62fb5ed0290814b17" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">CubicSpline::Fit</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#aeeb1ead24334ce09a1ffb542f262835">x</a>, ub::vector&lt;double&gt; &amp;y)
+<a name="l00082"></a>00082 {
+<a name="l00083"></a>00083     <span class="keywordflow">if</span>(x.size() != y.size())
+<a name="l00084"></a>00084         <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error in CubicSpline::Fit : sizes of vectors x and y do not match"</span>);
 <a name="l00085"></a>00085     
-<a name="l00086"></a>00086     <span class="comment">// construct the equation</span>
-<a name="l00087"></a>00087     <span class="comment">// A*u = b</span>
-<a name="l00088"></a>00088     <span class="comment">// where u = { {f[i]}, {f''[i]} }</span>
-<a name="l00089"></a>00089     <span class="comment">// and b[i] = y[i] for 0&lt;=i&lt;N</span>
-<a name="l00090"></a>00090     <span class="comment">// and b[i]=0 for i&gt;=N (for smoothing condition)</span>
-<a name="l00091"></a>00091     <span class="comment">// A[i,j] contains the data fitting + the spline smoothing conditions</span>
-<a name="l00092"></a>00092     
-<a name="l00093"></a>00093     ub::matrix&lt;double&gt; <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#7ee81d2c52c4e378f062b982583f8d0e">A</a>(N, 2*ngrid);
-<a name="l00094"></a>00094     ub::vector&lt;double&gt; <a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>(N);    
-<a name="l00095"></a>00095     ub::matrix&lt;double&gt; B_constr(ngrid, 2*ngrid);  <span class="comment">// Matrix with smoothing conditions</span>
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097     A = ub::zero_matrix&lt;double&gt;(N, 2*ngrid);
-<a name="l00098"></a>00098     b  = ub::zero_vector&lt;double&gt;(N);
-<a name="l00099"></a>00099     B_constr = ub::zero_matrix&lt;double&gt;(ngrid, 2*ngrid);
-<a name="l00100"></a>00100     
-<a name="l00101"></a>00101     <span class="comment">// Construct smoothing matrix</span>
-<a name="l00102"></a>00102     <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#0b3ec8677a98f01fa12fa47aeb91818c" title="Add boundary conditions to fitting matrix.">AddBCToFitMatrix</a>(B_constr, 0);
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104     <span class="comment">// construct the matrix to fit the points and the vector b</span>
-<a name="l00105"></a>00105     <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#21673bf938ff960bdc3fbbda5947fe4c" title="Add a point (one entry) to fitting matrix.">AddToFitMatrix</a>(A, x, 0);
-<a name="l00106"></a>00106     b = -y; <span class="comment">// why is it -y?</span>
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108     <span class="comment">// now do a constrained qr solve</span>
-<a name="l00109"></a>00109     ub::vector&lt;double&gt; sol(2*ngrid);
-<a name="l00110"></a>00110     <a class="code" href="namespacevotca_1_1tools.html#7b789991041c9a0aec760ffd20c599b8" title="solves A*x=b under the constraint B*x = 0">votca::tools::linalg_constrained_qrsolve</a>(sol, A, b, B_constr);
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112     <span class="comment">// check vector "sol" for nan's</span>
-<a name="l00113"></a>00113     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;2*ngrid; i++) {
-<a name="l00114"></a>00114         <span class="keywordflow">if</span>( (std::isinf(sol(i))) || (std::isnan(sol(i))) ) {
-<a name="l00115"></a>00115             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"error in CubicSpline::Fit : value nan occurred due to wrong fitgrid boundaries"</span>);
-<a name="l00116"></a>00116         }
-<a name="l00117"></a>00117     }
-<a name="l00118"></a>00118 
-<a name="l00119"></a>00119     <a class="code" href="classvotca_1_1tools_1_1Spline.html#59942d3af044d828aded5c6d737a79f8">_f</a> = ub::vector_range&lt;ub::vector&lt;double&gt; &gt;(sol, ub::range (0, ngrid));
-<a name="l00120"></a>00120     <a class="code" href="classvotca_1_1tools_1_1Spline.html#812433af391b72fcd0d01042c39029b7">_f2</a> = ub::vector_range&lt;ub::vector&lt;double&gt; &gt;(sol, ub::range (ngrid, 2*ngrid));
-<a name="l00121"></a>00121 }
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123 }}
+<a name="l00086"></a>00086     <span class="keyword">const</span> <span class="keywordtype">int</span> N = x.size();
+<a name="l00087"></a>00087     <span class="keyword">const</span> <span class="keywordtype">int</span> ngrid = <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>.size();
+<a name="l00088"></a>00088     
+<a name="l00089"></a>00089     <span class="comment">// construct the equation</span>
+<a name="l00090"></a>00090     <span class="comment">// A*u = b</span>
+<a name="l00091"></a>00091     <span class="comment">// where u = { {f[i]}, {f''[i]} }</span>
+<a name="l00092"></a>00092     <span class="comment">// and b[i] = y[i] for 0&lt;=i&lt;N</span>
+<a name="l00093"></a>00093     <span class="comment">// and b[i]=0 for i&gt;=N (for smoothing condition)</span>
+<a name="l00094"></a>00094     <span class="comment">// A[i,j] contains the data fitting + the spline smoothing conditions</span>
+<a name="l00095"></a>00095     
+<a name="l00096"></a>00096     ub::matrix&lt;double&gt; <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#7ee81d2c52c4e378f062b982583f8d0e">A</a>(N, 2*ngrid);
+<a name="l00097"></a>00097     ub::vector&lt;double&gt; <a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>(N);    
+<a name="l00098"></a>00098     ub::matrix&lt;double&gt; B_constr(ngrid, 2*ngrid);  <span class="comment">// Matrix with smoothing conditions</span>
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100     A = ub::zero_matrix&lt;double&gt;(N, 2*ngrid);
+<a name="l00101"></a>00101     b  = ub::zero_vector&lt;double&gt;(N);
+<a name="l00102"></a>00102     B_constr = ub::zero_matrix&lt;double&gt;(ngrid, 2*ngrid);
+<a name="l00103"></a>00103     
+<a name="l00104"></a>00104     <span class="comment">// Construct smoothing matrix</span>
+<a name="l00105"></a>00105     <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#0b3ec8677a98f01fa12fa47aeb91818c" title="Add boundary conditions to fitting matrix.">AddBCToFitMatrix</a>(B_constr, 0);
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107     <span class="comment">// construct the matrix to fit the points and the vector b</span>
+<a name="l00108"></a>00108     <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#21673bf938ff960bdc3fbbda5947fe4c" title="Add a point (one entry) to fitting matrix.">AddToFitMatrix</a>(A, x, 0);
+<a name="l00109"></a>00109     b = -y; <span class="comment">// why is it -y?</span>
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111     <span class="comment">// now do a constrained qr solve</span>
+<a name="l00112"></a>00112     ub::vector&lt;double&gt; sol(2*ngrid);
+<a name="l00113"></a>00113     <a class="code" href="namespacevotca_1_1tools.html#7b789991041c9a0aec760ffd20c599b8" title="solves A*x=b under the constraint B*x = 0">votca::tools::linalg_constrained_qrsolve</a>(sol, A, b, B_constr);
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     <span class="comment">// check vector "sol" for nan's</span>
+<a name="l00116"></a>00116     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;2*ngrid; i++) {
+<a name="l00117"></a>00117         <span class="keywordflow">if</span>( (std::isinf(sol(i))) || (std::isnan(sol(i))) ) {
+<a name="l00118"></a>00118             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"error in CubicSpline::Fit : value nan occurred due to wrong fitgrid boundaries"</span>);
+<a name="l00119"></a>00119         }
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122     <a class="code" href="classvotca_1_1tools_1_1Spline.html#59942d3af044d828aded5c6d737a79f8">_f</a> = ub::vector_range&lt;ub::vector&lt;double&gt; &gt;(sol, ub::range (0, ngrid));
+<a name="l00123"></a>00123     <a class="code" href="classvotca_1_1tools_1_1Spline.html#812433af391b72fcd0d01042c39029b7">_f2</a> = ub::vector_range&lt;ub::vector&lt;double&gt; &gt;(sol, ub::range (ngrid, 2*ngrid));
+<a name="l00124"></a>00124 }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
