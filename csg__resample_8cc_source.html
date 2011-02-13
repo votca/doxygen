@@ -189,7 +189,7 @@
 <a name="l00166"></a>00166         <span class="keywordflow">if</span> (!vm.count(<span class="stringliteral">"nocut"</span>)) {
 <a name="l00167"></a>00167             <span class="comment">// determine vector size</span>
 <a name="l00168"></a>00168             <span class="keywordtype">int</span> minindex=-1, maxindex;
-<a name="l00169"></a>00169             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>().size(); i++) {
+<a name="l00169"></a>00169             <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>().size(); i++) {
 <a name="l00170"></a>00170                 <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i)&lt;sp_min) {
 <a name="l00171"></a>00171                     minindex = i;
 <a name="l00172"></a>00172                 }
@@ -216,10 +216,10 @@
 <a name="l00193"></a>00193                 spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#e2c83a537169f468d0f0773f19506af1" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">Fit</a>(x_copy, y_copy);
 <a name="l00194"></a>00194             }   
 <a name="l00195"></a>00195         } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <span class="keywordtype">char</span>* message) {
-<a name="l00196"></a>00196             <span class="keywordflow">if</span>(message=<span class="stringliteral">"qrsolve_zero_column_in_matrix"</span>) {
+<a name="l00196"></a>00196             <span class="keywordflow">if</span>(strcmp(<span class="stringliteral">"qrsolve_zero_column_in_matrix"</span>,message)) {
 <a name="l00197"></a>00197                 <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"error in Linalg::linalg_qrsolve : Not enough data for fit, please adjust grid (zero row in fit matrix)"</span>);
 <a name="l00198"></a>00198             }    
-<a name="l00199"></a>00199             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(message=<span class="stringliteral">"constrained_qrsolve_zero_column_in_matrix"</span>) {
+<a name="l00199"></a>00199             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(<span class="stringliteral">"constrained_qrsolve_zero_column_in_matrix"</span>,message)) {
 <a name="l00200"></a>00200                 <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"error in Linalg::linalg_constrained_qrsolve : Not enough data for fit, please adjust grid (zero row in fit matrix)"</span>);
 <a name="l00201"></a>00201             }
 <a name="l00202"></a>00202             <span class="keywordflow">else</span> <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Unknown error in csg_resample while fitting."</span>);
@@ -229,10 +229,10 @@
 <a name="l00206"></a>00206         <span class="keywordflow">try</span> {
 <a name="l00207"></a>00207             spline-&gt;<a class="code" href="classvotca_1_1tools_1_1Spline.html#6ef26f5e5aa8bd3de83ef02a558e1b58" title="Calculate interpolating spline for given (x,y) values. Points on resulting spline...">Interpolate</a>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(), in.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>());
 <a name="l00208"></a>00208         } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <span class="keywordtype">char</span>* message) {
-<a name="l00209"></a>00209             <span class="keywordflow">if</span>(message=<span class="stringliteral">"qrsolve_zero_column_in_matrix"</span>) {
+<a name="l00209"></a>00209             <span class="keywordflow">if</span>(strcmp(<span class="stringliteral">"qrsolve_zero_column_in_matrix"</span>,message)) {
 <a name="l00210"></a>00210                 <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"error in Linalg::linalg_qrsolve : Not enough data, please adjust grid (zero row in fit matrix)"</span>);
 <a name="l00211"></a>00211             }
-<a name="l00212"></a>00212             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(message=<span class="stringliteral">"constrained_qrsolve_zero_column_in_matrix"</span>) {
+<a name="l00212"></a>00212             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(<span class="stringliteral">"constrained_qrsolve_zero_column_in_matrix"</span>,message)) {
 <a name="l00213"></a>00213                 <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"error in Linalg::linalg_constrained_qrsolve : Not enough data, please adjust grid (zero row in fit matrix)"</span>);
 <a name="l00214"></a>00214             }
 <a name="l00215"></a>00215             <span class="keywordflow">else</span> <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Unknown error in csg_resample while interpolating."</span>);

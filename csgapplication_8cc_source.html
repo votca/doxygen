@@ -314,7 +314,7 @@
 <a name="l00302"></a>00302                 <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#696590e5eac93438118101b5ff5d1d35">_is_first_frame</a> = <span class="keyword">true</span>;
 <a name="l00304"></a>00304                 <span class="comment">//start threads</span>
 <a name="l00305"></a>00305                 <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#fc29487708dadeb129518a5b4bbea8b8">DoThreaded</a>()) {
-<a name="l00306"></a>00306                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++) {
+<a name="l00306"></a>00306                     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++) {
 <a name="l00307"></a>00307 
 <a name="l00308"></a>00308                         <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
 <a name="l00309"></a>00309                             <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> *myMutexIn = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a>;
@@ -328,7 +328,7 @@
 <a name="l00317"></a>00317                             myMutexOut-&gt;<a class="code" href="classvotca_1_1tools_1_1Mutex.html#82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();
 <a name="l00318"></a>00318                         }
 <a name="l00319"></a>00319                     }
-<a name="l00320"></a>00320                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++)
+<a name="l00320"></a>00320                     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++)
 <a name="l00321"></a>00321                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread]-&gt;Start();
 <a name="l00322"></a>00322 
 <a name="l00323"></a>00323                     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
@@ -338,7 +338,7 @@
 <a name="l00327"></a>00327                     }
 <a name="l00328"></a>00328                     <span class="comment">// mutex needed for merging if SynchronizeThreads()==False</span>
 <a name="l00329"></a>00329                     <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> mergeMutex;
-<a name="l00330"></a>00330                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++) {
+<a name="l00330"></a>00330                     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>.size(); thread++) {
 <a name="l00331"></a>00331                         <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread]-&gt;WaitDone();
 <a name="l00332"></a>00332                         <span class="keywordflow">if</span> (!<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#44eb180a44e5b9660e6b58bdaaed9d37">SynchronizeThreads</a>()) {
 <a name="l00333"></a>00333                             mergeMutex.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();
@@ -347,7 +347,7 @@
 <a name="l00336"></a>00336                         }
 <a name="l00337"></a>00337                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#c48d8b9f266364fba670d718e328260b">_myWorkers</a>[thread];
 <a name="l00338"></a>00338                     }
-<a name="l00339"></a>00339                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>.size(); ++thread) {
+<a name="l00339"></a>00339                     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> thread = 0; thread &lt; <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>.size(); ++thread) {
 <a name="l00340"></a>00340                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#0f8a979260552f38f4997a30404898da" title="stores Mutexes used to impose order for input">_threadsMutexesIn</a>[thread];
 <a name="l00341"></a>00341                         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#447513b244c5ee8dfcbc8cdfe6a6ee88" title="stores Mutexes used to impose order for output">_threadsMutexesOut</a>[thread];
 <a name="l00342"></a>00342                     }
