@@ -195,21 +195,19 @@
 <a name="l00176"></a>00176                 
 <a name="l00177"></a>00177     pos_openvar = input_line.find(str_find);
 <a name="l00178"></a>00178     <span class="keywordflow">if</span> (pos_openvar == string::npos) {
-<a name="l00179"></a>00179         cerr &lt;&lt; <span class="stringliteral">"Can't find '"</span> &lt;&lt; variable &lt;&lt; <span class="stringliteral">"' variable in blockfile.\n"</span>;
-<a name="l00180"></a>00180         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00181"></a>00181     }
-<a name="l00182"></a>00182     input_line = input_line.substr(pos_openvar+variable.length()+2);
-<a name="l00183"></a>00183     pos_closevar = input_line.find(<span class="charliteral">'}'</span>);
-<a name="l00184"></a>00184     <span class="keywordflow">if</span> (pos_closevar == string::npos) {
-<a name="l00185"></a>00185         cerr &lt;&lt; <span class="stringliteral">"Can't find '}' character in closing '"</span> &lt;&lt; variable &lt;&lt; <span class="stringliteral">"' variable of the blockfile.\n"</span>;
-<a name="l00186"></a>00186         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00187"></a>00187     }
-<a name="l00188"></a>00188     input_line = input_line.substr(0,pos_closevar);             
-<a name="l00189"></a>00189                 
-<a name="l00190"></a>00190     <span class="keywordflow">return</span> input_line;          
-<a name="l00191"></a>00191 }
-<a name="l00192"></a>00192 
-<a name="l00193"></a>00193 }}
+<a name="l00179"></a>00179         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"Can't find '"</span> + variable + <span class="stringliteral">"' variable in blockfile.\n"</span>);
+<a name="l00180"></a>00180     }
+<a name="l00181"></a>00181     input_line = input_line.substr(pos_openvar+variable.length()+2);
+<a name="l00182"></a>00182     pos_closevar = input_line.find(<span class="charliteral">'}'</span>);
+<a name="l00183"></a>00183     <span class="keywordflow">if</span> (pos_closevar == string::npos) {
+<a name="l00184"></a>00184         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"Can't find '}' character in closing '"</span> + variable + <span class="stringliteral">"' variable of the blockfile.\n"</span>);
+<a name="l00185"></a>00185     }
+<a name="l00186"></a>00186     input_line = input_line.substr(0,pos_closevar);             
+<a name="l00187"></a>00187                 
+<a name="l00188"></a>00188     <span class="keywordflow">return</span> input_line;          
+<a name="l00189"></a>00189 }
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
