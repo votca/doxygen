@@ -47,7 +47,7 @@
 <a name="l00024"></a>00024   : _do_exclusions(false), _match_function(0)
 <a name="l00025"></a>00025 {
 <a name="l00026"></a>00026     setPairType&lt;BeadPair&gt;();
-<a name="l00027"></a>00027     <a class="code" href="classvotca_1_1csg_1_1NBList.html#eb4d56cf1eb223ee22015fb747a65326" title="match function for class member functions">SetMatchFunction</a>(<a class="code" href="classvotca_1_1csg_1_1NBList.html#c5988a4165520dc0c9b5d60c9944ebac" title="standard match function">NBList::match_always</a>);
+<a name="l00027"></a>00027     <a class="code" href="classvotca_1_1csg_1_1NBList.html#ee5466122835bbaff41e635d33f26624" title="match function for class member functions">SetMatchFunction</a>(<a class="code" href="classvotca_1_1csg_1_1NBList.html#92d72411db1c82ab2243bcfde1a2e09a" title="standard match function">NBList::match_always</a>);
 <a name="l00028"></a>00028 }
 <a name="l00029"></a>00029 
 <a name="l00030"></a><a class="code" href="classvotca_1_1csg_1_1NBList.html#eca855d5ea391992e0f2950f94474823">00030</a> <a class="code" href="classvotca_1_1csg_1_1NBList.html#eca855d5ea391992e0f2950f94474823">NBList::~NBList</a>()
@@ -82,20 +82,21 @@
 <a name="l00059"></a>00059             <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> v = (*iter2)-&gt;getPos();
 <a name="l00060"></a>00060             
 <a name="l00061"></a>00061             <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> r = top-&gt;BCShortestConnection(u, v);
-<a name="l00062"></a>00062             <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1NBList.html#8efbd2cfa208b0819e3f8c6b7d995e03" title="take into account exclusions from topolgoy">_do_exclusions</a>)
-<a name="l00063"></a>00063                 <span class="keywordflow">if</span>(top-&gt;getExclusions().IsExcluded((*iter1)-&gt;getId(), (*iter2)-&gt;getId())) {
-<a name="l00064"></a>00064                     <span class="keywordflow">continue</span>;
-<a name="l00065"></a>00065                 }
-<a name="l00066"></a>00066                     
-<a name="l00067"></a>00067             <span class="keywordflow">if</span>(<a class="code" href="namespacevotca_1_1tools.html#bc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(r) &lt; <a class="code" href="classvotca_1_1csg_1_1NBList.html#d3563fcb2cc4e13695bd738406ed657f" title="cutoff">_cutoff</a>)
-<a name="l00068"></a>00068                 <span class="keywordflow">if</span>((*<a class="code" href="classvotca_1_1csg_1_1NBList.html#ee7e9a3682b0325c2da034fd11479cd5">_match_function</a>)(*iter1, *iter2, r))
+<a name="l00062"></a>00062             <span class="keywordtype">double</span> d = <a class="code" href="namespacevotca_1_1tools.html#bc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(r);
+<a name="l00063"></a>00063             <span class="keywordflow">if</span>(d &lt; <a class="code" href="classvotca_1_1csg_1_1NBList.html#d3563fcb2cc4e13695bd738406ed657f" title="cutoff">_cutoff</a>){
+<a name="l00064"></a>00064             <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1NBList.html#8efbd2cfa208b0819e3f8c6b7d995e03" title="take into account exclusions from topolgoy">_do_exclusions</a>)
+<a name="l00065"></a>00065                 <span class="keywordflow">if</span>(top-&gt;getExclusions().IsExcluded((*iter1)-&gt;getId(), (*iter2)-&gt;getId())) {
+<a name="l00066"></a>00066                     <span class="keywordflow">continue</span>;
+<a name="l00067"></a>00067                 }
+<a name="l00068"></a>00068                 <span class="keywordflow">if</span>((*<a class="code" href="classvotca_1_1csg_1_1NBList.html#ee7e9a3682b0325c2da034fd11479cd5">_match_function</a>)(*iter1, *iter2, r, d))
 <a name="l00069"></a>00069                     <span class="keywordflow">if</span>(!<a class="code" href="classvotca_1_1csg_1_1PairList.html#76ec0c80117231af3fe4e638e24eb14f">FindPair</a>(*iter1, *iter2))
 <a name="l00070"></a>00070                         <a class="code" href="classvotca_1_1csg_1_1PairList.html#302d2df9a93e9a821caaf1cc06d7970a">AddPair</a>( <a class="code" href="classvotca_1_1csg_1_1NBList.html#d7581f297029f82a1f7a9023435ba6e7" title="the current bead pair creator function">_pair_creator</a>(*iter1, *iter2, r));
-<a name="l00071"></a>00071         } 
-<a name="l00072"></a>00072     }
-<a name="l00073"></a>00073 }
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075 }}
+<a name="l00071"></a>00071             }
+<a name="l00072"></a>00072         } 
+<a name="l00073"></a>00073     }
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

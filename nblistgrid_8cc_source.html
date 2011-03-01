@@ -176,22 +176,23 @@
 <a name="l00153"></a>00153     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> u = bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#feb069f0e094fc7b4e1da07efe9751ce">getPos</a>();
 <a name="l00154"></a>00154 
 <a name="l00155"></a>00155     <span class="keywordflow">for</span>(iter=cell.<a class="code" href="structvotca_1_1csg_1_1NBListGrid_1_1cell__t.html#44c43d8e1720528eccaa1bd640a7f1fc">_beads</a>.begin(); iter!=cell.<a class="code" href="structvotca_1_1csg_1_1NBListGrid_1_1cell__t.html#44c43d8e1720528eccaa1bd640a7f1fc">_beads</a>.end(); ++iter) {
-<a name="l00156"></a>00156         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1NBList.html#8efbd2cfa208b0819e3f8c6b7d995e03" title="take into account exclusions from topolgoy">_do_exclusions</a>)
-<a name="l00157"></a>00157             <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1NBListGrid.html#931d5e52a27eeecf8cc67abf8c1bbad3">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#36fb20d98b9d7ebb7e198ba93224dfb5">getExclusions</a>().<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1d8367709a2e4b70f0764f90eac42e66">IsExcluded</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#0612a74f7f841050d11133e55c966f79">getId</a>(), (*iter)-&gt;getId())) {
-<a name="l00158"></a>00158                 <span class="keywordflow">continue</span>;
-<a name="l00159"></a>00159             }
-<a name="l00160"></a>00160 
-<a name="l00161"></a>00161         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> v = (*iter)-&gt;getPos();
-<a name="l00162"></a>00162         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> r = <a class="code" href="classvotca_1_1csg_1_1NBListGrid.html#931d5e52a27eeecf8cc67abf8c1bbad3">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#d583d2b7da415e7f1f217560fb63fc2b" title="calculate shortest vector connecting two points">BCShortestConnection</a>(u, v);
-<a name="l00163"></a>00163         
-<a name="l00164"></a>00164         <span class="keywordflow">if</span>(<a class="code" href="namespacevotca_1_1tools.html#bc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(r) &lt; <a class="code" href="classvotca_1_1csg_1_1NBList.html#d3563fcb2cc4e13695bd738406ed657f" title="cutoff">_cutoff</a>)
-<a name="l00165"></a>00165             <span class="keywordflow">if</span>((*<a class="code" href="classvotca_1_1csg_1_1NBList.html#ee7e9a3682b0325c2da034fd11479cd5">_match_function</a>)(bead, *iter, r))
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> v = (*iter)-&gt;getPos();
+<a name="l00158"></a>00158         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> r = <a class="code" href="classvotca_1_1csg_1_1NBListGrid.html#931d5e52a27eeecf8cc67abf8c1bbad3">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#d583d2b7da415e7f1f217560fb63fc2b" title="calculate shortest vector connecting two points">BCShortestConnection</a>(u, v);
+<a name="l00159"></a>00159         <span class="keywordtype">double</span> d = <a class="code" href="namespacevotca_1_1tools.html#bc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(r);
+<a name="l00160"></a>00160         <span class="keywordflow">if</span>(d &lt; <a class="code" href="classvotca_1_1csg_1_1NBList.html#d3563fcb2cc4e13695bd738406ed657f" title="cutoff">_cutoff</a>){
+<a name="l00161"></a>00161         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1NBList.html#8efbd2cfa208b0819e3f8c6b7d995e03" title="take into account exclusions from topolgoy">_do_exclusions</a>)
+<a name="l00162"></a>00162             <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1NBListGrid.html#931d5e52a27eeecf8cc67abf8c1bbad3">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#36fb20d98b9d7ebb7e198ba93224dfb5">getExclusions</a>().<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1d8367709a2e4b70f0764f90eac42e66">IsExcluded</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#0612a74f7f841050d11133e55c966f79">getId</a>(), (*iter)-&gt;getId())) {
+<a name="l00163"></a>00163                 <span class="keywordflow">continue</span>;
+<a name="l00164"></a>00164             }
+<a name="l00165"></a>00165             <span class="keywordflow">if</span>((*<a class="code" href="classvotca_1_1csg_1_1NBList.html#ee7e9a3682b0325c2da034fd11479cd5">_match_function</a>)(bead, *iter, r, d))
 <a name="l00166"></a>00166                <span class="keywordflow">if</span>(!<a class="code" href="classvotca_1_1csg_1_1PairList.html#76ec0c80117231af3fe4e638e24eb14f">FindPair</a>(bead, *iter))
 <a name="l00167"></a>00167                     <a class="code" href="classvotca_1_1csg_1_1PairList.html#302d2df9a93e9a821caaf1cc06d7970a">AddPair</a>(<a class="code" href="classvotca_1_1csg_1_1NBList.html#d7581f297029f82a1f7a9023435ba6e7" title="the current bead pair creator function">_pair_creator</a>(bead, *iter, r));
-<a name="l00168"></a>00168     }
-<a name="l00169"></a>00169 }
-<a name="l00170"></a>00170 
-<a name="l00171"></a>00171 }}
+<a name="l00168"></a>00168         }
+<a name="l00169"></a>00169     }
+<a name="l00170"></a>00170 }
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
