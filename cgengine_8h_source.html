@@ -79,29 +79,45 @@
 <a name="l00070"></a>00070     
 <a name="l00071"></a>00071         
 <a name="l00072"></a>00072     <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a> *<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#870f1630ddff571146a5866b6e78e05f">getMoleculeDef</a>(<span class="keywordtype">string</span> name);
-<a name="l00073"></a>00073         
-<a name="l00074"></a>00074 <span class="keyword">private</span>:
-<a name="l00075"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">00075</a>     map&lt;string, CGMoleculeDef *&gt; <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>;
-<a name="l00076"></a>00076 };
-<a name="l00077"></a>00077 
-<a name="l00078"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#870f1630ddff571146a5866b6e78e05f">00078</a> <span class="keyword">inline</span> <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a> *<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#870f1630ddff571146a5866b6e78e05f">CGEngine::getMoleculeDef</a>(<span class="keywordtype">string</span> name)
-<a name="l00079"></a>00079 {
-<a name="l00080"></a>00080     map&lt;string, CGMoleculeDef*&gt;::iterator iter;
-<a name="l00081"></a>00081     
-<a name="l00082"></a>00082     <span class="comment">// if there is only 1 molecule definition, don't care about the name</span>
-<a name="l00083"></a>00083     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>.size()==1 &amp;&amp; name == <span class="stringliteral">"unnamed"</span>) {
-<a name="l00084"></a>00084             <span class="keywordflow">return</span> (*(<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>.begin())).second;
-<a name="l00085"></a>00085     }
-<a name="l00086"></a>00086     
-<a name="l00087"></a>00087     iter = <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>.find(name);        
-<a name="l00088"></a>00088     <span class="keywordflow">if</span>(iter == <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>.end()) <span class="keywordflow">return</span> NULL;
-<a name="l00089"></a>00089     <span class="keywordflow">return</span> (*iter).second;
-<a name="l00090"></a>00090 }
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092 }}
+<a name="l00073"></a>00073 
+<a name="l00078"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#0bd00778649ef423db47b94e5387216d">00078</a>     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#0bd00778649ef423db47b94e5387216d" title="ignores molecule in mapping process">AddIgnore</a>(<span class="keywordtype">string</span> pattern) { <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#e03da95a4c001c8c953f80ae4664570d">_ignores</a>.push_back(pattern); }
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 
+<a name="l00086"></a>00086     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#9eb9b8da6e1e9b7417a8959933916a85" title="checks whether molecule is ignored">IsIgnored</a>(<span class="keywordtype">string</span> ident);
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 <span class="keyword">private</span>:
+<a name="l00089"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">00089</a>     map&lt;string, CGMoleculeDef *&gt; <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>;
+<a name="l00090"></a>00090 
+<a name="l00091"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#e03da95a4c001c8c953f80ae4664570d">00091</a>     std::list&lt;string&gt; <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#e03da95a4c001c8c953f80ae4664570d">_ignores</a>;
+<a name="l00092"></a>00092 };
 <a name="l00093"></a>00093 
-<a name="l00094"></a>00094 <span class="preprocessor">#endif  </span><span class="comment">/* _cgengine_H */</span>
-<a name="l00095"></a>00095 
+<a name="l00094"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#870f1630ddff571146a5866b6e78e05f">00094</a> <span class="keyword">inline</span> <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a> *<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#870f1630ddff571146a5866b6e78e05f">CGEngine::getMoleculeDef</a>(<span class="keywordtype">string</span> name)
+<a name="l00095"></a>00095 {
+<a name="l00096"></a>00096     map&lt;string, CGMoleculeDef*&gt;::iterator iter;
+<a name="l00097"></a>00097     
+<a name="l00098"></a>00098     <span class="comment">// if there is only 1 molecule definition, don't care about the name</span>
+<a name="l00099"></a>00099     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>.size()==1 &amp;&amp; name == <span class="stringliteral">"unnamed"</span>) {
+<a name="l00100"></a>00100             <span class="keywordflow">return</span> (*(<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>.begin())).second;
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102     
+<a name="l00103"></a>00103     iter = <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>.find(name);        
+<a name="l00104"></a>00104     <span class="keywordflow">if</span>(iter == <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>.end()) <span class="keywordflow">return</span> NULL;
+<a name="l00105"></a>00105     <span class="keywordflow">return</span> (*iter).second;
+<a name="l00106"></a>00106 }
+<a name="l00107"></a>00107 
+<a name="l00108"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#9eb9b8da6e1e9b7417a8959933916a85">00108</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#9eb9b8da6e1e9b7417a8959933916a85" title="checks whether molecule is ignored">CGEngine::IsIgnored</a>(<span class="keywordtype">string</span> ident)
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110     <span class="keywordflow">for</span>(std::list&lt;string&gt;::iterator iter=<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#e03da95a4c001c8c953f80ae4664570d">_ignores</a>.begin(); iter!=<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#e03da95a4c001c8c953f80ae4664570d">_ignores</a>.end(); ++iter) {
+<a name="l00111"></a>00111         <span class="keywordflow">if</span>(<a class="code" href="namespacevotca_1_1tools.html#4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(iter-&gt;c_str(), ident.c_str()))
+<a name="l00112"></a>00112             <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00113"></a>00113     }
+<a name="l00114"></a>00114     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00115"></a>00115 }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 }}
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 <span class="preprocessor">#endif  </span><span class="comment">/* _cgengine_H */</span>
+<a name="l00120"></a>00120 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

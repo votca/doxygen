@@ -66,40 +66,41 @@
 <a name="l00046"></a>00046     <a class="code" href="classvotca_1_1csg_1_1TopologyMap.html">TopologyMap</a> *m = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1TopologyMap.html">TopologyMap</a>(&amp;in, &amp;out);
 <a name="l00047"></a>00047     <span class="keywordflow">for</span>(iter=mols.begin(); iter!=mols.end(); ++iter) {
 <a name="l00048"></a>00048         <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mol = *iter;
-<a name="l00049"></a>00049         <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a> *def = <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#870f1630ddff571146a5866b6e78e05f">getMoleculeDef</a>(mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#caab8d33edc32fe9e2a7fb43314887e1" title="get the name of the molecule">getName</a>());
-<a name="l00050"></a>00050         <span class="keywordflow">if</span>(!def) {
-<a name="l00051"></a>00051             cout &lt;&lt; <span class="stringliteral">"--------------------------------------\n"</span>
-<a name="l00052"></a>00052                  &lt;&lt; <span class="stringliteral">"WARNING: unknown molecule \""</span> &lt;&lt; mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#caab8d33edc32fe9e2a7fb43314887e1" title="get the name of the molecule">getName</a>() &lt;&lt; <span class="stringliteral">"\" with id "</span>
-<a name="l00053"></a>00053                  &lt;&lt; mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>() &lt;&lt; <span class="stringliteral">" in topology"</span> &lt;&lt; endl
-<a name="l00054"></a>00054                  &lt;&lt; <span class="stringliteral">"molecule will not be mapped to CG representation\n"</span>
-<a name="l00055"></a>00055                  &lt;&lt; <span class="stringliteral">"Check weather a mapping file for all molecule exists, was specified in --cg "</span>
-<a name="l00056"></a>00056                  &lt;&lt; <span class="stringliteral">"separated by ; and the ident tag in xml-file matches the molecule name\n"</span>
-<a name="l00057"></a>00057                  &lt;&lt; <span class="stringliteral">"--------------------------------------\n"</span>;
-<a name="l00058"></a>00058             <span class="keywordflow">continue</span>;
-<a name="l00059"></a>00059         }
-<a name="l00060"></a>00060         <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mcg = def-&gt;<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#88b02319a7b3671482e4d5bac6ab1a6f">CreateMolecule</a>(out);
-<a name="l00061"></a>00061         <a class="code" href="classvotca_1_1csg_1_1Map.html">Map</a> *map = def-&gt;<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#1654156b409f8a2d1f709357987279c8">CreateMap</a>(*mol, *mcg);
-<a name="l00062"></a>00062         m-&gt;<a class="code" href="classvotca_1_1csg_1_1TopologyMap.html#57fea6d0d56840223dc80147a4f51b5d">AddMoleculeMap</a>(map);
-<a name="l00063"></a>00063     }
-<a name="l00064"></a>00064     out.<a class="code" href="classvotca_1_1csg_1_1Topology.html#422931fd6d2c0fcf559dc6ee1c3ee4f6">RebuildExclusions</a>();    
-<a name="l00065"></a>00065     <span class="keywordflow">return</span> m;
-<a name="l00066"></a>00066 }
-<a name="l00067"></a>00067 
-<a name="l00068"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#eef7b98a818c8d1eb9f9d3f57613bdca">00068</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#eef7b98a818c8d1eb9f9d3f57613bdca">CGEngine::LoadMoleculeType</a>(<span class="keywordtype">string</span> filename)
-<a name="l00069"></a>00069 {
-<a name="l00070"></a>00070     <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(filename, <span class="stringliteral">";"</span>);
-<a name="l00071"></a>00071     <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> iter;
-<a name="l00072"></a>00072    
-<a name="l00073"></a>00073     <span class="keywordflow">for</span>(iter=tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); iter!=tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++iter) {
-<a name="l00074"></a>00074         <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a> *def = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a>();
-<a name="l00075"></a>00075         <span class="keywordtype">string</span>  file = *iter;
-<a name="l00076"></a>00076         boost::trim(file);
-<a name="l00077"></a>00077         def-&gt;<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#71f24fd594716e063170743877e1fa39">Load</a>(file);
-<a name="l00078"></a>00078         <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>[def-&gt;<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#b6098132b1ef285a7b20435d4d954162">getIdent</a>()] = def;
-<a name="l00079"></a>00079     }
-<a name="l00080"></a>00080 }
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 }}
+<a name="l00049"></a>00049         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1CGEngine.html#9eb9b8da6e1e9b7417a8959933916a85" title="checks whether molecule is ignored">IsIgnored</a>(mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#caab8d33edc32fe9e2a7fb43314887e1" title="get the name of the molecule">getName</a>())) <span class="keywordflow">continue</span>;
+<a name="l00050"></a>00050         <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a> *def = <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#870f1630ddff571146a5866b6e78e05f">getMoleculeDef</a>(mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#caab8d33edc32fe9e2a7fb43314887e1" title="get the name of the molecule">getName</a>());
+<a name="l00051"></a>00051         <span class="keywordflow">if</span>(!def) {
+<a name="l00052"></a>00052             cout &lt;&lt; <span class="stringliteral">"--------------------------------------\n"</span>
+<a name="l00053"></a>00053                  &lt;&lt; <span class="stringliteral">"WARNING: unknown molecule \""</span> &lt;&lt; mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#caab8d33edc32fe9e2a7fb43314887e1" title="get the name of the molecule">getName</a>() &lt;&lt; <span class="stringliteral">"\" with id "</span>
+<a name="l00054"></a>00054                  &lt;&lt; mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>() &lt;&lt; <span class="stringliteral">" in topology"</span> &lt;&lt; endl
+<a name="l00055"></a>00055                  &lt;&lt; <span class="stringliteral">"molecule will not be mapped to CG representation\n"</span>
+<a name="l00056"></a>00056                  &lt;&lt; <span class="stringliteral">"Check weather a mapping file for all molecule exists, was specified in --cg "</span>
+<a name="l00057"></a>00057                  &lt;&lt; <span class="stringliteral">"separated by ; and the ident tag in xml-file matches the molecule name\n"</span>
+<a name="l00058"></a>00058                  &lt;&lt; <span class="stringliteral">"--------------------------------------\n"</span>;
+<a name="l00059"></a>00059             <span class="keywordflow">continue</span>;
+<a name="l00060"></a>00060         }
+<a name="l00061"></a>00061         <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mcg = def-&gt;<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#88b02319a7b3671482e4d5bac6ab1a6f">CreateMolecule</a>(out);
+<a name="l00062"></a>00062         <a class="code" href="classvotca_1_1csg_1_1Map.html">Map</a> *map = def-&gt;<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#1654156b409f8a2d1f709357987279c8">CreateMap</a>(*mol, *mcg);
+<a name="l00063"></a>00063         m-&gt;<a class="code" href="classvotca_1_1csg_1_1TopologyMap.html#57fea6d0d56840223dc80147a4f51b5d">AddMoleculeMap</a>(map);
+<a name="l00064"></a>00064     }
+<a name="l00065"></a>00065     out.<a class="code" href="classvotca_1_1csg_1_1Topology.html#422931fd6d2c0fcf559dc6ee1c3ee4f6">RebuildExclusions</a>();    
+<a name="l00066"></a>00066     <span class="keywordflow">return</span> m;
+<a name="l00067"></a>00067 }
+<a name="l00068"></a>00068 
+<a name="l00069"></a><a class="code" href="classvotca_1_1csg_1_1CGEngine.html#eef7b98a818c8d1eb9f9d3f57613bdca">00069</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#eef7b98a818c8d1eb9f9d3f57613bdca">CGEngine::LoadMoleculeType</a>(<span class="keywordtype">string</span> filename)
+<a name="l00070"></a>00070 {
+<a name="l00071"></a>00071     <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(filename, <span class="stringliteral">";"</span>);
+<a name="l00072"></a>00072     <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> iter;
+<a name="l00073"></a>00073    
+<a name="l00074"></a>00074     <span class="keywordflow">for</span>(iter=tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); iter!=tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++iter) {
+<a name="l00075"></a>00075         <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a> *def = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html" title="definition of a coarse grained molecule">CGMoleculeDef</a>();
+<a name="l00076"></a>00076         <span class="keywordtype">string</span>  file = *iter;
+<a name="l00077"></a>00077         boost::trim(file);
+<a name="l00078"></a>00078         def-&gt;<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#71f24fd594716e063170743877e1fa39">Load</a>(file);
+<a name="l00079"></a>00079         <a class="code" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a>[def-&gt;<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#b6098132b1ef285a7b20435d4d954162">getIdent</a>()] = def;
+<a name="l00080"></a>00080     }
+<a name="l00081"></a>00081 }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

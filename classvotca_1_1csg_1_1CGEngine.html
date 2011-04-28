@@ -46,8 +46,16 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classvotca_1_1csg_1_1CGMoleculeDef.html">CGMoleculeDef</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1csg_1_1CGEngine.html#870f1630ddff571146a5866b6e78e05f">getMoleculeDef</a> (string name)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1csg_1_1CGEngine.html#0bd00778649ef423db47b94e5387216d">AddIgnore</a> (string pattern)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ignores molecule in mapping process  <a href="#0bd00778649ef423db47b94e5387216d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1csg_1_1CGEngine.html#9eb9b8da6e1e9b7417a8959933916a85">IsIgnored</a> (string ident)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">checks whether molecule is ignored  <a href="#9eb9b8da6e1e9b7417a8959933916a85"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">map&lt; string, <a class="el" href="classvotca_1_1csg_1_1CGMoleculeDef.html">CGMoleculeDef</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1csg_1_1CGEngine.html#b19d89e0c2e4b867c85a87b4c4052ac3">_molecule_defs</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::list&lt; string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1csg_1_1CGEngine.html#e03da95a4c001c8c953f80ae4664570d">_ignores</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -100,6 +108,35 @@ TODO: split this into an additional VotcaApplication object
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="0bd00778649ef423db47b94e5387216d"></a><!-- doxytag: member="votca::csg::CGEngine::AddIgnore" ref="0bd00778649ef423db47b94e5387216d" args="(string pattern)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::csg::CGEngine::AddIgnore           </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>pattern</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ignores molecule in mapping process 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pattern</em>&nbsp;</td><td>glob pattern for molecule ident </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="cgengine_8h_source.html#l00078">78</a> of file <a class="el" href="cgengine_8h_source.html">cgengine.h</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="a950f40170695d849fc81784921227aa"></a><!-- doxytag: member="votca::csg::CGEngine::CreateCGTopology" ref="a950f40170695d849fc81784921227aa" args="(Topology &amp;in, Topology &amp;out)" -->
 <div class="memitem">
 <div class="memproto">
@@ -151,7 +188,37 @@ create a coarse grained topolgy based on a given topology<p>
 
 <p>
 
-<p>Definition at line <a class="el" href="cgengine_8h_source.html#l00078">78</a> of file <a class="el" href="cgengine_8h_source.html">cgengine.h</a>.</p>
+<p>Definition at line <a class="el" href="cgengine_8h_source.html#l00094">94</a> of file <a class="el" href="cgengine_8h_source.html">cgengine.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9eb9b8da6e1e9b7417a8959933916a85"></a><!-- doxytag: member="votca::csg::CGEngine::IsIgnored" ref="9eb9b8da6e1e9b7417a8959933916a85" args="(string ident)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool votca::csg::CGEngine::IsIgnored           </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>ident</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+checks whether molecule is ignored 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ident</em>&nbsp;</td><td>identifyier of molecule </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>true if is ignored </dd></dl>
+
+<p>Definition at line <a class="el" href="cgengine_8h_source.html#l00108">108</a> of file <a class="el" href="cgengine_8h_source.html">cgengine.h</a>.</p>
 
 </div>
 </div><p>
@@ -173,11 +240,28 @@ create a coarse grained topolgy based on a given topology<p>
 
 <p>
 load molecule type from file 
-<p>Definition at line <a class="el" href="cgengine_8cc_source.html#l00068">68</a> of file <a class="el" href="cgengine_8cc_source.html">cgengine.cc</a>.</p>
+<p>Definition at line <a class="el" href="cgengine_8cc_source.html#l00069">69</a> of file <a class="el" href="cgengine_8cc_source.html">cgengine.cc</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="e03da95a4c001c8c953f80ae4664570d"></a><!-- doxytag: member="votca::csg::CGEngine::_ignores" ref="e03da95a4c001c8c953f80ae4664570d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt;string&gt; <a class="el" href="classvotca_1_1csg_1_1CGEngine.html#e03da95a4c001c8c953f80ae4664570d">votca::csg::CGEngine::_ignores</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="cgengine_8h_source.html#l00091">91</a> of file <a class="el" href="cgengine_8h_source.html">cgengine.h</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="b19d89e0c2e4b867c85a87b4c4052ac3"></a><!-- doxytag: member="votca::csg::CGEngine::_molecule_defs" ref="b19d89e0c2e4b867c85a87b4c4052ac3" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -191,7 +275,7 @@ load molecule type from file
 
 <p>
 
-<p>Definition at line <a class="el" href="cgengine_8h_source.html#l00075">75</a> of file <a class="el" href="cgengine_8h_source.html">cgengine.h</a>.</p>
+<p>Definition at line <a class="el" href="cgengine_8h_source.html#l00089">89</a> of file <a class="el" href="cgengine_8h_source.html">cgengine.h</a>.</p>
 
 </div>
 </div><p>
