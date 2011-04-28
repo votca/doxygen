@@ -126,10 +126,10 @@
 <a name="l00103"></a>00103     ex-&gt;<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#9605f465434a37ce7a283a7805a18f0d">ExcludeAll</a>(atomistic.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>());
 <a name="l00104"></a>00104 
 <a name="l00105"></a>00105     <span class="comment">// reintroduce bead internal nonbonded interaction</span>
-<a name="l00106"></a>00106     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>(); ++i) {
+<a name="l00106"></a>00106     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>(); ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
 <a name="l00107"></a>00107         exclude.clear();
 <a name="l00108"></a>00108         
-<a name="l00109"></a>00109         vector&lt;int&gt; &amp;v = cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#b2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b29e5057acd378ef87bc0ea889f57441">ParentBeads</a>();
+<a name="l00109"></a>00109         vector&lt;int&gt; &amp;v = cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#b2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b29e5057acd378ef87bc0ea889f57441">ParentBeads</a>();
 <a name="l00110"></a>00110         exclude.insert(exclude.begin(), v.begin(), v.end());
 <a name="l00111"></a>00111         ex-&gt;<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#7df6acb2794ec927a5433ef9a20ec10a">Remove</a>(exclude);
 <a name="l00112"></a>00112     }
@@ -141,8 +141,8 @@
 <a name="l00118"></a>00118             iter!=top_cg-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#20e44ccc4dd51cd426530bea8c899d31">BondedInteractions</a>().end(); ++iter) {
 <a name="l00119"></a>00119         <a class="code" href="classvotca_1_1csg_1_1Interaction.html" title="base calss for all interactions">Interaction</a> *ic = *iter;
 <a name="l00120"></a>00120         exclude.clear();
-<a name="l00121"></a>00121         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#d173732240bb2485aa41a23b6197e9c7">BeadCount</a>(); i++) {
-<a name="l00122"></a>00122             vector&lt;int&gt; &amp;v = top_cg-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#eb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#6fe5c01bfc4c08549391c57f6a4358a6">getBeadId</a>(i))-&gt;ParentBeads();
+<a name="l00121"></a>00121         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#d173732240bb2485aa41a23b6197e9c7">BeadCount</a>(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00122"></a>00122             vector&lt;int&gt; &amp;v = top_cg-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#eb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#6fe5c01bfc4c08549391c57f6a4358a6">getBeadId</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>))-&gt;ParentBeads();
 <a name="l00123"></a>00123             exclude.insert(exclude.end(), v.begin(), v.end());
 <a name="l00124"></a>00124         }
 <a name="l00125"></a>00125         ex-&gt;<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#7df6acb2794ec927a5433ef9a20ec10a">Remove</a>(exclude);
@@ -225,7 +225,7 @@
 <a name="l00202"></a>00202     }
 <a name="l00203"></a>00203 }
 <a name="l00204"></a>00204 
-<a name="l00205"></a><a class="code" href="main_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00205</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
+<a name="l00205"></a><a class="code" href="main_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00205</a> <span class="keywordtype">int</span> <a class="code" href="linktest_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
 <a name="l00206"></a>00206 {
 <a name="l00207"></a>00207     <a class="code" href="classCsgBoltzmann.html">CsgBoltzmann</a> app;
 <a name="l00208"></a>00208     app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);

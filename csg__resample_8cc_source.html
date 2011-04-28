@@ -71,7 +71,7 @@
 <a name="l00048"></a>00048     }
 <a name="l00049"></a>00049 }
 <a name="l00050"></a>00050 
-<a name="l00051"></a><a class="code" href="csg__resample_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00051</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00051"></a><a class="code" href="csg__resample_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00051</a> <span class="keywordtype">int</span> <a class="code" href="linktest_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
 <a name="l00052"></a>00052 {
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054     <span class="keywordtype">string</span> in_file, out_file, grid, fitgrid, comment, type, boundaries;
@@ -189,21 +189,21 @@
 <a name="l00166"></a>00166         <span class="keywordflow">if</span> (!vm.count(<span class="stringliteral">"nocut"</span>)) {
 <a name="l00167"></a>00167             <span class="comment">// determine vector size</span>
 <a name="l00168"></a>00168             <span class="keywordtype">int</span> minindex=-1, maxindex;
-<a name="l00169"></a>00169             <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i&lt;in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>().size(); i++) {
-<a name="l00170"></a>00170                 <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i)&lt;sp_min) {
-<a name="l00171"></a>00171                     minindex = i;
+<a name="l00169"></a>00169             <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>().size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00170"></a>00170                 <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)&lt;sp_min) {
+<a name="l00171"></a>00171                     minindex = <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>;
 <a name="l00172"></a>00172                 }
-<a name="l00173"></a>00173                 <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i)&lt;sp_max) {
-<a name="l00174"></a>00174                     maxindex = i;
+<a name="l00173"></a>00173                 <span class="keywordflow">if</span>(in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)&lt;sp_max) {
+<a name="l00174"></a>00174                     maxindex = <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>;
 <a name="l00175"></a>00175                 }
 <a name="l00176"></a>00176             }
 <a name="l00177"></a>00177             <span class="comment">// copy data values in [sp_min,sp_max] into new vectors</span>
 <a name="l00178"></a>00178             minindex++;
 <a name="l00179"></a>00179             x_copy = ub::zero_vector&lt;double&gt;(maxindex-minindex+1);
 <a name="l00180"></a>00180             y_copy = ub::zero_vector&lt;double&gt;(maxindex-minindex+1);
-<a name="l00181"></a>00181             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=minindex; i&lt;=maxindex; i++) {
-<a name="l00182"></a>00182                 x_copy(i-minindex) = in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i);
-<a name="l00183"></a>00183                 y_copy(i-minindex) = in.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>(i);
+<a name="l00181"></a>00181             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=minindex; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;=maxindex; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00182"></a>00182                 x_copy(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>-minindex) = in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
+<a name="l00183"></a>00183                 y_copy(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>-minindex) = in.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
 <a name="l00184"></a>00184             }
 <a name="l00185"></a>00185         }
 <a name="l00186"></a>00186 
@@ -251,7 +251,7 @@
 <a name="l00228"></a>00228     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>() = out.<a class="code" href="classvotca_1_1tools_1_1Table.html#fbad877d2e4c92a63586f00e9667b018">y</a>();
 <a name="l00229"></a>00229     out.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>() = ub::scalar_vector&lt;double&gt;(out.<a class="code" href="classvotca_1_1tools_1_1Table.html#6530a5c520a60921bc2af010e063c058">flags</a>().size(), <span class="charliteral">'o'</span>);
 <a name="l00230"></a>00230 
-<a name="l00231"></a>00231     <span class="keywordtype">int</span> i=0;
+<a name="l00231"></a>00231     <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0;
 <a name="l00232"></a>00232     <span class="keywordflow">for</span>(i=0; out.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(i) &lt; in.<a class="code" href="classvotca_1_1tools_1_1Table.html#cd6d463b3b46ea23bc8304685ae88a34">x</a>(0) &amp;&amp; i&lt;out.<a class="code" href="classvotca_1_1tools_1_1Table.html#ed1d11d48a380981145a6b0aaf952322">size</a>(); ++i);
 <a name="l00233"></a>00233 
 <a name="l00234"></a>00234     <span class="keywordtype">int</span> j=0;

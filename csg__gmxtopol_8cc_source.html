@@ -97,11 +97,11 @@
 <a name="l00074"></a>00074 {
 <a name="l00075"></a>00075     out &lt;&lt; <span class="stringliteral">"[atoms]\n"</span>;
 <a name="l00076"></a>00076     out &lt;&lt; <span class="stringliteral">"; nr type resnr residue atom cgnr charge mass\n"</span>;
-<a name="l00077"></a>00077     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>(); ++i) {
-<a name="l00078"></a>00078         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>=cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#b2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(i);
+<a name="l00077"></a>00077     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>(); ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
+<a name="l00078"></a>00078         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>=cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#b2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
 <a name="l00079"></a>00079        
 <a name="l00080"></a>00080         out &lt;&lt; format(<span class="stringliteral">"%d %s 1 RES %s %d %f %f\n"</span>)
-<a name="l00081"></a>00081             % (i+1) % b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#41703dac951dadcb3fea0b08a952e41d">getType</a>()-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadType.html#c7c6b6fede467d8f3377efb753b3749c">getName</a>() % b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>() % (i+1) % b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b5581be3af50885103534abd307848c4">getQ</a>() % b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#4fab5677dee7a8dd49af1292008da880">getM</a>();
+<a name="l00081"></a>00081             % (<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1) % b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#41703dac951dadcb3fea0b08a952e41d">getType</a>()-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadType.html#c7c6b6fede467d8f3377efb753b3749c">getName</a>() % b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>() % (<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1) % b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b5581be3af50885103534abd307848c4">getQ</a>() % b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#4fab5677dee7a8dd49af1292008da880">getM</a>();
 <a name="l00082"></a>00082     }
 <a name="l00083"></a>00083     out &lt;&lt; endl;
 <a name="l00084"></a>00084 }
@@ -135,8 +135,8 @@
 <a name="l00112"></a>00112                             ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#87c911adf31974aba1f875bb60f79ebb">getName</a>());
 <a name="l00113"></a>00113             }
 <a name="l00114"></a>00114         }
-<a name="l00115"></a>00115         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;nb; ++i)
-<a name="l00116"></a>00116             out &lt;&lt; ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#6fe5c01bfc4c08549391c57f6a4358a6">getBeadId</a>(i)+1 &lt;&lt; <span class="stringliteral">" "</span>;
+<a name="l00115"></a>00115         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;nb; ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)
+<a name="l00116"></a>00116             out &lt;&lt; ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#6fe5c01bfc4c08549391c57f6a4358a6">getBeadId</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)+1 &lt;&lt; <span class="stringliteral">" "</span>;
 <a name="l00117"></a>00117         out &lt;&lt; <span class="stringliteral">"  1  ; "</span> &lt;&lt; ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#87c911adf31974aba1f875bb60f79ebb">getName</a>() &lt;&lt; endl;
 <a name="l00118"></a>00118     }
 <a name="l00119"></a>00119 }
@@ -150,7 +150,7 @@
 <a name="l00127"></a>00127     <a class="code" href="classGmxTopolApp.html#4d7fa0d658a116b4dc133e1efdee051b">WriteInteractions</a>(out, cg);
 <a name="l00128"></a>00128 }
 <a name="l00129"></a>00129 
-<a name="l00130"></a><a class="code" href="csg__gmxtopol_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00130</a> <span class="keywordtype">int</span> <a class="code" href="template_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00130"></a><a class="code" href="csg__gmxtopol_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00130</a> <span class="keywordtype">int</span> <a class="code" href="linktest_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
 <a name="l00131"></a>00131 {    
 <a name="l00132"></a>00132     <a class="code" href="classGmxTopolApp.html">GmxTopolApp</a> app;
 <a name="l00133"></a>00133     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);        

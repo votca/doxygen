@@ -242,8 +242,8 @@
 <a name="l00219"></a>00219     ofstream out;
 <a name="l00220"></a>00220     <a class="code" href="classvotca_1_1tools_1_1DataCollection.html" title="This class handles a set of arrays which can be identified by name tags.">DataCollection&lt;double&gt;::selection</a> *sel = NULL;
 <a name="l00221"></a>00221 
-<a name="l00222"></a>00222     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=1; i&lt;args.size(); i++)
-<a name="l00223"></a>00223         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[i], sel);
+<a name="l00222"></a>00222     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;args.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00223"></a>00223         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>], sel);
 <a name="l00224"></a>00224     <a class="code" href="classvotca_1_1tools_1_1Histogram.html" title="class to generate histograms">Histogram</a> h(<a class="code" href="classTabulatedPotential.html#9664e340400eeb9ac265947348286a64">_hist_options</a>);
 <a name="l00225"></a>00225     h.<a class="code" href="classvotca_1_1tools_1_1Histogram.html#5cbf09a2fbeff101863fab98208e52ab">ProcessData</a>(sel);
 <a name="l00226"></a>00226     out.open(args[0].c_str());
@@ -265,7 +265,7 @@
 <a name="l00242"></a><a class="code" href="classTabulatedPotential.html#2eaa73c12e5e81b954c472926cecbbde">00242</a> <span class="keywordtype">void</span> <a class="code" href="classTabulatedPotential.html#2eaa73c12e5e81b954c472926cecbbde">TabulatedPotential::CalcForce</a>(vector&lt;double&gt; &amp;U, vector&lt;double&gt; &amp;F, <span class="keywordtype">double</span> dx, <span class="keywordtype">bool</span> bPeriodic)
 <a name="l00243"></a>00243 {
 <a name="l00244"></a>00244     <span class="keywordtype">size_t</span> n=U.size();
-<a name="l00245"></a>00245     <span class="keywordtype">double</span> f = 0.5/dx;
+<a name="l00245"></a>00245     <span class="keywordtype">double</span> <a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">f</a> = 0.5/dx;
 <a name="l00246"></a>00246     F.resize(n);
 <a name="l00247"></a>00247     <span class="keywordflow">if</span>(bPeriodic)
 <a name="l00248"></a>00248         F[n-1] = F[0] = -(U[1] - U[n-2])*f;
@@ -273,8 +273,8 @@
 <a name="l00250"></a>00250         F[0] = -(U[1] - U[0])*2*f;
 <a name="l00251"></a>00251         F[n-1] = -(U[n-1] - U[n-2])*2*f;
 <a name="l00252"></a>00252     }
-<a name="l00253"></a>00253     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=1; i&lt;n-1; i++)
-<a name="l00254"></a>00254         F[i] = -(U[i+1] - U[i-1])*f;
+<a name="l00253"></a>00253     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;n-1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00254"></a>00254         F[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] = -(U[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1] - U[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>-1])*f;
 <a name="l00255"></a>00255 }
 <a name="l00256"></a>00256 
 <a name="l00257"></a><a class="code" href="classTabulatedPotential.html#4d6e049136536c5424209a327a0454b9">00257</a> <span class="keywordtype">void</span> <a class="code" href="classTabulatedPotential.html#4d6e049136536c5424209a327a0454b9">TabulatedPotential::WritePotential</a>(<a class="code" href="classBondedStatistics.html">BondedStatistics</a> &amp;bs, vector&lt;string&gt; &amp;args)
@@ -282,8 +282,8 @@
 <a name="l00259"></a>00259    ofstream out;
 <a name="l00260"></a>00260     <a class="code" href="classvotca_1_1tools_1_1DataCollection.html" title="This class handles a set of arrays which can be identified by name tags.">DataCollection&lt;double&gt;::selection</a> *sel = NULL;
 <a name="l00261"></a>00261 
-<a name="l00262"></a>00262     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=1; i&lt;args.size(); i++)
-<a name="l00263"></a>00263         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[i], sel);
+<a name="l00262"></a>00262     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;args.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00263"></a>00263         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>], sel);
 <a name="l00264"></a>00264     <a class="code" href="classvotca_1_1tools_1_1Histogram.html" title="class to generate histograms">Histogram</a> h(<a class="code" href="classTabulatedPotential.html#68ccb9a357df22b4a72f5ad5a009a192">_tab_options</a>);
 <a name="l00265"></a>00265     h.<a class="code" href="classvotca_1_1tools_1_1Histogram.html#5cbf09a2fbeff101863fab98208e52ab">ProcessData</a>(sel);
 <a name="l00266"></a>00266     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="classTabulatedPotential.html#f40824498fb1c9d90a1c75bf558dd009">_tab_smooth1</a>; ++i)
@@ -328,7 +328,7 @@
 <a name="l00305"></a>00305         old[0] = data[0];
 <a name="l00306"></a>00306         old[1] = data[0];
 <a name="l00307"></a>00307     }
-<a name="l00308"></a>00308     <span class="keywordtype">size_t</span> i;
+<a name="l00308"></a>00308     <span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>;
 <a name="l00309"></a>00309     <span class="keywordflow">for</span>(i=0; i&lt;data.size()-2; i++) {
 <a name="l00310"></a>00310         old[2] = data[i];
 <a name="l00311"></a>00311         data[i] = (old[0] + 2.*old[1] + 3.*data[i] + 2.*data[i+1] + data[i+2])/9.;
@@ -355,17 +355,17 @@
 <a name="l00332"></a>00332     _min = numeric_limits&lt;double&gt;::max();
 <a name="l00333"></a>00333     _max = numeric_limits&lt;double&gt;::min();
 <a name="l00334"></a>00334     
-<a name="l00335"></a>00335     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;data.size(); i++) {
-<a name="l00336"></a>00336         _max = max(data[i], _max);
+<a name="l00335"></a>00335     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;data.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00336"></a>00336         _max = max(data[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>], _max);
 <a name="l00337"></a>00337         <span class="keywordflow">if</span>(data[i] &gt; 0) _min = min(data[i], _min);
 <a name="l00338"></a>00338     }
 <a name="l00339"></a>00339     _max = -8.3109*T*log(_max)*0.001;
 <a name="l00340"></a>00340     _min = -8.3109*T*log(_min)*0.001-_max;
 <a name="l00341"></a>00341     
-<a name="l00342"></a>00342     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;data.size(); i++) {
-<a name="l00343"></a>00343         <span class="keywordflow">if</span>(data[i] == 0) data[i] = _min;
+<a name="l00342"></a>00342     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;data.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00343"></a>00343         <span class="keywordflow">if</span>(data[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] == 0) data[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] = _min;
 <a name="l00344"></a>00344         <span class="keywordflow">else</span>
-<a name="l00345"></a>00345             data[i] = -8.3109*T*log(data[i])*0.001 - _max;
+<a name="l00345"></a>00345             data[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] = -8.3109*T*log(data[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>])*0.001 - _max;
 <a name="l00346"></a>00346     }
 <a name="l00347"></a>00347 }
 </pre></div></div>

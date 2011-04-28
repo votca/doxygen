@@ -96,7 +96,7 @@
 <a name="l00073"></a>00073     fread(&amp;<a class="code" href="classMDPTrajectoryReader.html#00eb9c33f9ce6b64a5bb9f06779f5cb4">_moltypes</a>, <span class="keyword">sizeof</span>(<a class="code" href="classMDPTrajectoryReader.html#00eb9c33f9ce6b64a5bb9f06779f5cb4">_moltypes</a>), 1, fl);
 <a name="l00074"></a>00074     
 <a name="l00075"></a>00075             
-<a name="l00076"></a>00076     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="classMDPTrajectoryReader.html#00eb9c33f9ce6b64a5bb9f06779f5cb4">_moltypes</a>; ++i) {
+<a name="l00076"></a>00076     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;<a class="code" href="classMDPTrajectoryReader.html#00eb9c33f9ce6b64a5bb9f06779f5cb4">_moltypes</a>; ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
 <a name="l00077"></a>00077         fread(&amp;I4, <span class="keyword">sizeof</span>(I4), 1, fl);
 <a name="l00078"></a>00078         <a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>.push_back(I4);
 <a name="l00079"></a>00079         fread(&amp;I4, 1, <span class="keyword">sizeof</span>(I4), fl);
@@ -192,25 +192,25 @@
 <a name="l00169"></a>00169 <span class="comment">     *</span>
 <a name="l00170"></a>00170 <span class="comment">     */</span>
 <a name="l00171"></a>00171     <span class="keywordtype">int</span> ind=0;
-<a name="l00172"></a>00172     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="classMDPTrajectoryReader.html#00eb9c33f9ce6b64a5bb9f06779f5cb4">_moltypes</a>; ++i) {
+<a name="l00172"></a>00172     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;<a class="code" href="classMDPTrajectoryReader.html#00eb9c33f9ce6b64a5bb9f06779f5cb4">_moltypes</a>; ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
 <a name="l00173"></a>00173         fread(&amp;rec, <span class="keyword">sizeof</span>(rec), 1, fl);  <span class="comment">// begin record</span>
 <a name="l00174"></a>00174         
-<a name="l00175"></a>00175         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[i]*<a class="code" href="classMDPTrajectoryReader.html#17c8043c3adc040c5926ffe142d87529">_natoms</a>[i]; a++) {
-<a name="l00176"></a>00176             <span class="keywordtype">float</span> f;
+<a name="l00175"></a>00175         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]*<a class="code" href="classMDPTrajectoryReader.html#17c8043c3adc040c5926ffe142d87529">_natoms</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]; a++) {
+<a name="l00176"></a>00176             <span class="keywordtype">float</span> <a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">f</a>;
 <a name="l00177"></a>00177             fread(&amp;f, <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), 1, fl);
 <a name="l00178"></a>00178             conf.Pos(a+ind).x() = f*0.1;            
 <a name="l00179"></a>00179         }
-<a name="l00180"></a>00180         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[i]*_natoms[i]; a++) {
-<a name="l00181"></a>00181             <span class="keywordtype">float</span> f;
+<a name="l00180"></a>00180         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]*_natoms[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]; a++) {
+<a name="l00181"></a>00181             <span class="keywordtype">float</span> <a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">f</a>;
 <a name="l00182"></a>00182             fread(&amp;f, <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), 1, fl);
 <a name="l00183"></a>00183             conf.Pos(a+ind).y() = f*0.1;            
 <a name="l00184"></a>00184         }
-<a name="l00185"></a>00185         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[i]*_natoms[i]; a++) {
-<a name="l00186"></a>00186             <span class="keywordtype">float</span> f;
+<a name="l00185"></a>00185         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]*_natoms[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]; a++) {
+<a name="l00186"></a>00186             <span class="keywordtype">float</span> <a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">f</a>;
 <a name="l00187"></a>00187             fread(&amp;f, <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), 1, fl);
 <a name="l00188"></a>00188             conf.Pos(a+ind).z() = f*0.1;            
 <a name="l00189"></a>00189         }
-<a name="l00190"></a>00190         ind+=<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[i]*_natoms[i];
+<a name="l00190"></a>00190         ind+=<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]*_natoms[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>];
 <a name="l00191"></a>00191         
 <a name="l00192"></a>00192         I4 = rec + 1;
 <a name="l00193"></a>00193         <span class="keywordflow">while</span>(I4!=rec)  <span class="comment">// skip everything to end of record</span>
@@ -219,18 +219,18 @@
 <a name="l00196"></a>00196         <span class="keywordflow">if</span>(iVel == 1) {
 <a name="l00197"></a>00197             fread(&amp;rec, <span class="keyword">sizeof</span>(rec), 1, fl);  <span class="comment">// begin record</span>
 <a name="l00198"></a>00198             
-<a name="l00199"></a>00199             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[i]*_natoms[i]; a++) {
-<a name="l00200"></a>00200                 <span class="keywordtype">float</span> f;
+<a name="l00199"></a>00199             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]*_natoms[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]; a++) {
+<a name="l00200"></a>00200                 <span class="keywordtype">float</span> <a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">f</a>;
 <a name="l00201"></a>00201                 fread(&amp;f, <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), 1, fl);
 <a name="l00202"></a>00202                 conf.V(a+ind).x() = f*0.1;            
 <a name="l00203"></a>00203             }
-<a name="l00204"></a>00204             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[i]*_natoms[i]; a++) {
-<a name="l00205"></a>00205                 <span class="keywordtype">float</span> f;
+<a name="l00204"></a>00204             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]*_natoms[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]; a++) {
+<a name="l00205"></a>00205                 <span class="keywordtype">float</span> <a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">f</a>;
 <a name="l00206"></a>00206                 fread(&amp;f, <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), 1, fl);
 <a name="l00207"></a>00207                 conf.V(a+ind).y() = f*0.1;            
 <a name="l00208"></a>00208             }
-<a name="l00209"></a>00209             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[i]*_natoms[i]; a++) {
-<a name="l00210"></a>00210                 <span class="keywordtype">float</span> f;
+<a name="l00209"></a>00209             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> a=0; a&lt;<a class="code" href="classMDPTrajectoryReader.html#4d37ebc9dca903483e2ab6d928c77369">_nmols</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]*_natoms[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]; a++) {
+<a name="l00210"></a>00210                 <span class="keywordtype">float</span> <a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">f</a>;
 <a name="l00211"></a>00211                 fread(&amp;f, <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), 1, fl);
 <a name="l00212"></a>00212                 conf.V(a+ind).z() = f*0.1;            
 <a name="l00213"></a>00213             }

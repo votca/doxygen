@@ -63,7 +63,7 @@
 <a name="l00040"></a>00040     <span class="keywordflow">if</span>(cmd == <span class="stringliteral">"autocor"</span>) <a class="code" href="classStdAnalysis.html#983ea72efa34d286d126f03278941fe5">WriteAutocorrelation</a>(bs, args);
 <a name="l00041"></a>00041     <span class="keywordflow">if</span>(cmd == <span class="stringliteral">"list"</span>) {
 <a name="l00042"></a>00042         <a class="code" href="classvotca_1_1tools_1_1DataCollection.html" title="This class handles a set of arrays which can be identified by name tags.">DataCollection&lt;double&gt;::selection</a> *sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(<span class="stringliteral">"*"</span>);
-<a name="l00043"></a>00043         <a class="code" href="classvotca_1_1tools_1_1DataCollection.html" title="This class handles a set of arrays which can be identified by name tags.">DataCollection&lt;double&gt;::selection::iterator</a> i;
+<a name="l00043"></a>00043         <a class="code" href="classvotca_1_1tools_1_1DataCollection.html" title="This class handles a set of arrays which can be identified by name tags.">DataCollection&lt;double&gt;::selection::iterator</a> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>;
 <a name="l00044"></a>00044         cout &lt;&lt; <span class="stringliteral">"Available bonded interactions:"</span> &lt;&lt; endl;
 <a name="l00045"></a>00045         <span class="keywordflow">for</span>(i=sel-&gt;<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#add4224dedd946771d99ec85e45f23f8">begin</a>(); i!=sel-&gt;<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#cac7c8652ce36dfe23b94e0c655499d1">end</a>(); ++i)
 <a name="l00046"></a>00046             cout &lt;&lt; (*i)-&gt;getName() &lt;&lt; <span class="stringliteral">" "</span>; <span class="comment">// &lt;&lt; "[" &lt;&lt; (*i).second-&gt;size() &lt;&lt; "]" &lt;&lt; " ";</span>
@@ -103,8 +103,8 @@
 <a name="l00080"></a>00080     
 <a name="l00081"></a>00081     <a class="code" href="classvotca_1_1tools_1_1DataCollection.html" title="This class handles a set of arrays which can be identified by name tags.">DataCollection&lt;double&gt;::selection</a> *sel = NULL;
 <a name="l00082"></a>00082 
-<a name="l00083"></a>00083     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=1; i&lt;args.size(); i++)
-<a name="l00084"></a>00084         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[i], sel);
+<a name="l00083"></a>00083     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;args.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00084"></a>00084         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>], sel);
 <a name="l00085"></a>00085     
 <a name="l00086"></a>00086     out.open(args[0].c_str());
 <a name="l00087"></a>00087     out &lt;&lt; *sel &lt;&lt; endl;
@@ -118,8 +118,8 @@
 <a name="l00095"></a>00095     ofstream out;
 <a name="l00096"></a>00096     <a class="code" href="classvotca_1_1tools_1_1DataCollection.html" title="This class handles a set of arrays which can be identified by name tags.">DataCollection&lt;double&gt;::selection</a> *sel = NULL;
 <a name="l00097"></a>00097 
-<a name="l00098"></a>00098     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=1; i&lt;args.size(); i++)
-<a name="l00099"></a>00099         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[i], sel);
+<a name="l00098"></a>00098     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;args.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00099"></a>00099         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>], sel);
 <a name="l00100"></a>00100         
 <a name="l00101"></a>00101     <a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html" title="class to calculate cross correlkations and autocorrelations">CrossCorrelate</a> c;
 <a name="l00102"></a>00102     c.<a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#a2c7f36268024309715639fb770a25a7">AutoCorrelate</a>(sel, <span class="keyword">false</span>);
@@ -135,8 +135,8 @@
 <a name="l00112"></a>00112     ofstream out;
 <a name="l00113"></a>00113         <a class="code" href="classvotca_1_1tools_1_1DataCollection.html" title="This class handles a set of arrays which can be identified by name tags.">DataCollection&lt;double&gt;::selection</a> *sel = NULL;
 <a name="l00114"></a>00114 
-<a name="l00115"></a>00115     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=1; i&lt;args.size(); i++)
-<a name="l00116"></a>00116         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[i], sel);
+<a name="l00115"></a>00115     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;args.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00116"></a>00116         sel = bs.<a class="code" href="classBondedStatistics.html#9bbc0b2561ca5f535b66a28b453a6f9c">BondedValues</a>().<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#bec3073535326bcc0ae289d017e1b2e7" title="select a set of arrays">select</a>(args[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>], sel);
 <a name="l00117"></a>00117         
 <a name="l00118"></a>00118     <a class="code" href="classvotca_1_1tools_1_1Correlate.html" title="class to calculate correlations of values">Correlate</a> c;
 <a name="l00119"></a>00119     c.<a class="code" href="classvotca_1_1tools_1_1Correlate.html#50fe146f38cfc25d6654ae8e557e657d">CalcCorrelations</a>(sel);

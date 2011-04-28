@@ -93,10 +93,10 @@
 <a name="l00073"></a>00073 <span class="comment"></span>    num_atoms = (<span class="keywordtype">int</span>*) calloc(num_molecules,<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));
 <a name="l00074"></a>00074     getline(fl, parse_line);
 <a name="l00075"></a>00075     parse_line = <a class="code" href="classvotca_1_1csg_1_1ESPTopologyReader.html#698758b1d941bfaca12d0bd6743b8567" title="extract variable from input line">ReadBlockfileLine</a>(parse_line, <span class="stringliteral">"num_atoms"</span>);
-<a name="l00076"></a>00076     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;num_molecules-1;++i) {
+<a name="l00076"></a>00076     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;num_molecules-1;++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
 <a name="l00077"></a>00077         white_space1 = parse_line.find(<span class="charliteral">' '</span>);
 <a name="l00078"></a>00078         <span class="keywordflow">if</span> (white_space1 != string::npos) {
-<a name="l00079"></a>00079             num_atoms[i] = atoi(parse_line.substr(0,white_space1+1).c_str());
+<a name="l00079"></a>00079             num_atoms[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] = atoi(parse_line.substr(0,white_space1+1).c_str());
 <a name="l00080"></a>00080             parse_line = parse_line.substr(white_space1+1);
 <a name="l00081"></a>00081         } <span class="keywordflow">else</span> {
 <a name="l00082"></a>00082             cerr &lt;&lt; <span class="stringliteral">"Error in parsing blockfile (num_atoms).\n"</span>;

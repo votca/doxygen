@@ -41,7 +41,7 @@ Collaboration diagram for CGForceMatching:</div>
 <div class="dynsection">
 <p><center><img src="classCGForceMatching__coll__graph.png" border="0" usemap="#CGForceMatching__coll__map" alt="Collaboration graph"></center>
 <map name="CGForceMatching__coll__map">
-<area shape="rect" href="classvotca_1_1csg_1_1CsgApplication.html" title="votca::csg::CsgApplication" alt="" coords="168,112,344,139"><area shape="rect" href="classvotca_1_1tools_1_1Application.html" title="votca::tools::Application" alt="" coords="5,5,165,32"><area shape="rect" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes." alt="" coords="189,5,323,32"><area shape="rect" href="classvotca_1_1csg_1_1TrajectoryReader.html" title="trajectoryreader interface" alt="" coords="347,5,536,32"><area shape="rect" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml&#45;wrapper" alt="" coords="368,112,515,139"></map>
+<area shape="rect" href="classvotca_1_1csg_1_1CsgApplication.html" title="votca::csg::CsgApplication" alt="" coords="569,76,745,103"><area shape="rect" href="classvotca_1_1tools_1_1Application.html" title="votca::tools::Application" alt="" coords="236,5,396,32"><area shape="rect" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes." alt="" coords="249,57,383,84"><area shape="rect" href="classvotca_1_1csg_1_1TrajectoryReader.html" title="trajectoryreader interface" alt="" coords="221,127,411,153"><area shape="rect" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system" alt="" coords="587,209,728,236"><area shape="rect" href="classvotca_1_1csg_1_1ExclusionList.html" title="votca::csg::ExclusionList" alt="" coords="232,196,400,223"><area shape="rect" href="classvotca_1_1csg_1_1BoundaryCondition.html" title="votca::csg::BoundaryCondition" alt="" coords="216,247,416,273"><area shape="rect" href="classvotca_1_1tools_1_1matrix.html" title="votca::tools::matrix" alt="" coords="5,247,139,273"><area shape="rect" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml&#45;wrapper" alt="" coords="584,260,731,287"></map>
 <center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
@@ -100,6 +100,8 @@ Collaboration diagram for CGForceMatching:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGForceMatching.html#ad51dd61c0a1a0ed3d6e96a0be8d84d6">WriteOutFiles</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Write results to output files.  <a href="#ad51dd61c0a1a0ed3d6e96a0be8d84d6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGForceMatching.html#b20af4c7b2ef38cfd794d84047a28223">OpenForcesTrajectory</a> ()</td></tr>
+
 <tr><td colspan="2"><br><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classvotca_1_1tools_1_1Property.html">Property</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGForceMatching.html#bafd29b5f32b08fcf0bcb73481da3efd">_options</a></td></tr>
 
@@ -148,6 +150,12 @@ Collaboration diagram for CGForceMatching:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Counters for lines and coloumns in _B_constr.  <a href="#029a96f44fcb05cc7803e8249baa1bd7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGForceMatching.html#45a792c8bdfaa3daa921c19210c8faf4">_col_cntr</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGForceMatching.html#fcb3513e62239c8400c76d84fb058056">_has_existing_forces</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classvotca_1_1csg_1_1Topology.html">Topology</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGForceMatching.html#5d9363465efb8aafcd6b88ca65374e57">_top_force</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classvotca_1_1csg_1_1TrajectoryReader.html">TrajectoryReader</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCGForceMatching.html#0e4ab3b07fa85892c16d8ccf2269f864">_trjreader_force</a></td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Implements force matching algorithm using cubic spline basis set. 
@@ -155,7 +163,7 @@ Implements force matching algorithm using cubic spline basis set.
 Force matching method to obtain a coarse-grained force field is implemented using cubic spline basis set. Block averaging over trajectory blocks is used for calculating CG forces and their errors.<p>
 <dl class="todo" compact><dt><b><a class="el" href="todo.html#_todo000022">Todo:</a></b></dt><dd>force matching needs a big cleanup! </dd></dl>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00042">42</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00043">43</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 <hr><h2>Member Typedef Documentation</h2>
 <a class="anchor" name="1ec4aa729569b602ddc0d1a52a8b229b"></a><!-- doxytag: member="CGForceMatching::SplineContainer" ref="1ec4aa729569b602ddc0d1a52a8b229b" args="" -->
 <div class="memitem">
@@ -170,7 +178,7 @@ Force matching method to obtain a coarse-grained force field is implemented usin
 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00119">119</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00120">120</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -206,7 +214,7 @@ called before the first frame
 
 <p>Reimplemented from <a class="el" href="classvotca_1_1csg_1_1CsgApplication.html#2b2c7a4bfeefea532b950bb50f062ab0">votca::csg::CsgApplication</a>.</p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00057">57</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00061">61</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -232,7 +240,7 @@ overload and return true to enable mapping command line options
 
 <p>Reimplemented from <a class="el" href="classvotca_1_1csg_1_1CsgApplication.html#073a14587c1360b83cc95972dfb24b57">votca::csg::CsgApplication</a>.</p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00053">53</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00054">54</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -258,7 +266,7 @@ overload and return true to enable trajectory command line options
 
 <p>Reimplemented from <a class="el" href="classvotca_1_1csg_1_1CsgApplication.html#8f989564dc6162995872201c3e0311c4">votca::csg::CsgApplication</a>.</p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00052">52</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00053">53</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -283,7 +291,7 @@ called after the last frame
 
 <p>Reimplemented from <a class="el" href="classvotca_1_1csg_1_1CsgApplication.html#47cb152c60480953db3c4d6fe3a48951">votca::csg::CsgApplication</a>.</p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00188">188</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00203">203</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -316,7 +324,7 @@ called after the last frame
 For each trajectory frame writes equations for bonded interactions to matrix _A. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00397">397</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00428">428</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -351,7 +359,7 @@ called for each frame which is mapped
 
 <p>Reimplemented from <a class="el" href="classvotca_1_1csg_1_1CsgApplication.html#8df7cdc2c93efe2c9349d01534245389">votca::csg::CsgApplication</a>.</p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00247">247</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00266">266</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -384,7 +392,7 @@ called for each frame which is mapped
 For each trajectory frame writes equations for non-bonded interactions to matrix _A. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00428">428</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00459">459</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -434,7 +442,7 @@ EvaluateOptions is called by Run after parsing the command line. return true if 
 Solves FM equations for one block and stores the results for further processing. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00303">303</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00334">334</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -458,7 +466,7 @@ Solves FM equations for one block and stores the results for further processing.
 Assigns smoothing conditions to matrices _A and _B_constr. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00368">368</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00399">399</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -480,7 +488,7 @@ Assigns smoothing conditions to matrices _A and _B_constr.
 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00048">48</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00049">49</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -508,7 +516,7 @@ Initialize is called by run before parsing the command line. All necesassary com
 TODO default value of 1 for nt is not smart
 <p>Reimplemented from <a class="el" href="classvotca_1_1csg_1_1CsgApplication.html#09d81da470feaf2eaad227cc169e4c3f">votca::csg::CsgApplication</a>.</p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00041">41</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00040">40</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -532,7 +540,26 @@ TODO default value of 1 for nt is not smart
 load options from the input file 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00390">390</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00421">421</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b20af4c7b2ef38cfd794d84047a28223"></a><!-- doxytag: member="CGForceMatching::OpenForcesTrajectory" ref="b20af4c7b2ef38cfd794d84047a28223" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CGForceMatching::OpenForcesTrajectory           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
 
 </div>
 </div><p>
@@ -558,7 +585,7 @@ program name
 overload this function to set the program name 
 <p>Implements <a class="el" href="classvotca_1_1tools_1_1Application.html#4d46b0d615a085f90e259e2af8f0f7c6">votca::tools::Application</a>.</p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00047">47</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00048">48</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -581,7 +608,7 @@ overload this function to set the program name
 Write results to output files. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00193">193</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8cc_source.html#l00212">212</a> of file <a class="el" href="csg__fmatch_8cc_source.html">csg_fmatch.cc</a>.</p>
 
 </div>
 </div><p>
@@ -601,7 +628,7 @@ Write results to output files.
 matrix used to store force matching equations 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00124">124</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00125">125</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -620,7 +647,7 @@ matrix used to store force matching equations
 vector used to store reference forces on CG beads (from atomistic simulations) 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00126">126</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00127">127</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -639,7 +666,7 @@ vector used to store reference forces on CG beads (from atomistic simulations)
 Additional matrix to handle constrained least squares fit contains constraints, which allow to get a real (smooth) spline (see VOTCA paper). 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00131">131</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00132">132</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -658,7 +685,7 @@ Additional matrix to handle constrained least squares fit contains constraints, 
 list of bonded interactions 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00115">115</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00116">116</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -675,7 +702,7 @@ list of bonded interactions
 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00149">149</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00150">150</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -694,7 +721,7 @@ list of bonded interactions
 Flag: true for constrained least squares, false for simple least squares. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00140">140</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00141">141</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -713,7 +740,24 @@ Flag: true for constrained least squares, false for simple least squares.
 Counter for trajectory frames. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00135">135</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00136">136</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fcb3513e62239c8400c76d84fb058056"></a><!-- doxytag: member="CGForceMatching::_has_existing_forces" ref="fcb3513e62239c8400c76d84fb058056" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classCGForceMatching.html#fcb3513e62239c8400c76d84fb058056">CGForceMatching::_has_existing_forces</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00152">152</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -732,7 +776,7 @@ Counter for trajectory frames.
 used in EvalConf to distinguish constrained and simple least squares 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00142">142</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00143">143</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -751,7 +795,7 @@ used in EvalConf to distinguish constrained and simple least squares
 Counters for lines and coloumns in _B_constr. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00149">149</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00150">150</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -770,7 +814,7 @@ Counters for lines and coloumns in _B_constr.
 Number of CG beads. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00137">137</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00138">138</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -789,7 +833,7 @@ Number of CG beads.
 Current number of blocks. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00146">146</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00147">147</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -810,7 +854,7 @@ Number of frames used in one block for block averaging.
 
 <p>Reimplemented from <a class="el" href="classvotca_1_1csg_1_1CsgApplication.html#ad6d31e2c5e70115460bd3b14d5d882a">votca::csg::CsgApplication</a>.</p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00144">144</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00145">145</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -829,7 +873,7 @@ Number of frames used in one block for block averaging.
 list of non-bonded interactions 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00117">117</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00118">118</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -848,7 +892,7 @@ list of non-bonded interactions
 Property object to hande input options. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00113">113</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00114">114</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -867,7 +911,41 @@ Property object to hande input options.
 vector of <a class="el" href="structCGForceMatching_1_1SplineInfo.html" title="structure, which contains CubicSpline object with related parameters">SplineInfo</a> * for all interactions 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00121">121</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00122">122</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5d9363465efb8aafcd6b88ca65374e57"></a><!-- doxytag: member="CGForceMatching::_top_force" ref="5d9363465efb8aafcd6b88ca65374e57" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvotca_1_1csg_1_1Topology.html">Topology</a> <a class="el" href="classCGForceMatching.html#5d9363465efb8aafcd6b88ca65374e57">CGForceMatching::_top_force</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00167">167</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0e4ab3b07fa85892c16d8ccf2269f864"></a><!-- doxytag: member="CGForceMatching::_trjreader_force" ref="0e4ab3b07fa85892c16d8ccf2269f864" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvotca_1_1csg_1_1TrajectoryReader.html">TrajectoryReader</a>* <a class="el" href="classCGForceMatching.html#0e4ab3b07fa85892c16d8ccf2269f864">CGForceMatching::_trjreader_force</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00168">168</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
@@ -886,7 +964,7 @@ vector of <a class="el" href="structCGForceMatching_1_1SplineInfo.html" title="s
 Solution of matrix equation _A * _x = _b : CG force-field parameters. 
 <p>
 
-<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00128">128</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
+<p>Definition at line <a class="el" href="csg__fmatch_8h_source.html#l00129">129</a> of file <a class="el" href="csg__fmatch_8h_source.html">csg_fmatch.h</a>.</p>
 
 </div>
 </div><p>
