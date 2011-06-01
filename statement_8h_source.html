@@ -69,60 +69,9 @@
 <a name="l00046"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#6efef52d7a939622bbc934ff6b90ffe0">00046</a>         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1Database.html">Database</a>;
 <a name="l00047"></a>00047 };
 <a name="l00048"></a>00048 
-<a name="l00049"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#4a1fc4b7287dc5a2948c682fdcc87966">00049</a> <span class="keyword">inline</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#4a1fc4b7287dc5a2948c682fdcc87966">Statement::~Statement</a>()
-<a name="l00050"></a>00050 {
-<a name="l00051"></a>00051         sqlite3_finalize(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>);
-<a name="l00052"></a>00052 }
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 <span class="keyword">template</span>&lt;&gt;
-<a name="l00055"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#313a24f9765ac41add0e7feceb4636a8">00055</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;value)
-<a name="l00056"></a>00056 {
-<a name="l00057"></a>00057         sqlite3_bind_int(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>, col, value);
-<a name="l00058"></a>00058 }
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 <span class="keyword">template</span>&lt;&gt;
-<a name="l00061"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#395f43895955ad25cdebb5f3ef3b4fcf">00061</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;value)
-<a name="l00062"></a>00062 {
-<a name="l00063"></a>00063         sqlite3_bind_double(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>, col, value);
-<a name="l00064"></a>00064 }
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066 <span class="keyword">template</span>&lt;&gt;
-<a name="l00067"></a>00067 <span class="keywordtype">int</span> Statement::Column&lt;int&gt;(<span class="keywordtype">int</span> col)
-<a name="l00068"></a>00068 {
-<a name="l00069"></a>00069         <span class="keywordflow">return</span> sqlite3_column_int(_stmt, col);
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 <span class="keyword">template</span>&lt;&gt;
-<a name="l00073"></a>00073 <span class="keywordtype">double</span> Statement::Column&lt;double&gt;(<span class="keywordtype">int</span> col)
-<a name="l00074"></a>00074 {
-<a name="l00075"></a>00075         <span class="keywordflow">return</span> sqlite3_column_double(_stmt, col);
-<a name="l00076"></a>00076 }
-<a name="l00077"></a>00077 
-<a name="l00078"></a>00078 <span class="keyword">template</span>&lt;&gt;
-<a name="l00079"></a>00079 <span class="keywordtype">string</span> Statement::Column&lt;string&gt;(<span class="keywordtype">int</span> col)
-<a name="l00080"></a>00080 {
-<a name="l00081"></a>00081         <span class="keywordflow">return</span> string((<span class="keyword">const</span> <span class="keywordtype">char</span>*)sqlite3_column_text(_stmt, col));
-<a name="l00082"></a>00082 }
-<a name="l00083"></a>00083 
-<a name="l00084"></a>00084 <span class="keyword">template</span>&lt;&gt;
-<a name="l00085"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#d323f269f57c19e5244689e5f8d97903">00085</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;value)
-<a name="l00086"></a>00086 {
-<a name="l00087"></a>00087     sqlite3_bind_text(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>, col, value.c_str(), -1, NULL);;
-<a name="l00088"></a>00088 }
-<a name="l00089"></a>00089 
-<a name="l00090"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122">00090</a> <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122">Statement::Step</a>()
-<a name="l00091"></a>00091 {
-<a name="l00092"></a>00092         <span class="keywordflow">return</span> sqlite3_step(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>);
-<a name="l00093"></a>00093 }
-<a name="l00094"></a>00094 
-<a name="l00095"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0">00095</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0">Statement::Reset</a>()
-<a name="l00096"></a>00096 {
-<a name="l00097"></a>00097         sqlite3_reset(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>);
-<a name="l00098"></a>00098 }
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100 }}
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 <span class="preprocessor">#endif</span>
+<a name="l00049"></a>00049 }}
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
