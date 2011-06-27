@@ -76,23 +76,27 @@
 <a name="l00114"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46">00114</a>     boost::program_options::variables_map &amp;<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3" title="Variable map containing all program options.">_op_vm</a>; }
 <a name="l00115"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#fd47ef63ddd618deb3a75b431c4c6fe7">00115</a>     boost::program_options::options_description &amp;<a class="code" href="classvotca_1_1tools_1_1Application.html#fd47ef63ddd618deb3a75b431c4c6fe7">OptionsDesc</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1Application.html#5aab4f4ba7e839ba269f4f7a77236d2b" title="program options required by all applications">_op_desc</a>; }
 <a name="l00116"></a>00116 
-<a name="l00117"></a>00117 <span class="keyword">protected</span>:
-<a name="l00119"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3">00119</a>     boost::program_options::variables_map <a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3" title="Variable map containing all program options.">_op_vm</a>;
-<a name="l00120"></a>00120 
-<a name="l00122"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#5aab4f4ba7e839ba269f4f7a77236d2b">00122</a>     boost::program_options::options_description <a class="code" href="classvotca_1_1tools_1_1Application.html#5aab4f4ba7e839ba269f4f7a77236d2b" title="program options required by all applications">_op_desc</a>;
-<a name="l00123"></a>00123 
-<a name="l00124"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#328f9193a6447ee6b67c4cd7e9564f6c">00124</a>     std::map&lt;string, boost::program_options::options_description&gt; <a class="code" href="classvotca_1_1tools_1_1Application.html#328f9193a6447ee6b67c4cd7e9564f6c">_op_groups</a>;
-<a name="l00125"></a>00125     
-<a name="l00126"></a>00126     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Application.html#dfae76b8bff92526b43ea206a85e474b">ShowHelpText</a>(std::ostream &amp;out);
-<a name="l00127"></a>00127     
-<a name="l00128"></a>00128 <span class="keyword">private</span>:
-<a name="l00130"></a>00130     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Application.html#170581a336cdc378b372bf85e1edfeb1" title="get input parameters from file, location may be specified in command line">ParseCommandLine</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv);
-<a name="l00131"></a>00131 };
+<a name="l00124"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3">00124</a>     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>() { <a class="code" href="classvotca_1_1tools_1_1Application.html#6aa47c3d4ef983a4a0a80e57bde6b965">_continue_execution</a> = <span class="keyword">false</span>; }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 <span class="keyword">protected</span>:
+<a name="l00128"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3">00128</a>     boost::program_options::variables_map <a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3" title="Variable map containing all program options.">_op_vm</a>;
+<a name="l00129"></a>00129 
+<a name="l00131"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#5aab4f4ba7e839ba269f4f7a77236d2b">00131</a>     boost::program_options::options_description <a class="code" href="classvotca_1_1tools_1_1Application.html#5aab4f4ba7e839ba269f4f7a77236d2b" title="program options required by all applications">_op_desc</a>;
 <a name="l00132"></a>00132 
-<a name="l00133"></a>00133 }}
-<a name="l00134"></a>00134 
-<a name="l00135"></a>00135 <span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_APPLICATION_H */</span>
+<a name="l00133"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#328f9193a6447ee6b67c4cd7e9564f6c">00133</a>     std::map&lt;string, boost::program_options::options_description&gt; <a class="code" href="classvotca_1_1tools_1_1Application.html#328f9193a6447ee6b67c4cd7e9564f6c">_op_groups</a>;
+<a name="l00134"></a>00134     
+<a name="l00135"></a>00135     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Application.html#dfae76b8bff92526b43ea206a85e474b">ShowHelpText</a>(std::ostream &amp;out);
 <a name="l00136"></a>00136 
+<a name="l00137"></a><a class="code" href="classvotca_1_1tools_1_1Application.html#6aa47c3d4ef983a4a0a80e57bde6b965">00137</a>     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1Application.html#6aa47c3d4ef983a4a0a80e57bde6b965">_continue_execution</a>;
+<a name="l00138"></a>00138     
+<a name="l00139"></a>00139 <span class="keyword">private</span>:
+<a name="l00141"></a>00141     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Application.html#170581a336cdc378b372bf85e1edfeb1" title="get input parameters from file, location may be specified in command line">ParseCommandLine</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv);
+<a name="l00142"></a>00142 };
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 }}
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 <span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_APPLICATION_H */</span>
+<a name="l00147"></a>00147 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

@@ -83,73 +83,74 @@
 <a name="l00084"></a>00084         <span class="keywordflow">return</span> _this;
 <a name="l00085"></a>00085     }
 <a name="l00086"></a>00086 
-<a name="l00087"></a>00087 <span class="keyword">private</span>:
-<a name="l00088"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">00088</a>     <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#38633161237015f335b2c066ad8129b8">assoc_map</a> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>;
-<a name="l00089"></a>00089 };
-<a name="l00090"></a>00090 
-<a name="l00091"></a><a class="code" href="namespacevotca_1_1tools.html#2a01072b159a10f3fb52a4a7f4c3ef32">00091</a> <span class="keyword">template</span>&lt;<span class="keyword">class</span> parent, <span class="keyword">class</span> T&gt; parent* <a class="code" href="namespacevotca_1_1tools.html#2a01072b159a10f3fb52a4a7f4c3ef32">create_policy_new</a>()
-<a name="l00092"></a>00092 {
-<a name="l00093"></a>00093     <span class="keywordflow">return</span> <span class="keyword">new</span> T();
-<a name="l00094"></a>00094 }
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> T&gt;
-<a name="l00097"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#93ffc9245ac0be282f444436d64dd8be">00097</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#93ffc9245ac0be282f444436d64dd8be" title="register an object">ObjectFactory&lt;key_t, T&gt;::Register</a>(<span class="keyword">const</span> key_t &amp;key, creator_t creator)
-<a name="l00098"></a>00098 {
-<a name="l00099"></a>00099     <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.insert(<span class="keyword">typename</span> assoc_map::value_type(key, creator)).second;
-<a name="l00100"></a>00100 }
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> T&gt;
-<a name="l00103"></a>00103 <span class="keyword">template</span>&lt; <span class="keyword">typename</span> obj_t &gt;
-<a name="l00104"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#c22cd3b42ffaeec981ace7341043bd35">00104</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#93ffc9245ac0be282f444436d64dd8be" title="register an object">ObjectFactory&lt;key_t, T&gt;::Register</a>(<span class="keyword">const</span> key_t &amp;key)
-<a name="l00105"></a>00105 {
-<a name="l00106"></a>00106     <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>(key, create_policy_new&lt;abstract_type, obj_t&gt;);
-<a name="l00107"></a>00107 }
-<a name="l00108"></a>00108 
+<a name="l00087"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">00087</a>     <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#38633161237015f335b2c066ad8129b8">assoc_map</a> &amp;<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>; }
+<a name="l00088"></a>00088 <span class="keyword">private</span>:
+<a name="l00089"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">00089</a>     <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#38633161237015f335b2c066ad8129b8">assoc_map</a> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>;
+<a name="l00090"></a>00090 };
+<a name="l00091"></a>00091 
+<a name="l00092"></a><a class="code" href="namespacevotca_1_1tools.html#2a01072b159a10f3fb52a4a7f4c3ef32">00092</a> <span class="keyword">template</span>&lt;<span class="keyword">class</span> parent, <span class="keyword">class</span> T&gt; parent* <a class="code" href="namespacevotca_1_1tools.html#2a01072b159a10f3fb52a4a7f4c3ef32">create_policy_new</a>()
+<a name="l00093"></a>00093 {
+<a name="l00094"></a>00094     <span class="keywordflow">return</span> <span class="keyword">new</span> T();
+<a name="l00095"></a>00095 }
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> T&gt;
+<a name="l00098"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#93ffc9245ac0be282f444436d64dd8be">00098</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#93ffc9245ac0be282f444436d64dd8be" title="register an object">ObjectFactory&lt;key_t, T&gt;::Register</a>(<span class="keyword">const</span> key_t &amp;key, creator_t creator)
+<a name="l00099"></a>00099 {
+<a name="l00100"></a>00100     <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.insert(<span class="keyword">typename</span> assoc_map::value_type(key, creator)).second;
+<a name="l00101"></a>00101 }
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> T&gt;
+<a name="l00104"></a>00104 <span class="keyword">template</span>&lt; <span class="keyword">typename</span> obj_t &gt;
+<a name="l00105"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#c22cd3b42ffaeec981ace7341043bd35">00105</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#93ffc9245ac0be282f444436d64dd8be" title="register an object">ObjectFactory&lt;key_t, T&gt;::Register</a>(<span class="keyword">const</span> key_t &amp;key)
+<a name="l00106"></a>00106 {
+<a name="l00107"></a>00107     <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>(key, create_policy_new&lt;abstract_type, obj_t&gt;);
+<a name="l00108"></a>00108 }
 <a name="l00109"></a>00109 
-<a name="l00110"></a>00110 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> T&gt;
-<a name="l00111"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#f7cdca5a79d3cb0946ceaa92979b9a04">00111</a> <span class="keyword">inline</span> T* <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#f7cdca5a79d3cb0946ceaa92979b9a04">ObjectFactory&lt;key_t, T&gt;::Create</a>(<span class="keyword">const</span> key_t &amp;key)
-<a name="l00112"></a>00112 {
-<a name="l00113"></a>00113     <span class="keyword">typename</span> assoc_map::const_iterator it(<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.find(key));
-<a name="l00114"></a>00114     <span class="keywordflow">if</span> (it != <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.end())
-<a name="l00115"></a>00115         <span class="keywordflow">return</span> (it-&gt;second)();
-<a name="l00116"></a>00116     <span class="keywordflow">else</span>
-<a name="l00117"></a>00117         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"factory key "</span> + key + <span class="stringliteral">" not found."</span>);
-<a name="l00118"></a>00118 }
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120 <span class="comment">/*template&lt;typename key_t, typename T&gt;</span>
-<a name="l00121"></a>00121 <span class="comment">inline static ObjectFactory&lt;key_t, T&gt;&amp; ObjectFactory&lt;key_t, T&gt;::Instance()</span>
-<a name="l00122"></a>00122 <span class="comment">{</span>
-<a name="l00123"></a>00123 <span class="comment">    static ObjectFactory&lt;key_t, T&gt; _this;</span>
-<a name="l00124"></a>00124 <span class="comment">    return _this;</span>
-<a name="l00125"></a>00125 <span class="comment">}*/</span>
-<a name="l00126"></a>00126 
-<a name="l00127"></a>00127 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> T&gt;
-<a name="l00128"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#5a6dbf8f3030fb46dc833fa3b2c5cea8">00128</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#5a6dbf8f3030fb46dc833fa3b2c5cea8">ObjectFactory&lt;key_t, T&gt;::IsRegistered</a>(<span class="keyword">const</span> key_t &amp; _id)<span class="keyword"> const</span>
-<a name="l00129"></a>00129 <span class="keyword"></span>{
-<a name="l00130"></a>00130         <span class="keywordflow">return</span> ( <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.find(_id)!= <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.end() );
-<a name="l00131"></a>00131 }
-<a name="l00132"></a>00132 
-<a name="l00133"></a>00133 <span class="comment">/*std::string list_keys() const {</span>
-<a name="l00134"></a>00134 <span class="comment">    std::stringstream _str;</span>
-<a name="l00135"></a>00135 <span class="comment">    for (typename assoc_map::const_iterator it(map.begin()); it != map.end(); it++) {</span>
-<a name="l00136"></a>00136 <span class="comment">        _str &lt;&lt; (*it).first &lt;&lt; "\n";</span>
-<a name="l00137"></a>00137 <span class="comment">    }</span>
-<a name="l00138"></a>00138 <span class="comment">    return _str.str();</span>
-<a name="l00139"></a>00139 <span class="comment">}</span>
-<a name="l00140"></a>00140 <span class="comment">*/</span>
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">object</span>_type &gt;
-<a name="l00143"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactoryRegister.html">00143</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1ObjectFactoryRegister.html">ObjectFactoryRegister</a> {
-<a name="l00144"></a>00144 <span class="keyword">public</span>:
-<a name="l00145"></a>00145     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> factory_type, <span class="keyword">typename</span> key_type&gt;
-<a name="l00146"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactoryRegister.html#91f7e7d230825b7516f8332f761dff19">00146</a>     <a class="code" href="classvotca_1_1tools_1_1ObjectFactoryRegister.html#91f7e7d230825b7516f8332f761dff19">ObjectFactoryRegister</a>(factory_type &amp;factory, key_type &amp;key) {
-<a name="l00147"></a>00147         factory.Register(key, &amp;create_policy_new&lt;typename factory_type::abstract_type, object_type&gt;);
-<a name="l00148"></a>00148     }
-<a name="l00149"></a>00149 };
-<a name="l00150"></a>00150 
-<a name="l00151"></a>00151 }}
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153 <span class="preprocessor">#endif  </span><span class="comment">/* _objectfactory_H */</span>
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> T&gt;
+<a name="l00112"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#f7cdca5a79d3cb0946ceaa92979b9a04">00112</a> <span class="keyword">inline</span> T* <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#f7cdca5a79d3cb0946ceaa92979b9a04">ObjectFactory&lt;key_t, T&gt;::Create</a>(<span class="keyword">const</span> key_t &amp;key)
+<a name="l00113"></a>00113 {
+<a name="l00114"></a>00114     <span class="keyword">typename</span> assoc_map::const_iterator it(<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.find(key));
+<a name="l00115"></a>00115     <span class="keywordflow">if</span> (it != <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.end())
+<a name="l00116"></a>00116         <span class="keywordflow">return</span> (it-&gt;second)();
+<a name="l00117"></a>00117     <span class="keywordflow">else</span>
+<a name="l00118"></a>00118         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"factory key "</span> + key + <span class="stringliteral">" not found."</span>);
+<a name="l00119"></a>00119 }
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 <span class="comment">/*template&lt;typename key_t, typename T&gt;</span>
+<a name="l00122"></a>00122 <span class="comment">inline static ObjectFactory&lt;key_t, T&gt;&amp; ObjectFactory&lt;key_t, T&gt;::Instance()</span>
+<a name="l00123"></a>00123 <span class="comment">{</span>
+<a name="l00124"></a>00124 <span class="comment">    static ObjectFactory&lt;key_t, T&gt; _this;</span>
+<a name="l00125"></a>00125 <span class="comment">    return _this;</span>
+<a name="l00126"></a>00126 <span class="comment">}*/</span>
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> key_t, <span class="keyword">typename</span> T&gt;
+<a name="l00129"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#5a6dbf8f3030fb46dc833fa3b2c5cea8">00129</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#5a6dbf8f3030fb46dc833fa3b2c5cea8">ObjectFactory&lt;key_t, T&gt;::IsRegistered</a>(<span class="keyword">const</span> key_t &amp; _id)<span class="keyword"> const</span>
+<a name="l00130"></a>00130 <span class="keyword"></span>{
+<a name="l00131"></a>00131         <span class="keywordflow">return</span> ( <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.find(_id)!= <a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#baec572c1043b37d85883b9330989974">_objects</a>.end() );
+<a name="l00132"></a>00132 }
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134 <span class="comment">/*std::string list_keys() const {</span>
+<a name="l00135"></a>00135 <span class="comment">    std::stringstream _str;</span>
+<a name="l00136"></a>00136 <span class="comment">    for (typename assoc_map::const_iterator it(map.begin()); it != map.end(); it++) {</span>
+<a name="l00137"></a>00137 <span class="comment">        _str &lt;&lt; (*it).first &lt;&lt; "\n";</span>
+<a name="l00138"></a>00138 <span class="comment">    }</span>
+<a name="l00139"></a>00139 <span class="comment">    return _str.str();</span>
+<a name="l00140"></a>00140 <span class="comment">}</span>
+<a name="l00141"></a>00141 <span class="comment">*/</span>
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">object</span>_type &gt;
+<a name="l00144"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactoryRegister.html">00144</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1ObjectFactoryRegister.html">ObjectFactoryRegister</a> {
+<a name="l00145"></a>00145 <span class="keyword">public</span>:
+<a name="l00146"></a>00146     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> factory_type, <span class="keyword">typename</span> key_type&gt;
+<a name="l00147"></a><a class="code" href="classvotca_1_1tools_1_1ObjectFactoryRegister.html#91f7e7d230825b7516f8332f761dff19">00147</a>     <a class="code" href="classvotca_1_1tools_1_1ObjectFactoryRegister.html#91f7e7d230825b7516f8332f761dff19">ObjectFactoryRegister</a>(factory_type &amp;factory, key_type &amp;key) {
+<a name="l00148"></a>00148         factory.Register(key, &amp;create_policy_new&lt;typename factory_type::abstract_type, object_type&gt;);
+<a name="l00149"></a>00149     }
+<a name="l00150"></a>00150 };
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152 }}
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154 <span class="preprocessor">#endif  </span><span class="comment">/* _objectfactory_H */</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
