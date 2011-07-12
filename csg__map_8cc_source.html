@@ -167,21 +167,24 @@
 <a name="l00144"></a>00144     <span class="keywordflow">if</span> (<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> == NULL)
 <a name="l00145"></a>00145         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"output format not supported: "</span> + out);
 <a name="l00146"></a>00146 
-<a name="l00147"></a>00147     <span class="keywordflow">if</span> (hybrid == <span class="stringliteral">"yes"</span>) {
-<a name="l00148"></a>00148         cout &lt;&lt; <span class="stringliteral">"Doing hybrid mapping..."</span> &lt;&lt; endl;
-<a name="l00149"></a>00149         <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a> = <span class="keyword">true</span>;
-<a name="l00150"></a>00150     }
-<a name="l00151"></a>00151 
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#03d43187287006689a328d84af03f45b">Open</a>(out);
-<a name="l00154"></a>00154 };
+<a name="l00147"></a>00147     <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a> = <span class="keyword">false</span>;
+<a name="l00148"></a>00148     <span class="keywordflow">if</span> (hybrid == <span class="stringliteral">"yes"</span>) {
+<a name="l00149"></a>00149         <span class="keywordflow">if</span> (!<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#e99703b43d553fd84952550bab38d05f">_do_mapping</a>)
+<a name="l00150"></a>00150             <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"options hybrid and no-map not compatible"</span>);
+<a name="l00151"></a>00151         cout &lt;&lt; <span class="stringliteral">"Doing hybrid mapping..."</span> &lt;&lt; endl;
+<a name="l00152"></a>00152         <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a> = <span class="keyword">true</span>;
+<a name="l00153"></a>00153     }
+<a name="l00154"></a>00154 
 <a name="l00155"></a>00155 
-<a name="l00156"></a><a class="code" href="csg__map_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00156</a> <span class="keywordtype">int</span> <a class="code" href="linktest_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
-<a name="l00157"></a>00157 {
-<a name="l00158"></a>00158     <a class="code" href="classCsgMapApp.html">CsgMapApp</a> app;
-<a name="l00159"></a>00159     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
-<a name="l00160"></a>00160 }
-<a name="l00161"></a>00161 
+<a name="l00156"></a>00156     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#03d43187287006689a328d84af03f45b">Open</a>(out);
+<a name="l00157"></a>00157 };
+<a name="l00158"></a>00158 
+<a name="l00159"></a><a class="code" href="csg__map_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00159</a> <span class="keywordtype">int</span> <a class="code" href="linktest_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
+<a name="l00160"></a>00160 {
+<a name="l00161"></a>00161     <a class="code" href="classCsgMapApp.html">CsgMapApp</a> app;
+<a name="l00162"></a>00162     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
+<a name="l00163"></a>00163 }
+<a name="l00164"></a>00164 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
