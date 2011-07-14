@@ -85,40 +85,49 @@
 <a name="l00062"></a>00062 {
 <a name="l00063"></a>00063     <span class="keywordflow">if</span>(el == <span class="stringliteral">"molecules"</span>)
 <a name="l00064"></a>00064          <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#001b24c310458ebbae62597cfe15463a">_parser</a>.<a class="code" href="classvotca_1_1tools_1_1ParseXML.html#5cd585cbaf64acd647446d1fd9aaf7f8" title="Set handler for next element (only member functions possible).">NextHandler</a>(<span class="keyword">this</span>, &amp;<a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#db09ff5016be3bcd841fb172b2a602f8">XMLTopologyReader::ParseMolecules</a>);
-<a name="l00065"></a>00065 }
-<a name="l00066"></a>00066 
-<a name="l00067"></a><a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#db09ff5016be3bcd841fb172b2a602f8">00067</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#db09ff5016be3bcd841fb172b2a602f8">XMLTopologyReader::ParseMolecules</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;el, map&lt;string, string&gt; &amp;attr)
-<a name="l00068"></a>00068 {
-<a name="l00069"></a>00069     map&lt;string, string&gt;::iterator iter;
-<a name="l00070"></a>00070     <span class="keywordflow">if</span> (el == <span class="stringliteral">"clear"</span>) {
-<a name="l00071"></a>00071         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#78a79743bcbf079ae81246e52757b0ab">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#d4c582d06f723b31e73c05c63b001cc7">ClearMoleculeList</a>();
-<a name="l00072"></a>00072         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#001b24c310458ebbae62597cfe15463a">_parser</a>.<a class="code" href="classvotca_1_1tools_1_1ParseXML.html#57cee31613ab1516e29bd1e5d76de627" title="Ignore the content of this elements and all of its childs.">IgnoreChilds</a>();
+<a name="l00065"></a>00065     <span class="keywordflow">if</span>(el == <span class="stringliteral">"box"</span>) {
+<a name="l00066"></a>00066         <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> m;
+<a name="l00067"></a>00067         m.<a class="code" href="classvotca_1_1tools_1_1matrix.html#784ae7baf534cb09ccd31a38db9d18b1" title="initialize the matrix with zeros">ZeroMatrix</a>();
+<a name="l00068"></a>00068         m[0][0] = <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(attr[<span class="stringliteral">"xx"</span>]);
+<a name="l00069"></a>00069         m[1][1] = <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(attr[<span class="stringliteral">"yy"</span>]);
+<a name="l00070"></a>00070         m[2][2] = <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(attr[<span class="stringliteral">"zz"</span>]);
+<a name="l00071"></a>00071         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#78a79743bcbf079ae81246e52757b0ab">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#f8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(m);
+<a name="l00072"></a>00072         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#001b24c310458ebbae62597cfe15463a">_parser</a>.<a class="code" href="classvotca_1_1tools_1_1ParseXML.html#5cd585cbaf64acd647446d1fd9aaf7f8" title="Set handler for next element (only member functions possible).">NextHandler</a>(<span class="keyword">this</span>, &amp;<a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#01b85e29a03b8253e113c085df080b82">XMLTopologyReader::ParseTopology</a>);
 <a name="l00073"></a>00073     }
-<a name="l00074"></a>00074     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (el == <span class="stringliteral">"rename"</span>) {
-<a name="l00075"></a>00075         <span class="keywordtype">string</span> molname = attr[<span class="stringliteral">"name"</span>];
-<a name="l00076"></a>00076         <span class="keywordtype">string</span> range = attr[<span class="stringliteral">"range"</span>];
-<a name="l00077"></a>00077         <span class="keywordflow">if</span> (molname == <span class="stringliteral">""</span> || range == <span class="stringliteral">""</span>)
-<a name="l00078"></a>00078             <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"invalid rename tag"</span>);
-<a name="l00079"></a>00079         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#78a79743bcbf079ae81246e52757b0ab">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#e8715bde5f302d6161834a30f1ff225f" title="rename all the molecules in range">RenameMolecules</a>(range, molname);
-<a name="l00080"></a>00080         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#001b24c310458ebbae62597cfe15463a">_parser</a>.<a class="code" href="classvotca_1_1tools_1_1ParseXML.html#57cee31613ab1516e29bd1e5d76de627" title="Ignore the content of this elements and all of its childs.">IgnoreChilds</a>();
-<a name="l00081"></a>00081     }
-<a name="l00082"></a>00082     <span class="keywordflow">if</span> (el == <span class="stringliteral">"define"</span>) {
-<a name="l00083"></a>00083         <span class="keywordtype">string</span> molname = attr[<span class="stringliteral">"name"</span>];
-<a name="l00084"></a>00084         <span class="keywordtype">string</span> first = attr[<span class="stringliteral">"first"</span>];
-<a name="l00085"></a>00085         <span class="keywordtype">string</span> nbeads = attr[<span class="stringliteral">"nbeads"</span>];
-<a name="l00086"></a>00086         <span class="keywordtype">string</span> nmols = attr[<span class="stringliteral">"nmols"</span>];
-<a name="l00087"></a>00087         <span class="keywordflow">if</span> (molname == <span class="stringliteral">""</span> &amp;&amp; first == <span class="stringliteral">""</span> &amp;&amp; nbeads == <span class="stringliteral">""</span> &amp;&amp; nmols == <span class="stringliteral">""</span>)
-<a name="l00088"></a>00088             <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"invalid define tag"</span>);
-<a name="l00089"></a>00089         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#78a79743bcbf079ae81246e52757b0ab">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#6ecea343ff602a50b2361f0eeade3a32" title="create molecules based on blocks of atoms">CreateMoleculesByRange</a>(molname,
-<a name="l00090"></a>00090                 boost::lexical_cast&lt;int&gt;(first),
-<a name="l00091"></a>00091                 boost::lexical_cast&lt;int&gt;(nbeads),
-<a name="l00092"></a>00092                 boost::lexical_cast&lt;int&gt;(nmols));
-<a name="l00093"></a>00093         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#001b24c310458ebbae62597cfe15463a">_parser</a>.<a class="code" href="classvotca_1_1tools_1_1ParseXML.html#57cee31613ab1516e29bd1e5d76de627" title="Ignore the content of this elements and all of its childs.">IgnoreChilds</a>();
-<a name="l00094"></a>00094     }
-<a name="l00095"></a>00095 }
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 }}
-<a name="l00098"></a>00098 
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#db09ff5016be3bcd841fb172b2a602f8">00076</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#db09ff5016be3bcd841fb172b2a602f8">XMLTopologyReader::ParseMolecules</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;el, map&lt;string, string&gt; &amp;attr)
+<a name="l00077"></a>00077 {
+<a name="l00078"></a>00078     map&lt;string, string&gt;::iterator iter;
+<a name="l00079"></a>00079     <span class="keywordflow">if</span> (el == <span class="stringliteral">"clear"</span>) {
+<a name="l00080"></a>00080         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#78a79743bcbf079ae81246e52757b0ab">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#d4c582d06f723b31e73c05c63b001cc7">ClearMoleculeList</a>();
+<a name="l00081"></a>00081         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#001b24c310458ebbae62597cfe15463a">_parser</a>.<a class="code" href="classvotca_1_1tools_1_1ParseXML.html#57cee31613ab1516e29bd1e5d76de627" title="Ignore the content of this elements and all of its childs.">IgnoreChilds</a>();
+<a name="l00082"></a>00082     }
+<a name="l00083"></a>00083     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (el == <span class="stringliteral">"rename"</span>) {
+<a name="l00084"></a>00084         <span class="keywordtype">string</span> molname = attr[<span class="stringliteral">"name"</span>];
+<a name="l00085"></a>00085         <span class="keywordtype">string</span> range = attr[<span class="stringliteral">"range"</span>];
+<a name="l00086"></a>00086         <span class="keywordflow">if</span> (molname == <span class="stringliteral">""</span> || range == <span class="stringliteral">""</span>)
+<a name="l00087"></a>00087             <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"invalid rename tag"</span>);
+<a name="l00088"></a>00088         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#78a79743bcbf079ae81246e52757b0ab">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#e8715bde5f302d6161834a30f1ff225f" title="rename all the molecules in range">RenameMolecules</a>(range, molname);
+<a name="l00089"></a>00089         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#001b24c310458ebbae62597cfe15463a">_parser</a>.<a class="code" href="classvotca_1_1tools_1_1ParseXML.html#57cee31613ab1516e29bd1e5d76de627" title="Ignore the content of this elements and all of its childs.">IgnoreChilds</a>();
+<a name="l00090"></a>00090     }
+<a name="l00091"></a>00091     <span class="keywordflow">if</span> (el == <span class="stringliteral">"define"</span>) {
+<a name="l00092"></a>00092         <span class="keywordtype">string</span> molname = attr[<span class="stringliteral">"name"</span>];
+<a name="l00093"></a>00093         <span class="keywordtype">string</span> first = attr[<span class="stringliteral">"first"</span>];
+<a name="l00094"></a>00094         <span class="keywordtype">string</span> nbeads = attr[<span class="stringliteral">"nbeads"</span>];
+<a name="l00095"></a>00095         <span class="keywordtype">string</span> nmols = attr[<span class="stringliteral">"nmols"</span>];
+<a name="l00096"></a>00096         <span class="keywordflow">if</span> (molname == <span class="stringliteral">""</span> &amp;&amp; first == <span class="stringliteral">""</span> &amp;&amp; nbeads == <span class="stringliteral">""</span> &amp;&amp; nmols == <span class="stringliteral">""</span>)
+<a name="l00097"></a>00097             <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"invalid define tag"</span>);
+<a name="l00098"></a>00098         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#78a79743bcbf079ae81246e52757b0ab">_top</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#6ecea343ff602a50b2361f0eeade3a32" title="create molecules based on blocks of atoms">CreateMoleculesByRange</a>(molname,
+<a name="l00099"></a>00099                 boost::lexical_cast&lt;int&gt;(first),
+<a name="l00100"></a>00100                 boost::lexical_cast&lt;int&gt;(nbeads),
+<a name="l00101"></a>00101                 boost::lexical_cast&lt;int&gt;(nmols));
+<a name="l00102"></a>00102         <a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html#001b24c310458ebbae62597cfe15463a">_parser</a>.<a class="code" href="classvotca_1_1tools_1_1ParseXML.html#57cee31613ab1516e29bd1e5d76de627" title="Ignore the content of this elements and all of its childs.">IgnoreChilds</a>();
+<a name="l00103"></a>00103     }
+<a name="l00104"></a>00104 }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 }}
+<a name="l00107"></a>00107 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

@@ -46,28 +46,30 @@
 <a name="l00023"></a>00023 <span class="preprocessor">#include "<a class="code" href="esptopologyreader_8h.html">modules/io/esptopologyreader.h</a>"</span>
 <a name="l00024"></a>00024 <span class="preprocessor">#include "<a class="code" href="lammpsreader_8h.html">modules/io/lammpsreader.h</a>"</span>
 <a name="l00025"></a>00025 <span class="preprocessor">#include "<a class="code" href="xmltopologyreader_8h.html">modules/io/xmltopologyreader.h</a>"</span>
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027 <span class="preprocessor">#ifdef GMX</span>
-<a name="l00028"></a>00028 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="gmxtopologyreader_8h.html">modules/io/gmxtopologyreader.h</a>"</span>
-<a name="l00029"></a>00029 <span class="preprocessor">#include "<a class="code" href="grotopologyreader_8h.html">modules/io/grotopologyreader.h</a>"</span>
-<a name="l00030"></a>00030 <span class="preprocessor">#include "<a class="code" href="pdbtopologyreader_8h.html">modules/io/pdbtopologyreader.h</a>"</span>
-<a name="l00031"></a>00031 <span class="preprocessor">#endif</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>
-<a name="l00033"></a>00033 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {
-<a name="l00034"></a>00034 
-<a name="l00035"></a><a class="code" href="classvotca_1_1csg_1_1TopologyReader.html#6e54a01a0ecddd83df6917c8ee58e133">00035</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1TopologyReader.html#6e54a01a0ecddd83df6917c8ee58e133">TopologyReader::RegisterPlugins</a>(<span class="keywordtype">void</span>)
-<a name="l00036"></a>00036 {
-<a name="l00037"></a>00037     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1ESPTopologyReader.html" title="reader for espresso blockfiles">ESPTopologyReader</a>&gt;(<span class="stringliteral">"esp"</span>);              
-<a name="l00038"></a>00038     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html">XMLTopologyReader</a>&gt;(<span class="stringliteral">"xml"</span>);
-<a name="l00039"></a>00039     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html" title="class for reading lammps dump files">LAMMPSReader</a>&gt;(<span class="stringliteral">"dump"</span>);
-<a name="l00040"></a>00040 <span class="preprocessor">#ifdef GMX</span>
-<a name="l00041"></a>00041 <span class="preprocessor"></span>    <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html" title="reader for gromacs topology files">GMXTopologyReader</a>&gt;(<span class="stringliteral">"tpr"</span>);
-<a name="l00042"></a>00042     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1GROTopologyReader.html" title="reader for gromacs topology files">GROTopologyReader</a>&gt;(<span class="stringliteral">"gro"</span>);
-<a name="l00043"></a>00043     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1PDBTopologyReader.html" title="reader for gromacs topology files">PDBTopologyReader</a>&gt;(<span class="stringliteral">"pdb"</span>);
-<a name="l00044"></a>00044 <span class="preprocessor">#endif</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span>}
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047 }}
+<a name="l00026"></a>00026 <span class="preprocessor">#include "<a class="code" href="xyzreader_8h.html">modules/io/xyzreader.h</a>"</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="preprocessor">#ifdef GMX</span>
+<a name="l00029"></a>00029 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="gmxtopologyreader_8h.html">modules/io/gmxtopologyreader.h</a>"</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#include "<a class="code" href="grotopologyreader_8h.html">modules/io/grotopologyreader.h</a>"</span>
+<a name="l00031"></a>00031 <span class="preprocessor">#include "<a class="code" href="pdbtopologyreader_8h.html">modules/io/pdbtopologyreader.h</a>"</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#endif</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span>
+<a name="l00034"></a>00034 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {
+<a name="l00035"></a>00035 
+<a name="l00036"></a><a class="code" href="classvotca_1_1csg_1_1TopologyReader.html#6e54a01a0ecddd83df6917c8ee58e133">00036</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1TopologyReader.html#6e54a01a0ecddd83df6917c8ee58e133">TopologyReader::RegisterPlugins</a>(<span class="keywordtype">void</span>)
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1ESPTopologyReader.html" title="reader for espresso blockfiles">ESPTopologyReader</a>&gt;(<span class="stringliteral">"esp"</span>);              
+<a name="l00039"></a>00039     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1XMLTopologyReader.html">XMLTopologyReader</a>&gt;(<span class="stringliteral">"xml"</span>);
+<a name="l00040"></a>00040     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html" title="class for reading lammps dump files">LAMMPSReader</a>&gt;(<span class="stringliteral">"dump"</span>);
+<a name="l00041"></a>00041     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1XYZReader.html" title="class for reading xyz files">XYZReader</a>&gt;(<span class="stringliteral">"xyz"</span>);
+<a name="l00042"></a>00042 <span class="preprocessor">#ifdef GMX</span>
+<a name="l00043"></a>00043 <span class="preprocessor"></span>    <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html" title="reader for gromacs topology files">GMXTopologyReader</a>&gt;(<span class="stringliteral">"tpr"</span>);
+<a name="l00044"></a>00044     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1GROTopologyReader.html" title="reader for gromacs topology files">GROTopologyReader</a>&gt;(<span class="stringliteral">"gro"</span>);
+<a name="l00045"></a>00045     <a class="code" href="namespacevotca_1_1csg.html#1187e7744388deec82d39b5634886f7d">TopReaderFactory</a>().Register&lt;<a class="code" href="classvotca_1_1csg_1_1PDBTopologyReader.html" title="reader for gromacs topology files">PDBTopologyReader</a>&gt;(<span class="stringliteral">"pdb"</span>);
+<a name="l00046"></a>00046 <span class="preprocessor">#endif</span>
+<a name="l00047"></a>00047 <span class="preprocessor"></span>}
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
