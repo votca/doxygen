@@ -51,7 +51,7 @@
 <a name="l00028"></a>00028 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {
 <a name="l00029"></a>00029 
 <a name="l00030"></a><a class="code" href="classvotca_1_1csg_1_1Imc.html#8bd9912427caf9f59e6c0f7f1acaf243">00030</a> <a class="code" href="classvotca_1_1csg_1_1Imc.html#8bd9912427caf9f59e6c0f7f1acaf243">Imc::Imc</a>()
-<a name="l00031"></a>00031    : _write_every(0), _do_blocks(false), _do_imc(false), _processed_some_frames(false)
+<a name="l00031"></a>00031    : _block_length(0), _do_imc(false), _processed_some_frames(false)
 <a name="l00032"></a>00032 {
 <a name="l00033"></a>00033 }
 <a name="l00034"></a>00034 
@@ -162,7 +162,7 @@
 <a name="l00139"></a><a class="code" href="classvotca_1_1csg_1_1Imc.html#3210bb97aeb7d0228fdb19a9591edf40">00139</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Imc.html#3210bb97aeb7d0228fdb19a9591edf40" title="end coarse graining a trajectory">Imc::EndEvaluate</a>()
 <a name="l00140"></a>00140 {
 <a name="l00141"></a>00141     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1Imc.html#292ac47a490cd133247395b7c225242d">_nframes</a> &gt; 0) {
-<a name="l00142"></a>00142         <span class="keywordflow">if</span>(!<a class="code" href="classvotca_1_1csg_1_1Imc.html#51f3aca8ef282eebf4d9b9a2a1ae9204">_do_blocks</a>) {
+<a name="l00142"></a>00142         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1Imc.html#47ebd71403f51ee4f52d47f7f0cc3971">_block_length</a> == 0) {
 <a name="l00143"></a>00143             <span class="keywordtype">string</span> suffix = string(<span class="stringliteral">"."</span>) + <a class="code" href="classvotca_1_1csg_1_1Imc.html#4d0e1650a7c1a3d548ac78d8d09f0c67">_extension</a>;
 <a name="l00144"></a>00144             <a class="code" href="classvotca_1_1csg_1_1Imc.html#a23e3d91292cd1e4978838e8f7c91403">WriteDist</a>(suffix);
 <a name="l00145"></a>00145             <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1Imc.html#ff60ea06243cdb9b1ef52313fee7488f">_do_imc</a>)
@@ -666,21 +666,20 @@
 <a name="l00649"></a>00649     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1Imc.html#ff60ea06243cdb9b1ef52313fee7488f">_do_imc</a>)
 <a name="l00650"></a>00650         <a class="code" href="classvotca_1_1csg_1_1Imc.html#8e66908ffb1f1f14748606c93f071ed1" title="update the correlations after interations were processed">DoCorrelations</a>(worker);
 <a name="l00651"></a>00651 
-<a name="l00652"></a>00652     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1Imc.html#a5881c904dcde953fb3b36d568c53cc9">_write_every</a> != 0) {
-<a name="l00653"></a>00653         <span class="keywordflow">if</span>((<a class="code" href="classvotca_1_1csg_1_1Imc.html#292ac47a490cd133247395b7c225242d">_nframes</a> % <a class="code" href="classvotca_1_1csg_1_1Imc.html#a5881c904dcde953fb3b36d568c53cc9">_write_every</a>)==0) {
+<a name="l00652"></a>00652     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1Imc.html#47ebd71403f51ee4f52d47f7f0cc3971">_block_length</a> != 0) {
+<a name="l00653"></a>00653         <span class="keywordflow">if</span>((<a class="code" href="classvotca_1_1csg_1_1Imc.html#292ac47a490cd133247395b7c225242d">_nframes</a> % <a class="code" href="classvotca_1_1csg_1_1Imc.html#47ebd71403f51ee4f52d47f7f0cc3971">_block_length</a>)==0) {
 <a name="l00654"></a>00654             <a class="code" href="classvotca_1_1csg_1_1Imc.html#69eef97cb5259d479c05cb3051a1cefa">_nblock</a>++;
 <a name="l00655"></a>00655             <span class="keywordtype">string</span> suffix = string(<span class="stringliteral">"_"</span>) + <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(<a class="code" href="classvotca_1_1csg_1_1Imc.html#69eef97cb5259d479c05cb3051a1cefa">_nblock</a>) + <span class="keywordtype">string</span>(<span class="stringliteral">"."</span>) + <a class="code" href="classvotca_1_1csg_1_1Imc.html#4d0e1650a7c1a3d548ac78d8d09f0c67">_extension</a>;
 <a name="l00656"></a>00656             <a class="code" href="classvotca_1_1csg_1_1Imc.html#a23e3d91292cd1e4978838e8f7c91403">WriteDist</a>(suffix);
 <a name="l00657"></a>00657             <a class="code" href="classvotca_1_1csg_1_1Imc.html#09427e86dce5acb726ab50b0010b4f85">WriteIMCData</a>(suffix);
 <a name="l00658"></a>00658             <a class="code" href="classvotca_1_1csg_1_1Imc.html#8aaea8e982ab116e311597703386ead8">WriteIMCBlock</a>(suffix);
-<a name="l00659"></a>00659             <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1Imc.html#51f3aca8ef282eebf4d9b9a2a1ae9204">_do_blocks</a>)
-<a name="l00660"></a>00660                 <a class="code" href="classvotca_1_1csg_1_1Imc.html#26de58c48f143d7c0d3c016236169a0d">ClearAverages</a>();
-<a name="l00661"></a>00661         }
-<a name="l00662"></a>00662     }
-<a name="l00663"></a>00663 
-<a name="l00664"></a>00664 }
-<a name="l00665"></a>00665 
-<a name="l00666"></a>00666 }}
+<a name="l00659"></a>00659             <a class="code" href="classvotca_1_1csg_1_1Imc.html#26de58c48f143d7c0d3c016236169a0d">ClearAverages</a>();
+<a name="l00660"></a>00660         }
+<a name="l00661"></a>00661     }
+<a name="l00662"></a>00662 
+<a name="l00663"></a>00663 }
+<a name="l00664"></a>00664 
+<a name="l00665"></a>00665 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

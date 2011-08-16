@@ -54,92 +54,91 @@
 <a name="l00031"></a>00031     : <span class="keyword">public</span> <a class="code" href="classvotca_1_1csg_1_1CsgApplication.html">CsgApplication</a>
 <a name="l00032"></a>00032 {
 <a name="l00033"></a>00033 <span class="keyword">public</span>:
-<a name="l00034"></a><a class="code" href="classCsgStatApp.html#ca7f5cefaf1a49609e3066f66d3628cd">00034</a>     <a class="code" href="classCsgStatApp.html#ca7f5cefaf1a49609e3066f66d3628cd">CsgStatApp</a>() : <a class="code" href="classCsgStatApp.html#118e042974f3942453ec9f2d0444f5e2">_write_every</a>(0) {}
-<a name="l00035"></a>00035     
-<a name="l00036"></a><a class="code" href="classCsgStatApp.html#75697954846406fa1db3e7680bf11f1e">00036</a>     <span class="keywordtype">string</span> <a class="code" href="classCsgStatApp.html#75697954846406fa1db3e7680bf11f1e" title="program name">ProgramName</a>() { <span class="keywordflow">return</span> <span class="stringliteral">"csg_stat"</span>; }
-<a name="l00037"></a>00037     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#6d97eaa418bc91780834b79014168d97">HelpText</a>(ostream &amp;out);
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="classCsgStatApp.html#06349fded112362a94853b9ef8798ea9">00039</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#06349fded112362a94853b9ef8798ea9" title="overload and return true to enable trajectory command line options">DoTrajectory</a>() {<span class="keywordflow">return</span> <span class="keyword">true</span>;}
-<a name="l00040"></a><a class="code" href="classCsgStatApp.html#1459dc400be2e6e3167d987271cecd54">00040</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#1459dc400be2e6e3167d987271cecd54" title="overload and return true to enable mapping command line options">DoMapping</a>() {<span class="keywordflow">return</span> <span class="keyword">true</span>;}
-<a name="l00041"></a><a class="code" href="classCsgStatApp.html#d658d32902c81f08691c099ade60934d">00041</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#d658d32902c81f08691c099ade60934d" title="if DoMapping is true, will by default require mapping or not">DoMappingDefault</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }
-<a name="l00042"></a><a class="code" href="classCsgStatApp.html#bfe2e86470d442dc31f14cca64910e04">00042</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#bfe2e86470d442dc31f14cca64910e04">DoThreaded</a>() {<span class="keywordflow">return</span> <span class="keyword">true</span>; }
-<a name="l00043"></a><a class="code" href="classCsgStatApp.html#337b326242746854a2c9ad2307e3b53f">00043</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#337b326242746854a2c9ad2307e3b53f">SynchronizeThreads</a>() {<span class="keywordflow">return</span> <span class="keyword">true</span>;}
-<a name="l00044"></a>00044     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#c5d63a8a90a450c4955ec9d083ae65b4" title="Initialize application data.">Initialize</a>();
-<a name="l00045"></a>00045     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#5e07bf7c0960699d512cdd3f33cdac81" title="Process command line options.">EvaluateOptions</a>();
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#934da732a6e9df8e4fa013e8ae9e1c36" title="called before the first frame">BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
-<a name="l00048"></a>00048     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#0fa70b8974a24a40c059fb682a05d5e7" title="called after the last frame">EndEvaluate</a>();
-<a name="l00049"></a>00049 
-<a name="l00050"></a><a class="code" href="classCsgStatApp.html#8e3390ef82729297629a4e8446ce9cfb">00050</a>     <a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html" title="Worker, derived from Thread, does the work.">CsgApplication::Worker</a> *<a class="code" href="classCsgStatApp.html#8e3390ef82729297629a4e8446ce9cfb">ForkWorker</a>() {
-<a name="l00051"></a>00051         <span class="keywordflow">return</span> <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#dd735314fcc4d85822a41d0c16d4c4a4">ForkWorker</a>();
-<a name="l00052"></a>00052     }
-<a name="l00053"></a>00053 
-<a name="l00054"></a><a class="code" href="classCsgStatApp.html#61bd8552f2b982f02425c4039d561438">00054</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#61bd8552f2b982f02425c4039d561438">MergeWorker</a>(<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html" title="Worker, derived from Thread, does the work.">CsgApplication::Worker</a> *worker) {
-<a name="l00055"></a>00055         <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#73647b3bd727e6e985fedcb1bb124c71">MergeWorker</a>(worker);
-<a name="l00056"></a>00056     }
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058 <span class="keyword">public</span>:
-<a name="l00059"></a><a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">00059</a>     <a class="code" href="classvotca_1_1csg_1_1Imc.html" title="class to calculate distribution functions and cross correlations for inverse monte...">Imc</a> <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>;
-<a name="l00060"></a><a class="code" href="classCsgStatApp.html#118e042974f3942453ec9f2d0444f5e2">00060</a>     <span class="keywordtype">int</span> <a class="code" href="classCsgStatApp.html#118e042974f3942453ec9f2d0444f5e2">_write_every</a>;
-<a name="l00061"></a><a class="code" href="classCsgStatApp.html#186e58470bbde08b60aae433c2e6fbdd">00061</a>     <span class="keywordtype">string</span> <a class="code" href="classCsgStatApp.html#186e58470bbde08b60aae433c2e6fbdd">_extension</a>;
-<a name="l00062"></a>00062 };
-<a name="l00063"></a>00063 
-<a name="l00064"></a><a class="code" href="classCsgStatApp.html#6d97eaa418bc91780834b79014168d97">00064</a> <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#6d97eaa418bc91780834b79014168d97">CsgStatApp::HelpText</a>(ostream &amp;out)
-<a name="l00065"></a>00065 {
-<a name="l00066"></a>00066     out &lt;&lt; <span class="stringliteral">"Calculate all distributions (bonded and non-bonded) specified in options file.\n"</span>
-<a name="l00067"></a>00067             <span class="stringliteral">"Optionally calculates update matrix for invere Monte Carlo. This program\n"</span>
-<a name="l00068"></a>00068             <span class="stringliteral">"is called inside the inverse scripts. Unlike csg_boltzmann, big systems\n"</span>
-<a name="l00069"></a>00069             <span class="stringliteral">"can be treated as well as non-bonded interactions can be evaluated."</span>;
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 
-<a name="l00072"></a><a class="code" href="classCsgStatApp.html#c5d63a8a90a450c4955ec9d083ae65b4">00072</a> <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#c5d63a8a90a450c4955ec9d083ae65b4" title="Initialize application data.">CsgStatApp::Initialize</a>()
-<a name="l00073"></a>00073 {
-<a name="l00074"></a>00074     <a class="code" href="classCsgStatApp.html#c5d63a8a90a450c4955ec9d083ae65b4" title="Initialize application data.">CsgApplication::Initialize</a>();
-<a name="l00075"></a>00075     <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>(<span class="stringliteral">"Specific options"</span>)
-<a name="l00076"></a>00076             (<span class="stringliteral">"options"</span>, boost::program_options::value&lt;string&gt;(), <span class="stringliteral">"  options file for coarse graining"</span>)
-<a name="l00077"></a>00077             (<span class="stringliteral">"do-imc"</span>, <span class="stringliteral">"  write out Inverse Monte Carlo data"</span>)
-<a name="l00078"></a>00078             (<span class="stringliteral">"write-every"</span>, boost::program_options::value&lt;int&gt;(&amp;<a class="code" href="classCsgStatApp.html#118e042974f3942453ec9f2d0444f5e2">_write_every</a>), <span class="stringliteral">"  write after every block of this length, "</span> \
-<a name="l00079"></a>00079                 <span class="stringliteral">"if --blocking   is set, the averages are cleared after every output"</span>)
-<a name="l00080"></a>00080             (<span class="stringliteral">"do-blocks"</span>, <span class="stringliteral">"  write output for blocking analysis"</span>)
-<a name="l00081"></a>00081             (<span class="stringliteral">"ext"</span>, boost::program_options::value&lt;string&gt;(&amp;<a class="code" href="classCsgStatApp.html#186e58470bbde08b60aae433c2e6fbdd">_extension</a>)-&gt;default_value(<span class="stringliteral">"dist.new"</span>), <span class="stringliteral">"Extension of the output"</span>);
-<a name="l00082"></a>00082 }
-<a name="l00083"></a>00083 
-<a name="l00084"></a><a class="code" href="classCsgStatApp.html#5e07bf7c0960699d512cdd3f33cdac81">00084</a> <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#5e07bf7c0960699d512cdd3f33cdac81" title="Process command line options.">CsgStatApp::EvaluateOptions</a>()
-<a name="l00085"></a>00085 {
-<a name="l00086"></a>00086     <a class="code" href="classCsgStatApp.html#5e07bf7c0960699d512cdd3f33cdac81" title="Process command line options.">CsgApplication::EvaluateOptions</a>();
-<a name="l00087"></a>00087     <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"options"</span>);
-<a name="l00088"></a>00088     <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"trj"</span>, <span class="stringliteral">"no trajectory file specified"</span>);
-<a name="l00089"></a>00089     
-<a name="l00090"></a>00090     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#af68f0f76f6a60ad252d3dd030da405b" title="load cg definitions file">LoadOptions</a>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"options"</span>].as&lt;string&gt;());
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#2785b0e5de249027c9e0a927bed2947c">WriteEvery</a>(<a class="code" href="classCsgStatApp.html#118e042974f3942453ec9f2d0444f5e2">_write_every</a>);
-<a name="l00093"></a>00093     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"do-blocks"</span>))
-<a name="l00094"></a>00094         <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#5b77bf4ad7dc07a4913e486cdb1d9c1d">DoBlocks</a>(<span class="keyword">true</span>);
-<a name="l00095"></a>00095     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"do-imc"</span>))
-<a name="l00096"></a>00096     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#3f0234b1efbb0e6a3cb94229b518eefa">DoImc</a>(<span class="keyword">true</span>);
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#34b6c3acc928f1ad3ee47b05d8bad2fb">Extension</a>(<a class="code" href="classCsgStatApp.html#186e58470bbde08b60aae433c2e6fbdd">_extension</a>);
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#8f4d5bcee5af800d27eb5843c85d88b6">Initialize</a>();
-<a name="l00101"></a>00101     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00102"></a>00102 }
-<a name="l00103"></a>00103 
-<a name="l00104"></a><a class="code" href="classCsgStatApp.html#934da732a6e9df8e4fa013e8ae9e1c36">00104</a> <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#934da732a6e9df8e4fa013e8ae9e1c36" title="called before the first frame">CsgStatApp::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref)
-<a name="l00105"></a>00105 {
-<a name="l00106"></a>00106     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#d338e8efa99a9ca8b3277b4426ef9a75" title="begin coarse graining a trajectory">BeginEvaluate</a>(top, top_ref);
-<a name="l00107"></a>00107 }
-<a name="l00108"></a>00108 
-<a name="l00109"></a><a class="code" href="classCsgStatApp.html#0fa70b8974a24a40c059fb682a05d5e7">00109</a> <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#0fa70b8974a24a40c059fb682a05d5e7" title="called after the last frame">CsgStatApp::EndEvaluate</a>()
-<a name="l00110"></a>00110 {
-<a name="l00111"></a>00111     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#3210bb97aeb7d0228fdb19a9591edf40" title="end coarse graining a trajectory">EndEvaluate</a>();
-<a name="l00112"></a>00112 }
-<a name="l00113"></a>00113 
-<a name="l00114"></a><a class="code" href="csg__stat_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00114</a> <span class="keywordtype">int</span> <a class="code" href="linktest_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
-<a name="l00115"></a>00115 {
-<a name="l00116"></a>00116     <a class="code" href="classCsgStatApp.html">CsgStatApp</a> app;
-<a name="l00117"></a>00117     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
-<a name="l00118"></a>00118 }
-<a name="l00119"></a>00119 
+<a name="l00034"></a><a class="code" href="classCsgStatApp.html#75697954846406fa1db3e7680bf11f1e">00034</a>     <span class="keywordtype">string</span> <a class="code" href="classCsgStatApp.html#75697954846406fa1db3e7680bf11f1e" title="program name">ProgramName</a>() { <span class="keywordflow">return</span> <span class="stringliteral">"csg_stat"</span>; }
+<a name="l00035"></a>00035     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#6d97eaa418bc91780834b79014168d97">HelpText</a>(ostream &amp;out);
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="classCsgStatApp.html#06349fded112362a94853b9ef8798ea9">00037</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#06349fded112362a94853b9ef8798ea9" title="overload and return true to enable trajectory command line options">DoTrajectory</a>() {<span class="keywordflow">return</span> <span class="keyword">true</span>;}
+<a name="l00038"></a><a class="code" href="classCsgStatApp.html#1459dc400be2e6e3167d987271cecd54">00038</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#1459dc400be2e6e3167d987271cecd54" title="overload and return true to enable mapping command line options">DoMapping</a>() {<span class="keywordflow">return</span> <span class="keyword">true</span>;}
+<a name="l00039"></a><a class="code" href="classCsgStatApp.html#d658d32902c81f08691c099ade60934d">00039</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#d658d32902c81f08691c099ade60934d" title="if DoMapping is true, will by default require mapping or not">DoMappingDefault</a>(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }
+<a name="l00040"></a><a class="code" href="classCsgStatApp.html#bfe2e86470d442dc31f14cca64910e04">00040</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#bfe2e86470d442dc31f14cca64910e04">DoThreaded</a>() {<span class="keywordflow">return</span> <span class="keyword">true</span>; }
+<a name="l00041"></a><a class="code" href="classCsgStatApp.html#337b326242746854a2c9ad2307e3b53f">00041</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#337b326242746854a2c9ad2307e3b53f">SynchronizeThreads</a>() {<span class="keywordflow">return</span> <span class="keyword">true</span>;}
+<a name="l00042"></a>00042     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#c5d63a8a90a450c4955ec9d083ae65b4" title="Initialize application data.">Initialize</a>();
+<a name="l00043"></a>00043     <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#5e07bf7c0960699d512cdd3f33cdac81" title="Process command line options.">EvaluateOptions</a>();
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#934da732a6e9df8e4fa013e8ae9e1c36" title="called before the first frame">BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
+<a name="l00046"></a>00046     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#0fa70b8974a24a40c059fb682a05d5e7" title="called after the last frame">EndEvaluate</a>();
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="classCsgStatApp.html#8e3390ef82729297629a4e8446ce9cfb">00048</a>     <a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html" title="Worker, derived from Thread, does the work.">CsgApplication::Worker</a> *<a class="code" href="classCsgStatApp.html#8e3390ef82729297629a4e8446ce9cfb">ForkWorker</a>() {
+<a name="l00049"></a>00049         <span class="keywordflow">return</span> <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#dd735314fcc4d85822a41d0c16d4c4a4">ForkWorker</a>();
+<a name="l00050"></a>00050     }
+<a name="l00051"></a>00051 
+<a name="l00052"></a><a class="code" href="classCsgStatApp.html#61bd8552f2b982f02425c4039d561438">00052</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#61bd8552f2b982f02425c4039d561438">MergeWorker</a>(<a class="code" href="classvotca_1_1csg_1_1CsgApplication_1_1Worker.html" title="Worker, derived from Thread, does the work.">CsgApplication::Worker</a> *worker) {
+<a name="l00053"></a>00053         <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#73647b3bd727e6e985fedcb1bb124c71">MergeWorker</a>(worker);
+<a name="l00054"></a>00054     }
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 <span class="keyword">public</span>:
+<a name="l00057"></a><a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">00057</a>     <a class="code" href="classvotca_1_1csg_1_1Imc.html" title="class to calculate distribution functions and cross correlations for inverse monte...">Imc</a> <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>;
+<a name="l00058"></a><a class="code" href="classCsgStatApp.html#a707b0ddd6a9c4c26d646dcd80acdc49">00058</a>     <span class="keywordtype">int</span> <a class="code" href="classCsgStatApp.html#a707b0ddd6a9c4c26d646dcd80acdc49">_block_length</a>;
+<a name="l00059"></a><a class="code" href="classCsgStatApp.html#186e58470bbde08b60aae433c2e6fbdd">00059</a>     <span class="keywordtype">string</span> <a class="code" href="classCsgStatApp.html#186e58470bbde08b60aae433c2e6fbdd">_extension</a>;
+<a name="l00060"></a>00060 };
+<a name="l00061"></a>00061 
+<a name="l00062"></a><a class="code" href="classCsgStatApp.html#6d97eaa418bc91780834b79014168d97">00062</a> <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#6d97eaa418bc91780834b79014168d97">CsgStatApp::HelpText</a>(ostream &amp;out)
+<a name="l00063"></a>00063 {
+<a name="l00064"></a>00064     out &lt;&lt; <span class="stringliteral">"Calculate all distributions (bonded and non-bonded) specified in options file.\n"</span>
+<a name="l00065"></a>00065             <span class="stringliteral">"Optionally calculates update matrix for invere Monte Carlo. This program\n"</span>
+<a name="l00066"></a>00066             <span class="stringliteral">"is called inside the inverse scripts. Unlike csg_boltzmann, big systems\n"</span>
+<a name="l00067"></a>00067             <span class="stringliteral">"can be treated as well as non-bonded interactions can be evaluated."</span>;
+<a name="l00068"></a>00068 }
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="classCsgStatApp.html#c5d63a8a90a450c4955ec9d083ae65b4">00070</a> <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#c5d63a8a90a450c4955ec9d083ae65b4" title="Initialize application data.">CsgStatApp::Initialize</a>()
+<a name="l00071"></a>00071 {
+<a name="l00072"></a>00072     <a class="code" href="classCsgStatApp.html#c5d63a8a90a450c4955ec9d083ae65b4" title="Initialize application data.">CsgApplication::Initialize</a>();
+<a name="l00073"></a>00073     <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>(<span class="stringliteral">"Specific options"</span>)
+<a name="l00074"></a>00074             (<span class="stringliteral">"options"</span>, boost::program_options::value&lt;string&gt;(), <span class="stringliteral">"  options file for coarse graining"</span>)
+<a name="l00075"></a>00075             (<span class="stringliteral">"do-imc"</span>, <span class="stringliteral">"  write out additional Inverse Monte Carlo data"</span>)
+<a name="l00076"></a>00076             (<span class="stringliteral">"block-length"</span>, boost::program_options::value&lt;int&gt;(), <span class="stringliteral">"  write blocks of this length, the averages are cleared after every write"</span>)
+<a name="l00077"></a>00077             (<span class="stringliteral">"ext"</span>, boost::program_options::value&lt;string&gt;(&amp;<a class="code" href="classCsgStatApp.html#186e58470bbde08b60aae433c2e6fbdd">_extension</a>)-&gt;default_value(<span class="stringliteral">"dist.new"</span>), <span class="stringliteral">"Extension of the output"</span>);
+<a name="l00078"></a>00078 }
+<a name="l00079"></a>00079 
+<a name="l00080"></a><a class="code" href="classCsgStatApp.html#5e07bf7c0960699d512cdd3f33cdac81">00080</a> <span class="keywordtype">bool</span> <a class="code" href="classCsgStatApp.html#5e07bf7c0960699d512cdd3f33cdac81" title="Process command line options.">CsgStatApp::EvaluateOptions</a>()
+<a name="l00081"></a>00081 {
+<a name="l00082"></a>00082     <a class="code" href="classCsgStatApp.html#5e07bf7c0960699d512cdd3f33cdac81" title="Process command line options.">CsgApplication::EvaluateOptions</a>();
+<a name="l00083"></a>00083     <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"options"</span>);
+<a name="l00084"></a>00084     <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"trj"</span>, <span class="stringliteral">"no trajectory file specified"</span>);
+<a name="l00085"></a>00085     
+<a name="l00086"></a>00086     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#af68f0f76f6a60ad252d3dd030da405b" title="load cg definitions file">LoadOptions</a>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"options"</span>].as&lt;string&gt;());
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"block-length"</span>)){
+<a name="l00089"></a>00089        <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#9095f3710b87a738c0916912c011369c">BlockLength</a>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"block-length"</span>].as&lt;int&gt;());
+<a name="l00090"></a>00090     } <span class="keywordflow">else</span> {
+<a name="l00091"></a>00091       <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#9095f3710b87a738c0916912c011369c">BlockLength</a>(0);
+<a name="l00092"></a>00092     }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"do-imc"</span>))
+<a name="l00095"></a>00095     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#3f0234b1efbb0e6a3cb94229b518eefa">DoImc</a>(<span class="keyword">true</span>);
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#34b6c3acc928f1ad3ee47b05d8bad2fb">Extension</a>(<a class="code" href="classCsgStatApp.html#186e58470bbde08b60aae433c2e6fbdd">_extension</a>);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#8f4d5bcee5af800d27eb5843c85d88b6">Initialize</a>();
+<a name="l00100"></a>00100     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00101"></a>00101 }
+<a name="l00102"></a>00102 
+<a name="l00103"></a><a class="code" href="classCsgStatApp.html#934da732a6e9df8e4fa013e8ae9e1c36">00103</a> <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#934da732a6e9df8e4fa013e8ae9e1c36" title="called before the first frame">CsgStatApp::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref)
+<a name="l00104"></a>00104 {
+<a name="l00105"></a>00105     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#d338e8efa99a9ca8b3277b4426ef9a75" title="begin coarse graining a trajectory">BeginEvaluate</a>(top, top_ref);
+<a name="l00106"></a>00106 }
+<a name="l00107"></a>00107 
+<a name="l00108"></a><a class="code" href="classCsgStatApp.html#0fa70b8974a24a40c059fb682a05d5e7">00108</a> <span class="keywordtype">void</span> <a class="code" href="classCsgStatApp.html#0fa70b8974a24a40c059fb682a05d5e7" title="called after the last frame">CsgStatApp::EndEvaluate</a>()
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110     <a class="code" href="classCsgStatApp.html#3bafa0d73bf49b598354a6bb81caffc9">_imc</a>.<a class="code" href="classvotca_1_1csg_1_1Imc.html#3210bb97aeb7d0228fdb19a9591edf40" title="end coarse graining a trajectory">EndEvaluate</a>();
+<a name="l00111"></a>00111 }
+<a name="l00112"></a>00112 
+<a name="l00113"></a><a class="code" href="csg__stat_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00113</a> <span class="keywordtype">int</span> <a class="code" href="linktest_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00114"></a>00114 {
+<a name="l00115"></a>00115     <a class="code" href="classCsgStatApp.html">CsgStatApp</a> app;
+<a name="l00116"></a>00116     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
+<a name="l00117"></a>00117 }
+<a name="l00118"></a>00118 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
