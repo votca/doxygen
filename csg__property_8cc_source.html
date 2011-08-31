@@ -73,7 +73,7 @@
 <a name="l00050"></a>00050             <span class="stringliteral">"list option values that match given criteria"</span>)
 <a name="l00051"></a>00051         (<span class="stringliteral">"filter"</span>, po::value&lt;string&gt;(&amp;filter)-&gt;default_value(<span class="stringliteral">""</span>),
 <a name="l00052"></a>00052             <span class="stringliteral">"list option values that match given criteria"</span>)
-<a name="l00053"></a>00053         (<span class="stringliteral">"print"</span>, po::value&lt;string&gt;(&amp;print)-&gt;default_value(<span class="stringliteral">". "</span>),
+<a name="l00053"></a>00053         (<span class="stringliteral">"print"</span>, po::value&lt;string&gt;(&amp;print)-&gt;default_value(<span class="stringliteral">"."</span>),
 <a name="l00054"></a>00054             <span class="stringliteral">"list option values that match given criteria"</span>)
 <a name="l00055"></a>00055         (<span class="stringliteral">"file"</span>, po::value&lt;string&gt;(&amp;file), <span class="stringliteral">"xml file to parse"</span>)
 <a name="l00056"></a>00056         (<span class="stringliteral">"short"</span>, <span class="stringliteral">"short version of output"</span>)
@@ -117,12 +117,12 @@
 <a name="l00094"></a>00094             Tokenizer::iterator tok;
 <a name="l00095"></a>00095             tok = tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>();
 <a name="l00096"></a>00096             <span class="keywordflow">if</span>(tok == tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>())
-<a name="l00097"></a>00097                 <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error, specified invalid filgter"</span>);
+<a name="l00097"></a>00097                 <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error, specified invalid filter"</span>);
 <a name="l00098"></a>00098            
 <a name="l00099"></a>00099             <span class="keywordtype">string</span> field = *tok;
 <a name="l00100"></a>00100             ++tok;
 <a name="l00101"></a>00101             <span class="keywordflow">if</span>(tok == tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>()) 
-<a name="l00102"></a>00102                 <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error, specified invalid filgter"</span>);
+<a name="l00102"></a>00102                 <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error, specified invalid filter"</span>);
 <a name="l00103"></a>00103             
 <a name="l00104"></a>00104             <span class="keywordtype">string</span> value = *tok;
 <a name="l00105"></a>00105             <span class="keywordflow">if</span>(!<a class="code" href="namespacevotca_1_1tools.html#4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(value.c_str(), (*iter)-&gt;get(field).value().c_str()))
