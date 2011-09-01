@@ -106,42 +106,47 @@
 <a name="l00083"></a>00083     <span class="keywordflow">if</span>(vm.count(<span class="stringliteral">"with-path"</span>))
 <a name="l00084"></a>00084         with_path = <span class="keyword">true</span>;
 <a name="l00085"></a>00085     
-<a name="l00086"></a>00086     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> p;
-<a name="l00087"></a>00087     <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(p, file);
-<a name="l00088"></a>00088     
-<a name="l00089"></a>00089     list&lt;Property *&gt; sel = p.<a class="code" href="classvotca_1_1tools_1_1Property.html#d7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(path);
-<a name="l00090"></a>00090     <span class="keywordflow">for</span>(list&lt;Property*&gt;::iterator iter = sel.begin();
-<a name="l00091"></a>00091         iter!=sel.end(); ++iter) {
-<a name="l00092"></a>00092         <span class="keywordflow">if</span>(filter!=<span class="stringliteral">""</span>) {
-<a name="l00093"></a>00093             <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tokenizer(filter, <span class="stringliteral">"="</span>);
-<a name="l00094"></a>00094             Tokenizer::iterator tok;
-<a name="l00095"></a>00095             tok = tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>();
-<a name="l00096"></a>00096             <span class="keywordflow">if</span>(tok == tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>())
-<a name="l00097"></a>00097                 <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error, specified invalid filter"</span>);
-<a name="l00098"></a>00098            
-<a name="l00099"></a>00099             <span class="keywordtype">string</span> field = *tok;
-<a name="l00100"></a>00100             ++tok;
-<a name="l00101"></a>00101             <span class="keywordflow">if</span>(tok == tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>()) 
-<a name="l00102"></a>00102                 <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error, specified invalid filter"</span>);
-<a name="l00103"></a>00103             
-<a name="l00104"></a>00104             <span class="keywordtype">string</span> value = *tok;
-<a name="l00105"></a>00105             <span class="keywordflow">if</span>(!<a class="code" href="namespacevotca_1_1tools.html#4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(value.c_str(), (*iter)-&gt;get(field).value().c_str()))
-<a name="l00106"></a>00106                 <span class="keywordflow">continue</span>;
-<a name="l00107"></a>00107         }
-<a name="l00108"></a>00108         
-<a name="l00109"></a>00109         <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *p=&amp;((*iter)-&gt;get(print));
-<a name="l00110"></a>00110        
-<a name="l00111"></a>00111         <span class="keywordflow">if</span>(!short_output &amp;&amp; with_path)
-<a name="l00112"></a>00112             cout &lt;&lt; p-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#e532fe566566058d3e4c0b4e202a58da" title="full path of property (including parents)">path</a>() &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l00113"></a>00113         <span class="keywordflow">if</span>(!short_output)
-<a name="l00114"></a>00114             cout &lt;&lt; p-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#49567e08043c4e2db3054d256004d237" title="name of property">name</a>() &lt;&lt; <span class="stringliteral">" = "</span>;
-<a name="l00115"></a>00115         <span class="comment">//if(!p-&gt;HasChilds())</span>
-<a name="l00116"></a>00116             cout &lt;&lt; p-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>();
-<a name="l00117"></a>00117         cout &lt;&lt; endl;
-<a name="l00118"></a>00118     }
-<a name="l00119"></a>00119     <span class="keywordflow">return</span> 0;
-<a name="l00120"></a>00120 }
-<a name="l00121"></a>00121 
+<a name="l00086"></a>00086     <span class="keywordflow">try</span> {
+<a name="l00087"></a>00087     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> p;
+<a name="l00088"></a>00088     <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(p, file);
+<a name="l00089"></a>00089     
+<a name="l00090"></a>00090     list&lt;Property *&gt; sel = p.<a class="code" href="classvotca_1_1tools_1_1Property.html#d7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(path);
+<a name="l00091"></a>00091     <span class="keywordflow">for</span>(list&lt;Property*&gt;::iterator iter = sel.begin();
+<a name="l00092"></a>00092         iter!=sel.end(); ++iter) {
+<a name="l00093"></a>00093         <span class="keywordflow">if</span>(filter!=<span class="stringliteral">""</span>) {
+<a name="l00094"></a>00094             <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tokenizer(filter, <span class="stringliteral">"="</span>);
+<a name="l00095"></a>00095             Tokenizer::iterator tok;
+<a name="l00096"></a>00096             tok = tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>();
+<a name="l00097"></a>00097             <span class="keywordflow">if</span>(tok == tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>())
+<a name="l00098"></a>00098                 <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error, specified invalid filter"</span>);
+<a name="l00099"></a>00099            
+<a name="l00100"></a>00100             <span class="keywordtype">string</span> field = *tok;
+<a name="l00101"></a>00101             ++tok;
+<a name="l00102"></a>00102             <span class="keywordflow">if</span>(tok == tokenizer.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>()) 
+<a name="l00103"></a>00103                 <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error, specified invalid filter"</span>);
+<a name="l00104"></a>00104             
+<a name="l00105"></a>00105             <span class="keywordtype">string</span> value = *tok;
+<a name="l00106"></a>00106             <span class="keywordflow">if</span>(!<a class="code" href="namespacevotca_1_1tools.html#4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(value.c_str(), (*iter)-&gt;get(field).value().c_str()))
+<a name="l00107"></a>00107                 <span class="keywordflow">continue</span>;
+<a name="l00108"></a>00108         }
+<a name="l00109"></a>00109         
+<a name="l00110"></a>00110         <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *p=&amp;((*iter)-&gt;get(print));
+<a name="l00111"></a>00111        
+<a name="l00112"></a>00112         <span class="keywordflow">if</span>(!short_output &amp;&amp; with_path)
+<a name="l00113"></a>00113             cout &lt;&lt; p-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#e532fe566566058d3e4c0b4e202a58da" title="full path of property (including parents)">path</a>() &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l00114"></a>00114         <span class="keywordflow">if</span>(!short_output)
+<a name="l00115"></a>00115             cout &lt;&lt; p-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#49567e08043c4e2db3054d256004d237" title="name of property">name</a>() &lt;&lt; <span class="stringliteral">" = "</span>;
+<a name="l00116"></a>00116         <span class="comment">//if(!p-&gt;HasChilds())</span>
+<a name="l00117"></a>00117             cout &lt;&lt; p-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>();
+<a name="l00118"></a>00118         cout &lt;&lt; endl;
+<a name="l00119"></a>00119     }
+<a name="l00120"></a>00120     } <span class="keywordflow">catch</span>(std::exception &amp;error) {
+<a name="l00121"></a>00121         cerr &lt;&lt; <span class="stringliteral">"an error occurred:\n"</span> &lt;&lt; error.what() &lt;&lt; endl;
+<a name="l00122"></a>00122         <span class="keywordflow">return</span> -1;
+<a name="l00123"></a>00123     }
+<a name="l00124"></a>00124     <span class="keywordflow">return</span> 0;
+<a name="l00125"></a>00125 }
+<a name="l00126"></a>00126 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
