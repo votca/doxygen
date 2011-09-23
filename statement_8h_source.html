@@ -42,49 +42,52 @@
 <a name="l00019"></a>00019 <span class="preprocessor"></span>
 <a name="l00020"></a>00020 <span class="preprocessor">#include &lt;sqlite3.h&gt;</span>
 <a name="l00021"></a>00021 <span class="preprocessor">#include &lt;stdexcept&gt;</span>
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include "<a class="code" href="lexical__cast_8h.html">lexical_cast.h</a>"</span>
 <a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">class </span>Database;
+<a name="l00025"></a>00025 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
 <a name="l00026"></a>00026 
-<a name="l00034"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html">00034</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a>
-<a name="l00035"></a>00035 {
-<a name="l00036"></a>00036 <span class="keyword">public</span>:
-<a name="l00037"></a>00037         <a class="code" href="classvotca_1_1tools_1_1Statement.html#4a1fc4b7287dc5a2948c682fdcc87966">~Statement</a>();
-<a name="l00038"></a>00038 
-<a name="l00044"></a>00044         <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00045"></a>00045                 <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> T &amp;value);
-<a name="l00046"></a>00046 
-<a name="l00051"></a>00051         <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00052"></a>00052         T <a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>(<span class="keywordtype">int</span> col);
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 
-<a name="l00059"></a>00059         <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>();
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 
-<a name="l00069"></a>00069         <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#46790a14befa3847466a492ba059b3b2" title="perform an insert step">InsertStep</a>();
-<a name="l00070"></a>00070 
-<a name="l00074"></a>00074         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0" title="reset the statment to perform another insert or query">Reset</a>();
-<a name="l00075"></a>00075 
-<a name="l00076"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#9efb02efb05fb6e9077d56fe8730097e">00076</a>         sqlite3_stmt *<a class="code" href="classvotca_1_1tools_1_1Statement.html#9efb02efb05fb6e9077d56fe8730097e">getSQLiteStatement</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>; }
-<a name="l00077"></a>00077 <span class="keyword">protected</span>:
-<a name="l00078"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#94e3c845c20ffdc0c3a3fbb59a6fea77">00078</a>         <a class="code" href="classvotca_1_1tools_1_1Statement.html#94e3c845c20ffdc0c3a3fbb59a6fea77">Statement</a>(sqlite3_stmt *stmt)
-<a name="l00079"></a>00079                 : <a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>(stmt) {}
-<a name="l00080"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">00080</a>     sqlite3_stmt *<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>;
-<a name="l00081"></a>00081 
-<a name="l00082"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#6efef52d7a939622bbc934ff6b90ffe0">00082</a>         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1Database.html" title="SQLite Database wrapper.">Database</a>;
-<a name="l00083"></a>00083 };
-<a name="l00084"></a>00084 
-<a name="l00085"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#46790a14befa3847466a492ba059b3b2">00085</a> <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#46790a14befa3847466a492ba059b3b2" title="perform an insert step">Statement::InsertStep</a>()
-<a name="l00086"></a>00086 {
-<a name="l00087"></a>00087     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>() != SQLITE_DONE)
-<a name="l00088"></a>00088         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Statment::Step did not return SQLITE_DONE.\n"</span>
-<a name="l00089"></a>00089                 <span class="stringliteral">"This might be caused be a failed insert statement to the database."</span>);
-<a name="l00090"></a>00090 }
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092 }}
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094 <span class="preprocessor">#endif</span>
+<a name="l00027"></a>00027 <span class="keyword">class </span>Database;
+<a name="l00028"></a>00028 
+<a name="l00036"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html">00036</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a>
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038 <span class="keyword">public</span>:
+<a name="l00039"></a>00039         <a class="code" href="classvotca_1_1tools_1_1Statement.html#4a1fc4b7287dc5a2948c682fdcc87966">~Statement</a>();
+<a name="l00040"></a>00040 
+<a name="l00046"></a>00046         <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00047"></a>00047                 <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> T &amp;value);
+<a name="l00048"></a>00048 
+<a name="l00053"></a>00053         <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00054"></a>00054         T <a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>(<span class="keywordtype">int</span> col);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00061"></a>00061         <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>();
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 
+<a name="l00071"></a>00071         <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#46790a14befa3847466a492ba059b3b2" title="perform an insert step">InsertStep</a>();
+<a name="l00072"></a>00072 
+<a name="l00076"></a>00076         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0" title="reset the statment to perform another insert or query">Reset</a>();
+<a name="l00077"></a>00077 
+<a name="l00078"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#9efb02efb05fb6e9077d56fe8730097e">00078</a>         sqlite3_stmt *<a class="code" href="classvotca_1_1tools_1_1Statement.html#9efb02efb05fb6e9077d56fe8730097e">getSQLiteStatement</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>; }
+<a name="l00079"></a>00079 <span class="keyword">protected</span>:
+<a name="l00080"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#94e3c845c20ffdc0c3a3fbb59a6fea77">00080</a>         <a class="code" href="classvotca_1_1tools_1_1Statement.html#94e3c845c20ffdc0c3a3fbb59a6fea77">Statement</a>(sqlite3_stmt *stmt)
+<a name="l00081"></a>00081                 : <a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>(stmt) {}
+<a name="l00082"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">00082</a>     sqlite3_stmt *<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>;
+<a name="l00083"></a>00083 
+<a name="l00084"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#6efef52d7a939622bbc934ff6b90ffe0">00084</a>         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1Database.html" title="SQLite Database wrapper.">Database</a>;
+<a name="l00085"></a>00085 };
+<a name="l00086"></a>00086 
+<a name="l00087"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#46790a14befa3847466a492ba059b3b2">00087</a> <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#46790a14befa3847466a492ba059b3b2" title="perform an insert step">Statement::InsertStep</a>()
+<a name="l00088"></a>00088 {
+<a name="l00089"></a>00089     <span class="keywordtype">int</span> ret = <a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>();
+<a name="l00090"></a>00090     <span class="keywordflow">if</span>(ret != SQLITE_DONE)
+<a name="l00091"></a>00091         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Statment::Step did not return SQLITE_DONE. Return code was "</span> + boost::lexical_cast&lt;std::string&gt;(ret) + <span class="stringliteral">"\n"</span>
+<a name="l00092"></a>00092                 <span class="stringliteral">"This might be caused be a failed insert statement to the database."</span>);
+<a name="l00093"></a>00093 }
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 }}
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
