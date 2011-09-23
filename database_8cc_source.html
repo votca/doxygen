@@ -92,7 +92,7 @@
 <a name="l00069"></a>00069         <span class="keywordflow">throw</span> std::runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">"sql execute failed\n"</span>) + error + <span class="stringliteral">"\nSQL: "</span> + sql);
 <a name="l00070"></a>00070 }
 <a name="l00071"></a>00071 
-<a name="l00072"></a><a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">00072</a> <a class="code" href="classvotca_1_1tools_1_1Statement.html">Statement</a> *<a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">Database::Prepare</a>(<span class="keywordtype">string</span> sql)
+<a name="l00072"></a><a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">00072</a> <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a> *<a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">Database::Prepare</a>(<span class="keywordtype">string</span> sql)
 <a name="l00073"></a>00073 {
 <a name="l00074"></a>00074     <span class="comment">//char *error;</span>
 <a name="l00075"></a>00075     sqlite3_stmt *stmt;
@@ -100,7 +100,7 @@
 <a name="l00077"></a>00077             sql.c_str(), -1, &amp;stmt, NULL);
 <a name="l00078"></a>00078     <span class="keywordflow">if</span>(ret != SQLITE_OK)
 <a name="l00079"></a>00079         <span class="keywordflow">throw</span> std::runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">"prepare statement failed"</span>) +  <span class="stringliteral">"\nSQL: "</span> + sql);
-<a name="l00080"></a>00080     <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html">Statement</a>(stmt);
+<a name="l00080"></a>00080     <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a>(stmt);
 <a name="l00081"></a>00081 }
 <a name="l00082"></a>00082 
 <a name="l00083"></a><a class="code" href="classvotca_1_1tools_1_1Database.html#6fca063525810002dbbc6829b71b42c8">00083</a> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Database.html#6fca063525810002dbbc6829b71b42c8">Database::LastInsertRowId</a>()

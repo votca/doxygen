@@ -52,14 +52,14 @@
 <a name="l00029"></a>00029 }
 <a name="l00030"></a>00030 
 <a name="l00031"></a>00031 <span class="keyword">template</span>&lt;&gt;
-<a name="l00032"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#313a24f9765ac41add0e7feceb4636a8">00032</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;value)
+<a name="l00032"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#313a24f9765ac41add0e7feceb4636a8">00032</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;value)
 <a name="l00033"></a>00033 {
 <a name="l00034"></a>00034         <span class="keywordflow">if</span>(sqlite3_bind_int(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>, col, value) != SQLITE_OK)
 <a name="l00035"></a>00035       <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"sqlite_bind failed"</span>);
 <a name="l00036"></a>00036 }
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038 <span class="keyword">template</span>&lt;&gt;
-<a name="l00039"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#395f43895955ad25cdebb5f3ef3b4fcf">00039</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;value)
+<a name="l00039"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#395f43895955ad25cdebb5f3ef3b4fcf">00039</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;value)
 <a name="l00040"></a>00040 {
 <a name="l00041"></a>00041         <span class="keywordflow">if</span>(sqlite3_bind_double(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>, col, value) != SQLITE_OK)
 <a name="l00042"></a>00042       <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"sqlite_bind failed"</span>);
@@ -84,18 +84,18 @@
 <a name="l00061"></a>00061 }
 <a name="l00062"></a>00062 
 <a name="l00063"></a>00063 <span class="keyword">template</span>&lt;&gt;
-<a name="l00064"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#d323f269f57c19e5244689e5f8d97903">00064</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;value)
+<a name="l00064"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#d323f269f57c19e5244689e5f8d97903">00064</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Statement::Bind</a>(<span class="keywordtype">int</span> col, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;value)
 <a name="l00065"></a>00065 {
 <a name="l00066"></a>00066     <span class="keywordflow">if</span>(sqlite3_bind_text(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>, col, value.c_str(), -1, NULL) != SQLITE_OK)
 <a name="l00067"></a>00067       <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"sqlite_bind failed"</span>);
 <a name="l00068"></a>00068 }
 <a name="l00069"></a>00069 
-<a name="l00070"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122">00070</a> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122">Statement::Step</a>()
+<a name="l00070"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122">00070</a> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Statement::Step</a>()
 <a name="l00071"></a>00071 {
 <a name="l00072"></a>00072         <span class="keywordflow">return</span> sqlite3_step(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>);
 <a name="l00073"></a>00073 }
 <a name="l00074"></a>00074 
-<a name="l00075"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0">00075</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0">Statement::Reset</a>()
+<a name="l00075"></a><a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0">00075</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0" title="reset the statment to perform another insert or query">Statement::Reset</a>()
 <a name="l00076"></a>00076 {
 <a name="l00077"></a>00077         sqlite3_reset(<a class="code" href="classvotca_1_1tools_1_1Statement.html#8397c9e7a537d95c1d244c01d395a0d6">_stmt</a>);
 <a name="l00078"></a>00078 }
