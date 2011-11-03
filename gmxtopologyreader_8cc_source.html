@@ -145,14 +145,14 @@
 <a name="l00122"></a>00122 
 <a name="l00123"></a>00123             <span class="comment">// read the atoms</span>
 <a name="l00124"></a>00124             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iatom=0; iatom&lt;mtop.molblock[iblock].natoms_mol; iatom++) {
-<a name="l00125"></a>00125                 t_atom *a = &amp;(atoms-&gt;atom[iatom]);
+<a name="l00125"></a>00125                 t_atom *<a class="code" href="namespacemerge__orbitals.html#e661cff9a8b946474f1a6fb5280bd474">a</a> = &amp;(atoms-&gt;atom[iatom]);
 <a name="l00126"></a>00126 
 <a name="l00127"></a>00127                 <span class="comment">// read exclusions</span>
 <a name="l00128"></a>00128                 t_blocka * excl = &amp;(mol-&gt;excls);
 <a name="l00129"></a>00129                 <span class="comment">// insert exclusions</span>
 <a name="l00130"></a>00130                 list&lt;int&gt; excl_list;
-<a name="l00131"></a>00131                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k=excl-&gt;index[iatom]; k&lt;excl-&gt;index[iatom+1]; k++) {
-<a name="l00132"></a>00132                     excl_list.push_back(excl-&gt;a[k]+ifirstatom);
+<a name="l00131"></a>00131                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a>=excl-&gt;index[iatom]; k&lt;excl-&gt;index[iatom+1]; <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a>++) {
+<a name="l00132"></a>00132                     excl_list.push_back(excl-&gt;a[<a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a>]+ifirstatom);
 <a name="l00133"></a>00133                 }
 <a name="l00134"></a>00134                 top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#de744346ef1ea13159ded6a427c2e2de">InsertExclusion</a>(iatom+ifirstatom, excl_list);
 <a name="l00135"></a>00135 
@@ -167,7 +167,7 @@
 <a name="l00144"></a>00144 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
 <a name="l00145"></a>00145 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
 <a name="l00146"></a>00146 <span class="preprocessor"></span>
-<a name="l00147"></a>00147                 stringstream nm;
+<a name="l00147"></a>00147                 stringstream <a class="code" href="namespacevotca_1_1moo.html#6a44f6663e516c56327f0baf6560f39d86367aaedaab59db76a29940f391973f">nm</a>;
 <a name="l00148"></a>00148                 nm &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>() + 1 &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#9fec2f8d63ec726bf146ff0c587f5404">getResidue</a>(res_offset + bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>())-&gt;getName() &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>();
 <a name="l00149"></a>00149                 mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bead, nm.str());
 <a name="l00150"></a>00150             }

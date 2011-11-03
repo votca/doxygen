@@ -57,10 +57,10 @@
 <a name="l00034"></a>00034 {
 <a name="l00035"></a>00035     <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#00042e811c3095f668092a1c8cbe1b1f">Clear</a>();
 <a name="l00036"></a>00036     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;N-1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00037"></a>00037         <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a> *e = <span class="keyword">new</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a>;
+<a name="l00037"></a>00037         <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a> *<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a> = <span class="keyword">new</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a>;
 <a name="l00038"></a>00038         e-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#b433b309fa5f2fbfb56fc63f2c4b7685">_atom</a> = <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>;
-<a name="l00039"></a>00039         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1; j&lt;N; j++) {
-<a name="l00040"></a>00040             e-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#4892e52a3940ce7df66c034d908873ab">_exclude</a>.push_back(j);
+<a name="l00039"></a>00039         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>=<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>&lt;N; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++) {
+<a name="l00040"></a>00040             e-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#4892e52a3940ce7df66c034d908873ab">_exclude</a>.push_back(<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>);
 <a name="l00041"></a>00041         }
 <a name="l00042"></a>00042         <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.push_back(e);
 <a name="l00043"></a>00043     }
@@ -69,7 +69,7 @@
 <a name="l00046"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#7df6acb2794ec927a5433ef9a20ec10a">00046</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#7df6acb2794ec927a5433ef9a20ec10a">ExclusionList::Remove</a>(list&lt;int&gt; l)
 <a name="l00047"></a>00047 {
 <a name="l00048"></a>00048     l.sort();
-<a name="l00049"></a>00049     list&lt;int&gt;::iterator <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>, j;
+<a name="l00049"></a>00049     list&lt;int&gt;::iterator <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>, <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>;
 <a name="l00050"></a>00050     list&lt;exclusion_t*&gt;::iterator ex;
 <a name="l00051"></a>00051     
 <a name="l00052"></a>00052     <span class="keywordflow">for</span>(i=l.begin(); i!=l.end(); i++) {
@@ -91,14 +91,14 @@
 <a name="l00068"></a>00068 
 <a name="l00069"></a><a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#95cefee79ef3737c38a89606d368f337">00069</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#95cefee79ef3737c38a89606d368f337">ExclusionList::ExcludeList</a>( list&lt;int&gt; l ) {
 <a name="l00070"></a>00070     l.sort();
-<a name="l00071"></a>00071     list&lt;int&gt;::iterator <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>, j, k;
+<a name="l00071"></a>00071     list&lt;int&gt;::iterator <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>, <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>, <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a>;
 <a name="l00072"></a>00072     list&lt;exclusion_t*&gt;::iterator ex;
 <a name="l00073"></a>00073     
 <a name="l00074"></a>00074     <span class="keywordflow">for</span> ( i = l.begin(); i != l.end(); ++i ) {
 <a name="l00075"></a>00075         <span class="keywordflow">for</span> (ex = <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.begin(); ex != <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.end(); ++ex)
 <a name="l00076"></a>00076             <span class="keywordflow">if</span> ( (*ex)-&gt;_atom == (*i) ) <span class="keywordflow">break</span>;
 <a name="l00077"></a>00077         <span class="keywordflow">if</span> (ex==<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.end()) { <span class="comment">// so far there are no exclusions for i</span>
-<a name="l00078"></a>00078             <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a> *e = <span class="keyword">new</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a>;
+<a name="l00078"></a>00078             <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a> *<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a> = <span class="keyword">new</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a>;
 <a name="l00079"></a>00079             e-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#b433b309fa5f2fbfb56fc63f2c4b7685">_atom</a> = (*i);
 <a name="l00080"></a>00080             
 <a name="l00081"></a>00081             j = i;
@@ -158,7 +158,7 @@
 <a name="l00135"></a>00135     <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00136"></a>00136 }
 <a name="l00137"></a>00137 
-<a name="l00138"></a><a class="code" href="namespacevotca_1_1csg.html#9be6f44643af1301cff032b5b7c44318">00138</a> std::ostream &amp;<a class="code" href="namespacevotca_1_1csg.html#9be6f44643af1301cff032b5b7c44318">operator&lt;&lt;</a>(std::ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html">ExclusionList</a>&amp; exl)
+<a name="l00138"></a><a class="code" href="namespacevotca_1_1csg.html#9be6f44643af1301cff032b5b7c44318">00138</a> std::ostream &amp;<a class="code" href="namespacevotca_1_1csg.html#9be6f44643af1301cff032b5b7c44318">operator&lt;&lt;</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html">ExclusionList</a>&amp; exl)
 <a name="l00139"></a>00139 {
 <a name="l00140"></a>00140     list&lt;ExclusionList::exclusion_t*&gt;::iterator ex;
 <a name="l00141"></a>00141     
@@ -184,7 +184,7 @@
 <a name="l00161"></a>00161         <span class="keywordflow">if</span> (bead2 &lt; bead1) swap(bead1, bead2);
 <a name="l00162"></a>00162         <span class="keywordflow">if</span>(bead1==bead2) <span class="keywordflow">continue</span>;
 <a name="l00163"></a>00163         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#1d8367709a2e4b70f0764f90eac42e66">IsExcluded</a>(bead1, bead2)) <span class="keywordflow">continue</span>;
-<a name="l00164"></a>00164         <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a> *e;
+<a name="l00164"></a>00164         <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a> *<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>;
 <a name="l00165"></a>00165         <span class="keywordflow">if</span>((e = <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#2b607b187c0768e0a2bbf928c47b2b3b">GetExclusions</a>(bead1)) == NULL) {
 <a name="l00166"></a>00166             e = <span class="keyword">new</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">exclusion_t</a>;
 <a name="l00167"></a>00167             e-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#b433b309fa5f2fbfb56fc63f2c4b7685">_atom</a> = bead1;
