@@ -72,8 +72,8 @@
 <a name="l00049"></a>00049         
 <a name="l00050"></a>00050         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"list"</span>)) {
 <a name="l00051"></a>00051             cout &lt;&lt; <span class="stringliteral">"Available calculators: \n"</span>;
-<a name="l00052"></a>00052             <span class="keywordflow">for</span>(CalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1ctp.html#68e643177b9e6163edba565e4bed262d">Calculators</a>().getObjects().begin();
-<a name="l00053"></a>00053                     iter != <a class="code" href="namespacevotca_1_1ctp.html#68e643177b9e6163edba565e4bed262d">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().end(); ++iter) {
+<a name="l00052"></a>00052             <span class="keywordflow">for</span>(CalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().begin();
+<a name="l00053"></a>00053                     iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().end(); ++iter) {
 <a name="l00054"></a>00054                 <a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classQMAppRun.html#3efa7b20b88b90e0c3435abc77b46def">_short</a> );
 <a name="l00055"></a>00055             }
 <a name="l00056"></a>00056             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
@@ -88,8 +88,8 @@
 <a name="l00065"></a>00065             <span class="keywordflow">for</span> (Tokenizer::iterator n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n) {
 <a name="l00066"></a>00066                 <span class="comment">// loop over calculators</span>
 <a name="l00067"></a>00067                 <span class="keywordtype">bool</span> printerror = <span class="keyword">true</span>;
-<a name="l00068"></a>00068                 <span class="keywordflow">for</span>(CalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1ctp.html#68e643177b9e6163edba565e4bed262d">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().begin(); 
-<a name="l00069"></a>00069                         iter != <a class="code" href="namespacevotca_1_1ctp.html#68e643177b9e6163edba565e4bed262d">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().end(); ++iter) {
+<a name="l00068"></a>00068                 <span class="keywordflow">for</span>(CalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().begin(); 
+<a name="l00069"></a>00069                         iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().end(); ++iter) {
 <a name="l00070"></a>00070 
 <a name="l00071"></a>00071                     <span class="keywordflow">if</span> ( (*n).compare( (iter-&gt;first).c_str() ) == 0 ) {
 <a name="l00072"></a>00072                          <a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classQMAppRun.html#773abbbd95794c33bbb4375f47e408c9">_long</a> );
@@ -108,7 +108,7 @@
 <a name="l00085"></a>00085         
 <a name="l00086"></a>00086         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"execute"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
 <a name="l00087"></a>00087         <span class="keywordflow">for</span> (Tokenizer::iterator n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n)
-<a name="l00088"></a>00088             <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#66f415e6d8aa0e6ea00226cfd3daa2e7" title="void add a calculator for later use (compare: cg_engine -&amp;gt; AddObserver)">AddCalculator</a>(<a class="code" href="namespacevotca_1_1ctp.html#68e643177b9e6163edba565e4bed262d">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#f7cdca5a79d3cb0946ceaa92979b9a04">Create</a>((*n).c_str()));
+<a name="l00088"></a>00088             <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#66f415e6d8aa0e6ea00226cfd3daa2e7" title="void add a calculator for later use (compare: cg_engine -&amp;gt; AddObserver)">AddCalculator</a>(<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().Create((*n).c_str()));
 <a name="l00089"></a>00089         <span class="keywordflow">return</span> <span class="keyword">true</span>;
 <a name="l00090"></a>00090     }
 <a name="l00091"></a>00091 
