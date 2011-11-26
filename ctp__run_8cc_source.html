@@ -48,124 +48,123 @@
 <a name="l00025"></a>00025 <span class="comment">/*</span>
 <a name="l00026"></a>00026 <span class="comment"> *</span>
 <a name="l00027"></a>00027 <span class="comment"> */</span>
-<a name="l00028"></a><a class="code" href="classQMAppRun.html">00028</a> <span class="keyword">class </span><a class="code" href="classQMAppRun.html">QMAppRun</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html">QMApplication</a>
-<a name="l00029"></a>00029 {
-<a name="l00030"></a>00030 <span class="keyword">public</span>:
-<a name="l00031"></a><a class="code" href="classQMAppRun.html#cf39dafd84615ed82f42b02a5f5b9159">00031</a>     <span class="keywordtype">void</span> <a class="code" href="classQMAppRun.html#cf39dafd84615ed82f42b02a5f5b9159">HelpText</a>() {}
-<a name="l00032"></a>00032 
-<a name="l00033"></a><a class="code" href="classQMAppRun.html#6055376674406a916fcdda09c1c8dc58">00033</a>     <span class="keywordtype">string</span> <a class="code" href="classQMAppRun.html#6055376674406a916fcdda09c1c8dc58" title="program name">ProgramName</a>() { <span class="keywordflow">return</span> <span class="stringliteral">"ctp_run"</span>; }
-<a name="l00034"></a>00034 
-<a name="l00035"></a><a class="code" href="classQMAppRun.html#da13367ded36eee61d82a2d5b2d18e35">00035</a>     <span class="keywordtype">void</span> <a class="code" href="classQMAppRun.html#da13367ded36eee61d82a2d5b2d18e35" title="help text of application without version information">HelpText</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>) {
-<a name="l00036"></a>00036         out &lt;&lt; <span class="stringliteral">"Runs specified calculators."</span> &lt;&lt; endl;
-<a name="l00037"></a>00037     }
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="classQMAppRun.html#cd8088e553cd2b3031885d9d365b6489">00039</a>     <span class="keywordtype">void</span> <a class="code" href="classQMAppRun.html#cd8088e553cd2b3031885d9d365b6489" title="Initialize application data.">Initialize</a>() {
-<a name="l00040"></a>00040         <a class="code" href="classQMAppRun.html#cd8088e553cd2b3031885d9d365b6489" title="Initialize application data.">QMApplication::Initialize</a>();
-<a name="l00041"></a>00041         <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>(<span class="stringliteral">"Calculators"</span>)
-<a name="l00042"></a>00042             (<span class="stringliteral">"execute,e"</span>, boost::program_options::value&lt;string&gt;(), <span class="stringliteral">"list of calculators separated by commas or spaces"</span>)
-<a name="l00043"></a>00043             (<span class="stringliteral">"list,l"</span>, <span class="stringliteral">"lists all available calculators"</span>)           
-<a name="l00044"></a>00044             (<span class="stringliteral">"description,d"</span>, boost::program_options::value&lt;string&gt;(), <span class="stringliteral">"detailed description of a calculator"</span>);
-<a name="l00045"></a>00045     }
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047     <span class="comment">// outputs options from the XML file</span>
-<a name="l00048"></a><a class="code" href="classQMAppRun.html#fe25780e5952ae43088663ba5ec50ce8">00048</a>     <span class="keywordtype">bool</span> <a class="code" href="classQMAppRun.html#fe25780e5952ae43088663ba5ec50ce8" title="Process command line options.">EvaluateOptions</a>() {
-<a name="l00049"></a>00049         
-<a name="l00050"></a>00050         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"list"</span>)) {
-<a name="l00051"></a>00051             cout &lt;&lt; <span class="stringliteral">"Available calculators: \n"</span>;
-<a name="l00052"></a>00052             <span class="keywordflow">for</span>(CalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().begin();
-<a name="l00053"></a>00053                     iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().end(); ++iter) {
-<a name="l00054"></a>00054                 <a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classQMAppRun.html#3efa7b20b88b90e0c3435abc77b46def">_short</a> );
-<a name="l00055"></a>00055             }
-<a name="l00056"></a>00056             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
-<a name="l00057"></a>00057             <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00058"></a>00058         }
+<a name="l00028"></a><a class="code" href="classQMAppRun.html">00028</a> <span class="keyword">class </span><a class="code" href="classQMAppRun.html">QMAppRun</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html">QMApplication</a> {
+<a name="l00029"></a>00029 <span class="keyword">public</span>:
+<a name="l00030"></a><a class="code" href="classQMAppRun.html#cf39dafd84615ed82f42b02a5f5b9159">00030</a>     <span class="keywordtype">void</span> <a class="code" href="classQMAppRun.html#cf39dafd84615ed82f42b02a5f5b9159">HelpText</a>() {}
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="classQMAppRun.html#6055376674406a916fcdda09c1c8dc58">00032</a>     <span class="keywordtype">string</span> <a class="code" href="classQMAppRun.html#6055376674406a916fcdda09c1c8dc58" title="program name">ProgramName</a>() { <span class="keywordflow">return</span> <span class="stringliteral">"ctp_run"</span>; }
+<a name="l00033"></a>00033 
+<a name="l00034"></a><a class="code" href="classQMAppRun.html#da13367ded36eee61d82a2d5b2d18e35">00034</a>     <span class="keywordtype">void</span> <a class="code" href="classQMAppRun.html#da13367ded36eee61d82a2d5b2d18e35" title="help text of application without version information">HelpText</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>) {
+<a name="l00035"></a>00035         out &lt;&lt; <span class="stringliteral">"Runs specified calculators."</span> &lt;&lt; endl;
+<a name="l00036"></a>00036     }
+<a name="l00037"></a>00037 
+<a name="l00038"></a><a class="code" href="classQMAppRun.html#cd8088e553cd2b3031885d9d365b6489">00038</a>     <span class="keywordtype">void</span> <a class="code" href="classQMAppRun.html#cd8088e553cd2b3031885d9d365b6489" title="Initialize application data.">Initialize</a>() {
+<a name="l00039"></a>00039         <a class="code" href="classQMAppRun.html#cd8088e553cd2b3031885d9d365b6489" title="Initialize application data.">QMApplication::Initialize</a>();
+<a name="l00040"></a>00040         <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>(<span class="stringliteral">"Calculators"</span>)
+<a name="l00041"></a>00041             (<span class="stringliteral">"execute,e"</span>, boost::program_options::value&lt;string&gt;(), <span class="stringliteral">"list of calculators separated by commas or spaces"</span>)
+<a name="l00042"></a>00042             (<span class="stringliteral">"list,l"</span>, <span class="stringliteral">"lists all available calculators"</span>)           
+<a name="l00043"></a>00043             (<span class="stringliteral">"description,d"</span>, boost::program_options::value&lt;string&gt;(), <span class="stringliteral">"detailed description of a calculator"</span>);
+<a name="l00044"></a>00044     }
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046     <span class="comment">// outputs options from the XML file</span>
+<a name="l00047"></a><a class="code" href="classQMAppRun.html#fe25780e5952ae43088663ba5ec50ce8">00047</a>     <span class="keywordtype">bool</span> <a class="code" href="classQMAppRun.html#fe25780e5952ae43088663ba5ec50ce8" title="Process command line options.">EvaluateOptions</a>() {
+<a name="l00048"></a>00048         
+<a name="l00049"></a>00049         <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"list"</span>)) {
+<a name="l00050"></a>00050             cout &lt;&lt; <span class="stringliteral">"Available calculators: \n"</span>;
+<a name="l00051"></a>00051             <span class="keywordflow">for</span>(CalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().begin();
+<a name="l00052"></a>00052                     iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().end(); ++iter) {
+<a name="l00053"></a>00053                 <a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classQMAppRun.html#3efa7b20b88b90e0c3435abc77b46def">_short</a> );
+<a name="l00054"></a>00054             }
+<a name="l00055"></a>00055             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
+<a name="l00056"></a>00056             <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00057"></a>00057         }
+<a name="l00058"></a>00058 
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061          <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"description"</span>)) {
-<a name="l00062"></a>00062             <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"description"</span>, <span class="stringliteral">"no calculator is given"</span>);
-<a name="l00063"></a>00063             <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"description"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
-<a name="l00064"></a>00064             <span class="comment">// loop over the names in the description string</span>
-<a name="l00065"></a>00065             <span class="keywordflow">for</span> (Tokenizer::iterator n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n) {
-<a name="l00066"></a>00066                 <span class="comment">// loop over calculators</span>
-<a name="l00067"></a>00067                 <span class="keywordtype">bool</span> printerror = <span class="keyword">true</span>;
-<a name="l00068"></a>00068                 <span class="keywordflow">for</span>(CalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().begin(); 
-<a name="l00069"></a>00069                         iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().end(); ++iter) {
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071                     <span class="keywordflow">if</span> ( (*n).compare( (iter-&gt;first).c_str() ) == 0 ) {
-<a name="l00072"></a>00072                          <a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classQMAppRun.html#773abbbd95794c33bbb4375f47e408c9">_long</a> );
-<a name="l00073"></a>00073                         printerror = <span class="keyword">false</span>;
-<a name="l00074"></a>00074                         <span class="keywordflow">break</span>;
-<a name="l00075"></a>00075                     }
-<a name="l00076"></a>00076                  }
-<a name="l00077"></a>00077                  <span class="keywordflow">if</span> ( printerror ) cout &lt;&lt; <span class="stringliteral">"Calculator "</span> &lt;&lt; *n &lt;&lt; <span class="stringliteral">" does not exist\n"</span>;
-<a name="l00078"></a>00078             }
-<a name="l00079"></a>00079             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
-<a name="l00080"></a>00080             <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00081"></a>00081          }
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083         <a class="code" href="classQMAppRun.html#fe25780e5952ae43088663ba5ec50ce8" title="Process command line options.">QMApplication::EvaluateOptions</a>();
-<a name="l00084"></a>00084         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"execute"</span>, <span class="stringliteral">"no calculator is given"</span>);
-<a name="l00085"></a>00085         
-<a name="l00086"></a>00086         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"execute"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
-<a name="l00087"></a>00087         <span class="keywordflow">for</span> (Tokenizer::iterator n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n)
-<a name="l00088"></a>00088             <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#66f415e6d8aa0e6ea00226cfd3daa2e7" title="void add a calculator for later use (compare: cg_engine -&amp;gt; AddObserver)">AddCalculator</a>(<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().Create((*n).c_str()));
-<a name="l00089"></a>00089         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00090"></a>00090     }
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092     
-<a name="l00093"></a><a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">00093</a>     <span class="keywordtype">void</span> <a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">PrintDescription</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">bool</span> length) {
-<a name="l00094"></a>00094         <span class="comment">// loading the documentation xml file from VOTCASHARE</span>
-<a name="l00095"></a>00095         <span class="keywordtype">char</span> *votca_share = getenv(<span class="stringliteral">"VOTCASHARE"</span>);
-<a name="l00096"></a>00096         <span class="keywordflow">if</span>(votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"VOTCASHARE not set, cannot open help files."</span>);
-<a name="l00097"></a>00097         <span class="keywordtype">string</span> xmlFile = string(getenv(<span class="stringliteral">"VOTCASHARE"</span>)) + string(<span class="stringliteral">"/ctp/xml/"</span>)+name+string(<span class="stringliteral">".xml"</span>);
-<a name="l00098"></a>00098         <span class="keywordflow">try</span> {
-<a name="l00099"></a>00099             <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> <a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a>;
-<a name="l00100"></a>00100             <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(options, xmlFile);
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102            <span class="keywordflow">if</span> ( length ) { <span class="comment">// short description of the calculator</span>
-<a name="l00103"></a>00103                
-<a name="l00104"></a>00104                  cout &lt;&lt; string(<span class="stringliteral">"  "</span>) &lt;&lt; <a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">_fwstring</a>(<span class="keywordtype">string</span>(name),14);
-<a name="l00105"></a>00105                  cout &lt;&lt; options.<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".description"</span>)).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;();
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107             } <span class="keywordflow">else</span> { <span class="comment">// long description of the calculator</span>
-<a name="l00108"></a>00108                 cout &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; <a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">_fwstring</a>(<span class="keywordtype">string</span>(name),18);
-<a name="l00109"></a>00109                 cout &lt;&lt; options.<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".description"</span>)).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;() &lt;&lt; endl;
-<a name="l00110"></a>00110  
-<a name="l00111"></a>00111                 list&lt;Property *&gt; items = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#d7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".item"</span>));
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113                 <span class="keywordflow">for</span>(list&lt;Property*&gt;::iterator iter = items.begin(); iter!=items.end(); ++iter) {
-<a name="l00114"></a>00114                     <span class="comment">//cout &lt;&lt; "Long description" &lt;&lt; endl;</span>
-<a name="l00115"></a>00115                     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *pname=&amp;( (*iter)-&gt;get( <span class="keywordtype">string</span>(<span class="stringliteral">"name"</span>) ) );
-<a name="l00116"></a>00116                     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *pdesc=&amp;( (*iter)-&gt;get( <span class="keywordtype">string</span>(<span class="stringliteral">"description"</span>) ) );
-<a name="l00117"></a>00117                     <span class="comment">//Property *pdflt=&amp;( (*iter)-&gt;get( string("default") ) );</span>
-<a name="l00118"></a>00118                     <span class="keywordflow">if</span> ( ! (pname-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>()).empty() ) {
-<a name="l00119"></a>00119                         cout &lt;&lt; string(<span class="stringliteral">"  -"</span>) &lt;&lt; <a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">_fwstring</a>(pname-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>(), 14);
-<a name="l00120"></a>00120                         cout &lt;&lt; pdesc-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>() &lt;&lt; endl;
-<a name="l00121"></a>00121                     }
-<a name="l00122"></a>00122                  }
-<a name="l00123"></a>00123             }
-<a name="l00124"></a>00124             cout &lt;&lt; endl;
-<a name="l00125"></a>00125         } <span class="keywordflow">catch</span>(std::exception &amp;error) {
-<a name="l00126"></a>00126             cout &lt;&lt; string(<span class="stringliteral">"XML file or description tag missing: "</span>) &lt;&lt; xmlFile;
-<a name="l00127"></a>00127         }
-<a name="l00128"></a>00128     }
-<a name="l00129"></a>00129 
-<a name="l00130"></a>00130 <span class="keyword">private</span>:
-<a name="l00131"></a><a class="code" href="classQMAppRun.html#3efa7b20b88b90e0c3435abc77b46def">00131</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="classQMAppRun.html#3efa7b20b88b90e0c3435abc77b46def">_short</a> = <span class="keyword">true</span>;
-<a name="l00132"></a><a class="code" href="classQMAppRun.html#773abbbd95794c33bbb4375f47e408c9">00132</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="classQMAppRun.html#773abbbd95794c33bbb4375f47e408c9">_long</a> = <span class="keyword">false</span>;
-<a name="l00133"></a>00133 
-<a name="l00134"></a><a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">00134</a>     <span class="keywordtype">string</span> <a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">_fwstring</a>(<span class="keywordtype">string</span> original, <span class="keywordtype">size_t</span> charCount ) {
-<a name="l00135"></a>00135         original.resize( charCount, <span class="charliteral">' '</span> );
-<a name="l00136"></a>00136         <span class="keywordflow">return</span> original;
-<a name="l00137"></a>00137     }
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139     
-<a name="l00140"></a>00140 };
-<a name="l00141"></a>00141 
-<a name="l00142"></a><a class="code" href="ctp__run_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00142</a> <span class="keywordtype">int</span> <a class="code" href="votca__property_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {
-<a name="l00143"></a>00143     <a class="code" href="classQMAppRun.html">QMAppRun</a> qmapprun;
-<a name="l00144"></a>00144     <span class="keywordflow">return</span> qmapprun.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
-<a name="l00145"></a>00145 }
+<a name="l00060"></a>00060          <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"description"</span>)) {
+<a name="l00061"></a>00061             <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"description"</span>, <span class="stringliteral">"no calculator is given"</span>);
+<a name="l00062"></a>00062             <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"description"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
+<a name="l00063"></a>00063             <span class="comment">// loop over the names in the description string</span>
+<a name="l00064"></a>00064             <span class="keywordflow">for</span> (Tokenizer::iterator n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n) {
+<a name="l00065"></a>00065                 <span class="comment">// loop over calculators</span>
+<a name="l00066"></a>00066                 <span class="keywordtype">bool</span> printerror = <span class="keyword">true</span>;
+<a name="l00067"></a>00067                 <span class="keywordflow">for</span>(CalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().begin(); 
+<a name="l00068"></a>00068                         iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().end(); ++iter) {
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070                     <span class="keywordflow">if</span> ( (*n).compare( (iter-&gt;first).c_str() ) == 0 ) {
+<a name="l00071"></a>00071                          <a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classQMAppRun.html#773abbbd95794c33bbb4375f47e408c9">_long</a> );
+<a name="l00072"></a>00072                         printerror = <span class="keyword">false</span>;
+<a name="l00073"></a>00073                         <span class="keywordflow">break</span>;
+<a name="l00074"></a>00074                     }
+<a name="l00075"></a>00075                  }
+<a name="l00076"></a>00076                  <span class="keywordflow">if</span> ( printerror ) cout &lt;&lt; <span class="stringliteral">"Calculator "</span> &lt;&lt; *n &lt;&lt; <span class="stringliteral">" does not exist\n"</span>;
+<a name="l00077"></a>00077             }
+<a name="l00078"></a>00078             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
+<a name="l00079"></a>00079             <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00080"></a>00080          }
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         <a class="code" href="classQMAppRun.html#fe25780e5952ae43088663ba5ec50ce8" title="Process command line options.">QMApplication::EvaluateOptions</a>();
+<a name="l00083"></a>00083         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"execute"</span>, <span class="stringliteral">"no calculator is given"</span>);
+<a name="l00084"></a>00084         
+<a name="l00085"></a>00085         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"execute"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
+<a name="l00086"></a>00086         <span class="keywordflow">for</span> (Tokenizer::iterator n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n)
+<a name="l00087"></a>00087             <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#66f415e6d8aa0e6ea00226cfd3daa2e7" title="void add a calculator for later use (compare: cg_engine -&amp;gt; AddObserver)">AddCalculator</a>(<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().Create((*n).c_str()));
+<a name="l00088"></a>00088         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00089"></a>00089     }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091     
+<a name="l00092"></a><a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">00092</a>     <span class="keywordtype">void</span> <a class="code" href="classQMAppRun.html#d60c6724f9f760db18c8963eb0023fc4">PrintDescription</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">bool</span> length) {
+<a name="l00093"></a>00093         <span class="comment">// loading the documentation xml file from VOTCASHARE</span>
+<a name="l00094"></a>00094         <span class="keywordtype">char</span> *votca_share = getenv(<span class="stringliteral">"VOTCASHARE"</span>);
+<a name="l00095"></a>00095         <span class="keywordflow">if</span>(votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"VOTCASHARE not set, cannot open help files."</span>);
+<a name="l00096"></a>00096         <span class="keywordtype">string</span> xmlFile = string(getenv(<span class="stringliteral">"VOTCASHARE"</span>)) + string(<span class="stringliteral">"/ctp/xml/"</span>)+name+string(<span class="stringliteral">".xml"</span>);
+<a name="l00097"></a>00097         <span class="keywordflow">try</span> {
+<a name="l00098"></a>00098             <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> <a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a>;
+<a name="l00099"></a>00099             <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(options, xmlFile);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101            <span class="keywordflow">if</span> ( length ) { <span class="comment">// short description of the calculator</span>
+<a name="l00102"></a>00102                
+<a name="l00103"></a>00103                  cout &lt;&lt; string(<span class="stringliteral">"  "</span>) &lt;&lt; <a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">_fwstring</a>(<span class="keywordtype">string</span>(name),14);
+<a name="l00104"></a>00104                  cout &lt;&lt; options.<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".description"</span>)).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;();
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106             } <span class="keywordflow">else</span> { <span class="comment">// long description of the calculator</span>
+<a name="l00107"></a>00107                 cout &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; <a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">_fwstring</a>(<span class="keywordtype">string</span>(name),18);
+<a name="l00108"></a>00108                 cout &lt;&lt; options.<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".description"</span>)).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;() &lt;&lt; endl;
+<a name="l00109"></a>00109  
+<a name="l00110"></a>00110                 list&lt;Property *&gt; items = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#d7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".item"</span>));
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112                 <span class="keywordflow">for</span>(list&lt;Property*&gt;::iterator iter = items.begin(); iter!=items.end(); ++iter) {
+<a name="l00113"></a>00113                     <span class="comment">//cout &lt;&lt; "Long description" &lt;&lt; endl;</span>
+<a name="l00114"></a>00114                     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *pname=&amp;( (*iter)-&gt;get( <span class="keywordtype">string</span>(<span class="stringliteral">"name"</span>) ) );
+<a name="l00115"></a>00115                     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *pdesc=&amp;( (*iter)-&gt;get( <span class="keywordtype">string</span>(<span class="stringliteral">"description"</span>) ) );
+<a name="l00116"></a>00116                     <span class="comment">//Property *pdflt=&amp;( (*iter)-&gt;get( string("default") ) );</span>
+<a name="l00117"></a>00117                     <span class="keywordflow">if</span> ( ! (pname-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>()).empty() ) {
+<a name="l00118"></a>00118                         cout &lt;&lt; string(<span class="stringliteral">"  -"</span>) &lt;&lt; <a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">_fwstring</a>(pname-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>(), 14);
+<a name="l00119"></a>00119                         cout &lt;&lt; pdesc-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>() &lt;&lt; endl;
+<a name="l00120"></a>00120                     }
+<a name="l00121"></a>00121                  }
+<a name="l00122"></a>00122             }
+<a name="l00123"></a>00123             cout &lt;&lt; endl;
+<a name="l00124"></a>00124         } <span class="keywordflow">catch</span>(std::exception &amp;error) {
+<a name="l00125"></a>00125             cout &lt;&lt; string(<span class="stringliteral">"XML file or description tag missing: "</span>) &lt;&lt; xmlFile;
+<a name="l00126"></a>00126         }
+<a name="l00127"></a>00127     }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 <span class="keyword">private</span>:
+<a name="l00130"></a><a class="code" href="classQMAppRun.html#3efa7b20b88b90e0c3435abc77b46def">00130</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="classQMAppRun.html#3efa7b20b88b90e0c3435abc77b46def">_short</a> = <span class="keyword">true</span>;
+<a name="l00131"></a><a class="code" href="classQMAppRun.html#773abbbd95794c33bbb4375f47e408c9">00131</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="classQMAppRun.html#773abbbd95794c33bbb4375f47e408c9">_long</a> = <span class="keyword">false</span>;
+<a name="l00132"></a>00132 
+<a name="l00133"></a><a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">00133</a>     <span class="keywordtype">string</span> <a class="code" href="classQMAppRun.html#77fb16373c292b87325736658dc1fa72">_fwstring</a>(<span class="keywordtype">string</span> original, <span class="keywordtype">size_t</span> charCount ) {
+<a name="l00134"></a>00134         original.resize( charCount, <span class="charliteral">' '</span> );
+<a name="l00135"></a>00135         <span class="keywordflow">return</span> original;
+<a name="l00136"></a>00136     }
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138     
+<a name="l00139"></a>00139 };
+<a name="l00140"></a>00140 
+<a name="l00141"></a><a class="code" href="ctp__run_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00141</a> <span class="keywordtype">int</span> <a class="code" href="votca__property_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {
+<a name="l00142"></a>00142     <a class="code" href="classQMAppRun.html">QMAppRun</a> qmapprun;
+<a name="l00143"></a>00143     <span class="keywordflow">return</span> qmapprun.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
+<a name="l00144"></a>00144 }
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
