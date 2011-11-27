@@ -42,39 +42,49 @@
 <a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define __VOTCA_KMC_APPLICATION_H</span>
 <a name="l00020"></a>00020 <span class="preprocessor"></span>
 <a name="l00021"></a>00021 <span class="preprocessor">#include &lt;<a class="code" href="application_8h.html">votca/tools/application.h</a>&gt;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;<a class="code" href="kmccalculator_8h.html">votca/kmc/kmccalculator.h</a>&gt;</span>
-<a name="l00023"></a>00023 
-<a name="l00024"></a><a class="code" href="namespacevotca_1_1kmc.html">00024</a> <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>kmc {
-<a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html">00026</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html">KMCApplication</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1tools_1_1Application.html">Application</a>
-<a name="l00027"></a>00027 {
-<a name="l00028"></a>00028 <span class="keyword">public</span>:
-<a name="l00029"></a>00029     <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#f10c3cb3c06a91e3c7175c4f6bfb8731">KMCApplication</a>();
-<a name="l00030"></a>00030    <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bbaea082eb269a61c7e7611bcabe23ec">~KMCApplication</a>();
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#9e380c7f4e7644f1d4faeb07153b8b47" title="Initialize application data.">Initialize</a>();
-<a name="l00034"></a>00034     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#eae20ae22f6d17c5311091421fc5a357">ShowHelpText</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>);
-<a name="l00036"></a>00036     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bc26488cafb8842c9f7bb51303777668" title="print options from the XML file">EvaluateOptions</a>();
-<a name="l00038"></a>00038     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249" title="print the description of a specific calculator">PrintDescription</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">bool</span> length);
-<a name="l00040"></a>00040     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#04161528bd5543c6cd2b7bc2dde1a372" title="add a calculator to the list">AddCalculator</a>(<a class="code" href="classvotca_1_1kmc_1_1KMCCalculator.html">KMCCalculator</a>* calculator);
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="keyword">private</span>:
-<a name="l00043"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#f7e0889c8e75e0b4bd8761e3cbd4b074">00043</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#f7e0889c8e75e0b4bd8761e3cbd4b074">_short</a> = <span class="keyword">true</span>;
-<a name="l00044"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37b6b0a9e2417a68de1f54237096b369">00044</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37b6b0a9e2417a68de1f54237096b369">_long</a> = <span class="keyword">false</span>;
-<a name="l00045"></a>00045 
-<a name="l00046"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">00046</a>     <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">_fwstring</a>(<span class="keywordtype">string</span> original, <span class="keywordtype">size_t</span> charCount ) {
-<a name="l00047"></a>00047         original.resize( charCount, <span class="charliteral">' '</span> );
-<a name="l00048"></a>00048         <span class="keywordflow">return</span> original;
-<a name="l00049"></a>00049     }
-<a name="l00050"></a>00050 
-<a name="l00052"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e">00052</a>     list&lt;KMCCalculator *&gt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>;
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 };
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 }}
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 <span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_KMC_APPLICATION_H */</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include "<a class="code" href="kmccalculator_8h.html">kmccalculator.h</a>"</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;<a class="code" href="kmc_2include_2votca_2kmc_2version_8h.html">votca/kmc/version.h</a>&gt;</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="namespacevotca_1_1kmc.html">00025</a> <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>kmc {
+<a name="l00026"></a>00026 
+<a name="l00027"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html">00027</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html">KMCApplication</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1tools_1_1Application.html">Application</a>
+<a name="l00028"></a>00028 {
+<a name="l00029"></a>00029 <span class="keyword">public</span>:
+<a name="l00031"></a>00031     <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#f10c3cb3c06a91e3c7175c4f6bfb8731" title="constructor">KMCApplication</a>();
+<a name="l00033"></a>00033    <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bbaea082eb269a61c7e7611bcabe23ec" title="destructor">~KMCApplication</a>();
+<a name="l00035"></a>00035     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0e3678744ade0123afcb341c1e4c26fe" title="adds program options">Initialize</a>(<span class="keywordtype">void</span>);
+<a name="l00037"></a>00037     <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bc26488cafb8842c9f7bb51303777668" title="print options from the XML file">EvaluateOptions</a>();
+<a name="l00039"></a>00039     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#eae20ae22f6d17c5311091421fc5a357" title="print help">ShowHelpText</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>);
+<a name="l00041"></a>00041     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249" title="print the description of a specific calculator">PrintDescription</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">bool</span> length);
+<a name="l00043"></a>00043     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#04161528bd5543c6cd2b7bc2dde1a372" title="add a calculator to the list">AddCalculator</a>(<a class="code" href="classvotca_1_1kmc_1_1KMCCalculator.html">KMCCalculator</a>* calculator);
+<a name="l00045"></a>00045     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1b179fb679eece318395542479972d0f" title="run all calculators">Run</a>(<span class="keywordtype">void</span>);
+<a name="l00047"></a>00047     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#e34586cea802fd3cd591669c47d027d7" title="return true if evaluation should be continued, abort only if something important...">BeginEvaluate</a>();
+<a name="l00049"></a>00049     <span class="comment">// TO DO - having filename here is a hack. Shall be changed to a pointer to a GRAPH object</span>
+<a name="l00050"></a>00050     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#8ac6ed9792e39313ba818e0d5ce80852" title="called for each frame, return true if evaluation should be continued">EvaluateFrame</a>();
+<a name="l00052"></a>00052     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37cf1076f7dbd3fc99e74b01f01648f2" title="stop evaluation &amp;amp; do final analysis if necessary">EndEvaluate</a>();
+<a name="l00053"></a>00053    
+<a name="l00054"></a>00054 <span class="keyword">protected</span>:
+<a name="l00055"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#f7e0889c8e75e0b4bd8761e3cbd4b074">00055</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#f7e0889c8e75e0b4bd8761e3cbd4b074">_short</a> = <span class="keyword">true</span>;
+<a name="l00056"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37b6b0a9e2417a68de1f54237096b369">00056</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37b6b0a9e2417a68de1f54237096b369">_long</a> = <span class="keyword">false</span>;
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">00058</a>     <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">_fwstring</a>(<span class="keywordtype">string</span> original, <span class="keywordtype">size_t</span> charCount ) {
+<a name="l00059"></a>00059         original.resize( charCount, <span class="charliteral">' '</span> );
+<a name="l00060"></a>00060         <span class="keywordflow">return</span> original;
+<a name="l00061"></a>00061     }
+<a name="l00062"></a>00062 
+<a name="l00064"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e">00064</a>     list&lt;KMCCalculator *&gt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>;
+<a name="l00066"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a151d5ca6e109d99d5472c3341f1c209">00066</a>     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a151d5ca6e109d99d5472c3341f1c209" title="program options from the xml file">_options</a>;
+<a name="l00068"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#ab858fd9cf4ce3fe9932071da7d7e96d">00068</a>     <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#ab858fd9cf4ce3fe9932071da7d7e96d" title="sql database file">_filename</a>;
+<a name="l00069"></a>00069 
+<a name="l00071"></a>00071     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#561f394b122ee0e76f676b0a0e45068f" title="load system information from statesaver">ReadData</a>();
+<a name="l00073"></a>00073     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#8851c6e1ec21a472bed98e6899f5cf33" title="write information to statesaver">WriteData</a>();
+<a name="l00075"></a>00075     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bf3681180d3dee2d78084cfcbf6021be" title="loads the options in from the options file">LoadOptions</a>();
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 };
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 }}
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_KMC_APPLICATION_H */</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
