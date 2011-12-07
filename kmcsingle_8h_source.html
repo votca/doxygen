@@ -49,199 +49,170 @@
 <a name="l00026"></a>00026 <span class="preprocessor">#include &lt;<a class="code" href="database_8h.html">votca/tools/database.h</a>&gt;</span>
 <a name="l00027"></a>00027 <span class="preprocessor">#include &lt;<a class="code" href="statement_8h.html">votca/tools/statement.h</a>&gt;</span>
 <a name="l00028"></a>00028 <span class="preprocessor">#include &lt;<a class="code" href="tokenizer_8h.html">votca/tools/tokenizer.h</a>&gt;</span>
-<a name="l00029"></a>00029 <span class="keyword">using namespace </span>std;
-<a name="l00030"></a>00030 <span class="keyword">using namespace </span>votca::kmc;
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="keyword">struct </span><a class="code" href="structlink__t.html">link_t</a>;
+<a name="l00029"></a>00029 <span class="preprocessor">#include "<a class="code" href="node_8h.html">node.h</a>"</span>
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="keyword">using namespace </span>std;
+<a name="l00032"></a>00032 <span class="keyword">using namespace </span>votca::kmc;
 <a name="l00033"></a>00033 
-<a name="l00034"></a><a class="code" href="classnode__t.html">00034</a> <span class="keyword">class </span><a class="code" href="classnode__t.html">node_t</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html">VSSMGroup</a>&lt;link_t&gt; {
-<a name="l00035"></a>00035   <span class="keyword">public</span>:
-<a name="l00036"></a><a class="code" href="classnode__t.html#a115df0321e197052c609653ffca8818">00036</a>         <a class="code" href="classnode__t.html#a115df0321e197052c609653ffca8818">node_t</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)
-<a name="l00037"></a>00037           : <a class="code" href="classnode__t.html#62dc7379a55f6dcb087e9c71ff627dce">_id</a>(id), <a class="code" href="classnode__t.html#9666604d136d4b5dfa609fec5deced13">_occ</a>(0) {}
-<a name="l00038"></a><a class="code" href="classnode__t.html#9666604d136d4b5dfa609fec5deced13">00038</a>         <span class="keywordtype">double</span> <a class="code" href="classnode__t.html#9666604d136d4b5dfa609fec5deced13">_occ</a>;
-<a name="l00039"></a><a class="code" href="classnode__t.html#62dc7379a55f6dcb087e9c71ff627dce">00039</a>         <span class="keywordtype">int</span> <a class="code" href="classnode__t.html#62dc7379a55f6dcb087e9c71ff627dce">_id</a>;
-<a name="l00040"></a>00040 
-<a name="l00041"></a><a class="code" href="classnode__t.html#b20e4131512336ea70ab59b009c59cbf">00041</a>         <span class="keywordtype">void</span> <a class="code" href="classnode__t.html#b20e4131512336ea70ab59b009c59cbf" title="this group is called, select and execute an event in group">onExecute</a>() {
-<a name="l00042"></a>00042                 <a class="code" href="classnode__t.html#9666604d136d4b5dfa609fec5deced13">_occ</a>+=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#cfe54e1ad46ae5262315302e176aa9b8" title="get the waiting time for this group of events">WaitingTime</a>();
-<a name="l00043"></a>00043                 <a class="code" href="classnode__t.html#b20e4131512336ea70ab59b009c59cbf" title="this group is called, select and execute an event in group">VSSMGroup&lt;link_t&gt;::onExecute</a>();
-<a name="l00044"></a>00044         }
-<a name="l00045"></a>00045 };
-<a name="l00046"></a>00046 
-<a name="l00047"></a><a class="code" href="kmcsingle_8h.html#ecd5a257e5366ac9f341b19494bf43b8">00047</a> <a class="code" href="classnode__t.html">node_t</a> *<a class="code" href="kmcsingle_8h.html#ecd5a257e5366ac9f341b19494bf43b8">current</a>;
-<a name="l00048"></a>00048 <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a>(0,0,0);
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 
+<a name="l00036"></a><a class="code" href="classKMCSingle.html">00036</a> <span class="keyword">class </span><a class="code" href="classKMCSingle.html">KMCSingle</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1kmc_1_1KMCCalculator.html">KMCCalculator</a> 
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038 <span class="keyword">public</span>:
+<a name="l00039"></a><a class="code" href="classKMCSingle.html#b0f52125b3c518b2713f969e9e2961e8">00039</a>     <a class="code" href="classKMCSingle.html#b0f52125b3c518b2713f969e9e2961e8">KMCSingle</a>() {};
+<a name="l00040"></a><a class="code" href="classKMCSingle.html#b3ea893f1742f74725fdcf9a8cc49bf5">00040</a>    <a class="code" href="classKMCSingle.html#b3ea893f1742f74725fdcf9a8cc49bf5">~KMCSingle</a>() {};
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042     <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#e88cb0032b9f4fc50c0e06d7a8aac47f">Initialize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a> );
+<a name="l00043"></a>00043     <span class="keywordtype">bool</span> <a class="code" href="classKMCSingle.html#cbadeccca4ac3fe92987ee68d65be1c5">EvaluateFrame</a>();
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <span class="keyword">protected</span>:
+<a name="l00046"></a>00046             <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#946b3638cf7f69b7fcd335f0db8f837c">LoadGraph</a>();
+<a name="l00047"></a>00047             <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#7188bbbcec2dff54cabba6b29696c912">RunKMC</a>(<span class="keywordtype">void</span>);
+<a name="l00048"></a>00048             <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#d52515f78f84258317b8a2a3beac420f">WriteOcc</a>(<span class="keywordtype">void</span>);
 <a name="l00049"></a>00049 
-<a name="l00050"></a><a class="code" href="structlink__t.html">00050</a> <span class="keyword">struct </span><a class="code" href="structlink__t.html">link_t</a> {
-<a name="l00051"></a><a class="code" href="structlink__t.html#4bfa7ad093db948ef699e53837f0bf5a">00051</a>         <a class="code" href="structlink__t.html#4bfa7ad093db948ef699e53837f0bf5a">link_t</a>(<a class="code" href="classnode__t.html">node_t</a> *dest, <span class="keywordtype">double</span> rate, <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a>)
-<a name="l00052"></a>00052         : <a class="code" href="structlink__t.html#d6b4821ac654d42c56225eded25c0aa9">_dest</a>(dest), <a class="code" href="structlink__t.html#4ff3995700af3459d4e58a0fb3410524">_rate</a>(rate), <a class="code" href="structlink__t.html#99d5e1ed0a244c3a404af3b3cb7354b5">_r</a>(r) {}
-<a name="l00053"></a><a class="code" href="structlink__t.html#326e852a44115ffa73e197be1bb014e5">00053</a>         <span class="keywordtype">double</span> <a class="code" href="structlink__t.html#326e852a44115ffa73e197be1bb014e5">Rate</a>() {
-<a name="l00054"></a>00054                 <span class="keywordflow">return</span> <a class="code" href="structlink__t.html#4ff3995700af3459d4e58a0fb3410524">_rate</a>;
-<a name="l00055"></a>00055         }
-<a name="l00056"></a>00056 
-<a name="l00057"></a><a class="code" href="structlink__t.html#a95e192e8c8dbeaeebf9a5ea39a8804f">00057</a>         <span class="keywordtype">void</span> <a class="code" href="structlink__t.html#a95e192e8c8dbeaeebf9a5ea39a8804f">onExecute</a>() {
-<a name="l00058"></a>00058                 <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a>+=<a class="code" href="structlink__t.html#99d5e1ed0a244c3a404af3b3cb7354b5">_r</a>;
-<a name="l00059"></a>00059                 current = <a class="code" href="structlink__t.html#d6b4821ac654d42c56225eded25c0aa9">_dest</a>;
-<a name="l00060"></a>00060         }
-<a name="l00061"></a><a class="code" href="structlink__t.html#4ff3995700af3459d4e58a0fb3410524">00061</a>         <span class="keywordtype">double</span> <a class="code" href="structlink__t.html#4ff3995700af3459d4e58a0fb3410524">_rate</a>;
-<a name="l00062"></a><a class="code" href="structlink__t.html#d6b4821ac654d42c56225eded25c0aa9">00062</a>         <a class="code" href="classnode__t.html">node_t</a> *<a class="code" href="structlink__t.html#d6b4821ac654d42c56225eded25c0aa9">_dest</a>;
-<a name="l00063"></a><a class="code" href="structlink__t.html#99d5e1ed0a244c3a404af3b3cb7354b5">00063</a>         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="structlink__t.html#99d5e1ed0a244c3a404af3b3cb7354b5">_r</a>;
-<a name="l00064"></a>00064 };
-<a name="l00065"></a>00065 
-<a name="l00066"></a><a class="code" href="classKMCSingle.html">00066</a> <span class="keyword">class </span><a class="code" href="classKMCSingle.html">KMCSingle</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1kmc_1_1KMCCalculator.html">KMCCalculator</a> 
-<a name="l00067"></a>00067 {
-<a name="l00068"></a>00068 <span class="keyword">public</span>:
-<a name="l00069"></a><a class="code" href="classKMCSingle.html#b0f52125b3c518b2713f969e9e2961e8">00069</a>     <a class="code" href="classKMCSingle.html#b0f52125b3c518b2713f969e9e2961e8">KMCSingle</a>() {};
-<a name="l00070"></a><a class="code" href="classKMCSingle.html#b3ea893f1742f74725fdcf9a8cc49bf5">00070</a>    <a class="code" href="classKMCSingle.html#b3ea893f1742f74725fdcf9a8cc49bf5">~KMCSingle</a>() {};
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072     <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#e88cb0032b9f4fc50c0e06d7a8aac47f">Initialize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a> );
-<a name="l00073"></a>00073     <span class="keywordtype">bool</span> <a class="code" href="classKMCSingle.html#cbadeccca4ac3fe92987ee68d65be1c5">EvaluateFrame</a>();
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075 <span class="keyword">protected</span>:
-<a name="l00076"></a>00076             <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#946b3638cf7f69b7fcd335f0db8f837c">LoadGraph</a>();
-<a name="l00077"></a>00077             <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#7188bbbcec2dff54cabba6b29696c912">RunKMC</a>(<span class="keywordtype">void</span>);
-<a name="l00078"></a>00078             <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#d52515f78f84258317b8a2a3beac420f">WriteOcc</a>(<span class="keywordtype">void</span>);
-<a name="l00079"></a>00079 
-<a name="l00080"></a><a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">00080</a>             map&lt;int , node_t *&gt; <a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">_nodes_lookup</a>;
-<a name="l00081"></a><a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">00081</a>             vector&lt;node_t *&gt; <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>;
-<a name="l00082"></a><a class="code" href="classKMCSingle.html#88d69c1effb392300a60927cf84a8373">00082</a>             map&lt;int , node_t *&gt; <a class="code" href="classKMCSingle.html#88d69c1effb392300a60927cf84a8373">_injection_lookup</a>;
-<a name="l00083"></a><a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">00083</a>             vector&lt;node_t *&gt; <a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>;
-<a name="l00084"></a><a class="code" href="classKMCSingle.html#69d0b61d3c254ae36ebf4de4dbfe4fa9">00084</a>             <span class="keywordtype">string</span> <a class="code" href="classKMCSingle.html#69d0b61d3c254ae36ebf4de4dbfe4fa9">_injection_name</a>;
-<a name="l00085"></a><a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">00085</a>             <span class="keywordtype">double</span> <a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a>;
-<a name="l00086"></a><a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">00086</a>             <span class="keywordtype">double</span> <a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">_dt</a>;
-<a name="l00087"></a><a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">00087</a>             <span class="keywordtype">int</span> <a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">_seed</a>;
-<a name="l00088"></a><a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">00088</a>             <span class="keywordtype">string</span> <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a>; <span class="comment">// HACK</span>
-<a name="l00089"></a>00089 };
-<a name="l00090"></a>00090 
-<a name="l00091"></a><a class="code" href="classKMCSingle.html#e88cb0032b9f4fc50c0e06d7a8aac47f">00091</a> <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#e88cb0032b9f4fc50c0e06d7a8aac47f">KMCSingle::Initialize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, Property *<a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a> )
-<a name="l00092"></a>00092 {
-<a name="l00093"></a>00093         <span class="keywordflow">if</span> (options-&gt;exists(<span class="stringliteral">"options.kmcsingle.runtime"</span>)) {
-<a name="l00094"></a>00094             <a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a> = options-&gt;get(<span class="stringliteral">"options.kmcsingle.runtime"</span>).as&lt;<span class="keywordtype">double</span>&gt;();
-<a name="l00095"></a>00095         }
-<a name="l00096"></a>00096         <span class="keywordflow">else</span> {
-<a name="l00097"></a>00097             std::runtime_error(<span class="stringliteral">"Error in kmcsingle: total run time is not provided"</span>);
-<a name="l00098"></a>00098         }
+<a name="l00050"></a><a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">00050</a>             map&lt;int , node_t *&gt; <a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">_nodes_lookup</a>;
+<a name="l00051"></a><a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">00051</a>             vector&lt;node_t *&gt; <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>;
+<a name="l00052"></a><a class="code" href="classKMCSingle.html#88d69c1effb392300a60927cf84a8373">00052</a>             map&lt;int , node_t *&gt; <a class="code" href="classKMCSingle.html#88d69c1effb392300a60927cf84a8373">_injection_lookup</a>;
+<a name="l00053"></a><a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">00053</a>             vector&lt;node_t *&gt; <a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>;
+<a name="l00054"></a><a class="code" href="classKMCSingle.html#69d0b61d3c254ae36ebf4de4dbfe4fa9">00054</a>             <span class="keywordtype">string</span> <a class="code" href="classKMCSingle.html#69d0b61d3c254ae36ebf4de4dbfe4fa9">_injection_name</a>;
+<a name="l00055"></a><a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">00055</a>             <span class="keywordtype">double</span> <a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a>;
+<a name="l00056"></a><a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">00056</a>             <span class="keywordtype">double</span> <a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">_dt</a>;
+<a name="l00057"></a><a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">00057</a>             <span class="keywordtype">int</span> <a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">_seed</a>;
+<a name="l00058"></a><a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">00058</a>             <span class="keywordtype">string</span> <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a>; <span class="comment">// HACK</span>
+<a name="l00059"></a>00059             
+<a name="l00060"></a>00060 };
+<a name="l00061"></a>00061 
+<a name="l00062"></a><a class="code" href="classKMCSingle.html#e88cb0032b9f4fc50c0e06d7a8aac47f">00062</a> <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#e88cb0032b9f4fc50c0e06d7a8aac47f">KMCSingle::Initialize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename, Property *<a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a> )
+<a name="l00063"></a>00063 {
+<a name="l00064"></a>00064         <span class="keywordflow">if</span> (options-&gt;exists(<span class="stringliteral">"options.kmcsingle.runtime"</span>)) {
+<a name="l00065"></a>00065             <a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a> = options-&gt;get(<span class="stringliteral">"options.kmcsingle.runtime"</span>).as&lt;<span class="keywordtype">double</span>&gt;();
+<a name="l00066"></a>00066         }
+<a name="l00067"></a>00067         <span class="keywordflow">else</span> {
+<a name="l00068"></a>00068             std::runtime_error(<span class="stringliteral">"Error in kmcsingle: total run time is not provided"</span>);
+<a name="l00069"></a>00069         }
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         <span class="keywordflow">if</span> (options-&gt;exists(<span class="stringliteral">"options.kmcsingle.outputtime"</span>)) {
+<a name="l00072"></a>00072             <a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">_dt</a> = options-&gt;get(<span class="stringliteral">"options.kmcsingle.outputtime"</span>).as&lt;<span class="keywordtype">double</span>&gt;();
+<a name="l00073"></a>00073         }
+<a name="l00074"></a>00074         <span class="keywordflow">else</span> {
+<a name="l00075"></a>00075             std::runtime_error(<span class="stringliteral">"Error in kmcsingle: output frequency is not provided"</span>);
+<a name="l00076"></a>00076         }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <span class="keywordflow">if</span> (options-&gt;exists(<span class="stringliteral">"options.kmcsingle.seed"</span>)) {
+<a name="l00079"></a>00079             <a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">_seed</a> = options-&gt;get(<span class="stringliteral">"options.kmcsingle.seed"</span>).as&lt;<span class="keywordtype">int</span>&gt;();
+<a name="l00080"></a>00080         }
+<a name="l00081"></a>00081         <span class="keywordflow">else</span> {
+<a name="l00082"></a>00082             std::runtime_error(<span class="stringliteral">"Error in kmcsingle: seed is not provided"</span>);
+<a name="l00083"></a>00083         }
+<a name="l00084"></a>00084         
+<a name="l00085"></a>00085         <span class="keywordflow">if</span> (options-&gt;exists(<span class="stringliteral">"options.kmcsingle.injection"</span>)) {
+<a name="l00086"></a>00086             <a class="code" href="classKMCSingle.html#69d0b61d3c254ae36ebf4de4dbfe4fa9">_injection_name</a> = options-&gt;get(<span class="stringliteral">"options.kmcsingle.injection"</span>).as&lt;<span class="keywordtype">string</span>&gt;();
+<a name="l00087"></a>00087         }
+<a name="l00088"></a>00088         <span class="keywordflow">else</span> {
+<a name="l00089"></a>00089             std::runtime_error(<span class="stringliteral">"Error in kmcsingle: injection pattern is not provided"</span>);
+<a name="l00090"></a>00090         }
+<a name="l00091"></a>00091         
+<a name="l00092"></a>00092         <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a> = filename;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094        <span class="comment">//cout &lt;&lt; _seed &lt;&lt; endl;</span>
+<a name="l00095"></a>00095        srand(<a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">_seed</a>);
+<a name="l00096"></a>00096        <a class="code" href="classvotca_1_1tools_1_1Random.html#4138dfe598eb9564597333e295cd2583">votca::tools::Random::init</a>(rand(), rand(), rand(), rand());
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 }
 <a name="l00099"></a>00099 
-<a name="l00100"></a>00100         <span class="keywordflow">if</span> (options-&gt;exists(<span class="stringliteral">"options.kmcsingle.outputtime"</span>)) {
-<a name="l00101"></a>00101             <a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">_dt</a> = options-&gt;get(<span class="stringliteral">"options.kmcsingle.outputtime"</span>).as&lt;<span class="keywordtype">double</span>&gt;();
-<a name="l00102"></a>00102         }
-<a name="l00103"></a>00103         <span class="keywordflow">else</span> {
-<a name="l00104"></a>00104             std::runtime_error(<span class="stringliteral">"Error in kmcsingle: output frequency is not provided"</span>);
-<a name="l00105"></a>00105         }
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107         <span class="keywordflow">if</span> (options-&gt;exists(<span class="stringliteral">"options.kmcsingle.seed"</span>)) {
-<a name="l00108"></a>00108             <a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">_seed</a> = options-&gt;get(<span class="stringliteral">"options.kmcsingle.seed"</span>).as&lt;<span class="keywordtype">int</span>&gt;();
-<a name="l00109"></a>00109         }
-<a name="l00110"></a>00110         <span class="keywordflow">else</span> {
-<a name="l00111"></a>00111             std::runtime_error(<span class="stringliteral">"Error in kmcsingle: seed is not provided"</span>);
-<a name="l00112"></a>00112         }
-<a name="l00113"></a>00113         
-<a name="l00114"></a>00114         <span class="keywordflow">if</span> (options-&gt;exists(<span class="stringliteral">"options.kmcsingle.injection"</span>)) {
-<a name="l00115"></a>00115             <a class="code" href="classKMCSingle.html#69d0b61d3c254ae36ebf4de4dbfe4fa9">_injection_name</a> = options-&gt;get(<span class="stringliteral">"options.kmcsingle.injection"</span>).as&lt;<span class="keywordtype">string</span>&gt;();
-<a name="l00116"></a>00116         }
-<a name="l00117"></a>00117         <span class="keywordflow">else</span> {
-<a name="l00118"></a>00118             std::runtime_error(<span class="stringliteral">"Error in kmcsingle: injection pattern is not provided"</span>);
-<a name="l00119"></a>00119         }
-<a name="l00120"></a>00120         
-<a name="l00121"></a>00121         <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a> = filename;
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123        <span class="comment">//cout &lt;&lt; _seed &lt;&lt; endl;</span>
-<a name="l00124"></a>00124        srand(<a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">_seed</a>);
-<a name="l00125"></a>00125        <a class="code" href="classvotca_1_1tools_1_1Random.html#4138dfe598eb9564597333e295cd2583">votca::tools::Random::init</a>(rand(), rand(), rand(), rand());
-<a name="l00126"></a>00126 
-<a name="l00127"></a>00127 }
-<a name="l00128"></a>00128 
-<a name="l00129"></a><a class="code" href="classKMCSingle.html#cbadeccca4ac3fe92987ee68d65be1c5">00129</a> <span class="keywordtype">bool</span> <a class="code" href="classKMCSingle.html#cbadeccca4ac3fe92987ee68d65be1c5">KMCSingle::EvaluateFrame</a>()
-<a name="l00130"></a>00130 {
+<a name="l00100"></a><a class="code" href="classKMCSingle.html#cbadeccca4ac3fe92987ee68d65be1c5">00100</a> <span class="keywordtype">bool</span> <a class="code" href="classKMCSingle.html#cbadeccca4ac3fe92987ee68d65be1c5">KMCSingle::EvaluateFrame</a>()
+<a name="l00101"></a>00101 {
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103     <a class="code" href="classKMCSingle.html#946b3638cf7f69b7fcd335f0db8f837c">LoadGraph</a>();
+<a name="l00104"></a>00104     <a class="code" href="classKMCSingle.html#7188bbbcec2dff54cabba6b29696c912">RunKMC</a>();
+<a name="l00105"></a>00105     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00106"></a>00106 }
+<a name="l00107"></a>00107 
+<a name="l00108"></a><a class="code" href="classKMCSingle.html#946b3638cf7f69b7fcd335f0db8f837c">00108</a> <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#946b3638cf7f69b7fcd335f0db8f837c">KMCSingle::LoadGraph</a>() {
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     <a class="code" href="classvotca_1_1tools_1_1Database.html" title="SQLite Database wrapper.">Database</a> db;
+<a name="l00111"></a>00111     db.<a class="code" href="classvotca_1_1tools_1_1Database.html#571911c19f24f9f665661ceb4f87eb54">Open</a>( <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a> );
+<a name="l00112"></a>00112     cout &lt;&lt; <span class="stringliteral">" Loading graph from "</span> &lt;&lt; <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a> &lt;&lt; endl;
+<a name="l00113"></a>00113     <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a> *stmt = db.<a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">Prepare</a>(<span class="stringliteral">"SELECT _id,name FROM conjsegs;"</span>);
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     <span class="keywordflow">while</span> (stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>() != SQLITE_DONE) {
+<a name="l00116"></a>00116         <span class="keywordtype">int</span> <span class="keywordtype">id</span> = stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">int</span>&gt;(0);
+<a name="l00117"></a>00117         <span class="keywordtype">string</span> name = stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">string</span>&gt;(1);
+<a name="l00118"></a>00118         <a class="code" href="classnode__t.html">node_t</a> *n =<span class="keyword">new</span> <a class="code" href="classnode__t.html">node_t</a>(<span class="keywordtype">id</span>);
+<a name="l00119"></a>00119         <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>.push_back(n);
+<a name="l00120"></a>00120         <a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">_nodes_lookup</a>[id] = <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>.back();
+<a name="l00121"></a>00121         <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(<a class="code" href="classKMCSingle.html#69d0b61d3c254ae36ebf4de4dbfe4fa9">_injection_name</a>.c_str(), name.c_str())) {
+<a name="l00122"></a>00122             <a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>.push_back(n);
+<a name="l00123"></a>00123             <a class="code" href="classKMCSingle.html#88d69c1effb392300a60927cf84a8373">_injection_lookup</a>[id] = <a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>.back();
+<a name="l00124"></a>00124         }
+<a name="l00125"></a>00125     }
+<a name="l00126"></a>00126     <span class="comment">//delete stmt;</span>
+<a name="l00127"></a>00127     cout &lt;&lt; <span class="stringliteral">"  -Nodes: "</span> &lt;&lt; <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>.size() &lt;&lt; endl;
+<a name="l00128"></a>00128     cout &lt;&lt; <span class="stringliteral">"  -Injection Points: "</span> &lt;&lt; <a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>.size() &lt;&lt; endl;
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130     <span class="keyword">delete</span> stmt;
 <a name="l00131"></a>00131 
-<a name="l00132"></a>00132     <a class="code" href="classKMCSingle.html#946b3638cf7f69b7fcd335f0db8f837c">LoadGraph</a>();
-<a name="l00133"></a>00133     <a class="code" href="classKMCSingle.html#7188bbbcec2dff54cabba6b29696c912">RunKMC</a>();
-<a name="l00134"></a>00134     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00135"></a>00135 }
-<a name="l00136"></a>00136 
-<a name="l00137"></a><a class="code" href="classKMCSingle.html#946b3638cf7f69b7fcd335f0db8f837c">00137</a> <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#946b3638cf7f69b7fcd335f0db8f837c">KMCSingle::LoadGraph</a>() {
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139     <a class="code" href="classvotca_1_1tools_1_1Database.html" title="SQLite Database wrapper.">Database</a> db;
-<a name="l00140"></a>00140     db.<a class="code" href="classvotca_1_1tools_1_1Database.html#571911c19f24f9f665661ceb4f87eb54">Open</a>( <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a> );
-<a name="l00141"></a>00141     cout &lt;&lt; <span class="stringliteral">" Loading graph from "</span> &lt;&lt; <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a> &lt;&lt; endl;
-<a name="l00142"></a>00142     <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a> *stmt = db.<a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">Prepare</a>(<span class="stringliteral">"SELECT _id,name FROM conjsegs;"</span>);
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144     <span class="keywordflow">while</span> (stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>() != SQLITE_DONE) {
-<a name="l00145"></a>00145         <span class="keywordtype">int</span> <span class="keywordtype">id</span> = stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">int</span>&gt;(0);
-<a name="l00146"></a>00146         <span class="keywordtype">string</span> name = stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">string</span>&gt;(1);
-<a name="l00147"></a>00147         <a class="code" href="classnode__t.html">node_t</a> *n =<span class="keyword">new</span> <a class="code" href="classnode__t.html">node_t</a>(<span class="keywordtype">id</span>);
-<a name="l00148"></a>00148         <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>.push_back(n);
-<a name="l00149"></a>00149         <a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">_nodes_lookup</a>[id] = <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>.back();
-<a name="l00150"></a>00150         <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(<a class="code" href="classKMCSingle.html#69d0b61d3c254ae36ebf4de4dbfe4fa9">_injection_name</a>.c_str(), name.c_str())) {
-<a name="l00151"></a>00151             <a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>.push_back(n);
-<a name="l00152"></a>00152             <a class="code" href="classKMCSingle.html#88d69c1effb392300a60927cf84a8373">_injection_lookup</a>[id] = <a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>.back();
-<a name="l00153"></a>00153         }
-<a name="l00154"></a>00154     }
-<a name="l00155"></a>00155     <span class="comment">//delete stmt;</span>
-<a name="l00156"></a>00156     cout &lt;&lt; <span class="stringliteral">"  -Nodes: "</span> &lt;&lt; <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>.size() &lt;&lt; endl;
-<a name="l00157"></a>00157     cout &lt;&lt; <span class="stringliteral">"  -Injection Points: "</span> &lt;&lt; <a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>.size() &lt;&lt; endl;
-<a name="l00158"></a>00158 
-<a name="l00159"></a>00159     <span class="keyword">delete</span> stmt;
-<a name="l00160"></a>00160 
-<a name="l00161"></a>00161     <span class="keywordtype">int</span> links = 0;
-<a name="l00162"></a>00162     stmt = db.<a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">Prepare</a>(<span class="stringliteral">"SELECT conjseg1, conjseg2, rate12, rate21, r_x, r_y, r_z FROM pairs;"</span>);
-<a name="l00163"></a>00163     <span class="keywordflow">while</span> (stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>() != SQLITE_DONE) {
-<a name="l00164"></a>00164         <a class="code" href="classnode__t.html">node_t</a> *n1 = <a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">_nodes_lookup</a>[stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">int</span>&gt;(0)];
-<a name="l00165"></a>00165         <a class="code" href="classnode__t.html">node_t</a> *n2 = <a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">_nodes_lookup</a>[stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">int</span>&gt;(1)];
-<a name="l00166"></a>00166         <span class="keywordtype">double</span> rate12 = stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(2);
-<a name="l00167"></a>00167         <span class="keywordtype">double</span> rate21 = stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(3);
-<a name="l00168"></a>00168         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a> = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(4), stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(5), stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(6));
-<a name="l00169"></a>00169         n1-&gt;<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#294becdfe386864ec404493576a0b5bc">AddEvent</a>(<span class="keyword">new</span> <a class="code" href="structlink__t.html">link_t</a>(n2, rate12, r));
-<a name="l00170"></a>00170         n2-&gt;AddEvent(<span class="keyword">new</span> <a class="code" href="structlink__t.html">link_t</a>(n1, rate21, -r));
-<a name="l00171"></a>00171         links += 2;
-<a name="l00172"></a>00172     }
-<a name="l00173"></a>00173     <span class="keyword">delete</span> stmt;
-<a name="l00174"></a>00174     cout &lt;&lt; <span class="stringliteral">"  -Links: "</span> &lt;&lt; links &lt;&lt; endl;
-<a name="l00175"></a>00175 
-<a name="l00176"></a>00176 }
-<a name="l00177"></a>00177 
-<a name="l00178"></a><a class="code" href="classKMCSingle.html#7188bbbcec2dff54cabba6b29696c912">00178</a> <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#7188bbbcec2dff54cabba6b29696c912">KMCSingle::RunKMC</a>(<span class="keywordtype">void</span>)
-<a name="l00179"></a>00179 {
-<a name="l00180"></a>00180 
-<a name="l00181"></a>00181         <span class="keywordtype">double</span> t = 0;
-<a name="l00182"></a>00182 
-<a name="l00183"></a>00183         srand(<a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">_seed</a>);
-<a name="l00184"></a>00184         <a class="code" href="classvotca_1_1tools_1_1Random.html#4138dfe598eb9564597333e295cd2583">votca::tools::Random::init</a>(rand(), rand(), rand(), rand());
-<a name="l00185"></a>00185 
-<a name="l00186"></a>00186         <span class="comment">// cout &lt;&lt; " seed:size:site " &lt;&lt; _seed &lt;&lt; ":" &lt;&lt; _injection.size() &lt;&lt; ":" &lt;&lt; Random::rand_uniform_int(_injection.size()) &lt;&lt; endl;</span>
-<a name="l00187"></a>00187         current=<a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>[Random::rand_uniform_int(<a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>.size())];
-<a name="l00188"></a>00188         cout &lt;&lt;<span class="stringliteral">" Starting simulation at node: "</span>&lt;&lt;current-&gt;<a class="code" href="classnode__t.html#62dc7379a55f6dcb087e9c71ff627dce">_id</a>-1&lt;&lt;endl;
-<a name="l00189"></a>00189         <span class="keywordtype">double</span> next_output = <a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">_dt</a>;
-<a name="l00190"></a>00190     <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0;
-<a name="l00191"></a>00191     <span class="keywordflow">while</span>(t&lt;<a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a>) {
-<a name="l00192"></a>00192         t+=current-&gt;<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#cfe54e1ad46ae5262315302e176aa9b8" title="get the waiting time for this group of events">WaitingTime</a>();
-<a name="l00193"></a>00193                 current-&gt;<a class="code" href="classnode__t.html#b20e4131512336ea70ab59b009c59cbf" title="this group is called, select and execute an event in group">onExecute</a>();
-<a name="l00194"></a>00194         <span class="keywordflow">if</span>(t &gt; next_output) {
-<a name="l00195"></a>00195                 next_output = t + <a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">_dt</a>;
-<a name="l00196"></a>00196                 cout &lt;&lt; t &lt;&lt; <span class="stringliteral">": "</span> &lt;&lt; <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a> &lt;&lt; endl;
-<a name="l00197"></a>00197         }
-<a name="l00198"></a>00198     }
-<a name="l00199"></a>00199     <a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a> = t;
-<a name="l00200"></a>00200     <a class="code" href="classKMCSingle.html#d52515f78f84258317b8a2a3beac420f">WriteOcc</a>();
-<a name="l00201"></a>00201     cout &lt;&lt; std::scientific &lt;&lt; <span class="stringliteral">"\nKMC run finished\nAverage velocity (m/s): "</span> &lt;&lt; <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a>/t*1<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>-9 &lt;&lt; endl;
-<a name="l00202"></a>00202 }
-<a name="l00203"></a>00203 
-<a name="l00204"></a><a class="code" href="classKMCSingle.html#d52515f78f84258317b8a2a3beac420f">00204</a> <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#d52515f78f84258317b8a2a3beac420f">KMCSingle::WriteOcc</a>()
-<a name="l00205"></a>00205 {
-<a name="l00206"></a>00206     <a class="code" href="classvotca_1_1tools_1_1Database.html" title="SQLite Database wrapper.">Database</a> db;
-<a name="l00207"></a>00207     cout &lt;&lt; <span class="stringliteral">"Opening for writing "</span> &lt;&lt; <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a> &lt;&lt; endl;
-<a name="l00208"></a>00208         db.<a class="code" href="classvotca_1_1tools_1_1Database.html#571911c19f24f9f665661ceb4f87eb54">Open</a>(<a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a>);
-<a name="l00209"></a>00209         db.<a class="code" href="classvotca_1_1tools_1_1Database.html#71bd57d28e5d5454bc2c002d31918afc">Exec</a>(<span class="stringliteral">"BEGIN;"</span>);
-<a name="l00210"></a>00210         <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a> *stmt = db.<a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">Prepare</a>(<span class="stringliteral">"UPDATE conjsegs SET occ = ? WHERE _id = ?;"</span>);
-<a name="l00211"></a>00211         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;<a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>.size(); ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
-<a name="l00212"></a>00212                 stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0" title="reset the statment to perform another insert or query">Reset</a>();
-<a name="l00213"></a>00213                 stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Bind</a>(1, <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;_occ/<a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a>);
-<a name="l00214"></a>00214                 stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Bind</a>(2, <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;_id);
-<a name="l00215"></a>00215                 stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>();
-<a name="l00216"></a>00216         }
-<a name="l00217"></a>00217         db.<a class="code" href="classvotca_1_1tools_1_1Database.html#71bd57d28e5d5454bc2c002d31918afc">Exec</a>(<span class="stringliteral">"END;"</span>);
-<a name="l00218"></a>00218         <span class="keyword">delete</span> stmt;
-<a name="l00219"></a>00219 }
-<a name="l00220"></a>00220 
-<a name="l00221"></a>00221 <span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_KMC_SINGLE_H */</span>
+<a name="l00132"></a>00132     <span class="keywordtype">int</span> links = 0;
+<a name="l00133"></a>00133     stmt = db.<a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">Prepare</a>(<span class="stringliteral">"SELECT conjseg1, conjseg2, rate12, rate21, r_x, r_y, r_z FROM pairs;"</span>);
+<a name="l00134"></a>00134     <span class="keywordflow">while</span> (stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>() != SQLITE_DONE) {
+<a name="l00135"></a>00135         <a class="code" href="classnode__t.html">node_t</a> *n1 = <a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">_nodes_lookup</a>[stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">int</span>&gt;(0)];
+<a name="l00136"></a>00136         <a class="code" href="classnode__t.html">node_t</a> *n2 = <a class="code" href="classKMCSingle.html#b9180122cd700051078a58a890937dc8">_nodes_lookup</a>[stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">int</span>&gt;(1)];
+<a name="l00137"></a>00137         <span class="keywordtype">double</span> rate12 = stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(2);
+<a name="l00138"></a>00138         <span class="keywordtype">double</span> rate21 = stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(3);
+<a name="l00139"></a>00139         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a> = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(4), stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(5), stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5844859b5ee01421dcb88d9fc85717c7" title="read a column after a select statement was executed">Column</a>&lt;<span class="keywordtype">double</span>&gt;(6));
+<a name="l00140"></a>00140         n1-&gt;<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#294becdfe386864ec404493576a0b5bc">AddEvent</a>(<span class="keyword">new</span> <a class="code" href="structlink__t.html">link_t</a>(n2, rate12, r));
+<a name="l00141"></a>00141         n2-&gt;AddEvent(<span class="keyword">new</span> <a class="code" href="structlink__t.html">link_t</a>(n1, rate21, -r));
+<a name="l00142"></a>00142         links += 2;
+<a name="l00143"></a>00143     }
+<a name="l00144"></a>00144     <span class="keyword">delete</span> stmt;
+<a name="l00145"></a>00145     cout &lt;&lt; <span class="stringliteral">"  -Links: "</span> &lt;&lt; links &lt;&lt; endl;
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 }
+<a name="l00148"></a>00148 
+<a name="l00149"></a><a class="code" href="classKMCSingle.html#7188bbbcec2dff54cabba6b29696c912">00149</a> <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#7188bbbcec2dff54cabba6b29696c912">KMCSingle::RunKMC</a>(<span class="keywordtype">void</span>)
+<a name="l00150"></a>00150 {
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152         <span class="keywordtype">double</span> t = 0;
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         srand(<a class="code" href="classKMCSingle.html#23e0036dd66c35cc41965929f43f4e96">_seed</a>);
+<a name="l00155"></a>00155         <a class="code" href="classvotca_1_1tools_1_1Random.html#4138dfe598eb9564597333e295cd2583">votca::tools::Random::init</a>(rand(), rand(), rand(), rand());
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         <span class="comment">// cout &lt;&lt; " seed:size:site " &lt;&lt; _seed &lt;&lt; ":" &lt;&lt; _injection.size() &lt;&lt; ":" &lt;&lt; Random::rand_uniform_int(_injection.size()) &lt;&lt; endl;</span>
+<a name="l00158"></a>00158         <a class="code" href="node_8h.html#ecd5a257e5366ac9f341b19494bf43b8">current</a>=<a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>[Random::rand_uniform_int(<a class="code" href="classKMCSingle.html#d705756cd6aed104b84989b6dee63ef4">_injection</a>.size())];
+<a name="l00159"></a>00159         cout &lt;&lt;<span class="stringliteral">" Starting simulation at node: "</span>&lt;&lt;<a class="code" href="node_8h.html#ecd5a257e5366ac9f341b19494bf43b8">current</a>-&gt;<a class="code" href="classnode__t.html#62dc7379a55f6dcb087e9c71ff627dce">_id</a>-1&lt;&lt;endl;
+<a name="l00160"></a>00160         <span class="keywordtype">double</span> next_output = <a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">_dt</a>;
+<a name="l00161"></a>00161     <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0;
+<a name="l00162"></a>00162     <span class="keywordflow">while</span>(t&lt;<a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a>) {
+<a name="l00163"></a>00163         t+=<a class="code" href="node_8h.html#ecd5a257e5366ac9f341b19494bf43b8">current</a>-&gt;<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#cfe54e1ad46ae5262315302e176aa9b8" title="get the waiting time for this group of events">WaitingTime</a>();
+<a name="l00164"></a>00164                 <a class="code" href="node_8h.html#ecd5a257e5366ac9f341b19494bf43b8">current</a>-&gt;<a class="code" href="classnode__t.html#b20e4131512336ea70ab59b009c59cbf" title="this group is called, select and execute an event in group">onExecute</a>();
+<a name="l00165"></a>00165         <span class="keywordflow">if</span>(t &gt; next_output) {
+<a name="l00166"></a>00166                 next_output = t + <a class="code" href="classKMCSingle.html#dc792974ca1ec324625ea6448929f0d6">_dt</a>;
+<a name="l00167"></a>00167                 cout &lt;&lt; t &lt;&lt; <span class="stringliteral">": "</span> &lt;&lt; <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a> &lt;&lt; endl;
+<a name="l00168"></a>00168         }
+<a name="l00169"></a>00169     }
+<a name="l00170"></a>00170     <a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a> = t;
+<a name="l00171"></a>00171     <a class="code" href="classKMCSingle.html#d52515f78f84258317b8a2a3beac420f">WriteOcc</a>();
+<a name="l00172"></a>00172     cout &lt;&lt; std::scientific &lt;&lt; <span class="stringliteral">"\nKMC run finished\nAverage velocity (m/s): "</span> &lt;&lt; <a class="code" href="kmc__old_8cc.html#e243e7fff6a6d0eecd4adaa52b0fe8a2">r</a>/t*1<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>-9 &lt;&lt; endl;
+<a name="l00173"></a>00173 }
+<a name="l00174"></a>00174 
+<a name="l00175"></a><a class="code" href="classKMCSingle.html#d52515f78f84258317b8a2a3beac420f">00175</a> <span class="keywordtype">void</span> <a class="code" href="classKMCSingle.html#d52515f78f84258317b8a2a3beac420f">KMCSingle::WriteOcc</a>()
+<a name="l00176"></a>00176 {
+<a name="l00177"></a>00177     <a class="code" href="classvotca_1_1tools_1_1Database.html" title="SQLite Database wrapper.">Database</a> db;
+<a name="l00178"></a>00178     cout &lt;&lt; <span class="stringliteral">"Opening for writing "</span> &lt;&lt; <a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a> &lt;&lt; endl;
+<a name="l00179"></a>00179         db.<a class="code" href="classvotca_1_1tools_1_1Database.html#571911c19f24f9f665661ceb4f87eb54">Open</a>(<a class="code" href="classKMCSingle.html#901b5b2ba477790bd5b161c9d7febc68">_filename</a>);
+<a name="l00180"></a>00180         db.<a class="code" href="classvotca_1_1tools_1_1Database.html#71bd57d28e5d5454bc2c002d31918afc">Exec</a>(<span class="stringliteral">"BEGIN;"</span>);
+<a name="l00181"></a>00181         <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a> *stmt = db.<a class="code" href="classvotca_1_1tools_1_1Database.html#fb2a4e03b21b167516b2313d73c96581">Prepare</a>(<span class="stringliteral">"UPDATE conjsegs SET occ = ? WHERE _id = ?;"</span>);
+<a name="l00182"></a>00182         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;<a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>.size(); ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
+<a name="l00183"></a>00183                 stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#fd24d8e702dfc2eff7defd4e1e4d63b0" title="reset the statment to perform another insert or query">Reset</a>();
+<a name="l00184"></a>00184                 stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Bind</a>(1, <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;_occ/<a class="code" href="classKMCSingle.html#4ad167cb6b1b0e5d7267bd0942d5d54c">_runtime</a>);
+<a name="l00185"></a>00185                 stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#5e5076076aaddf159310f61c393fe73e" title="bind a value to prepared statement">Bind</a>(2, <a class="code" href="classKMCSingle.html#c45cdcb9981f13f9146ac57995699e80">_nodes</a>[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;_id);
+<a name="l00186"></a>00186                 stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>();
+<a name="l00187"></a>00187         }
+<a name="l00188"></a>00188         db.<a class="code" href="classvotca_1_1tools_1_1Database.html#71bd57d28e5d5454bc2c002d31918afc">Exec</a>(<span class="stringliteral">"END;"</span>);
+<a name="l00189"></a>00189         <span class="keyword">delete</span> stmt;
+<a name="l00190"></a>00190 }
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192 <span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_KMC_SINGLE_H */</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

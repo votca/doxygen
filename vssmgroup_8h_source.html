@@ -52,99 +52,103 @@
 <a name="l00029"></a>00029 <span class="comment">/***</span>
 <a name="l00030"></a>00030 <span class="comment"> * \brief groups events based on variable step size method</span>
 <a name="l00031"></a>00031 <span class="comment"> *</span>
-<a name="l00032"></a>00032 <span class="comment"> * This class groups the events based on the variable step size method. The waiting time is calculated</span>
-<a name="l00033"></a>00033 <span class="comment"> * from the total rate. The probability to choose an event is P_i = \omega_i / \omega_tot</span>
-<a name="l00034"></a>00034 <span class="comment"> *</span>
-<a name="l00035"></a>00035 <span class="comment"> * The template argument is a class which has to implement the functions Rate, which should return the rate of the event</span>
-<a name="l00036"></a>00036 <span class="comment"> * and onExecute, which is called if the event occurs. VSSMGroup implements these methods it's own and therefore</span>
-<a name="l00037"></a>00037 <span class="comment"> * can be used as an event itself. This allows hierarchical grouping of events.</span>
-<a name="l00038"></a>00038 <span class="comment"> *</span>
-<a name="l00039"></a>00039 <span class="comment"> * \todo add a refresh function if rates have changed</span>
-<a name="l00040"></a>00040 <span class="comment"> */</span>
-<a name="l00041"></a>00041 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> event_t&gt;
-<a name="l00042"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html">00042</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html">VSSMGroup</a> {
-<a name="l00043"></a>00043 <span class="keyword">public</span>:
-<a name="l00044"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#e4fc63fff607a74e71fb01d709f9c676">00044</a>         <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#e4fc63fff607a74e71fb01d709f9c676">VSSMGroup</a>() {
-<a name="l00045"></a>00045                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.push_back(0);
-<a name="l00046"></a>00046         }
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048         <span class="comment">/***</span>
-<a name="l00049"></a>00049 <span class="comment">         * \brief add event to list of possible events</span>
-<a name="l00050"></a>00050 <span class="comment">         */</span>
-<a name="l00051"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#294becdfe386864ec404493576a0b5bc">00051</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#294becdfe386864ec404493576a0b5bc">AddEvent</a>(event_t *event) {
-<a name="l00052"></a>00052                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>.push_back(event);
-<a name="l00053"></a>00053                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.push_back(<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.back() + <span class="keyword">event</span>-&gt;Rate());
-<a name="l00054"></a>00054                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#5bd51494e08fe3130d257bc894534c5a" title="calculate a new waiting time">UpdateWaitingTime</a>();
-<a name="l00055"></a>00055         }
-<a name="l00056"></a>00056 
-<a name="l00060"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427">00060</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.back(); };
-<a name="l00061"></a>00061 
-<a name="l00065"></a>00065         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#496b9dd10e72e5277c27ab4e73e9212a" title="this group is called, select and execute an event in group">onExecute</a>();
-<a name="l00069"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#cfe54e1ad46ae5262315302e176aa9b8">00069</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#cfe54e1ad46ae5262315302e176aa9b8" title="get the waiting time for this group of events">WaitingTime</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#4059977fed5aa7bc8f394bec66dc4061">_waiting_time</a>; }
-<a name="l00070"></a>00070 
-<a name="l00074"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#5bd51494e08fe3130d257bc894534c5a">00074</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#5bd51494e08fe3130d257bc894534c5a" title="calculate a new waiting time">UpdateWaitingTime</a>() {
-<a name="l00075"></a>00075                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#4059977fed5aa7bc8f394bec66dc4061">_waiting_time</a> = -log( 1.0 - <a class="code" href="classvotca_1_1tools_1_1Random.html#d6ce126e9fa4d167c870279153ee5c58">Random::rand_uniform</a>() ) / <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>();
-<a name="l00076"></a>00076         }
-<a name="l00077"></a>00077 
-<a name="l00078"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#0c1d5c45b167b10c6cd90d855f58d407">00078</a>         event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#0c1d5c45b167b10c6cd90d855f58d407">getEvent</a>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>[i]; }
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080 <span class="keyword">protected</span>:
-<a name="l00084"></a>00084         event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b35c3279d580ba284bcbaec5b3243629" title="select an event to execute based on linear search O(N)">SelectEvent_LinearSearch</a>();
-<a name="l00085"></a>00085 
-<a name="l00089"></a>00089         event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#49d86cd26d2477551257ae4a0a0fe9b8" title="select an event to execute based on binary search O(log N)">SelectEvent_BinarySearch</a>();
-<a name="l00090"></a>00090 
-<a name="l00091"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">00091</a>         std::vector&lt;event_t*&gt; <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>;
-<a name="l00092"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">00092</a>         std::vector&lt;double&gt; <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>;
-<a name="l00093"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#4059977fed5aa7bc8f394bec66dc4061">00093</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#4059977fed5aa7bc8f394bec66dc4061">_waiting_time</a>;
-<a name="l00094"></a>00094 };
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> event_t&gt;
-<a name="l00097"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#496b9dd10e72e5277c27ab4e73e9212a">00097</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#496b9dd10e72e5277c27ab4e73e9212a" title="this group is called, select and execute an event in group">VSSMGroup&lt;event_t&gt;::onExecute</a>()
-<a name="l00098"></a>00098 {
-<a name="l00099"></a>00099         <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#49d86cd26d2477551257ae4a0a0fe9b8" title="select an event to execute based on binary search O(log N)">SelectEvent_BinarySearch</a>()-&gt;onExecute();
-<a name="l00100"></a>00100         <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#5bd51494e08fe3130d257bc894534c5a" title="calculate a new waiting time">UpdateWaitingTime</a>();
-<a name="l00101"></a>00101 }
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> event_t&gt;
-<a name="l00104"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b35c3279d580ba284bcbaec5b3243629">00104</a> <span class="keyword">inline</span> event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b35c3279d580ba284bcbaec5b3243629" title="select an event to execute based on linear search O(N)">VSSMGroup&lt;event_t&gt;::SelectEvent_LinearSearch</a>()
-<a name="l00105"></a>00105 {
-<a name="l00106"></a>00106         <span class="keywordtype">double</span> u = (1.-<a class="code" href="classvotca_1_1tools_1_1Random.html#d6ce126e9fa4d167c870279153ee5c58">Random::rand_uniform</a>())*<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>();
-<a name="l00107"></a>00107         event_t *event;
-<a name="l00108"></a>00108         <span class="comment">// find the biggest event for that u &lt; \sum omega_i</span>
-<a name="l00109"></a>00109         <span class="keywordflow">for</span>(<span class="keyword">typename</span> std::vector&lt;event_t*&gt;::iterator <a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>.begin();
-<a name="l00110"></a>00110                         <a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>!=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>.end(); ++<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>) {
-<a name="l00111"></a>00111                         u-=(*e)-&gt;Rate();
-<a name="l00112"></a>00112                         <span class="keywordflow">if</span>(u&lt;=0) <span class="keywordflow">return</span> *<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>;
-<a name="l00113"></a>00113         }
-<a name="l00114"></a>00114         <span class="comment">// should never happen</span>
-<a name="l00115"></a>00115         <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>.back();
-<a name="l00116"></a>00116 }
-<a name="l00117"></a>00117 
-<a name="l00118"></a>00118 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> event_t&gt;
-<a name="l00119"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#49d86cd26d2477551257ae4a0a0fe9b8">00119</a> event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#49d86cd26d2477551257ae4a0a0fe9b8" title="select an event to execute based on binary search O(log N)">VSSMGroup&lt;event_t&gt;::SelectEvent_BinarySearch</a>()
-<a name="l00120"></a>00120 {
-<a name="l00121"></a>00121         <span class="keywordtype">double</span> u = 1.-<a class="code" href="classvotca_1_1tools_1_1Random.html#d6ce126e9fa4d167c870279153ee5c58">Random::rand_uniform</a>();
-<a name="l00122"></a>00122         u=u*<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>();
-<a name="l00123"></a>00123         <span class="keywordtype">double</span> max = <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>();
-<a name="l00124"></a>00124         <span class="comment">// to a binary search in accumulated events</span>
-<a name="l00125"></a>00125         <span class="keywordtype">int</span> imin=0;
-<a name="l00126"></a>00126         <span class="keywordtype">int</span> imax=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.size();
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128         <span class="keywordflow">while</span>(imax - imin &gt; 1) {
-<a name="l00129"></a>00129                 <span class="keywordtype">int</span> imid=(int)((imin+imax)*0.5);
-<a name="l00130"></a>00130                 <span class="comment">//std::cout &lt;&lt; u &lt;&lt; " " &lt;&lt; _acc_rate[imid] &lt;&lt; std::endl;</span>
-<a name="l00131"></a>00131                 <span class="keywordflow">if</span>(u&lt;=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>[imid])
-<a name="l00132"></a>00132                         imax=imid;
-<a name="l00133"></a>00133                 <span class="keywordflow">else</span>
-<a name="l00134"></a>00134                         imin=imid;
-<a name="l00135"></a>00135         }
-<a name="l00136"></a>00136    <span class="comment">// std::cout &lt;&lt; imin &lt;&lt; " " &lt;&lt; Rate() &lt;&lt;" " &lt;&lt; u &lt;&lt; std::endl;</span>
-<a name="l00137"></a>00137         <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>[imin];
-<a name="l00138"></a>00138 }
-<a name="l00139"></a>00139 
-<a name="l00140"></a>00140 }}
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 <span class="preprocessor">#endif</span>
+<a name="l00032"></a>00032 <span class="comment"> * This class groups the events based on the variable step size method. </span>
+<a name="l00033"></a>00033 <span class="comment"> * The waiting time is calculated from the total rate. The probability to </span>
+<a name="l00034"></a>00034 <span class="comment"> * choose an event is P_i = \omega_i / \omega_tot </span>
+<a name="l00035"></a>00035 <span class="comment"> * </span>
+<a name="l00036"></a>00036 <span class="comment"> * The template argument is a class which has to implement the functions </span>
+<a name="l00037"></a>00037 <span class="comment"> * Rate, which should return the rate of the event and </span>
+<a name="l00038"></a>00038 <span class="comment"> * onExecute, which is called if the event occurs. </span>
+<a name="l00039"></a>00039 <span class="comment"> * VSSMGroup implements these methods it's own and therefore</span>
+<a name="l00040"></a>00040 <span class="comment"> * can be used as an event itself. This allows hierarchical grouping </span>
+<a name="l00041"></a>00041 <span class="comment"> * of events.</span>
+<a name="l00042"></a>00042 <span class="comment"> *</span>
+<a name="l00043"></a>00043 <span class="comment"> * \todo add a refresh function if rates have changed</span>
+<a name="l00044"></a>00044 <span class="comment"> */</span>
+<a name="l00045"></a>00045 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> event_t&gt;
+<a name="l00046"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html">00046</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html">VSSMGroup</a> {
+<a name="l00047"></a>00047 <span class="keyword">public</span>:
+<a name="l00048"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#e4fc63fff607a74e71fb01d709f9c676">00048</a>         <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#e4fc63fff607a74e71fb01d709f9c676">VSSMGroup</a>() {
+<a name="l00049"></a>00049                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.push_back(0);
+<a name="l00050"></a>00050         }
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <span class="comment">/***</span>
+<a name="l00053"></a>00053 <span class="comment">         * \brief add event to list of possible events</span>
+<a name="l00054"></a>00054 <span class="comment">         */</span>
+<a name="l00055"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#294becdfe386864ec404493576a0b5bc">00055</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#294becdfe386864ec404493576a0b5bc">AddEvent</a>(event_t *event) {
+<a name="l00056"></a>00056                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>.push_back(event);
+<a name="l00057"></a>00057                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.push_back(<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.back() + <span class="keyword">event</span>-&gt;Rate());
+<a name="l00058"></a>00058                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#5bd51494e08fe3130d257bc894534c5a" title="calculate a new waiting time">UpdateWaitingTime</a>();
+<a name="l00059"></a>00059         }
+<a name="l00060"></a>00060 
+<a name="l00064"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427">00064</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.back(); };
+<a name="l00065"></a>00065 
+<a name="l00069"></a>00069         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#496b9dd10e72e5277c27ab4e73e9212a" title="this group is called, select and execute an event in group">onExecute</a>();
+<a name="l00073"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#cfe54e1ad46ae5262315302e176aa9b8">00073</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#cfe54e1ad46ae5262315302e176aa9b8" title="get the waiting time for this group of events">WaitingTime</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#4059977fed5aa7bc8f394bec66dc4061">_waiting_time</a>; }
+<a name="l00074"></a>00074 
+<a name="l00078"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#5bd51494e08fe3130d257bc894534c5a">00078</a>         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#5bd51494e08fe3130d257bc894534c5a" title="calculate a new waiting time">UpdateWaitingTime</a>() {
+<a name="l00079"></a>00079                 <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#4059977fed5aa7bc8f394bec66dc4061">_waiting_time</a> = -log( 1.0 - <a class="code" href="classvotca_1_1tools_1_1Random.html#d6ce126e9fa4d167c870279153ee5c58">Random::rand_uniform</a>() ) / <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>();
+<a name="l00080"></a>00080         }
+<a name="l00081"></a>00081 
+<a name="l00082"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#0c1d5c45b167b10c6cd90d855f58d407">00082</a>         event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#0c1d5c45b167b10c6cd90d855f58d407">getEvent</a>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>[i]; }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 <span class="keyword">protected</span>:
+<a name="l00088"></a>00088         event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b35c3279d580ba284bcbaec5b3243629" title="select an event to execute based on linear search O(N)">SelectEvent_LinearSearch</a>();
+<a name="l00089"></a>00089 
+<a name="l00093"></a>00093         event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#49d86cd26d2477551257ae4a0a0fe9b8" title="select an event to execute based on binary search O(log N)">SelectEvent_BinarySearch</a>();
+<a name="l00094"></a>00094 
+<a name="l00095"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">00095</a>         std::vector&lt;event_t*&gt; <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>;
+<a name="l00096"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">00096</a>         std::vector&lt;double&gt; <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>;
+<a name="l00097"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#4059977fed5aa7bc8f394bec66dc4061">00097</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#4059977fed5aa7bc8f394bec66dc4061">_waiting_time</a>;
+<a name="l00098"></a>00098 };
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> event_t&gt;
+<a name="l00101"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#496b9dd10e72e5277c27ab4e73e9212a">00101</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#496b9dd10e72e5277c27ab4e73e9212a" title="this group is called, select and execute an event in group">VSSMGroup&lt;event_t&gt;::onExecute</a>()
+<a name="l00102"></a>00102 {
+<a name="l00103"></a>00103         <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#49d86cd26d2477551257ae4a0a0fe9b8" title="select an event to execute based on binary search O(log N)">SelectEvent_BinarySearch</a>()-&gt;onExecute();
+<a name="l00104"></a>00104         <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#5bd51494e08fe3130d257bc894534c5a" title="calculate a new waiting time">UpdateWaitingTime</a>();
+<a name="l00105"></a>00105 }
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> event_t&gt;
+<a name="l00108"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b35c3279d580ba284bcbaec5b3243629">00108</a> <span class="keyword">inline</span> event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b35c3279d580ba284bcbaec5b3243629" title="select an event to execute based on linear search O(N)">VSSMGroup&lt;event_t&gt;::SelectEvent_LinearSearch</a>()
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110         <span class="keywordtype">double</span> u = (1.-<a class="code" href="classvotca_1_1tools_1_1Random.html#d6ce126e9fa4d167c870279153ee5c58">Random::rand_uniform</a>())*<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>();
+<a name="l00111"></a>00111         event_t *event;
+<a name="l00112"></a>00112         <span class="comment">// find the biggest event for that u &lt; \sum omega_i</span>
+<a name="l00113"></a>00113         <span class="keywordflow">for</span>(<span class="keyword">typename</span> std::vector&lt;event_t*&gt;::iterator <a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>.begin();
+<a name="l00114"></a>00114                         <a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>!=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>.end(); ++<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>) {
+<a name="l00115"></a>00115                         u-=(*e)-&gt;Rate();
+<a name="l00116"></a>00116                         <span class="keywordflow">if</span>(u&lt;=0) <span class="keywordflow">return</span> *<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>;
+<a name="l00117"></a>00117         }
+<a name="l00118"></a>00118         <span class="comment">// should never happen</span>
+<a name="l00119"></a>00119         <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>.back();
+<a name="l00120"></a>00120 }
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> event_t&gt;
+<a name="l00123"></a><a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#49d86cd26d2477551257ae4a0a0fe9b8">00123</a> event_t *<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#49d86cd26d2477551257ae4a0a0fe9b8" title="select an event to execute based on binary search O(log N)">VSSMGroup&lt;event_t&gt;::SelectEvent_BinarySearch</a>()
+<a name="l00124"></a>00124 {
+<a name="l00125"></a>00125         <span class="keywordtype">double</span> u = 1.-<a class="code" href="classvotca_1_1tools_1_1Random.html#d6ce126e9fa4d167c870279153ee5c58">Random::rand_uniform</a>();
+<a name="l00126"></a>00126         u=u*<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>();
+<a name="l00127"></a>00127         <span class="keywordtype">double</span> max = <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#326ee0cef1e5fd3ef337f469503a6427" title="get the total rate of this group">Rate</a>();
+<a name="l00128"></a>00128         <span class="comment">// to a binary search in accumulated events</span>
+<a name="l00129"></a>00129         <span class="keywordtype">int</span> imin=0;
+<a name="l00130"></a>00130         <span class="keywordtype">int</span> imax=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>.size();
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132         <span class="keywordflow">while</span>(imax - imin &gt; 1) {
+<a name="l00133"></a>00133                 <span class="keywordtype">int</span> imid=(int)((imin+imax)*0.5);
+<a name="l00134"></a>00134                 <span class="comment">//std::cout &lt;&lt; u &lt;&lt; " " &lt;&lt; _acc_rate[imid] &lt;&lt; std::endl;</span>
+<a name="l00135"></a>00135                 <span class="keywordflow">if</span>(u&lt;=<a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#8ade1c210d9b81f1c296b6f5efe6974b">_acc_rate</a>[imid])
+<a name="l00136"></a>00136                         imax=imid;
+<a name="l00137"></a>00137                 <span class="keywordflow">else</span>
+<a name="l00138"></a>00138                         imin=imid;
+<a name="l00139"></a>00139         }
+<a name="l00140"></a>00140    <span class="comment">// std::cout &lt;&lt; imin &lt;&lt; " " &lt;&lt; Rate() &lt;&lt;" " &lt;&lt; u &lt;&lt; std::endl;</span>
+<a name="l00141"></a>00141         <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html#b0f035e6f6f22b0a0b7dcda908ddebb8">_events</a>[imin];
+<a name="l00142"></a>00142 }
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 }}
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 <span class="preprocessor">#endif </span><span class="comment">/* __VOTCA_KMC_VSSMGROUP_H_ */</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
