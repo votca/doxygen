@@ -63,50 +63,61 @@
 <a name="l00040"></a>00040     <span class="keywordtype">int</span> N = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#d6ffd4e005205905f4456940e58c6af8">BeadCount</a>();
 <a name="l00041"></a>00041     t_trxframe frame;
 <a name="l00042"></a>00042     rvec *<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a> = <span class="keyword">new</span> rvec[N];
-<a name="l00043"></a>00043     <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#17c77ff03972cf2744dbf308636f30cf">getBox</a>();
-<a name="l00044"></a>00044     
-<a name="l00045"></a>00045     frame.natoms = N;
-<a name="l00046"></a>00046     frame.bTime = <span class="keyword">true</span>;
-<a name="l00047"></a>00047     frame.time = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#1c9be221d3a494044d92e3283fe42da6">getTime</a>();
-<a name="l00048"></a>00048     frame.bStep = <span class="keyword">true</span>;
-<a name="l00049"></a>00049     frame.step = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#81334a5f36caa3e78ebb8759881b4288">getStep</a>();;
-<a name="l00050"></a>00050     frame.x = x;
-<a name="l00051"></a>00051     frame.bTitle=<span class="keyword">false</span>;
-<a name="l00052"></a>00052     frame.bLambda=<span class="keyword">false</span>;
-<a name="l00053"></a>00053     frame.bAtoms=<span class="keyword">false</span>;
-<a name="l00054"></a>00054     frame.bPrec=<span class="keyword">false</span>;
-<a name="l00055"></a>00055     frame.bX = <span class="keyword">true</span>;
-<a name="l00056"></a>00056     frame.bV=<span class="keyword">false</span>;
+<a name="l00043"></a>00043     rvec *v = <span class="keyword">new</span> rvec[N];
+<a name="l00044"></a>00044     <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#17c77ff03972cf2744dbf308636f30cf">getBox</a>();
+<a name="l00045"></a>00045     
+<a name="l00046"></a>00046     frame.natoms = N;
+<a name="l00047"></a>00047     frame.bTime = <span class="keyword">true</span>;
+<a name="l00048"></a>00048     frame.time = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#1c9be221d3a494044d92e3283fe42da6">getTime</a>();
+<a name="l00049"></a>00049     frame.bStep = <span class="keyword">true</span>;
+<a name="l00050"></a>00050     frame.step = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#81334a5f36caa3e78ebb8759881b4288">getStep</a>();;
+<a name="l00051"></a>00051     frame.x = x;
+<a name="l00052"></a>00052     frame.bTitle=<span class="keyword">false</span>;
+<a name="l00053"></a>00053     frame.bLambda=<span class="keyword">false</span>;
+<a name="l00054"></a>00054     frame.bAtoms=<span class="keyword">false</span>;
+<a name="l00055"></a>00055     frame.bPrec=<span class="keyword">false</span>;
+<a name="l00056"></a>00056     frame.bX = <span class="keyword">true</span>;
 <a name="l00057"></a>00057     frame.bF=<span class="keyword">false</span>;
 <a name="l00058"></a>00058     frame.bBox=<span class="keyword">true</span>;
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;3; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
-<a name="l00061"></a>00061         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>=0; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>&lt;3; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++)
-<a name="l00062"></a>00062             frame.box[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>] = box[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>];
-<a name="l00063"></a>00063     
+<a name="l00059"></a>00059     frame.bV=conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#2663c5cd9c0fa90753c5099414188d9b">HasVel</a>();
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;3; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00062"></a>00062         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>=0; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>&lt;3; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++)
+<a name="l00063"></a>00063             frame.box[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>] = box[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>];
 <a name="l00064"></a>00064     
-<a name="l00065"></a>00065 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;N; ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
-<a name="l00066"></a>00066         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> v = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#eb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#feb069f0e094fc7b4e1da07efe9751ce">getPos</a>();
-<a name="l00067"></a>00067         x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][0] = v.<a class="code" href="classvotca_1_1tools_1_1vec.html#b45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();
-<a name="l00068"></a>00068         x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][1] = v.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();
-<a name="l00069"></a>00069         x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][2] = v.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>(); 
-<a name="l00070"></a>00070     }
-<a name="l00071"></a>00071         
-<a name="l00072"></a>00072 <span class="preprocessor">#if GMX == 50</span>
-<a name="l00073"></a>00073 <span class="preprocessor"></span>    write_trxframe(_file, &amp;frame, NULL);
-<a name="l00074"></a>00074 <span class="preprocessor">#elif GMX == 45</span>
-<a name="l00075"></a>00075 <span class="preprocessor"></span>    write_trxframe(_file, &amp;frame, NULL);
-<a name="l00076"></a>00076 <span class="preprocessor">#elif GMX == 40</span>
-<a name="l00077"></a>00077 <span class="preprocessor"></span>    write_trxframe(_file, &amp;frame);
-<a name="l00078"></a>00078 <span class="preprocessor">#else</span>
-<a name="l00079"></a>00079 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
-<a name="l00080"></a>00080 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00081"></a>00081 <span class="preprocessor"></span>    
-<a name="l00082"></a>00082     step++;
-<a name="l00083"></a>00083     <span class="keyword">delete</span>[] x;
-<a name="l00084"></a>00084 }
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 }}
+<a name="l00065"></a>00065     
+<a name="l00066"></a>00066 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;N; ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
+<a name="l00067"></a>00067         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> pos = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#eb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#feb069f0e094fc7b4e1da07efe9751ce">getPos</a>();
+<a name="l00068"></a>00068         x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][0] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#b45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();
+<a name="l00069"></a>00069         x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][1] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();
+<a name="l00070"></a>00070         x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][2] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();
+<a name="l00071"></a>00071     }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 <span class="keywordflow">if</span> (frame.bV){
+<a name="l00074"></a>00074     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;N; ++<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
+<a name="l00075"></a>00075         frame.v = v;
+<a name="l00076"></a>00076         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> vel = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#eb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ebb8eed45cceece3347ad2f2ceb0ea3e">getVel</a>();
+<a name="l00077"></a>00077         v[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][0] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#b45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();
+<a name="l00078"></a>00078         v[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][1] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();
+<a name="l00079"></a>00079         v[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>][2] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();
+<a name="l00080"></a>00080     }
+<a name="l00081"></a>00081 }
+<a name="l00082"></a>00082         
+<a name="l00083"></a>00083 <span class="preprocessor">#if GMX == 50</span>
+<a name="l00084"></a>00084 <span class="preprocessor"></span>    write_trxframe(_file, &amp;frame, NULL);
+<a name="l00085"></a>00085 <span class="preprocessor">#elif GMX == 45</span>
+<a name="l00086"></a>00086 <span class="preprocessor"></span>    write_trxframe(_file, &amp;frame, NULL);
+<a name="l00087"></a>00087 <span class="preprocessor">#elif GMX == 40</span>
+<a name="l00088"></a>00088 <span class="preprocessor"></span>    write_trxframe(_file, &amp;frame);
+<a name="l00089"></a>00089 <span class="preprocessor">#else</span>
+<a name="l00090"></a>00090 <span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span>
+<a name="l00091"></a>00091 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00092"></a>00092 <span class="preprocessor"></span>    
+<a name="l00093"></a>00093     step++;
+<a name="l00094"></a>00094     <span class="keyword">delete</span>[] x;
+<a name="l00095"></a>00095 }
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
