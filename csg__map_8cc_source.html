@@ -67,121 +67,128 @@
 <a name="l00044"></a>00044         <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>()
 <a name="l00045"></a>00045             (<span class="stringliteral">"out"</span>, boost::program_options::value&lt;string&gt;(),
 <a name="l00046"></a>00046                 <span class="stringliteral">"  output file for coarse-grained trajectory"</span>)
-<a name="l00047"></a>00047                 (<span class="stringliteral">"hybrid"</span>, <span class="stringliteral">"Create hybrid trajectory containing both atomistic and coarse-grained"</span>);
-<a name="l00048"></a>00048     }
-<a name="l00049"></a>00049 
-<a name="l00050"></a><a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a">00050</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a" title="Process command line options.">EvaluateOptions</a>() {
-<a name="l00051"></a>00051         <a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a" title="Process command line options.">CsgApplication::EvaluateOptions</a>();
-<a name="l00052"></a>00052         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"trj"</span>, <span class="stringliteral">"no trajectory file specified"</span>);
-<a name="l00053"></a>00053         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"out"</span>, <span class="stringliteral">"need to specify output trajectory"</span>);
-<a name="l00054"></a>00054         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00055"></a>00055     }
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
-<a name="l00058"></a><a class="code" href="classCsgMapApp.html#523dd905e0617b0e3197f84396b7eeea">00058</a> <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#523dd905e0617b0e3197f84396b7eeea">EvalConfiguration</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref) {
-<a name="l00059"></a>00059         <span class="keywordflow">if</span> (!<a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a>) {
-<a name="l00060"></a>00060             <span class="comment">// simply write the topology mapped by csgapplication classe</span>
-<a name="l00061"></a>00061             <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#a9fe0851ca3ccb137ea2a31ea6aca268">Write</a>(top);
-<a name="l00062"></a>00062         } <span class="keywordflow">else</span> {
-<a name="l00063"></a>00063             <span class="comment">// we want to combinge atomistic and coarse-grained into one topology</span>
-<a name="l00064"></a>00064             <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *hybtol = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a>();
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066             BeadContainer::iterator it_bead;
-<a name="l00067"></a>00067             ResidueContainer::iterator it_res;
-<a name="l00068"></a>00068             MoleculeContainer::iterator it_mol;
-<a name="l00069"></a>00069             InteractionContainer::iterator it_ia;
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071             hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#f8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#17c77ff03972cf2744dbf308636f30cf">getBox</a>());
-<a name="l00072"></a>00072             hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#2e350da244c24540d9996b8a840994c0">setTime</a>(top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#1c9be221d3a494044d92e3283fe42da6">getTime</a>());
-<a name="l00073"></a>00073             hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#8fd83aa5f198ecbc87be823046eec623">setStep</a>(top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#81334a5f36caa3e78ebb8759881b4288">getStep</a>());
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075             <span class="comment">// copy all residues from both</span>
-<a name="l00076"></a>00076             <span class="keywordflow">for</span> (it_res = top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#0170fbccf8838eac2f00c5bf7becd922">Residues</a>().begin(); it_res != top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#0170fbccf8838eac2f00c5bf7becd922">Residues</a>().end(); ++it_res) {
-<a name="l00077"></a>00077                 hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>((*it_res)-&gt;getName());
-<a name="l00078"></a>00078             }
-<a name="l00079"></a>00079             <span class="keywordflow">for</span> (it_res = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#0170fbccf8838eac2f00c5bf7becd922">Residues</a>().begin(); it_res != top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#0170fbccf8838eac2f00c5bf7becd922">Residues</a>().end(); ++it_res) {
-<a name="l00080"></a>00080                 hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>((*it_res)-&gt;getName());
-<a name="l00081"></a>00081             }
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083             <span class="comment">// copy all molecules and beads</span>
-<a name="l00084"></a>00084           
-<a name="l00085"></a>00085             <span class="keywordflow">for</span>(it_mol=top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>().begin();it_mol!=top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>().end(); ++it_mol) {
-<a name="l00086"></a>00086                 <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mi = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#87a10bc0957a1465dad5b3899cb6e932" title="creates a new molecule">CreateMolecule</a>((*it_mol)-&gt;getName());
-<a name="l00087"></a>00087                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; (*it_mol)-&gt;BeadCount(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00088"></a>00088                     <span class="comment">// copy atomistic beads of molecule</span>
-<a name="l00089"></a>00089                     <span class="keywordtype">int</span> beadid = (*it_mol)-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#b2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#0612a74f7f841050d11133e55c966f79">getId</a>();
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091                     <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bi = (*it_mol)-&gt;getBead(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
-<a name="l00092"></a>00092                     <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#41703dac951dadcb3fea0b08a952e41d">getType</a>()-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadType.html#c7c6b6fede467d8f3377efb753b3749c">getName</a>());
-<a name="l00093"></a>00093                     <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bn = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b4a2224cc49d6dba52f61c0e29a967cd" title="get the symmetry of the bead">getSymmetry</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>(), type, bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#4fab5677dee7a8dd49af1292008da880">getM</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b5581be3af50885103534abd307848c4">getQ</a>());
-<a name="l00094"></a>00094                     bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#38ece7414af5a26fa7957008e1fbea47">setOptions</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#161e27632094c186d9e70182ac75961e" title="Additional options of bead.">Options</a>());
-<a name="l00095"></a>00095                     bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#0daade7eec7664a2ed25e1541c127351">setPos</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#feb069f0e094fc7b4e1da07efe9751ce">getPos</a>());
-<a name="l00096"></a>00096                     <span class="keywordflow">if</span> (bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#eff5cc36627772258fffc87d48a0e8af">HasVel</a>()) bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#d853fdd77951a390ba7d6ff8b4b078ae">setVel</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ebb8eed45cceece3347ad2f2ceb0ea3e">getVel</a>());
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098                     mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#fa2f13a8800309329a994a181ee6ad28">Beads</a>()[beadid], (*it_mol)-&gt;getBeadName(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>));
+<a name="l00047"></a>00047                 (<span class="stringliteral">"vel"</span>, <span class="stringliteral">"Write mapped velocities (if available)"</span>)
+<a name="l00048"></a>00048                 (<span class="stringliteral">"hybrid"</span>, <span class="stringliteral">"Create hybrid trajectory containing both atomistic and coarse-grained"</span>);
+<a name="l00049"></a>00049     }
+<a name="l00050"></a>00050 
+<a name="l00051"></a><a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a">00051</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a" title="Process command line options.">EvaluateOptions</a>() {
+<a name="l00052"></a>00052         <a class="code" href="classCsgMapApp.html#7e914ae6043bb0cd35e5e87caecb637a" title="Process command line options.">CsgApplication::EvaluateOptions</a>();
+<a name="l00053"></a>00053         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"trj"</span>, <span class="stringliteral">"no trajectory file specified"</span>);
+<a name="l00054"></a>00054         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"out"</span>, <span class="stringliteral">"need to specify output trajectory"</span>);
+<a name="l00055"></a>00055         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00056"></a>00056     }
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
+<a name="l00059"></a><a class="code" href="classCsgMapApp.html#523dd905e0617b0e3197f84396b7eeea">00059</a> <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#523dd905e0617b0e3197f84396b7eeea">EvalConfiguration</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref) {
+<a name="l00060"></a>00060         <span class="keywordflow">if</span> (!<a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a>) {
+<a name="l00061"></a>00061             <span class="comment">// simply write the topology mapped by csgapplication classe</span>
+<a name="l00062"></a>00062             <span class="keywordflow">if</span> (<a class="code" href="classCsgMapApp.html#e1549fa57b3cdebd9cf68b20db7241b6">_do_vel</a>) top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#6b6f7ea6c44a25ce10a065834274bc66">SetHasVel</a>(<span class="keyword">true</span>);
+<a name="l00063"></a>00063             <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#a9fe0851ca3ccb137ea2a31ea6aca268">Write</a>(top);
+<a name="l00064"></a>00064         } <span class="keywordflow">else</span> {
+<a name="l00065"></a>00065             <span class="comment">// we want to combinge atomistic and coarse-grained into one topology</span>
+<a name="l00066"></a>00066             <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *hybtol = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a>();
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068             BeadContainer::iterator it_bead;
+<a name="l00069"></a>00069             ResidueContainer::iterator it_res;
+<a name="l00070"></a>00070             MoleculeContainer::iterator it_mol;
+<a name="l00071"></a>00071             InteractionContainer::iterator it_ia;
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073             hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#f8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#17c77ff03972cf2744dbf308636f30cf">getBox</a>());
+<a name="l00074"></a>00074             hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#2e350da244c24540d9996b8a840994c0">setTime</a>(top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#1c9be221d3a494044d92e3283fe42da6">getTime</a>());
+<a name="l00075"></a>00075             hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#8fd83aa5f198ecbc87be823046eec623">setStep</a>(top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#81334a5f36caa3e78ebb8759881b4288">getStep</a>());
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077             <span class="comment">// copy all residues from both</span>
+<a name="l00078"></a>00078             <span class="keywordflow">for</span> (it_res = top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#0170fbccf8838eac2f00c5bf7becd922">Residues</a>().begin(); it_res != top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#0170fbccf8838eac2f00c5bf7becd922">Residues</a>().end(); ++it_res) {
+<a name="l00079"></a>00079                 hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>((*it_res)-&gt;getName());
+<a name="l00080"></a>00080             }
+<a name="l00081"></a>00081             <span class="keywordflow">for</span> (it_res = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#0170fbccf8838eac2f00c5bf7becd922">Residues</a>().begin(); it_res != top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#0170fbccf8838eac2f00c5bf7becd922">Residues</a>().end(); ++it_res) {
+<a name="l00082"></a>00082                 hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>((*it_res)-&gt;getName());
+<a name="l00083"></a>00083             }
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085             <span class="comment">// copy all molecules and beads</span>
+<a name="l00086"></a>00086           
+<a name="l00087"></a>00087             <span class="keywordflow">for</span>(it_mol=top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>().begin();it_mol!=top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>().end(); ++it_mol) {
+<a name="l00088"></a>00088                 <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mi = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#87a10bc0957a1465dad5b3899cb6e932" title="creates a new molecule">CreateMolecule</a>((*it_mol)-&gt;getName());
+<a name="l00089"></a>00089                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; (*it_mol)-&gt;BeadCount(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00090"></a>00090                     <span class="comment">// copy atomistic beads of molecule</span>
+<a name="l00091"></a>00091                     <span class="keywordtype">int</span> beadid = (*it_mol)-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#b2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#0612a74f7f841050d11133e55c966f79">getId</a>();
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093                     <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bi = (*it_mol)-&gt;getBead(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
+<a name="l00094"></a>00094                     <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#41703dac951dadcb3fea0b08a952e41d">getType</a>()-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadType.html#c7c6b6fede467d8f3377efb753b3749c">getName</a>());
+<a name="l00095"></a>00095                     <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bn = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b4a2224cc49d6dba52f61c0e29a967cd" title="get the symmetry of the bead">getSymmetry</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>(), type, bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#4fab5677dee7a8dd49af1292008da880">getM</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b5581be3af50885103534abd307848c4">getQ</a>());
+<a name="l00096"></a>00096                     bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#38ece7414af5a26fa7957008e1fbea47">setOptions</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#161e27632094c186d9e70182ac75961e" title="Additional options of bead.">Options</a>());
+<a name="l00097"></a>00097                     bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#0daade7eec7664a2ed25e1541c127351">setPos</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#feb069f0e094fc7b4e1da07efe9751ce">getPos</a>());
+<a name="l00098"></a>00098                     <span class="keywordflow">if</span> (bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#eff5cc36627772258fffc87d48a0e8af">HasVel</a>()) bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#d853fdd77951a390ba7d6ff8b4b078ae">setVel</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ebb8eed45cceece3347ad2f2ceb0ea3e">getVel</a>());
 <a name="l00099"></a>00099 
-<a name="l00100"></a>00100                 }
+<a name="l00100"></a>00100                     mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#fa2f13a8800309329a994a181ee6ad28">Beads</a>()[beadid], (*it_mol)-&gt;getBeadName(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>));
 <a name="l00101"></a>00101 
-<a name="l00102"></a>00102                 <span class="keywordflow">if</span> (mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>() &lt; top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#06a4a9e0e5da75ecac3ab73dc514d45d" title="number of molecules in the system">MoleculeCount</a>()) {
-<a name="l00103"></a>00103                     <span class="comment">// copy cg beads of molecule</span>
-<a name="l00104"></a>00104                     <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *cgmol = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>()[mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>()];
-<a name="l00105"></a>00105                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; cgmol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00106"></a>00106                         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bi = cgmol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#b2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
-<a name="l00107"></a>00107                         <span class="comment">// todo: this is a bit dirty as a cg bead will always have the resid of its first parent</span>
-<a name="l00108"></a>00108                         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bparent = (*it_mol)-&gt;getBead(0);
-<a name="l00109"></a>00109                         <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#41703dac951dadcb3fea0b08a952e41d">getType</a>()-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadType.html#c7c6b6fede467d8f3377efb753b3749c">getName</a>());
-<a name="l00110"></a>00110                         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bn = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b4a2224cc49d6dba52f61c0e29a967cd" title="get the symmetry of the bead">getSymmetry</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>(), type, bparent-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#4fab5677dee7a8dd49af1292008da880">getM</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b5581be3af50885103534abd307848c4">getQ</a>());
-<a name="l00111"></a>00111                         bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#38ece7414af5a26fa7957008e1fbea47">setOptions</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#161e27632094c186d9e70182ac75961e" title="Additional options of bead.">Options</a>());
-<a name="l00112"></a>00112                         bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#0daade7eec7664a2ed25e1541c127351">setPos</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#feb069f0e094fc7b4e1da07efe9751ce">getPos</a>());
-<a name="l00113"></a>00113                         <span class="keywordflow">if</span> (bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#eff5cc36627772258fffc87d48a0e8af">HasVel</a>()) bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#d853fdd77951a390ba7d6ff8b4b078ae">setVel</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ebb8eed45cceece3347ad2f2ceb0ea3e">getVel</a>());
-<a name="l00114"></a>00114                         <span class="keywordtype">int</span> mid = bparent-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ecdb3e0a1e71349b897c349090d49abd">getMolecule</a>()-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>();
-<a name="l00115"></a>00115                         mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bi, bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>());
-<a name="l00116"></a>00116                     }
-<a name="l00117"></a>00117                 }
-<a name="l00118"></a>00118                 
-<a name="l00119"></a>00119             }
-<a name="l00120"></a>00120            hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#f8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#17c77ff03972cf2744dbf308636f30cf">getBox</a>());
-<a name="l00121"></a>00121 
-<a name="l00122"></a>00122             <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#a9fe0851ca3ccb137ea2a31ea6aca268">Write</a>(hybtol);
-<a name="l00123"></a>00123         }
-<a name="l00124"></a>00124     }
-<a name="l00125"></a>00125 
-<a name="l00126"></a><a class="code" href="classCsgMapApp.html#edb7a3f9193b6729ed704928fc9ad60c">00126</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#edb7a3f9193b6729ed704928fc9ad60c" title="called after the last frame">EndEvaluate</a>() {
-<a name="l00127"></a>00127         <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#c92aa96a91750c15485b662db7fbb347">Close</a>();
-<a name="l00128"></a>00128         <span class="keyword">delete</span> <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>;
-<a name="l00129"></a>00129     }
-<a name="l00130"></a>00130 
-<a name="l00131"></a>00131 <span class="keyword">protected</span>:
-<a name="l00132"></a><a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">00132</a>     <a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html">TrajectoryWriter</a> *<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>;
-<a name="l00133"></a><a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">00133</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a>;
-<a name="l00134"></a>00134 
-<a name="l00135"></a>00135 };
-<a name="l00136"></a>00136 
-<a name="l00137"></a><a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e">00137</a> <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">CsgMapApp::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_atom) {
-<a name="l00138"></a>00138     <span class="keywordtype">string</span> <a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a> = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"out"</span>].as&lt;<span class="keywordtype">string</span> &gt; ();
-<a name="l00139"></a>00139     cout &lt;&lt; <span class="stringliteral">"writing coarse-grained trajectory to "</span> &lt;&lt; out &lt;&lt; endl;
-<a name="l00140"></a>00140     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> = <a class="code" href="namespacevotca_1_1csg.html#d10337444223adef2933c42500153fde">TrjWriterFactory</a>().Create(out);
-<a name="l00141"></a>00141     <span class="keywordflow">if</span> (<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> == NULL)
-<a name="l00142"></a>00142         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"output format not supported: "</span> + out);
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144     <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a> = <span class="keyword">false</span>;
-<a name="l00145"></a>00145     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"hybrid"</span>)){
-<a name="l00146"></a>00146         <span class="keywordflow">if</span> (!<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#e99703b43d553fd84952550bab38d05f">_do_mapping</a>)
-<a name="l00147"></a>00147             <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"options hybrid and no-map not compatible"</span>);
-<a name="l00148"></a>00148         cout &lt;&lt; <span class="stringliteral">"Doing hybrid mapping..."</span> &lt;&lt; endl;
-<a name="l00149"></a>00149         <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a> = <span class="keyword">true</span>;
-<a name="l00150"></a>00150     }
-<a name="l00151"></a>00151 
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#03d43187287006689a328d84af03f45b">Open</a>(out);
-<a name="l00154"></a>00154 };
-<a name="l00155"></a>00155 
-<a name="l00156"></a><a class="code" href="csg__map_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00156</a> <span class="keywordtype">int</span> <a class="code" href="votca__property_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
-<a name="l00157"></a>00157 {
-<a name="l00158"></a>00158     <a class="code" href="classCsgMapApp.html">CsgMapApp</a> app;
-<a name="l00159"></a>00159     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
-<a name="l00160"></a>00160 }
-<a name="l00161"></a>00161 
+<a name="l00102"></a>00102                 }
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104                 <span class="keywordflow">if</span> (mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>() &lt; top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#06a4a9e0e5da75ecac3ab73dc514d45d" title="number of molecules in the system">MoleculeCount</a>()) {
+<a name="l00105"></a>00105                     <span class="comment">// copy cg beads of molecule</span>
+<a name="l00106"></a>00106                     <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *cgmol = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#09854528dfe5a72d914e75bb41f133c6">Molecules</a>()[mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>()];
+<a name="l00107"></a>00107                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; cgmol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00108"></a>00108                         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bi = cgmol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#b2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
+<a name="l00109"></a>00109                         <span class="comment">// todo: this is a bit dirty as a cg bead will always have the resid of its first parent</span>
+<a name="l00110"></a>00110                         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bparent = (*it_mol)-&gt;getBead(0);
+<a name="l00111"></a>00111                         <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#41703dac951dadcb3fea0b08a952e41d">getType</a>()-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadType.html#c7c6b6fede467d8f3377efb753b3749c">getName</a>());
+<a name="l00112"></a>00112                         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bn = hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b4a2224cc49d6dba52f61c0e29a967cd" title="get the symmetry of the bead">getSymmetry</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>(), type, bparent-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#cdb7491b2507bdafe8f973d36918580e">getResnr</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#4fab5677dee7a8dd49af1292008da880">getM</a>(), bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#b5581be3af50885103534abd307848c4">getQ</a>());
+<a name="l00113"></a>00113                         bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#38ece7414af5a26fa7957008e1fbea47">setOptions</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#161e27632094c186d9e70182ac75961e" title="Additional options of bead.">Options</a>());
+<a name="l00114"></a>00114                         bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#0daade7eec7664a2ed25e1541c127351">setPos</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#feb069f0e094fc7b4e1da07efe9751ce">getPos</a>());
+<a name="l00115"></a>00115                         <span class="keywordflow">if</span> (bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#eff5cc36627772258fffc87d48a0e8af">HasVel</a>()) bn-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#d853fdd77951a390ba7d6ff8b4b078ae">setVel</a>(bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ebb8eed45cceece3347ad2f2ceb0ea3e">getVel</a>());
+<a name="l00116"></a>00116                         <span class="keywordtype">int</span> mid = bparent-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ecdb3e0a1e71349b897c349090d49abd">getMolecule</a>()-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>();
+<a name="l00117"></a>00117                         mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bi, bi-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ee92364498501cda96eec9dd9cb90c37">getName</a>());
+<a name="l00118"></a>00118                     }
+<a name="l00119"></a>00119                 }
+<a name="l00120"></a>00120                 
+<a name="l00121"></a>00121             }
+<a name="l00122"></a>00122            hybtol-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#f8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(top_ref-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#17c77ff03972cf2744dbf308636f30cf">getBox</a>());
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124             <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#a9fe0851ca3ccb137ea2a31ea6aca268">Write</a>(hybtol);
+<a name="l00125"></a>00125         }
+<a name="l00126"></a>00126     }
+<a name="l00127"></a>00127 
+<a name="l00128"></a><a class="code" href="classCsgMapApp.html#edb7a3f9193b6729ed704928fc9ad60c">00128</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#edb7a3f9193b6729ed704928fc9ad60c" title="called after the last frame">EndEvaluate</a>() {
+<a name="l00129"></a>00129         <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#c92aa96a91750c15485b662db7fbb347">Close</a>();
+<a name="l00130"></a>00130         <span class="keyword">delete</span> <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>;
+<a name="l00131"></a>00131     }
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133 <span class="keyword">protected</span>:
+<a name="l00134"></a><a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">00134</a>     <a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html">TrajectoryWriter</a> *<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>;
+<a name="l00135"></a><a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">00135</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a>;
+<a name="l00136"></a><a class="code" href="classCsgMapApp.html#e1549fa57b3cdebd9cf68b20db7241b6">00136</a>     <span class="keywordtype">bool</span> <a class="code" href="classCsgMapApp.html#e1549fa57b3cdebd9cf68b20db7241b6">_do_vel</a>;
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 };
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e">00140</a> <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">CsgMapApp::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_atom) {
+<a name="l00141"></a>00141     <span class="keywordtype">string</span> <a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a> = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"out"</span>].as&lt;<span class="keywordtype">string</span> &gt; ();
+<a name="l00142"></a>00142     cout &lt;&lt; <span class="stringliteral">"writing coarse-grained trajectory to "</span> &lt;&lt; out &lt;&lt; endl;
+<a name="l00143"></a>00143     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> = <a class="code" href="namespacevotca_1_1csg.html#d10337444223adef2933c42500153fde">TrjWriterFactory</a>().Create(out);
+<a name="l00144"></a>00144     <span class="keywordflow">if</span> (<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> == NULL)
+<a name="l00145"></a>00145         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"output format not supported: "</span> + out);
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147     <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a> = <span class="keyword">false</span>;
+<a name="l00148"></a>00148     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"hybrid"</span>)){
+<a name="l00149"></a>00149         <span class="keywordflow">if</span> (!<a class="code" href="classvotca_1_1csg_1_1CsgApplication.html#e99703b43d553fd84952550bab38d05f">_do_mapping</a>)
+<a name="l00150"></a>00150             <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"options hybrid and no-map not compatible"</span>);
+<a name="l00151"></a>00151         cout &lt;&lt; <span class="stringliteral">"Doing hybrid mapping..."</span> &lt;&lt; endl;
+<a name="l00152"></a>00152         <a class="code" href="classCsgMapApp.html#b3a0e4f37f7a98e2d7cb31b41c0c5c6f">_do_hybrid</a> = <span class="keyword">true</span>;
+<a name="l00153"></a>00153     }
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155     <a class="code" href="classCsgMapApp.html#e1549fa57b3cdebd9cf68b20db7241b6">_do_vel</a> = <span class="keyword">false</span>;
+<a name="l00156"></a>00156     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"vel"</span>)){
+<a name="l00157"></a>00157         <a class="code" href="classCsgMapApp.html#e1549fa57b3cdebd9cf68b20db7241b6">_do_vel</a> = <span class="keyword">true</span>;
+<a name="l00158"></a>00158     }
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1TrajectoryWriter.html#03d43187287006689a328d84af03f45b">Open</a>(out);
+<a name="l00161"></a>00161 };
+<a name="l00162"></a>00162 
+<a name="l00163"></a><a class="code" href="csg__map_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00163</a> <span class="keywordtype">int</span> <a class="code" href="votca__property_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
+<a name="l00164"></a>00164 {
+<a name="l00165"></a>00165     <a class="code" href="classCsgMapApp.html">CsgMapApp</a> app;
+<a name="l00166"></a>00166     <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#0bb87eabaf46ec27e9443b3fc4b84880" title="executes the program">Exec</a>(argc, argv);
+<a name="l00167"></a>00167 }
+<a name="l00168"></a>00168 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
