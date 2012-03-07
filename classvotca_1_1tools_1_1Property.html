@@ -92,11 +92,21 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1tools_1_1Property.html#3f538e3cc3e548cfd87e932073e45c0b">PrintT2T</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">output the content in the t2t format  <a href="#3f538e3cc3e548cfd87e932073e45c0b"></a><br></td></tr>
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename T &gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">T&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvotca_1_1tools_1_1Property.html#d9eefe3f55b57f0c86b50586c9b5dd8c">getAttribute</a> (const string &amp;attribute) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">return attribute as type  <a href="#d9eefe3f55b57f0c86b50586c9b5dd8c"></a><br></td></tr>
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename T &gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvotca_1_1tools_1_1Property.html#b079ae3897fa6716e9d79accad50f939">setAttribute</a> (const string &amp;attribute, const T &amp;value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">set an attribute  <a href="#b079ae3897fa6716e9d79accad50f939"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Static Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1tools_1_1Property.html#6625f6ac78ef347326b3d7555057d79a">PrintNode</a> (std::ostream &amp;out, const string &amp;prefix, <a class="el" href="classvotca_1_1tools_1_1Property.html">Property</a> &amp;p)</td></tr>
 
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">map&lt; string, <a class="el" href="classvotca_1_1tools_1_1Property.html">Property</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1tools_1_1Property.html#9ceeaa91c6c1f309457369f8ffab8568">_map</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">map&lt; string, string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1tools_1_1Property.html#53c108e45738fac4f923b127d546d5d3">_attributes</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">list&lt; <a class="el" href="classvotca_1_1tools_1_1Property.html">Property</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1tools_1_1Property.html#4800c1258425a873cc6299ca854f0083">_properties</a></td></tr>
 
@@ -231,7 +241,7 @@ add a new property to structure
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>reference to the created <a class="el" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> object </dd></dl>
 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00172">172</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00188">188</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -254,7 +264,7 @@ add a new property to structure
 return value as type 
 <p>
 returns the value after type conversion, e.g. p.as&lt;int&gt;() returns an integer 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00200">200</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00216">216</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -330,7 +340,7 @@ check weather property exists
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>true or false </dd></dl>
 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00181">181</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00197">197</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -361,6 +371,32 @@ get existing property
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>Reference to property object</dd></dl>
 This function tries to find a property specified by key separated by "." to step down hierarchie. If the property is not found a runtime_exception is thrown. 
 <p>Definition at line <a class="el" href="property_8cc_source.html#l00032">32</a> of file <a class="el" href="property_8cc_source.html">property.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d9eefe3f55b57f0c86b50586c9b5dd8c"></a><!-- doxytag: member="votca::tools::Property::getAttribute" ref="d9eefe3f55b57f0c86b50586c9b5dd8c" args="(const string &amp;attribute) const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T votca::tools::Property::getAttribute           </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>attribute</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+return attribute as type 
+<p>
+returns an attributee after type conversion, e.g. p.getAttribute&lt;int&gt;() returns an integer 
+<p>Definition at line <a class="el" href="property_8h_source.html#l00264">264</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -492,7 +528,7 @@ e.g. cg.inverse.value
 output the content in the t2t format 
 <p>
 
-<p>Definition at line <a class="el" href="property_8cc_source.html#l00172">172</a> of file <a class="el" href="property_8cc_source.html">property.cc</a>.</p>
+<p>Definition at line <a class="el" href="property_8cc_source.html#l00176">176</a> of file <a class="el" href="property_8cc_source.html">property.cc</a>.</p>
 
 </div>
 </div><p>
@@ -562,7 +598,42 @@ set value of existing property
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>reference to the created <a class="el" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> object </dd></dl>
 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00165">165</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00181">181</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b079ae3897fa6716e9d79accad50f939"></a><!-- doxytag: member="votca::tools::Property::setAttribute" ref="b079ae3897fa6716e9d79accad50f939" args="(const string &amp;attribute, const T &amp;value)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::tools::Property::setAttribute           </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>attribute</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+set an attribute 
+<p>
+
+<p>Definition at line <a class="el" href="property_8h_source.html#l00270">270</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -664,6 +735,23 @@ reference to value of property
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="53c108e45738fac4f923b127d546d5d3"></a><!-- doxytag: member="votca::tools::Property::_attributes" ref="53c108e45738fac4f923b127d546d5d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt;string,string&gt; <a class="el" href="classvotca_1_1tools_1_1Property.html#53c108e45738fac4f923b127d546d5d3">votca::tools::Property::_attributes</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="property_8h_source.html#l00158">158</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="9ceeaa91c6c1f309457369f8ffab8568"></a><!-- doxytag: member="votca::tools::Property::_map" ref="9ceeaa91c6c1f309457369f8ffab8568" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -677,7 +765,7 @@ reference to value of property
 
 <p>
 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00142">142</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00157">157</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -694,7 +782,7 @@ reference to value of property
 
 <p>
 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00145">145</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00161">161</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -711,7 +799,7 @@ reference to value of property
 
 <p>
 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00147">147</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00163">163</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -728,7 +816,7 @@ reference to value of property
 
 <p>
 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00143">143</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00159">159</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
@@ -745,7 +833,7 @@ reference to value of property
 
 <p>
 
-<p>Definition at line <a class="el" href="property_8h_source.html#l00146">146</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
+<p>Definition at line <a class="el" href="property_8h_source.html#l00162">162</a> of file <a class="el" href="property_8h_source.html">property.h</a>.</p>
 
 </div>
 </div><p>
