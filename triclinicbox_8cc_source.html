@@ -42,18 +42,28 @@
 <a name="l00019"></a>00019 
 <a name="l00020"></a>00020 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {
 <a name="l00021"></a>00021 
-<a name="l00022"></a><a class="code" href="classvotca_1_1csg_1_1TriclinicBox.html#a1664e8a41ca6f3f5bada96aaa3beef3">00022</a> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="classvotca_1_1csg_1_1TriclinicBox.html#a1664e8a41ca6f3f5bada96aaa3beef3">TriclinicBox::BCShortestConnection</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> &amp;r_i, <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> &amp;r_j)<span class="keyword"> const</span>
-<a name="l00023"></a>00023 <span class="keyword"></span>{
-<a name="l00024"></a>00024     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> r_tp, r_dp, r_sp, r_ij;
-<a name="l00025"></a>00025     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="namespacemerge__orbitals.html#e661cff9a8b946474f1a6fb5280bd474">a</a> = <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#8225f5f9c302b6a1f798af1863eec9ce">_box</a>.<a class="code" href="classvotca_1_1tools_1_1matrix.html#13386435bc0e16f40fabc104b694f1ba" title="get a column vector">getCol</a>(0); <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a> = <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#8225f5f9c302b6a1f798af1863eec9ce">_box</a>.<a class="code" href="classvotca_1_1tools_1_1matrix.html#13386435bc0e16f40fabc104b694f1ba" title="get a column vector">getCol</a>(1); <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="namespacemerge__orbitals.html#a3a053f698132e5705acd83e392050d5">c</a> = <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#8225f5f9c302b6a1f798af1863eec9ce">_box</a>.<a class="code" href="classvotca_1_1tools_1_1matrix.html#13386435bc0e16f40fabc104b694f1ba" title="get a column vector">getCol</a>(2);
-<a name="l00026"></a>00026     r_tp = r_j - r_i;
-<a name="l00027"></a>00027     r_dp = r_tp - c*round(r_tp.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()/c.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>());
-<a name="l00028"></a>00028     r_sp = r_dp - b*round(r_dp.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>()/b.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>());
-<a name="l00029"></a>00029     r_ij = r_sp - a*round(r_sp.getX()/a.<a class="code" href="classvotca_1_1tools_1_1vec.html#b45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>());
-<a name="l00030"></a>00030     <span class="keywordflow">return</span> r_ij;
-<a name="l00031"></a>00031 }
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033 }}
+<a name="l00022"></a>00022 <span class="comment">/*</span>
+<a name="l00023"></a>00023 <span class="comment"> This way of determining the shortest distance is only working for a set of </span>
+<a name="l00024"></a>00024 <span class="comment"> triclinic boxes, in particular</span>
+<a name="l00025"></a>00025 <span class="comment"> a_y = a_z = b_z = 0</span>
+<a name="l00026"></a>00026 <span class="comment"> a_x &gt; 0, b_y &gt; 0, c_z &gt; 0</span>
+<a name="l00027"></a>00027 <span class="comment"> b_x &lt; 0.5 a_x, c_x &lt; 0.5 a_x, c_y &lt; 0.5 b_y</span>
+<a name="l00028"></a>00028 <span class="comment"> GROMACS checks if these conditions are satisfied.</span>
+<a name="l00029"></a>00029 <span class="comment"> If a simple search algorithm is used to determine if a particle</span>
+<a name="l00030"></a>00030 <span class="comment"> is a within cutoff r_c, make sure that r_c &lt; 0.5 min(a_x, b_y, c_z)</span>
+<a name="l00031"></a>00031 <span class="comment"> */</span>
+<a name="l00032"></a><a class="code" href="classvotca_1_1csg_1_1TriclinicBox.html#a1664e8a41ca6f3f5bada96aaa3beef3">00032</a> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="classvotca_1_1csg_1_1TriclinicBox.html#a1664e8a41ca6f3f5bada96aaa3beef3">TriclinicBox::BCShortestConnection</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> &amp;r_i, <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> &amp;r_j)<span class="keyword"> const</span>
+<a name="l00033"></a>00033 <span class="keyword"></span>{
+<a name="l00034"></a>00034     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> r_tp, r_dp, r_sp, r_ij;
+<a name="l00035"></a>00035     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="namespacemerge__orbitals.html#e661cff9a8b946474f1a6fb5280bd474">a</a> = <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#8225f5f9c302b6a1f798af1863eec9ce">_box</a>.<a class="code" href="classvotca_1_1tools_1_1matrix.html#13386435bc0e16f40fabc104b694f1ba" title="get a column vector">getCol</a>(0); <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a> = <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#8225f5f9c302b6a1f798af1863eec9ce">_box</a>.<a class="code" href="classvotca_1_1tools_1_1matrix.html#13386435bc0e16f40fabc104b694f1ba" title="get a column vector">getCol</a>(1); <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="namespacemerge__orbitals.html#a3a053f698132e5705acd83e392050d5">c</a> = <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#8225f5f9c302b6a1f798af1863eec9ce">_box</a>.<a class="code" href="classvotca_1_1tools_1_1matrix.html#13386435bc0e16f40fabc104b694f1ba" title="get a column vector">getCol</a>(2);
+<a name="l00036"></a>00036     r_tp = r_j - r_i;
+<a name="l00037"></a>00037     r_dp = r_tp - c*round(r_tp.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()/c.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>());
+<a name="l00038"></a>00038     r_sp = r_dp - b*round(r_dp.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>()/b.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>());
+<a name="l00039"></a>00039     r_ij = r_sp - a*round(r_sp.getX()/a.<a class="code" href="classvotca_1_1tools_1_1vec.html#b45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>());
+<a name="l00040"></a>00040     <span class="keywordflow">return</span> r_ij;
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
