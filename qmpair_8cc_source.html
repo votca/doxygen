@@ -22,61 +22,223 @@
     </ul>
   </div>
 <h1>ctp/src/libctp/qmpair.cc</h1><a href="qmpair_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
-<a name="l00002"></a>00002 <span class="comment"> * Copyright 2009-2011 The VOTCA Development Team (http://www.votca.org)</span>
-<a name="l00003"></a>00003 <span class="comment"> *</span>
-<a name="l00004"></a>00004 <span class="comment"> * Licensed under the Apache License, Version 2.0 (the "License");</span>
-<a name="l00005"></a>00005 <span class="comment"> * you may not use this file except in compliance with the License.</span>
-<a name="l00006"></a>00006 <span class="comment"> * You may obtain a copy of the License at</span>
-<a name="l00007"></a>00007 <span class="comment"> *</span>
-<a name="l00008"></a>00008 <span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0</span>
+<a name="l00002"></a>00002 <span class="comment"> *            Copyright 2009-2012 The VOTCA Development Team</span>
+<a name="l00003"></a>00003 <span class="comment"> *                       (http://www.votca.org)</span>
+<a name="l00004"></a>00004 <span class="comment"> *</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Licensed under the Apache License, Version 2.0 (the "License")</span>
+<a name="l00006"></a>00006 <span class="comment"> *</span>
+<a name="l00007"></a>00007 <span class="comment"> * You may not use this file except in compliance with the License.</span>
+<a name="l00008"></a>00008 <span class="comment"> * You may obtain a copy of the License at</span>
 <a name="l00009"></a>00009 <span class="comment"> *</span>
-<a name="l00010"></a>00010 <span class="comment"> * Unless required by applicable law or agreed to in writing, software</span>
-<a name="l00011"></a>00011 <span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span>
-<a name="l00012"></a>00012 <span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-<a name="l00013"></a>00013 <span class="comment"> * See the License for the specific language governing permissions and</span>
-<a name="l00014"></a>00014 <span class="comment"> * limitations under the License.</span>
-<a name="l00015"></a>00015 <span class="comment"> *</span>
-<a name="l00016"></a>00016 <span class="comment"> */</span>
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;<a class="code" href="qmpair_8h.html">votca/ctp/qmpair.h</a>&gt;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;<a class="code" href="qmtopology_8h.html">votca/ctp/qmtopology.h</a>&gt;</span>
+<a name="l00010"></a>00010 <span class="comment"> *              http://www.apache.org/licenses/LICENSE-2.0</span>
+<a name="l00011"></a>00011 <span class="comment"> *</span>
+<a name="l00012"></a>00012 <span class="comment"> * Unless required by applicable law or agreed to in writing, software</span>
+<a name="l00013"></a>00013 <span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span>
+<a name="l00014"></a>00014 <span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<a name="l00015"></a>00015 <span class="comment"> * See the License for the specific language governing permissions and</span>
+<a name="l00016"></a>00016 <span class="comment"> * limitations under the License.</span>
+<a name="l00017"></a>00017 <span class="comment"> *</span>
+<a name="l00018"></a>00018 <span class="comment"> */</span>
+<a name="l00019"></a>00019 
 <a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {
-<a name="l00022"></a>00022 
-<a name="l00023"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d746394eabc30338c8a5dff131f2ccdb">00023</a> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d3d977cc85676d072cdf6faea7890b40">QMPair::QMPair</a>(<a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html">QMCrgUnit</a> *crg1, <a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html">QMCrgUnit</a> *crg2, <a class="code" href="classvotca_1_1ctp_1_1QMTopology.html" title="topology of conjugated segments and rigid fragments">QMTopology</a> * top)
-<a name="l00024"></a>00024   : std::pair&lt;<a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html">QMCrgUnit</a> *, <a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html">QMCrgUnit</a> *&gt;(crg1,crg2), _rate_12(0.),_rate_21(0.), _in_database(false)
-<a name="l00025"></a>00025 {
-<a name="l00026"></a>00026     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> crg1nm,crg2nm;
-<a name="l00027"></a>00027     crg1nm =  crg1-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#6ad77e6067712e3f59a2c4ed48e33471">GetCom</a>();
-<a name="l00028"></a>00028     crg2nm =  crg2-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#6ad77e6067712e3f59a2c4ed48e33471">GetCom</a>();
-<a name="l00029"></a>00029     <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#17efc3ce1e5086d8bec09a0a7a7bc108" title="vector connecting the two beads">_r</a> = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#d583d2b7da415e7f1f217560fb63fc2b" title="calculate shortest vector connecting two points">BCShortestConnection</a>(crg1nm, crg2nm);
-<a name="l00030"></a>00030     <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#cfec6a8e0e67aee61fbd68c17680480d">_crg2</a> = second;
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;<a class="code" href="qmpair_8h.html">votca/ctp/qmpair.h</a>&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;<a class="code" href="ctp_2include_2votca_2ctp_2topology_8h.html">votca/ctp/topology.h</a>&gt;</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {
+<a name="l00025"></a>00025 
+<a name="l00026"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#9f67bc9bafe8740600a4bc0acb24addf">00026</a> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#9f67bc9bafe8740600a4bc0acb24addf">QMPair::~QMPair</a>() {
+<a name="l00027"></a>00027     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c1ef7ac08b9ad35f9c3a3bcff5cce085">_ghost</a> != NULL) {
+<a name="l00028"></a>00028         <span class="keyword">delete</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c1ef7ac08b9ad35f9c3a3bcff5cce085">_ghost</a>; <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c1ef7ac08b9ad35f9c3a3bcff5cce085">_ghost</a> = NULL;
+<a name="l00029"></a>00029     }
+<a name="l00030"></a>00030 }
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032     <span class="comment">// check if PBC:</span>
-<a name="l00033"></a>00033     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="namespacemerge__orbitals.html#cf86e50f8c0f67523e7c65af47347d8d">d</a> = crg2nm - crg1nm;
-<a name="l00034"></a>00034     <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#bc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(d - <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#17efc3ce1e5086d8bec09a0a7a7bc108" title="vector connecting the two beads">_r</a>) &gt; 1<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>-8) {
-<a name="l00035"></a>00035         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d818fd15a0fc0a72ec0939141fa5f8d9" title="ghost atom in case the molecules are neighbors across a boundary">_ghost</a> = <span class="keyword">new</span> <a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html">QMCrgUnit</a>();
-<a name="l00036"></a>00036         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d818fd15a0fc0a72ec0939141fa5f8d9" title="ghost atom in case the molecules are neighbors across a boundary">_ghost</a>-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#6c5dc4f5b084ec8c5f3130edfcb4feec" title="TODO: vr have a lock.">copyCrgUnit</a>(*crg2);
-<a name="l00037"></a>00037         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> displ = (<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#17efc3ce1e5086d8bec09a0a7a7bc108" title="vector connecting the two beads">_r</a> - d);
-<a name="l00038"></a>00038         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d818fd15a0fc0a72ec0939141fa5f8d9" title="ghost atom in case the molecules are neighbors across a boundary">_ghost</a>-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#5ea7be18501309217a68ac264bbe5917">shift</a>(displ);
-<a name="l00039"></a>00039         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#cfec6a8e0e67aee61fbd68c17680480d">_crg2</a> = <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d818fd15a0fc0a72ec0939141fa5f8d9" title="ghost atom in case the molecules are neighbors across a boundary">_ghost</a>;
-<a name="l00040"></a>00040     }
-<a name="l00041"></a>00041     <span class="keywordflow">else</span> {
-<a name="l00042"></a>00042         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d818fd15a0fc0a72ec0939141fa5f8d9" title="ghost atom in case the molecules are neighbors across a boundary">_ghost</a>=NULL;
-<a name="l00043"></a>00043     }
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00046"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#47becba2cf9536b7f854c3c76dea93fc">00046</a> <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#47becba2cf9536b7f854c3c76dea93fc" title="calculate the effective transfer integral as the rms of the transfer integrals">QMPair::calcJeff2</a>(){
-<a name="l00047"></a>00047     vector&lt;double&gt;::iterator itj=<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#3f5b7ec0a8d4a5bcf097a661d30f7f8d" title="transfer integrals, multiple entries in case of degeneracy">_Js</a>.begin();
-<a name="l00048"></a>00048     <span class="keywordtype">double</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>=0.;
-<a name="l00049"></a>00049     <span class="keywordflow">for</span> (;itj!= <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#3f5b7ec0a8d4a5bcf097a661d30f7f8d" title="transfer integrals, multiple entries in case of degeneracy">_Js</a>.end(); itj++){
-<a name="l00050"></a>00050         j+=(*itj)*(*itj);
-<a name="l00051"></a>00051     }
-<a name="l00052"></a>00052     j/= double(<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#3f5b7ec0a8d4a5bcf097a661d30f7f8d" title="transfer integrals, multiple entries in case of degeneracy">_Js</a>.size());
-<a name="l00053"></a>00053     <span class="keywordflow">return</span> j;
-<a name="l00054"></a>00054 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a9a01b1d25b231a78ebc169de85c9b87">00033</a> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d3d977cc85676d072cdf6faea7890b40">QMPair::QMPair</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a> *seg1, <a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a> *seg2)
+<a name="l00034"></a>00034         : _id(id), std::pair&lt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a>*, <a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a>*&gt;(seg1, seg2),
+<a name="l00035"></a>00035           _hasGhost(0),
+<a name="l00036"></a>00036           _rate12_e(0), _rate21_e(0),
+<a name="l00037"></a>00037           _rate12_h(0), _rate21_h(0),
+<a name="l00038"></a>00038           _has_e(false), _has_h(false),
+<a name="l00039"></a>00039           _lambdaO_e(0), _lambdaO_h(0),
+<a name="l00040"></a>00040           _Jeff2_e(0),   _Jeff2_h(0) {
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042     <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#70a08c6c84383ecb4d73c65f6f8bdd21">_top</a> = seg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#8860581f3a3a1934aaa98ad881fa1177">getTopology</a>();
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> r1 = seg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a05429e4714e6037f0f088cd1db92f2c">getPos</a>();
+<a name="l00045"></a>00045     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> r2 = seg2-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a05429e4714e6037f0f088cd1db92f2c">getPos</a>();
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047     <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#345f2fe4a7baddb4a567d2d10469f228">_R</a> = <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#70a08c6c84383ecb4d73c65f6f8bdd21">_top</a>-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#e6c69da238b2a0f697ccfa8f46298915">PbShortestConnect</a>(r1, r2); <span class="comment">// =&gt; _R points from 1 to 2</span>
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049     <span class="comment">// Check whether pair formed across periodic boundary</span>
+<a name="l00050"></a>00050     <span class="keywordflow">if</span> ( <a class="code" href="namespacevotca_1_1tools.html#bc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(r2 - r1 - <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#345f2fe4a7baddb4a567d2d10469f228">_R</a>) &gt; 1<a class="code" href="namespacemerge__orbitals.html#e5c7ec430fc7dca1f672e4dd33309008">e</a>-8 ) {
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c1ef7ac08b9ad35f9c3a3bcff5cce085">_ghost</a> = <span class="keyword">new</span> <a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a>(seg2);
+<a name="l00053"></a>00053         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c1ef7ac08b9ad35f9c3a3bcff5cce085">_ghost</a>-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#7cd33b2f08386ad4eb7df7dfac09d44c">TranslateBy</a>(r1 - r2 + <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#345f2fe4a7baddb4a567d2d10469f228">_R</a>);
+<a name="l00054"></a>00054         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a3881679502b60e1f48a83a86c9a56b6">_hasGhost</a> = <span class="keyword">true</span>;
 <a name="l00055"></a>00055 
-<a name="l00056"></a>00056 }}
+<a name="l00056"></a>00056     }
+<a name="l00057"></a>00057     <span class="keywordflow">else</span> {
+<a name="l00058"></a>00058         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c1ef7ac08b9ad35f9c3a3bcff5cce085">_ghost</a> = NULL;
+<a name="l00059"></a>00059     }
+<a name="l00060"></a>00060 }
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 
+<a name="l00063"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#279f7a533caa9b1cafbbfc909e7de695">00063</a> <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#279f7a533caa9b1cafbbfc909e7de695">QMPair::getLambdaO</a>(<span class="keywordtype">int</span> state) {
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065     <span class="keywordflow">return</span> (state == -1) ? <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#413b89830f5cb9298eae447123090230">_lambdaO_e</a> : <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#dc36a9d2f5c73090d9cde9a5abbbbad2">_lambdaO_h</a>;
+<a name="l00066"></a>00066 }
+<a name="l00067"></a>00067 
+<a name="l00068"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#625deeea83891128a4d06eb615a88e93">00068</a> <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#625deeea83891128a4d06eb615a88e93">QMPair::getRate12</a>(<span class="keywordtype">int</span> carrier) {
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070     <span class="keywordflow">return</span> (carrier == -1) ? <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#eebf4f79f562b312714b28d0ff22f191">_rate12_e</a> : <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c8bfef9b5887584862a4e4fa0bc94e25">_rate12_h</a>;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 }
+<a name="l00073"></a>00073 
+<a name="l00074"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#4b90ac8a051e69570f1c7ddbbbc61e16">00074</a> <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#4b90ac8a051e69570f1c7ddbbbc61e16">QMPair::getRate21</a>(<span class="keywordtype">int</span> carrier) {
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076     <span class="keywordflow">return</span> (carrier == -1) ? <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a3b6005133ca79b6d518f8ca8651cd3c">_rate21_e</a> : <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#f61fcf3491992ff9d618e5c158864b20">_rate21_h</a>;
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 }
+<a name="l00079"></a>00079 
+<a name="l00080"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d285e68a8e42d3415f1abafe763b076a">00080</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d285e68a8e42d3415f1abafe763b076a">QMPair::setLambdaO</a>(<span class="keywordtype">double</span> lO, <span class="keywordtype">int</span> state) {
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082     <span class="keywordflow">if</span> (state == -1) {
+<a name="l00083"></a>00083         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#413b89830f5cb9298eae447123090230">_lambdaO_e</a> = lO;
+<a name="l00084"></a>00084     }
+<a name="l00085"></a>00085     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (state == +1) {
+<a name="l00086"></a>00086         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#dc36a9d2f5c73090d9cde9a5abbbbad2">_lambdaO_h</a> = lO;
+<a name="l00087"></a>00087     }
+<a name="l00088"></a>00088     <span class="keywordflow">else</span> {
+<a name="l00089"></a>00089         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">" ERROR CODE whx__01l1o__"</span>);
+<a name="l00090"></a>00090     }
+<a name="l00091"></a>00091     
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 }
+<a name="l00094"></a>00094 
+<a name="l00095"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#f1e357f8db045bb1eecee3981cf218a5">00095</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#f1e357f8db045bb1eecee3981cf218a5">QMPair::setRate12</a>(<span class="keywordtype">double</span> rate, <span class="keywordtype">int</span> state) {
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097     <span class="keywordflow">if</span> (state == -1) {
+<a name="l00098"></a>00098         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#eebf4f79f562b312714b28d0ff22f191">_rate12_e</a> = rate;
+<a name="l00099"></a>00099     }
+<a name="l00100"></a>00100     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (state == +1) {
+<a name="l00101"></a>00101         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c8bfef9b5887584862a4e4fa0bc94e25">_rate12_h</a> = rate;
+<a name="l00102"></a>00102     }
+<a name="l00103"></a>00103     <span class="keywordflow">else</span> {
+<a name="l00104"></a>00104         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">" ERROR CODE whx__01v1s__"</span>);
+<a name="l00105"></a>00105     }
+<a name="l00106"></a>00106 }
+<a name="l00107"></a>00107 
+<a name="l00108"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#f4a50728a8c2823b186f485b3fa6fc7c">00108</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#f4a50728a8c2823b186f485b3fa6fc7c">QMPair::setRate21</a>(<span class="keywordtype">double</span> rate, <span class="keywordtype">int</span> state) {
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     <span class="keywordflow">if</span> (state == -1) {
+<a name="l00111"></a>00111         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a3b6005133ca79b6d518f8ca8651cd3c">_rate21_e</a> = rate;
+<a name="l00112"></a>00112     }
+<a name="l00113"></a>00113     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (state == +1) {
+<a name="l00114"></a>00114         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#f61fcf3491992ff9d618e5c158864b20">_rate21_h</a> = rate;
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116     <span class="keywordflow">else</span> {
+<a name="l00117"></a>00117         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">" ERROR CODE whx__01w1t__"</span>);
+<a name="l00118"></a>00118     }
+<a name="l00119"></a>00119 }
+<a name="l00120"></a>00120 
+<a name="l00121"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#564ccb7cd501d9cdb93ed7961356c260">00121</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#564ccb7cd501d9cdb93ed7961356c260">QMPair::setIsPathCarrier</a>(<span class="keywordtype">bool</span> yesno, <span class="keywordtype">int</span> carrier) {
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123     <span class="keywordflow">if</span> (carrier == -1) {
+<a name="l00124"></a>00124         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#24fec8a2987fdc7ab90ee013255a2760">_has_e</a> = yesno;
+<a name="l00125"></a>00125     }
+<a name="l00126"></a>00126     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (carrier == +1) {
+<a name="l00127"></a>00127         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d3ddccf532d62c42cdd37a83481dc6fb">_has_h</a> = yesno;
+<a name="l00128"></a>00128     }
+<a name="l00129"></a>00129     <span class="keywordflow">else</span> {
+<a name="l00130"></a>00130         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">" ERROR CODE whx__01p1r__"</span>);
+<a name="l00131"></a>00131     }
+<a name="l00132"></a>00132 }
+<a name="l00133"></a>00133 
+<a name="l00134"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#44f91ebeba8a6cd996c3c063b09270bc">00134</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#44f91ebeba8a6cd996c3c063b09270bc">QMPair::isPathCarrier</a>(<span class="keywordtype">int</span> carrier) {
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136     <span class="keywordflow">return</span> (carrier == -1) ? <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#24fec8a2987fdc7ab90ee013255a2760">_has_e</a> : <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d3ddccf532d62c42cdd37a83481dc6fb">_has_h</a>;
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#de48dbe3a9df8572779aabc5dad44c06">00140</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#de48dbe3a9df8572779aabc5dad44c06">QMPair::setJs</a>(<span class="keyword">const</span> vector&lt;double&gt; Js, <span class="keywordtype">int</span> state) {
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142     <span class="keywordflow">if</span> (state == -1) {
+<a name="l00143"></a>00143         this-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d4423e032b834b0db4acb70c6bf01f0e">_Js_e</a> = Js;
+<a name="l00144"></a>00144         <span class="keywordtype">double</span> Jeff2 = this-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#0b9f0afda0b52aba4c2e7ab28b390810">calcJeff2</a>(state);
+<a name="l00145"></a>00145     }
+<a name="l00146"></a>00146     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (state == +1) {
+<a name="l00147"></a>00147         this-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#31f9cf52570bb6e6e89e799224dd45ea">_Js_h</a> = Js;
+<a name="l00148"></a>00148         <span class="keywordtype">double</span> Jeff2 = this-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#0b9f0afda0b52aba4c2e7ab28b390810">calcJeff2</a>(state);
+<a name="l00149"></a>00149     }
+<a name="l00150"></a>00150     <span class="keywordflow">else</span> {
+<a name="l00151"></a>00151         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">" ERROR CODE whx__01x1u__"</span>);
+<a name="l00152"></a>00152     }
+<a name="l00153"></a>00153 }
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155 
+<a name="l00156"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#0b9f0afda0b52aba4c2e7ab28b390810">00156</a> <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#0b9f0afda0b52aba4c2e7ab28b390810">QMPair::calcJeff2</a>(<span class="keywordtype">int</span> state) {
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158     vector &lt;double&gt; ::iterator it;
+<a name="l00159"></a>00159     <span class="keywordtype">double</span> Jeff2 = 0.0;
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161     <span class="keywordflow">if</span> (state == -1) {
+<a name="l00162"></a>00162         <span class="keywordflow">for</span> (it = <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d4423e032b834b0db4acb70c6bf01f0e">_Js_e</a>.begin(); it &lt; <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d4423e032b834b0db4acb70c6bf01f0e">_Js_e</a>.end(); it++) {
+<a name="l00163"></a>00163             Jeff2 += (*it)*(*it);
+<a name="l00164"></a>00164         }
+<a name="l00165"></a>00165         Jeff2 /= double(<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#d4423e032b834b0db4acb70c6bf01f0e">_Js_e</a>.size());
+<a name="l00166"></a>00166         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#1e9df220963c959c685ebb92499fb33f">_Jeff2_e</a> = Jeff2;
+<a name="l00167"></a>00167     }
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (state == +1) {
+<a name="l00170"></a>00170         <span class="keywordflow">for</span> (it = <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#31f9cf52570bb6e6e89e799224dd45ea">_Js_h</a>.begin(); it &lt; <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#31f9cf52570bb6e6e89e799224dd45ea">_Js_h</a>.end(); it++) {
+<a name="l00171"></a>00171             Jeff2 += (*it)*(*it);
+<a name="l00172"></a>00172         }
+<a name="l00173"></a>00173         Jeff2 /= double(<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#31f9cf52570bb6e6e89e799224dd45ea">_Js_h</a>.size());
+<a name="l00174"></a>00174         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#6bab513da7bfd0ea6e00c506500f0610">_Jeff2_h</a> = Jeff2;
+<a name="l00175"></a>00175     }
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177     <span class="keywordflow">else</span> {
+<a name="l00178"></a>00178         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">" ERROR CODE whx__01y1v__"</span>);
+<a name="l00179"></a>00179     }
+<a name="l00180"></a>00180     
+<a name="l00181"></a>00181     <span class="keywordflow">return</span> Jeff2;
+<a name="l00182"></a>00182 }
+<a name="l00183"></a>00183 
+<a name="l00184"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#e4e508a3d6622f2bc91e697f389a55bf">00184</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#e4e508a3d6622f2bc91e697f389a55bf">QMPair::setJeff2</a>(<span class="keywordtype">double</span> Jeff2, <span class="keywordtype">int</span> state) {
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186     <span class="keywordflow">if</span> (state == -1) {
+<a name="l00187"></a>00187         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#1e9df220963c959c685ebb92499fb33f">_Jeff2_e</a> = Jeff2;
+<a name="l00188"></a>00188     }
+<a name="l00189"></a>00189     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (state == +1) {
+<a name="l00190"></a>00190         <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#6bab513da7bfd0ea6e00c506500f0610">_Jeff2_h</a> = Jeff2;
+<a name="l00191"></a>00191     }
+<a name="l00192"></a>00192     <span class="keywordflow">else</span> {
+<a name="l00193"></a>00193         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">" ERROR CODE whx__01s1j__"</span>);
+<a name="l00194"></a>00194     }
+<a name="l00195"></a>00195 }
+<a name="l00196"></a>00196 
+<a name="l00197"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#8fd5eaaa0814e027e29a39bdf962469d">00197</a> <a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a> *<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#8fd5eaaa0814e027e29a39bdf962469d">QMPair::Seg2PbCopy</a>() {
+<a name="l00198"></a>00198     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a3881679502b60e1f48a83a86c9a56b6">_hasGhost</a>) {
+<a name="l00199"></a>00199         <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c1ef7ac08b9ad35f9c3a3bcff5cce085">_ghost</a>;
+<a name="l00200"></a>00200     }
+<a name="l00201"></a>00201     <span class="keywordflow">else</span> {
+<a name="l00202"></a>00202         <span class="keywordflow">return</span> second;
+<a name="l00203"></a>00203     }
+<a name="l00204"></a>00204 }
+<a name="l00205"></a>00205 
+<a name="l00206"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#53bfa07cd60e45a3aa9e366d4654c3f0">00206</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#53bfa07cd60e45a3aa9e366d4654c3f0">QMPair::WritePDB</a>(<span class="keywordtype">string</span> fileName) {
+<a name="l00207"></a>00207 
+<a name="l00208"></a>00208     FILE *pdb = NULL;
+<a name="l00209"></a>00209     pdb = fopen(fileName.c_str(), <span class="stringliteral">"w"</span>);
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211     this-&gt;first-&gt;WritePDB(pdb, <span class="stringliteral">"Atoms"</span>, <span class="stringliteral">"MD"</span>);
+<a name="l00212"></a>00212     this-&gt;second-&gt;WritePDB(pdb, <span class="stringliteral">"Atoms"</span>, <span class="stringliteral">"MD"</span>);
+<a name="l00213"></a>00213     <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#9813ea5274a60e487390f4bfca5ee225">HasGhost</a>()) { this-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#c1ef7ac08b9ad35f9c3a3bcff5cce085">_ghost</a>-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#fd3fbb27f85d1eb59fef74054f3b6fd5">WritePDB</a>(pdb, <span class="stringliteral">"Atoms"</span>, <span class="stringliteral">"MD"</span>); }
+<a name="l00214"></a>00214 
+<a name="l00215"></a>00215     fclose(pdb);
+<a name="l00216"></a>00216 }
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

@@ -22,247 +22,425 @@
     </ul>
   </div>
 <h1>ctp/src/libctp/calculators/rates.h</h1><a href="rates_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
-<a name="l00002"></a>00002 <span class="comment"> * Copyright 2009-2011 The VOTCA Development Team (http://www.votca.org)</span>
-<a name="l00003"></a>00003 <span class="comment"> *</span>
-<a name="l00004"></a>00004 <span class="comment"> * Licensed under the Apache License, Version 2.0 (the "License");</span>
-<a name="l00005"></a>00005 <span class="comment"> * you may not use this file except in compliance with the License.</span>
-<a name="l00006"></a>00006 <span class="comment"> * You may obtain a copy of the License at</span>
-<a name="l00007"></a>00007 <span class="comment"> *</span>
-<a name="l00008"></a>00008 <span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0</span>
+<a name="l00002"></a>00002 <span class="comment"> *            Copyright 2009-2012 The VOTCA Development Team</span>
+<a name="l00003"></a>00003 <span class="comment"> *                       (http://www.votca.org)</span>
+<a name="l00004"></a>00004 <span class="comment"> *</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Licensed under the Apache License, Version 2.0 (the "License")</span>
+<a name="l00006"></a>00006 <span class="comment"> *</span>
+<a name="l00007"></a>00007 <span class="comment"> * You may not use this file except in compliance with the License.</span>
+<a name="l00008"></a>00008 <span class="comment"> * You may obtain a copy of the License at</span>
 <a name="l00009"></a>00009 <span class="comment"> *</span>
-<a name="l00010"></a>00010 <span class="comment"> * Unless required by applicable law or agreed to in writing, software</span>
-<a name="l00011"></a>00011 <span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span>
-<a name="l00012"></a>00012 <span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-<a name="l00013"></a>00013 <span class="comment"> * See the License for the specific language governing permissions and</span>
-<a name="l00014"></a>00014 <span class="comment"> * limitations under the License.</span>
-<a name="l00015"></a>00015 <span class="comment"> *</span>
-<a name="l00016"></a>00016 <span class="comment"> */</span>
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="preprocessor">#ifndef RATES_H</span>
-<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define RATES_H</span>
-<a name="l00020"></a>00020 <span class="preprocessor"></span>
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;<a class="code" href="paircalculator_8h.html">votca/ctp/paircalculator.h</a>&gt;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;math.h&gt;</span>
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {
-<a name="l00034"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html">00034</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1Rates.html" title="Calculates hopping rates using derivations from Marcus or Jortner.">Rates</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1ctp_1_1PairCalculator.html">PairCalculator</a>
-<a name="l00035"></a>00035 {
-<a name="l00036"></a>00036 <span class="keyword">public</span>:
-<a name="l00037"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#94e8e3396708459eac716906d51133a3">00037</a>     <a class="code" href="classvotca_1_1ctp_1_1Rates.html#94e8e3396708459eac716906d51133a3">Rates</a>() {};
-<a name="l00038"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#f3b2ee780b6521face4e0b61c570ba9f">00038</a>     <a class="code" href="classvotca_1_1ctp_1_1Rates.html#f3b2ee780b6521face4e0b61c570ba9f">~Rates</a>() {};
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040     <span class="comment">//const char *Description() { return "Calculates hopping rates using Jortner's derivation"; }</span>
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#cf4cc1d6c2c2da4ee34f1dcb5c98d202">Initialize</a>(<a class="code" href="classvotca_1_1ctp_1_1QMTopology.html" title="topology of conjugated segments and rigid fragments">QMTopology</a> *top, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a>);
-<a name="l00043"></a>00043     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#c3212f52bc331125d979c26894a0139a">EvaluatePair</a>(<a class="code" href="classvotca_1_1ctp_1_1QMTopology.html" title="topology of conjugated segments and rigid fragments">QMTopology</a> *top, <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *pair);
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="keyword">private</span>:
-<a name="l00046"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">00046</a>     <span class="keywordtype">char</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">_rate_type</a>; <span class="comment">//M=Marcus J=Jortner</span>
-<a name="l00047"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#c964c96878eb35e632e9272fb671ede2">00047</a>     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#c964c96878eb35e632e9272fb671ede2">_E</a>;
-<a name="l00048"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">00048</a>     <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>;
-<a name="l00049"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">00049</a>     <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a>;
-<a name="l00050"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#62ceca486a427534c4f3e40260c5d7a3">00050</a>     <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#62ceca486a427534c4f3e40260c5d7a3">_nmaxvib</a>;
-<a name="l00051"></a>00051     <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">Factorial</a>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 <span class="comment">/* polymer rates [development]</span>
-<a name="l00054"></a>00054 <span class="comment">private:</span>
-<a name="l00055"></a>00055 <span class="comment">    double _nu;</span>
-<a name="l00056"></a>00056 <span class="comment">    double _J;</span>
-<a name="l00057"></a>00057 <span class="comment">    double _kT;</span>
-<a name="l00058"></a>00058 <span class="comment">    vec _E;</span>
-<a name="l00059"></a>00059 <span class="comment">*/</span>
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 };
-<a name="l00062"></a>00062 
-<a name="l00063"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#cf4cc1d6c2c2da4ee34f1dcb5c98d202">00063</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#cf4cc1d6c2c2da4ee34f1dcb5c98d202">Rates::Initialize</a>(<a class="code" href="classvotca_1_1ctp_1_1QMTopology.html" title="topology of conjugated segments and rigid fragments">QMTopology</a> *top, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a>){
-<a name="l00064"></a>00064         
-<a name="l00065"></a>00065     <span class="keywordtype">double</span> temp= options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">"options.rates.temperature"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">double</span>&gt;();
-<a name="l00066"></a>00066     <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>=temp*8.6173324e-5;
-<a name="l00067"></a>00067     <a class="code" href="classvotca_1_1ctp_1_1Rates.html#c964c96878eb35e632e9272fb671ede2">_E</a> = options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">"options.rates.field"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>&gt;();
-<a name="l00068"></a>00068    <span class="comment">// _omegavib=0.2;</span>
-<a name="l00069"></a>00069    <span class="comment">// _nmaxvib=10;</span>
-<a name="l00070"></a>00070       <span class="keywordflow">if</span> (options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#d6571e16bf9253f6036b000e15449c79" title="check weather property exists">exists</a>(<span class="stringliteral">"options.rates.method"</span>)) {
-<a name="l00071"></a>00071         <span class="keywordflow">if</span> (options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">"options.rates.method"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span> &gt; () == <span class="stringliteral">"marcus"</span>) {
-<a name="l00072"></a>00072                 <a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">_rate_type</a>=<span class="charliteral">'M'</span>;
-<a name="l00073"></a>00073             cout &lt;&lt; <span class="stringliteral">"Computing rates from Marcus theory"</span>&lt;&lt; endl;
-<a name="l00074"></a>00074         }
-<a name="l00075"></a>00075         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">"options.rates.method"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span> &gt; () == <span class="stringliteral">"jortner"</span>) {
-<a name="l00076"></a>00076                 <a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">_rate_type</a>=<span class="charliteral">'J'</span>;
-<a name="l00077"></a>00077         <span class="keywordflow">if</span> (options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#d6571e16bf9253f6036b000e15449c79" title="check weather property exists">exists</a>(<span class="stringliteral">"options.rates.nmaxvib"</span>)) {
-<a name="l00078"></a>00078         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#62ceca486a427534c4f3e40260c5d7a3">_nmaxvib</a> = options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">"options.rates.nmaxvib"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">double</span>&gt;();
-<a name="l00079"></a>00079     } <span class="keywordflow">else</span> {
-<a name="l00080"></a>00080         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#62ceca486a427534c4f3e40260c5d7a3">_nmaxvib</a> = 20;
-<a name="l00081"></a>00081         cout &lt;&lt; <span class="stringliteral">"Warning: no cutoff number for qm vibrations  provided, using default 20"</span> &lt;&lt; endl;
-<a name="l00082"></a>00082     }
-<a name="l00083"></a>00083         <span class="keywordflow">if</span> (options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#d6571e16bf9253f6036b000e15449c79" title="check weather property exists">exists</a>(<span class="stringliteral">"options.rates.omegavib"</span>)) {
-<a name="l00084"></a>00084         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a> = options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">"options.rates.omegavib"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">double</span>&gt;();
-<a name="l00085"></a>00085     } <span class="keywordflow">else</span> {
-<a name="l00086"></a>00086         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a> = 0.2;
-<a name="l00087"></a>00087         cout &lt;&lt; <span class="stringliteral">"Warning: no qm vibration frequency  provided, using default 0.2eV"</span> &lt;&lt; endl;
-<a name="l00088"></a>00088     }
+<a name="l00010"></a>00010 <span class="comment"> *              http://www.apache.org/licenses/LICENSE-2.0</span>
+<a name="l00011"></a>00011 <span class="comment"> *</span>
+<a name="l00012"></a>00012 <span class="comment"> * Unless required by applicable law or agreed to in writing, software</span>
+<a name="l00013"></a>00013 <span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span>
+<a name="l00014"></a>00014 <span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<a name="l00015"></a>00015 <span class="comment"> * See the License for the specific language governing permissions and</span>
+<a name="l00016"></a>00016 <span class="comment"> * limitations under the License.</span>
+<a name="l00017"></a>00017 <span class="comment"> *</span>
+<a name="l00018"></a>00018 <span class="comment"> */</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="preprocessor">#ifndef Rates_H</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#define Rates_H</span>
+<a name="l00023"></a>00023 <span class="preprocessor"></span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;<a class="code" href="paircalculator_8h.html">votca/ctp/paircalculator.h</a>&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;math.h&gt;</span>
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {
+<a name="l00028"></a>00028 
+<a name="l00029"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html">00029</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1Rates.html">Rates</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1ctp_1_1PairCalculator2.html">PairCalculator2</a>
+<a name="l00030"></a>00030 {
+<a name="l00031"></a>00031 <span class="keyword">public</span>:
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#94e8e3396708459eac716906d51133a3">00033</a>     <a class="code" href="classvotca_1_1ctp_1_1Rates.html#94e8e3396708459eac716906d51133a3">Rates</a>() { };
+<a name="l00034"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#f3b2ee780b6521face4e0b61c570ba9f">00034</a>    <a class="code" href="classvotca_1_1ctp_1_1Rates.html#f3b2ee780b6521face4e0b61c570ba9f">~Rates</a>() { };
+<a name="l00035"></a>00035 
+<a name="l00036"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#8644ecb190e3ba583431c9e583cea2c2">00036</a>     <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8644ecb190e3ba583431c9e583cea2c2">Identify</a>() { <span class="keywordflow">return</span> <span class="stringliteral">"Rates"</span>; }
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#001c389c28e40da3c8d599b17abcac4e">Initialize</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a>);
+<a name="l00039"></a>00039     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#cf652ccaff16752dffed3037db5e6ab8">ParseEnergiesXML</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *opt);
+<a name="l00040"></a>00040     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#47363a3361e2095a06c1f8b3915f0dcd">EvaluatePair</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *pair);
+<a name="l00041"></a>00041     <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#06dd1694679652e1b43760c92baffd34">CalculateRate</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *pair, <span class="keywordtype">int</span> state);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="keyword">private</span>:
+<a name="l00045"></a>00045 
+<a name="l00046"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#471c1cf3647ac89e04a26bac5c6b0a41">00046</a>     map&lt;string, double&gt; <a class="code" href="classvotca_1_1ctp_1_1Rates.html#471c1cf3647ac89e04a26bac5c6b0a41">_seg_U_cC_nN_e</a>;
+<a name="l00047"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#4a8c535bc34b021c017e3824492f3bf8">00047</a>     map&lt;string, double&gt; <a class="code" href="classvotca_1_1ctp_1_1Rates.html#4a8c535bc34b021c017e3824492f3bf8">_seg_U_nC_nN_e</a>;
+<a name="l00048"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#862f1fdadc5ac5b0f6e534b0789ddd1b">00048</a>     map&lt;string, double&gt; <a class="code" href="classvotca_1_1ctp_1_1Rates.html#862f1fdadc5ac5b0f6e534b0789ddd1b">_seg_U_cN_cC_e</a>;
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#a02cdfaf03be3e46e681a760225e9cbe">00050</a>     map&lt;string, double&gt; <a class="code" href="classvotca_1_1ctp_1_1Rates.html#a02cdfaf03be3e46e681a760225e9cbe">_seg_U_cC_nN_h</a>;
+<a name="l00051"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#b48f54440f412ff69fe7ce7600687f90">00051</a>     map&lt;string, double&gt; <a class="code" href="classvotca_1_1ctp_1_1Rates.html#b48f54440f412ff69fe7ce7600687f90">_seg_U_nC_nN_h</a>;
+<a name="l00052"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#db3fc017ccbedae78bd4d69107edbef3">00052</a>     map&lt;string, double&gt; <a class="code" href="classvotca_1_1ctp_1_1Rates.html#db3fc017ccbedae78bd4d69107edbef3">_seg_U_cN_cC_h</a>;
+<a name="l00053"></a>00053 
+<a name="l00054"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#75c17ba46a2c36010289349fcdb3f0ae">00054</a>     map&lt;string, bool&gt;   <a class="code" href="classvotca_1_1ctp_1_1Rates.html#75c17ba46a2c36010289349fcdb3f0ae">_seg_has_e</a>;
+<a name="l00055"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#c45f673a757a87562674d45d8d1ed7d8">00055</a>     map&lt;string, bool&gt;   <a class="code" href="classvotca_1_1ctp_1_1Rates.html#c45f673a757a87562674d45d8d1ed7d8">_seg_has_h</a>;
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">00058</a>     <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a>;
+<a name="l00059"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#42902507dbaf81d273ee93e4a47c24a1">00059</a>     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>    <a class="code" href="classvotca_1_1ctp_1_1Rates.html#42902507dbaf81d273ee93e4a47c24a1">_F</a>;
+<a name="l00060"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">00060</a>     <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>;
+<a name="l00061"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#8396b705907bafd96e08a9d9cf1325e0">00061</a>     <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8396b705907bafd96e08a9d9cf1325e0">_omegaVib</a>;
+<a name="l00062"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#8275ef51d7070e6fb9aa2fff1fc0bda5">00062</a>     <span class="keywordtype">int</span>    <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8275ef51d7070e6fb9aa2fff1fc0bda5">_nMaxVib</a>;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064     <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">Factorial</a>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 };
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#001c389c28e40da3c8d599b17abcac4e">00071</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#001c389c28e40da3c8d599b17abcac4e">Rates::Initialize</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a>) {
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073     <span class="keywordtype">string</span> key = <span class="stringliteral">"options.rates"</span>;
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075     <span class="comment">/* ---- OPTIONS.XML Structure -----</span>
+<a name="l00076"></a>00076 <span class="comment">     *</span>
+<a name="l00077"></a>00077 <span class="comment">     * &lt;rates&gt;</span>
+<a name="l00078"></a>00078 <span class="comment">     *</span>
+<a name="l00079"></a>00079 <span class="comment">     *      &lt;temperature&gt;&lt;/temperature&gt;</span>
+<a name="l00080"></a>00080 <span class="comment">     *      &lt;field&gt;&lt;/field&gt;</span>
+<a name="l00081"></a>00081 <span class="comment">     *</span>
+<a name="l00082"></a>00082 <span class="comment">     *      &lt;method&gt;&lt;/method&gt;</span>
+<a name="l00083"></a>00083 <span class="comment">     *      &lt;nmaxvib&gt;&lt;/nmaxvib&gt;</span>
+<a name="l00084"></a>00084 <span class="comment">     *      &lt;omegavib&gt;&lt;/omegavib&gt;</span>
+<a name="l00085"></a>00085 <span class="comment">     *</span>
+<a name="l00086"></a>00086 <span class="comment">     * &lt;/rates&gt;</span>
+<a name="l00087"></a>00087 <span class="comment">     *</span>
+<a name="l00088"></a>00088 <span class="comment">     */</span>
 <a name="l00089"></a>00089 
-<a name="l00090"></a>00090             cout &lt;&lt; <span class="stringliteral">"Computing rates from Jortner summing up to "</span> &lt;&lt;<a class="code" href="classvotca_1_1ctp_1_1Rates.html#62ceca486a427534c4f3e40260c5d7a3">_nmaxvib</a> &lt;&lt; <span class="stringliteral">" quanta using a frequency of "</span>&lt;&lt;<a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a> &lt;&lt; <span class="stringliteral">" eV"</span> &lt;&lt; endl;
-<a name="l00091"></a>00091         }
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093         <span class="keywordflow">else</span> <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Error in CalcRates::Initialize : no such rates method, should be marcus  or jortner"</span>);
-<a name="l00094"></a>00094     } <span class="keywordflow">else</span> <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Error in Rates:Initialize : no rates_method specified"</span>);
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 }
+<a name="l00090"></a>00090     <span class="comment">// Control parameters</span>
+<a name="l00091"></a>00091     <span class="keywordtype">double</span> T = options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(key+<span class="stringliteral">".temperature"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">double</span>&gt; ();
+<a name="l00092"></a>00092     <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a> = 8.6173324e-5 * T;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> F = options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(key+<span class="stringliteral">".field"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>&gt;();
+<a name="l00095"></a>00095     <a class="code" href="classvotca_1_1ctp_1_1Rates.html#42902507dbaf81d273ee93e4a47c24a1">_F</a> = F;
+<a name="l00096"></a>00096 
 <a name="l00097"></a>00097 
-<a name="l00098"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#c3212f52bc331125d979c26894a0139a">00098</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#c3212f52bc331125d979c26894a0139a">Rates::EvaluatePair</a>(<a class="code" href="classvotca_1_1ctp_1_1QMTopology.html" title="topology of conjugated segments and rigid fragments">QMTopology</a> *top, <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a>* pair){
-<a name="l00099"></a>00099     <span class="keywordtype">double</span> rate_12 = 0.0;
-<a name="l00100"></a>00100     <span class="keywordtype">double</span> rate_21 = 0.0;
-<a name="l00101"></a>00101     <span class="keywordtype">double</span> Jeff2 = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#47becba2cf9536b7f854c3c76dea93fc" title="calculate the effective transfer integral as the rms of the transfer integrals">calcJeff2</a>();
-<a name="l00102"></a>00102     <a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html">QMCrgUnit</a> *crg1 = pair-&gt;first;
-<a name="l00103"></a>00103     <a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html">QMCrgUnit</a> *crg2 = pair-&gt;second;
-<a name="l00104"></a>00104             <span class="keywordflow">if</span> (pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#3f0b8e36e676513721aecf3b5a143d6b">DoubleExists</a>(<span class="stringliteral">"lambda_outer"</span>)) {
-<a name="l00105"></a>00105                 <span class="keywordtype">double</span> lambda_outer = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>);
-<a name="l00106"></a>00106                 <span class="keywordflow">if</span> ((<a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">_rate_type</a> == <span class="charliteral">'J'</span>) &amp;&amp; (lambda_outer &lt; 0.0)) {
-<a name="l00107"></a>00107                     cout &lt;&lt; <span class="stringliteral">"Pair"</span> &lt;&lt; crg1-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632" title="get the ID of the charge unit">getId</a>() &lt;&lt; <span class="stringliteral">" : "</span> &lt;&lt; crg2-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632" title="get the ID of the charge unit">getId</a>() &lt;&lt; <span class="stringliteral">" has negative outer sphere reorganization energy preventing computation  of Jortner rates."</span> &lt;&lt; endl;
-<a name="l00108"></a>00108                     <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Error in CalcRates::EvaluatePair: negative outer sphere reorganization"</span>);
-<a name="l00109"></a>00109                 }
-<a name="l00110"></a>00110                 <span class="keywordflow">if</span> ((<a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">_rate_type</a> == <span class="charliteral">'J'</span>) &amp;&amp; (lambda_outer &lt; 0.01)) 
-<a name="l00111"></a>00111                     cout &lt;&lt; <span class="stringliteral">"Warning: in CalcRates::EvaluatePair : pair "</span> &lt;&lt; crg1-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632" title="get the ID of the charge unit">getId</a>() &lt;&lt; <span class="stringliteral">" : "</span> &lt;&lt; crg2-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632" title="get the ID of the charge unit">getId</a>() &lt;&lt; <span class="stringliteral">" has very small outer sphere reorganization energy (&lt; 0.01eV) which might produce too high Jortner rates."</span>&lt;&lt;endl;
-<a name="l00112"></a>00112            
-<a name="l00113"></a>00113             }
-<a name="l00114"></a>00114             <span class="keywordflow">else</span> {
-<a name="l00115"></a>00115                 <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">_rate_type</a> == <span class="charliteral">'J'</span>) {
-<a name="l00116"></a>00116                     cout &lt;&lt; <span class="stringliteral">"Pair"</span> &lt;&lt; crg1-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632" title="get the ID of the charge unit">getId</a>() &lt;&lt; <span class="stringliteral">" : "</span> &lt;&lt; crg2-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632" title="get the ID of the charge unit">getId</a>() &lt;&lt; <span class="stringliteral">": has not outer sphere reorganization energy necessary to compute Jortner rates. Compute lambdaouter or use Marcus rates."</span>&lt;&lt;endl;
-<a name="l00117"></a>00117                             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Error in CalcRates::EvaluatePair: no outer sphere reorganization"</span>);
-<a name="l00118"></a>00118                 }
-<a name="l00119"></a>00119             }
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121     
-<a name="l00123"></a>00123     <span class="keywordtype">double</span> prefactor = 1.0;
-<a name="l00125"></a>00125     <span class="keywordtype">double</span> reorg12 = crg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_intra_discharging"</span>)+crg2-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_intra_charging"</span>);
-<a name="l00126"></a>00126     <span class="keywordtype">double</span> reorg21 = crg2-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_intra_discharging"</span>)+crg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_intra_charging"</span>);
-<a name="l00128"></a>00128     <span class="keywordtype">double</span> dG_field = -<a class="code" href="classvotca_1_1ctp_1_1Rates.html#c964c96878eb35e632e9272fb671ede2">_E</a> * <a class="code" href="classvotca_1_1moo_1_1unit.html" title="class for unit conversion">unit&lt;nm,m&gt;::to</a>(pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#bab2013a09f458e4ee740a30ef176021" title="the vector connecting two beads">r</a>());
-<a name="l00130"></a>00130     <span class="keywordtype">double</span> dG_en = crg2-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html#039df247dac70229eafe83bb1a03928f">getTotalEnergy</a>() - crg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMCrgUnit.html#039df247dac70229eafe83bb1a03928f">getTotalEnergy</a>();
-<a name="l00133"></a>00133     <span class="keywordtype">double</span> dG = dG_field + dG_en;
-<a name="l00134"></a>00134  
-<a name="l00135"></a>00135        <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">_rate_type</a>==<span class="charliteral">'J'</span>){ 
-<a name="l00137"></a>00137     <span class="keywordtype">double</span> huang_rhys12 = reorg12/<a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a>;
-<a name="l00138"></a>00138     <span class="keywordtype">double</span> huang_rhys21 = reorg21/<a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a>;
-<a name="l00139"></a>00139  
-<a name="l00140"></a>00140     <span class="keywordtype">int</span> nn;
-<a name="l00141"></a>00141     <span class="keywordflow">for</span> (nn = 0; nn&lt;=<a class="code" href="classvotca_1_1ctp_1_1Rates.html#62ceca486a427534c4f3e40260c5d7a3">_nmaxvib</a>; nn++) {
-<a name="l00143"></a>00143     dG = dG_field + dG_en;
-<a name="l00144"></a>00144     rate_12 = rate_12 + prefactor * sqrt(M_PI/(pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>) * <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>)) * Jeff2 * exp(-huang_rhys12) * pow(huang_rhys12,nn) / <a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">Factorial</a>(nn) *
-<a name="l00145"></a>00145             exp (-(dG + nn*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a> + pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>))*(dG + nn*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a> +pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>))/(4*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>*pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>)))/<a class="code" href="namespacevotca_1_1moo.html#250210d2d284a864dda0c994b0908ea2" title="the Bohr radius in [Ang]">hbar_eV</a>;
-<a name="l00147"></a>00147     dG = -dG_field - dG_en;
-<a name="l00148"></a>00148     rate_21 = rate_21 + prefactor * sqrt(M_PI/(pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>) * <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>)) * Jeff2 * exp(-huang_rhys21) * pow(huang_rhys21,nn) / <a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">Factorial</a>(nn) *
-<a name="l00149"></a>00149             exp (-(dG + nn*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a> +pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>))*(dG + nn*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#fe847386d436ddb4772682f8a2559d18">_omegavib</a> +pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>))/(4*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>*pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>)))/<a class="code" href="namespacevotca_1_1moo.html#250210d2d284a864dda0c994b0908ea2" title="the Bohr radius in [Ang]">hbar_eV</a>;
-<a name="l00150"></a>00150     }
-<a name="l00151"></a>00151 }<span class="comment">//end J</span>
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153 <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Rates.html#5c2e8b1c12175da5721bdae19e31c53d">_rate_type</a>==<span class="charliteral">'M'</span>){
-<a name="l00154"></a>00154  <span class="keywordflow">if</span> (pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#3f0b8e36e676513721aecf3b5a143d6b">DoubleExists</a>(<span class="stringliteral">"lambda_outer"</span>)){
-<a name="l00155"></a>00155 reorg12=reorg12+ pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>);
-<a name="l00156"></a>00156 reorg21=reorg21+ pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1CustomFields.html#b55e542bee50492ef15eabfc314a38c5">getDouble</a>(<span class="stringliteral">"lambda_outer"</span>);}
-<a name="l00157"></a>00157 rate_12 = prefactor * sqrt(M_PI/(reorg12 * <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>)) * Jeff2 *
-<a name="l00158"></a>00158             exp (-(dG + reorg12)*(dG + reorg12)/(4*_kT*reorg12))/<a class="code" href="namespacevotca_1_1moo.html#250210d2d284a864dda0c994b0908ea2" title="the Bohr radius in [Ang]">hbar_eV</a>;
-<a name="l00160"></a>00160     dG = -dG_field - dG_en;
-<a name="l00161"></a>00161     rate_21 = prefactor * sqrt(M_PI/(reorg21 * _kT)) * Jeff2 *
-<a name="l00162"></a>00162             exp (-(dG + reorg21)*(dG + reorg21)/(4*_kT*reorg21))/<a class="code" href="namespacevotca_1_1moo.html#250210d2d284a864dda0c994b0908ea2" title="the Bohr radius in [Ang]">hbar_eV</a>;
-<a name="l00163"></a>00163 }<span class="comment">//end M</span>
-<a name="l00164"></a>00164     pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#32832aedb4e5acff4f7fa07fdef33b2c" title="set transfer rate from first to second">setRate12</a>(rate_12);
-<a name="l00165"></a>00165     <span class="comment">//cout&lt;&lt;rate_12;</span>
-<a name="l00166"></a>00166     pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#5bec358b073e08149af10cf006475f88" title="set transfer rate from second to first">setRate21</a>(rate_21);
-<a name="l00167"></a>00167 }
-<a name="l00168"></a>00168 
-<a name="l00169"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">00169</a> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">Rates::Factorial</a>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
-<a name="l00170"></a>00170     <span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a>,<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>;
-<a name="l00171"></a>00171 k=1;
-<a name="l00172"></a>00172 <span class="keywordflow">for</span>(j=1;j&lt;i;j++)
-<a name="l00173"></a>00173   {
-<a name="l00174"></a>00174   k=k*(j+1);
-<a name="l00175"></a>00175   }
-<a name="l00176"></a>00176 <span class="keywordflow">return</span> k;
-<a name="l00177"></a>00177 }
-<a name="l00178"></a>00178 
-<a name="l00179"></a>00179 
-<a name="l00180"></a>00180 <span class="comment">/* polymer rates (adiabatic rates from polypyrrole paper)</span>
-<a name="l00181"></a>00181 <span class="comment"></span>
-<a name="l00182"></a>00182 <span class="comment">void PolymerRates::Initialize(QMTopology *top, Property *options)</span>
-<a name="l00183"></a>00183 <span class="comment">{   </span>
-<a name="l00184"></a>00184 <span class="comment">    // prefactor (something like a nuclear frequency)</span>
-<a name="l00185"></a>00185 <span class="comment">    _nu = options-&gt;get("options.calc_rates.polymer.nu").as&lt;double&gt;();;</span>
-<a name="l00186"></a>00186 <span class="comment">    </span>
-<a name="l00187"></a>00187 <span class="comment">    _J=0;</span>
-<a name="l00188"></a>00188 <span class="comment">    </span>
-<a name="l00189"></a>00189 <span class="comment">    // transfer integrals for J=J_0 * cos(phi)</span>
-<a name="l00190"></a>00190 <span class="comment">    if(options-&gt;exists("options.calc_rates.polymer.J0"))</span>
-<a name="l00191"></a>00191 <span class="comment">        _J = options-&gt;get("options.calc_rates.polymer.J0").as&lt;double&gt;();;</span>
-<a name="l00192"></a>00192 <span class="comment">    </span>
-<a name="l00193"></a>00193 <span class="comment">    // thermal energy in eV</span>
-<a name="l00194"></a>00194 <span class="comment">    _kT = options-&gt;get("options.calc_rates.thermal_energy").as&lt;double&gt;();</span>
-<a name="l00195"></a>00195 <span class="comment">    // electric field vector in V/m</span>
-<a name="l00196"></a>00196 <span class="comment">    _E = options-&gt;get("options.calc_rates.e_field").as&lt;vec&gt;();</span>
-<a name="l00197"></a>00197 <span class="comment">}</span>
-<a name="l00198"></a>00198 <span class="comment"></span>
-<a name="l00199"></a>00199 <span class="comment">bool PolymerRates::EvaluateFrame(QMTopology *top)</span>
-<a name="l00200"></a>00200 <span class="comment">{</span>
-<a name="l00201"></a>00201 <span class="comment">    InteractionContainer::iterator iter;</span>
-<a name="l00202"></a>00202 <span class="comment"></span>
-<a name="l00203"></a>00203 <span class="comment">    // iterator over all molecules</span>
-<a name="l00204"></a>00204 <span class="comment">    for(MoleculeContainer::iterator imol = top-&gt;Molecules().begin();</span>
-<a name="l00205"></a>00205 <span class="comment">          imol!=top-&gt;Molecules().end(); ++imol) {</span>
-<a name="l00206"></a>00206 <span class="comment">        // now go over all connections and check weather they connect two charge units</span>
-<a name="l00207"></a>00207 <span class="comment">        for(int i=0; i&lt;(*imol)-&gt;BeadCount()-1; ++i) { // hack for linear molecules</span>
-<a name="l00208"></a>00208 <span class="comment"></span>
-<a name="l00209"></a>00209 <span class="comment">            QMBead *b1 = dynamic_cast&lt;QMBead*&gt;((*imol)-&gt;getBead(i));</span>
-<a name="l00210"></a>00210 <span class="comment">            QMBead *b2 = dynamic_cast&lt;QMBead*&gt;((*imol)-&gt;getBead(i+1));</span>
-<a name="l00211"></a>00211 <span class="comment"></span>
-<a name="l00212"></a>00212 <span class="comment">            QMCrgUnit *crg1 = b1-&gt;GetCrgUnit();</span>
-<a name="l00213"></a>00213 <span class="comment">            QMCrgUnit *crg2 = b2-&gt;GetCrgUnit();</span>
-<a name="l00214"></a>00214 <span class="comment"></span>
-<a name="l00215"></a>00215 <span class="comment">            // are the two beads on same crg unit or crgunit is null -&gt; ignore</span>
-<a name="l00216"></a>00216 <span class="comment">            if((crg1 == crg2)</span>
-<a name="l00217"></a>00217 <span class="comment">                    || (crg1 == NULL )</span>
-<a name="l00218"></a>00218 <span class="comment">                    || (crg2 == NULL ))</span>
-<a name="l00219"></a>00219 <span class="comment">                continue;</span>
-<a name="l00220"></a>00220 <span class="comment"></span>
-<a name="l00221"></a>00221 <span class="comment">            // swap if ordering is mixed up</span>
-<a name="l00222"></a>00222 <span class="comment">            if(crg1-&gt;getId() &gt; crg2-&gt;getId())</span>
-<a name="l00223"></a>00223 <span class="comment">                swap(crg1,crg2);</span>
-<a name="l00224"></a>00224 <span class="comment"></span>
-<a name="l00225"></a>00225 <span class="comment">            // is there already a pair for these two crgunits</span>
-<a name="l00226"></a>00226 <span class="comment">            QMPair *pair = top-&gt;nblist().FindPair(crg1, crg2);</span>
-<a name="l00227"></a>00227 <span class="comment">            if(!pair) { // if not create one</span>
-<a name="l00228"></a>00228 <span class="comment">                pair = new QMPair(crg1, crg2, top);</span>
-<a name="l00229"></a>00229 <span class="comment">                top-&gt;nblist().AddPair(pair);</span>
-<a name="l00230"></a>00230 <span class="comment">            }</span>
-<a name="l00231"></a>00231 <span class="comment">            </span>
-<a name="l00232"></a>00232 <span class="comment">            // calculate the transfer integral</span>
-<a name="l00233"></a>00233 <span class="comment">            double cos_u= b1-&gt;U() * b2-&gt;U() / (abs(b1-&gt;U())*abs(b2-&gt;U()));</span>
-<a name="l00234"></a>00234 <span class="comment">            double J = _J*cos_u;</span>
-<a name="l00235"></a>00235 <span class="comment"></span>
-<a name="l00236"></a>00236 <span class="comment">            // calculate rates for both directions</span>
-<a name="l00237"></a>00237 <span class="comment">            pair-&gt;setRate12(CalcRate(pair-&gt;first, pair-&gt;second, pair-&gt;r(), J));</span>
-<a name="l00238"></a>00238 <span class="comment">            pair-&gt;setRate21(CalcRate(pair-&gt;second, pair-&gt;first, -pair-&gt;r(), J));</span>
-<a name="l00239"></a>00239 <span class="comment">        }</span>
-<a name="l00240"></a>00240 <span class="comment">    }</span>
-<a name="l00241"></a>00241 <span class="comment">}</span>
-<a name="l00242"></a>00242 <span class="comment"></span>
-<a name="l00243"></a>00243 <span class="comment">// adiabatic rate expression</span>
-<a name="l00244"></a>00244 <span class="comment">double PolymerRates::CalcRate(QMCrgUnit *crg1, QMCrgUnit *crg2, vec dist, double J)</span>
-<a name="l00245"></a>00245 <span class="comment">{    </span>
-<a name="l00246"></a>00246 <span class="comment">    double dE_nofield = crg2-&gt;getTotalEnergy() - crg1-&gt;getTotalEnergy();</span>
-<a name="l00247"></a>00247 <span class="comment">    double reorg = 0.5*(crg1-&gt;getDouble("lambda_intra_discharging") + crg2-&gt;getDouble("lambda_charging")+crg2-&gt;getDouble("lambda_intra_discharging") + crg1-&gt;getDouble("lambda_charging"));</span>
-<a name="l00248"></a>00248 <span class="comment">    </span>
-<a name="l00249"></a>00249 <span class="comment">    double dE =  dE_nofield - unit&lt;nm,m&gt;::to(dist) * _E;</span>
-<a name="l00250"></a>00250 <span class="comment">    double DG_star = ( dE + reorg)*(dE + reorg)/(4*reorg);</span>
-<a name="l00251"></a>00251 <span class="comment"></span>
-<a name="l00252"></a>00252 <span class="comment">    // J lowers the barrier</span>
-<a name="l00253"></a>00253 <span class="comment">    DG_star -= fabs(J);</span>
-<a name="l00254"></a>00254 <span class="comment">    double rate = _nu * exp ( -DG_star  / _kT  ) ;</span>
-<a name="l00255"></a>00255 <span class="comment">}</span>
-<a name="l00256"></a>00256 <span class="comment">*/</span>
-<a name="l00257"></a>00257 }}
-<a name="l00258"></a>00258 
-<a name="l00259"></a>00259 <span class="preprocessor">#endif  </span><span class="comment">/* RATES_H */</span>
-<a name="l00260"></a>00260 
+<a name="l00098"></a>00098     <span class="comment">// Method</span>
+<a name="l00099"></a>00099     <span class="keywordflow">if</span> (options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#d6571e16bf9253f6036b000e15449c79" title="check weather property exists">exists</a>(key+<span class="stringliteral">".method"</span>)) {
+<a name="l00100"></a>00100         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a> = options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(key+<span class="stringliteral">".method"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt; ();
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102     <span class="keywordflow">else</span> {
+<a name="l00103"></a>00103         cout &lt;&lt; endl 
+<a name="l00104"></a>00104              &lt;&lt; <span class="stringliteral">"... ... ERROR: No method to calculate rates specified. "</span>
+<a name="l00105"></a>00105              &lt;&lt; endl;
+<a name="l00106"></a>00106         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Missing input in options file."</span>);
+<a name="l00107"></a>00107     }
+<a name="l00108"></a>00108     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a> != <span class="stringliteral">"marcus"</span> &amp;&amp; <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a> != <span class="stringliteral">"jortner"</span>) {
+<a name="l00109"></a>00109         cout &lt;&lt; endl
+<a name="l00110"></a>00110              &lt;&lt; <span class="stringliteral">"... ... ERROR: Unknown rate type '"</span> &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a> &lt;&lt; <span class="stringliteral">"' "</span>
+<a name="l00111"></a>00111              &lt;&lt; endl;
+<a name="l00112"></a>00112         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Faulty input in options file."</span>);
+<a name="l00113"></a>00113     }
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116     <span class="comment">// Vibrational quanta</span>
+<a name="l00117"></a>00117     <span class="keywordflow">if</span> (options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#d6571e16bf9253f6036b000e15449c79" title="check weather property exists">exists</a>(key+<span class="stringliteral">".nmaxvib"</span>)) {
+<a name="l00118"></a>00118         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8275ef51d7070e6fb9aa2fff1fc0bda5">_nMaxVib</a> = options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(key+<span class="stringliteral">".nmaxvib"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">double</span>&gt; ();
+<a name="l00119"></a>00119     }
+<a name="l00120"></a>00120     <span class="keywordflow">else</span> {
+<a name="l00121"></a>00121         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8275ef51d7070e6fb9aa2fff1fc0bda5">_nMaxVib</a> = 20;
+<a name="l00122"></a>00122         cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">"... ... WARNING: No cut-off number for QM vibrations "</span>
+<a name="l00123"></a>00123                         <span class="stringliteral">"provided, using default 20."</span>;
+<a name="l00124"></a>00124     }
+<a name="l00125"></a>00125     <span class="keywordflow">if</span> (options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#d6571e16bf9253f6036b000e15449c79" title="check weather property exists">exists</a>(key+<span class="stringliteral">".omegavib"</span>)) {
+<a name="l00126"></a>00126         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8396b705907bafd96e08a9d9cf1325e0">_omegaVib</a> = options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(key+<span class="stringliteral">".omegavib"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">double</span>&gt; ();
+<a name="l00127"></a>00127     }
+<a name="l00128"></a>00128     <span class="keywordflow">else</span> {
+<a name="l00129"></a>00129         <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8396b705907bafd96e08a9d9cf1325e0">_omegaVib</a> = 0.2;
+<a name="l00130"></a>00130         cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">"... ... WARNING: No QM vibration frequency provided, "</span>
+<a name="l00131"></a>00131                         <span class="stringliteral">"using default 0.2eV."</span>;
+<a name="l00132"></a>00132     }
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135     <span class="comment">// this-&gt;ParseEnergiesXML(top, options);</span>
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#cf652ccaff16752dffed3037db5e6ab8">00140</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#cf652ccaff16752dffed3037db5e6ab8">Rates::ParseEnergiesXML</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *opt) {
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142     <span class="keywordtype">string</span> key = <span class="stringliteral">"options.rates"</span>;
+<a name="l00143"></a>00143     <span class="keywordtype">string</span> energiesXML = opt-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(key+<span class="stringliteral">".energiesXML"</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt; ();
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145     cout &lt;&lt; endl
+<a name="l00146"></a>00146          &lt;&lt; <span class="stringliteral">"... ... Site, reorg. energies from "</span> &lt;&lt; energiesXML &lt;&lt; <span class="stringliteral">". "</span>
+<a name="l00147"></a>00147          &lt;&lt; flush;
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> alloc;
+<a name="l00150"></a>00150     <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(alloc, energiesXML.c_str());
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152     <span class="comment">/* --- ENERGIES.XML Structure ---</span>
+<a name="l00153"></a>00153 <span class="comment">     *</span>
+<a name="l00154"></a>00154 <span class="comment">     * &lt;topology&gt;</span>
+<a name="l00155"></a>00155 <span class="comment">     *</span>
+<a name="l00156"></a>00156 <span class="comment">     *     &lt;molecules&gt;</span>
+<a name="l00157"></a>00157 <span class="comment">     *          &lt;molecule&gt;</span>
+<a name="l00158"></a>00158 <span class="comment">     *          &lt;name&gt;&lt;/name&gt;</span>
+<a name="l00159"></a>00159 <span class="comment">     *</span>
+<a name="l00160"></a>00160 <span class="comment">     *          &lt;segments&gt;</span>
+<a name="l00161"></a>00161 <span class="comment">     *</span>
+<a name="l00162"></a>00162 <span class="comment">     *              &lt;segment&gt;</span>
+<a name="l00163"></a>00163 <span class="comment">     *              &lt;name&gt;&lt;/name&gt;</span>
+<a name="l00164"></a>00164 <span class="comment">     *</span>
+<a name="l00165"></a>00165 <span class="comment">     *              &lt;!-- U_sG_sG, s-&gt;state, G-&gt;geometry !--&gt;</span>
+<a name="l00166"></a>00166 <span class="comment">     *</span>
+<a name="l00167"></a>00167 <span class="comment">     *              &lt;U_cC_nN_e&gt;&lt;/U_cC_nN_e&gt;</span>
+<a name="l00168"></a>00168 <span class="comment">     *              &lt;U_cC_nN_h&gt;&lt;/U_cC_nN_h&gt;</span>
+<a name="l00169"></a>00169 <span class="comment">     *</span>
+<a name="l00170"></a>00170 <span class="comment">     *              &lt;U_nC_nN_e&gt;&lt;/U_nC_nN_e&gt;</span>
+<a name="l00171"></a>00171 <span class="comment">     *              &lt;U_nC_nN_h&gt;&lt;/U_nC_nN_h&gt;</span>
+<a name="l00172"></a>00172 <span class="comment">     *</span>
+<a name="l00173"></a>00173 <span class="comment">     *              &lt;U_cN_cC_e&gt;&lt;/U_cN_cC_e&gt;</span>
+<a name="l00174"></a>00174 <span class="comment">     *              &lt;U_cN_cC_h&gt;&lt;/U_cN_cC_h&gt;</span>
+<a name="l00175"></a>00175 <span class="comment">     *</span>
+<a name="l00176"></a>00176 <span class="comment">     *              &lt;/segment&gt;</span>
+<a name="l00177"></a>00177 <span class="comment">     *</span>
+<a name="l00178"></a>00178 <span class="comment">     *              &lt;segment&gt;</span>
+<a name="l00179"></a>00179 <span class="comment">     *                  ...</span>
+<a name="l00180"></a>00180 <span class="comment">     *</span>
+<a name="l00181"></a>00181 <span class="comment">     */</span>
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183     key = <span class="stringliteral">"topology.molecules.molecule"</span>;
+<a name="l00184"></a>00184     list&lt;Property*&gt; mols = alloc.<a class="code" href="classvotca_1_1tools_1_1Property.html#d7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(key);
+<a name="l00185"></a>00185     list&lt;Property*&gt; ::iterator molit;
+<a name="l00186"></a>00186     <span class="keywordflow">for</span> (molit = mols.begin(); molit != mols.end(); ++molit) {
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188         key = <span class="stringliteral">"segments.segment"</span>;
+<a name="l00189"></a>00189         list&lt;Property*&gt; segs = (*molit)-&gt;Select(key);
+<a name="l00190"></a>00190         list&lt;Property*&gt; ::iterator segit;
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192         <span class="keywordflow">for</span> (segit = segs.begin(); segit != segs.end(); ++segit) {
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194             <span class="keywordtype">string</span> segName = (*segit)-&gt;get(<span class="stringliteral">"name"</span>).as&lt;<span class="keywordtype">string</span>&gt; ();
+<a name="l00195"></a>00195 
+<a name="l00196"></a>00196             <span class="keywordtype">bool</span> has_e = <span class="keyword">false</span>;
+<a name="l00197"></a>00197             <span class="keywordtype">bool</span> has_h = <span class="keyword">false</span>;
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199             <span class="keywordtype">double</span> U_cC_nN_e = 0.0;
+<a name="l00200"></a>00200             <span class="keywordtype">double</span> U_cC_nN_h = 0.0;
+<a name="l00201"></a>00201             <span class="keywordtype">double</span> U_nC_nN_e = 0.0;
+<a name="l00202"></a>00202             <span class="keywordtype">double</span> U_nC_nN_h = 0.0;
+<a name="l00203"></a>00203             <span class="keywordtype">double</span> U_cN_cC_e = 0.0;
+<a name="l00204"></a>00204             <span class="keywordtype">double</span> U_cN_cC_h = 0.0;
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206             <span class="keywordflow">if</span> ( (*segit)-&gt;exists(<span class="stringliteral">"U_cC_nN_e"</span>) &amp;&amp;
+<a name="l00207"></a>00207                  (*segit)-&gt;exists(<span class="stringliteral">"U_nC_nN_e"</span>) &amp;&amp;
+<a name="l00208"></a>00208                  (*segit)-&gt;exists(<span class="stringliteral">"U_cN_cC_e"</span>)    ) {
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210                 U_cC_nN_e = (*segit)-&gt;get(<span class="stringliteral">"U_cC_nN_e"</span>).as&lt; <span class="keywordtype">double</span> &gt; ();
+<a name="l00211"></a>00211                 U_nC_nN_e = (*segit)-&gt;get(<span class="stringliteral">"U_nC_nN_e"</span>).as&lt; <span class="keywordtype">double</span> &gt; ();
+<a name="l00212"></a>00212                 U_cN_cC_e = (*segit)-&gt;get(<span class="stringliteral">"U_cN_cC_e"</span>).as&lt; <span class="keywordtype">double</span> &gt; ();
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214                 has_e = <span class="keyword">true</span>;
+<a name="l00215"></a>00215             }
+<a name="l00216"></a>00216             
+<a name="l00217"></a>00217             <span class="keywordflow">if</span> ( (*segit)-&gt;exists(<span class="stringliteral">"U_cC_nN_h"</span>) &amp;&amp;
+<a name="l00218"></a>00218                  (*segit)-&gt;exists(<span class="stringliteral">"U_nC_nN_h"</span>) &amp;&amp;
+<a name="l00219"></a>00219                  (*segit)-&gt;exists(<span class="stringliteral">"U_cN_cC_h"</span>)    ) {
+<a name="l00220"></a>00220 
+<a name="l00221"></a>00221                 U_cC_nN_h = (*segit)-&gt;get(<span class="stringliteral">"U_cC_nN_h"</span>).as&lt; <span class="keywordtype">double</span> &gt; ();
+<a name="l00222"></a>00222                 U_nC_nN_h = (*segit)-&gt;get(<span class="stringliteral">"U_nC_nN_h"</span>).as&lt; <span class="keywordtype">double</span> &gt; ();
+<a name="l00223"></a>00223                 U_cN_cC_h = (*segit)-&gt;get(<span class="stringliteral">"U_cN_cC_h"</span>).as&lt; <span class="keywordtype">double</span> &gt; ();
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225                 has_h = <span class="keyword">true</span>;
+<a name="l00226"></a>00226             }
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228             <a class="code" href="classvotca_1_1ctp_1_1Rates.html#471c1cf3647ac89e04a26bac5c6b0a41">_seg_U_cC_nN_e</a>[segName] = U_cC_nN_e;
+<a name="l00229"></a>00229             <a class="code" href="classvotca_1_1ctp_1_1Rates.html#4a8c535bc34b021c017e3824492f3bf8">_seg_U_nC_nN_e</a>[segName] = U_nC_nN_e;
+<a name="l00230"></a>00230             <a class="code" href="classvotca_1_1ctp_1_1Rates.html#862f1fdadc5ac5b0f6e534b0789ddd1b">_seg_U_cN_cC_e</a>[segName] = U_cN_cC_e;
+<a name="l00231"></a>00231             <a class="code" href="classvotca_1_1ctp_1_1Rates.html#75c17ba46a2c36010289349fcdb3f0ae">_seg_has_e</a>[segName] = has_e;
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233             <a class="code" href="classvotca_1_1ctp_1_1Rates.html#a02cdfaf03be3e46e681a760225e9cbe">_seg_U_cC_nN_h</a>[segName] = U_cC_nN_h;
+<a name="l00234"></a>00234             <a class="code" href="classvotca_1_1ctp_1_1Rates.html#b48f54440f412ff69fe7ce7600687f90">_seg_U_nC_nN_h</a>[segName] = U_nC_nN_h;
+<a name="l00235"></a>00235             <a class="code" href="classvotca_1_1ctp_1_1Rates.html#db3fc017ccbedae78bd4d69107edbef3">_seg_U_cN_cC_h</a>[segName] = U_cN_cC_h;
+<a name="l00236"></a>00236             <a class="code" href="classvotca_1_1ctp_1_1Rates.html#c45f673a757a87562674d45d8d1ed7d8">_seg_has_h</a>[segName] = has_h;
+<a name="l00237"></a>00237         }
+<a name="l00238"></a>00238     }
+<a name="l00239"></a>00239 }
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 
+<a name="l00242"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#47363a3361e2095a06c1f8b3915f0dcd">00242</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#47363a3361e2095a06c1f8b3915f0dcd">Rates::EvaluatePair</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *qmpair) {
+<a name="l00243"></a>00243 
+<a name="l00244"></a>00244     cout &lt;&lt; <span class="stringliteral">"\r... ... Evaluating pair "</span> &lt;&lt; qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#24b39a974865abbf243b3a86a86601a2">getId</a>()+1 &lt;&lt; <span class="stringliteral">". "</span> &lt;&lt; flush;
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246     <span class="keywordtype">bool</span> pair_has_e = <span class="keyword">false</span>;
+<a name="l00247"></a>00247     <span class="keywordtype">bool</span> pair_has_h = <span class="keyword">false</span>;
+<a name="l00248"></a>00248 
+<a name="l00249"></a>00249     <span class="keywordtype">string</span> segName1 = qmpair-&gt;first-&gt;getName();
+<a name="l00250"></a>00250     <span class="keywordtype">string</span> segName2 = qmpair-&gt;second-&gt;getName();
+<a name="l00251"></a>00251 
+<a name="l00252"></a>00252     pair_has_e = qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#44f91ebeba8a6cd996c3c063b09270bc">isPathCarrier</a>(-1);
+<a name="l00253"></a>00253     pair_has_h = qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#44f91ebeba8a6cd996c3c063b09270bc">isPathCarrier</a>(+1);
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255 <span class="comment">//    try {</span>
+<a name="l00256"></a>00256 <span class="comment">//        pair_has_e = _seg_has_e.at(segName1) &amp;&amp; _seg_has_e.at(segName2);</span>
+<a name="l00257"></a>00257 <span class="comment">//        pair_has_h = _seg_has_h.at(segName1) &amp;&amp; _seg_has_h.at(segName2);</span>
+<a name="l00258"></a>00258 <span class="comment">//    }</span>
+<a name="l00259"></a>00259 <span class="comment">//    catch (out_of_range) {</span>
+<a name="l00260"></a>00260 <span class="comment">//        cout &lt;&lt; endl &lt;&lt; "... ... WARNING: No energy information for pair ["</span>
+<a name="l00261"></a>00261 <span class="comment">//                     &lt;&lt; segName1 &lt;&lt; ", " &lt;&lt; segName2 &lt;&lt; "]. "</span>
+<a name="l00262"></a>00262 <span class="comment">//                     &lt;&lt; "Skipping... " &lt;&lt; endl;</span>
+<a name="l00263"></a>00263 <span class="comment">//</span>
+<a name="l00264"></a>00264 <span class="comment">//        return;</span>
+<a name="l00265"></a>00265 <span class="comment">//    }</span>
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267     <span class="keywordflow">if</span> (pair_has_e) {
+<a name="l00268"></a>00268         this-&gt;<a class="code" href="classvotca_1_1ctp_1_1Rates.html#06dd1694679652e1b43760c92baffd34">CalculateRate</a>(top, qmpair, -1);
+<a name="l00269"></a>00269     }
+<a name="l00270"></a>00270     <span class="keywordflow">if</span> (pair_has_h) {
+<a name="l00271"></a>00271         this-&gt;<a class="code" href="classvotca_1_1ctp_1_1Rates.html#06dd1694679652e1b43760c92baffd34">CalculateRate</a>(top, qmpair, +1);
+<a name="l00272"></a>00272     }
+<a name="l00273"></a>00273 }
+<a name="l00274"></a>00274 
+<a name="l00275"></a>00275 
+<a name="l00276"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#06dd1694679652e1b43760c92baffd34">00276</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#06dd1694679652e1b43760c92baffd34">Rates::CalculateRate</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *qmpair, <span class="keywordtype">int</span> state) {
+<a name="l00277"></a>00277 
+<a name="l00278"></a>00278     <span class="keyword">const</span> <span class="keywordtype">double</span> NM2M    = 1.e-9;
+<a name="l00279"></a>00279     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1moo.html#250210d2d284a864dda0c994b0908ea2" title="the Bohr radius in [Ang]">hbar_eV</a> = 6.58211899e-16;
+<a name="l00280"></a>00280 
+<a name="l00281"></a>00281     <a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a> *seg1 = qmpair-&gt;first;
+<a name="l00282"></a>00282     <a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a> *seg2 = qmpair-&gt;second;
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284     <span class="keywordtype">double</span> rate12 = 0.;                                       <span class="comment">// 1-&gt;2</span>
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286     <span class="keywordtype">double</span> rate21 = 0.;                                       <span class="comment">// 2-&gt;1</span>
+<a name="l00287"></a>00287 
+<a name="l00288"></a>00288     <span class="keywordtype">double</span> reorg12  = seg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#355ad964747c626c063be0f7c42b90cf">getU_nC_nN</a>(state)                 <span class="comment">// 1-&gt;2</span>
+<a name="l00289"></a>00289                     + seg2-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#66b2142b406f1a1b7d3aaf352b43fdf9">getU_cN_cC</a>(state);
+<a name="l00290"></a>00290     <span class="keywordtype">double</span> reorg21  = seg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#66b2142b406f1a1b7d3aaf352b43fdf9">getU_cN_cC</a>(state)                 <span class="comment">// 2-&gt;1</span>
+<a name="l00291"></a>00291                     + seg2-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#355ad964747c626c063be0f7c42b90cf">getU_nC_nN</a>(state);
+<a name="l00292"></a>00292     <span class="keywordtype">double</span> lOut     = qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#279f7a533caa9b1cafbbfc909e7de695">getLambdaO</a>(state);              <span class="comment">// 1-&gt;2 == + 2-&gt;1</span>
+<a name="l00293"></a>00293 
+<a name="l00294"></a>00294     <span class="keywordtype">double</span> dG_Site  = seg2-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#2859c5f89f39acb6ad1bfcb4ec364deb">getU_cC_nN</a>(state)                 <span class="comment">// 1-&gt;2 == - 2-&gt;1</span>
+<a name="l00295"></a>00295                     + seg2-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#0be7697377c5865992140c775aa3693d">getEMpoles</a>(state)
+<a name="l00296"></a>00296                     - seg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#2859c5f89f39acb6ad1bfcb4ec364deb">getU_cC_nN</a>(state)
+<a name="l00297"></a>00297                     - seg1-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#0be7697377c5865992140c775aa3693d">getEMpoles</a>(state);
+<a name="l00298"></a>00298     <span class="keywordtype">double</span> dG_Field = - state * <a class="code" href="classvotca_1_1ctp_1_1Rates.html#42902507dbaf81d273ee93e4a47c24a1">_F</a> * qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#1e140e8d091f6b243978e93de7651071">R</a>() * NM2M;      <span class="comment">// 1-&gt;2 == - 2-&gt;1</span>
+<a name="l00299"></a>00299 
+<a name="l00300"></a>00300     <span class="keywordtype">double</span> J2 = qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#6f71c419dba4517745a6a1701ad1a533">getJeff2</a>(state);                      <span class="comment">// 1-&gt;2 == + 2-&gt;1</span>
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302     <span class="comment">/*</span>
+<a name="l00303"></a>00303 <span class="comment">    if (state == -1) {</span>
+<a name="l00304"></a>00304 <span class="comment"></span>
+<a name="l00305"></a>00305 <span class="comment">        // Charge hops Seg1 -&gt; Seg2</span>
+<a name="l00306"></a>00306 <span class="comment">        reorg12 = _seg_U_nC_nN_e[seg1-&gt;getName()]</span>
+<a name="l00307"></a>00307 <span class="comment">                + _seg_U_cN_cC_e[seg2-&gt;getName()];</span>
+<a name="l00308"></a>00308 <span class="comment"></span>
+<a name="l00309"></a>00309 <span class="comment">        // Charge hops Seg2 -&gt; Seg1</span>
+<a name="l00310"></a>00310 <span class="comment">        reorg21 = _seg_U_nC_nN_e[seg2-&gt;getName()]</span>
+<a name="l00311"></a>00311 <span class="comment">                + _seg_U_cN_cC_e[seg1-&gt;getName()];</span>
+<a name="l00312"></a>00312 <span class="comment"></span>
+<a name="l00313"></a>00313 <span class="comment">        // dG Seg1 -&gt; Seg2</span>
+<a name="l00314"></a>00314 <span class="comment">        dG_Site = _seg_U_cC_nN_e[seg2-&gt;getName()] + seg2-&gt;getEMpoles(state)</span>
+<a name="l00315"></a>00315 <span class="comment">                - _seg_U_cC_nN_e[seg1-&gt;getName()] - seg1-&gt;getEMpoles(state);</span>
+<a name="l00316"></a>00316 <span class="comment">    }</span>
+<a name="l00317"></a>00317 <span class="comment"></span>
+<a name="l00318"></a>00318 <span class="comment">    else if (state == +1) {</span>
+<a name="l00319"></a>00319 <span class="comment"></span>
+<a name="l00320"></a>00320 <span class="comment">        // Charge hops Seg1 -&gt; Seg2</span>
+<a name="l00321"></a>00321 <span class="comment">        reorg12 = _seg_U_nC_nN_h[seg1-&gt;getName()]</span>
+<a name="l00322"></a>00322 <span class="comment">                + _seg_U_cN_cC_h[seg2-&gt;getName()];</span>
+<a name="l00323"></a>00323 <span class="comment"></span>
+<a name="l00324"></a>00324 <span class="comment">        // Charge hops Seg2 -&gt; Seg1</span>
+<a name="l00325"></a>00325 <span class="comment">        reorg21 = _seg_U_nC_nN_h[seg2-&gt;getName()]</span>
+<a name="l00326"></a>00326 <span class="comment">                + _seg_U_cN_cC_h[seg1-&gt;getName()];</span>
+<a name="l00327"></a>00327 <span class="comment"></span>
+<a name="l00328"></a>00328 <span class="comment">        // dG Seg1 -&gt; Seg2</span>
+<a name="l00329"></a>00329 <span class="comment">        dG_Site = _seg_U_cC_nN_h[seg2-&gt;getName()] + seg2-&gt;getEMpoles(state)</span>
+<a name="l00330"></a>00330 <span class="comment">                - _seg_U_cC_nN_h[seg1-&gt;getName()] - seg1-&gt;getEMpoles(state);</span>
+<a name="l00331"></a>00331 <span class="comment">    }</span>
+<a name="l00332"></a>00332 <span class="comment">    */</span>
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334     <span class="keywordtype">double</span> dG = dG_Field + dG_Site;
+<a name="l00335"></a>00335 
+<a name="l00336"></a>00336     <span class="comment">// +++++++++++++ //</span>
+<a name="l00337"></a>00337     <span class="comment">// JORTNER RATES //</span>
+<a name="l00338"></a>00338     <span class="comment">// +++++++++++++ //</span>
+<a name="l00339"></a>00339 
+<a name="l00340"></a>00340     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a> == <span class="stringliteral">"jortner"</span> &amp;&amp; lOut &lt; 0.) {
+<a name="l00341"></a>00341         cout &lt;&lt; endl
+<a name="l00342"></a>00342              &lt;&lt; <span class="stringliteral">"... ... ERROR: Pair "</span> &lt;&lt; qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#24b39a974865abbf243b3a86a86601a2">getId</a>() &lt;&lt; <span class="stringliteral">" has negative "</span>
+<a name="l00343"></a>00343                 <span class="stringliteral">"outer-sphere reorganization energy. Cannot calculate Jortner "</span>
+<a name="l00344"></a>00344                 <span class="stringliteral">"rates. "</span>
+<a name="l00345"></a>00345              &lt;&lt; endl;
+<a name="l00346"></a>00346         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">""</span>);
+<a name="l00347"></a>00347     }
+<a name="l00348"></a>00348     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a> == <span class="stringliteral">"jortner"</span> &amp;&amp; lOut &lt; 0.01) {
+<a name="l00349"></a>00349         cout &lt;&lt; endl
+<a name="l00350"></a>00350              &lt;&lt; <span class="stringliteral">"... ... WARNING: Pair "</span> &lt;&lt; qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#24b39a974865abbf243b3a86a86601a2">getId</a>() &lt;&lt; <span class="stringliteral">" has small "</span>
+<a name="l00351"></a>00351                 <span class="stringliteral">"outer-sphere reorganization energy ("</span> &lt;&lt; lOut &lt;&lt; <span class="stringliteral">"eV). Could "</span>
+<a name="l00352"></a>00352                 <span class="stringliteral">"lead to over-estimated Jortner rates."</span>
+<a name="l00353"></a>00353              &lt;&lt; endl;
+<a name="l00354"></a>00354     }
+<a name="l00355"></a>00355 
+<a name="l00356"></a>00356     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a> == <span class="stringliteral">"jortner"</span>) {
+<a name="l00357"></a>00357 
+<a name="l00358"></a>00358         <span class="keywordtype">double</span> huang_rhys12 = reorg12 / <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8396b705907bafd96e08a9d9cf1325e0">_omegaVib</a>;
+<a name="l00359"></a>00359         <span class="keywordtype">double</span> huang_rhys21 = reorg21 / <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8396b705907bafd96e08a9d9cf1325e0">_omegaVib</a>;
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361         <span class="keywordtype">int</span> nvib;
+<a name="l00362"></a>00362         <span class="keywordflow">for</span> (nvib = 0; nvib &lt;= <a class="code" href="classvotca_1_1ctp_1_1Rates.html#8275ef51d7070e6fb9aa2fff1fc0bda5">_nMaxVib</a>; nvib++) {
+<a name="l00363"></a>00363 
+<a name="l00364"></a>00364             <span class="comment">// Hopping from Seg1 -&gt; Seg2</span>
+<a name="l00365"></a>00365             rate12 += 1 / hbar_eV * sqrt( M_PI / (lOut*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>) )
+<a name="l00366"></a>00366                     * J2 * exp(-huang_rhys12) * pow(huang_rhys12, nvib) /
+<a name="l00367"></a>00367                            <a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">Factorial</a>(nvib)
+<a name="l00368"></a>00368                     * exp( -pow( (dG + nvib*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#8396b705907bafd96e08a9d9cf1325e0">_omegaVib</a> + lOut) , 2 ) /
+<a name="l00369"></a>00369                            (4*_kT*lOut) );
+<a name="l00370"></a>00370 
+<a name="l00371"></a>00371             <span class="comment">// Hopping from Seg2 -&gt; Seg1</span>
+<a name="l00372"></a>00372             rate21 += 1 / hbar_eV * sqrt( M_PI / (lOut*_kT) )
+<a name="l00373"></a>00373                     * J2 * exp(-huang_rhys21) * pow(huang_rhys21, nvib) /
+<a name="l00374"></a>00374                            <a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">Factorial</a>(nvib)
+<a name="l00375"></a>00375                     * exp( -pow( (-dG + nvib*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#8396b705907bafd96e08a9d9cf1325e0">_omegaVib</a> + lOut) , 2 ) /
+<a name="l00376"></a>00376                            (4*_kT*lOut) );
+<a name="l00377"></a>00377         }
+<a name="l00378"></a>00378     }
+<a name="l00379"></a>00379 
+<a name="l00380"></a>00380     <span class="comment">// ++++++++++++ //</span>
+<a name="l00381"></a>00381     <span class="comment">// MARCUS RATES //</span>
+<a name="l00382"></a>00382     <span class="comment">// ++++++++++++ //</span>
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ddfbbf92ac96e2aad5ce81aed52b9223">_rateType</a> == <span class="stringliteral">"marcus"</span>) {
+<a name="l00385"></a>00385 
+<a name="l00386"></a>00386         reorg12 = reorg12 + lOut;
+<a name="l00387"></a>00387         reorg21 = reorg21 + lOut;
+<a name="l00388"></a>00388 
+<a name="l00389"></a>00389         rate12 = J2 / hbar_eV * sqrt( M_PI / (reorg12*<a class="code" href="classvotca_1_1ctp_1_1Rates.html#ed2c449102bb309d764519c3ce1ff5c1">_kT</a>) )
+<a name="l00390"></a>00390                 * exp( - (+dG - reorg12)*(+dG - reorg12) / (4*_kT*reorg12) );
+<a name="l00391"></a>00391 
+<a name="l00392"></a>00392         rate21 = J2 / hbar_eV * sqrt( M_PI / (reorg21*_kT) )
+<a name="l00393"></a>00393                 * exp( - (-dG - reorg21)*(-dG - reorg21) / (4*_kT*reorg21) );
+<a name="l00394"></a>00394     }
+<a name="l00395"></a>00395 
+<a name="l00396"></a>00396     qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#f1e357f8db045bb1eecee3981cf218a5">setRate12</a>(rate12, state);
+<a name="l00397"></a>00397     qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#f4a50728a8c2823b186f485b3fa6fc7c">setRate21</a>(rate21, state);
+<a name="l00398"></a>00398     qmpair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#564ccb7cd501d9cdb93ed7961356c260">setIsPathCarrier</a>(<span class="keyword">true</span>, state);
+<a name="l00399"></a>00399 
+<a name="l00400"></a>00400 }
+<a name="l00401"></a>00401 
+<a name="l00402"></a><a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">00402</a> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1Rates.html#e38449e6ed236e002a6c7c332d96b091">Rates::Factorial</a>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) {
+<a name="l00403"></a>00403     <span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a>,<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>;
+<a name="l00404"></a>00404     k = 1;
+<a name="l00405"></a>00405     <span class="keywordflow">for</span> (j=1; j&lt;i; j++) { k = k*(j+1); }
+<a name="l00406"></a>00406     <span class="keywordflow">return</span> k;
+<a name="l00407"></a>00407 }
+<a name="l00408"></a>00408 
+<a name="l00409"></a>00409 }}
+<a name="l00410"></a>00410 
+<a name="l00411"></a>00411 
+<a name="l00412"></a>00412 
+<a name="l00413"></a>00413 
+<a name="l00414"></a>00414 
+<a name="l00415"></a>00415 
+<a name="l00416"></a>00416 
+<a name="l00417"></a>00417 
+<a name="l00418"></a>00418 
+<a name="l00419"></a>00419 
+<a name="l00420"></a>00420 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
