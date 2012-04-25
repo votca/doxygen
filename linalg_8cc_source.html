@@ -44,172 +44,207 @@
 <a name="l00021"></a>00021 
 <a name="l00022"></a>00022 <span class="preprocessor">#ifndef NOGSL</span>
 <a name="l00023"></a>00023 <span class="preprocessor"></span><span class="preprocessor">#include &lt;gsl/gsl_linalg.h&gt;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#endif</span>
-<a name="l00025"></a>00025 <span class="preprocessor"></span>
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">using namespace </span>std;
-<a name="l00030"></a>00030 
-<a name="l00031"></a><a class="code" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb">00031</a> <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb" title="solves A*x=b">linalg_qrsolve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::vector&lt;double&gt; *residual)
-<a name="l00032"></a>00032 {
-<a name="l00033"></a>00033 <span class="preprocessor">#ifdef NOGSL</span>
-<a name="l00034"></a>00034 <span class="preprocessor"></span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"linalg_qrsolve is not compiled-in due to disabling of GSL - recompile Votca Tools with GSL support"</span>);
-<a name="l00035"></a>00035 <span class="preprocessor">#else</span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span>    <span class="comment">// check matrix for zero column</span>
-<a name="l00037"></a>00037     <span class="keywordtype">int</span> nonzero_found = 0;
-<a name="l00038"></a>00038     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>=0; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>&lt;A.size2(); <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++) {
-<a name="l00039"></a>00039         nonzero_found = 0;
-<a name="l00040"></a>00040         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;A.size1(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00041"></a>00041             <span class="keywordflow">if</span>(fabs(<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>,<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>))&gt;0) {
-<a name="l00042"></a>00042                 nonzero_found = 1;
-<a name="l00043"></a>00043             }
-<a name="l00044"></a>00044         }
-<a name="l00045"></a>00045         <span class="keywordflow">if</span>(nonzero_found==0) {
-<a name="l00046"></a>00046             <span class="keywordflow">throw</span> <span class="stringliteral">"qrsolve_zero_column_in_matrix"</span>;
-<a name="l00047"></a>00047         }
-<a name="l00048"></a>00048     }
+<a name="l00024"></a>00024 <span class="preprocessor">#include&lt;gsl/gsl_errno.h&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#endif</span>
+<a name="l00026"></a>00026 <span class="preprocessor"></span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">using namespace </span>std;
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="namespacevotca_1_1tools.html#14f72691244ea2c3878bba45436da4c3">00032</a> <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#14f72691244ea2c3878bba45436da4c3" title="solves A*x=b">linalg_cholesky_solve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>){
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="preprocessor">#ifdef NOGSL</span>
+<a name="l00035"></a>00035 <span class="preprocessor"></span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"linalg_cholesky_solve is not compiled-in due to disabling of GSL - recompile Votca Tools with GSL support"</span>);
+<a name="l00036"></a>00036 <span class="preprocessor">#else</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span>    <span class="comment">/* calling program should catch the error error code GSL_EDOM</span>
+<a name="l00038"></a>00038 <span class="comment">     * thrown by gsl_linalg_cholesky_decomp and take</span>
+<a name="l00039"></a>00039 <span class="comment">     * necessary steps</span>
+<a name="l00040"></a>00040 <span class="comment">     */</span>
+<a name="l00041"></a>00041     
+<a name="l00042"></a>00042     gsl_matrix_view <a class="code" href="namespacevotca_1_1moo.html#6a44f6663e516c56327f0baf6560f39d522b856dcae786b6fd48bd5e2d802f5f">m</a>
+<a name="l00043"></a>00043         = gsl_matrix_view_array (&amp;<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(0,0), A.size1(), A.size2());
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045     gsl_vector_view gb
+<a name="l00046"></a>00046         = gsl_vector_view_array (&amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>(0), b.size());
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048     gsl_vector *gsl_x = gsl_vector_alloc (x.size());
 <a name="l00049"></a>00049 
-<a name="l00050"></a>00050     gsl_matrix_view <a class="code" href="namespacevotca_1_1moo.html#6a44f6663e516c56327f0baf6560f39d522b856dcae786b6fd48bd5e2d802f5f">m</a>
-<a name="l00051"></a>00051         = gsl_matrix_view_array (&amp;<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(0,0), A.size1(), A.size2());
+<a name="l00050"></a>00050     gsl_set_error_handler_off();
+<a name="l00051"></a>00051     <span class="keywordtype">int</span> status = gsl_linalg_cholesky_decomp(&amp;m.matrix);
 <a name="l00052"></a>00052 
-<a name="l00053"></a>00053     gsl_vector_view gb
-<a name="l00054"></a>00054         = gsl_vector_view_array (&amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>(0), b.size());
+<a name="l00053"></a>00053     <span class="keywordflow">if</span>( status == GSL_EDOM)
+<a name="l00054"></a>00054         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Matrix not symmetric positive definite"</span>);
 <a name="l00055"></a>00055 
-<a name="l00056"></a>00056     gsl_vector *gsl_x = gsl_vector_alloc (x.size());
-<a name="l00057"></a>00057     gsl_vector *tau = gsl_vector_alloc (x.size());
-<a name="l00058"></a>00058     gsl_vector *gsl_residual = gsl_vector_alloc (b.size());
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060     gsl_linalg_QR_decomp (&amp;m.matrix, tau);
+<a name="l00056"></a>00056     
+<a name="l00057"></a>00057     gsl_linalg_cholesky_solve(&amp;m.matrix, &amp;gb.vector, gsl_x);
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> =0 ; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; x.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00060"></a>00060         <a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = gsl_vector_get(gsl_x, <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062     gsl_linalg_QR_lssolve (&amp;m.matrix, tau, &amp;gb.vector, gsl_x, gsl_residual);
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> =0 ; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; x.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
-<a name="l00065"></a>00065         <a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = gsl_vector_get(gsl_x, <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067     <span class="keywordflow">if</span>(residual)
-<a name="l00068"></a>00068         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> =0 ; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; residual-&gt;size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
-<a name="l00069"></a>00069             (*residual)(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = gsl_vector_get(gsl_residual, <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071     gsl_vector_free (gsl_x);
-<a name="l00072"></a>00072     gsl_vector_free (tau);
-<a name="l00073"></a>00073     gsl_vector_free (gsl_residual);
-<a name="l00074"></a>00074 <span class="preprocessor">#endif</span>
-<a name="l00075"></a>00075 <span class="preprocessor"></span>}
-<a name="l00076"></a>00076 
-<a name="l00077"></a><a class="code" href="namespacevotca_1_1tools.html#7b789991041c9a0aec760ffd20c599b8">00077</a> <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#7b789991041c9a0aec760ffd20c599b8" title="solves A*x=b under the constraint B*x = 0">linalg_constrained_qrsolve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::matrix&lt;double&gt; &amp;constr)
-<a name="l00078"></a>00078 {
-<a name="l00079"></a>00079 <span class="preprocessor">#ifdef NOGSL</span>
-<a name="l00080"></a>00080 <span class="preprocessor"></span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"linalg_constrained_qrsolve is not compiled-in due to disabling of GSL - recompile Votca Tools with GSL support"</span>);
-<a name="l00081"></a>00081 <span class="preprocessor">#else</span>
-<a name="l00082"></a>00082 <span class="preprocessor"></span>    <span class="comment">// check matrix for zero column</span>
-<a name="l00083"></a>00083     <span class="keywordtype">int</span> nonzero_found = 0;
-<a name="l00084"></a>00084     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>=0; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>&lt;A.size2(); <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++) {
-<a name="l00085"></a>00085         nonzero_found = 0;
-<a name="l00086"></a>00086         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;A.size1(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00087"></a>00087             <span class="keywordflow">if</span>(fabs(<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>,<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>))&gt;0) {
-<a name="l00088"></a>00088                 nonzero_found = 1;
-<a name="l00089"></a>00089             }
-<a name="l00090"></a>00090         }
-<a name="l00091"></a>00091         <span class="keywordflow">if</span>(nonzero_found==0) {
-<a name="l00092"></a>00092             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"constrained_qrsolve_zero_column_in_matrix"</span>);
-<a name="l00093"></a>00093         }
-<a name="l00094"></a>00094     }
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096     <span class="comment">// Transpose constr:</span>
-<a name="l00097"></a>00097     constr = trans(constr);
+<a name="l00062"></a>00062     gsl_vector_free (gsl_x);
+<a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
+<a name="l00064"></a>00064 <span class="preprocessor"></span>}
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb">00066</a> <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb" title="solves A*x=b">linalg_qrsolve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::vector&lt;double&gt; *residual)
+<a name="l00067"></a>00067 {
+<a name="l00068"></a>00068 <span class="preprocessor">#ifdef NOGSL</span>
+<a name="l00069"></a>00069 <span class="preprocessor"></span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"linalg_qrsolve is not compiled-in due to disabling of GSL - recompile Votca Tools with GSL support"</span>);
+<a name="l00070"></a>00070 <span class="preprocessor">#else</span>
+<a name="l00071"></a>00071 <span class="preprocessor"></span>    <span class="comment">// check matrix for zero column</span>
+<a name="l00072"></a>00072     <span class="keywordtype">int</span> nonzero_found = 0;
+<a name="l00073"></a>00073     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>=0; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>&lt;A.size2(); <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++) {
+<a name="l00074"></a>00074         nonzero_found = 0;
+<a name="l00075"></a>00075         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;A.size1(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00076"></a>00076             <span class="keywordflow">if</span>(fabs(<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>,<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>))&gt;0) {
+<a name="l00077"></a>00077                 nonzero_found = 1;
+<a name="l00078"></a>00078             }
+<a name="l00079"></a>00079         }
+<a name="l00080"></a>00080         <span class="keywordflow">if</span>(nonzero_found==0) {
+<a name="l00081"></a>00081             <span class="keywordflow">throw</span> <span class="stringliteral">"qrsolve_zero_column_in_matrix"</span>;
+<a name="l00082"></a>00082         }
+<a name="l00083"></a>00083     }
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085     gsl_matrix_view <a class="code" href="namespacevotca_1_1moo.html#6a44f6663e516c56327f0baf6560f39d522b856dcae786b6fd48bd5e2d802f5f">m</a>
+<a name="l00086"></a>00086         = gsl_matrix_view_array (&amp;<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(0,0), A.size1(), A.size2());
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088     gsl_vector_view gb
+<a name="l00089"></a>00089         = gsl_vector_view_array (&amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>(0), b.size());
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091     gsl_vector *gsl_x = gsl_vector_alloc (x.size());
+<a name="l00092"></a>00092     gsl_vector *tau = gsl_vector_alloc (x.size());
+<a name="l00093"></a>00093     gsl_vector *gsl_residual = gsl_vector_alloc (b.size());
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095     gsl_linalg_QR_decomp (&amp;m.matrix, tau);
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097     gsl_linalg_QR_lssolve (&amp;m.matrix, tau, &amp;gb.vector, gsl_x, gsl_residual);
 <a name="l00098"></a>00098 
-<a name="l00099"></a>00099     <span class="keyword">const</span> <span class="keywordtype">int</span> N = b.size();
-<a name="l00100"></a>00100     <span class="keyword">const</span> <span class="keywordtype">int</span> ngrid = x.size()/2;
+<a name="l00099"></a>00099     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> =0 ; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; x.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00100"></a>00100         <a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = gsl_vector_get(gsl_x, <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
 <a name="l00101"></a>00101 
-<a name="l00102"></a>00102     <span class="comment">// temporary variables</span>
-<a name="l00103"></a>00103     ub::matrix&lt;double&gt; Q(2*ngrid, 2*ngrid);       <span class="comment">// Q matrix: QR decomposition of trans(B)</span>
-<a name="l00104"></a>00104     ub::matrix&lt;double&gt; Q_k(2*ngrid, 2*ngrid);
-<a name="l00105"></a>00105     ub::identity_matrix&lt;double&gt; I (2*ngrid);
-<a name="l00106"></a>00106     ub::vector&lt;double&gt; v(2*ngrid);
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108     Q = ub::zero_matrix&lt;double&gt;(2*ngrid, 2*ngrid);
-<a name="l00109"></a>00109     Q_k = ub::zero_matrix&lt;double&gt;(2*ngrid, 2*ngrid);
-<a name="l00110"></a>00110     v = ub::zero_vector&lt;double&gt;(2*ngrid);
+<a name="l00102"></a>00102     <span class="keywordflow">if</span>(residual)
+<a name="l00103"></a>00103         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> =0 ; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; residual-&gt;size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++)
+<a name="l00104"></a>00104             (*residual)(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = gsl_vector_get(gsl_residual, <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106     gsl_vector_free (gsl_x);
+<a name="l00107"></a>00107     gsl_vector_free (tau);
+<a name="l00108"></a>00108     gsl_vector_free (gsl_residual);
+<a name="l00109"></a>00109 <span class="preprocessor">#endif</span>
+<a name="l00110"></a>00110 <span class="preprocessor"></span>}
 <a name="l00111"></a>00111 
-<a name="l00112"></a>00112     <span class="keywordtype">double</span> *tmp = &amp; constr(0,0);
-<a name="l00113"></a>00113     gsl_matrix_view gsl_constr
-<a name="l00114"></a>00114       = gsl_matrix_view_array (tmp, constr.size1(), constr.size2());
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116     tmp = &amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>(0);
-<a name="l00117"></a>00117     gsl_vector_view gsl_b
-<a name="l00118"></a>00118          = gsl_vector_view_array (tmp, b.size());
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121     gsl_vector *tau_qr = gsl_vector_alloc (ngrid);
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123     gsl_linalg_QR_decomp (&amp;gsl_constr.matrix, tau_qr);
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125     Q = I;
-<a name="l00126"></a>00126 
-<a name="l00127"></a>00127     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a> = ngrid; <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a> &gt; 0 ; <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a>--) {
-<a name="l00128"></a>00128 
-<a name="l00129"></a>00129         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> icout = 0; icout &lt; <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a> - 1; icout++) {
-<a name="l00130"></a>00130              v(icout) = 0;
-<a name="l00131"></a>00131         }
-<a name="l00132"></a>00132         v(k - 1) = 1.0;
+<a name="l00112"></a><a class="code" href="namespacevotca_1_1tools.html#7b789991041c9a0aec760ffd20c599b8">00112</a> <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#7b789991041c9a0aec760ffd20c599b8" title="solves A*x=b under the constraint B*x = 0">linalg_constrained_qrsolve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::matrix&lt;double&gt; &amp;constr)
+<a name="l00113"></a>00113 {
+<a name="l00114"></a>00114 <span class="preprocessor">#ifdef NOGSL</span>
+<a name="l00115"></a>00115 <span class="preprocessor"></span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"linalg_constrained_qrsolve is not compiled-in due to disabling of GSL - recompile Votca Tools with GSL support"</span>);
+<a name="l00116"></a>00116 <span class="preprocessor">#else</span>
+<a name="l00117"></a>00117 <span class="preprocessor"></span>    <span class="comment">// check matrix for zero column</span>
+<a name="l00118"></a>00118     <span class="keywordtype">int</span> nonzero_found = 0;
+<a name="l00119"></a>00119     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>=0; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>&lt;A.size2(); <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++) {
+<a name="l00120"></a>00120         nonzero_found = 0;
+<a name="l00121"></a>00121         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;A.size1(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00122"></a>00122             <span class="keywordflow">if</span>(fabs(<a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>,<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>))&gt;0) {
+<a name="l00123"></a>00123                 nonzero_found = 1;
+<a name="l00124"></a>00124             }
+<a name="l00125"></a>00125         }
+<a name="l00126"></a>00126         <span class="keywordflow">if</span>(nonzero_found==0) {
+<a name="l00127"></a>00127             <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"constrained_qrsolve_zero_column_in_matrix"</span>);
+<a name="l00128"></a>00128         }
+<a name="l00129"></a>00129     }
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131     <span class="comment">// Transpose constr:</span>
+<a name="l00132"></a>00132     constr = trans(constr);
 <a name="l00133"></a>00133 
-<a name="l00134"></a>00134         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> icout = k; icout &lt; 2*ngrid; icout++) {
-<a name="l00135"></a>00135              v(icout) = gsl_matrix_get(&amp;gsl_constr.matrix, icout, k - 1 );
-<a name="l00136"></a>00136         }
-<a name="l00137"></a>00137 
-<a name="l00138"></a>00138         Q_k = I - gsl_vector_get(tau_qr, k - 1 ) * outer_prod ( v, v );
-<a name="l00139"></a>00139         Q = prec_prod(Q, Q_k);
-<a name="l00140"></a>00140 
-<a name="l00141"></a>00141     }
+<a name="l00134"></a>00134     <span class="keyword">const</span> <span class="keywordtype">int</span> N = b.size();
+<a name="l00135"></a>00135     <span class="keyword">const</span> <span class="keywordtype">int</span> ngrid = x.size()/2;
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137     <span class="comment">// temporary variables</span>
+<a name="l00138"></a>00138     ub::matrix&lt;double&gt; Q(2*ngrid, 2*ngrid);       <span class="comment">// Q matrix: QR decomposition of trans(B)</span>
+<a name="l00139"></a>00139     ub::matrix&lt;double&gt; Q_k(2*ngrid, 2*ngrid);
+<a name="l00140"></a>00140     ub::identity_matrix&lt;double&gt; I (2*ngrid);
+<a name="l00141"></a>00141     ub::vector&lt;double&gt; v(2*ngrid);
 <a name="l00142"></a>00142 
-<a name="l00143"></a>00143     Q = trans(Q);
-<a name="l00144"></a>00144     gsl_vector_free (tau_qr);
-<a name="l00145"></a>00145 
-<a name="l00146"></a>00146     <span class="comment">// Calculate A * Q and store the result in A</span>
-<a name="l00147"></a>00147     A = prec_prod(A, Q);
-<a name="l00148"></a>00148 
-<a name="l00149"></a>00149 
-<a name="l00150"></a>00150     <span class="comment">// A = [A1 A2], so A2 is just a block of A</span>
-<a name="l00151"></a>00151     ub::matrix&lt;double&gt; <a class="code" href="namespacevotca_1_1moo.html#aed31c02d18461d32b6b71c67bc3db49">A2</a> = ub::matrix_range&lt;ub::matrix&lt;double&gt; &gt;(A,
-<a name="l00152"></a>00152             ub::range (0, N), ub::range (ngrid, 2*ngrid)
-<a name="l00153"></a>00153          );
+<a name="l00143"></a>00143     Q = ub::zero_matrix&lt;double&gt;(2*ngrid, 2*ngrid);
+<a name="l00144"></a>00144     Q_k = ub::zero_matrix&lt;double&gt;(2*ngrid, 2*ngrid);
+<a name="l00145"></a>00145     v = ub::zero_vector&lt;double&gt;(2*ngrid);
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147     <span class="keywordtype">double</span> *tmp = &amp; constr(0,0);
+<a name="l00148"></a>00148     gsl_matrix_view gsl_constr
+<a name="l00149"></a>00149       = gsl_matrix_view_array (tmp, constr.size1(), constr.size2());
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151     tmp = &amp;<a class="code" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>(0);
+<a name="l00152"></a>00152     gsl_vector_view gsl_b
+<a name="l00153"></a>00153          = gsl_vector_view_array (tmp, b.size());
 <a name="l00154"></a>00154 
-<a name="l00155"></a>00155     tmp = &amp;<a class="code" href="namespacevotca_1_1moo.html#aed31c02d18461d32b6b71c67bc3db49">A2</a>(0,0);
-<a name="l00156"></a>00156     gsl_matrix_view gsl_A2
-<a name="l00157"></a>00157          = gsl_matrix_view_array (tmp, A2.size1(), A2.size2());
-<a name="l00158"></a>00158    
-<a name="l00159"></a>00159         
-<a name="l00160"></a>00160     gsl_vector *z = gsl_vector_alloc (ngrid);
-<a name="l00161"></a>00161     gsl_vector *tau_solve = gsl_vector_alloc (ngrid);  <span class="comment">// already done!</span>
-<a name="l00162"></a>00162     gsl_vector *residual = gsl_vector_alloc (N);
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156     gsl_vector *tau_qr = gsl_vector_alloc (ngrid);
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158     gsl_linalg_QR_decomp (&amp;gsl_constr.matrix, tau_qr);
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160     Q = I;
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a> = ngrid; <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a> &gt; 0 ; <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a>--) {
 <a name="l00163"></a>00163 
-<a name="l00164"></a>00164     gsl_linalg_QR_decomp (&amp;gsl_A2.matrix, tau_solve);
-<a name="l00165"></a>00165     gsl_linalg_QR_lssolve (&amp;gsl_A2.matrix, tau_solve, &amp;gsl_b.vector, z, residual);
-<a name="l00166"></a>00166 
-<a name="l00167"></a>00167     <span class="comment">// Next two cycles assemble vector from y (which is zero-vector) and z</span>
-<a name="l00168"></a>00168     <span class="comment">// (which we just got by gsl_linalg_QR_lssolve)</span>
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; ngrid; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++ ) {
-<a name="l00171"></a>00171            x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] = 0.0;
-<a name="l00172"></a>00172     }
-<a name="l00173"></a>00173 
-<a name="l00174"></a>00174     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = ngrid; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; 2 * ngrid; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++ ) {
-<a name="l00175"></a>00175            x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] = gsl_vector_get(z, <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> - ngrid);
+<a name="l00164"></a>00164         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> icout = 0; icout &lt; <a class="code" href="namespaceDIPRO__TI.html#2a594c9e45d3851ad43b6a6de8e1a83d">k</a> - 1; icout++) {
+<a name="l00165"></a>00165              v(icout) = 0;
+<a name="l00166"></a>00166         }
+<a name="l00167"></a>00167         v(k - 1) = 1.0;
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> icout = k; icout &lt; 2*ngrid; icout++) {
+<a name="l00170"></a>00170              v(icout) = gsl_matrix_get(&amp;gsl_constr.matrix, icout, k - 1 );
+<a name="l00171"></a>00171         }
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173         Q_k = I - gsl_vector_get(tau_qr, k - 1 ) * outer_prod ( v, v );
+<a name="l00174"></a>00174         Q = prec_prod(Q, Q_k);
+<a name="l00175"></a>00175 
 <a name="l00176"></a>00176     }
 <a name="l00177"></a>00177 
-<a name="l00178"></a>00178     <span class="comment">// To get the final answer this vector should be multiplied by matrix Q</span>
-<a name="l00179"></a>00179     <span class="comment">// TODO: here i changed the sign, check again! (victor)</span>
-<a name="l00180"></a>00180     x = -prec_prod( Q, x );
-<a name="l00181"></a>00181 
-<a name="l00182"></a>00182     gsl_vector_free (z);
-<a name="l00183"></a>00183     gsl_vector_free (tau_solve);
-<a name="l00184"></a>00184     gsl_vector_free (residual);
-<a name="l00185"></a>00185 <span class="preprocessor">#endif</span>
-<a name="l00186"></a>00186 <span class="preprocessor"></span>}
-<a name="l00187"></a>00187 
-<a name="l00188"></a>00188 
-<a name="l00189"></a>00189 }}
+<a name="l00178"></a>00178     Q = trans(Q);
+<a name="l00179"></a>00179     gsl_vector_free (tau_qr);
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181     <span class="comment">// Calculate A * Q and store the result in A</span>
+<a name="l00182"></a>00182     A = prec_prod(A, Q);
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185     <span class="comment">// A = [A1 A2], so A2 is just a block of A</span>
+<a name="l00186"></a>00186     ub::matrix&lt;double&gt; <a class="code" href="namespacevotca_1_1moo.html#aed31c02d18461d32b6b71c67bc3db49">A2</a> = ub::matrix_range&lt;ub::matrix&lt;double&gt; &gt;(A,
+<a name="l00187"></a>00187             ub::range (0, N), ub::range (ngrid, 2*ngrid)
+<a name="l00188"></a>00188          );
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190     tmp = &amp;<a class="code" href="namespacevotca_1_1moo.html#aed31c02d18461d32b6b71c67bc3db49">A2</a>(0,0);
+<a name="l00191"></a>00191     gsl_matrix_view gsl_A2
+<a name="l00192"></a>00192          = gsl_matrix_view_array (tmp, A2.size1(), A2.size2());
+<a name="l00193"></a>00193    
+<a name="l00194"></a>00194         
+<a name="l00195"></a>00195     gsl_vector *z = gsl_vector_alloc (ngrid);
+<a name="l00196"></a>00196     gsl_vector *tau_solve = gsl_vector_alloc (ngrid);  <span class="comment">// already done!</span>
+<a name="l00197"></a>00197     gsl_vector *residual = gsl_vector_alloc (N);
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199     gsl_linalg_QR_decomp (&amp;gsl_A2.matrix, tau_solve);
+<a name="l00200"></a>00200     gsl_linalg_QR_lssolve (&amp;gsl_A2.matrix, tau_solve, &amp;gsl_b.vector, z, residual);
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202     <span class="comment">// Next two cycles assemble vector from y (which is zero-vector) and z</span>
+<a name="l00203"></a>00203     <span class="comment">// (which we just got by gsl_linalg_QR_lssolve)</span>
+<a name="l00204"></a>00204 
+<a name="l00205"></a>00205     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; ngrid; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++ ) {
+<a name="l00206"></a>00206            x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] = 0.0;
+<a name="l00207"></a>00207     }
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = ngrid; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; 2 * ngrid; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++ ) {
+<a name="l00210"></a>00210            x[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>] = gsl_vector_get(z, <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> - ngrid);
+<a name="l00211"></a>00211     }
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213     <span class="comment">// To get the final answer this vector should be multiplied by matrix Q</span>
+<a name="l00214"></a>00214     <span class="comment">// TODO: here i changed the sign, check again! (victor)</span>
+<a name="l00215"></a>00215     x = -prec_prod( Q, x );
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217     gsl_vector_free (z);
+<a name="l00218"></a>00218     gsl_vector_free (tau_solve);
+<a name="l00219"></a>00219     gsl_vector_free (residual);
+<a name="l00220"></a>00220 <span class="preprocessor">#endif</span>
+<a name="l00221"></a>00221 <span class="preprocessor"></span>}
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

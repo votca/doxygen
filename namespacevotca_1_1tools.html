@@ -123,6 +123,9 @@
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename Target , typename Source &gt; </td></tr>
 <tr><td class="memTemplItemLeft" nowrap align="right" valign="top">Target&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">lexical_cast</a> (const Source &amp;arg, const std::string &amp;error)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#14f72691244ea2c3878bba45436da4c3">linalg_cholesky_solve</a> (ub::vector&lt; double &gt; &amp;x, ub::matrix&lt; double &gt; &amp;<a class="el" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt; double &gt; &amp;<a class="el" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">solves A*x=b  <a href="#14f72691244ea2c3878bba45436da4c3"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb">linalg_qrsolve</a> (ub::vector&lt; double &gt; &amp;x, ub::matrix&lt; double &gt; &amp;<a class="el" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt; double &gt; &amp;<a class="el" href="linsolve_8m.html#21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::vector&lt; double &gt; *residual=NULL)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">solves A*x=b  <a href="#747b98e06037eb03784bd4d2bada37eb"></a><br></td></tr>
@@ -460,6 +463,53 @@ Wrapper for boost::lexical_cast with improved error messages <dl compact><dt><b>
 
 </div>
 </div><p>
+<a class="anchor" name="14f72691244ea2c3878bba45436da4c3"></a><!-- doxytag: member="votca::tools::linalg_cholesky_solve" ref="14f72691244ea2c3878bba45436da4c3" args="(ub::vector&lt; double &gt; &amp;x, ub::matrix&lt; double &gt; &amp;A, ub::vector&lt; double &gt; &amp;b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::tools::linalg_cholesky_solve           </td>
+          <td>(</td>
+          <td class="paramtype">ub::vector&lt; double &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ub::matrix&lt; double &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ub::vector&lt; double &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>b</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+solves A*x=b 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>storage for x </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>A</em>&nbsp;</td><td>symmetric positive definite <a class="el" href="classvotca_1_1tools_1_1matrix.html">matrix</a> for linear system </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>inhomogenity </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>if</em>&nbsp;</td><td>A is not sysmetrix positive definite throws error code GSL_EDOM</td></tr>
+  </table>
+</dl>
+This function wrapps the cholesky linear system solver 
+<p>Definition at line <a class="el" href="linalg_8cc_source.html#l00032">32</a> of file <a class="el" href="linalg_8cc_source.html">linalg.cc</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="7b789991041c9a0aec760ffd20c599b8"></a><!-- doxytag: member="votca::tools::linalg_constrained_qrsolve" ref="7b789991041c9a0aec760ffd20c599b8" args="(ub::vector&lt; double &gt; &amp;x, ub::matrix&lt; double &gt; &amp;A, ub::vector&lt; double &gt; &amp;b, ub::matrix&lt; double &gt; &amp;constr)" -->
 <div class="memitem">
 <div class="memproto">
@@ -509,7 +559,7 @@ solves A*x=b under the constraint B*x = 0
   </table>
 </dl>
 This function wrapps the qrsolver under constraints 
-<p>Definition at line <a class="el" href="linalg_8cc_source.html#l00077">77</a> of file <a class="el" href="linalg_8cc_source.html">linalg.cc</a>.</p>
+<p>Definition at line <a class="el" href="linalg_8cc_source.html#l00112">112</a> of file <a class="el" href="linalg_8cc_source.html">linalg.cc</a>.</p>
 
 </div>
 </div><p>
@@ -562,7 +612,7 @@ solves A*x=b
   </table>
 </dl>
 This function wrapps the qrsolver 
-<p>Definition at line <a class="el" href="linalg_8cc_source.html#l00031">31</a> of file <a class="el" href="linalg_8cc_source.html">linalg.cc</a>.</p>
+<p>Definition at line <a class="el" href="linalg_8cc_source.html#l00066">66</a> of file <a class="el" href="linalg_8cc_source.html">linalg.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1206,7 +1256,7 @@ dot product
 
 <p>
 
-<p>Definition at line <a class="el" href="histogramnew_8h_source.html#l00126">126</a> of file <a class="el" href="histogramnew_8h_source.html">histogramnew.h</a>.</p>
+<p>Definition at line <a class="el" href="histogramnew_8h_source.html#l00125">125</a> of file <a class="el" href="histogramnew_8h_source.html">histogramnew.h</a>.</p>
 
 </div>
 </div><p>

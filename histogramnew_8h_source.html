@@ -38,82 +38,81 @@
 <a name="l00015"></a>00015 <span class="comment"> *</span>
 <a name="l00016"></a>00016 <span class="comment"> */</span>
 <a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="preprocessor">#ifndef _HISTOGRAMNEW_H</span>
-<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define _HISTOGRAMNEW_H</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#ifndef _HistogramNew_H</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define _HistogramNew_H</span>
 <a name="l00020"></a>00020 <span class="preprocessor"></span>
 <a name="l00021"></a>00021 <span class="preprocessor">#include &lt;iostream&gt;</span>
 <a name="l00022"></a>00022 <span class="preprocessor">#include &lt;vector&gt;</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#include &lt;limits&gt;</span>
 <a name="l00024"></a>00024 <span class="preprocessor">#include &lt;cmath&gt;</span>
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="preprocessor">#include "<a class="code" href="table_8h.html">table.h</a>"</span>
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="keyword">using namespace </span>std;
-<a name="l00031"></a>00031 
-<a name="l00037"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html">00037</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html" title="class to generate histograms">HistogramNew</a>
-<a name="l00038"></a>00038 {
-<a name="l00039"></a>00039     <span class="keyword">public</span>:                
-<a name="l00040"></a>00040        
-<a name="l00042"></a>00042         <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#9b0f507e211c7547249294722c95cf26" title="constructor">HistogramNew</a>();
-<a name="l00044"></a>00044         <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#9b0f507e211c7547249294722c95cf26" title="constructor">HistogramNew</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html" title="class to generate histograms">HistogramNew</a> &amp;hist);
-<a name="l00045"></a>00045         
-<a name="l00047"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#a9a9415d92384a73abfddbe78dfebdb6">00047</a>         <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#a9a9415d92384a73abfddbe78dfebdb6" title="destructor">~HistogramNew</a>() {};
-<a name="l00048"></a>00048         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#ef070658682510e8ff3f6999b6ad0649" title="Initialize the Histogram.">Initialize</a>(<span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, <span class="keywordtype">int</span> nbins);
-<a name="l00055"></a>00055         
-<a name="l00061"></a>00061         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#c6a8dc44787270c687994eccb3185d46" title="process a data point">Process</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;v, <span class="keywordtype">double</span> scale = 1.0);
-<a name="l00062"></a>00062         
-<a name="l00066"></a>00066         <span class="keyword">template</span>&lt;<span class="keyword">typename</span> iterator_type&gt;        
-<a name="l00067"></a>00067         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#12114253d0fb38f890329e801fb8b516" title="process a range of data using iterator interface">ProcessRange</a>(<span class="keyword">const</span> iterator_type &amp;begin, <span class="keyword">const</span> iterator_type &amp;end);
+<a name="l00025"></a>00025 <span class="preprocessor">#include "<a class="code" href="table_8h.html">table.h</a>"</span>
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="keyword">using namespace </span>std;
+<a name="l00030"></a>00030 
+<a name="l00036"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html">00036</a> <span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html" title="class to generate histograms">HistogramNew</a>
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038     <span class="keyword">public</span>:                
+<a name="l00039"></a>00039        
+<a name="l00041"></a>00041         <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#9b0f507e211c7547249294722c95cf26" title="constructor">HistogramNew</a>();
+<a name="l00043"></a>00043         <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#9b0f507e211c7547249294722c95cf26" title="constructor">HistogramNew</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html" title="class to generate histograms">HistogramNew</a> &amp;hist);
+<a name="l00044"></a>00044         
+<a name="l00046"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#a9a9415d92384a73abfddbe78dfebdb6">00046</a>         <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#a9a9415d92384a73abfddbe78dfebdb6" title="destructor">~HistogramNew</a>() {};
+<a name="l00047"></a>00047         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#ef070658682510e8ff3f6999b6ad0649" title="Initialize the HistogramNew.">Initialize</a>(<span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, <span class="keywordtype">int</span> nbins);
+<a name="l00054"></a>00054 
+<a name="l00060"></a>00060         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#c6a8dc44787270c687994eccb3185d46" title="process a data point">Process</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;v, <span class="keywordtype">double</span> scale = 1.0);
+<a name="l00061"></a>00061         
+<a name="l00065"></a>00065         <span class="keyword">template</span>&lt;<span class="keyword">typename</span> iterator_type&gt;        
+<a name="l00066"></a>00066         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#12114253d0fb38f890329e801fb8b516" title="process a range of data using iterator interface">ProcessRange</a>(<span class="keyword">const</span> iterator_type &amp;begin, <span class="keyword">const</span> iterator_type &amp;end);
+<a name="l00067"></a>00067     
 <a name="l00068"></a>00068     
-<a name="l00069"></a>00069     
-<a name="l00074"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#80c3ac6a90d849eab2bfff1566387db8">00074</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#80c3ac6a90d849eab2bfff1566387db8" title="get the lower bound of the histogram intervaö">getMin</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8209c963a308ba9011d02ecdd39086f3">_min</a>; }
-<a name="l00079"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8722f5651caf205510ce184952c39502">00079</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8722f5651caf205510ce184952c39502" title="get the upper bound of the histogram intervaö">getMax</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f4a1dddb1f084b637c4655c21b40d2c0">_max</a>; }
-<a name="l00084"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#fea57b955ba2a9a8118e201dafa57cb8">00084</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#fea57b955ba2a9a8118e201dafa57cb8" title="Get number of grid points.">getNBins</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span>  <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#b58fd17aecf1b9a3adbc8c2bf6d54ba3">_nbins</a>; }
-<a name="l00085"></a>00085 
-<a name="l00090"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#6280f437400e6b0a6269f7afcc59f8cc">00090</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#6280f437400e6b0a6269f7afcc59f8cc" title="get the grid of histogram">getStep</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#dfa6e5e769eb92f5a19a475d731e6337">_step</a>; }
-<a name="l00091"></a>00091         
-<a name="l00095"></a>00095         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#79306f06ffbb4d5d126bee1f69134d25" title="normalize the histogram that the integral is 1">Normalize</a>();
-<a name="l00096"></a>00096         
-<a name="l00100"></a>00100         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#fee379b998e9b02cbebf9654dd69b891" title="clear all data">Clear</a>();
-<a name="l00101"></a>00101         
-<a name="l00102"></a>00102     
-<a name="l00107"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#0376c781f11496908ae70470123497d6">00107</a>         <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> &amp;<a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#0376c781f11496908ae70470123497d6" title="get access to content of histogram">data</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f61e8c8ebdb3c5baf24895e6a51f974a">_data</a>; }
-<a name="l00108"></a>00108  
-<a name="l00113"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#36c74af2cee54e74cdbcfa8f039f24d6">00113</a>        <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#36c74af2cee54e74cdbcfa8f039f24d6" title="set whether interval is periodic">setPeriodic</a>(<span class="keywordtype">bool</span> periodic) { <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#4414713d7b88272685b2ee7a657c6926">_periodic</a> = periodic; }        
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115     <span class="keyword">private</span>:        
-<a name="l00116"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#1053c109c826cda686097e0e6123acd6">00116</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#1053c109c826cda686097e0e6123acd6">_weight</a>;
-<a name="l00117"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8209c963a308ba9011d02ecdd39086f3">00117</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8209c963a308ba9011d02ecdd39086f3">_min</a>, <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f4a1dddb1f084b637c4655c21b40d2c0">_max</a>;
-<a name="l00118"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#dfa6e5e769eb92f5a19a475d731e6337">00118</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#dfa6e5e769eb92f5a19a475d731e6337">_step</a>;
-<a name="l00119"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#4414713d7b88272685b2ee7a657c6926">00119</a>         <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#4414713d7b88272685b2ee7a657c6926">_periodic</a>; 
-<a name="l00120"></a>00120         
-<a name="l00121"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#b58fd17aecf1b9a3adbc8c2bf6d54ba3">00121</a>         <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#b58fd17aecf1b9a3adbc8c2bf6d54ba3">_nbins</a>;
-<a name="l00122"></a>00122         
-<a name="l00123"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f61e8c8ebdb3c5baf24895e6a51f974a">00123</a>         <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f61e8c8ebdb3c5baf24895e6a51f974a">_data</a>;
-<a name="l00124"></a>00124 };
-<a name="l00125"></a>00125 
-<a name="l00126"></a><a class="code" href="namespacevotca_1_1tools.html#d2c48c85c751a530ee13f32455a1bc3c">00126</a> <span class="keyword">inline</span> ostream&amp; <a class="code" href="namespacevotca_1_1tools.html#dd0da891249d5b7edc7378733bf26bf0">operator&lt;&lt;</a>(ostream&amp; <a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html" title="class to generate histograms">HistogramNew</a> &amp;h)
-<a name="l00127"></a>00127 {
-<a name="l00128"></a>00128     out &lt;&lt; h.<a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#0376c781f11496908ae70470123497d6" title="get access to content of histogram">data</a>();
-<a name="l00129"></a>00129     <span class="comment">//for(int i=0; i&lt;h.getNBins(); i++) {</span>
-<a name="l00130"></a>00130     <span class="comment">//    out &lt;&lt; h.getMin() + h.getStep()*((double)i+0.0) &lt;&lt; " " &lt;&lt; h._get()[i] &lt;&lt; endl;</span>
-<a name="l00131"></a>00131     <span class="comment">//}</span>
-<a name="l00132"></a>00132     <span class="keywordflow">return</span> out;
-<a name="l00133"></a>00133 }
-<a name="l00134"></a>00134 
-<a name="l00135"></a>00135 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> iterator_type&gt;
-<a name="l00136"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#12114253d0fb38f890329e801fb8b516">00136</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#12114253d0fb38f890329e801fb8b516" title="process a range of data using iterator interface">HistogramNew::ProcessRange</a>(<span class="keyword">const</span> iterator_type &amp;begin, <span class="keyword">const</span> iterator_type &amp;end)
-<a name="l00137"></a>00137 {
-<a name="l00138"></a>00138     <span class="keywordflow">for</span>(iterator_type iter = begin; iter!=end; ++iter)
-<a name="l00139"></a>00139         <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#c6a8dc44787270c687994eccb3185d46" title="process a data point">Process</a>(*iter);
-<a name="l00140"></a>00140 }
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 }}
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144 <span class="preprocessor">#endif  </span><span class="comment">/* _HISTOGRAMNEW_H */</span>
-<a name="l00145"></a>00145 
+<a name="l00073"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#80c3ac6a90d849eab2bfff1566387db8">00073</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#80c3ac6a90d849eab2bfff1566387db8" title="get the lower bound of the histogram intervaö">getMin</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8209c963a308ba9011d02ecdd39086f3">_min</a>; }
+<a name="l00078"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8722f5651caf205510ce184952c39502">00078</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8722f5651caf205510ce184952c39502" title="get the upper bound of the histogram intervaö">getMax</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f4a1dddb1f084b637c4655c21b40d2c0">_max</a>; }
+<a name="l00083"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#fea57b955ba2a9a8118e201dafa57cb8">00083</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#fea57b955ba2a9a8118e201dafa57cb8" title="Get number of grid points.">getNBins</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span>  <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#b58fd17aecf1b9a3adbc8c2bf6d54ba3">_nbins</a>; }
+<a name="l00084"></a>00084 
+<a name="l00089"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#6280f437400e6b0a6269f7afcc59f8cc">00089</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#6280f437400e6b0a6269f7afcc59f8cc" title="get the grid of histogram">getStep</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#dfa6e5e769eb92f5a19a475d731e6337">_step</a>; }
+<a name="l00090"></a>00090         
+<a name="l00094"></a>00094         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#79306f06ffbb4d5d126bee1f69134d25" title="normalize the histogram that the integral is 1">Normalize</a>();
+<a name="l00095"></a>00095 
+<a name="l00099"></a>00099         <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#fee379b998e9b02cbebf9654dd69b891" title="clear all data">Clear</a>();
+<a name="l00100"></a>00100         
+<a name="l00101"></a>00101     
+<a name="l00106"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#0376c781f11496908ae70470123497d6">00106</a>         <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> &amp;<a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#0376c781f11496908ae70470123497d6" title="get access to content of histogram">data</a>() { <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f61e8c8ebdb3c5baf24895e6a51f974a">_data</a>; }
+<a name="l00107"></a>00107  
+<a name="l00112"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#36c74af2cee54e74cdbcfa8f039f24d6">00112</a>        <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#36c74af2cee54e74cdbcfa8f039f24d6" title="set whether interval is periodic">setPeriodic</a>(<span class="keywordtype">bool</span> periodic) { <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#4414713d7b88272685b2ee7a657c6926">_periodic</a> = periodic; }        
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114     <span class="keyword">private</span>:        
+<a name="l00115"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#1053c109c826cda686097e0e6123acd6">00115</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#1053c109c826cda686097e0e6123acd6">_weight</a>;
+<a name="l00116"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8209c963a308ba9011d02ecdd39086f3">00116</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#8209c963a308ba9011d02ecdd39086f3">_min</a>, <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f4a1dddb1f084b637c4655c21b40d2c0">_max</a>;
+<a name="l00117"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#dfa6e5e769eb92f5a19a475d731e6337">00117</a>         <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#dfa6e5e769eb92f5a19a475d731e6337">_step</a>;
+<a name="l00118"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#4414713d7b88272685b2ee7a657c6926">00118</a>         <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#4414713d7b88272685b2ee7a657c6926">_periodic</a>; 
+<a name="l00119"></a>00119         
+<a name="l00120"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#b58fd17aecf1b9a3adbc8c2bf6d54ba3">00120</a>         <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#b58fd17aecf1b9a3adbc8c2bf6d54ba3">_nbins</a>;
+<a name="l00121"></a>00121         
+<a name="l00122"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f61e8c8ebdb3c5baf24895e6a51f974a">00122</a>         <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#f61e8c8ebdb3c5baf24895e6a51f974a">_data</a>;
+<a name="l00123"></a>00123 };
+<a name="l00124"></a>00124 
+<a name="l00125"></a><a class="code" href="namespacevotca_1_1tools.html#d2c48c85c751a530ee13f32455a1bc3c">00125</a> <span class="keyword">inline</span> ostream&amp; <a class="code" href="namespacevotca_1_1tools.html#dd0da891249d5b7edc7378733bf26bf0">operator&lt;&lt;</a>(ostream&amp; <a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html" title="class to generate histograms">HistogramNew</a> &amp;h)
+<a name="l00126"></a>00126 {
+<a name="l00127"></a>00127     out &lt;&lt; h.<a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#0376c781f11496908ae70470123497d6" title="get access to content of histogram">data</a>();
+<a name="l00128"></a>00128     <span class="comment">//for(int i=0; i&lt;h.getNBins(); i++) {</span>
+<a name="l00129"></a>00129     <span class="comment">//    out &lt;&lt; h.getMin() + h.getStep()*((double)i+0.0) &lt;&lt; " " &lt;&lt; h._get()[i] &lt;&lt; endl;</span>
+<a name="l00130"></a>00130     <span class="comment">//}</span>
+<a name="l00131"></a>00131     <span class="keywordflow">return</span> out;
+<a name="l00132"></a>00132 }
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> iterator_type&gt;
+<a name="l00135"></a><a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#12114253d0fb38f890329e801fb8b516">00135</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#12114253d0fb38f890329e801fb8b516" title="process a range of data using iterator interface">HistogramNew::ProcessRange</a>(<span class="keyword">const</span> iterator_type &amp;begin, <span class="keyword">const</span> iterator_type &amp;end)
+<a name="l00136"></a>00136 {
+<a name="l00137"></a>00137     <span class="keywordflow">for</span>(iterator_type iter = begin; iter!=end; ++iter)
+<a name="l00138"></a>00138         <a class="code" href="classvotca_1_1tools_1_1HistogramNew.html#c6a8dc44787270c687994eccb3185d46" title="process a data point">Process</a>(*iter);
+<a name="l00139"></a>00139 }
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 }}
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 <span class="preprocessor">#endif  </span><span class="comment">/* _HistogramNew_H */</span>
+<a name="l00144"></a>00144 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
