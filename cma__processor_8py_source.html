@@ -96,48 +96,50 @@
 <a name="l00073"></a>00073     statefile.write(<span class="stringliteral">"#State = "</span>+self.<a class="code" href="classcma__processor_1_1state.html#e65c2e92b3d4a6c2c65d48ab512aabde">state</a>+<span class="stringliteral">"\n"</span>)
 <a name="l00074"></a>00074     statefile.write(self.<a class="code" href="classcma__processor_1_1state.html#29b1f3c5bb2cf96420462100fdc90f32">comments</a>+<span class="stringliteral">"\n"</span>)
 <a name="l00075"></a>00075     <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(self.<a class="code" href="classcma__processor_1_1state.html#99349d01be1d78bb1903ad34a758b137">parameters</a>)):
-<a name="l00076"></a>00076       statefile.write(str(self.<a class="code" href="classcma__processor_1_1state.html#99349d01be1d78bb1903ad34a758b137">parameters</a>[i]).strip(<span class="stringliteral">'[]'</span>)+<span class="stringliteral">" "</span>+str(self.<a class="code" href="classcma__processor_1_1state.html#e1591ad4bc6c2c059352efd126347b20">solutions</a>[i])+<span class="stringliteral">" pending\n"</span>)
-<a name="l00077"></a>00077     statefile.close()
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079 <span class="keywordflow">try</span>:
-<a name="l00080"></a>00080   <span class="keyword">import</span> cma
-<a name="l00081"></a>00081 <span class="keywordflow">except</span>:
-<a name="l00082"></a>00082   exit(<span class="stringliteral">"cma module could not be imported, please make sure to cma.py in your PYTHONPATH. The cma.py is available from http://www.lri.fr/~hansen/cmaes_inmatlab.html, get with 'csg_call cma get'"</span>)
-<a name="l00083"></a>00083 
-<a name="l00084"></a>00084 
-<a name="l00085"></a><a class="code" href="namespacecma__processor.html#a3fb0250a171048c236d548f5399b2fe">00085</a> usage = <span class="stringliteral">"usage: %prog [options] statefile-in statefile-out"</span>
-<a name="l00086"></a><a class="code" href="namespacecma__processor.html#d9d20916bf52e5f5b130acd7b1aaa845">00086</a> parser = OptionParser(usage=usage)
-<a name="l00087"></a>00087 parser.add_option(<span class="stringliteral">"--eps"</span>, dest=<span class="stringliteral">"eps"</span>, metavar=<span class="stringliteral">"EPS"</span>,
-<a name="l00088"></a><a class="code" href="namespacecma__processor.html#ae65c3dafb1ad0e6df120e99894ad1a1">00088</a>                   help=<span class="stringliteral">"tolerance for initialization"</span>, default=0.1)
-<a name="l00089"></a>00089 (options, args) = parser.parse_args()                  
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091 <span class="keywordflow">if</span> len(args) != 2:
-<a name="l00092"></a>00092   exit(<span class="stringliteral">"two statefile required as parameters"</span>)
-<a name="l00093"></a>00093 
-<a name="l00094"></a><a class="code" href="namespacecma__processor.html#04bb89c1cd4ffbfd2ee34c8fa7cb6021">00094</a> current_state=state()
-<a name="l00095"></a>00095 current_state.read(args[0])
-<a name="l00096"></a>00096 <span class="keywordflow">print</span> <span class="stringliteral">"We are in State '"</span>,current_state.state, <span class="stringliteral">"' with parameters\n"</span>,current_state.parameters,<span class="stringliteral">"solutions: "</span>,current_state.solutions
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 <span class="keywordflow">if</span> current_state.state == <span class="stringliteral">"Initialization"</span>:
-<a name="l00099"></a>00099   <span class="keywordflow">if</span> len(current_state.parameters) != 1:
-<a name="l00100"></a>00100     exit(<span class="stringliteral">"In Initialization step the state file should contain only one set (line)"</span>)
-<a name="l00101"></a><a class="code" href="namespacecma__processor.html#bb45e9c018b3d0687a6ffc92b722e46a">00101</a>   es=cma.CMAEvolutionStrategy(current_state.parameters[0],options.eps)
-<a name="l00102"></a>00102 <span class="keywordflow">else</span>:
-<a name="l00103"></a>00103   [es, X ] = pickle.load(open(<span class="stringliteral">"cma.internal_state.cur"</span>))
-<a name="l00104"></a>00104   <span class="keywordflow">if</span> <span class="keywordflow">not</span> numpy.allclose(X,current_state.parameters):
-<a name="l00105"></a>00105     exit(<span class="stringliteral">"Parameterfile mismatches with internally saved parameters"</span>)
-<a name="l00106"></a>00106   es.tell(X,current_state.solutions)
-<a name="l00107"></a>00107 
-<a name="l00108"></a><a class="code" href="namespacecma__processor.html#f0bcf6c6672a8ecd7d534b24162a3b0e">00108</a> new_state=state()
-<a name="l00109"></a>00109 new_state.state=<span class="stringliteral">"Running"</span>
-<a name="l00110"></a>00110 new_state.parameters=es.ask()
-<a name="l00111"></a>00111 new_state.solutions=[ 0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(new_state.parameters))]
-<a name="l00112"></a>00112 new_state.comments=current_state.comments
-<a name="l00113"></a>00113 <span class="keywordflow">print</span> <span class="stringliteral">"We going to State '"</span>,new_state.state, <span class="stringliteral">"' with parameters\n"</span>,new_state.parameters,<span class="stringliteral">"solutions: "</span>,new_state.solutions
-<a name="l00114"></a>00114 new_state.write(args[1])
-<a name="l00115"></a>00115 <span class="comment">#we need to pickle parameters as well as they are saved in a dict (string compare)</span>
-<a name="l00116"></a>00116 <span class="comment">#and internal precission is float64</span>
-<a name="l00117"></a>00117 pickle.dump([es,new_state.parameters],open(<span class="stringliteral">"cma.internal_state.new"</span>, <span class="stringliteral">'w'</span>))
+<a name="l00076"></a>00076       <span class="keywordflow">for</span> j <span class="keywordflow">in</span> range(len(self.<a class="code" href="classcma__processor_1_1state.html#99349d01be1d78bb1903ad34a758b137">parameters</a>[i])):
+<a name="l00077"></a>00077         statefile.write(<span class="stringliteral">'%e'</span>%self.<a class="code" href="classcma__processor_1_1state.html#99349d01be1d78bb1903ad34a758b137">parameters</a>[i][j]+<span class="stringliteral">" "</span>)
+<a name="l00078"></a>00078       statefile.write(str(self.<a class="code" href="classcma__processor_1_1state.html#e1591ad4bc6c2c059352efd126347b20">solutions</a>[i])+<span class="stringliteral">" pending\n"</span>)
+<a name="l00079"></a>00079     statefile.close()
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="keywordflow">try</span>:
+<a name="l00082"></a>00082   <span class="keyword">import</span> cma
+<a name="l00083"></a>00083 <span class="keywordflow">except</span>:
+<a name="l00084"></a>00084   exit(<span class="stringliteral">"cma module could not be imported, please make sure to cma.py in your PYTHONPATH. The cma.py is available from http://www.lri.fr/~hansen/cmaes_inmatlab.html, get with 'csg_call cma get'"</span>)
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 
+<a name="l00087"></a><a class="code" href="namespacecma__processor.html#a3fb0250a171048c236d548f5399b2fe">00087</a> usage = <span class="stringliteral">"usage: %prog [options] statefile-in statefile-out"</span>
+<a name="l00088"></a><a class="code" href="namespacecma__processor.html#d9d20916bf52e5f5b130acd7b1aaa845">00088</a> parser = OptionParser(usage=usage)
+<a name="l00089"></a>00089 parser.add_option(<span class="stringliteral">"--eps"</span>, dest=<span class="stringliteral">"eps"</span>, metavar=<span class="stringliteral">"EPS"</span>,
+<a name="l00090"></a><a class="code" href="namespacecma__processor.html#ae65c3dafb1ad0e6df120e99894ad1a1">00090</a>                   help=<span class="stringliteral">"tolerance for initialization"</span>, default=0.1)
+<a name="l00091"></a>00091 (options, args) = parser.parse_args()                  
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 <span class="keywordflow">if</span> len(args) != 2:
+<a name="l00094"></a>00094   exit(<span class="stringliteral">"two statefile required as parameters"</span>)
+<a name="l00095"></a>00095 
+<a name="l00096"></a><a class="code" href="namespacecma__processor.html#04bb89c1cd4ffbfd2ee34c8fa7cb6021">00096</a> current_state=state()
+<a name="l00097"></a>00097 current_state.read(args[0])
+<a name="l00098"></a>00098 <span class="keywordflow">print</span> <span class="stringliteral">"We are in State '"</span>,current_state.state, <span class="stringliteral">"' with parameters\n"</span>,current_state.parameters,<span class="stringliteral">"solutions: "</span>,current_state.solutions
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="keywordflow">if</span> current_state.state == <span class="stringliteral">"Initialization"</span>:
+<a name="l00101"></a>00101   <span class="keywordflow">if</span> len(current_state.parameters) != 1:
+<a name="l00102"></a>00102     exit(<span class="stringliteral">"In Initialization step the state file should contain only one set (line)"</span>)
+<a name="l00103"></a><a class="code" href="namespacecma__processor.html#bb45e9c018b3d0687a6ffc92b722e46a">00103</a>   es=cma.CMAEvolutionStrategy(current_state.parameters[0],options.eps)
+<a name="l00104"></a>00104 <span class="keywordflow">else</span>:
+<a name="l00105"></a>00105   [es, X ] = pickle.load(open(<span class="stringliteral">"cma.internal_state.cur"</span>))
+<a name="l00106"></a>00106   <span class="keywordflow">if</span> <span class="keywordflow">not</span> numpy.allclose(X,current_state.parameters):
+<a name="l00107"></a>00107     exit(<span class="stringliteral">"Parameterfile mismatches with internally saved parameters"</span>)
+<a name="l00108"></a>00108   es.tell(X,current_state.solutions)
+<a name="l00109"></a>00109 
+<a name="l00110"></a><a class="code" href="namespacecma__processor.html#f0bcf6c6672a8ecd7d534b24162a3b0e">00110</a> new_state=state()
+<a name="l00111"></a>00111 new_state.state=<span class="stringliteral">"Running"</span>
+<a name="l00112"></a>00112 new_state.parameters=es.ask()
+<a name="l00113"></a>00113 new_state.solutions=[ 0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(new_state.parameters))]
+<a name="l00114"></a>00114 new_state.comments=current_state.comments
+<a name="l00115"></a>00115 <span class="keywordflow">print</span> <span class="stringliteral">"We going to State '"</span>,new_state.state, <span class="stringliteral">"' with parameters\n"</span>,new_state.parameters,<span class="stringliteral">"solutions: "</span>,new_state.solutions
+<a name="l00116"></a>00116 new_state.write(args[1])
+<a name="l00117"></a>00117 <span class="comment">#we need to pickle parameters as well as they are saved in a dict (string compare)</span>
+<a name="l00118"></a>00118 <span class="comment">#and internal precission is float64</span>
+<a name="l00119"></a>00119 pickle.dump([es,new_state.parameters],open(<span class="stringliteral">"cma.internal_state.new"</span>, <span class="stringliteral">'w'</span>))
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
