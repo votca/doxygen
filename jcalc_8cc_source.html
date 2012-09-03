@@ -227,99 +227,101 @@
 <a name="l00204"></a>00204     <span class="comment">// calculating orbitals for all pairs</span>
 <a name="l00205"></a>00205 
 <a name="l00206"></a>00206       <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1globals.html#68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a>) {
-<a name="l00207"></a>00207            cout &lt;&lt; <span class="stringliteral">"  ID1:ID2 J "</span> &lt;&lt; one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>() &lt;&lt; <span class="stringliteral">":"</span> &lt;&lt; two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>();
-<a name="l00208"></a>00208        }    
-<a name="l00209"></a>00209     
-<a name="l00210"></a>00210     vector &lt; double &gt; Js; <span class="comment">// vector with all Js</span>
-<a name="l00211"></a>00211     vector &lt; pair &lt;int, int&gt; &gt; _pois; <span class="comment">// vector with all pairs of interest</span>
-<a name="l00212"></a>00212     pair &lt;int, int&gt; poi; <span class="comment">// pair of interest</span>
-<a name="l00213"></a>00213     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#4b91249190775ee790e345f48f673e7f" title="variables copied from _type1 and _type2">_orblabels</a>.first.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00214"></a>00214         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a> = 0; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a> &lt; jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#4b91249190775ee790e345f48f673e7f" title="variables copied from _type1 and _type2">_orblabels</a>.first.size(); <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++) {
-<a name="l00215"></a>00215             poi.first = jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#4b91249190775ee790e345f48f673e7f" title="variables copied from _type1 and _type2">_orblabels</a>.first[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>];
-<a name="l00216"></a>00216             poi.second = jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#4b91249190775ee790e345f48f673e7f" title="variables copied from _type1 and _type2">_orblabels</a>.second[<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>];
-<a name="l00217"></a>00217             Js.push_back(jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#99f6f3a924d38ea4c791a6f4876f363c" title="the fock matrix herself">_fock</a>.<a class="code" href="classvotca_1_1moo_1_1fock.html#720a6656e65c5dbcc7d06c352c77d10b">calcJ</a>(poi));
-<a name="l00218"></a>00218             _pois.push_back(poi);
-<a name="l00219"></a>00219             <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1globals.html#68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a>) { cout &lt;&lt; jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#99f6f3a924d38ea4c791a6f4876f363c" title="the fock matrix herself">_fock</a>.<a class="code" href="classvotca_1_1moo_1_1fock.html#720a6656e65c5dbcc7d06c352c77d10b">calcJ</a>(poi) &lt;&lt; <span class="stringliteral">" "</span> ; }
-<a name="l00220"></a>00220         }
-<a name="l00221"></a>00221         <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1globals.html#68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a>) { cout &lt;&lt; endl; }
-<a name="l00222"></a>00222     }
-<a name="l00223"></a>00223     
-<a name="l00224"></a>00224     
-<a name="l00225"></a>00225      
+<a name="l00207"></a>00207            cout &lt;&lt; <span class="stringliteral">"  id1:id2 [J] "</span> &lt;&lt; endl;
+<a name="l00208"></a>00208            cout &lt;&lt; one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>() &lt;&lt; <span class="stringliteral">":"</span> 
+<a name="l00209"></a>00209                 &lt;&lt; two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>() &lt;&lt; <span class="stringliteral">" ["</span>;
+<a name="l00210"></a>00210        }    
+<a name="l00211"></a>00211     
+<a name="l00212"></a>00212     vector &lt; double &gt; Js; <span class="comment">// vector with all Js</span>
+<a name="l00213"></a>00213     vector &lt; pair &lt;int, int&gt; &gt; _pois; <span class="comment">// vector with all pairs of interest</span>
+<a name="l00214"></a>00214     pair &lt;int, int&gt; poi; <span class="comment">// pair of interest</span>
+<a name="l00215"></a>00215     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a> &lt; jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#4b91249190775ee790e345f48f673e7f" title="variables copied from _type1 and _type2">_orblabels</a>.first.size(); <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00216"></a>00216         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a> = 0; <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a> &lt; jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#4b91249190775ee790e345f48f673e7f" title="variables copied from _type1 and _type2">_orblabels</a>.first.size(); <a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>++) {
+<a name="l00217"></a>00217             poi.first = jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#4b91249190775ee790e345f48f673e7f" title="variables copied from _type1 and _type2">_orblabels</a>.first[<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>];
+<a name="l00218"></a>00218             poi.second = jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#4b91249190775ee790e345f48f673e7f" title="variables copied from _type1 and _type2">_orblabels</a>.second[<a class="code" href="namespaceDIPRO__TI.html#99261ba49d59ae81748f691217dc6721">j</a>];
+<a name="l00219"></a>00219             Js.push_back(jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#99f6f3a924d38ea4c791a6f4876f363c" title="the fock matrix herself">_fock</a>.<a class="code" href="classvotca_1_1moo_1_1fock.html#720a6656e65c5dbcc7d06c352c77d10b">calcJ</a>(poi));
+<a name="l00220"></a>00220             _pois.push_back(poi);
+<a name="l00221"></a>00221             <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1globals.html#68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a>) { cout &lt;&lt; jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#99f6f3a924d38ea4c791a6f4876f363c" title="the fock matrix herself">_fock</a>.<a class="code" href="classvotca_1_1moo_1_1fock.html#720a6656e65c5dbcc7d06c352c77d10b">calcJ</a>(poi) &lt;&lt; <span class="stringliteral">" "</span> ; }
+<a name="l00222"></a>00222         }
+<a name="l00223"></a>00223         <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1globals.html#68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a>) { cout &lt;&lt; <span class="stringliteral">"]"</span> &lt;&lt; endl; }
+<a name="l00224"></a>00224     }
+<a name="l00225"></a>00225     
 <a name="l00226"></a>00226     
-<a name="l00227"></a>00227     <span class="keywordtype">int</span> my = one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>();
-<a name="l00228"></a>00228     cout &lt;&lt; my &lt;&lt; endl;
-<a name="l00229"></a>00229     
-<a name="l00230"></a>00230     <span class="keywordflow">return</span> Js;
-<a name="l00231"></a>00231 }
-<a name="l00232"></a>00232 
-<a name="l00233"></a><a class="code" href="classvotca_1_1moo_1_1JCalc.html#6c0fc95ac8e50768be4b2e276666b9bb">00233</a> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1moo_1_1JCalc.html#6c0fc95ac8e50768be4b2e276666b9bb">JCalc::WriteProJ</a>(<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html" title="information about a CrgUnit">CrgUnit</a> &amp; one, <a class="code" href="classvotca_1_1moo_1_1CrgUnit.html" title="information about a CrgUnit">CrgUnit</a> &amp; two,<span class="keywordtype">string</span> namedir)
-<a name="l00234"></a>00234 {
-<a name="l00235"></a>00235     <span class="comment">// only write them when one.id &lt; two.id</span>
-<a name="l00236"></a>00236     <span class="keywordflow">if</span> (one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>() &lt; two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>())
-<a name="l00237"></a>00237         <span class="keywordflow">return</span> 1;
-<a name="l00238"></a>00238 
-<a name="l00239"></a>00239     <span class="comment">//rotate the molecule and orbitals</span>
-<a name="l00240"></a>00240     <a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html">JCalcData</a> * jdata = <a class="code" href="classvotca_1_1moo_1_1JCalc.html#3fc54e068fb35bc77f3154f09cc75e95" title="get a J calc data from the map">getJCalcData</a>(one, two);
-<a name="l00241"></a>00241     one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#10d3765f35ff6b505112fb7097fb586b">rot_two_mol</a>(two, jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#6c83c56f4cbd768f951fd0d4934fecdb" title="the moved coordinates">_mol1</a>, jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#9072c7cb0cc3c2ea5c643b5672ee930e">_mol2</a>);
-<a name="l00242"></a>00242 
-<a name="l00243"></a>00243 
-<a name="l00244"></a>00244     ofstream <a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>;
-<a name="l00245"></a>00245     <span class="keywordtype">string</span> name1, nameorb1, name2, nameorb2, namedim;
-<a name="l00246"></a>00246     name1 =namedir + <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) + <span class="stringliteral">".xyz"</span>;
-<a name="l00247"></a>00247     name2 = namedir +<a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) + <span class="stringliteral">".xyz"</span>;
-<a name="l00248"></a>00248     nameorb1 =namedir + <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) + <span class="stringliteral">".fort.7"</span>;
-<a name="l00249"></a>00249     nameorb2 = namedir +<a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) + <span class="stringliteral">".fort.7"</span>;
-<a name="l00250"></a>00250     namedim = namedir +<a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>())+<span class="stringliteral">"and"</span>+
-<a name="l00251"></a>00251             boost::lexical_cast&lt;string&gt;(two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) +<span class="stringliteral">".com"</span>;
-<a name="l00252"></a>00252 
-<a name="l00253"></a>00253     
-<a name="l00254"></a>00254     <span class="comment">//write the info for molecule1</span>
-<a name="l00255"></a>00255     out.open(name1.c_str());
-<a name="l00256"></a>00256     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#6c83c56f4cbd768f951fd0d4934fecdb" title="the moved coordinates">_mol1</a>).print(out);
-<a name="l00257"></a>00257     out.close();
-<a name="l00258"></a>00258 
-<a name="l00259"></a>00259     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#dcebb4c1288498c6d23876eefcc5ba47" title="the moved orbitals">_orb1</a>).print_g03(nameorb1);
-<a name="l00260"></a>00260     <span class="comment">//write the info for molecule2</span>
-<a name="l00261"></a>00261     out.open(name2.c_str());
-<a name="l00262"></a>00262     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#9072c7cb0cc3c2ea5c643b5672ee930e">_mol2</a>).print(out);
-<a name="l00263"></a>00263     out.close();
-<a name="l00264"></a>00264 
-<a name="l00265"></a>00265     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#c3fd25b46e2c421a56bf67260e2f00d9">_orb2</a>).print_g03(nameorb2);
-<a name="l00266"></a>00266     
-<a name="l00267"></a>00267     <span class="comment">//write the input file for both</span>
-<a name="l00268"></a>00268     <a class="code" href="classvotca_1_1moo_1_1orb.html">orb</a> dimerorb;
-<a name="l00269"></a>00269     dimerorb.<a class="code" href="classvotca_1_1moo_1_1orb.html#c0b385480106f26228e838130a32db43">dimerise_orbs</a>((jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#dcebb4c1288498c6d23876eefcc5ba47" title="the moved orbitals">_orb1</a>), (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#c3fd25b46e2c421a56bf67260e2f00d9">_orb2</a>), (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#6c83c56f4cbd768f951fd0d4934fecdb" title="the moved coordinates">_mol1</a>).n_el,(jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#9072c7cb0cc3c2ea5c643b5672ee930e">_mol2</a>).n_el);
-<a name="l00270"></a>00270 
-<a name="l00271"></a>00271     out.open(namedim.c_str());
-<a name="l00272"></a>00272     <span class="comment">// write header</span>
-<a name="l00273"></a>00273     out &lt;&lt; <span class="stringliteral">"%nproc=1"</span> &lt;&lt;<span class="charliteral">'\n'</span> &lt;&lt;
-<a name="l00274"></a>00274            <span class="stringliteral">"%mem=1Gb"</span> &lt;&lt; <span class="charliteral">'\n'</span>&lt;&lt;
-<a name="l00275"></a>00275            <span class="stringliteral">"#p b3lyp/TZVP-6D guess(cards) scf(MaxCycle=1) "</span>&lt;&lt;
-<a name="l00276"></a>00276             <span class="stringliteral">"Nosymm IOp(3/33=1) IOp(5/13=1) punch=mo"</span> &lt;&lt; <span class="charliteral">'\n'</span> &lt;&lt;
-<a name="l00277"></a>00277             <span class="charliteral">'\n'</span> &lt;&lt;
-<a name="l00278"></a>00278             <span class="stringliteral">"autogen"</span> &lt;&lt; <span class="charliteral">'\n'</span> &lt;&lt; <span class="charliteral">'\n'</span>&lt;&lt;
-<a name="l00279"></a>00279             <span class="stringliteral">"0 1"</span> &lt;&lt;<span class="charliteral">'\n'</span>;
-<a name="l00280"></a>00280     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#6c83c56f4cbd768f951fd0d4934fecdb" title="the moved coordinates">_mol1</a>).print(out);
-<a name="l00281"></a>00281     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#9072c7cb0cc3c2ea5c643b5672ee930e">_mol2</a>).print(out);
-<a name="l00282"></a>00282     <span class="comment">//write blank line</span>
-<a name="l00283"></a>00283     out &lt;&lt; <span class="charliteral">'\n'</span>;
-<a name="l00284"></a>00284     out.close();
-<a name="l00285"></a>00285     dimerorb.<a class="code" href="classvotca_1_1moo_1_1orb.html#8015354ad91c316ea7762894aa8beb34">print_g03</a>(namedim, <span class="keywordtype">string</span> (<span class="stringliteral">"a"</span>));
-<a name="l00286"></a>00286     <span class="keywordflow">return</span> 0;
-<a name="l00287"></a>00287 }
-<a name="l00288"></a>00288 
-<a name="l00289"></a><a class="code" href="classvotca_1_1moo_1_1JCalc.html#701b4386139e12a2b2eddba8bf9d0f76">00289</a> <a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html" title="information about a CrgUnitTpe">CrgUnitType</a> * <a class="code" href="classvotca_1_1moo_1_1JCalc.html#701b4386139e12a2b2eddba8bf9d0f76">JCalc::GetCrgUnitTypeByName</a>(<span class="keywordtype">string</span> name)
-<a name="l00290"></a>00290 {
-<a name="l00291"></a>00291     map &lt;string, CrgUnitType *&gt;::iterator ittype = this-&gt;<a class="code" href="classvotca_1_1moo_1_1JCalc.html#75d9eab8ca80fece5fc5f976d6735538" title="a map of charge unit type names to their index in the list">_mapCrgUnitByName</a>.find(name);
-<a name="l00292"></a>00292     <span class="keywordflow">if</span> (ittype == <a class="code" href="classvotca_1_1moo_1_1JCalc.html#75d9eab8ca80fece5fc5f976d6735538" title="a map of charge unit type names to their index in the list">_mapCrgUnitByName</a>.end()) {
-<a name="l00293"></a>00293         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"Cannot find segment type with name: "</span> + name);
-<a name="l00294"></a>00294     }
-<a name="l00295"></a>00295     <a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html" title="information about a CrgUnitTpe">CrgUnitType</a> *type = ittype-&gt;second;
-<a name="l00296"></a>00296     <span class="keywordflow">return</span> type;
-<a name="l00297"></a>00297 }
-<a name="l00298"></a>00298 
-<a name="l00299"></a>00299 }}
+<a name="l00227"></a>00227      
+<a name="l00228"></a>00228     
+<a name="l00229"></a>00229     <span class="keywordtype">int</span> my = one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>();
+<a name="l00230"></a>00230     cout &lt;&lt; my &lt;&lt; endl;
+<a name="l00231"></a>00231     
+<a name="l00232"></a>00232     <span class="keywordflow">return</span> Js;
+<a name="l00233"></a>00233 }
+<a name="l00234"></a>00234 
+<a name="l00235"></a><a class="code" href="classvotca_1_1moo_1_1JCalc.html#6c0fc95ac8e50768be4b2e276666b9bb">00235</a> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1moo_1_1JCalc.html#6c0fc95ac8e50768be4b2e276666b9bb">JCalc::WriteProJ</a>(<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html" title="information about a CrgUnit">CrgUnit</a> &amp; one, <a class="code" href="classvotca_1_1moo_1_1CrgUnit.html" title="information about a CrgUnit">CrgUnit</a> &amp; two,<span class="keywordtype">string</span> namedir)
+<a name="l00236"></a>00236 {
+<a name="l00237"></a>00237     <span class="comment">// only write them when one.id &lt; two.id</span>
+<a name="l00238"></a>00238     <span class="keywordflow">if</span> (one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>() &lt; two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#c3f7ae00340c43ac55e674c480fceb1b">getType</a>()-&gt;<a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html#73475b60a1e6bbf7242b197807ff33d4">getId</a>())
+<a name="l00239"></a>00239         <span class="keywordflow">return</span> 1;
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241     <span class="comment">//rotate the molecule and orbitals</span>
+<a name="l00242"></a>00242     <a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html">JCalcData</a> * jdata = <a class="code" href="classvotca_1_1moo_1_1JCalc.html#3fc54e068fb35bc77f3154f09cc75e95" title="get a J calc data from the map">getJCalcData</a>(one, two);
+<a name="l00243"></a>00243     one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#10d3765f35ff6b505112fb7097fb586b">rot_two_mol</a>(two, jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#6c83c56f4cbd768f951fd0d4934fecdb" title="the moved coordinates">_mol1</a>, jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#9072c7cb0cc3c2ea5c643b5672ee930e">_mol2</a>);
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246     ofstream <a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>;
+<a name="l00247"></a>00247     <span class="keywordtype">string</span> name1, nameorb1, name2, nameorb2, namedim;
+<a name="l00248"></a>00248     name1 =namedir + <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) + <span class="stringliteral">".xyz"</span>;
+<a name="l00249"></a>00249     name2 = namedir +<a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) + <span class="stringliteral">".xyz"</span>;
+<a name="l00250"></a>00250     nameorb1 =namedir + <a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) + <span class="stringliteral">".fort.7"</span>;
+<a name="l00251"></a>00251     nameorb2 = namedir +<a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) + <span class="stringliteral">".fort.7"</span>;
+<a name="l00252"></a>00252     namedim = namedir +<a class="code" href="namespacevotca_1_1tools.html#9530f61e1349b569382075f9e63a4fa6">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(one.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>())+<span class="stringliteral">"and"</span>+
+<a name="l00253"></a>00253             boost::lexical_cast&lt;string&gt;(two.<a class="code" href="classvotca_1_1moo_1_1CrgUnit.html#a4ae5ffc00959846ab5bf76ec3ad2632">getId</a>()) +<span class="stringliteral">".com"</span>;
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255     
+<a name="l00256"></a>00256     <span class="comment">//write the info for molecule1</span>
+<a name="l00257"></a>00257     out.open(name1.c_str());
+<a name="l00258"></a>00258     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#6c83c56f4cbd768f951fd0d4934fecdb" title="the moved coordinates">_mol1</a>).print(out);
+<a name="l00259"></a>00259     out.close();
+<a name="l00260"></a>00260 
+<a name="l00261"></a>00261     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#dcebb4c1288498c6d23876eefcc5ba47" title="the moved orbitals">_orb1</a>).print_g03(nameorb1);
+<a name="l00262"></a>00262     <span class="comment">//write the info for molecule2</span>
+<a name="l00263"></a>00263     out.open(name2.c_str());
+<a name="l00264"></a>00264     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#9072c7cb0cc3c2ea5c643b5672ee930e">_mol2</a>).print(out);
+<a name="l00265"></a>00265     out.close();
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#c3fd25b46e2c421a56bf67260e2f00d9">_orb2</a>).print_g03(nameorb2);
+<a name="l00268"></a>00268     
+<a name="l00269"></a>00269     <span class="comment">//write the input file for both</span>
+<a name="l00270"></a>00270     <a class="code" href="classvotca_1_1moo_1_1orb.html">orb</a> dimerorb;
+<a name="l00271"></a>00271     dimerorb.<a class="code" href="classvotca_1_1moo_1_1orb.html#c0b385480106f26228e838130a32db43">dimerise_orbs</a>((jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#dcebb4c1288498c6d23876eefcc5ba47" title="the moved orbitals">_orb1</a>), (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#c3fd25b46e2c421a56bf67260e2f00d9">_orb2</a>), (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#6c83c56f4cbd768f951fd0d4934fecdb" title="the moved coordinates">_mol1</a>).n_el,(jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#9072c7cb0cc3c2ea5c643b5672ee930e">_mol2</a>).n_el);
+<a name="l00272"></a>00272 
+<a name="l00273"></a>00273     out.open(namedim.c_str());
+<a name="l00274"></a>00274     <span class="comment">// write header</span>
+<a name="l00275"></a>00275     out &lt;&lt; <span class="stringliteral">"%nproc=1"</span> &lt;&lt;<span class="charliteral">'\n'</span> &lt;&lt;
+<a name="l00276"></a>00276            <span class="stringliteral">"%mem=1Gb"</span> &lt;&lt; <span class="charliteral">'\n'</span>&lt;&lt;
+<a name="l00277"></a>00277            <span class="stringliteral">"#p b3lyp/TZVP-6D guess(cards) scf(MaxCycle=1) "</span>&lt;&lt;
+<a name="l00278"></a>00278             <span class="stringliteral">"Nosymm IOp(3/33=1) IOp(5/13=1) punch=mo"</span> &lt;&lt; <span class="charliteral">'\n'</span> &lt;&lt;
+<a name="l00279"></a>00279             <span class="charliteral">'\n'</span> &lt;&lt;
+<a name="l00280"></a>00280             <span class="stringliteral">"autogen"</span> &lt;&lt; <span class="charliteral">'\n'</span> &lt;&lt; <span class="charliteral">'\n'</span>&lt;&lt;
+<a name="l00281"></a>00281             <span class="stringliteral">"0 1"</span> &lt;&lt;<span class="charliteral">'\n'</span>;
+<a name="l00282"></a>00282     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#6c83c56f4cbd768f951fd0d4934fecdb" title="the moved coordinates">_mol1</a>).print(out);
+<a name="l00283"></a>00283     (jdata-&gt;<a class="code" href="structvotca_1_1moo_1_1JCalc_1_1JCalcData.html#9072c7cb0cc3c2ea5c643b5672ee930e">_mol2</a>).print(out);
+<a name="l00284"></a>00284     <span class="comment">//write blank line</span>
+<a name="l00285"></a>00285     out &lt;&lt; <span class="charliteral">'\n'</span>;
+<a name="l00286"></a>00286     out.close();
+<a name="l00287"></a>00287     dimerorb.<a class="code" href="classvotca_1_1moo_1_1orb.html#8015354ad91c316ea7762894aa8beb34">print_g03</a>(namedim, <span class="keywordtype">string</span> (<span class="stringliteral">"a"</span>));
+<a name="l00288"></a>00288     <span class="keywordflow">return</span> 0;
+<a name="l00289"></a>00289 }
+<a name="l00290"></a>00290 
+<a name="l00291"></a><a class="code" href="classvotca_1_1moo_1_1JCalc.html#701b4386139e12a2b2eddba8bf9d0f76">00291</a> <a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html" title="information about a CrgUnitTpe">CrgUnitType</a> * <a class="code" href="classvotca_1_1moo_1_1JCalc.html#701b4386139e12a2b2eddba8bf9d0f76">JCalc::GetCrgUnitTypeByName</a>(<span class="keywordtype">string</span> name)
+<a name="l00292"></a>00292 {
+<a name="l00293"></a>00293     map &lt;string, CrgUnitType *&gt;::iterator ittype = this-&gt;<a class="code" href="classvotca_1_1moo_1_1JCalc.html#75d9eab8ca80fece5fc5f976d6735538" title="a map of charge unit type names to their index in the list">_mapCrgUnitByName</a>.find(name);
+<a name="l00294"></a>00294     <span class="keywordflow">if</span> (ittype == <a class="code" href="classvotca_1_1moo_1_1JCalc.html#75d9eab8ca80fece5fc5f976d6735538" title="a map of charge unit type names to their index in the list">_mapCrgUnitByName</a>.end()) {
+<a name="l00295"></a>00295         <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"Cannot find segment type with name: "</span> + name);
+<a name="l00296"></a>00296     }
+<a name="l00297"></a>00297     <a class="code" href="classvotca_1_1moo_1_1CrgUnitType.html" title="information about a CrgUnitTpe">CrgUnitType</a> *type = ittype-&gt;second;
+<a name="l00298"></a>00298     <span class="keywordflow">return</span> type;
+<a name="l00299"></a>00299 }
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

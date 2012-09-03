@@ -83,11 +83,12 @@
 <a name="l00090"></a>00090     <span class="keywordflow">if</span>(ret != SQLITE_DONE)
 <a name="l00091"></a>00091         <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"Statment::Step did not return SQLITE_DONE. Return code was "</span> + boost::lexical_cast&lt;std::string&gt;(ret) + <span class="stringliteral">"\n"</span>
 <a name="l00092"></a>00092                 <span class="stringliteral">"This might be caused be a failed insert statement to the database."</span>);
-<a name="l00093"></a>00093 }
-<a name="l00094"></a>00094 
-<a name="l00095"></a>00095 }}
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 <span class="preprocessor">#endif</span>
+<a name="l00093"></a>00093     <span class="keywordflow">return</span> ret;
+<a name="l00094"></a>00094 }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 }}
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

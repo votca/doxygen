@@ -70,90 +70,94 @@
 <a name="l00047"></a>00047                          <span class="stringliteral">"  number of frames to process"</span>);
 <a name="l00048"></a>00048     <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>() (<span class="stringliteral">"nthreads,t"</span>, propt::value&lt;int&gt;()-&gt;default_value(1),
 <a name="l00049"></a>00049                          <span class="stringliteral">"  number of threads to create"</span>);
-<a name="l00050"></a>00050 }
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052 
-<a name="l00053"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#76fee332496fda0fd5330c43945c49de">00053</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#76fee332496fda0fd5330c43945c49de" title="Process command line options.">QMApplication::EvaluateOptions</a>(<span class="keywordtype">void</span>) {
-<a name="l00054"></a>00054     <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"options"</span>, <span class="stringliteral">"Please provide an xml file with calculator options"</span>);
-<a name="l00055"></a>00055     <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"file"</span>, <span class="stringliteral">"Please provide the state file"</span>);
-<a name="l00056"></a>00056     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00057"></a>00057 }
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 
-<a name="l00060"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#cad61e551ee1198d92134443629d634a">00060</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#cad61e551ee1198d92134443629d634a" title="Main body of application.">QMApplication::Run</a>() {
+<a name="l00050"></a>00050     <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>() (<span class="stringliteral">"save,s"</span>, propt::value&lt;int&gt;()-&gt;default_value(1),
+<a name="l00051"></a>00051                          <span class="stringliteral">"  whether or not to save changes to state file"</span>);
+<a name="l00052"></a>00052 }
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#76fee332496fda0fd5330c43945c49de">00055</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#76fee332496fda0fd5330c43945c49de" title="Process command line options.">QMApplication::EvaluateOptions</a>(<span class="keywordtype">void</span>) {
+<a name="l00056"></a>00056     <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"options"</span>, <span class="stringliteral">"Please provide an xml file with calculator options"</span>);
+<a name="l00057"></a>00057     <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"file"</span>, <span class="stringliteral">"Please provide the state file"</span>);
+<a name="l00058"></a>00058     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00059"></a>00059 }
+<a name="l00060"></a>00060 
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062     <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#464d6101bc619cabf696f33fb90cfc02">_options</a>, <a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3" title="Variable map containing all program options.">_op_vm</a>[<span class="stringliteral">"options"</span>].as&lt;string&gt;());
+<a name="l00062"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#cad61e551ee1198d92134443629d634a">00062</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#cad61e551ee1198d92134443629d634a" title="Main body of application.">QMApplication::Run</a>() {
 <a name="l00063"></a>00063 
-<a name="l00064"></a>00064     <span class="keywordtype">int</span> nThreads = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"nthreads"</span>].as&lt;<span class="keywordtype">int</span>&gt;();
-<a name="l00065"></a>00065     <span class="keywordtype">int</span> nframes = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"nframes"</span>].as&lt;<span class="keywordtype">int</span>&gt;();
-<a name="l00066"></a>00066     <span class="keywordtype">int</span> fframe = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"first-frame"</span>].as&lt;<span class="keywordtype">int</span>&gt;();
-<a name="l00067"></a>00067     <span class="keywordflow">if</span> (fframe-- == 0) <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"ERROR: First frame is 0, counting "</span>
-<a name="l00068"></a>00068                                            <span class="stringliteral">"in VOTCA::CTP starts from 1."</span>);
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070     cout &lt;&lt; <span class="stringliteral">"Initializing calculators "</span> &lt;&lt; endl;
-<a name="l00071"></a>00071     <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#05ebb9187754963874100e47c1c5ddd7">BeginEvaluate</a>(nThreads);
+<a name="l00064"></a>00064     <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#464d6101bc619cabf696f33fb90cfc02">_options</a>, <a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3" title="Variable map containing all program options.">_op_vm</a>[<span class="stringliteral">"options"</span>].as&lt;string&gt;());
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066     <span class="keywordtype">int</span> nThreads = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"nthreads"</span>].as&lt;<span class="keywordtype">int</span>&gt;();
+<a name="l00067"></a>00067     <span class="keywordtype">int</span> nframes = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"nframes"</span>].as&lt;<span class="keywordtype">int</span>&gt;();
+<a name="l00068"></a>00068     <span class="keywordtype">int</span> fframe = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"first-frame"</span>].as&lt;<span class="keywordtype">int</span>&gt;();
+<a name="l00069"></a>00069     <span class="keywordflow">if</span> (fframe-- == 0) <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">"ERROR: First frame is 0, counting "</span>
+<a name="l00070"></a>00070                                            <span class="stringliteral">"in VOTCA::CTP starts from 1."</span>);
+<a name="l00071"></a>00071     <span class="keywordtype">int</span>  save = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"save"</span>].as&lt;<span class="keywordtype">int</span>&gt;();
 <a name="l00072"></a>00072 
-<a name="l00073"></a>00073 
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075     <span class="keywordtype">string</span> statefile = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"file"</span>].as&lt;<span class="keywordtype">string</span>&gt;();
-<a name="l00076"></a>00076     <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html">StateSaverSQLite</a> statsav;
-<a name="l00077"></a>00077     statsav.Open(<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>, statefile);
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079     <span class="keywordflow">while</span> (statsav.NextFrame()) {
-<a name="l00080"></a>00080         cout &lt;&lt; <span class="stringliteral">"Evaluating frame "</span> &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>.<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a9d490b41236b1c5a43e101e40257c29">getDatabaseId</a>() &lt;&lt; endl;
-<a name="l00081"></a>00081         <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#3f55f56d0b7ebb09f88b919f6f2af610">EvaluateFrame</a>();
-<a name="l00082"></a>00082         statsav.WriteFrame();
-<a name="l00083"></a>00083     }
-<a name="l00084"></a>00084     statsav.Close();
-<a name="l00085"></a>00085     <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#4ea93fd597330a5c4178f142869365f6">EndEvaluate</a>();
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 }
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089 
+<a name="l00073"></a>00073     cout &lt;&lt; <span class="stringliteral">"Initializing calculators "</span> &lt;&lt; endl;
+<a name="l00074"></a>00074     <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#05ebb9187754963874100e47c1c5ddd7">BeginEvaluate</a>(nThreads);
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078     <span class="keywordtype">string</span> statefile = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"file"</span>].as&lt;<span class="keywordtype">string</span>&gt;();
+<a name="l00079"></a>00079     <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html">StateSaverSQLite</a> statsav;
+<a name="l00080"></a>00080     statsav.Open(<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>, statefile);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082     <span class="keywordflow">while</span> (statsav.NextFrame()) {
+<a name="l00083"></a>00083         cout &lt;&lt; <span class="stringliteral">"Evaluating frame "</span> &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>.<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a9d490b41236b1c5a43e101e40257c29">getDatabaseId</a>() &lt;&lt; endl;
+<a name="l00084"></a>00084         <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#3f55f56d0b7ebb09f88b919f6f2af610">EvaluateFrame</a>();
+<a name="l00085"></a>00085         <span class="keywordflow">if</span> (save == 1) { statsav.WriteFrame(); }
+<a name="l00086"></a>00086         <span class="keywordflow">else</span> { cout &lt;&lt; <span class="stringliteral">"Changes have not been written to state file."</span> &lt;&lt; endl; }
+<a name="l00087"></a>00087     }
+<a name="l00088"></a>00088     statsav.Close();
+<a name="l00089"></a>00089     <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#4ea93fd597330a5c4178f142869365f6">EndEvaluate</a>();
 <a name="l00090"></a>00090 
-<a name="l00091"></a>00091 
-<a name="l00092"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#66f415e6d8aa0e6ea00226cfd3daa2e7">00092</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#66f415e6d8aa0e6ea00226cfd3daa2e7">QMApplication::AddCalculator</a>(<a class="code" href="classvotca_1_1ctp_1_1QMCalculator.html">QMCalculator</a>* calculator) {
-<a name="l00093"></a>00093     <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.push_back(calculator);
-<a name="l00094"></a>00094 }
+<a name="l00091"></a>00091 }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
 <a name="l00095"></a>00095 
-<a name="l00096"></a>00096 
-<a name="l00097"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#05ebb9187754963874100e47c1c5ddd7">00097</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#05ebb9187754963874100e47c1c5ddd7">QMApplication::BeginEvaluate</a>(<span class="keywordtype">int</span> nThreads = 1) {
-<a name="l00098"></a>00098     list&lt; QMCalculator* &gt; ::iterator it;
-<a name="l00099"></a>00099     <span class="keywordflow">for</span> (it = <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.begin(); it != <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.end(); it++) {
-<a name="l00100"></a>00100         cout &lt;&lt; <span class="stringliteral">"... "</span> &lt;&lt; (*it)-&gt;Identify() &lt;&lt; <span class="stringliteral">" "</span>;
-<a name="l00101"></a>00101         (*it)-&gt;setnThreads(nThreads);
-<a name="l00102"></a>00102         (*it)-&gt;Initialize(&amp;<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>, &amp;<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#464d6101bc619cabf696f33fb90cfc02">_options</a>);        
-<a name="l00103"></a>00103         cout &lt;&lt; endl;
-<a name="l00104"></a>00104     }
-<a name="l00105"></a>00105 }
-<a name="l00106"></a>00106 
-<a name="l00107"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#3f55f56d0b7ebb09f88b919f6f2af610">00107</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#3f55f56d0b7ebb09f88b919f6f2af610">QMApplication::EvaluateFrame</a>() {
-<a name="l00108"></a>00108     list&lt; QMCalculator* &gt; ::iterator it;
-<a name="l00109"></a>00109     <span class="keywordflow">for</span> (it = <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.begin(); it != <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.end(); it++) {
-<a name="l00110"></a>00110         cout &lt;&lt; <span class="stringliteral">"... "</span> &lt;&lt; (*it)-&gt;Identify() &lt;&lt; <span class="stringliteral">" "</span>;
-<a name="l00111"></a>00111         (*it)-&gt;EvaluateFrame(&amp;<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>);
-<a name="l00112"></a>00112         cout &lt;&lt; endl;
-<a name="l00113"></a>00113     }
-<a name="l00114"></a>00114 }
-<a name="l00115"></a>00115 
-<a name="l00116"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#4ea93fd597330a5c4178f142869365f6">00116</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#4ea93fd597330a5c4178f142869365f6">QMApplication::EndEvaluate</a>() {
-<a name="l00117"></a>00117     list&lt; QMCalculator* &gt; ::iterator it;
-<a name="l00118"></a>00118     <span class="keywordflow">for</span> (it = <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.begin(); it != <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.end(); it++) {
-<a name="l00119"></a>00119         (*it)-&gt;EndEvaluate(&amp;<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>);
-<a name="l00120"></a>00120     }
-<a name="l00121"></a>00121 }
-<a name="l00122"></a>00122 
-<a name="l00123"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#bbb067def5526894a29b06c6456b6602">00123</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#bbb067def5526894a29b06c6456b6602">QMApplication::ShowHelpText</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>) {
-<a name="l00124"></a>00124     <span class="keywordtype">string</span> name = <a class="code" href="classvotca_1_1tools_1_1Application.html#4d46b0d615a085f90e259e2af8f0f7c6" title="program name">ProgramName</a>();
-<a name="l00125"></a>00125     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1Application.html#c12c0e0172a712bb682d29af62cfeb59" title="version string of application">VersionString</a>() != <span class="stringliteral">""</span>) name = name + <span class="stringliteral">", version "</span> + <a class="code" href="classvotca_1_1tools_1_1Application.html#c12c0e0172a712bb682d29af62cfeb59" title="version string of application">VersionString</a>();
-<a name="l00126"></a>00126     <a class="code" href="namespacevotca_1_1ctp.html#ae406c4ced39b62b167c86d1b7ec19f9">votca::ctp::HelpTextHeader</a>(name);
-<a name="l00127"></a>00127     <a class="code" href="classvotca_1_1tools_1_1Application.html#68915aa2787333468293e3dac7e57f35" title="help text of application without version information">HelpText</a>(out);
-<a name="l00128"></a>00128     out &lt;&lt; <span class="stringliteral">"\n\n"</span> &lt;&lt; <a class="code" href="classvotca_1_1tools_1_1Application.html#fd47ef63ddd618deb3a75b431c4c6fe7">OptionsDesc</a>() &lt;&lt; endl;
-<a name="l00129"></a>00129 }
-<a name="l00130"></a>00130 
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132 
-<a name="l00133"></a>00133 }}
+<a name="l00096"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#66f415e6d8aa0e6ea00226cfd3daa2e7">00096</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#66f415e6d8aa0e6ea00226cfd3daa2e7">QMApplication::AddCalculator</a>(<a class="code" href="classvotca_1_1ctp_1_1QMCalculator.html">QMCalculator</a>* calculator) {
+<a name="l00097"></a>00097     <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.push_back(calculator);
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 
+<a name="l00101"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#05ebb9187754963874100e47c1c5ddd7">00101</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#05ebb9187754963874100e47c1c5ddd7">QMApplication::BeginEvaluate</a>(<span class="keywordtype">int</span> nThreads = 1) {
+<a name="l00102"></a>00102     list&lt; QMCalculator* &gt; ::iterator it;
+<a name="l00103"></a>00103     <span class="keywordflow">for</span> (it = <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.begin(); it != <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.end(); it++) {
+<a name="l00104"></a>00104         cout &lt;&lt; <span class="stringliteral">"... "</span> &lt;&lt; (*it)-&gt;Identify() &lt;&lt; <span class="stringliteral">" "</span>;
+<a name="l00105"></a>00105         (*it)-&gt;setnThreads(nThreads);
+<a name="l00106"></a>00106         (*it)-&gt;Initialize(&amp;<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>, &amp;<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#464d6101bc619cabf696f33fb90cfc02">_options</a>);        
+<a name="l00107"></a>00107         cout &lt;&lt; endl;
+<a name="l00108"></a>00108     }
+<a name="l00109"></a>00109 }
+<a name="l00110"></a>00110 
+<a name="l00111"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#3f55f56d0b7ebb09f88b919f6f2af610">00111</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#3f55f56d0b7ebb09f88b919f6f2af610">QMApplication::EvaluateFrame</a>() {
+<a name="l00112"></a>00112     list&lt; QMCalculator* &gt; ::iterator it;
+<a name="l00113"></a>00113     <span class="keywordflow">for</span> (it = <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.begin(); it != <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.end(); it++) {
+<a name="l00114"></a>00114         cout &lt;&lt; <span class="stringliteral">"... "</span> &lt;&lt; (*it)-&gt;Identify() &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; flush;
+<a name="l00115"></a>00115         (*it)-&gt;EvaluateFrame(&amp;<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>);
+<a name="l00116"></a>00116         cout &lt;&lt; endl;
+<a name="l00117"></a>00117     }
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 
+<a name="l00120"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#4ea93fd597330a5c4178f142869365f6">00120</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#4ea93fd597330a5c4178f142869365f6">QMApplication::EndEvaluate</a>() {
+<a name="l00121"></a>00121     list&lt; QMCalculator* &gt; ::iterator it;
+<a name="l00122"></a>00122     <span class="keywordflow">for</span> (it = <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.begin(); it != <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#b4b7210407eb0127b1ca6749792c3aba">_calculators</a>.end(); it++) {
+<a name="l00123"></a>00123         (*it)-&gt;EndEvaluate(&amp;<a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#196fa99108bc3c7cfb648831de954781">_top</a>);
+<a name="l00124"></a>00124     }
+<a name="l00125"></a>00125 }
+<a name="l00126"></a>00126 
+<a name="l00127"></a><a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#bbb067def5526894a29b06c6456b6602">00127</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMApplication.html#bbb067def5526894a29b06c6456b6602">QMApplication::ShowHelpText</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>) {
+<a name="l00128"></a>00128     <span class="keywordtype">string</span> name = <a class="code" href="classvotca_1_1tools_1_1Application.html#4d46b0d615a085f90e259e2af8f0f7c6" title="program name">ProgramName</a>();
+<a name="l00129"></a>00129     <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1Application.html#c12c0e0172a712bb682d29af62cfeb59" title="version string of application">VersionString</a>() != <span class="stringliteral">""</span>) name = name + <span class="stringliteral">", version "</span> + <a class="code" href="classvotca_1_1tools_1_1Application.html#c12c0e0172a712bb682d29af62cfeb59" title="version string of application">VersionString</a>();
+<a name="l00130"></a>00130     <a class="code" href="namespacevotca_1_1ctp.html#ae406c4ced39b62b167c86d1b7ec19f9">votca::ctp::HelpTextHeader</a>(name);
+<a name="l00131"></a>00131     <a class="code" href="classvotca_1_1tools_1_1Application.html#68915aa2787333468293e3dac7e57f35" title="help text of application without version information">HelpText</a>(out);
+<a name="l00132"></a>00132     out &lt;&lt; <span class="stringliteral">"\n\n"</span> &lt;&lt; <a class="code" href="classvotca_1_1tools_1_1Application.html#fd47ef63ddd618deb3a75b431c4c6fe7">OptionsDesc</a>() &lt;&lt; endl;
+<a name="l00133"></a>00133 }
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

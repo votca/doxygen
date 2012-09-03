@@ -238,7 +238,72 @@
 <a name="l00215"></a>00215     fclose(pdb);
 <a name="l00216"></a>00216 }
 <a name="l00217"></a>00217 
-<a name="l00218"></a>00218 }}
+<a name="l00218"></a><a class="code" href="classvotca_1_1ctp_1_1QMPair.html#6cc3bd8823504e79d81f24d98fb2dbf4">00218</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#6cc3bd8823504e79d81f24d98fb2dbf4">QMPair::WriteXYZ</a>(FILE *<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>) {
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220     <span class="keywordtype">int</span> qmatoms = 0;
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222     vector&lt; Atom* &gt; ::iterator ait;
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224     <span class="keywordflow">for</span> (ait = <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#b6f64a9a1299f322aa4c76ac39815327">Seg1PbCopy</a>()-&gt;Atoms().begin();
+<a name="l00225"></a>00225          ait &lt; <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#b6f64a9a1299f322aa4c76ac39815327">Seg1PbCopy</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#fed929e4f8d26feb147ddc275f780e4f">Atoms</a>().end();
+<a name="l00226"></a>00226          ++ait) {
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228         <span class="keywordflow">if</span> ((*ait)-&gt;HasQMPart()) {
+<a name="l00229"></a>00229             ++qmatoms;
+<a name="l00230"></a>00230         }
+<a name="l00231"></a>00231     }
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233     <span class="keywordflow">for</span> (ait = <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#8fd5eaaa0814e027e29a39bdf962469d">Seg2PbCopy</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#fed929e4f8d26feb147ddc275f780e4f">Atoms</a>().begin();
+<a name="l00234"></a>00234          ait &lt; <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#8fd5eaaa0814e027e29a39bdf962469d">Seg2PbCopy</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#fed929e4f8d26feb147ddc275f780e4f">Atoms</a>().end();
+<a name="l00235"></a>00235          ++ait) {
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237         <span class="keywordflow">if</span> ((*ait)-&gt;HasQMPart()) {
+<a name="l00238"></a>00238             ++qmatoms;
+<a name="l00239"></a>00239         }
+<a name="l00240"></a>00240     }
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242     fprintf(out, <span class="stringliteral">"%6d \n"</span>, qmatoms);
+<a name="l00243"></a>00243     fprintf(out, <span class="stringliteral">"\n"</span>);
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245     <span class="keywordflow">for</span> (ait = <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#b6f64a9a1299f322aa4c76ac39815327">Seg1PbCopy</a>()-&gt;Atoms().begin();
+<a name="l00246"></a>00246          ait &lt; <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#b6f64a9a1299f322aa4c76ac39815327">Seg1PbCopy</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#fed929e4f8d26feb147ddc275f780e4f">Atoms</a>().end();
+<a name="l00247"></a>00247          ++ait) {
+<a name="l00248"></a>00248 
+<a name="l00249"></a>00249         <span class="keywordflow">if</span> (!(*ait)-&gt;HasQMPart()) {
+<a name="l00250"></a>00250             <span class="keywordflow">continue</span>;
+<a name="l00251"></a>00251         }
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>     pos = (*ait)-&gt;getQMPos();
+<a name="l00254"></a>00254         <span class="keywordtype">string</span>  name = (*ait)-&gt;getElement();
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256         fprintf(out, <span class="stringliteral">"%2s %4.7f %4.7f %4.7f \n"</span>,
+<a name="l00257"></a>00257                         name.c_str(),
+<a name="l00258"></a>00258                         pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#b45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>()*10,
+<a name="l00259"></a>00259                         pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>()*10,
+<a name="l00260"></a>00260                         pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()*10);
+<a name="l00261"></a>00261     }
+<a name="l00262"></a>00262 
+<a name="l00263"></a>00263     <span class="keywordflow">for</span> (ait = <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#8fd5eaaa0814e027e29a39bdf962469d">Seg2PbCopy</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#fed929e4f8d26feb147ddc275f780e4f">Atoms</a>().begin();
+<a name="l00264"></a>00264          ait &lt; <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#8fd5eaaa0814e027e29a39bdf962469d">Seg2PbCopy</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#fed929e4f8d26feb147ddc275f780e4f">Atoms</a>().end();
+<a name="l00265"></a>00265          ++ait) {
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267         <span class="keywordflow">if</span> (!(*ait)-&gt;HasQMPart()) {
+<a name="l00268"></a>00268             <span class="keywordflow">continue</span>;
+<a name="l00269"></a>00269         }
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271         <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>     pos = (*ait)-&gt;getQMPos();
+<a name="l00272"></a>00272         <span class="keywordtype">string</span>  name = (*ait)-&gt;getElement();
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274         fprintf(out, <span class="stringliteral">"%2s %4.7f %4.7f %4.7f \n"</span>,
+<a name="l00275"></a>00275                         name.c_str(),
+<a name="l00276"></a>00276                         pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#b45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>()*10,
+<a name="l00277"></a>00277                         pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>()*10,
+<a name="l00278"></a>00278                         pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#cc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()*10);
+<a name="l00279"></a>00279     }
+<a name="l00280"></a>00280 }
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

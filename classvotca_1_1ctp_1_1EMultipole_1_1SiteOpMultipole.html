@@ -68,6 +68,8 @@ Collaboration diagram for votca::ctp::EMultipole::SiteOpMultipole:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#fbf61b3b9c6f1d31fdd34b609ac9345f">Energy</a> (int state)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#de9ccfd52f1178ae652bc1b78cb84cf8">EnergyStatic</a> (int state)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#9c71711499fc3c70de3db977a9dbaad6">Depolarize</a> ()</td></tr>
 
 <tr><td colspan="2"><br><h2>Public Attributes</h2></td></tr>
@@ -81,7 +83,11 @@ Collaboration diagram for votca::ctp::EMultipole::SiteOpMultipole:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; <a class="el" href="classvotca_1_1ctp_1_1Segment.html">Segment</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#1446c53c333ec4434a731470a933e752">_segsPolSphere</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; <a class="el" href="classvotca_1_1ctp_1_1Segment.html">Segment</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#d8ee5c64d05c0eed2e7dc7bb9a4c8a34">_segsOutSphere</a></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; vector&lt; <a class="el" href="classvotca_1_1ctp_1_1PolarSite.html">PolarSite</a> * &gt; &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#13d4cf25ae648cd2789606a1b44617d7">_polsPolSphere</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; vector&lt; <a class="el" href="classvotca_1_1ctp_1_1PolarSite.html">PolarSite</a> * &gt; &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#d8c0cd26272c2332d643bfabd15bfc7d">_polsOutSphere</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; vector&lt; <a class="el" href="classvotca_1_1ctp_1_1PolarSite.html">PolarSite</a> * &gt; &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#d0693ac5221e8f75cbd241455806deb4">_polarSites</a></td></tr>
 
@@ -146,7 +152,7 @@ Collaboration diagram for votca::ctp::EMultipole::SiteOpMultipole:</div>
 
 <p>
 Deletes all private thread data, in particular copies of polar sites 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02260">2260</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02271">2271</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -174,7 +180,7 @@ Charges polar sites in segment to state specified <dl compact><dt><b>Parameters:
   </table>
 </dl>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02502">2502</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02551">2551</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -195,7 +201,7 @@ Charges polar sites in segment to state specified <dl compact><dt><b>Parameters:
 
 <p>
 Zeroes out induced moments and induction fields for all polar sites in polarizable sphere 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02751">2751</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02867">2867</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -216,8 +222,30 @@ Zeroes out induced moments and induction fields for all polar sites in polarizab
 <div class="memdoc">
 
 <p>
-Calculates electrostatic energy of segment up to Q2-Q2 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02678">2678</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+Calculates electrostatic + induction energy of segment up to Q2-Q2 
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02774">2774</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="de9ccfd52f1178ae652bc1b78cb84cf8"></a><!-- doxytag: member="votca::ctp::EMultipole::SiteOpMultipole::EnergyStatic" ref="de9ccfd52f1178ae652bc1b78cb84cf8" args="(int state)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double votca::ctp::EMultipole::SiteOpMultipole::EnergyStatic           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>state</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02724">2724</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -248,7 +276,7 @@ Calculates electrostatic energy of segment up to Q2-Q2
 
 <p>
 Calculate electrostatic + polarization energy for segment ... Determine polarization sphere via cut-off ... Check which charges states are available ... For each charge state: Charge, Induce, Energy, Depolarize 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02281">2281</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02292">2292</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -291,7 +319,7 @@ Calculate electrostatic + polarization energy for segment ... Determine polariza
 
 <p>
 Calculates induced dipole moments using the Thole Model + SOR 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02517">2517</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02566">2566</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -313,7 +341,7 @@ Calculates induced dipole moments using the Thole Model + SOR
 
 <p>
 Creates private copies of polar sites in topology and arranges them by segments so as to avoid mutexes. 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02227">2227</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02238">2238</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -339,7 +367,7 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>Implements <a class="el" href="classvotca_1_1tools_1_1Thread.html#5b2339e6995bb553a19b2c98a5ce0202">votca::tools::Thread</a>.</p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02211">2211</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l02222">2222</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -379,7 +407,7 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00342">342</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00345">345</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -396,7 +424,7 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00334">334</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00335">335</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -413,7 +441,7 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00337">337</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00338">338</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -430,7 +458,24 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00341">341</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00344">344</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d8c0cd26272c2332d643bfabd15bfc7d"></a><!-- doxytag: member="votca::ctp::EMultipole::SiteOpMultipole::_polsOutSphere" ref="d8c0cd26272c2332d643bfabd15bfc7d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt;<a class="el" href="classvotca_1_1ctp_1_1PolarSite.html">PolarSite</a>*&gt; &gt; <a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#d8c0cd26272c2332d643bfabd15bfc7d">votca::ctp::EMultipole::SiteOpMultipole::_polsOutSphere</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00343">343</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -447,7 +492,7 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00340">340</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00342">342</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -464,7 +509,24 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00336">336</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00337">337</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d8ee5c64d05c0eed2e7dc7bb9a4c8a34"></a><!-- doxytag: member="votca::ctp::EMultipole::SiteOpMultipole::_segsOutSphere" ref="d8ee5c64d05c0eed2e7dc7bb9a4c8a34" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="classvotca_1_1ctp_1_1Segment.html">Segment</a>* &gt; <a class="el" href="classvotca_1_1ctp_1_1EMultipole_1_1SiteOpMultipole.html#d8ee5c64d05c0eed2e7dc7bb9a4c8a34">votca::ctp::EMultipole::SiteOpMultipole::_segsOutSphere</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00341">341</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -481,7 +543,7 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00339">339</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00340">340</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
@@ -498,7 +560,7 @@ Creates private copies of polar sites in topology and arranges them by segments 
 
 <p>
 
-<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00335">335</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
+<p>Definition at line <a class="el" href="emultipole_8h_source.html#l00336">336</a> of file <a class="el" href="emultipole_8h_source.html">emultipole.h</a>.</p>
 
 </div>
 </div><p>
