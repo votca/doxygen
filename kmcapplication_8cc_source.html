@@ -66,147 +66,153 @@
 <a name="l00043"></a>00043             (<span class="stringliteral">"execute,e"</span>, boost::program_options::value&lt;string&gt;(), <span class="stringliteral">"list of calculators separated by commas or spaces"</span>)
 <a name="l00044"></a>00044             (<span class="stringliteral">"list,l"</span>, <span class="stringliteral">"lists all available calculators"</span>)
 <a name="l00045"></a>00045             (<span class="stringliteral">"description,d"</span>, boost::program_options::value&lt;string&gt;(), <span class="stringliteral">"detailed description of a calculator"</span>);
-<a name="l00046"></a>00046 }
-<a name="l00047"></a>00047 
-<a name="l00048"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#eae20ae22f6d17c5311091421fc5a357">00048</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#eae20ae22f6d17c5311091421fc5a357" title="print help">KMCApplication::ShowHelpText</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>)
-<a name="l00049"></a>00049 {
-<a name="l00050"></a>00050     <span class="keywordtype">string</span> name =  <a class="code" href="classvotca_1_1tools_1_1Application.html#4d46b0d615a085f90e259e2af8f0f7c6" title="program name">ProgramName</a>();
-<a name="l00051"></a>00051     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#c12c0e0172a712bb682d29af62cfeb59" title="version string of application">VersionString</a>() != <span class="stringliteral">""</span>)
-<a name="l00052"></a>00052          name = name + <span class="stringliteral">", version "</span> + <a class="code" href="classvotca_1_1tools_1_1Application.html#c12c0e0172a712bb682d29af62cfeb59" title="version string of application">VersionString</a>();
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054     <a class="code" href="namespacevotca_1_1kmc.html#9af5df53940c76e7f8a3ec48229553f4">votca::kmc::HelpTextHeader</a>(name);
-<a name="l00055"></a>00055     <a class="code" href="classvotca_1_1tools_1_1Application.html#68915aa2787333468293e3dac7e57f35" title="help text of application without version information">HelpText</a>(out);
-<a name="l00056"></a>00056     out &lt;&lt; <span class="stringliteral">"\n\n"</span> &lt;&lt; <a class="code" href="classvotca_1_1tools_1_1Application.html#fd47ef63ddd618deb3a75b431c4c6fe7">OptionsDesc</a>() &lt;&lt; endl;
-<a name="l00057"></a>00057 }
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 
-<a name="l00060"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249">00060</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249" title="print the description of a specific calculator">KMCApplication::PrintDescription</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">bool</span> length)
-<a name="l00061"></a>00061 {
-<a name="l00062"></a>00062         <span class="comment">// loading the documentation xml file from VOTCASHARE</span>
-<a name="l00063"></a>00063         <span class="keywordtype">char</span> *votca_share = getenv(<span class="stringliteral">"VOTCASHARE"</span>);
-<a name="l00064"></a>00064         <span class="keywordflow">if</span>(votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"VOTCASHARE not set, cannot open help files."</span>);
-<a name="l00065"></a>00065         <span class="keywordtype">string</span> xmlFile = string(getenv(<span class="stringliteral">"VOTCASHARE"</span>)) + string(<span class="stringliteral">"/kmc/xml/"</span>)+name+string(<span class="stringliteral">".xml"</span>);
-<a name="l00066"></a>00066         <span class="keywordflow">try</span> {
-<a name="l00067"></a>00067             <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> <a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a>;
-<a name="l00068"></a>00068             <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(options, xmlFile);
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070            <span class="keywordflow">if</span> ( length ) { <span class="comment">// short description of the calculator</span>
-<a name="l00071"></a>00071                
-<a name="l00072"></a>00072                  cout &lt;&lt; string(<span class="stringliteral">"  "</span>) &lt;&lt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">_fwstring</a>(<span class="keywordtype">string</span>(name),14);
-<a name="l00073"></a>00073                  cout &lt;&lt; options.<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".description"</span>)).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;();
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075             } <span class="keywordflow">else</span> { <span class="comment">// long description of the calculator</span>
-<a name="l00076"></a>00076                 cout &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">_fwstring</a>(<span class="keywordtype">string</span>(name),18);
-<a name="l00077"></a>00077                 cout &lt;&lt; options.<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".description"</span>)).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;() &lt;&lt; endl;
-<a name="l00078"></a>00078  
-<a name="l00079"></a>00079                 list&lt;Property *&gt; items = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#d7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".item"</span>));
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081                 <span class="keywordflow">for</span>(list&lt;Property*&gt;::iterator iter = items.begin(); iter!=items.end(); ++iter) {
-<a name="l00082"></a>00082                     <span class="comment">//cout &lt;&lt; "Long description" &lt;&lt; endl;</span>
-<a name="l00083"></a>00083                     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *pname=&amp;( (*iter)-&gt;get( <span class="keywordtype">string</span>(<span class="stringliteral">"name"</span>) ) );
-<a name="l00084"></a>00084                     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *pdesc=&amp;( (*iter)-&gt;get( <span class="keywordtype">string</span>(<span class="stringliteral">"description"</span>) ) );
-<a name="l00085"></a>00085                     <span class="comment">//Property *pdflt=&amp;( (*iter)-&gt;get( string("default") ) );</span>
-<a name="l00086"></a>00086                     <span class="keywordflow">if</span> ( ! (pname-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>()).empty() ) {
-<a name="l00087"></a>00087                         cout &lt;&lt; string(<span class="stringliteral">"  -"</span>) &lt;&lt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">_fwstring</a>(pname-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>(), 14);
-<a name="l00088"></a>00088                         cout &lt;&lt; pdesc-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>() &lt;&lt; endl;
-<a name="l00089"></a>00089                     }
-<a name="l00090"></a>00090                  }
-<a name="l00091"></a>00091             }
-<a name="l00092"></a>00092             cout &lt;&lt; endl;
-<a name="l00093"></a>00093         } <span class="keywordflow">catch</span>(std::exception &amp;error) {
-<a name="l00094"></a>00094             cout &lt;&lt; string(<span class="stringliteral">"XML file or description tag missing: "</span>) &lt;&lt; xmlFile &lt;&lt; endl;
-<a name="l00095"></a>00095         }
-<a name="l00096"></a>00096 }
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 <span class="comment">// check if required options are provided</span>
-<a name="l00099"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bc26488cafb8842c9f7bb51303777668">00099</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bc26488cafb8842c9f7bb51303777668" title="print options from the XML file">KMCApplication::EvaluateOptions</a>() {
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101            <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"list"</span>)) {
-<a name="l00102"></a>00102             cout &lt;&lt; <span class="stringliteral">"Available calculators: \n"</span>;
-<a name="l00103"></a>00103             <span class="keywordflow">for</span>(KMCCalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().begin();
-<a name="l00104"></a>00104                     iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().end(); ++iter) {
-<a name="l00105"></a>00105                 <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249" title="print the description of a specific calculator">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#f7e0889c8e75e0b4bd8761e3cbd4b074">_short</a> );
-<a name="l00106"></a>00106             }
-<a name="l00107"></a>00107             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
-<a name="l00108"></a>00108             <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00109"></a>00109         }
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112          <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"description"</span>)) {
-<a name="l00113"></a>00113             <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"description"</span>, <span class="stringliteral">"no calculator is given"</span>);
-<a name="l00114"></a>00114             <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"description"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
-<a name="l00115"></a>00115             <span class="comment">// loop over the names in the description string</span>
-<a name="l00116"></a>00116             <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n) {
-<a name="l00117"></a>00117                 <span class="comment">// loop over calculators</span>
-<a name="l00118"></a>00118                 <span class="keywordtype">bool</span> printerror = <span class="keyword">true</span>;
-<a name="l00119"></a>00119                 <span class="keywordflow">for</span>(KMCCalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().begin(); 
-<a name="l00120"></a>00120                         iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().end(); ++iter) {
-<a name="l00121"></a>00121 
-<a name="l00122"></a>00122                     <span class="keywordflow">if</span> ( (*n).compare( (iter-&gt;first).c_str() ) == 0 ) {
-<a name="l00123"></a>00123                          <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249" title="print the description of a specific calculator">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37b6b0a9e2417a68de1f54237096b369">_long</a> );
-<a name="l00124"></a>00124                         printerror = <span class="keyword">false</span>;
-<a name="l00125"></a>00125                         <span class="keywordflow">break</span>;
-<a name="l00126"></a>00126                     }
-<a name="l00127"></a>00127                  }
-<a name="l00128"></a>00128                  <span class="keywordflow">if</span> ( printerror ) cout &lt;&lt; <span class="stringliteral">"Calculator "</span> &lt;&lt; *n &lt;&lt; <span class="stringliteral">" does not exist\n"</span>;
-<a name="l00129"></a>00129             }
-<a name="l00130"></a>00130             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
-<a name="l00131"></a>00131             <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00132"></a>00132          }
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134         <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bc26488cafb8842c9f7bb51303777668" title="print options from the XML file">Application::EvaluateOptions</a>();
+<a name="l00046"></a>00046     <a class="code" href="classvotca_1_1tools_1_1Application.html#556ab19e9206a8bff6f5d5c500278f17" title="add option for command line">AddProgramOptions</a>() (<span class="stringliteral">"nthreads,t"</span>, boost::program_options::value&lt;int&gt;()-&gt;default_value(1),
+<a name="l00047"></a>00047                          <span class="stringliteral">"  number of threads to create"</span>);
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#eae20ae22f6d17c5311091421fc5a357">00050</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#eae20ae22f6d17c5311091421fc5a357" title="print help">KMCApplication::ShowHelpText</a>(std::ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>)
+<a name="l00051"></a>00051 {
+<a name="l00052"></a>00052     <span class="keywordtype">string</span> name =  <a class="code" href="classvotca_1_1tools_1_1Application.html#4d46b0d615a085f90e259e2af8f0f7c6" title="program name">ProgramName</a>();
+<a name="l00053"></a>00053     <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#c12c0e0172a712bb682d29af62cfeb59" title="version string of application">VersionString</a>() != <span class="stringliteral">""</span>)
+<a name="l00054"></a>00054          name = name + <span class="stringliteral">", version "</span> + <a class="code" href="classvotca_1_1tools_1_1Application.html#c12c0e0172a712bb682d29af62cfeb59" title="version string of application">VersionString</a>();
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056     <a class="code" href="namespacevotca_1_1kmc.html#9af5df53940c76e7f8a3ec48229553f4">votca::kmc::HelpTextHeader</a>(name);
+<a name="l00057"></a>00057     <a class="code" href="classvotca_1_1tools_1_1Application.html#68915aa2787333468293e3dac7e57f35" title="help text of application without version information">HelpText</a>(out);
+<a name="l00058"></a>00058     out &lt;&lt; <span class="stringliteral">"\n\n"</span> &lt;&lt; <a class="code" href="classvotca_1_1tools_1_1Application.html#fd47ef63ddd618deb3a75b431c4c6fe7">OptionsDesc</a>() &lt;&lt; endl;
+<a name="l00059"></a>00059 }
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 
+<a name="l00062"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249">00062</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249" title="print the description of a specific calculator">KMCApplication::PrintDescription</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">bool</span> length)
+<a name="l00063"></a>00063 {
+<a name="l00064"></a>00064         <span class="comment">// loading the documentation xml file from VOTCASHARE</span>
+<a name="l00065"></a>00065         <span class="keywordtype">char</span> *votca_share = getenv(<span class="stringliteral">"VOTCASHARE"</span>);
+<a name="l00066"></a>00066         <span class="keywordflow">if</span>(votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"VOTCASHARE not set, cannot open help files."</span>);
+<a name="l00067"></a>00067         <span class="keywordtype">string</span> xmlFile = string(getenv(<span class="stringliteral">"VOTCASHARE"</span>)) + string(<span class="stringliteral">"/kmc/xml/"</span>)+name+string(<span class="stringliteral">".xml"</span>);
+<a name="l00068"></a>00068         <span class="keywordflow">try</span> {
+<a name="l00069"></a>00069             <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> <a class="code" href="namespacedensity__symmetrize.html#b03e9a2229b129b862f9b831e961b35e">options</a>;
+<a name="l00070"></a>00070             <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(options, xmlFile);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072            <span class="keywordflow">if</span> ( length ) { <span class="comment">// short description of the calculator</span>
+<a name="l00073"></a>00073                
+<a name="l00074"></a>00074                  cout &lt;&lt; string(<span class="stringliteral">"  "</span>) &lt;&lt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">_fwstring</a>(<span class="keywordtype">string</span>(name),14);
+<a name="l00075"></a>00075                  cout &lt;&lt; options.<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".description"</span>)).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;();
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077             } <span class="keywordflow">else</span> { <span class="comment">// long description of the calculator</span>
+<a name="l00078"></a>00078                 cout &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">_fwstring</a>(<span class="keywordtype">string</span>(name),18);
+<a name="l00079"></a>00079                 cout &lt;&lt; options.<a class="code" href="classvotca_1_1tools_1_1Property.html#3d205067df14b752467239235e0d1895" title="get existing property">get</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".description"</span>)).<a class="code" href="classvotca_1_1tools_1_1Property.html#c1da3461d4a03628ab0a1f416591822d" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;() &lt;&lt; endl;
+<a name="l00080"></a>00080  
+<a name="l00081"></a>00081                 list&lt;Property *&gt; items = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#d7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(name+<span class="keywordtype">string</span>(<span class="stringliteral">".item"</span>));
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083                 <span class="keywordflow">for</span>(list&lt;Property*&gt;::iterator iter = items.begin(); iter!=items.end(); ++iter) {
+<a name="l00084"></a>00084                     <span class="comment">//cout &lt;&lt; "Long description" &lt;&lt; endl;</span>
+<a name="l00085"></a>00085                     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *pname=&amp;( (*iter)-&gt;get( <span class="keywordtype">string</span>(<span class="stringliteral">"name"</span>) ) );
+<a name="l00086"></a>00086                     <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage properties and options, also used as an xml-wrapper">Property</a> *pdesc=&amp;( (*iter)-&gt;get( <span class="keywordtype">string</span>(<span class="stringliteral">"description"</span>) ) );
+<a name="l00087"></a>00087                     <span class="comment">//Property *pdflt=&amp;( (*iter)-&gt;get( string("default") ) );</span>
+<a name="l00088"></a>00088                     <span class="keywordflow">if</span> ( ! (pname-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>()).empty() ) {
+<a name="l00089"></a>00089                         cout &lt;&lt; string(<span class="stringliteral">"  -"</span>) &lt;&lt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#b6fec8d2f5d337b1376b3d95101cbf8b">_fwstring</a>(pname-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>(), 14);
+<a name="l00090"></a>00090                         cout &lt;&lt; pdesc-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#1c3e0aaec369ecc880a05d4444664020" title="reference to value of property">value</a>() &lt;&lt; endl;
+<a name="l00091"></a>00091                     }
+<a name="l00092"></a>00092                  }
+<a name="l00093"></a>00093             }
+<a name="l00094"></a>00094             cout &lt;&lt; endl;
+<a name="l00095"></a>00095         } <span class="keywordflow">catch</span>(std::exception &amp;error) {
+<a name="l00096"></a>00096             cout &lt;&lt; string(<span class="stringliteral">"XML file or description tag missing: "</span>) &lt;&lt; xmlFile &lt;&lt; endl;
+<a name="l00097"></a>00097         }
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="comment">// check if required options are provided</span>
+<a name="l00101"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bc26488cafb8842c9f7bb51303777668">00101</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bc26488cafb8842c9f7bb51303777668" title="print options from the XML file">KMCApplication::EvaluateOptions</a>() {
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103            <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"list"</span>)) {
+<a name="l00104"></a>00104             cout &lt;&lt; <span class="stringliteral">"Available calculators: \n"</span>;
+<a name="l00105"></a>00105             <span class="keywordflow">for</span>(KMCCalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().getObjects().begin();
+<a name="l00106"></a>00106                     iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().end(); ++iter) {
+<a name="l00107"></a>00107                 <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249" title="print the description of a specific calculator">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#f7e0889c8e75e0b4bd8761e3cbd4b074">_short</a> );
+<a name="l00108"></a>00108             }
+<a name="l00109"></a>00109             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
+<a name="l00110"></a>00110             <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114          <span class="keywordflow">if</span>(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>().count(<span class="stringliteral">"description"</span>)) {
+<a name="l00115"></a>00115             <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"description"</span>, <span class="stringliteral">"no calculator is given"</span>);
+<a name="l00116"></a>00116             <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"description"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
+<a name="l00117"></a>00117             <span class="comment">// loop over the names in the description string</span>
+<a name="l00118"></a>00118             <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n) {
+<a name="l00119"></a>00119                 <span class="comment">// loop over calculators</span>
+<a name="l00120"></a>00120                 <span class="keywordtype">bool</span> printerror = <span class="keyword">true</span>;
+<a name="l00121"></a>00121                 <span class="keywordflow">for</span>(KMCCalculatorFactory::assoc_map::const_iterator iter=<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().begin(); 
+<a name="l00122"></a>00122                         iter != <a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#3c0648ab9d9f85b303641de89d487ffd">getObjects</a>().end(); ++iter) {
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124                     <span class="keywordflow">if</span> ( (*n).compare( (iter-&gt;first).c_str() ) == 0 ) {
+<a name="l00125"></a>00125                          <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#0029e1e6dd3234f121884b68de6f3249" title="print the description of a specific calculator">PrintDescription</a>( (iter-&gt;first).c_str(), <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37b6b0a9e2417a68de1f54237096b369">_long</a> );
+<a name="l00126"></a>00126                         printerror = <span class="keyword">false</span>;
+<a name="l00127"></a>00127                         <span class="keywordflow">break</span>;
+<a name="l00128"></a>00128                     }
+<a name="l00129"></a>00129                  }
+<a name="l00130"></a>00130                  <span class="keywordflow">if</span> ( printerror ) cout &lt;&lt; <span class="stringliteral">"Calculator "</span> &lt;&lt; *n &lt;&lt; <span class="stringliteral">" does not exist\n"</span>;
+<a name="l00131"></a>00131             }
+<a name="l00132"></a>00132             <a class="code" href="classvotca_1_1tools_1_1Application.html#9902ad3881f8acd1c96a0166fb284ad3" title="call StopExecution after EvaluateOptions">StopExecution</a>();
+<a name="l00133"></a>00133             <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00134"></a>00134          }
 <a name="l00135"></a>00135 
-<a name="l00136"></a>00136         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"execute"</span>, <span class="stringliteral">"no calculator is given"</span>);
-<a name="l00137"></a>00137         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"execute"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
-<a name="l00138"></a>00138         <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n)
-<a name="l00139"></a>00139             <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#04161528bd5543c6cd2b7bc2dde1a372" title="add a calculator to the list">AddCalculator</a>(<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#f7cdca5a79d3cb0946ceaa92979b9a04">Create</a>((*n).c_str()));    
-<a name="l00140"></a>00140         
-<a name="l00141"></a>00141         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"options"</span>, <span class="stringliteral">"please provide an xml file with program options"</span>);
-<a name="l00142"></a>00142         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"file"</span>, <span class="stringliteral">"no database file specified"</span>);
-<a name="l00143"></a>00143         
-<a name="l00144"></a>00144         <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#ab858fd9cf4ce3fe9932071da7d7e96d" title="sql database file">_filename</a> = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"file"</span>].as&lt;<span class="keywordtype">string</span> &gt; ();
-<a name="l00145"></a>00145         cout &lt;&lt; <span class="stringliteral">" Database file: "</span> &lt;&lt; <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#ab858fd9cf4ce3fe9932071da7d7e96d" title="sql database file">_filename</a> &lt;&lt; endl;
-<a name="l00146"></a>00146         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00147"></a>00147 }
+<a name="l00136"></a>00136         <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#bc26488cafb8842c9f7bb51303777668" title="print options from the XML file">Application::EvaluateOptions</a>();
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"execute"</span>, <span class="stringliteral">"no calculator is given"</span>);
+<a name="l00139"></a>00139         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(<a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"execute"</span>].as&lt;string&gt;(), <span class="stringliteral">" ,\n\t"</span>);
+<a name="l00140"></a>00140         <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> n = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>(); n != tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++n)
+<a name="l00141"></a>00141             <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#04161528bd5543c6cd2b7bc2dde1a372" title="add a calculator to the list">AddCalculator</a>(<a class="code" href="namespacevotca_1_1kmc.html#b702e13407d2c401eeea25635b79851e">Calculators</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#f7cdca5a79d3cb0946ceaa92979b9a04">Create</a>((*n).c_str()));    
+<a name="l00142"></a>00142         
+<a name="l00143"></a>00143         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"options"</span>, <span class="stringliteral">"please provide an xml file with program options"</span>);
+<a name="l00144"></a>00144         <a class="code" href="classvotca_1_1tools_1_1Application.html#351992ed0786d6b4ddbda5b9799fd845" title="Check weather required option is set.">CheckRequired</a>(<span class="stringliteral">"file"</span>, <span class="stringliteral">"no database file specified"</span>);
+<a name="l00145"></a>00145         
+<a name="l00146"></a>00146         <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#ab858fd9cf4ce3fe9932071da7d7e96d" title="sql database file">_filename</a> = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"file"</span>].as&lt;<span class="keywordtype">string</span> &gt; ();
+<a name="l00147"></a>00147         <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#91a5213b1743ae7561a657344761ffa3">_nThreads</a> = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"nthreads"</span>].as&lt;<span class="keywordtype">int</span>&gt;();
 <a name="l00148"></a>00148         
-<a name="l00149"></a>00149 
-<a name="l00150"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#04161528bd5543c6cd2b7bc2dde1a372">00150</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#04161528bd5543c6cd2b7bc2dde1a372" title="add a calculator to the list">KMCApplication::AddCalculator</a>(<a class="code" href="classvotca_1_1kmc_1_1KMCCalculator.html">KMCCalculator</a>* calculator)
-<a name="l00151"></a>00151 {
-<a name="l00152"></a>00152         <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.push_back(calculator);
-<a name="l00153"></a>00153 }
-<a name="l00154"></a>00154 
-<a name="l00155"></a>00155 
-<a name="l00156"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1b179fb679eece318395542479972d0f">00156</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1b179fb679eece318395542479972d0f" title="run all calculators">KMCApplication::Run</a>()
-<a name="l00157"></a>00157 {
-<a name="l00158"></a>00158     <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(<a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a151d5ca6e109d99d5472c3341f1c209" title="program options from the xml file">_options</a>, <a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3" title="Variable map containing all program options.">_op_vm</a>[<span class="stringliteral">"options"</span>].as&lt;string&gt;());
-<a name="l00159"></a>00159     <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#e34586cea802fd3cd591669c47d027d7" title="return true if evaluation should be continued, abort only if something important...">BeginEvaluate</a>();
-<a name="l00160"></a>00160     <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#8ac6ed9792e39313ba818e0d5ce80852" title="called for each frame, return true if evaluation should be continued">EvaluateFrame</a>();
-<a name="l00161"></a>00161     <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37cf1076f7dbd3fc99e74b01f01648f2" title="stop evaluation &amp;amp; do final analysis if necessary">EndEvaluate</a>();
-<a name="l00162"></a>00162 }
-<a name="l00163"></a>00163 
-<a name="l00164"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#e34586cea802fd3cd591669c47d027d7">00164</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#e34586cea802fd3cd591669c47d027d7" title="return true if evaluation should be continued, abort only if something important...">KMCApplication::BeginEvaluate</a>(){
-<a name="l00165"></a>00165     list&lt;KMCCalculator *&gt;::iterator iter;
-<a name="l00166"></a>00166     <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.begin(); iter != <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.end(); ++iter){
-<a name="l00167"></a>00167         (*iter)-&gt;Initialize(<a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#ab858fd9cf4ce3fe9932071da7d7e96d" title="sql database file">_filename</a>.c_str(), &amp;<a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a151d5ca6e109d99d5472c3341f1c209" title="program options from the xml file">_options</a>);
-<a name="l00168"></a>00168     }
-<a name="l00169"></a>00169 }
-<a name="l00170"></a>00170 
-<a name="l00171"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#8ac6ed9792e39313ba818e0d5ce80852">00171</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#8ac6ed9792e39313ba818e0d5ce80852" title="called for each frame, return true if evaluation should be continued">KMCApplication::EvaluateFrame</a>(){
-<a name="l00172"></a>00172     list&lt;KMCCalculator *&gt;::iterator iter;
-<a name="l00173"></a>00173     <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0;
-<a name="l00174"></a>00174     <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.begin(); iter != <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.end(); ++iter){
-<a name="l00175"></a>00175         (*iter)-&gt;EvaluateFrame();
-<a name="l00176"></a>00176     }
-<a name="l00177"></a>00177 }
-<a name="l00178"></a>00178 
-<a name="l00179"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37cf1076f7dbd3fc99e74b01f01648f2">00179</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37cf1076f7dbd3fc99e74b01f01648f2" title="stop evaluation &amp;amp; do final analysis if necessary">KMCApplication::EndEvaluate</a>(){
-<a name="l00180"></a>00180     list&lt;KMCCalculator *&gt;::iterator iter;
-<a name="l00181"></a>00181     <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.begin(); iter != <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.end(); ++iter){
-<a name="l00182"></a>00182         (*iter)-&gt;EndEvaluate();
-<a name="l00183"></a>00183     }
-<a name="l00184"></a>00184 }
-<a name="l00185"></a>00185 
-<a name="l00186"></a>00186 }}
+<a name="l00149"></a>00149         <span class="comment">//cout &lt;&lt; " Database file: " &lt;&lt; _filename &lt;&lt; endl;</span>
+<a name="l00150"></a>00150         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00151"></a>00151 }
+<a name="l00152"></a>00152         
+<a name="l00153"></a>00153 
+<a name="l00154"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#04161528bd5543c6cd2b7bc2dde1a372">00154</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#04161528bd5543c6cd2b7bc2dde1a372" title="add a calculator to the list">KMCApplication::AddCalculator</a>(<a class="code" href="classvotca_1_1kmc_1_1KMCCalculator.html">KMCCalculator</a>* calculator)
+<a name="l00155"></a>00155 {
+<a name="l00156"></a>00156         <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.push_back(calculator);
+<a name="l00157"></a>00157 }
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159 
+<a name="l00160"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1b179fb679eece318395542479972d0f">00160</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1b179fb679eece318395542479972d0f" title="run all calculators">KMCApplication::Run</a>()
+<a name="l00161"></a>00161 {
+<a name="l00162"></a>00162     <a class="code" href="namespacevotca_1_1tools.html#f135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(<a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a151d5ca6e109d99d5472c3341f1c209" title="program options from the xml file">_options</a>, <a class="code" href="classvotca_1_1tools_1_1Application.html#8863292ad22a1bacae73ff27fb4146e3" title="Variable map containing all program options.">_op_vm</a>[<span class="stringliteral">"options"</span>].as&lt;string&gt;());
+<a name="l00163"></a>00163     <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#e34586cea802fd3cd591669c47d027d7" title="return true if evaluation should be continued, abort only if something important...">BeginEvaluate</a>();
+<a name="l00164"></a>00164     <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#8ac6ed9792e39313ba818e0d5ce80852" title="called for each frame, return true if evaluation should be continued">EvaluateFrame</a>();
+<a name="l00165"></a>00165     <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37cf1076f7dbd3fc99e74b01f01648f2" title="stop evaluation &amp;amp; do final analysis if necessary">EndEvaluate</a>();
+<a name="l00166"></a>00166 }
+<a name="l00167"></a>00167 
+<a name="l00168"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#e34586cea802fd3cd591669c47d027d7">00168</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#e34586cea802fd3cd591669c47d027d7" title="return true if evaluation should be continued, abort only if something important...">KMCApplication::BeginEvaluate</a>(){
+<a name="l00169"></a>00169     list&lt;KMCCalculator *&gt;::iterator iter;
+<a name="l00170"></a>00170     <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.begin(); iter != <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.end(); ++iter){
+<a name="l00171"></a>00171         (*iter)-&gt;setnThreads(<a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#91a5213b1743ae7561a657344761ffa3">_nThreads</a>);
+<a name="l00172"></a>00172         (*iter)-&gt;Initialize(<a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#ab858fd9cf4ce3fe9932071da7d7e96d" title="sql database file">_filename</a>.c_str(), &amp;<a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a151d5ca6e109d99d5472c3341f1c209" title="program options from the xml file">_options</a>);
+<a name="l00173"></a>00173         
+<a name="l00174"></a>00174     }
+<a name="l00175"></a>00175 }
+<a name="l00176"></a>00176 
+<a name="l00177"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#8ac6ed9792e39313ba818e0d5ce80852">00177</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#8ac6ed9792e39313ba818e0d5ce80852" title="called for each frame, return true if evaluation should be continued">KMCApplication::EvaluateFrame</a>(){
+<a name="l00178"></a>00178     list&lt;KMCCalculator *&gt;::iterator iter;
+<a name="l00179"></a>00179     <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0;
+<a name="l00180"></a>00180     <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.begin(); iter != <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.end(); ++iter){
+<a name="l00181"></a>00181         (*iter)-&gt;EvaluateFrame();
+<a name="l00182"></a>00182     }
+<a name="l00183"></a>00183 }
+<a name="l00184"></a>00184 
+<a name="l00185"></a><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37cf1076f7dbd3fc99e74b01f01648f2">00185</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#37cf1076f7dbd3fc99e74b01f01648f2" title="stop evaluation &amp;amp; do final analysis if necessary">KMCApplication::EndEvaluate</a>(){
+<a name="l00186"></a>00186     list&lt;KMCCalculator *&gt;::iterator iter;
+<a name="l00187"></a>00187     <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.begin(); iter != <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.end(); ++iter){
+<a name="l00188"></a>00188         (*iter)-&gt;EndEvaluate();
+<a name="l00189"></a>00189     }
+<a name="l00190"></a>00190 }
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
