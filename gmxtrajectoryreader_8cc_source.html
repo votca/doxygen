@@ -66,8 +66,8 @@
 <a name="l00043"></a>00043 <span class="preprocessor"></span>
 <a name="l00044"></a>00044     output_env_t oenv;
 <a name="l00045"></a>00045     <span class="comment">// _snew("oenv", oenv, 1);</span>
-<a name="l00046"></a>00046     oenv = (output_env_t)malloc(<span class="keyword">sizeof</span>(*oenv));
-<a name="l00047"></a>00047     output_env_init_default (oenv);
+<a name="l00046"></a>00046     <span class="comment">//oenv = (output_env_t)malloc(sizeof(*oenv));</span>
+<a name="l00047"></a>00047     output_env_init_default (&amp;oenv);
 <a name="l00048"></a>00048 
 <a name="l00049"></a>00049     <span class="keywordflow">if</span>(!read_first_frame(oenv, &amp;_gmx_status,(<span class="keywordtype">char</span>*)<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryReader.html#866b05894fa7004cf207abf089298d24">_filename</a>.c_str(),&amp;<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryReader.html#593919dfc7a0176b3a144ad765e29d4d" title="gmx frame">_gmx_frame</a>,TRX_READ_X | TRX_READ_V | TRX_READ_F))
 <a name="l00050"></a>00050         <span class="keywordflow">throw</span> std::runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">"cannot open "</span>) + <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryReader.html#866b05894fa7004cf207abf089298d24">_filename</a>);
@@ -125,8 +125,8 @@
 <a name="l00102"></a>00102 <span class="preprocessor">#if GMX == 50</span>
 <a name="l00103"></a>00103 <span class="preprocessor"></span>    output_env_t oenv;
 <a name="l00104"></a>00104     <span class="comment">//_snew("oenv", oenv, 1);</span>
-<a name="l00105"></a>00105     oenv = (output_env_t)malloc(<span class="keyword">sizeof</span>(*oenv));
-<a name="l00106"></a>00106     output_env_init_default (oenv);
+<a name="l00105"></a>00105     <span class="comment">//oenv = (output_env_t)malloc(sizeof(*oenv));</span>
+<a name="l00106"></a>00106     output_env_init_default (&amp;oenv);
 <a name="l00107"></a>00107     <span class="keywordflow">if</span>(!read_next_frame(oenv, _gmx_status,&amp;<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryReader.html#593919dfc7a0176b3a144ad765e29d4d" title="gmx frame">_gmx_frame</a>))
 <a name="l00108"></a>00108         <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00109"></a>00109     <span class="comment">//sfree(oenv);</span>
