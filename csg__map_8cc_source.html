@@ -53,7 +53,7 @@
 <a name="l00030"></a>00030 {
 <a name="l00031"></a>00031 <span class="keyword">public</span>:
 <a name="l00032"></a><a class="code" href="classCsgMapApp.html#25037f7d2dc3a549c5c6b9f7374bc154">00032</a>     <span class="keywordtype">string</span> <a class="code" href="classCsgMapApp.html#25037f7d2dc3a549c5c6b9f7374bc154" title="program name">ProgramName</a>() { <span class="keywordflow">return</span> <span class="stringliteral">"csg_map"</span>; }
-<a name="l00033"></a><a class="code" href="classCsgMapApp.html#d035dd778a9dd733df7f376d6db8e57d">00033</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#d035dd778a9dd733df7f376d6db8e57d">HelpText</a>(ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>) {
+<a name="l00033"></a><a class="code" href="classCsgMapApp.html#d035dd778a9dd733df7f376d6db8e57d">00033</a>     <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#d035dd778a9dd733df7f376d6db8e57d">HelpText</a>(ostream &amp;out) {
 <a name="l00034"></a>00034         out &lt;&lt; <span class="stringliteral">"Map a reference trajectory to a coarse-grained trajectory.\n"</span>
 <a name="l00035"></a>00035             <span class="stringliteral">"This program can be used to map a whole trajectory or to\n"</span>
 <a name="l00036"></a>00036             <span class="stringliteral">"create an initial configuration for a coarse-grained run only."</span>;
@@ -161,7 +161,7 @@
 <a name="l00138"></a>00138 };
 <a name="l00139"></a>00139 
 <a name="l00140"></a><a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e">00140</a> <span class="keywordtype">void</span> <a class="code" href="classCsgMapApp.html#33a8be48671f0d094c1c972dc24cd21e" title="called before the first frame">CsgMapApp::BeginEvaluate</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_atom) {
-<a name="l00141"></a>00141     <span class="keywordtype">string</span> <a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a> = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"out"</span>].as&lt;<span class="keywordtype">string</span> &gt; ();
+<a name="l00141"></a>00141     <span class="keywordtype">string</span> out = <a class="code" href="classvotca_1_1tools_1_1Application.html#4059eac9d5d4856cbc2eeb7a43de8f46" title="get available program options &amp;amp; descriptions">OptionsMap</a>()[<span class="stringliteral">"out"</span>].as&lt;<span class="keywordtype">string</span> &gt; ();
 <a name="l00142"></a>00142     cout &lt;&lt; <span class="stringliteral">"writing coarse-grained trajectory to "</span> &lt;&lt; out &lt;&lt; endl;
 <a name="l00143"></a>00143     <a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> = <a class="code" href="namespacevotca_1_1csg.html#d10337444223adef2933c42500153fde">TrjWriterFactory</a>().Create(out);
 <a name="l00144"></a>00144     <span class="keywordflow">if</span> (<a class="code" href="classCsgMapApp.html#359821652234bca96ba32b92e4c3e283">_writer</a> == NULL)

@@ -52,7 +52,7 @@
 <a name="l00029"></a>00029 {
 <a name="l00030"></a>00030 <span class="keyword">public</span>:
 <a name="l00031"></a><a class="code" href="classGmxTopolApp.html#0dc911d24ec427f95ba2f5d5d7f698ad">00031</a>     <span class="keywordtype">string</span> <a class="code" href="classGmxTopolApp.html#0dc911d24ec427f95ba2f5d5d7f698ad" title="program name">ProgramName</a>() { <span class="keywordflow">return</span> <span class="stringliteral">"csg_gmxtopol"</span>; }
-<a name="l00032"></a><a class="code" href="classGmxTopolApp.html#62d6e97f19f08f27ce8840e74676488d">00032</a>     <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#62d6e97f19f08f27ce8840e74676488d">HelpText</a>(ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>) {
+<a name="l00032"></a><a class="code" href="classGmxTopolApp.html#62d6e97f19f08f27ce8840e74676488d">00032</a>     <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#62d6e97f19f08f27ce8840e74676488d">HelpText</a>(ostream &amp;out) {
 <a name="l00033"></a>00033         out &lt;&lt; <span class="stringliteral">"Create skeleton for gromacs topology based on atomistic topology\n"</span>
 <a name="l00034"></a>00034             <span class="stringliteral">"and a mapping file. File still needs to be modified by the user."</span>;
 <a name="l00035"></a>00035     }
@@ -68,9 +68,9 @@
 <a name="l00045"></a>00045     <span class="keywordtype">bool</span> <a class="code" href="classGmxTopolApp.html#505e4219dfb8025def600afc19dfc647" title="called after topology was loaded">EvaluateTopology</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> *top_ref);
 <a name="l00046"></a>00046 
 <a name="l00047"></a>00047 <span class="keyword">protected</span>:
-<a name="l00048"></a>00048     <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#bfb0de0d3b54fc93347aa3b4e25501ec">WriteAtoms</a>(ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg);
-<a name="l00049"></a>00049     <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#4d7fa0d658a116b4dc133e1efdee051b">WriteInteractions</a>(ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg);
-<a name="l00050"></a>00050     <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#69250c83b8bb469f75817a9203a8dbc0">WriteMolecule</a>(ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg);
+<a name="l00048"></a>00048     <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#bfb0de0d3b54fc93347aa3b4e25501ec">WriteAtoms</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg);
+<a name="l00049"></a>00049     <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#4d7fa0d658a116b4dc133e1efdee051b">WriteInteractions</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg);
+<a name="l00050"></a>00050     <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#69250c83b8bb469f75817a9203a8dbc0">WriteMolecule</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg);
 <a name="l00051"></a>00051 };
 <a name="l00052"></a>00052 
 <a name="l00053"></a><a class="code" href="classGmxTopolApp.html#7f639b12487e2acb3a9606f3625f97dc">00053</a> <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#7f639b12487e2acb3a9606f3625f97dc" title="Initialize application data.">GmxTopolApp::Initialize</a>(<span class="keywordtype">void</span>)
@@ -93,7 +93,7 @@
 <a name="l00070"></a>00070 }
 <a name="l00071"></a>00071 
 <a name="l00072"></a>00072 
-<a name="l00073"></a><a class="code" href="classGmxTopolApp.html#bfb0de0d3b54fc93347aa3b4e25501ec">00073</a> <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#bfb0de0d3b54fc93347aa3b4e25501ec">GmxTopolApp::WriteAtoms</a>(ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg)
+<a name="l00073"></a><a class="code" href="classGmxTopolApp.html#bfb0de0d3b54fc93347aa3b4e25501ec">00073</a> <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#bfb0de0d3b54fc93347aa3b4e25501ec">GmxTopolApp::WriteAtoms</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg)
 <a name="l00074"></a>00074 {
 <a name="l00075"></a>00075     out &lt;&lt; <span class="stringliteral">"[atoms]\n"</span>;
 <a name="l00076"></a>00076     out &lt;&lt; <span class="stringliteral">"; nr type resnr residue atom cgnr charge mass\n"</span>;
@@ -106,7 +106,7 @@
 <a name="l00083"></a>00083     out &lt;&lt; endl;
 <a name="l00084"></a>00084 }
 <a name="l00085"></a>00085 
-<a name="l00086"></a><a class="code" href="classGmxTopolApp.html#4d7fa0d658a116b4dc133e1efdee051b">00086</a> <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#4d7fa0d658a116b4dc133e1efdee051b">GmxTopolApp::WriteInteractions</a>(ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg)
+<a name="l00086"></a><a class="code" href="classGmxTopolApp.html#4d7fa0d658a116b4dc133e1efdee051b">00086</a> <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#4d7fa0d658a116b4dc133e1efdee051b">GmxTopolApp::WriteInteractions</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg)
 <a name="l00087"></a>00087 {
 <a name="l00088"></a>00088     <span class="keywordtype">int</span> nb=-1;
 <a name="l00089"></a>00089     
@@ -141,7 +141,7 @@
 <a name="l00118"></a>00118     }
 <a name="l00119"></a>00119 }
 <a name="l00120"></a>00120 
-<a name="l00121"></a><a class="code" href="classGmxTopolApp.html#69250c83b8bb469f75817a9203a8dbc0">00121</a> <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#69250c83b8bb469f75817a9203a8dbc0">GmxTopolApp::WriteMolecule</a>(ostream &amp;<a class="code" href="namespacemerge__orbitals.html#0915d6744c7de2234c87abdbc49ec437">out</a>, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg)
+<a name="l00121"></a><a class="code" href="classGmxTopolApp.html#69250c83b8bb469f75817a9203a8dbc0">00121</a> <span class="keywordtype">void</span> <a class="code" href="classGmxTopolApp.html#69250c83b8bb469f75817a9203a8dbc0">GmxTopolApp::WriteMolecule</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg)
 <a name="l00122"></a>00122 {
 <a name="l00123"></a>00123     out &lt;&lt; <span class="stringliteral">"[ moleculetype ]\n"</span>;
 <a name="l00124"></a>00124     out &lt;&lt; cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#caab8d33edc32fe9e2a7fb43314887e1" title="get the name of the molecule">getName</a>() &lt;&lt; <span class="stringliteral">" 3\n\n"</span>;
