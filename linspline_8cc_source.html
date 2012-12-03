@@ -54,75 +54,77 @@
 <a name="l00031"></a>00031     <span class="keywordflow">if</span>(x.size() != y.size())
 <a name="l00032"></a>00032         <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error in LinSpline::Interpolate : sizes of vectors x and y do not match"</span>);
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034     <span class="keyword">const</span> <span class="keywordtype">int</span> N = x.size();
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036     <span class="comment">// adjust the grid</span>
-<a name="l00037"></a>00037     <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>.resize(N);
-<a name="l00038"></a>00038     
-<a name="l00039"></a>00039     <span class="comment">// copy the grid points into f</span>
-<a name="l00040"></a>00040     <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a> = x;
+<a name="l00034"></a>00034     <span class="keywordflow">if</span>(x.size()&lt;2)
+<a name="l00035"></a>00035         <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error in LinSpline::Interpolate : vectors x and y have to contain at least 2 points"</span>);
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037     <span class="keyword">const</span> <span class="keywordtype">int</span> N = x.size();
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039     <span class="comment">// adjust the grid</span>
+<a name="l00040"></a>00040     <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>.resize(N);
 <a name="l00041"></a>00041     
-<a name="l00042"></a>00042     <span class="comment">// LINEAR SPLINE: a(i) * x + b(i)</span>
-<a name="l00043"></a>00043     <span class="comment">// where i=number of interval</span>
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045     <span class="comment">// initialize vectors a,b</span>
-<a name="l00046"></a>00046     <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a> = ub::zero_vector&lt;double&gt;(N);
-<a name="l00047"></a>00047     <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#8847e8e9afe8706aefc3e361787496a8">b</a> = ub::zero_vector&lt;double&gt;(N);
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049     <span class="comment">// boundary conditions not applicable</span>
-<a name="l00050"></a>00050     
-<a name="l00051"></a>00051     <span class="comment">// calculate a,b for all intervals 0..(N-2), where interval</span>
-<a name="l00052"></a>00052     <span class="comment">// [x(i),x(i+1)] shall have number i (this means that the last interval</span>
-<a name="l00053"></a>00053     <span class="comment">// has number N-2)</span>
-<a name="l00054"></a>00054     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;N-1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00055"></a>00055         <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = (y(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1)-y(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>))/(<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1)-<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>));
-<a name="l00056"></a>00056         <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#8847e8e9afe8706aefc3e361787496a8">b</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = y(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-<a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)*<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
-<a name="l00057"></a>00057     }
-<a name="l00058"></a>00058 }
-<a name="l00059"></a>00059 
-<a name="l00060"></a><a class="code" href="classvotca_1_1tools_1_1LinSpline.html#00085a1770920691b9f58e78c127c0e2">00060</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#00085a1770920691b9f58e78c127c0e2" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">LinSpline::Fit</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>, ub::vector&lt;double&gt; &amp;y)
-<a name="l00061"></a>00061 {
-<a name="l00062"></a>00062     <span class="keywordflow">if</span>(x.size() != y.size())
-<a name="l00063"></a>00063         <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error in LinSpline::Fit : sizes of vectors x and y do not match"</span>);
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065     <span class="keyword">const</span> <span class="keywordtype">int</span> N = x.size();
-<a name="l00066"></a>00066     <span class="keyword">const</span> <span class="keywordtype">int</span> ngrid = <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>.size();
+<a name="l00042"></a>00042     <span class="comment">// copy the grid points into f</span>
+<a name="l00043"></a>00043     <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a> = x;
+<a name="l00044"></a>00044     
+<a name="l00045"></a>00045     <span class="comment">// LINEAR SPLINE: a(i) * x + b(i)</span>
+<a name="l00046"></a>00046     <span class="comment">// where i=number of interval</span>
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048     <span class="comment">// initialize vectors a,b</span>
+<a name="l00049"></a>00049     <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a> = ub::zero_vector&lt;double&gt;(N);
+<a name="l00050"></a>00050     <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#8847e8e9afe8706aefc3e361787496a8">b</a> = ub::zero_vector&lt;double&gt;(N);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052     <span class="comment">// boundary conditions not applicable</span>
+<a name="l00053"></a>00053     
+<a name="l00054"></a>00054     <span class="comment">// calculate a,b for all intervals 0..(N-2), where interval</span>
+<a name="l00055"></a>00055     <span class="comment">// [x(i),x(i+1)] shall have number i (this means that the last interval</span>
+<a name="l00056"></a>00056     <span class="comment">// has number N-2)</span>
+<a name="l00057"></a>00057     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;N-1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00058"></a>00058         <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = (y(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1)-y(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>))/(<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1)-<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>));
+<a name="l00059"></a>00059         <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#8847e8e9afe8706aefc3e361787496a8">b</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = y(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-<a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)*<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
+<a name="l00060"></a>00060     }
+<a name="l00061"></a>00061 }
+<a name="l00062"></a>00062 
+<a name="l00063"></a><a class="code" href="classvotca_1_1tools_1_1LinSpline.html#00085a1770920691b9f58e78c127c0e2">00063</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#00085a1770920691b9f58e78c127c0e2" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained...">LinSpline::Fit</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>, ub::vector&lt;double&gt; &amp;y)
+<a name="l00064"></a>00064 {
+<a name="l00065"></a>00065     <span class="keywordflow">if</span>(x.size() != y.size())
+<a name="l00066"></a>00066         <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">"error in LinSpline::Fit : sizes of vectors x and y do not match"</span>);
 <a name="l00067"></a>00067 
-<a name="l00068"></a>00068     <span class="comment">// construct the equation</span>
-<a name="l00069"></a>00069     <span class="comment">// A*u = b</span>
-<a name="l00070"></a>00070     <span class="comment">// The matrix A contains all conditions</span>
-<a name="l00071"></a>00071     <span class="comment">// s_i(x) = (y(i+1)-y(i)) * (x-r(i))/(r(i+1)-r(i)) + y(i)</span>
-<a name="l00072"></a>00072     <span class="comment">// where y(i) are the unknown values at grid points r(i), and</span>
-<a name="l00073"></a>00073     <span class="comment">// the condition y=s_i(x) is to be satisfied at all input points:</span>
-<a name="l00074"></a>00074     <span class="comment">// therefore b=y and u=vector of all unknown y(i)</span>
-<a name="l00075"></a>00075     
-<a name="l00076"></a>00076     ub::matrix&lt;double&gt; <a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(N, ngrid);
-<a name="l00077"></a>00077     A = ub::zero_matrix&lt;double&gt;(N, ngrid);
-<a name="l00078"></a>00078     <span class="keywordtype">int</span> interval;
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080     <span class="comment">// construct matrix A</span>
-<a name="l00081"></a>00081     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;N; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00082"></a>00082         interval = <a class="code" href="classvotca_1_1tools_1_1Spline.html#f4ffb2b4a962c4f0ab58bb8e9ed1baf0" title="Determine the index of the interval containing value r.">getInterval</a>(<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>));
-<a name="l00083"></a>00083         <a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>,interval)   = 1 - (<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval))/(<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval+1)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval));
-<a name="l00084"></a>00084         <a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>,interval+1) = (<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval))/(<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval+1)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval));
-<a name="l00085"></a>00085     }
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087     <span class="comment">// now do a qr solve</span>
-<a name="l00088"></a>00088     ub::vector&lt;double&gt; sol(ngrid);
-<a name="l00089"></a>00089     <a class="code" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb" title="solves A*x=b">votca::tools::linalg_qrsolve</a>(sol, A, y);
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091     <span class="comment">// vector "sol" contains all y-values of fitted linear splines at each</span>
-<a name="l00092"></a>00092     <span class="comment">// interval border</span>
-<a name="l00093"></a>00093     <span class="comment">// get a(i) and b(i) for piecewise splines out of solution vector "sol"</span>
-<a name="l00094"></a>00094     <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a> = ub::zero_vector&lt;double&gt;(ngrid-1);
-<a name="l00095"></a>00095     <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#8847e8e9afe8706aefc3e361787496a8">b</a> = ub::zero_vector&lt;double&gt;(ngrid-1);
-<a name="l00096"></a>00096     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;ngrid-1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
-<a name="l00097"></a>00097         <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = (sol(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1)-sol(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>))/(<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>));
-<a name="l00098"></a>00098         <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#8847e8e9afe8706aefc3e361787496a8">b</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = -<a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)*<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) + sol(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
-<a name="l00099"></a>00099     }
-<a name="l00100"></a>00100 }
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 }}
+<a name="l00068"></a>00068     <span class="keyword">const</span> <span class="keywordtype">int</span> N = x.size();
+<a name="l00069"></a>00069     <span class="keyword">const</span> <span class="keywordtype">int</span> ngrid = <a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>.size();
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071     <span class="comment">// construct the equation</span>
+<a name="l00072"></a>00072     <span class="comment">// A*u = b</span>
+<a name="l00073"></a>00073     <span class="comment">// The matrix A contains all conditions</span>
+<a name="l00074"></a>00074     <span class="comment">// s_i(x) = (y(i+1)-y(i)) * (x-r(i))/(r(i+1)-r(i)) + y(i)</span>
+<a name="l00075"></a>00075     <span class="comment">// where y(i) are the unknown values at grid points r(i), and</span>
+<a name="l00076"></a>00076     <span class="comment">// the condition y=s_i(x) is to be satisfied at all input points:</span>
+<a name="l00077"></a>00077     <span class="comment">// therefore b=y and u=vector of all unknown y(i)</span>
+<a name="l00078"></a>00078     
+<a name="l00079"></a>00079     ub::matrix&lt;double&gt; <a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(N, ngrid);
+<a name="l00080"></a>00080     A = ub::zero_matrix&lt;double&gt;(N, ngrid);
+<a name="l00081"></a>00081     <span class="keywordtype">int</span> interval;
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083     <span class="comment">// construct matrix A</span>
+<a name="l00084"></a>00084     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;N; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00085"></a>00085         interval = <a class="code" href="classvotca_1_1tools_1_1Spline.html#f4ffb2b4a962c4f0ab58bb8e9ed1baf0" title="Determine the index of the interval containing value r.">getInterval</a>(<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>));
+<a name="l00086"></a>00086         <a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>,interval)   = 1 - (<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval))/(<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval+1)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval));
+<a name="l00087"></a>00087         <a class="code" href="linsolve_8m.html#3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>,interval+1) = (<a class="code" href="namespacelinsolve.html#dab3afc673d15a07d698016ec48d5d04">x</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval))/(<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval+1)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(interval));
+<a name="l00088"></a>00088     }
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090     <span class="comment">// now do a qr solve</span>
+<a name="l00091"></a>00091     ub::vector&lt;double&gt; sol(ngrid);
+<a name="l00092"></a>00092     <a class="code" href="namespacevotca_1_1tools.html#747b98e06037eb03784bd4d2bada37eb" title="solves A*x=b">votca::tools::linalg_qrsolve</a>(sol, A, y);
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094     <span class="comment">// vector "sol" contains all y-values of fitted linear splines at each</span>
+<a name="l00095"></a>00095     <span class="comment">// interval border</span>
+<a name="l00096"></a>00096     <span class="comment">// get a(i) and b(i) for piecewise splines out of solution vector "sol"</span>
+<a name="l00097"></a>00097     <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a> = ub::zero_vector&lt;double&gt;(ngrid-1);
+<a name="l00098"></a>00098     <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#8847e8e9afe8706aefc3e361787496a8">b</a> = ub::zero_vector&lt;double&gt;(ngrid-1);
+<a name="l00099"></a>00099     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>&lt;ngrid-1; <a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>++) {
+<a name="l00100"></a>00100         <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = (sol(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1)-sol(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>))/(<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>+1)-<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>));
+<a name="l00101"></a>00101         <a class="code" href="classvotca_1_1tools_1_1LinSpline.html#8847e8e9afe8706aefc3e361787496a8">b</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) = -<a class="code" href="classvotca_1_1tools_1_1LinSpline.html#975ee5097440c7afeb2fdf42b26d43bb">a</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>)*<a class="code" href="classvotca_1_1tools_1_1Spline.html#b2097dfcd45d6be767812c86c537cfdd">_r</a>(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>) + sol(<a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">i</a>);
+<a name="l00102"></a>00102     }
+<a name="l00103"></a>00103 }
+<a name="l00104"></a>00104 }}
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
