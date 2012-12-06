@@ -66,7 +66,7 @@
 <a name="l00043"></a>00043 <span class="stringliteral"></span>
 <a name="l00044"></a>00044 <span class="stringliteral">Usage: %(name)s </span>
 <a name="l00045"></a>00045 <span class="stringliteral">Allowed options:</span>
-<a name="l00046"></a>00046 <span class="stringliteral">    --adressc X.X     center of the adress zone (x-value)</span>
+<a name="l00046"></a>00046 <span class="stringliteral">    --adressc X.X     center of the AdResS zone (x-value)</span>
 <a name="l00047"></a>00047 <span class="stringliteral">    --infile FILE     input file</span>
 <a name="l00048"></a>00048 <span class="stringliteral">    --outfile FILE    output file</span>
 <a name="l00049"></a>00049 <span class="stringliteral">"""</span> % {<span class="stringliteral">'name'</span>: os.path.basename(sys.argv[0]),<span class="stringliteral">'ver'</span>: <span class="stringliteral">'%version%'</span>}
@@ -98,14 +98,17 @@
 <a name="l00075"></a>00075                             secondx.append(float(values[0])-adressc) 
 <a name="l00076"></a>00076                             secondy.append( 0.5*(firsty[len(firstx)-len(secondx)]+(float(values[1]))) )
 <a name="l00077"></a>00077                         <span class="keywordflow">else</span>:
-<a name="l00078"></a>00078                             <span class="keywordflow">print</span> <span class="stringliteral">"Warning: symmetrize_density.pl : adressc not in center of data"</span>, line
+<a name="l00078"></a>00078                             <span class="keywordflow">print</span> <span class="stringliteral">"Warning: symmetrize_density.py: adressc not in center of data"</span>, line
 <a name="l00079"></a>00079                             <span class="keywordflow">print</span> <span class="stringliteral">"index"</span>, len(firstx)-len(secondx)
 <a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">00081</a> f = open(outfile,<span class="stringliteral">"w"</span>)
-<a name="l00082"></a><a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">00082</a> i=0
-<a name="l00083"></a>00083 <span class="keywordflow">for</span> x <span class="keywordflow">in</span> secondx:
-<a name="l00084"></a>00084     f.write(<span class="stringliteral">'%15.10e %15.10e i\n'</span> % (x, secondy[i]))
-<a name="l00085"></a>00085     i=i+1
+<a name="l00081"></a>00081 <span class="keywordflow">if</span> len(secondx) &lt; 4:
+<a name="l00082"></a>00082   exit(<span class="stringliteral">"symmetrize_density.py: symmetrize density has less than points, that usually means the range of the input density ("</span>+infile+<span class="stringliteral">") does not overlap with AdResS center ("</span>+str(adressc)+<span class="stringliteral">"). Try increase your target density."</span>)
+<a name="l00083"></a>00083 
+<a name="l00084"></a><a class="code" href="namespacedensity__symmetrize.html#e8e7c83567b52836fc8cd1035cc0849b">00084</a> f = open(outfile,<span class="stringliteral">"w"</span>)
+<a name="l00085"></a><a class="code" href="namespacedensity__symmetrize.html#70312de6d597e9aea75ba426b32aa62c">00085</a> i=0
+<a name="l00086"></a>00086 <span class="keywordflow">for</span> x <span class="keywordflow">in</span> secondx:
+<a name="l00087"></a>00087     f.write(<span class="stringliteral">'%15.10e %15.10e i\n'</span> % (x, secondy[i]))
+<a name="l00088"></a>00088     i=i+1
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>
