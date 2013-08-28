@@ -263,7 +263,7 @@
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    BeadContainer::iterator bead;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">for</span>(bead=<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3" title="beads in the topology">_beads</a>.begin(); bead!=<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3" title="beads in the topology">_beads</a>.end(); ++bead) {</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type =  <a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>((*bead)-&gt;getType()-&gt;getName());</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      <span class="keywordflow">if</span> (name.compare(type-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadType.html#ac7c6b6fede467d8f3377efb753b3749c">getName</a>()) == 0 ) {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(name.c_str(),(*bead)-&gt;getType()-&gt;getName().c_str())) {</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        type-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadType.html#ae0ff12982375d96d9b8388e465326271">setName</a>(newname);</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      }</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    }</div>
@@ -273,7 +273,7 @@
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    BeadContainer::iterator bead;</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">for</span>(bead=<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3" title="beads in the topology">_beads</a>.begin(); bead!=<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3" title="beads in the topology">_beads</a>.end(); ++bead) {</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <span class="keywordflow">if</span> (name.compare((*bead)-&gt;getType()-&gt;getName()) == 0 ) {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(name.c_str(),(*bead)-&gt;getType()-&gt;getName().c_str())) {</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        (*bead)-&gt;setM(value);</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      }</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div>
