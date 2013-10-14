@@ -79,58 +79,66 @@
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="qmdatabase_8h.html">qmdatabase.h</a>&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ctp_2include_2votca_2ctp_2topology_8h.html">topology.h</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span>votca::tools;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html">StateSaverSQLite</a></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a72e7a6afdfb8f5fb7cdd1d79363e0b00">   36</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a72e7a6afdfb8f5fb7cdd1d79363e0b00">StateSaverSQLite</a>() { };</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a5bb011ccecdfd03900ed9e7bc20fb0d9">   37</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a5bb011ccecdfd03900ed9e7bc20fb0d9">~StateSaverSQLite</a>() { _db.Close(); }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> Open(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> &amp;qmtop, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;file);</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a40affcf5870d1294116635057e7c22cc">   40</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a40affcf5870d1294116635057e7c22cc">Close</a>() { _db.Close(); }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> NextFrame();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> WriteFrame();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> WriteMeta(<span class="keywordtype">bool</span> update);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> WriteMolecules(<span class="keywordtype">bool</span> update);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> WriteSegTypes(<span class="keywordtype">bool</span> update);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> WriteSegments(<span class="keywordtype">bool</span> update);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> WriteFragments(<span class="keywordtype">bool</span> update);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> WriteAtoms(<span class="keywordtype">bool</span> update);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> WritePairs(<span class="keywordtype">bool</span> update);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> ReadFrame();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> ReadMeta(<span class="keywordtype">int</span> topId);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> ReadMolecules(<span class="keywordtype">int</span> topId);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> ReadSegTypes(<span class="keywordtype">int</span> topId);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> ReadSegments(<span class="keywordtype">int</span> topId);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> ReadFragments(<span class="keywordtype">int</span> topId);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> ReadAtoms(<span class="keywordtype">int</span> topId);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> ReadPairs(<span class="keywordtype">int</span> topId);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span>  FramesInDatabase();</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a26a1508240bd8d199597d2c1abc5c1df">   62</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *<a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a26a1508240bd8d199597d2c1abc5c1df">getTopology</a>() { <span class="keywordflow">return</span> _qmtop; }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">bool</span> HasTopology(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a0f348db9e7407c76aacebfdf0aa1e656">   66</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a>       *<a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a0f348db9e7407c76aacebfdf0aa1e656">_qmtop</a>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#ab1e5eefa1aeefd87a2fa6eeeb337dad6">   67</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1QMDatabase.html" title="the state database">QMDatabase</a>      <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#ab1e5eefa1aeefd87a2fa6eeeb337dad6">_db</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a21d9221ac27d7d1ec99a57a0ffb73733">   69</a></span>&#160;    <span class="keywordtype">int</span>             <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a21d9221ac27d7d1ec99a57a0ffb73733">_frame</a>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#aef070ecc34d6564591a9db802c1d69bf">   70</a></span>&#160;    <span class="keywordtype">int</span>             <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#aef070ecc34d6564591a9db802c1d69bf">_current_frame</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a4073b7b3e098ab893f8fb0efe342586e">   71</a></span>&#160;    vector&lt;int&gt;     <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a4073b7b3e098ab893f8fb0efe342586e">_frames</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a8f2e4c8435645ec11b0b2d9bcd99b2fc">   72</a></span>&#160;    vector&lt;int&gt;     <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a8f2e4c8435645ec11b0b2d9bcd99b2fc">_topIds</a>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a3f4f12eb20069e65bf66bf22733cc63e">   74</a></span>&#160;    <span class="keywordtype">string</span>          <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a3f4f12eb20069e65bf66bf22733cc63e">_sqlfile</a>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#aa696795ba867e472d1b11253eae8aceb">   75</a></span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#aa696795ba867e472d1b11253eae8aceb">_was_read</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;boost/interprocess/sync/file_lock.hpp&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using namespace </span>votca::tools;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html">StateSaverSQLite</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a72e7a6afdfb8f5fb7cdd1d79363e0b00">   37</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a72e7a6afdfb8f5fb7cdd1d79363e0b00">StateSaverSQLite</a>() { };</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a5bb011ccecdfd03900ed9e7bc20fb0d9">   38</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a5bb011ccecdfd03900ed9e7bc20fb0d9">~StateSaverSQLite</a>() { _db.Close(); }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> Open(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> &amp;qmtop, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<a class="code" href="installation_8dox.html#ac2179690bfbd3b163d0c82ce5e5eb0d2">file</a>, <span class="keywordtype">bool</span> lock = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a40affcf5870d1294116635057e7c22cc">   41</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a40affcf5870d1294116635057e7c22cc">Close</a>() { _db.Close(); }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">bool</span> NextFrame();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> WriteFrame();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> WriteMeta(<span class="keywordtype">bool</span> update);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> WriteMolecules(<span class="keywordtype">bool</span> update);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> WriteSegTypes(<span class="keywordtype">bool</span> update);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> WriteSegments(<span class="keywordtype">bool</span> update);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> WriteFragments(<span class="keywordtype">bool</span> update);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> WriteAtoms(<span class="keywordtype">bool</span> update);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> WritePairs(<span class="keywordtype">bool</span> update);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> WriteSuperExchange(<span class="keywordtype">bool</span> update);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> ReadFrame();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> ReadMeta(<span class="keywordtype">int</span> topId);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> ReadMolecules(<span class="keywordtype">int</span> topId);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> ReadSegTypes(<span class="keywordtype">int</span> topId);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> ReadSegments(<span class="keywordtype">int</span> topId);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> ReadFragments(<span class="keywordtype">int</span> topId);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> ReadAtoms(<span class="keywordtype">int</span> topId);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> ReadPairs(<span class="keywordtype">int</span> topId);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> ReadSuperExchange(<span class="keywordtype">int</span> topId);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span>  FramesInDatabase();</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a26a1508240bd8d199597d2c1abc5c1df">   65</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *<a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a26a1508240bd8d199597d2c1abc5c1df">getTopology</a>() { <span class="keywordflow">return</span> _qmtop; }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">bool</span> HasTopology(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> LockStateFile();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> UnlockStateFile();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a0f348db9e7407c76aacebfdf0aa1e656">   72</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a>       *<a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a0f348db9e7407c76aacebfdf0aa1e656">_qmtop</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#ab1e5eefa1aeefd87a2fa6eeeb337dad6">   73</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1QMDatabase.html" title="the state database">QMDatabase</a>      <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#ab1e5eefa1aeefd87a2fa6eeeb337dad6">_db</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a21d9221ac27d7d1ec99a57a0ffb73733">   75</a></span>&#160;    <span class="keywordtype">int</span>             <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a21d9221ac27d7d1ec99a57a0ffb73733">_frame</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#aef070ecc34d6564591a9db802c1d69bf">   76</a></span>&#160;    <span class="keywordtype">int</span>             <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#aef070ecc34d6564591a9db802c1d69bf">_current_frame</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a4073b7b3e098ab893f8fb0efe342586e">   77</a></span>&#160;    vector&lt;int&gt;     <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a4073b7b3e098ab893f8fb0efe342586e">_frames</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a8f2e4c8435645ec11b0b2d9bcd99b2fc">   78</a></span>&#160;    vector&lt;int&gt;     <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a8f2e4c8435645ec11b0b2d9bcd99b2fc">_topIds</a>;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_MD2QM_StateSaverSQLite2_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a3f4f12eb20069e65bf66bf22733cc63e">   80</a></span>&#160;    <span class="keywordtype">string</span>          <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a3f4f12eb20069e65bf66bf22733cc63e">_sqlfile</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#aa696795ba867e472d1b11253eae8aceb">   81</a></span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#aa696795ba867e472d1b11253eae8aceb">_was_read</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a2849ef0df6cd8610dd4acde90eadb1c7">   83</a></span>&#160;    boost::interprocess::file_lock *<a class="code" href="classvotca_1_1ctp_1_1StateSaverSQLite.html#a2849ef0df6cd8610dd4acde90eadb1c7">_flock</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_MD2QM_StateSaverSQLite2_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->

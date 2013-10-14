@@ -53,30 +53,44 @@
 </div><!--header-->
 <div class="contents">
 <a href="linalg_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * File:   linsolve.h</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Author: ruehle</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Created on March 15, 2010, 12:09 PM</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __VOTCA_LINSOLVE_H</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __VOTCA_LINSOLVE_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix.hpp&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/vector.hpp&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="votca__config_8h.html">votca_config.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">namespace </span>ub = boost::numeric::ublas;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2011 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * limitations under the License.</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#a14f72691244ea2c3878bba45436da4c3" title="solves A*x=b">linalg_cholesky_solve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#a747b98e06037eb03784bd4d2bada37eb" title="solves A*x=b">linalg_qrsolve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::vector&lt;double&gt; *residual=NULL);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#a7b789991041c9a0aec760ffd20c599b8" title="solves A*x=b under the constraint B*x = 0">linalg_constrained_qrsolve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::matrix&lt;double&gt; &amp;constr);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}}</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _LINSOLVE_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VOTCA_TOOLS_LINALG_H</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __VOTCA_TOOLS_LINALG_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix.hpp&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/vector.hpp&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/symmetric.hpp&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="votca__config_8h.html">votca_config.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">namespace </span>ub = boost::numeric::ublas;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#a14f72691244ea2c3878bba45436da4c3" title="solves A*x=b">linalg_cholesky_solve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#a747b98e06037eb03784bd4d2bada37eb" title="solves A*x=b">linalg_qrsolve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::vector&lt;double&gt; *residual=NULL);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#a7b789991041c9a0aec760ffd20c599b8" title="solves A*x=b under the constraint B*x = 0">linalg_constrained_qrsolve</a>(ub::vector&lt;double&gt; &amp;<a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>, ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>, ub::matrix&lt;double&gt; &amp;constr);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespacevotca_1_1tools.html#a70042ba07c0a9b06bb6c6fa1e0dada20" title="eigenvalues of a symmetric matrix A*x=E*x">linalg_eigenvalues_symmetric</a>( ub::symmetric_matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;E, ub::matrix&lt;double&gt; &amp;V );</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_TOOLS_LINALG_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->

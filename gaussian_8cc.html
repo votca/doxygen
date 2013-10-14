@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>Votca: ctp/src/libctp/gaussian.cc File Reference</title>
+<title>Votca: ctp/src/libctp/qmpackages/gaussian.cc File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2b6ab31139d7f950fccda5a3d4ed6553.html">ctp</a></li><li class="navelem"><a class="el" href="dir_101dfb3d08b68ae463d7ddea8bbbf078.html">src</a></li><li class="navelem"><a class="el" href="dir_abe70163b6f0298289ac687497fc6bd6.html">libctp</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b6ab31139d7f950fccda5a3d4ed6553.html">ctp</a></li><li class="navelem"><a class="el" href="dir_101dfb3d08b68ae463d7ddea8bbbf078.html">src</a></li><li class="navelem"><a class="el" href="dir_abe70163b6f0298289ac687497fc6bd6.html">libctp</a></li><li class="navelem"><a class="el" href="dir_bba5fcac7b3e3acbb3725c105d482f5c.html">qmpackages</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -54,22 +54,23 @@
 <div class="title">gaussian.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="gaussian_8h_source.html">votca/ctp/gaussian.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="gaussian_8h_source.html">gaussian.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="segment_8h_source.html">votca/ctp/segment.h</a>&quot;</code><br/>
-<code>#include &lt;<a class="el" href="globals_8h_source.html">votca/tools/globals.h</a>&gt;</code><br/>
 <code>#include &lt;boost/algorithm/string.hpp&gt;</code><br/>
 <code>#include &lt;boost/numeric/ublas/matrix.hpp&gt;</code><br/>
 <code>#include &lt;boost/numeric/ublas/matrix_proxy.hpp&gt;</code><br/>
 <code>#include &lt;boost/numeric/ublas/io.hpp&gt;</code><br/>
+<code>#include &lt;boost/format.hpp&gt;</code><br/>
 <code>#include &lt;stdio.h&gt;</code><br/>
 <code>#include &lt;iomanip&gt;</code><br/>
 <code>#include &lt;sys/stat.h&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for gaussian.cc:</div>
 <div class="dyncontent">
-<div class="center"><img src="gaussian_8cc__incl.png" border="0" usemap="#ctp_2src_2libctp_2gaussian_8cc" alt=""/></div>
-<map name="ctp_2src_2libctp_2gaussian_8cc" id="ctp_2src_2libctp_2gaussian_8cc">
-<area shape="rect" id="node3" href="gaussian_8h.html" title="votca/ctp/gaussian.h" alt="" coords="883,91,1037,119"/><area shape="rect" id="node41" href="segment_8h.html" title="votca/ctp/segment.h" alt="" coords="597,177,752,205"/><area shape="rect" id="node89" href="globals_8h.html" title="votca/tools/globals.h" alt="" coords="3779,262,3931,290"/><area shape="rect" id="node5" href="property_8h.html" title="votca/tools/property.h" alt="" coords="1161,425,1321,453"/><area shape="rect" id="node69" href="apolarsite_8h.html" title="votca/ctp/apolarsite.h" alt="" coords="712,347,872,375"/><area shape="rect" id="node81" href="ctp_2include_2votca_2ctp_2orbitals_8h.html" title="votca/ctp/orbitals.h" alt="" coords="2131,177,2275,205"/><area shape="rect" id="node116" href="logger_8h.html" title="votca/ctp/logger.h" alt="" coords="3900,177,4036,205"/><area shape="rect" id="node17" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="1443,510,1549,538"/><area shape="rect" id="node27" href="vec_8h.html" title="vec.h" alt="" coords="727,510,783,538"/><area shape="rect" id="node34" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="709,595,800,623"/><area shape="rect" id="node43" href="segmenttype_8h.html" title="votca/ctp/segmenttype.h" alt="" coords="48,347,229,375"/><area shape="rect" id="node49" href="fragment_8h.html" title="votca/ctp/fragment.h" alt="" coords="597,262,752,290"/><area shape="rect" id="node51" href="atom_8h.html" title="votca/ctp/atom.h" alt="" coords="331,347,461,375"/><area shape="rect" id="node64" href="polarsite_8h.html" title="votca/ctp/polarsite.h" alt="" coords="485,347,637,375"/><area shape="rect" id="node56" href="types_8h.html" title="votca/tools/types.h" alt="" coords="433,510,575,538"/><area shape="rect" id="node60" href="matrix_8h.html" title="votca/tools/matrix.h" alt="" coords="485,425,635,453"/></map>
+<div class="center"><img src="gaussian_8cc__incl.png" border="0" usemap="#ctp_2src_2libctp_2qmpackages_2gaussian_8cc" alt=""/></div>
+<map name="ctp_2src_2libctp_2qmpackages_2gaussian_8cc" id="ctp_2src_2libctp_2qmpackages_2gaussian_8cc">
+<area shape="rect" id="node3" href="gaussian_8h.html" title="gaussian.h" alt="" coords="2305,107,2396,135"/><area shape="rect" id="node92" href="segment_8h.html" title="votca/ctp/segment.h" alt="" coords="3585,270,3740,298"/><area shape="rect" id="node5" href="apolarsite_8h.html" title="votca/ctp/apolarsite.h" alt="" coords="3485,433,3645,461"/><area shape="rect" id="node34" href="qmpackage_8h.html" title="votca/ctp/qmpackage.h" alt="" coords="1443,193,1613,221"/><area shape="rect" id="node11" href="vec_8h.html" title="votca/tools/vec.h" alt="" coords="1491,595,1621,623"/><area shape="rect" id="node26" href="matrix_8h.html" title="votca/tools/matrix.h" alt="" coords="3476,518,3625,546"/><area shape="rect" id="node28" href="types_8h.html" title="types.h" alt="" coords="3645,595,3715,623"/><area shape="rect" id="node21" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="1511,673,1601,701"/><area shape="rect" id="node36" href="logger_8h.html" title="votca/ctp/logger.h" alt="" coords="43,270,179,298"/><area shape="rect" id="node41" href="ctp_2include_2votca_2ctp_2orbitals_8h.html" title="votca/ctp/orbitals.h" alt="" coords="1456,347,1600,375"/><area shape="rect" id="node49" href="property_8h.html" title="votca/tools/property.h" alt="" coords="1163,518,1323,546"/><area shape="rect" id="node43" href="basisset_8h.html" title="votca/ctp/basisset.h" alt="" coords="1285,433,1435,461"/><area shape="rect" id="node65" href="globals_8h.html" title="votca/tools/globals.h" alt="" coords="1685,433,1837,461"/><area shape="rect" id="node94" href="segmenttype_8h.html" title="votca/ctp/segmenttype.h" alt="" coords="3845,433,4027,461"/><area shape="rect" id="node99" href="fragment_8h.html" title="votca/ctp/fragment.h" alt="" coords="3471,347,3625,375"/><area shape="rect" id="node101" href="atom_8h.html" title="votca/ctp/atom.h" alt="" coords="3280,433,3411,461"/><area shape="rect" id="node110" href="polarsite_8h.html" title="votca/ctp/polarsite.h" alt="" coords="3669,433,3821,461"/></map>
 </div>
 </div>
 <p><a href="gaussian_8cc_source.html">Go to the source code of this file.</a></p>
@@ -79,6 +80,7 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacevotca"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca.html">votca</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacevotca_1_1ctp"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1ctp.html">votca::ctp</a></td></tr>
+<tr class="memdesc:namespacevotca_1_1ctp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge transport classes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

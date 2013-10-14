@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>Votca: ctp/src/libctp/calculators/idft.cc File Reference</title>
+<title>Votca: ctp/src/libctp/jobcalculators/idft.cc File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,27 +44,28 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2b6ab31139d7f950fccda5a3d4ed6553.html">ctp</a></li><li class="navelem"><a class="el" href="dir_101dfb3d08b68ae463d7ddea8bbbf078.html">src</a></li><li class="navelem"><a class="el" href="dir_abe70163b6f0298289ac687497fc6bd6.html">libctp</a></li><li class="navelem"><a class="el" href="dir_4c3738f15f413d91509375b7572524e7.html">calculators</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b6ab31139d7f950fccda5a3d4ed6553.html">ctp</a></li><li class="navelem"><a class="el" href="dir_101dfb3d08b68ae463d7ddea8bbbf078.html">src</a></li><li class="navelem"><a class="el" href="dir_abe70163b6f0298289ac687497fc6bd6.html">libctp</a></li><li class="navelem"><a class="el" href="dir_4a892a5e97669ec8434e136a1fae1c41.html">jobcalculators</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">idft.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="idft_8h_source.html">idft.h</a>&quot;</code><br/>
-<code>#include &lt;<a class="el" href="eigenvalues_8h_source.html">votca/ctp/eigenvalues.h</a>&gt;</code><br/>
+<code>#include &lt;boost/format.hpp&gt;</code><br/>
+<code>#include &lt;boost/filesystem.hpp&gt;</code><br/>
 <code>#include &lt;<a class="el" href="logger_8h_source.html">votca/ctp/logger.h</a>&gt;</code><br/>
-<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;<a class="el" href="qmpackagefactory_8h_source.html">votca/ctp/qmpackagefactory.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="overlap_8h_source.html">votca/ctp/overlap.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for idft.cc:</div>
 <div class="dyncontent">
-<div class="center"><img src="idft_8cc__incl.png" border="0" usemap="#ctp_2src_2libctp_2calculators_2idft_8cc" alt=""/></div>
-<map name="ctp_2src_2libctp_2calculators_2idft_8cc" id="ctp_2src_2libctp_2calculators_2idft_8cc">
-<area shape="rect" id="node3" href="idft_8h.html" title="idft.h" alt="" coords="3143,99,3196,127"/><area shape="rect" id="node53" href="logger_8h.html" title="votca/ctp/logger.h" alt="" coords="3725,587,3861,615"/><area shape="rect" id="node123" href="eigenvalues_8h.html" title="votca/ctp/eigenvalues.h" alt="" coords="812,99,985,127"/><area shape="rect" id="node5" href="parallelxjobcalc_8h.html" title="votca/ctp/parallelxjobcalc.h" alt="" coords="3005,185,3200,213"/><area shape="rect" id="node9" href="property_8h.html" title="votca/tools/property.h" alt="" coords="2957,587,3117,615"/><area shape="rect" id="node72" href="ctp_2include_2votca_2ctp_2orbitals_8h.html" title="votca/ctp/orbitals.h" alt="" coords="1636,502,1780,530"/><area shape="rect" id="node105" href="gaussian_8h.html" title="votca/ctp/gaussian.h" alt="" coords="2697,425,2852,453"/><area shape="rect" id="node7" href="qmcalculator_8h.html" title="votca/ctp/qmcalculator.h" alt="" coords="2913,347,3092,375"/><area shape="rect" id="node47" href="qmthread_8h.html" title="votca/ctp/qmthread.h" alt="" coords="3368,502,3528,530"/><area shape="rect" id="node62" href="mutex_8h.html" title="votca/tools/mutex.h" alt="" coords="3167,347,3316,375"/><area shape="rect" id="node64" href="xjob_8h.html" title="votca/ctp/xjob.h" alt="" coords="2767,347,2889,375"/><area shape="rect" id="node67" href="progressobserver_8h.html" title="votca/ctp/progressobserver.h" alt="" coords="3012,270,3220,298"/><area shape="rect" id="node38" href="ctp_2include_2votca_2ctp_2topology_8h.html" title="votca/ctp/topology.h" alt="" coords="2905,425,3055,453"/><area shape="rect" id="node21" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="2488,681,2595,709"/><area shape="rect" id="node29" href="vec_8h.html" title="vec.h" alt="" coords="2669,681,2725,709"/><area shape="rect" id="node34" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="2747,766,2837,794"/><area shape="rect" id="node41" href="apolarsite_8h.html" title="votca/ctp/apolarsite.h" alt="" coords="2773,587,2933,615"/><area shape="rect" id="node44" href="segment_8h.html" title="votca/ctp/segment.h" alt="" coords="2799,502,2953,530"/><area shape="rect" id="node49" href="thread_8h.html" title="votca/tools/thread.h" alt="" coords="3501,587,3651,615"/><area shape="rect" id="node51" href="globals_8h.html" title="votca/tools/globals.h" alt="" coords="3192,587,3344,615"/></map>
+<div class="center"><img src="idft_8cc__incl.png" border="0" usemap="#ctp_2src_2libctp_2jobcalculators_2idft_8cc" alt=""/></div>
+<map name="ctp_2src_2libctp_2jobcalculators_2idft_8cc" id="ctp_2src_2libctp_2jobcalculators_2idft_8cc">
+<area shape="rect" id="node3" href="idft_8h.html" title="idft.h" alt="" coords="3035,99,3088,127"/><area shape="rect" id="node56" href="logger_8h.html" title="votca/ctp/logger.h" alt="" coords="3768,433,3904,461"/><area shape="rect" id="node104" href="overlap_8h.html" title="votca/ctp/overlap.h" alt="" coords="3435,254,3579,282"/><area shape="rect" id="node123" href="qmpackagefactory_8h.html" title="votca/ctp/qmpackagefactory.h" alt="" coords="5,177,219,205"/><area shape="rect" id="node5" href="property_8h.html" title="votca/tools/property.h" alt="" coords="2813,518,2973,546"/><area shape="rect" id="node37" href="parallelxjobcalc_8h.html" title="votca/ctp/parallelxjobcalc.h" alt="" coords="3045,177,3240,205"/><area shape="rect" id="node66" href="ctp_2include_2votca_2ctp_2orbitals_8h.html" title="votca/ctp/orbitals.h" alt="" coords="2019,339,2163,367"/><area shape="rect" id="node17" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="2627,603,2733,631"/><area shape="rect" id="node27" href="vec_8h.html" title="vec.h" alt="" coords="2808,603,2864,631"/><area shape="rect" id="node32" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="2765,689,2856,717"/><area shape="rect" id="node39" href="jobcalculator_8h.html" title="votca/ctp/jobcalculator.h" alt="" coords="3092,254,3268,282"/><area shape="rect" id="node41" href="progressobserver_8h.html" title="votca/ctp/progressobserver.h" alt="" coords="2980,339,3188,367"/><area shape="rect" id="node44" href="mutex_8h.html" title="votca/tools/mutex.h" alt="" coords="3595,433,3744,461"/><area shape="rect" id="node47" href="job_8h.html" title="votca/ctp/job.h" alt="" coords="3229,433,3344,461"/><area shape="rect" id="node52" href="qmthread_8h.html" title="votca/ctp/qmthread.h" alt="" coords="3943,339,4103,367"/><area shape="rect" id="node54" href="globals_8h.html" title="votca/tools/globals.h" alt="" coords="3419,433,3571,461"/><area shape="rect" id="node68" href="basisset_8h.html" title="votca/ctp/basisset.h" alt="" coords="299,433,448,461"/><area shape="rect" id="node125" href="objectfactory_8h.html" title="votca/tools/objectfactory.h" alt="" coords="2321,518,2511,546"/><area shape="rect" id="node132" href="qmpackage_8h.html" title="qmpackage.h" alt="" coords="431,254,540,282"/><area shape="rect" id="node137" href="segment_8h.html" title="votca/ctp/segment.h" alt="" coords="293,339,448,367"/></map>
 </div>
 </div>
 <p><a href="idft_8cc_source.html">Go to the source code of this file.</a></p>
@@ -74,11 +75,7 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacevotca"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca.html">votca</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacevotca_1_1ctp"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1ctp.html">votca::ctp</a></td></tr>
+<tr class="memdesc:namespacevotca_1_1ctp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge transport classes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a599f1d9464c14b7800357511049fcecf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1ctp.html#a599f1d9464c14b7800357511049fcecf">votca::ctp::inv_sqrt</a> (double <a class="el" href="linsolve_8m.html#a8f7582926a57f3f0dfdc0171463dfada">x</a>)</td></tr>
-<tr class="separator:a599f1d9464c14b7800357511049fcecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

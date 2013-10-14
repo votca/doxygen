@@ -59,71 +59,92 @@
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mutex_8h.html">votca/tools/mutex.h</a>&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xjob_8h.html">votca/ctp/xjob.h</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;boost/interprocess/sync/file_lock.hpp&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="property_8h.html">votca/tools/property.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="job_8h.html">votca/ctp/job.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;boost/interprocess/sync/file_lock.hpp&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;boost/program_options.hpp&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">class </span>QMThread;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// E.G. ProgObserver&lt; vector&lt;Seg*&gt;, Seg* &gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//      ProgObserver&lt; vector&lt;XJob*&gt;, XJob* &gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//      ProgObserver&lt; QMNBList, QMPair* &gt;    </span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob&gt;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html">ProgObserver</a> </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">class </span>QMThread;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// TYPENAME EXAMPLE USAGE</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//     ProgObserver&lt; vector&lt;Job*&gt;, Job*, Job::JobResult &gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// REQUIRED METHODS FOR TYPENAMES</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//     pJob -&gt;getId() -&gt;SaveResults(rJob)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//     JobContainer .size() .begin() .end()</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a1cd86b3aac0cb18b8170778ba14c80ed">   27</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> JobContainer::iterator <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a1cd86b3aac0cb18b8170778ba14c80ed">JobItCnt</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#af7778c57b444f76a01823ecd1adbb852">   28</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> vector&lt;pJob&gt;::iterator <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#af7778c57b444f76a01823ecd1adbb852">JobItVec</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a23dbea9707c0a1605768c2d5839a80e0">   30</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html">ProgObserver</a>()</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        : _jobs(NULL), _nThreads(-1), _progFile(<span class="stringliteral">&quot;nofile&quot;</span>), _lockFile(<span class="stringliteral">&quot;nofile&quot;</span>),</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;          _nextjit(NULL), _metajit(NULL) { ; }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html">ProgObserver</a> </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#abe7131f5982c3c22a6659db6d398aba4">   31</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> JobContainer::iterator <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#abe7131f5982c3c22a6659db6d398aba4">JobItCnt</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7c2efe831bd4dce3ad4317470bddaae">   32</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> vector&lt;pJob&gt;::iterator <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7c2efe831bd4dce3ad4317470bddaae">JobItVec</a>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a73a46d8083caaea40291377aadd28e42">   34</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html">ProgObserver</a>(JobContainer *jobs, <span class="keywordtype">int</span> nThreads, <span class="keywordtype">string</span> sharedProgFile, <span class="keywordtype">string</span> lockFile)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        : _jobs(jobs), _nThreads(nThreads), _progFile(sharedProgFile), _lockFile(lockFile)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          { _metajit = _jobs-&gt;begin(); _nextjit = _jobsToProc.begin(); }</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a3859230dcbd8711a4768b30a1a18e5a8">   34</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html">ProgObserver</a>()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        : _lockFile(<span class="stringliteral">&quot;__NOFILE__&quot;</span>), _progFile(<span class="stringliteral">&quot;__NOFILE__&quot;</span>), _cacheSize(-1),</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          _nextjit(NULL), _metajit(NULL) { ; }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a609d165ec8ef53bda5b7c1e626aaa2b0">   38</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a609d165ec8ef53bda5b7c1e626aaa2b0">~ProgObserver</a>() { ; }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;   </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    pJob RequestNextJob(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> ReportJobDone(pJob job, <a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> SyncWithProgFile(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> LockProgFile(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">string</span> WriteProgLine(pJob job, <a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread, <span class="keywordtype">string</span> status);</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a707fe21e88a0ff944a53d9a7dc923266">   38</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a707fe21e88a0ff944a53d9a7dc923266">~ProgObserver</a>() { ; }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> InitCmdLineOpts(<span class="keyword">const</span> boost::program_options::variables_map &amp;optsMap);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> InitFromProgFile(<span class="keywordtype">string</span> progFile, <a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *master);   </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    pJob RequestNextJob(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> ReportJobDone(pJob job, rJob *res, <a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> SyncWithProgFile(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> LockProgFile(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> ReleaseProgFile(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a83f3e611345b7c94fad2f781789e76d0">   48</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a83f3e611345b7c94fad2f781789e76d0">ReportJobOutcome</a>(pJob job, <a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread) {;}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;   </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;   </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">private</span>:    </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a5cd929bfffe39676a223770e7a909c15">   53</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a1cd86b3aac0cb18b8170778ba14c80ed">JobItCnt</a> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a5cd929bfffe39676a223770e7a909c15">_metajit</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a64f78fa5c9178724320f5e273b1ab056">   54</a></span>&#160;    JobContainer *<a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a64f78fa5c9178724320f5e273b1ab056">_jobs</a>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a611239eade2ad00ffd8c9e7196d976f0">   56</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#af7778c57b444f76a01823ecd1adbb852">JobItVec</a> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a611239eade2ad00ffd8c9e7196d976f0">_nextjit</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ab8e14e716a9298e34fba4f1cff0a5d92">   57</a></span>&#160;    vector&lt;pJob&gt; <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ab8e14e716a9298e34fba4f1cff0a5d92">_jobsToProc</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a908cb21078c85c582939eb371184d222">   58</a></span>&#160;    vector&lt;pJob&gt; <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a908cb21078c85c582939eb371184d222">_jobsToSync</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a8f88275d3f218096f629f6c94b8be657">   60</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a8f88275d3f218096f629f6c94b8be657">_nThreads</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a50f8fe426f9c5e581c817b1bc79d0b4e">   61</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a50f8fe426f9c5e581c817b1bc79d0b4e">_progFile</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a7efbbd583aab38182246d187167930d5">   62</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a7efbbd583aab38182246d187167930d5">_lockFile</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a0f7645ce8227c97da95e8220928177cf">   63</a></span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a0f7645ce8227c97da95e8220928177cf">_lockRequest</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a18fc4ddc0adf30b366cd8c05b61fb0d8">   64</a></span>&#160;    boost::interprocess::file_lock *<a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a18fc4ddc0adf30b366cd8c05b61fb0d8">_flock</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">string</span> GenerateHost(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">string</span> GenerateTime();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">private</span>:    </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a07508da6ed3b64870c5a312aa9870b21">   55</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#abe7131f5982c3c22a6659db6d398aba4">JobItCnt</a> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a07508da6ed3b64870c5a312aa9870b21">_metajit</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac31ff548abb1c80858c086c145d86229">   56</a></span>&#160;    JobContainer <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac31ff548abb1c80858c086c145d86229">_jobs</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a30555027c97fe9165f4bac6428107427">   58</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7c2efe831bd4dce3ad4317470bddaae">JobItVec</a> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a30555027c97fe9165f4bac6428107427">_nextjit</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a795b54fae2a714f79ac45cde52905bfe">   59</a></span>&#160;    vector&lt;pJob&gt; <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a795b54fae2a714f79ac45cde52905bfe">_jobsToProc</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#aacbbf417ae13cd1bb1b78deb950ea469">   60</a></span>&#160;    vector&lt;pJob&gt; <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#aacbbf417ae13cd1bb1b78deb950ea469">_jobsToSync</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ad78699539570c754021e3d99e4f8468c">   62</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ad78699539570c754021e3d99e4f8468c">_cacheSize</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#aa93dd4b873b45d271445498c43f768a2">   63</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#aa93dd4b873b45d271445498c43f768a2">_progFile</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a33e2f65065675d312f727d8b2c6a02ce">   64</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a33e2f65065675d312f727d8b2c6a02ce">_lockFile</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac8cc15b54b4f10603e23feca7580a678">   65</a></span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Mutex.html" title="Convenient class for Mutexes.">Mutex</a> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac8cc15b54b4f10603e23feca7580a678">_lockThread</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ad5c057377c03225ef237c589a4f45ead">   66</a></span>&#160;    boost::interprocess::file_lock *<a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ad5c057377c03225ef237c589a4f45ead">_flock</a>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}}</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a9417edafcdf77b0b09bdb8e34ddeeb46">   68</a></span>&#160;    map&lt;string,bool&gt; <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a9417edafcdf77b0b09bdb8e34ddeeb46">_restart_hosts</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#abf1c736ffe9b45473c12146d183960d7">   69</a></span>&#160;    map&lt;string,bool&gt; <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#abf1c736ffe9b45473c12146d183960d7">_restart_stats</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac392fb605a04e7963f3ba5c56f3d3814">   70</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac392fb605a04e7963f3ba5c56f3d3814">_restartMode</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a6860d811cb7a4d70c7d8dc27e6753f5b">   71</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a6860d811cb7a4d70c7d8dc27e6753f5b">_jobsReported</a>;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7f0878a5b9fbd89d94f26f6f5a64771">   73</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7f0878a5b9fbd89d94f26f6f5a64771">_moreJobsAvailable</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;JobContainer <a class="code" href="namespacevotca_1_1ctp.html#aa58203c52133cbefcfb86272e062fbb8">LOAD_JOBS</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;xml_file);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1ctp.html#af467cef9a1cd7f4500062344c5659034">WRITE_JOBS</a>(JobContainer &amp;jobs, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;job_file, <span class="keywordtype">string</span> fileformat);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1ctp.html#a113d9aacba8c12eb3d6a3537e51505a9">UPDATE_JOBS</a>(JobContainer &amp;from, JobContainer &amp;to, <span class="keywordtype">string</span> thisHost);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->

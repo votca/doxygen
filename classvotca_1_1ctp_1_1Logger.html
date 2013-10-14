@@ -60,7 +60,7 @@
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classvotca_1_1ctp_1_1Logger.html" title="Logger for thread-safe output of messages Logger writes messages into LogBuffer Inheritance from ostr...">Logger</a> for thread-safe output of messages <a class="el" href="classvotca_1_1ctp_1_1Logger.html" title="Logger for thread-safe output of messages Logger writes messages into LogBuffer Inheritance from ostr...">Logger</a> writes messages into <a class="el" href="classvotca_1_1ctp_1_1LogBuffer.html">LogBuffer</a> Inheritance from ostream allows to use &lt;&lt; and &gt;&gt; for writing.  
+<p><a class="el" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a> is used for thread-safe output of messages.  
  <a href="classvotca_1_1ctp_1_1Logger.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="logger_8h_source.html">logger.h</a>&gt;</code></p>
@@ -91,6 +91,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4aaba21cb5f7f531cb666369d6122b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa81832e8e29bc4cbd07e1ba7cb8350a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1Logger.html#aa81832e8e29bc4cbd07e1ba7cb8350a0">setMultithreading</a> (bool maverick)</td></tr>
 <tr class="separator:aa81832e8e29bc4cbd07e1ba7cb8350a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006c616c9f1f03cfed5ba4cdf224d0cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1Logger.html#a006c616c9f1f03cfed5ba4cdf224d0cb">isMaverick</a> ()</td></tr>
+<tr class="separator:a006c616c9f1f03cfed5ba4cdf224d0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09cbfc69524d7bdc321c13e99ad6b50b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616">TLogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1Logger.html#a09cbfc69524d7bdc321c13e99ad6b50b">getReportLevel</a> ()</td></tr>
 <tr class="separator:a09cbfc69524d7bdc321c13e99ad6b50b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa973786cff2747a8a39e624bf8ebb5df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1ctp_1_1Logger.html#aa973786cff2747a8a39e624bf8ebb5df">setPreface</a> (<a class="el" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616">TLogLevel</a> level, std::string preface)</td></tr>
@@ -114,9 +116,16 @@ Friends</h2></td></tr>
 <tr class="separator:a29d81e590ec36671cf7cdb2806bf559a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classvotca_1_1ctp_1_1Logger.html" title="Logger for thread-safe output of messages Logger writes messages into LogBuffer Inheritance from ostr...">Logger</a> for thread-safe output of messages <a class="el" href="classvotca_1_1ctp_1_1Logger.html" title="Logger for thread-safe output of messages Logger writes messages into LogBuffer Inheritance from ostr...">Logger</a> writes messages into <a class="el" href="classvotca_1_1ctp_1_1LogBuffer.html">LogBuffer</a> Inheritance from ostream allows to use &lt;&lt; and &gt;&gt; for writing. </p>
+<div class="textblock"><p><a class="el" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a> is used for thread-safe output of messages. </p>
+<p><a class="el" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a> writes messages into <a class="el" href="classvotca_1_1ctp_1_1LogBuffer.html">LogBuffer</a>. Inheritance from ostream allows to use overloaded &lt;&lt; and &gt;&gt; for writing. Example:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="logger_8h.html">votca/ctp/logger.h</a>&gt;</span></div>
+<div class="line"><a class="code" href="classvotca_1_1ctp_1_1Logger.html#ad3f10a51c35e2c6f9dc7158b64e93ede">Logger</a>* log = <span class="keyword">new</span> <a class="code" href="classvotca_1_1ctp_1_1Logger.html#ad3f10a51c35e2c6f9dc7158b64e93ede">Logger</a>(); <span class="comment">// create a logger object</span></div>
+<div class="line">log-&gt;setReportLevel(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>); <span class="comment">// output only log messages starting from a DEBUG level</span></div>
+<div class="line"><a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">logERROR</a>,*log) &lt;&lt; <span class="stringliteral">&quot;Error detected&quot;</span> &lt;&lt; flush; <span class="comment">// write to the logger at an ERROR level</span></div>
+<div class="line">cout &lt;&lt; log; <span class="comment">// output logger content to standard output</span></div>
+</div><!-- fragment --><p><a class="el" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a> has four predefined log levels: logERROR, logWARNING, logINFO, logDEBUG. </p>
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00142">142</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00155">155</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ad3f10a51c35e2c6f9dc7158b64e93ede"></a>
 <div class="memitem">
@@ -140,7 +149,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00150">150</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00163">163</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -165,7 +174,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00155">155</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00168">168</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -191,7 +200,32 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00173">173</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00187">187</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a006c616c9f1f03cfed5ba4cdf224d0cb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool votca::ctp::Logger::isMaverick </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00185">185</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -216,7 +250,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00186">186</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00200">200</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -242,7 +276,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00161">161</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00174">174</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -268,7 +302,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00168">168</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00181">181</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -304,7 +338,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00175">175</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00189">189</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -330,7 +364,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00167">167</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00180">180</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -367,7 +401,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00144">144</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00157">157</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -390,7 +424,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00184">184</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00198">198</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
@@ -412,7 +446,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="logger_8h_source.html#l00181">181</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
+<p>Definition at line <a class="el" href="logger_8h_source.html#l00195">195</a> of file <a class="el" href="logger_8h_source.html">logger.h</a>.</p>
 
 </div>
 </div>
