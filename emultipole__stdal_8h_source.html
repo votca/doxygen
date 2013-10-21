@@ -96,7 +96,7 @@
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Multipole Distribution //</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// ++++++++++++++++++++++ //</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#aa889b9d389d5862b52ab30ee03bff170">Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#a5e2e28cdc41bb05b956edfecb01d1ab6">options</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#aa889b9d389d5862b52ab30ee03bff170">Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#a74b590ac0bfe78500a0e86e6d1e331ea">DistributeMpoles</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    vector&lt;PolarSite*&gt;  <a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#a1d97bd4dc256022d83a320ec293641b0">ParseGdmaFile</a>(<span class="keywordtype">string</span> filename, <span class="keywordtype">int</span> state);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    vector&lt; vec &gt;       <a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#ae17fb4fd177bf78a35542b1d467a0b50">ParseCubeFileHeader</a>(<span class="keywordtype">string</span> filename);</div>
@@ -710,7 +710,7 @@
 <div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;</div>
 <div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                <span class="keywordtype">double</span> BOHR2NM = 0.0529189379;</div>
 <div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;                <span class="keywordtype">double</span> ANGSTROM2NM = 0.1;</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;                <span class="keywordtype">double</span> <a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>, y, z;</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;                <span class="keywordtype">double</span> <a class="code" href="linsolve_8m.html#aaeeb1ead24334ce09a1ffb542f262835">x</a>, y, z;</div>
 <div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;</div>
 <div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                <span class="keywordflow">if</span> (units == <span class="stringliteral">&quot;bohr&quot;</span>) {</div>
 <div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;                    x = BOHR2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
@@ -755,9 +755,9 @@
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                    Q0_total += <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[0]);</div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                }</div>
 <div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; split.size(); <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++) {</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; split.size(); i++) {</div>
 <div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                    <span class="keywordtype">double</span> qXYZ = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]);</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                    <span class="keywordtype">double</span> qXYZ = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[i]);</div>
 <div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;</div>
 <div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                    <span class="comment">// Convert e*(a_0)^k to e*(nm)^k where k = rank</span></div>
 <div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                    <span class="keywordtype">double</span> BOHR2NM = 0.0529189379;</div>
@@ -995,11 +995,11 @@
 <div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;    <span class="keywordtype">int</span> phiCount = 0;</div>
 <div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;    <span class="keywordtype">double</span> int2V = 1/(4*M_PI*8.854187817e-12) * 1.602176487e-19 / 1.000e-9;</div>
 <div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;</div>
-<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; Nx; ++<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>) {</div>
+<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Nx; ++i) {</div>
 <div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; Ny; ++j) {</div>
 <div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> k = 0; k &lt; Nz; ++k) {</div>
 <div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;</div>
-<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;                Cxyz = C0 + <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>*Cx + j*Cy + k*Cz;</div>
+<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;                Cxyz = C0 + i*Cx + j*Cy + k*Cz;</div>
 <div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;</div>
 <div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;                <span class="keywordtype">double</span> phi = 0.0;</div>
 <div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;                ++phiCount;</div>
@@ -1185,7 +1185,7 @@
 <div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;</div>
 <div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#abf863ce6c71adfb24c1aac2302b6c2da">_alphaOutFile</a> != <span class="stringliteral">&quot;noname&quot;</span> &amp;&amp; <a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#abf863ce6c71adfb24c1aac2302b6c2da">_alphaOutFile</a> != <span class="stringliteral">&quot;&quot;</span>) {</div>
 <div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;</div>
-<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a> = EIGEN.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[0];</div>
+<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="linsolve_8m.html#aaeeb1ead24334ce09a1ffb542f262835">x</a> = EIGEN.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[0];</div>
 <div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> y = EIGEN.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[1];</div>
 <div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> z = EIGEN.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[2];</div>
 <div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;</div>
@@ -1295,11 +1295,11 @@
 <div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;</div>
 <div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;</div>
 <div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;    assert (poles.size() == poles_C.size() );</div>
-<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; poles.size(); <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++) {</div>
+<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; poles.size(); i++) {</div>
 <div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;</div>
-<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;        poles[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;setQs( poles_C[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;getQs(state), state );</div>
-<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;        poles[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;setPs( poles_C[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;getPs(state), state );</div>
-<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;        <span class="keyword">delete</span> poles_C[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>];</div>
+<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;        poles[i]-&gt;setQs( poles_C[i]-&gt;getQs(state), state );</div>
+<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;        poles[i]-&gt;setPs( poles_C[i]-&gt;getPs(state), state );</div>
+<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;        <span class="keyword">delete</span> poles_C[i];</div>
 <div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;    }</div>
 <div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;</div>
 <div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;    poles_C.clear();</div>
@@ -1310,7 +1310,7 @@
 <div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;</div>
 <div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;    <span class="keywordtype">int</span> count = 0;</div>
 <div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;    <span class="keywordtype">int</span> chunkId = -1;</div>
-<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; poles.size(); <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++) {</div>
+<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; poles.size(); i++) {</div>
 <div class="line"><a name="l01296"></a><span class="lineno"> 1296</span>&#160;</div>
 <div class="line"><a name="l01297"></a><span class="lineno"> 1297</span>&#160;        ++count;</div>
 <div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;        count = count % <a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#a2230de15cf0206fec191c6581bf1388c">_period</a>;</div>
@@ -1318,22 +1318,22 @@
 <div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;            ++chunkId;</div>
 <div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;        }</div>
 <div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160;</div>
-<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;        chunks[chunkId].push_back(poles[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]);</div>
+<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;        chunks[chunkId].push_back(poles[i]);</div>
 <div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;    }</div>
 <div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;</div>
 <div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;    <span class="comment">// Chunk CoMs</span></div>
 <div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160;    vector&lt; vec &gt; CoMs;</div>
-<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; chunks.size(); ++<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>) {</div>
+<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; chunks.size(); ++i) {</div>
 <div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;</div>
 <div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> CoM = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(0.,0.,0.);</div>
 <div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;        <span class="keywordtype">int</span> base = 0;</div>
-<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> p = 0; p &lt; chunks[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>].size(); ++p) {</div>
-<div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;            <span class="keywordflow">if</span> (chunks[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][p]-&gt;getName() != <span class="stringliteral">&quot;S&quot;</span>) {</div>
+<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> p = 0; p &lt; chunks[i].size(); ++p) {</div>
+<div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;            <span class="keywordflow">if</span> (chunks[i][p]-&gt;getName() != <span class="stringliteral">&quot;S&quot;</span>) {</div>
 <div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;            }</div>
 <div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;            <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;                ++base;</div>
-<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;                CoM += (chunks[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][p])-&gt;getPos();</div>
+<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;                CoM += (chunks[i][p])-&gt;getPos();</div>
 <div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;            }</div>
 <div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;        }</div>
 <div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;</div>
@@ -1640,8 +1640,8 @@
 <div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;    this-&gt;_polsPolSphere.clear(); <span class="comment">// &lt;- Polar sites within cutoff</span></div>
 <div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160;</div>
 <div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> thisCoM = <a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#a5e66a3a957ac902ffe93e34c119f8849">_chunkCoMs</a>[seg-1];</div>
-<div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; this-&gt;<a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#a5e66a3a957ac902ffe93e34c119f8849">_chunkCoMs</a>.size(); ++<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>) {</div>
-<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="namespacevotca_1_1tools.html#abc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(_top-&gt;PbShortestConnect(thisCoM,<a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#a5e66a3a957ac902ffe93e34c119f8849">_chunkCoMs</a>[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]))</div>
+<div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; this-&gt;<a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#a5e66a3a957ac902ffe93e34c119f8849">_chunkCoMs</a>.size(); ++i) {</div>
+<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="namespacevotca_1_1tools.html#abc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(_top-&gt;PbShortestConnect(thisCoM,<a class="code" href="classvotca_1_1ctp_1_1EMultipole__StdAl.html#a5e66a3a957ac902ffe93e34c119f8849">_chunkCoMs</a>[i]))</div>
 <div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;                &gt; _master-&gt;_cutoff) { <span class="keywordflow">continue</span>; }</div>
 <div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;        <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;            _polsPolSphere.push_back( this-&gt;_polarSites[i] );</div>

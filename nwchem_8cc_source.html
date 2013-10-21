@@ -89,7 +89,7 @@
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">namespace </span>ub = boost::numeric::ublas;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1NWChem.html#a72dfc5146bc079f6b1993014932f5c73">   38</a></span>&#160;<span class="keywordtype">void</span> NWChem::Initialize( <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#a5e2e28cdc41bb05b956edfecb01d1ab6">options</a> ) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1NWChem.html#a72dfc5146bc079f6b1993014932f5c73">   38</a></span>&#160;<span class="keywordtype">void</span> NWChem::Initialize( <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options ) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;     <span class="comment">// NWChem file names</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">string</span> fileName = <span class="stringliteral">&quot;system&quot;</span>;</div>
@@ -254,13 +254,13 @@
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="comment">// write occupations as double in three columns</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="comment">// occupied levels</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordtype">int</span> column = 1;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>=0 ; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; orbitals_guess-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a27c2e270b9b3c2fd3dfddfec73dfa73a">_number_of_electrons</a> ; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++ ){</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i=0 ; i &lt; orbitals_guess-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a27c2e270b9b3c2fd3dfddfec73dfa73a">_number_of_electrons</a> ; i++ ){</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                _orb_file &lt;&lt;  FortranFormat( 2.0 );</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <span class="keywordflow">if</span> (column == ncolumns) { _orb_file &lt;&lt; endl; column = 0; }</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                column++;</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            }</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="comment">// unoccupied levels</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>=orbitals_guess-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a27c2e270b9b3c2fd3dfddfec73dfa73a">_number_of_electrons</a> ; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; _size_of_basis ; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++ ){</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i=orbitals_guess-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a27c2e270b9b3c2fd3dfddfec73dfa73a">_number_of_electrons</a> ; i &lt; _size_of_basis ; i++ ){</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                _orb_file &lt;&lt;  FortranFormat( 0.0 );</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">if</span> (column == ncolumns) { _orb_file &lt;&lt; endl; column = 0; }</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                column++;</div>
@@ -297,7 +297,7 @@
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="comment">// now convert this ascii file to binary</span></div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordtype">string</span> _command;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            _command = <span class="stringliteral">&quot;cd &quot;</span>  + _run_dir + <span class="stringliteral">&quot;; asc2mov 5000 system.mos system.movecs &gt; convert.log&quot;</span>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = system ( _command.c_str() );</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordtype">int</span> i = system ( _command.c_str() );</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keywordflow">if</span> ( i == 0 ) {</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>, *_pLog) &lt;&lt; <span class="stringliteral">&quot;Converted MO file from ascii to binary&quot;</span>&lt;&lt; flush;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            } <span class="keywordflow">else</span>  {</div>
@@ -359,7 +359,7 @@
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            _command  = <span class="stringliteral">&quot;cd &quot;</span> + _run_dir + <span class="stringliteral">&quot;; mpirun -np &quot;</span> +  <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(_threads) + <span class="stringliteral">&quot; &quot;</span> + _executable + <span class="stringliteral">&quot; &quot;</span> + _input_file_name + <span class="stringliteral">&quot;&gt; &quot;</span>+  _log_file_name ;</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = system ( _command.c_str() );</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordtype">int</span> i = system ( _command.c_str() );</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        </div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">if</span> ( CheckLogFile() ) {</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Finished NWChem job&quot;</span> &lt;&lt; flush;</div>
@@ -435,7 +435,7 @@
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordtype">string</span> _orb_file_name_bin = _run_dir + <span class="stringliteral">&quot;/&quot;</span> + _orb_file_name;</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordtype">string</span> _command;</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    _command = <span class="stringliteral">&quot;cd &quot;</span>  + _run_dir + <span class="stringliteral">&quot;; mov2asc 10000 system.movecs system.mos &gt; convert.log&quot;</span>;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = system ( _command.c_str() );</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordtype">int</span> i = system ( _command.c_str() );</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordflow">if</span> ( i == 0 ) {</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>, *_pLog) &lt;&lt; <span class="stringliteral">&quot;Converted MO file from binary to ascii&quot;</span>&lt;&lt; flush;</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    } <span class="keywordflow">else</span>  {</div>
@@ -548,7 +548,7 @@
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;   _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a2f8ce7b2384fb33579b64e0d3da32996">_mo_energies</a>.resize( _levels );</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;   <span class="comment">//_level = 1;</span></div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a2f8ce7b2384fb33579b64e0d3da32996">_mo_energies</a>.size(); i++) {</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;         _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a2f8ce7b2384fb33579b64e0d3da32996">_mo_energies</a>[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>] = _energies[ <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> ];</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;         _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a2f8ce7b2384fb33579b64e0d3da32996">_mo_energies</a>[i] = _energies[ i ];</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;   }</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;</div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;   </div>
@@ -556,7 +556,7 @@
 <div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;   (_orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5f133e71e3064643c605f05c004bcc87">_mo_coefficients</a>).resize( _levels, _basis_size );     </div>
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5f133e71e3064643c605f05c004bcc87">_mo_coefficients</a>.size1(); i++) {</div>
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j = 0 ; j &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5f133e71e3064643c605f05c004bcc87">_mo_coefficients</a>.size2(); j++) {</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;         _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5f133e71e3064643c605f05c004bcc87">_mo_coefficients</a>(i,j) = _coefficients[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][j];</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;         _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5f133e71e3064643c605f05c004bcc87">_mo_coefficients</a>(i,j) = _coefficients[i][j];</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;         <span class="comment">//cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; endl;</span></div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;      }</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;   }</div>
@@ -730,206 +730,208 @@
 <div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;                <span class="comment">// second line gives the j index in the matrix</span></div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                getline(_input_file, _line); </div>
 <div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                boost::tokenizer&lt;&gt; tok( _line );</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                std::transform( tok.begin(), tok.end(), std::back_inserter( _j_indeces ), &amp;<a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;int,std::string&gt; );</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                <span class="comment">// third line is garbage again</span></div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                getline(_input_file, _line);</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                </div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                std::transform( tok.begin(), tok.end(), std::back_inserter( _j_indeces ), &amp;<a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;int,std::string&gt; );</div>
 <div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                <span class="comment">// read the block of max _basis_size lines + the following header</span></div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; _basis_set_size; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++ ) {</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                    getline (_input_file, _line); </div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                    </div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                    <span class="comment">// split the line on the i index and the rest</span></div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                    vector&lt;string&gt; _row;</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                    boost::trim( _line );</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                    boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on); </div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;                   </div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                            </div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                    <span class="keywordtype">int</span> _i_index = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(  _row.front()  ); </div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                    _row.erase( _row.begin() );</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                    </div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                    std::vector&lt;int&gt;::iterator _j_iter = _j_indeces.begin();</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                    </div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                    <span class="keywordflow">for</span> (std::vector&lt;string&gt;::iterator iter = _row.begin()++; iter != _row.end(); iter++) {</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                        <span class="keywordtype">string</span>  _coefficient = *iter;</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                       </div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                        <span class="keywordtype">int</span> _j_index = *_j_iter;                                </div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                        _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>( _i_index-1 , _j_index-1 ) = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;( _coefficient );</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                        _j_iter++;</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                        </div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                    }</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160; </div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                    </div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                }</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                </div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                <span class="comment">// clear the index for the next block</span></div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                _j_indeces.clear();        </div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;            } <span class="comment">// end of the blocks</span></div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Read the overlap matrix&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;        } <span class="comment">// end of the if &quot;Overlap&quot; found   </span></div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        </div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        <span class="comment">/*</span></div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;<span class="comment">         *  Partial charges from the input file</span></div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;        std::string::size_type charge_pos = _line.find(<span class="stringliteral">&quot; ESP &quot;</span>);</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;        </div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;        <span class="keywordflow">if</span> (charge_pos != std::string::npos &amp;&amp; _get_charges ) {        </div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Getting charges&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                _has_charges = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                <span class="comment">// two empty lines</span></div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                getline(_input_file, _line);</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                getline(_input_file, _line);</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                </div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                <span class="comment">// now starts the data in format</span></div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                <span class="comment">// _id type x y z q</span></div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                vector&lt;string&gt; _row;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                getline(_input_file, _line);</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                boost::trim( _line );</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                <span class="comment">//cout &lt;&lt; _line &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on); </div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                <span class="keywordtype">int</span> nfields =  _row.size();</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                <span class="comment">//cout &lt;&lt; _row.size() &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                </div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                <span class="keywordflow">while</span> ( nfields == 6 ) {</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                    <span class="keywordtype">int</span> atom_id = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;( _row.at(0) );</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                    <span class="keywordtype">int</span> atom_number = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;( _row.at(0) );</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                    <span class="keywordtype">string</span> atom_type = _row.at(1);</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                    <span class="keywordtype">double</span> atom_charge = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">double</span> &gt;( _row.at(5) );</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                    <span class="comment">//if ( tools::globals::verbose ) cout &lt;&lt; &quot;... ... &quot; &lt;&lt; atom_id &lt;&lt; &quot; &quot; &lt;&lt; atom_type &lt;&lt; &quot; &quot; &lt;&lt; atom_charge &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                    getline(_input_file, _line);</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                    boost::trim( _line );</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                    boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on);  </div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                    nfields =  _row.size();</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                    </div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                     <span class="keywordflow">if</span> ( _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a233aaae821772d9569c69449c767fe72">_has_atoms</a> == <span class="keyword">false</span> ) {</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                         _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a68e07a5cad99841a6b161cf64c696830">AddAtom</a>( atom_type, 0, 0, 0, atom_charge );</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                     } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                         <a class="code" href="classvotca_1_1ctp_1_1QMAtom.html" title="container for basic atoms Stores atom type, coordinates, charge, basis set">QMAtom</a>* pAtom = _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a59a8370e48a86029b96ab5f1ceee6100">_atoms</a>.at( atom_id - 1 );</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                         pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#ac32157cca42e59c7f166ab1af89f066d">type</a> = atom_type;</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                         pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#a284fbbc70c85e8845aa8d04d7fcfc23d">charge</a> = atom_charge;</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                     }</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                    </div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                }</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a233aaae821772d9569c69449c767fe72">_has_atoms</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;        }</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;        </div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;         <span class="comment">/*</span></div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;<span class="comment">         * Coordinates of the final configuration</span></div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;<span class="comment">         * depending on whether it is an optimization or not</span></div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;        <span class="keywordflow">if</span> ( _is_optimization ){</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                std::string::size_type optimize_pos = _line.find(<span class="stringliteral">&quot;Optimization converged&quot;</span>);</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                <span class="keywordflow">if</span> (optimize_pos != std::string::npos) {</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                        <span class="keywordtype">bool</span> _found_optimization = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                }</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;        }</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;        </div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;        std::string::size_type coordinates_pos = _line.find(<span class="stringliteral">&quot;Output coordinates&quot;</span>);</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;        </div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        <span class="keywordflow">if</span> ( _found_optimization &amp;&amp; coordinates_pos != std::string::npos) {</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Getting the coordinates&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;            _has_coordinates = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;            <span class="comment">// three garbage lines</span></div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;            getline(_input_file, _line);</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;            getline(_input_file, _line);</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;            getline(_input_file, _line);</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;            <span class="comment">// now starts the data in format</span></div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            <span class="comment">// _id type Qnuc x y z </span></div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            vector&lt;string&gt; _row;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;            getline(_input_file, _line);</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            boost::trim( _line );</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;            <span class="comment">//cout &lt;&lt; _line &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;            boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on); </div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;            <span class="keywordtype">int</span> nfields =  _row.size();</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;            <span class="comment">//cout &lt;&lt; _row.size() &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                </div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            <span class="keywordflow">while</span> ( nfields == 6 ) {</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                <span class="keywordtype">int</span> atom_id = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;( _row.at(0) );</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;                <span class="keywordtype">int</span> atom_number = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;( _row.at(0) );</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                <span class="keywordtype">string</span> _atom_type = _row.at(1);</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                <span class="keywordtype">double</span> _x =  <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;( _row.at(3) );</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                <span class="keywordtype">double</span> _y =  <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;( _row.at(4) );</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                <span class="keywordtype">double</span> _z =  <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;( _row.at(5) );</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                <span class="comment">//if ( tools::globals::verbose ) cout &lt;&lt; &quot;... ... &quot; &lt;&lt; atom_id &lt;&lt; &quot; &quot; &lt;&lt; atom_type &lt;&lt; &quot; &quot; &lt;&lt; atom_charge &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;                getline(_input_file, _line);</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                boost::trim( _line );</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;                boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on);  </div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;                nfields =  _row.size();</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;                    </div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                <span class="keywordflow">if</span> ( _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a233aaae821772d9569c69449c767fe72">_has_atoms</a> == <span class="keyword">false</span> ) {</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                    _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a68e07a5cad99841a6b161cf64c696830">AddAtom</a>( _atom_type, _x, _y, _z );</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                    <a class="code" href="classvotca_1_1ctp_1_1QMAtom.html" title="container for basic atoms Stores atom type, coordinates, charge, basis set">QMAtom</a>* pAtom = _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a59a8370e48a86029b96ab5f1ceee6100">_atoms</a>.at( atom_id - 1 );</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;                    pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#ac32157cca42e59c7f166ab1af89f066d">type</a> = _atom_type;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;                    pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#abed2a17ec3966d91684b0baff01031e7">x</a> = _x;</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                    pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#a958b29fa873bae50c8af7175831ba87e">y</a> = _y;</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                    pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#aa6ce1ccc47d443af636f7809c13faed5">z</a> = _z;</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                }</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;                    </div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;            }</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;      </div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;            _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a233aaae821772d9569c69449c767fe72">_has_atoms</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;        }</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;         <span class="comment">/*</span></div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="comment">         * TODO Self-energy of external charges</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;         std::string::size_type self_energy_pos = _line.find(<span class="stringliteral">&quot;Self energy of the charges&quot;</span>);</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;        </div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;        <span class="keywordflow">if</span> (self_energy_pos != std::string::npos) {</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Getting the self energy\n&quot;</span>;  </div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;            vector&lt;string&gt; block;</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;            vector&lt;string&gt; energy;</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            boost::algorithm::split(block, _line, boost::is_any_of(<span class="stringliteral">&quot;=&quot;</span>), boost::algorithm::token_compress_on);</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;            boost::algorithm::split(energy, block[1], boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on);</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;            </div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aca12f3f51c4c2cd1e699b8ce3d595abf">_has_self_energy</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;            _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a870fb198a532c463f82ee1103dfdd000">_self_energy</a> = _conv_Hrt_eV * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt; ( energy[1] );</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                <span class="comment">// third line is garbage again</span></div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;                getline(_input_file, _line);</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                <span class="comment">// read the block of max _basis_size lines + the following header</span></div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _basis_set_size; i++ ) {</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                    getline (_input_file, _line); </div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                    </div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                    <span class="comment">// split the line on the i index and the rest</span></div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;                    vector&lt;string&gt; _row;</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                    boost::trim( _line );</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                    boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on); </div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                   </div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                            </div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                    <span class="keywordtype">int</span> _i_index = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(  _row.front()  ); </div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                    _row.erase( _row.begin() );</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                    </div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                    std::vector&lt;int&gt;::iterator _j_iter = _j_indeces.begin();</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                    </div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                    <span class="keywordflow">for</span> (std::vector&lt;string&gt;::iterator iter = _row.begin()++; iter != _row.end(); iter++) {</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                        <span class="keywordtype">string</span>  _coefficient = *iter;</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                       </div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                        <span class="keywordtype">int</span> _j_index = *_j_iter;                                </div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                        _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>( _i_index-1 , _j_index-1 ) = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;( _coefficient );</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                        _j_iter++;</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                        </div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                    }</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160; </div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                    </div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                }</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                </div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                <span class="comment">// clear the index for the next block</span></div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                _j_indeces.clear();        </div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            } <span class="comment">// end of the blocks</span></div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Read the overlap matrix&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        } <span class="comment">// end of the if &quot;Overlap&quot; found   </span></div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;        </div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;<span class="comment">         *  Partial charges from the input file</span></div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;        std::string::size_type charge_pos = _line.find(<span class="stringliteral">&quot; ESP &quot;</span>);</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        </div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;        <span class="keywordflow">if</span> (charge_pos != std::string::npos &amp;&amp; _get_charges ) {        </div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Getting charges&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                _has_charges = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                <span class="comment">// two empty lines</span></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                getline(_input_file, _line);</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                getline(_input_file, _line);</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                </div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                <span class="comment">// now starts the data in format</span></div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                <span class="comment">// _id type x y z q</span></div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                vector&lt;string&gt; _row;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                getline(_input_file, _line);</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                boost::trim( _line );</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                <span class="comment">//cout &lt;&lt; _line &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on); </div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                <span class="keywordtype">int</span> nfields =  _row.size();</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                <span class="comment">//cout &lt;&lt; _row.size() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                </div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                <span class="keywordflow">while</span> ( nfields == 6 ) {</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                    <span class="keywordtype">int</span> atom_id = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;( _row.at(0) );</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                    <span class="keywordtype">int</span> atom_number = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;( _row.at(0) );</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                    <span class="keywordtype">string</span> atom_type = _row.at(1);</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                    <span class="keywordtype">double</span> atom_charge = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">double</span> &gt;( _row.at(5) );</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                    <span class="comment">//if ( tools::globals::verbose ) cout &lt;&lt; &quot;... ... &quot; &lt;&lt; atom_id &lt;&lt; &quot; &quot; &lt;&lt; atom_type &lt;&lt; &quot; &quot; &lt;&lt; atom_charge &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                    getline(_input_file, _line);</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                    boost::trim( _line );</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                    boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on);  </div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                    nfields =  _row.size();</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                    </div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                     <span class="keywordflow">if</span> ( _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a233aaae821772d9569c69449c767fe72">_has_atoms</a> == <span class="keyword">false</span> ) {</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                         _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a68e07a5cad99841a6b161cf64c696830">AddAtom</a>( atom_type, 0, 0, 0, atom_charge );</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                     } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                         <a class="code" href="classvotca_1_1ctp_1_1QMAtom.html" title="container for basic atoms Stores atom type, coordinates, charge, basis set">QMAtom</a>* pAtom = _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a59a8370e48a86029b96ab5f1ceee6100">_atoms</a>.at( atom_id - 1 );</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                         pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#ac32157cca42e59c7f166ab1af89f066d">type</a> = atom_type;</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                         pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#a284fbbc70c85e8845aa8d04d7fcfc23d">charge</a> = atom_charge;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                     }</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                    </div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                }</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a233aaae821772d9569c69449c767fe72">_has_atoms</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;        }</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;        </div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;         <span class="comment">/*</span></div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;<span class="comment">         * Coordinates of the final configuration</span></div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;<span class="comment">         * depending on whether it is an optimization or not</span></div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;        <span class="keywordflow">if</span> ( _is_optimization ){</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                std::string::size_type optimize_pos = _line.find(<span class="stringliteral">&quot;Optimization converged&quot;</span>);</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                <span class="keywordflow">if</span> (optimize_pos != std::string::npos) {</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                        <span class="keywordtype">bool</span> _found_optimization = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                }</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;        }</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        </div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;        std::string::size_type coordinates_pos = _line.find(<span class="stringliteral">&quot;Output coordinates&quot;</span>);</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;        </div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;        <span class="keywordflow">if</span> ( _found_optimization &amp;&amp; coordinates_pos != std::string::npos) {</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Getting the coordinates&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;            _has_coordinates = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;            <span class="comment">// three garbage lines</span></div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;            getline(_input_file, _line);</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            getline(_input_file, _line);</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            getline(_input_file, _line);</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;            <span class="comment">// now starts the data in format</span></div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            <span class="comment">// _id type Qnuc x y z </span></div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;            vector&lt;string&gt; _row;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;            getline(_input_file, _line);</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;            boost::trim( _line );</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;            <span class="comment">//cout &lt;&lt; _line &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;            boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on); </div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            <span class="keywordtype">int</span> nfields =  _row.size();</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;            <span class="comment">//cout &lt;&lt; _row.size() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;                </div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            <span class="keywordflow">while</span> ( nfields == 6 ) {</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                <span class="keywordtype">int</span> atom_id = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;( _row.at(0) );</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                <span class="keywordtype">int</span> atom_number = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;( _row.at(0) );</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                <span class="keywordtype">string</span> _atom_type = _row.at(1);</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                <span class="keywordtype">double</span> _x =  <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;( _row.at(3) );</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;                <span class="keywordtype">double</span> _y =  <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;( _row.at(4) );</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                <span class="keywordtype">double</span> _z =  <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;( _row.at(5) );</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;                <span class="comment">//if ( tools::globals::verbose ) cout &lt;&lt; &quot;... ... &quot; &lt;&lt; atom_id &lt;&lt; &quot; &quot; &lt;&lt; atom_type &lt;&lt; &quot; &quot; &lt;&lt; atom_charge &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;                getline(_input_file, _line);</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;                boost::trim( _line );</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                boost::algorithm::split( _row , _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on);  </div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                nfields =  _row.size();</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                    </div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                <span class="keywordflow">if</span> ( _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a233aaae821772d9569c69449c767fe72">_has_atoms</a> == <span class="keyword">false</span> ) {</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;                    _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a68e07a5cad99841a6b161cf64c696830">AddAtom</a>( _atom_type, _x, _y, _z );</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                    <a class="code" href="classvotca_1_1ctp_1_1QMAtom.html" title="container for basic atoms Stores atom type, coordinates, charge, basis set">QMAtom</a>* pAtom = _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a59a8370e48a86029b96ab5f1ceee6100">_atoms</a>.at( atom_id - 1 );</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                    pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#ac32157cca42e59c7f166ab1af89f066d">type</a> = _atom_type;</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                    pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#abed2a17ec3966d91684b0baff01031e7">x</a> = _x;</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;                    pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#a958b29fa873bae50c8af7175831ba87e">y</a> = _y;</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;                    pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#aa6ce1ccc47d443af636f7809c13faed5">z</a> = _z;</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;                }</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;                    </div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;            }</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;      </div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;            _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a233aaae821772d9569c69449c767fe72">_has_atoms</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;        }</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;         <span class="comment">/*</span></div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="comment">         * TODO Self-energy of external charges</span></div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;         std::string::size_type self_energy_pos = _line.find(<span class="stringliteral">&quot;Self energy of the charges&quot;</span>);</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;        </div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;        <span class="keywordflow">if</span> (self_energy_pos != std::string::npos) {</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Getting the self energy\n&quot;</span>;  </div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;            vector&lt;string&gt; block;</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;            vector&lt;string&gt; energy;</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            boost::algorithm::split(block, _line, boost::is_any_of(<span class="stringliteral">&quot;=&quot;</span>), boost::algorithm::token_compress_on);</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;            boost::algorithm::split(energy, block[1], boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on);</div>
 <div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;            </div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>, *_pLog) &lt;&lt; <span class="stringliteral">&quot;Self energy &quot;</span> &lt;&lt; _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a870fb198a532c463f82ee1103dfdd000">_self_energy</a> &lt;&lt;  flush;</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;        }</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;        </div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;        <span class="comment">// check if all information has been accumulated and quit </span></div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;        <span class="keywordflow">if</span> ( _has_basis_set_size &amp;&amp; </div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;             _has_overlap_matrix &amp;&amp;</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;             _has_charges &amp;&amp; </div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;             _has_qm_energy &amp;&amp;</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;             _has_self_energy</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;           ) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;        </div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    } <span class="comment">// end of reading the file line-by-line</span></div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;   </div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Done parsing&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;}</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;</div>
-<div class="line"><a name="l00876"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1NWChem.html#ab8729c80340ba6cd20d9bc915ff4f6ae">  876</a></span>&#160;<span class="keywordtype">bool</span> NWChem::ConvertToGW( <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitals ) {</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    cerr &lt;&lt; <span class="stringliteral">&quot;Tried to convert to GW from NWChem package. &quot;</span>;</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error( <span class="stringliteral">&quot;Conversion not implemented yet!&quot;</span>);</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;}</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;</div>
-<div class="line"><a name="l00882"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1NWChem.html#ad9ef593b13a8afc0fefdbb8a160591e3">  882</a></span>&#160;<span class="keywordtype">string</span> NWChem::FortranFormat( <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;number ) {</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    stringstream _ssnumber;</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    <span class="keywordflow">if</span> ( number &gt;= 0) {</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        _ssnumber &lt;&lt; <span class="stringliteral">&quot;    &quot;</span>;</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    } <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;        _ssnumber &lt;&lt; <span class="stringliteral">&quot;   &quot;</span>;</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;    }</div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;        </div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    _ssnumber &lt;&lt;  setiosflags(ios::fixed) &lt;&lt; setprecision(15) &lt;&lt; std::scientific &lt;&lt; number;</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    std::string _snumber = _ssnumber.str(); </div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    <span class="comment">//boost::replace_first(_snumber, &quot;e&quot;, &quot;D&quot;);</span></div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    <span class="keywordflow">return</span> _snumber;</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;}</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;        </div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;}}</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;            _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aca12f3f51c4c2cd1e699b8ce3d595abf">_has_self_energy</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;            _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a870fb198a532c463f82ee1103dfdd000">_self_energy</a> = _conv_Hrt_eV * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt; ( energy[1] );</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;            </div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>, *_pLog) &lt;&lt; <span class="stringliteral">&quot;Self energy &quot;</span> &lt;&lt; _orbitals-&gt;<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a870fb198a532c463f82ee1103dfdd000">_self_energy</a> &lt;&lt;  flush;</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;        }</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;        </div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;        <span class="comment">// check if all information has been accumulated and quit </span></div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;        <span class="keywordflow">if</span> ( _has_basis_set_size &amp;&amp; </div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;             _has_overlap_matrix &amp;&amp;</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;             _has_charges &amp;&amp; </div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;             _has_qm_energy &amp;&amp;</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;             _has_self_energy</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;           ) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;        </div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    } <span class="comment">// end of reading the file line-by-line</span></div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;   </div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*_pLog) &lt;&lt; <span class="stringliteral">&quot;Done parsing&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;}</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;</div>
+<div class="line"><a name="l00879"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1NWChem.html#ab8729c80340ba6cd20d9bc915ff4f6ae">  879</a></span>&#160;<span class="keywordtype">bool</span> NWChem::ConvertToGW( <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitals ) {</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    cerr &lt;&lt; <span class="stringliteral">&quot;Tried to convert to GW from NWChem package. &quot;</span>;</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error( <span class="stringliteral">&quot;Conversion not implemented yet!&quot;</span>);</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;}</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;</div>
+<div class="line"><a name="l00885"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1NWChem.html#ad9ef593b13a8afc0fefdbb8a160591e3">  885</a></span>&#160;<span class="keywordtype">string</span> NWChem::FortranFormat( <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;number ) {</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    stringstream _ssnumber;</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    <span class="keywordflow">if</span> ( number &gt;= 0) {</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;        _ssnumber &lt;&lt; <span class="stringliteral">&quot;    &quot;</span>;</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    } <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;        _ssnumber &lt;&lt; <span class="stringliteral">&quot;   &quot;</span>;</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    }</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;        </div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    _ssnumber &lt;&lt;  setiosflags(ios::fixed) &lt;&lt; setprecision(15) &lt;&lt; std::scientific &lt;&lt; number;</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    std::string _snumber = _ssnumber.str(); </div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    <span class="comment">//boost::replace_first(_snumber, &quot;e&quot;, &quot;D&quot;);</span></div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    <span class="keywordflow">return</span> _snumber;</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;}</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;        </div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;</div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->

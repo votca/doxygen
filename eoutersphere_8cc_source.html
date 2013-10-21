@@ -132,7 +132,7 @@
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1EOutersphere.html#a27b5118c08303f51fda86877a87853c3">   81</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1EOutersphere.html#a27b5118c08303f51fda86877a87853c3">EOutersphere::EStatify</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *<a class="code" href="namespacedensity__symmetrize.html#a5e2e28cdc41bb05b956edfecb01d1ab6">options</a>) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1EOutersphere.html#a27b5118c08303f51fda86877a87853c3">   81</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1EOutersphere.html#a27b5118c08303f51fda86877a87853c3">EOutersphere::EStatify</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options) {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... Estatify system: &quot;</span>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
@@ -305,11 +305,11 @@
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            vector&lt; PolarSite* &gt; polesNeutral = map_seg_polarSites[segName];</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            assert(polesAnion.size() == polesNeutral.size());</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; polesNeutral.size(); <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++) {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; polesNeutral.size(); i++) {</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                polesNeutral[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;setQs( polesAnion[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;getQs(state), state );</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                polesNeutral[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;setPs( polesAnion[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;getPs(state), state );</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="keyword">delete</span> polesAnion[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>];</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                polesNeutral[i]-&gt;setQs( polesAnion[i]-&gt;getQs(state), state );</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                polesNeutral[i]-&gt;setPs( polesAnion[i]-&gt;getPs(state), state );</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="keyword">delete</span> polesAnion[i];</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            }</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            polesAnion.clear();</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
@@ -331,11 +331,11 @@
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            vector&lt; PolarSite* &gt; polesNeutral = map_seg_polarSites[segName];</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            assert(polesCation.size() == polesNeutral.size());</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; polesNeutral.size(); <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++) {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; polesNeutral.size(); i++) {</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                polesNeutral[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;setQs( polesCation[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;getQs(state), state );</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                polesNeutral[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;setPs( polesCation[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;getPs(state), state );</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <span class="keyword">delete</span> polesCation[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>];</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                polesNeutral[i]-&gt;setQs( polesCation[i]-&gt;getQs(state), state );</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                polesNeutral[i]-&gt;setPs( polesCation[i]-&gt;getPs(state), state );</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <span class="keyword">delete</span> polesCation[i];</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            }</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            polesCation.clear();</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        }</div>
@@ -428,7 +428,7 @@
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                <span class="keywordtype">double</span> BOHR2NM = 0.0529189379;</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                <span class="keywordtype">double</span> ANGSTROM2NM = 0.1;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                <span class="keywordtype">double</span> <a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>, y, z;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                <span class="keywordtype">double</span> <a class="code" href="linsolve_8m.html#aaeeb1ead24334ce09a1ffb542f262835">x</a>, y, z;</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                <span class="keywordflow">if</span> (units == <span class="stringliteral">&quot;bohr&quot;</span>) {</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                    x = BOHR2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
@@ -473,9 +473,9 @@
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                    Q0_total += <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[0]);</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                }</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; split.size(); <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++) {</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; split.size(); i++) {</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                    <span class="keywordtype">double</span> qXYZ = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                    <span class="keywordtype">double</span> qXYZ = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[i]);</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                    <span class="comment">// Convert e*(a_0)^k to e*(nm)^k where k = rank</span></div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                    <span class="keywordtype">double</span> BOHR2NM = 0.0529189379;</div>
@@ -566,10 +566,10 @@
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            }</div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;</div>
 <div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; polesInFrag.size(); <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>++) {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; polesInFrag.size(); i++) {</div>
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                <span class="keywordtype">string</span> name = namesInFrag[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>];</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                <span class="keywordtype">int</span> poleId = polesInFrag[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>];</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                <span class="keywordtype">string</span> name = namesInFrag[i];</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                <span class="keywordtype">int</span> poleId = polesInFrag[i];</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;</div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1PolarSite.html">PolarSite</a> *templ = poleSites[poleId-1];</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1PolarSite.html">PolarSite</a> *newSite = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#af230c74f0c53cb20a8fed1f61bd5c505">AddPolarSite</a>(name);</div>
@@ -583,7 +583,7 @@
 <div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                    newSite-&gt;<a class="code" href="classvotca_1_1ctp_1_1PolarSite.html#a13365a41d4c2e8c43f16b5fe10fb9034">Rotate</a>(frag-&gt;<a class="code" href="classvotca_1_1ctp_1_1Fragment.html#ae6a06d3180c6a09aa85265deb66953cc">getRotQM2MD</a>(), frag-&gt;<a class="code" href="classvotca_1_1ctp_1_1Fragment.html#ad786476992582ecba39b544cb129fe49">getCoMD</a>());</div>
 <div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                }</div>
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> mdpos = frag-&gt;<a class="code" href="classvotca_1_1ctp_1_1Fragment.html#a76a77f7ca04730a1cacba5533f61806f">Atoms</a>()[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]-&gt;getPos();</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> mdpos = frag-&gt;<a class="code" href="classvotca_1_1ctp_1_1Fragment.html#a76a77f7ca04730a1cacba5533f61806f">Atoms</a>()[i]-&gt;getPos();</div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                    newSite-&gt;<a class="code" href="classvotca_1_1ctp_1_1PolarSite.html#a590cddabdbe9317e396f4e87be01ee25">setPos</a>(mdpos);</div>
 <div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                    <span class="keywordflow">if</span> (newSite-&gt;<a class="code" href="classvotca_1_1ctp_1_1PolarSite.html#af0e4d17d409f215d0d1bebc1064ae79a">getRank</a>() &gt; 0) {</div>
 <div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                        cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;ERROR: MAP2MD = TRUE &quot;</span></div>

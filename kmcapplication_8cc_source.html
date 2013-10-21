@@ -122,7 +122,7 @@
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span>(votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VOTCASHARE not set, cannot open help files.&quot;</span>);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">string</span> xmlFile = string(getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>)) + string(<span class="stringliteral">&quot;/kmc/xml/&quot;</span>)+name+string(<span class="stringliteral">&quot;.xml&quot;</span>);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> <a class="code" href="namespacedensity__symmetrize.html#a5e2e28cdc41bb05b956edfecb01d1ab6">options</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> options;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#af135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(options, xmlFile);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;           <span class="keywordflow">if</span> ( length ) { <span class="comment">// short description of the calculator</span></div>
@@ -132,7 +132,7 @@
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            } <span class="keywordflow">else</span> { <span class="comment">// long description of the calculator</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html" title="Manipulates the format state of the output stream.">votca::tools::PropertyIOManipulator</a> iom(<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a8089a36fbf8bc8854dcd0510b0b07b5e">votca::tools::PropertyIOManipulator::HLP</a>, 2, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                cout &lt;&lt; iom &lt;&lt; <a class="code" href="namespacedensity__symmetrize.html#a5e2e28cdc41bb05b956edfecb01d1ab6">options</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                cout &lt;&lt; iom &lt;&lt; options;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;             }</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            cout &lt;&lt; endl;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        } <span class="keywordflow">catch</span>(std::exception &amp;error) {</div>
@@ -235,7 +235,7 @@
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
 <div class="line"><a name="l00182"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a8ac6ed9792e39313ba818e0d5ce80852">  182</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a8ac6ed9792e39313ba818e0d5ce80852" title="called for each frame, return true if evaluation should be continued">KMCApplication::EvaluateFrame</a>(){</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    list&lt;KMCCalculator *&gt;::iterator iter;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>=0;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">for</span> (iter = <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.begin(); iter != <a class="code" href="classvotca_1_1kmc_1_1KMCApplication.html#a1a9d7cee160a045a6d39cc34c764ec5e" title="List of calculators.">_calculators</a>.end(); ++iter){</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        (*iter)-&gt;EvaluateFrame();</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>

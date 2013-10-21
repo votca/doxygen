@@ -70,59 +70,64 @@
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * limitations under the License.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/banded.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix_proxy.hpp&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/vector_proxy.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctp_2include_2votca_2ctp_2orbitals_8h.html">votca/ctp/orbitals.h</a>&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="logger_8h.html">votca/ctp/logger.h</a>&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifndef _VOTCA_CTP_OVERLAP_H</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _VOTCA_CTP_OVERLAP_H</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// boost::ublas checks are switched off</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="overlap_8h.html#a8de3ed741dadc9c979a4ff17c0a9116e">   21</a></span>&#160;<span class="preprocessor">#define NDEBUG</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="overlap_8h.html#aa2c0476a142c9e172a2c18d054b6c210">   22</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define BOOST_UBLAS_NDEBUG</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/banded.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix_proxy.hpp&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/vector_proxy.hpp&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctp_2include_2votca_2ctp_2orbitals_8h.html">votca/ctp/orbitals.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="logger_8h.html">votca/ctp/logger.h</a>&gt;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>ub = boost::numeric::ublas;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1Overlap.html" title="Evaluates electronic coupling elements.">Overlap</a> </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html#aa8b672a2d35f30ebc6b639a7bcb2994f">   45</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#aa8b672a2d35f30ebc6b639a7bcb2994f">Overlap</a>() {};</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html#ad701c1c24c44c27237c27823346ff33d">   46</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#ad701c1c24c44c27237c27823346ff33d">~Overlap</a>() {};</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifndef _VOTCA_CTP_OVERLAP_H</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="overlap_8h.html#abbebec95e56a97a8f4e369d1e04bba66">   32</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _VOTCA_CTP_OVERLAP_H</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1Overlap.html" title="Evaluates electronic coupling elements.">Overlap</a> </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#acaffaa60d059aa365b46184508124288">CalculateIntegralsOptimized</a>(   <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsA, </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsB, </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsAB, </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                               ub::matrix&lt;double&gt;* _JAB);  </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a5103d75e3a79ea382deee753c3fe4ca4">CalculateIntegrals</a>(   <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsA, </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsB, </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsAB, </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                               ub::matrix&lt;double&gt;* _JAB);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a77e88cb00d388118c7955e317392c3ed">getCouplingElement</a>( <span class="keywordtype">int</span> levelA, <span class="keywordtype">int</span> levelB,  </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsA,  </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsB, </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                               ub::matrix&lt;double&gt;* _JAB,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                               <span class="keywordtype">double</span> _energy_difference = 0</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                );</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html#af0a9a8714b049691e5bffe46f3d8e004">   66</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#af0a9a8714b049691e5bffe46f3d8e004">setLogger</a>( <a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a>* pLog ) { <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a410588aab3edc0d181c84417893af4fb">_pLog</a> = pLog; }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html#aa8b672a2d35f30ebc6b639a7bcb2994f">   49</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#aa8b672a2d35f30ebc6b639a7bcb2994f">Overlap</a>() {};</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html#ad701c1c24c44c27237c27823346ff33d">   50</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#ad701c1c24c44c27237c27823346ff33d">~Overlap</a>() {};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#ae90e2f354260b6178c186c799f03d795">CalculateIntegralsOptimized</a>(   <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsA, </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsB, </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsAB, </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                               boost::numeric::ublas::matrix&lt;double&gt;* _JAB);  </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#ad8895acda373b408e05ae9a1ea1d7ae8">CalculateIntegrals</a>(   <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsA, </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsB, </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsAB, </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                               boost::numeric::ublas::matrix&lt;double&gt;* _JAB);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#afe0170538f099a9eb74adbe668b6ae0d">getCouplingElement</a>( <span class="keywordtype">int</span> levelA, <span class="keywordtype">int</span> levelB,  </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsA,  </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                               <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitalsB, </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                               boost::numeric::ublas::matrix&lt;double&gt;* _JAB,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                               <span class="keywordtype">double</span> _energy_difference = 0</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                );</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a410588aab3edc0d181c84417893af4fb">   70</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a> *<a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a410588aab3edc0d181c84417893af4fb">_pLog</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html#af0a9a8714b049691e5bffe46f3d8e004">   70</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#af0a9a8714b049691e5bffe46f3d8e004">setLogger</a>( <a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a>* pLog ) { <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a410588aab3edc0d181c84417893af4fb">_pLog</a> = pLog; }</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a978d41b649f0874b31df61f244f2e3d3">SQRTOverlap</a>(ub::symmetric_matrix&lt;double&gt; &amp;S, ub::matrix&lt;double&gt; &amp;Sm2);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a410588aab3edc0d181c84417893af4fb">   74</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a> *<a class="code" href="classvotca_1_1ctp_1_1Overlap.html#a410588aab3edc0d181c84417893af4fb">_pLog</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1Overlap.html#accdd791a1a683de21caf9b86521b8fd9">SQRTOverlap</a>(boost::numeric::ublas::symmetric_matrix&lt;double&gt; &amp;S, </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                     boost::numeric::ublas::matrix&lt;double&gt; &amp;Sm2);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _VOTCA_CTP_OVERLAP_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _VOTCA_CTP_OVERLAP_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->

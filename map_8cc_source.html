@@ -147,30 +147,30 @@
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    fweights.resize(weights.size());</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// calculate force weights by d_i/w_i</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>&lt;weights.size(); ++<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span>(weights[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>] == 0 &amp;&amp; d[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]!=0) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;weights.size(); ++i) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span>(weights[i] == 0 &amp;&amp; d[i]!=0) {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">throw</span> runtime_error(</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="stringliteral">&quot;A d coefficient is nonzero while weights is zero in mapping &quot;</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                + opts_map-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">&quot;name&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#ac6d7e21b86efdf7525d0cc9f8e8feb5c" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;());</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span>(weights[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>] != 0)</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            fweights[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>] = d[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>] / weights[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>];</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span>(weights[i] != 0)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            fweights[i] = d[i] / weights[i];</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            fweights[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>] = 0;        </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            fweights[i] = 0;        </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> = 0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a> &lt; beads.size(); ++<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">int</span> iin = in-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#aad666c8d41a4db60c4183ad1e9ade8a7" title="find a bead by it&#39;s name">getBeadByName</a>(beads[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; beads.size(); ++i) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">int</span> iin = in-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#aad666c8d41a4db60c4183ad1e9ade8a7" title="find a bead by it&#39;s name">getBeadByName</a>(beads[i]);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (iin &lt; 0)</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">&quot;mapping error: molecule &quot;</span> + beads[i] + <span class="stringliteral">&quot; does not exist&quot;</span>));</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        AddElem(in-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#ab2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(iin), weights[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>], fweights[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>]);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        AddElem(in-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#ab2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(iin), weights[i], fweights[i]);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
 <div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1Map__Sphere.html#ab783d4b7ed82992741f391d8cabd237f">  116</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Map__Sphere.html#ab783d4b7ed82992741f391d8cabd237f">Map_Sphere::Apply</a>()</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    vector&lt;element_t&gt;::iterator iter;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> cg(0., 0., 0.), <a class="code" href="namespacedensity__symmetrize.html#a85d2d27770236dbce44f5c7e9ccf62aa">f</a>(0.,0.,0.), vel(0.,0.,0.);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> cg(0., 0., 0.), f(0.,0.,0.), vel(0.,0.,0.);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">bool</span> bPos, bVel, bF;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    bPos=bVel=bF=<span class="keyword">false</span>;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    _out-&gt;ParentBeads().clear();</div>
@@ -211,7 +211,7 @@
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            bVel = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ae9165977b5752fc0caff38b89676022d">HasF</a>()) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <a class="code" href="namespacedensity__symmetrize.html#a85d2d27770236dbce44f5c7e9ccf62aa">f</a> += (*iter)._force_weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad535e866229fdbca437157541edf9b4b" title="get the force acting on the bead">getF</a>();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            f += (*iter)._force_weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad535e866229fdbca437157541edf9b4b" title="get the force acting on the bead">getF</a>();</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            bF = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
@@ -221,13 +221,13 @@
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">if</span>(bVel)</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        _out-&gt;setVel(vel);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">if</span>(bF)</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        _out-&gt;setF(<a class="code" href="namespacedensity__symmetrize.html#a85d2d27770236dbce44f5c7e9ccf62aa">f</a>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        _out-&gt;setF(f);</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
 <div class="line"><a name="l00174"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1Map__Ellipsoid.html#a059daa02a49551e29f1bfee10032c747">  174</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Map__Ellipsoid.html#a059daa02a49551e29f1bfee10032c747">Map_Ellipsoid::Apply</a>()</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    vector&lt;element_t&gt;::iterator iter;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> cg(0., 0., 0.), c(0., 0., 0.), <a class="code" href="namespacedensity__symmetrize.html#a85d2d27770236dbce44f5c7e9ccf62aa">f</a>(0.,0.,0.), vel(0.,0.,0.);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> cg(0., 0., 0.), c(0., 0., 0.), f(0.,0.,0.), vel(0.,0.,0.);</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> <a class="code" href="namespacevotca_1_1moo.html#a6a44f6663e516c56327f0baf6560f39da522b856dcae786b6fd48bd5e2d802f5f">m</a>(0.);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;     <span class="keywordtype">bool</span> bPos, bVel, bF;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    bPos=bVel=bF=<span class="keyword">false</span>;</div>
@@ -261,7 +261,7 @@
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        }</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">if</span>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ae9165977b5752fc0caff38b89676022d">HasF</a>()) {</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="comment">//f += (*iter)._weight * _in-&gt;getBeadF((*iter)._in);</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <a class="code" href="namespacedensity__symmetrize.html#a85d2d27770236dbce44f5c7e9ccf62aa">f</a> += (*iter)._force_weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad535e866229fdbca437157541edf9b4b" title="get the force acting on the bead">getF</a>();</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            f += (*iter)._force_weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad535e866229fdbca437157541edf9b4b" title="get the force acting on the bead">getF</a>();</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            bF = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        }</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        </div>
@@ -276,7 +276,7 @@
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">if</span>(bVel)</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        _out-&gt;setVel(vel);</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">if</span>(bF)</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        _out-&gt;setF(<a class="code" href="namespacedensity__symmetrize.html#a85d2d27770236dbce44f5c7e9ccf62aa">f</a>);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        _out-&gt;setF(f);</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">if</span>(!_matrix[0]._in-&gt;HasPos()) {</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        _out-&gt;setU(<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(1.0,0,0));</div>
@@ -309,7 +309,7 @@
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    m[2][1] = m[1][2];</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    </div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="comment">// calculate the eigenvectors</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html">matrix::eigensystem_t</a> <a class="code" href="namespacecma__processor.html#a0e72b000596c5d53b69683077da683c7">es</a>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html">matrix::eigensystem_t</a> es;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    m.<a class="code" href="classvotca_1_1tools_1_1matrix.html#ab10ef500423e48c064725504cc9a3009" title="calculate eigenvalues and eigenvectors">SolveEigensystem</a>(es);</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> eigenv1=es.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[0];</div>

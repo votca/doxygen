@@ -123,8 +123,8 @@
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="namespacevotca_1_1tools.html#a4f430aea2d41ee90f6873367a786a329">   69</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="namespacevotca_1_1tools.html#a4f430aea2d41ee90f6873367a786a329">cjcbi</a>(<a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> &amp;a, <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> &amp;v, <span class="keywordtype">double</span> eps, <span class="keywordtype">int</span> jt)</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{ </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">int</span> n=3;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>,j,p,q,l;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">double</span> fm,cn,sn,omega,<a class="code" href="namespacelinsolve.html#aad448020a61899614a262836ab587a5d">x</a>,y,d;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">int</span> i,j,p,q,l;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">double</span> fm,cn,sn,omega,<a class="code" href="linsolve_8m.html#aaeeb1ead24334ce09a1ffb542f262835">x</a>,y,d;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    l=1;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    v.<a class="code" href="classvotca_1_1tools_1_1matrix.html#af8e383e8c3d9229d0c9958b6cd6ec9e6" title="initialize the matrix as identity">UnitMatrix</a>();</div>
@@ -135,7 +135,7 @@
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">for</span> (j=0; j&lt;=i-1; j++) {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                d=fabs(a[i][j]);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> ((i!=j)&amp;&amp;(d&gt;fm))</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    { fm=d; p=<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>; q=j;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    { fm=d; p=i; q=j;}</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> (fm&lt;eps)  <span class="keywordflow">return</span>(1);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> (l&gt;jt)  <span class="keywordflow">return</span>(-1);</div>
@@ -160,15 +160,15 @@
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">for</span> (i=0; i&lt;=n-1; i++)</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;          <span class="keywordflow">if</span> ((i!=p)&amp;&amp;(i!=q))</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            { <span class="comment">//u=i*n+p; w=i*n+q;</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;              fm=a[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][p];</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;              a[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][p]=fm*cn+a[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][q]*sn;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;              a[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][q]=-fm*sn+a[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][q]*cn;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;              fm=a[i][p];</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;              a[i][p]=fm*cn+a[i][q]*sn;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;              a[i][q]=-fm*sn+a[i][q]*cn;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">for</span> (i=0; i&lt;=n-1; i++)</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;          { <span class="comment">//u=i*n+p; w=i*n+q;</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            fm=v[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][p];</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            v[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][p]=fm*cn+v[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][q]*sn;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            v[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][q]=-fm*sn+v[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][q]*cn;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            fm=v[i][p];</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            v[i][p]=fm*cn+v[i][q]*sn;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            v[i][q]=-fm*sn+v[i][q]*cn;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;          }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      }</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span>(1);</div>
@@ -180,10 +180,10 @@
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> v;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a4f430aea2d41ee90f6873367a786a329">cjcbi</a>(m, v);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>=0; <a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>&lt;3; ++<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>) {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        out.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a83821f0795b7b6f06c3990dea6fd7a0b">eigenvalues</a>[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>] = m[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>][<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>];</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        out.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>] = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(v[0][<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>], v[1][i], v[2][i]);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        out.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[<a class="code" href="namespacedensity__symmetrize.html#a70312de6d597e9aea75ba426b32aa62c">i</a>].<a class="code" href="classvotca_1_1tools_1_1vec.html#a3e64d858494103178d0fdb984d369251" title="normalize the vector">normalize</a>();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;3; ++i) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        out.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a83821f0795b7b6f06c3990dea6fd7a0b">eigenvalues</a>[i] = m[i][i];</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        out.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[i] = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(v[0][i], v[1][i], v[2][i]);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        out.<a class="code" href="structvotca_1_1tools_1_1matrix_1_1eigensystem__t.html#a59d8c983bbd2effe6c66e52b3a5cf623">eigenvecs</a>[i].<a class="code" href="classvotca_1_1tools_1_1vec.html#a3e64d858494103178d0fdb984d369251" title="normalize the vector">normalize</a>();</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">//cout &lt;&lt; v &lt;&lt; endl;</span></div>
