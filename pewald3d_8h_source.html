@@ -85,7 +85,7 @@
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;       <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a31b5fb6feb2f8a7b5e510176f8826fb0">~PEwald3D3D</a>();</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a9692c555ff9794e9c0ad3d9f4d59dd7f">   33</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a9692c555ff9794e9c0ad3d9f4d59dd7f">IdentifyMethod</a>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;Polar 3D x 3D&quot;</span>; }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#af996110f0518ce6a7a47650868617db3">GenerateKVectors</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a577f61e0c53950e39ba2827523ecc765">GenerateKVectors</a>(vector&lt;PolarSeg*&gt; &amp;ps1, vector&lt;PolarSeg*&gt; &amp;ps2);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="structvotca_1_1ctp_1_1EWD_1_1triple.html">EWD::triple&lt;&gt;</a> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a9302c9fde3364cee66e532f1661cfc24">ConvergeRealSpaceSum</a>();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="structvotca_1_1ctp_1_1EWD_1_1triple.html">EWD::triple&lt;&gt;</a> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a298dfdc9bacf906588aa50230529eb2b">ConvergeReciprocalSpaceSum</a>();</div>
@@ -98,15 +98,17 @@
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a4ae43c8a1ebb0b90a6796de46903049c">Field_ConvergeReciprocalSpaceSum</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a7ea4d7fd49d83c25e92de10813f5d789">Field_CalculateForegroundCorrection</a>();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#afabb3e0ca2f9bbf4a084319fcf45efdf">Field_CalculateShapeCorrection</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a3b130b998748cc2d615e5e6aaacacb7d">   50</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a3b130b998748cc2d615e5e6aaacacb7d">_shape</a>; <span class="comment">// Summation shape (for 3D corr. term)</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a8f74864b15457696f5585a6d3e679799">PolarizeBackground</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}}</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a3b130b998748cc2d615e5e6aaacacb7d">   52</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a3b130b998748cc2d615e5e6aaacacb7d">_shape</a>; <span class="comment">// Summation shape (for 3D corr. term)</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    };</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
