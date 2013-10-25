@@ -315,77 +315,81 @@
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;       ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aca12f3f51c4c2cd1e699b8ce3d595abf">_has_self_energy</a>;</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;       ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a00e6c731884db7cdadba875dcf67df65">_has_integrals</a>;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;       </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;       <span class="keywordflow">if</span> ( _has_basis_set_size ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#ad63544f6637c47893988a74b584a5881">_basis_set_size</a>; }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;       <span class="keywordflow">if</span> ( _has_occupied_levels ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#ac60e0af3ece4186b35316679f20cc2cc">_occupied_levels</a>; }</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;       <span class="keywordflow">if</span> ( _has_unoccupied_levels ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aa471eaef88d9e14c0fc6bc660ea9fa6b">_unoccupied_levels</a>; }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;       <span class="keywordflow">if</span> ( _has_number_of_electrons ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a27c2e270b9b3c2fd3dfddfec73dfa73a">_number_of_electrons</a>; }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;       <span class="keywordflow">if</span> ( _has_level_degeneracy ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a47783a320641eefc3eea324679158b9c">_level_degeneracy</a>; }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;       <span class="keywordflow">if</span> ( _has_mo_energies ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a2f8ce7b2384fb33579b64e0d3da32996">_mo_energies</a>; }</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;       <span class="keywordflow">if</span> ( _has_mo_coefficients ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5f133e71e3064643c605f05c004bcc87">_mo_coefficients</a>; }</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;       <span class="keywordflow">if</span> ( _has_overlap ) { </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;           <span class="comment">// symmetric matrix does not serialize by default</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">if</span> (Archive::is_saving::value) {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordtype">unsigned</span> size = <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>.size1();</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                ar &amp; size;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;             }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="comment">// copy the values back if loading</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordflow">if</span> (Archive::is_loading::value) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                <span class="keywordtype">unsigned</span> size;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                ar &amp; size;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>.resize(size);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;             }</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;           <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>.size1(); ++i)</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0; j &lt;= i; ++j)</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                    ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>(i, j); </div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;       }</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;       <span class="keywordflow">if</span> ( _has_atoms ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a59a8370e48a86029b96ab5f1ceee6100">_atoms</a>; }</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;       <span class="keywordflow">if</span> ( _has_qm_energy ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aad3325a8360c9fd1e242521a3aafa797">_qm_energy</a>; }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;       <span class="keywordflow">if</span> ( _has_self_energy ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a870fb198a532c463f82ee1103dfdd000">_self_energy</a>; }     </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;       <span class="keywordflow">if</span> ( _has_integrals ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a30b5825387cc3f66afef64eb5567f6eb">_integrals</a>; } </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;       <span class="comment">// GW-BSE storage</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;       <span class="keywordflow">if</span>(version &gt; 0)  {</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a2d1bcded0d6514b3ccad2abe2b211952">_has_vxc</a>;           </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a77e981782fd485e4c0e338af97d43de8">_has_QPpert</a>;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a167382fa07c544199ddf979bc93ea945">_has_QPdiag</a>;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a69536a8a9904d52b6a98d4729334e4fd">_has_BSE_singlets</a>;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aa2716c6f4eee0407cefb2a1c6e550ccf">_has_BSE_triplets</a>;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordflow">if</span> ( _has_QPpert ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a3f72e30e72bee06c7a59d18a4f2ba6ce">_QP_levels_index</a>; ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aac933a6989fb2f8d18aad91f0da67ebc">_QPpert_energies</a>; }</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <span class="keywordflow">if</span> ( _has_QPdiag ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a42ce5bd106bab5c5a10c69af70e93712">_QPdiag_energies</a>; ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5e6b6d78e40623051e21e47f4352bd08">_QPdiag_coefficients</a>; }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordflow">if</span> ( _has_BSE_singlets || _has_BSE_triplets ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a4b30cb6c842aa1c3bb80bd168ce30621">_BSE_levels_indices</a>; }</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> ( _has_BSE_singlets ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a564cb3dbd33c3f27891119467b994404">_BSE_singlet_energies</a>; ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a04241242b5925771e95fdd921c51d8fa">_BSE_singlet_coefficients</a>; }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">if</span> ( _has_BSE_triplets ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a8bf2dd2c353d57020403c339b247d29a">_BSE_triplet_energies</a>; ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a540b8bc7a6f549da7ba6ba23bdc696a4">_BSE_triplet_coefficients</a>; }</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <span class="keywordflow">if</span> ( _has_vxc ) { </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;               <span class="comment">// symmetric matrix does not serialize by default</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                <span class="keywordflow">if</span> (Archive::is_saving::value) {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                    <span class="keywordtype">unsigned</span> size = <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a044ebf6c6927f20f8999d5e40dd4762b">_vxc</a>.size1();</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                    ar &amp; size;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                 }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <span class="comment">// copy the values back if loading</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                <span class="keywordflow">if</span> (Archive::is_loading::value) {</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                    <span class="keywordtype">unsigned</span> size;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    ar &amp; size;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                    <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a044ebf6c6927f20f8999d5e40dd4762b">_vxc</a>.resize(size);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                 }</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;               <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a044ebf6c6927f20f8999d5e40dd4762b">_vxc</a>.size1(); ++i)</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0; j &lt;= i; ++j)</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                        ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a044ebf6c6927f20f8999d5e40dd4762b">_vxc</a>(i, j); </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            </div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;       } <span class="comment">// end version 1: GW-BSE storage</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }<span class="comment">// end of serialization</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;};</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;}}</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;BOOST_CLASS_VERSION(<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">votca::ctp::Orbitals</a>, 1)</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_CTP_ORBITALS_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;       <span class="comment">//cout &lt;&lt; &quot;\nLoaded 1\n&quot; &lt;&lt; flush;</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;       <span class="keywordflow">if</span> ( _has_basis_set_size ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#ad63544f6637c47893988a74b584a5881">_basis_set_size</a>; }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;       <span class="keywordflow">if</span> ( _has_occupied_levels ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#ac60e0af3ece4186b35316679f20cc2cc">_occupied_levels</a>; }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;       <span class="keywordflow">if</span> ( _has_unoccupied_levels ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aa471eaef88d9e14c0fc6bc660ea9fa6b">_unoccupied_levels</a>; }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;       <span class="keywordflow">if</span> ( _has_number_of_electrons ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a27c2e270b9b3c2fd3dfddfec73dfa73a">_number_of_electrons</a>; }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;       <span class="keywordflow">if</span> ( _has_level_degeneracy ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a47783a320641eefc3eea324679158b9c">_level_degeneracy</a>; }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;       <span class="keywordflow">if</span> ( _has_mo_energies ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a2f8ce7b2384fb33579b64e0d3da32996">_mo_energies</a>; }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;       <span class="keywordflow">if</span> ( _has_mo_coefficients ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5f133e71e3064643c605f05c004bcc87">_mo_coefficients</a>; }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;       <span class="keywordflow">if</span> ( _has_overlap ) { </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;           <span class="comment">// symmetric matrix does not serialize by default</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="keywordflow">if</span> (Archive::is_saving::value) {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                <span class="keywordtype">unsigned</span> size = <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>.size1();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                ar &amp; size;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;             }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="comment">// copy the values back if loading</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordflow">if</span> (Archive::is_loading::value) {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                <span class="keywordtype">unsigned</span> size;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                ar &amp; size;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>.resize(size);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;             }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;           <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>.size1(); ++i)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0; j &lt;= i; ++j)</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                    ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a96235fb7951ab91b08b19a9c8164b6fd">_overlap</a>(i, j); </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;       }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;       <span class="keywordflow">if</span> ( _has_atoms ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a59a8370e48a86029b96ab5f1ceee6100">_atoms</a>; }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;       <span class="keywordflow">if</span> ( _has_qm_energy ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aad3325a8360c9fd1e242521a3aafa797">_qm_energy</a>; }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;       <span class="keywordflow">if</span> ( _has_self_energy ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a870fb198a532c463f82ee1103dfdd000">_self_energy</a>; }     </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;       <span class="keywordflow">if</span> ( _has_integrals ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a30b5825387cc3f66afef64eb5567f6eb">_integrals</a>; } </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;       <span class="comment">//cout &lt;&lt; &quot;\nLoaded 2\n&quot; &lt;&lt; flush;</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;       <span class="comment">// GW-BSE storage</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;       <span class="keywordflow">if</span>(version &gt; 0)  {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a2d1bcded0d6514b3ccad2abe2b211952">_has_vxc</a>;               </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a77e981782fd485e4c0e338af97d43de8">_has_QPpert</a>;            </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a167382fa07c544199ddf979bc93ea945">_has_QPdiag</a>;            </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a69536a8a9904d52b6a98d4729334e4fd">_has_BSE_singlets</a>;      </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aa2716c6f4eee0407cefb2a1c6e550ccf">_has_BSE_triplets</a>;      </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordflow">if</span> ( _has_QPpert ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a3f72e30e72bee06c7a59d18a4f2ba6ce">_QP_levels_index</a>; ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#aac933a6989fb2f8d18aad91f0da67ebc">_QPpert_energies</a>; }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> ( _has_QPdiag ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a42ce5bd106bab5c5a10c69af70e93712">_QPdiag_energies</a>; ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a5e6b6d78e40623051e21e47f4352bd08">_QPdiag_coefficients</a>; }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">if</span> ( _has_BSE_singlets || _has_BSE_triplets ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a4b30cb6c842aa1c3bb80bd168ce30621">_BSE_levels_indices</a>; }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keywordflow">if</span> ( _has_BSE_singlets ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a564cb3dbd33c3f27891119467b994404">_BSE_singlet_energies</a>; ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a04241242b5925771e95fdd921c51d8fa">_BSE_singlet_coefficients</a>; }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <span class="keywordflow">if</span> ( _has_BSE_triplets ) { ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a8bf2dd2c353d57020403c339b247d29a">_BSE_triplet_energies</a>; ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a540b8bc7a6f549da7ba6ba23bdc696a4">_BSE_triplet_coefficients</a>; }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="comment">//cout &lt;&lt; &quot;\nLoaded 3\n&quot; &lt;&lt; flush;</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordflow">if</span> ( _has_vxc ) { </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;               <span class="comment">// symmetric matrix does not serialize by default</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                <span class="keywordflow">if</span> (Archive::is_saving::value) {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                    <span class="keywordtype">unsigned</span> size = <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a044ebf6c6927f20f8999d5e40dd4762b">_vxc</a>.size1();</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                    ar &amp; size;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                 }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="comment">// copy the values back if loading</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                <span class="keywordflow">if</span> (Archive::is_loading::value) {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                    <span class="keywordtype">unsigned</span> size;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                    ar &amp; size;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                    <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a044ebf6c6927f20f8999d5e40dd4762b">_vxc</a>.resize(size);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                 }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;               <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a044ebf6c6927f20f8999d5e40dd4762b">_vxc</a>.size1(); ++i)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0; j &lt;= i; ++j)</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        ar &amp; <a class="code" href="classvotca_1_1ctp_1_1Orbitals.html#a044ebf6c6927f20f8999d5e40dd4762b">_vxc</a>(i, j); </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;       <span class="comment">//cout &lt;&lt; &quot;\nLoaded 4\n&quot; &lt;&lt; flush;</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;       } <span class="comment">// end version 1: GW-BSE storage</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    }<span class="comment">// end of serialization</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;};</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}}</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;BOOST_CLASS_VERSION(<a class="code" href="classvotca_1_1ctp_1_1Orbitals.html" title="container for molecular orbitals">votca::ctp::Orbitals</a>, 1)</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_CTP_ORBITALS_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
