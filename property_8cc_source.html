@@ -473,35 +473,36 @@
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            _level = pm-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a8c763d3c4db54ea1a2f36835f8e31dee">getLevel</a>();</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            _type = pm-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#abe7f2e6838877f1400f928f099577447">getType</a>();</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            <span class="comment">// check if we &gt; or &gt;&gt; to a file and remove color codes</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            <span class="keywordflow">if</span>( !isatty(STDOUT_FILENO) || !isatty(STDERR_FILENO) ) {</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                pm-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a0326a57ab46f995e03d8217f38eb5944">setColorScheme</a>&lt;<a class="code" href="classvotca_1_1tools_1_1csDefault.html">csDefault</a>&gt;();</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            }</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        }</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            </div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;         <span class="keywordflow">switch</span>( _type )</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        {</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#af5c0cc857103faf18661c259eb03dd46">PrintNodeTXT</a>(out, p, _level);</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a7ceeda9c1e61929aa165b1ab420be364">PropertyIOManipulator::XML</a>:</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#a3dab17f0af9e2515756a91c036b2aae6">PrintNodeXML</a>(out, p, pm);</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a3a59332bc990c42e746cdd7aa2f9022c">PropertyIOManipulator::TXT</a>:</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#af5c0cc857103faf18661c259eb03dd46">PrintNodeTXT</a>(out, p, _level, 0, <span class="stringliteral">&quot;&quot;</span>, _indentation);</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;         <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a49a07bc2c0b16dcd68b3dceab1b35507">PropertyIOManipulator::TEX</a>:            </div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#af3f1f58012dc8bc87c0ffa58e1a6c89e">PrintNodeTEX</a>(out, p, pm);</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a8089a36fbf8bc8854dcd0510b0b07b5e">PropertyIOManipulator::HLP</a>:            </div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#a1f82f82534e0347ac13029e237e058bc">PrintNodeHLP</a>(out, p, _level, 0, <span class="stringliteral">&quot;&quot;</span>, _indentation);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        }</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        <span class="comment">//out &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    }</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;};</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            <span class="comment">// if ( out.tellp() != -1 )  - not suitable for pipes</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            <span class="keywordflow">if</span>( !isatty(STDOUT_FILENO) || !isatty(STDERR_FILENO) ) {</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                pm-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a0326a57ab46f995e03d8217f38eb5944">setColorScheme</a>&lt;<a class="code" href="classvotca_1_1tools_1_1csDefault.html">csDefault</a>&gt;();</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        }</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;         <span class="keywordflow">switch</span>( _type )</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        {</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#af5c0cc857103faf18661c259eb03dd46">PrintNodeTXT</a>(out, p, _level);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a7ceeda9c1e61929aa165b1ab420be364">PropertyIOManipulator::XML</a>:</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#a3dab17f0af9e2515756a91c036b2aae6">PrintNodeXML</a>(out, p, pm);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a3a59332bc990c42e746cdd7aa2f9022c">PropertyIOManipulator::TXT</a>:</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#af5c0cc857103faf18661c259eb03dd46">PrintNodeTXT</a>(out, p, _level, 0, <span class="stringliteral">&quot;&quot;</span>, _indentation);</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;         <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a49a07bc2c0b16dcd68b3dceab1b35507">PropertyIOManipulator::TEX</a>:            </div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#af3f1f58012dc8bc87c0ffa58e1a6c89e">PrintNodeTEX</a>(out, p, pm);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a8089a36fbf8bc8854dcd0510b0b07b5e">PropertyIOManipulator::HLP</a>:            </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#a1f82f82534e0347ac13029e237e058bc">PrintNodeHLP</a>(out, p, _level, 0, <span class="stringliteral">&quot;&quot;</span>, _indentation);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        }</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        <span class="comment">//out &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;};</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;}}</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->

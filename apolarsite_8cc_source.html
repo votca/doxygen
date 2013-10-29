@@ -659,232 +659,298 @@
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;}</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;</div>
-<div class="line"><a name="l00608"></a><span class="lineno"><a class="code" href="namespacevotca_1_1ctp.html#a2a3e593334cfd2412181cc017a6c4c6a">  608</a></span>&#160;vector&lt;APolarSite*&gt; <a class="code" href="namespacevotca_1_1ctp.html#a2a3e593334cfd2412181cc017a6c4c6a">APS_FROM_MPS</a>(<span class="keywordtype">string</span> filename, <span class="keywordtype">int</span> state, <a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread) {</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keywordtype">int</span> poleCount = 1;</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    <span class="keywordtype">double</span> Q0_total = 0.0;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    <span class="keywordtype">string</span> units = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    <span class="keywordtype">bool</span> useDefaultPs = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    vector&lt;APolarSite*&gt; poles;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html">APolarSite</a> *thisPole = NULL;</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    vector&lt;double&gt; Qs; <span class="comment">// &lt;- multipole moments</span></div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a>         P1; <span class="comment">// &lt;- dipole polarizability</span></div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    std::string line;</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    std::ifstream intt;</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    intt.open(filename.c_str());</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordflow">if</span> (intt.is_open() ) {</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        <span class="keywordflow">while</span> ( intt.good() ) {</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;            std::getline(intt, line);</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;            vector&lt;string&gt; split;</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> toker(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            toker.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(split);</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;            </div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;            <span class="keywordflow">if</span> ( !split.size()      ||</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                  split[0] == <span class="stringliteral">&quot;!&quot;</span>   ||</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                  split[0].substr(0,1) == <span class="stringliteral">&quot;!&quot;</span> ) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    <span class="comment">// ! Interesting information here, e.g.</span></div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    <span class="comment">// ! DCV2T opt</span></div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    <span class="comment">// ! SP        RB3LYP          6-311+G(d,p)</span></div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="comment">// Units bohr</span></div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <span class="comment">//</span></div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <span class="comment">// C          -4.2414603400   -3.8124751600    0.0017575736    Rank  2</span></div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    <span class="comment">//  -0.3853409355</span></div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    <span class="comment">//  -0.0002321905   0.2401559510   0.6602334308</span></div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <span class="comment">//  -0.7220625314   0.0004894995  -0.0003833545   0.4526409813  -0.50937399</span></div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    <span class="comment">//  P 1.75</span></div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;</div>
+<div class="line"><a name="l00608"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a6a87db33db74d8db28bc6faf4eb524c4">  608</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a6a87db33db74d8db28bc6faf4eb524c4">APolarSite::WriteMpsLine</a>(std::ostream &amp;out, <span class="keywordtype">string</span> unit = <span class="stringliteral">&quot;angstrom&quot;</span>) {</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    </div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="comment">// Set conversion factor for higher-rank moments (e*nm**k to e*a0**k)</span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    <span class="keywordtype">double</span> conv_dpl = 1./0.0529189379;</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    <span class="keywordtype">double</span> conv_qdr = conv_dpl*conv_dpl;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    <span class="comment">// Set conversion factor for polarizabilities (nm**3 to A**3)</span></div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    <span class="keywordtype">double</span> conv_pol = 1000;    </div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    <span class="comment">// Set conversion factor for positions (nm to ??)</span></div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    <span class="keywordtype">double</span> conv_pos = 1.;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;    <span class="keywordflow">if</span> (unit == <span class="stringliteral">&quot;angstrom&quot;</span>) {</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        conv_pos = 10.;</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    }</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (unit == <span class="stringliteral">&quot;nanometer&quot;</span>) {</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;        conv_pos = 1.;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    }</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordflow">else</span> assert(<span class="keyword">false</span>); <span class="comment">// Units error</span></div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    </div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    out &lt;&lt; (boost::format(<span class="stringliteral">&quot; %1$2s %2$+1.7f %3$+1.7f %4$+1.7f Rank %5$d\n&quot;</span>) </div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;            % <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#aaa3a7c2404c56a7a3d057ad07b24b1a9">_name</a> % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a1e85669b21ebf4f78a5ac8ea3ae4e87a">_pos</a>.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>()*conv_pos)</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;            % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a1e85669b21ebf4f78a5ac8ea3ae4e87a">_pos</a>.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>()*conv_pos) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a1e85669b21ebf4f78a5ac8ea3ae4e87a">_pos</a>.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()*conv_pos)</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;            % <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#ac95b8f805a6435ee7cfeb79f5c3084d0">_rank</a>);</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    <span class="comment">// Charged</span></div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    out &lt;&lt; (boost::format(<span class="stringliteral">&quot;    %1$+1.7f\n&quot;</span>) % <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a79a7b9fe2bdb08a720ad429157f10c74">Q00</a>);</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#ac95b8f805a6435ee7cfeb79f5c3084d0">_rank</a> &gt; 0) {</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        <span class="comment">// Dipole z x y</span></div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        out &lt;&lt; (boost::format(<span class="stringliteral">&quot;    %1$+1.7f %2$+1.7f %3$+1.7f\n&quot;</span>) </div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;            % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#aa76d124172df951a65513b57571f49fb">Q1z</a>*conv_dpl) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a504e09a08e16dc26e932ed5e3257a803">Q1x</a>*conv_dpl) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#ab9c43cad4ef614e2f7d09da778b0398e">Q1y</a>*conv_dpl));</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#ac95b8f805a6435ee7cfeb79f5c3084d0">_rank</a> &gt; 1) {</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;            <span class="comment">// Quadrupole 20 21c 21s 22c 22s</span></div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;            out &lt;&lt; (boost::format(<span class="stringliteral">&quot;    %1$+1.7f %2$+1.7f %3$+1.7f %4$+1.7f %5$+1.7f\n&quot;</span>) </div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;                % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a9e4351554814054cd872ec9f32e218c5">Q20</a>*conv_qdr) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#aca2fd087a9271f78150ac72d5cf24251">Q21c</a>*conv_qdr) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a81e4e4875a9d5b3f461de5f5c7e9c0d6">Q21s</a>*conv_qdr) </div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;                % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a4c106f893550c704b3e7f5d03a7de033">Q22c</a>*conv_qdr) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#ab438b02934254cdf1961e89b423f1fee">Q22s</a>*conv_qdr));</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        }</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    }</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <span class="comment">// Polarizability</span></div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    out &lt;&lt; (boost::format(<span class="stringliteral">&quot;     P %1$+1.7f %2$+1.7f %3$+1.7f %4$+1.7f %5$+1.7f %6$+1.7f \n&quot;</span>) </div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;        % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#ab6b95977d435cf5bc39c34978c6059a2">Pxx</a>*conv_pol) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a54556f5f6eae132e6bdd7b8807ccbf67">Pxy</a>*conv_pol) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#af915b406d8e19c8cd60f03d5a3dc971a">Pxz</a>*conv_pol) </div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;        % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a2ae905823ed7cf596fbde987ae8d20fa">Pyy</a>*conv_pol) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a3c465c4031ff1873e9e957f22f03f913">Pyz</a>*conv_pol) % (<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#ae6d70e9ef3d720f5a58c2e5c8818afa1">Pzz</a>*conv_pol));</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    </div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;}</div>
 <div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;            <span class="comment">// Units used</span></div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;            <span class="keywordflow">if</span> ( split[0] == <span class="stringliteral">&quot;Units&quot;</span>) {</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;                units = split[1];</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;                <span class="keywordflow">if</span> (units != <span class="stringliteral">&quot;bohr&quot;</span> &amp;&amp; units != <span class="stringliteral">&quot;angstrom&quot;</span>) {</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                    <span class="keywordflow">throw</span> std::runtime_error( <span class="stringliteral">&quot;Unit &quot;</span> + units + <span class="stringliteral">&quot; in file &quot;</span></div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;                                            + filename + <span class="stringliteral">&quot; not supported.&quot;</span>);</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                }</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;            }</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;            <span class="comment">// element,  position,  rank limit</span></div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( split.size() == 6 ) {</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;                Qs.clear();</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;</div>
+<div class="line"><a name="l00650"></a><span class="lineno"><a class="code" href="namespacevotca_1_1ctp.html#a2a3e593334cfd2412181cc017a6c4c6a">  650</a></span>&#160;vector&lt;APolarSite*&gt; <a class="code" href="namespacevotca_1_1ctp.html#a2a3e593334cfd2412181cc017a6c4c6a">APS_FROM_MPS</a>(<span class="keywordtype">string</span> filename, <span class="keywordtype">int</span> state, <a class="code" href="classvotca_1_1ctp_1_1QMThread.html">QMThread</a> *thread) {</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    <span class="keywordtype">int</span> poleCount = 1;</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    <span class="keywordtype">double</span> Q0_total = 0.0;</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    <span class="keywordtype">string</span> units = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <span class="keywordtype">bool</span> useDefaultPs = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    vector&lt;APolarSite*&gt; poles;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html">APolarSite</a> *thisPole = NULL;</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    vector&lt;double&gt; Qs; <span class="comment">// &lt;- multipole moments</span></div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a>         P1; <span class="comment">// &lt;- dipole polarizability</span></div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;                <span class="keywordtype">int</span> <span class="keywordtype">id</span> = poleCount++;  <span class="comment">// &lt;- starts from 1</span></div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;                <span class="keywordtype">string</span> name = split[0];</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;                <span class="keywordtype">double</span> BOHR2NM = 0.0529189379;</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;                <span class="keywordtype">double</span> ANGSTROM2NM = 0.1;</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;                <span class="keywordtype">double</span> <a class="code" href="linsolve_8m.html#aaeeb1ead24334ce09a1ffb542f262835">x</a>, y, z;</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    std::string line;</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    std::ifstream intt;</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    intt.open(filename.c_str());</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    <span class="keywordflow">if</span> (intt.is_open() ) {</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        <span class="keywordflow">while</span> ( intt.good() ) {</div>
 <div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                <span class="keywordflow">if</span> (units == <span class="stringliteral">&quot;bohr&quot;</span>) {</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;                    x = BOHR2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;                    y = BOHR2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[2]);</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;                    z = BOHR2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[3]);</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                }</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (units == <span class="stringliteral">&quot;angstrom&quot;</span>) {</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;                    x = ANGSTROM2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;                    y = ANGSTROM2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[2]);</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;                    z = ANGSTROM2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[3]);</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                }</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                    <span class="keywordflow">throw</span> std::runtime_error( <span class="stringliteral">&quot;Unit &quot;</span> + units + <span class="stringliteral">&quot; in file &quot;</span></div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                                            + filename + <span class="stringliteral">&quot; not supported.&quot;</span>);</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                }</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> pos = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(x,y,z);</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                <span class="keywordtype">int</span> rank = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(split[5]);</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html">APolarSite</a> *newPole = <span class="keyword">new</span> <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html">APolarSite</a>(<span class="keywordtype">id</span>, name);</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                newPole-&gt;setRank(rank);</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;                newPole-&gt;setPos(pos);</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;                poles.push_back(newPole);</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                thisPole = newPole;</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;            }</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            <span class="comment">// &#39;P&#39;, dipole polarizability</span></div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( split[0] == <span class="stringliteral">&quot;P&quot;</span>) {</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;            std::getline(intt, line);</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;            vector&lt;string&gt; split;</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> toker(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;            toker.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(split);</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            </div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            <span class="keywordflow">if</span> ( !split.size()      ||</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;                  split[0] == <span class="stringliteral">&quot;!&quot;</span>   ||</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;                  split[0].substr(0,1) == <span class="stringliteral">&quot;!&quot;</span> ) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="comment">// ! Interesting information here, e.g.</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    <span class="comment">// ! DCV2T opt</span></div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    <span class="comment">// ! SP        RB3LYP          6-311+G(d,p)</span></div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="comment">// Units bohr</span></div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    <span class="comment">// C          -4.2414603400   -3.8124751600    0.0017575736    Rank  2</span></div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    <span class="comment">//  -0.3853409355</span></div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    <span class="comment">//  -0.0002321905   0.2401559510   0.6602334308</span></div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;    <span class="comment">//  -0.7220625314   0.0004894995  -0.0003833545   0.4526409813  -0.50937399</span></div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    <span class="comment">//  P 1.75</span></div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;            <span class="comment">// Units used</span></div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;            <span class="keywordflow">if</span> ( split[0] == <span class="stringliteral">&quot;Units&quot;</span>) {</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                units = split[1];</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                <span class="keywordflow">if</span> (units != <span class="stringliteral">&quot;bohr&quot;</span> &amp;&amp; units != <span class="stringliteral">&quot;angstrom&quot;</span>) {</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                    <span class="keywordflow">throw</span> std::runtime_error( <span class="stringliteral">&quot;Unit &quot;</span> + units + <span class="stringliteral">&quot; in file &quot;</span></div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                                            + filename + <span class="stringliteral">&quot; not supported.&quot;</span>);</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                }</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            }</div>
 <div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;                <span class="keywordtype">double</span> pxx, pxy, pxz;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                <span class="keywordtype">double</span>      pyy, pyz;</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                <span class="keywordtype">double</span>           pzz;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                <span class="keywordflow">if</span> (split.size() == 7) {</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                    pxx = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;                    pxy = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[2]);</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                    pxz = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[3]);</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                    pyy = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[4]);</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                    pyz = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[5]);</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                    pzz = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[6]);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                    P1 = <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a>(<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxx,pxy,pyy),</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxy,pyy,pyz),</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxz,pyz,pzz));</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                }</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (split.size() == 2) {</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                    pxx = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                    pxy = 0.0;</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                    pxz = 0.0;</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                    pyy = pxx;</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                    pyz = 0.0;</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                    pzz = pxx;</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            <span class="comment">// element,  position,  rank limit</span></div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( split.size() == 6 ) {</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                Qs.clear();</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                <span class="keywordtype">int</span> <span class="keywordtype">id</span> = poleCount++;  <span class="comment">// &lt;- starts from 1</span></div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                <span class="keywordtype">string</span> name = split[0];</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                <span class="keywordtype">double</span> BOHR2NM = 0.0529189379;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                <span class="keywordtype">double</span> ANGSTROM2NM = 0.1;</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                <span class="keywordtype">double</span> <a class="code" href="linsolve_8m.html#aaeeb1ead24334ce09a1ffb542f262835">x</a>, y, z;</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                <span class="keywordflow">if</span> (units == <span class="stringliteral">&quot;bohr&quot;</span>) {</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                    x = BOHR2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                    y = BOHR2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[2]);</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                    z = BOHR2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[3]);</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                }</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (units == <span class="stringliteral">&quot;angstrom&quot;</span>) {</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                    x = ANGSTROM2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                    y = ANGSTROM2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[2]);</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                    z = ANGSTROM2NM * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[3]);</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                }</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                    <span class="keywordflow">throw</span> std::runtime_error( <span class="stringliteral">&quot;Unit &quot;</span> + units + <span class="stringliteral">&quot; in file &quot;</span></div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                                            + filename + <span class="stringliteral">&quot; not supported.&quot;</span>);</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                }</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> pos = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(x,y,z);</div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                    P1 = <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a>(<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxx,pxy,pxz),</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxy,pyy,pyz),</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxz,pyz,pzz));</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                }</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Invalid line in &quot;</span> + filename</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                                             + <span class="stringliteral">&quot;: &quot;</span> + line);</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                }</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                <span class="keywordtype">int</span> rank = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(split[5]);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html">APolarSite</a> *newPole = <span class="keyword">new</span> <a class="code" href="classvotca_1_1ctp_1_1APolarSite.html">APolarSite</a>(<span class="keywordtype">id</span>, name);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                newPole-&gt;setRank(rank);</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                newPole-&gt;setPos(pos);</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                poles.push_back(newPole);</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                thisPole = newPole;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            }</div>
 <div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                thisPole-&gt;<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a365292a1211332ed6dab37d433f77353">setPs</a>(P1, state);</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                useDefaultPs = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;            }</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;            <span class="comment">// multipole line</span></div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;            <span class="comment">// &#39;P&#39;, dipole polarizability</span></div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( split[0] == <span class="stringliteral">&quot;P&quot;</span>) {</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                <span class="keywordtype">double</span> pxx, pxy, pxz;</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                <span class="keywordtype">double</span>      pyy, pyz;</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                <span class="keywordtype">double</span>           pzz;</div>
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                <span class="keywordtype">int</span> lineRank = int( sqrt(thisPole-&gt;<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#af5a65ae47c298daab70c60ead42998b4">getQs</a>(state).size()) + 0.5 );</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                <span class="keywordflow">if</span> (split.size() == 7) {</div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                <span class="keywordflow">if</span> (lineRank == 0) {</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                    Q0_total += <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[0]);</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                }</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; split.size(); i++) {</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                    <span class="keywordtype">double</span> qXYZ = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[i]);</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                    <span class="comment">// Convert e*(a_0)^k to e*(nm)^k where k = rank</span></div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                    <span class="keywordtype">double</span> BOHR2NM = 0.0529189379;</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                    qXYZ *= pow(BOHR2NM, lineRank); <span class="comment">// OVERRIDE</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                    pxx = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                    pxy = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[2]);</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                    pxz = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[3]);</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                    pyy = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[4]);</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                    pyz = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[5]);</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                    pzz = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[6]);</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                    P1 = <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a>(<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxx,pxy,pyy),</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxy,pyy,pyz),</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxz,pyz,pzz));</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;</div>
 <div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                    Qs.push_back(qXYZ);</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                }</div>
 <div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                }</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                thisPole-&gt;<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a04ff4a9c3d3cf469e3c76abf07e9589e">setQs</a>(Qs, state);</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;            }</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;            </div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        } <span class="comment">/* Exit loop over lines */</span></div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    }</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <span class="keywordflow">else</span> { cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;ERROR: No such file &quot;</span> &lt;&lt; filename &lt;&lt; endl;</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;           <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Please supply input file.&quot;</span>);           }</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (split.size() == 2) {</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                    pxx = 1e-3 * <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[1]);</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                    pxy = 0.0;</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                    pxz = 0.0;</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                    pyy = pxx;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                    pyz = 0.0;</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                    pzz = pxx;</div>
 <div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;    <span class="keywordflow">if</span> (thread == NULL)</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    printf(<span class="stringliteral">&quot;\n... ... ... Reading %-25s -&gt; N = %2d Q0(Sum) = %+1.7f &quot;</span>,</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                          filename.c_str(), (int)poles.size(),  Q0_total);</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;    </div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    </div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;    <span class="comment">// Apply charge correction: Sum to closest integer</span></div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;    <span class="keywordtype">int</span> Q_integer = boost::math::iround(Q0_total);</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;    <span class="keywordtype">double</span> dQ = (double(Q_integer) - Q0_total)/poles.size();</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;    </div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    <span class="keywordtype">double</span> Q0_total_corr = 0.0;</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;    vector&lt;APolarSite*&gt;::iterator pit;</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    <span class="keywordflow">for</span> (pit = poles.begin(); pit &lt; poles.end(); ++pit) {</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;        <span class="keywordtype">double</span> Q_uncorr = (*pit)-&gt;getQs(state)[0];</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;        <span class="keywordtype">double</span> Q_corr = Q_uncorr + dQ;</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;        (*pit)-&gt;setQ00(Q_corr, state);</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;        Q0_total_corr += (*pit)-&gt;getQs(state)[0];</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;    }</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    </div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    <span class="keywordflow">if</span> (thread == NULL)</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    printf(<span class="stringliteral">&quot;=&gt; dQ0 = %+1.1e, Q0(corr.) = %+1.0f&quot;</span>,</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;            dQ, Q0_total_corr);</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    </div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;    </div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    </div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                    P1 = <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a>(<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxx,pxy,pxz),</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxy,pyy,pyz),</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                                <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(pxz,pyz,pzz));</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                }</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Invalid line in &quot;</span> + filename</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                                             + <span class="stringliteral">&quot;: &quot;</span> + line);</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                }</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                thisPole-&gt;<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a365292a1211332ed6dab37d433f77353">setPs</a>(P1, state);</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                useDefaultPs = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            }</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;            <span class="comment">// multipole line</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;            <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                <span class="keywordtype">int</span> lineRank = int( sqrt(thisPole-&gt;<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#af5a65ae47c298daab70c60ead42998b4">getQs</a>(state).size()) + 0.5 );</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                <span class="keywordflow">if</span> (lineRank == 0) {</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                    Q0_total += <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[0]);</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                }</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; split.size(); i++) {</div>
 <div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;    <span class="keywordflow">if</span> (useDefaultPs) {</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;        <span class="keywordflow">if</span> (thread == NULL)</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;        cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... ... NOTE Using default Thole polarizabilities &quot;</span></div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;             &lt;&lt; <span class="stringliteral">&quot;for charge state &quot;</span> &lt;&lt; state &lt;&lt; <span class="stringliteral">&quot;. &quot;</span>;</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;        vector&lt; APolarSite* &gt; ::iterator pol;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;        <span class="keywordflow">for</span> (pol = poles.begin(); pol &lt; poles.end(); ++pol) {</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            <span class="keywordtype">string</span> elem = (*pol)-&gt;getName();</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;            <span class="keywordtype">double</span> alpha = 0.0;</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;            <span class="comment">// Original set of Thole polarizabilites</span></div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;            <span class="keywordflow">if</span>      (elem == <span class="stringliteral">&quot;C&quot;</span>) { alpha = 1.75e-3;  } <span class="comment">// &lt;- conversion from</span></div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (elem == <span class="stringliteral">&quot;H&quot;</span>) { alpha = 0.696e-3; } <span class="comment">//    A³ to nm³ = 10⁻³</span></div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (elem == <span class="stringliteral">&quot;N&quot;</span>) { alpha = 1.073e-3; }</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (elem == <span class="stringliteral">&quot;O&quot;</span>) { alpha = 0.837e-3; }</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (elem == <span class="stringliteral">&quot;S&quot;</span>) { alpha = 2.926e-3; }</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;            <span class="comment">// Different set of Thole polarizabilities</span></div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            <span class="comment">//if      (elem == &quot;C&quot;) { alpha = 1.334e-3; } // &lt;- conversion from</span></div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;            <span class="comment">//else if (elem == &quot;H&quot;) { alpha = 0.496e-3; } //    A³ to nm³ = 10⁻³</span></div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;            <span class="comment">//else if (elem == &quot;N&quot;) { alpha = 1.073e-3; }</span></div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;            <span class="comment">//else if (elem == &quot;O&quot;) { alpha = 0.837e-3; }</span></div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;            <span class="comment">//else if (elem == &quot;S&quot;) { alpha = 3.300e-3; }</span></div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;            <span class="keywordflow">else</span> { <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;No polarizability given &quot;</span></div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                                       <span class="stringliteral">&quot;for polar site type &quot;</span> + elem + <span class="stringliteral">&quot;. &quot;</span>); }</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            P1 = <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a>(<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(alpha,0,0),<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(0,alpha,0),<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(0,0,alpha));</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;            (*pol)-&gt;setPs(P1, state);</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;        }</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    }</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    vector&lt; APolarSite* &gt; ::iterator pol;</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;    <span class="keywordflow">for</span> (pol = poles.begin(); pol &lt; poles.end(); ++pol) {</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;        (*pol)-&gt;Charge(state);</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    }</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    <span class="keywordflow">return</span> poles;</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;}</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;}}</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                    <span class="keywordtype">double</span> qXYZ = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(split[i]);</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                    <span class="comment">// Convert e*(a_0)^k to e*(nm)^k where k = rank</span></div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                    <span class="keywordtype">double</span> BOHR2NM = 0.0529189379;</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                    qXYZ *= pow(BOHR2NM, lineRank); <span class="comment">// OVERRIDE</span></div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                    Qs.push_back(qXYZ);</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                }</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                thisPole-&gt;<a class="code" href="classvotca_1_1ctp_1_1APolarSite.html#a04ff4a9c3d3cf469e3c76abf07e9589e">setQs</a>(Qs, state);</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;            }</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;            </div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;        } <span class="comment">/* Exit loop over lines */</span></div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    }</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    <span class="keywordflow">else</span> { cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;ERROR: No such file &quot;</span> &lt;&lt; filename &lt;&lt; endl;</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;           <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Please supply input file.&quot;</span>);           }</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    <span class="keywordflow">if</span> (thread == NULL)</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    printf(<span class="stringliteral">&quot;\n... ... ... Reading %-25s -&gt; N = %2d Q0(Sum) = %+1.7f &quot;</span>,</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                          filename.c_str(), (int)poles.size(),  Q0_total);</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    </div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;    </div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    <span class="comment">// Apply charge correction: Sum to closest integer</span></div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    <span class="keywordtype">int</span> Q_integer = boost::math::iround(Q0_total);</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    <span class="keywordtype">double</span> dQ = (double(Q_integer) - Q0_total)/poles.size();</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    </div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    <span class="keywordtype">double</span> Q0_total_corr = 0.0;</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    vector&lt;APolarSite*&gt;::iterator pit;</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;    <span class="keywordflow">for</span> (pit = poles.begin(); pit &lt; poles.end(); ++pit) {</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;        <span class="keywordtype">double</span> Q_uncorr = (*pit)-&gt;getQs(state)[0];</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        <span class="keywordtype">double</span> Q_corr = Q_uncorr + dQ;</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;        (*pit)-&gt;setQ00(Q_corr, state);</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;        Q0_total_corr += (*pit)-&gt;getQs(state)[0];</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;    }</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    </div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <span class="keywordflow">if</span> (thread == NULL)</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    printf(<span class="stringliteral">&quot;=&gt; dQ0 = %+1.1e, Q0(corr.) = %+1.0f&quot;</span>,</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;            dQ, Q0_total_corr);</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    </div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;    </div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;    </div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    <span class="keywordflow">if</span> (useDefaultPs) {</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;        <span class="keywordflow">if</span> (thread == NULL)</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;        cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... ... NOTE Using default Thole polarizabilities &quot;</span></div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;             &lt;&lt; <span class="stringliteral">&quot;for charge state &quot;</span> &lt;&lt; state &lt;&lt; <span class="stringliteral">&quot;. &quot;</span>;</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;        </div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;        std::map&lt;string,double&gt; polar_table = <a class="code" href="namespacevotca_1_1ctp.html#a9e5d0e47c110dffee94b00604af4cc4a">POLAR_TABLE</a>();</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;        </div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;        vector&lt; APolarSite* &gt; ::iterator pol;</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;        <span class="keywordflow">for</span> (pol = poles.begin(); pol &lt; poles.end(); ++pol) {</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            <span class="keywordtype">string</span> elem = (*pol)-&gt;getName();</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;            <span class="keywordtype">double</span> alpha = 0.0;</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;            </div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                alpha = polar_table.at(elem);</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;            }</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;            <span class="keywordflow">catch</span>(out_of_range){</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;WARNING No default polarizability given for &quot;</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;                    &lt;&lt; <span class="stringliteral">&quot;polar site type &#39;&quot;</span> &lt;&lt; elem &lt;&lt; <span class="stringliteral">&quot;&#39;. Defaulting to 1 A**3. &quot;</span> </div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                    &lt;&lt; flush;</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                alpha = 1e-3;</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;            }</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="comment">//            // Original set of Thole polarizabilites</span></div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;<span class="comment">//            if      (elem == &quot;C&quot;) { alpha = 1.75e-3;  } // &lt;- conversion from</span></div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;<span class="comment">//            else if (elem == &quot;H&quot;) { alpha = 0.696e-3; } //    A³ to nm³ = 10⁻³</span></div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;<span class="comment">//            else if (elem == &quot;N&quot;) { alpha = 1.073e-3; }</span></div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="comment">//            else if (elem == &quot;O&quot;) { alpha = 0.837e-3; }</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;<span class="comment">//            else if (elem == &quot;S&quot;) { alpha = 2.926e-3; }</span></div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="comment">//            // Different set of Thole polarizabilities</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;<span class="comment">//            //if      (elem == &quot;C&quot;) { alpha = 1.334e-3; } // &lt;- conversion from</span></div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;<span class="comment">//            //else if (elem == &quot;H&quot;) { alpha = 0.496e-3; } //    A³ to nm³ = 10⁻³</span></div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;<span class="comment">//            //else if (elem == &quot;N&quot;) { alpha = 1.073e-3; }</span></div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;<span class="comment">//            //else if (elem == &quot;O&quot;) { alpha = 0.837e-3; }</span></div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;<span class="comment">//            //else if (elem == &quot;S&quot;) { alpha = 3.300e-3; }</span></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;<span class="comment">//            else { throw runtime_error(&quot;No polarizability given &quot;</span></div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;<span class="comment">//                                       &quot;for polar site type &quot; + elem + &quot;. &quot;); }</span></div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;            P1 = <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a>(<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(alpha,0,0),<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(0,alpha,0),<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(0,0,alpha));</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;            (*pol)-&gt;setPs(P1, state);</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;        }</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    }</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    vector&lt; APolarSite* &gt; ::iterator pol;</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    <span class="keywordflow">for</span> (pol = poles.begin(); pol &lt; poles.end(); ++pol) {</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        (*pol)-&gt;Charge(state);</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    }</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;    <span class="keywordflow">return</span> poles;</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;}</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;</div>
+<div class="line"><a name="l00889"></a><span class="lineno"><a class="code" href="namespacevotca_1_1ctp.html#a9e5d0e47c110dffee94b00604af4cc4a">  889</a></span>&#160;map&lt;string,double&gt; <a class="code" href="namespacevotca_1_1ctp.html#a9e5d0e47c110dffee94b00604af4cc4a">POLAR_TABLE</a>() {</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    map&lt;string,double&gt; polar_table;</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    polar_table[<span class="stringliteral">&quot;H&quot;</span>] = 0.496e-3;</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    polar_table[<span class="stringliteral">&quot;C&quot;</span>] = 1.334e-3;</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    polar_table[<span class="stringliteral">&quot;N&quot;</span>] = 1.073e-3;</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    polar_table[<span class="stringliteral">&quot;O&quot;</span>] = 0.837e-3;</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    polar_table[<span class="stringliteral">&quot;S&quot;</span>] = 2.926e-3;</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    polar_table[<span class="stringliteral">&quot;F&quot;</span>] = 0.440e-3;</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    <span class="keywordflow">return</span> polar_table;</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;}</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;</div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
