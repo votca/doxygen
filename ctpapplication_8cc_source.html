@@ -101,39 +101,40 @@
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1tools_1_1Application.html#aa58ab310ba208eeea08afb7d76733327" title="version string of application">VersionString</a>() != <span class="stringliteral">&quot;&quot;</span>) name = name + <span class="stringliteral">&quot;, version &quot;</span> + <a class="code" href="classvotca_1_1tools_1_1Application.html#aa58ab310ba208eeea08afb7d76733327" title="version string of application">VersionString</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="namespacevotca_1_1ctp.html#aae406c4ced39b62b167c86d1b7ec19f9">votca::ctp::HelpTextHeader</a>(name);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Application.html#a68915aa2787333468293e3dac7e57f35" title="help text of application without version information">HelpText</a>(out);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1tools_1_1Application.html#afd47ef63ddd618deb3a75b431c4c6fe7">OptionsDesc</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1tools_1_1Application.html#a7e80fd21b7d13fb97963cf94400053df" title="filters out the Hidden group from the options descriptions">VisibleOptions</a>() &lt;&lt; endl;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">//out &lt;&lt; &quot;\n\n&quot; &lt;&lt; OptionsDesc() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#abc6195fa0946ec6f3ff8be6158caa03e">   61</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#abc6195fa0946ec6f3ff8be6158caa03e">CtpApplication::PrintDescription</a>(std::ostream &amp;out, <span class="keywordtype">string</span> name,  <a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#a0f6ed830a0a9c556c398dc2fd868be3f">HelpOutputType</a> _help_output_type) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// loading documentation from the xml file in VOTCASHARE</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">char</span> *votca_share = getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VOTCASHARE not set, cannot open help files.&quot;</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">string</span> xmlFile = string(getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>)) + string(<span class="stringliteral">&quot;/ctp/xml/&quot;</span>) + name + string(<span class="stringliteral">&quot;.xml&quot;</span>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    boost::format _format(<span class="stringliteral">&quot;%|3t|%1% %|20t|%2% \n&quot;</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">votca::tools::Property</a> options;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#af135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(options, xmlFile);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">switch</span> (_help_output_type) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#a0f6ed830a0a9c556c398dc2fd868be3faacdb44cd3b2204e39c5f8f64b8d8bc3c">_helpShort</a>:</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                _format % name % options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">&quot;options.&quot;</span> + name).<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;help&quot;</span>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                out &lt;&lt; _format;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#a0f6ed830a0a9c556c398dc2fd868be3fa9a572fc31726b4bae4ec6b2eb9b2c25e">_helpLong</a>:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html" title="Manipulates the format state of the output stream.">votca::tools::PropertyIOManipulator</a> iom(<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a8089a36fbf8bc8854dcd0510b0b07b5e">votca::tools::PropertyIOManipulator::HLP</a>, 2, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                out &lt;&lt; iom &lt;&lt; options;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    } <span class="keywordflow">catch</span> (std::exception &amp;error) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="structvotca_1_1tools_1_1globals.html#a68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a> ) out &lt;&lt; _format % name % <span class="stringliteral">&quot;Undocumented&quot;</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }    </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#abc6195fa0946ec6f3ff8be6158caa03e">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#abc6195fa0946ec6f3ff8be6158caa03e">CtpApplication::PrintDescription</a>(std::ostream &amp;out, <span class="keywordtype">string</span> name,  <a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#a0f6ed830a0a9c556c398dc2fd868be3f">HelpOutputType</a> _help_output_type) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// loading documentation from the xml file in VOTCASHARE</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">char</span> *votca_share = getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VOTCASHARE not set, cannot open help files.&quot;</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">string</span> xmlFile = string(getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>)) + string(<span class="stringliteral">&quot;/ctp/xml/&quot;</span>) + name + string(<span class="stringliteral">&quot;.xml&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    boost::format _format(<span class="stringliteral">&quot;%|3t|%1% %|20t|%2% \n&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">votca::tools::Property</a> options;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#af135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(options, xmlFile);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">switch</span> (_help_output_type) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#a0f6ed830a0a9c556c398dc2fd868be3faacdb44cd3b2204e39c5f8f64b8d8bc3c">_helpShort</a>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                _format % name % options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">&quot;options.&quot;</span> + name).<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;help&quot;</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                out &lt;&lt; _format;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="classvotca_1_1ctp_1_1CtpApplication.html#a0f6ed830a0a9c556c398dc2fd868be3fa9a572fc31726b4bae4ec6b2eb9b2c25e">_helpLong</a>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html" title="Manipulates the format state of the output stream.">votca::tools::PropertyIOManipulator</a> iom(<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a8089a36fbf8bc8854dcd0510b0b07b5e">votca::tools::PropertyIOManipulator::HLP</a>, 2, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                out &lt;&lt; iom &lt;&lt; options;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    } <span class="keywordflow">catch</span> (std::exception &amp;error) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="structvotca_1_1tools_1_1globals.html#a68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a> ) out &lt;&lt; _format % name % <span class="stringliteral">&quot;Undocumented&quot;</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
