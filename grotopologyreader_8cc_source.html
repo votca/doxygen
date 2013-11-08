@@ -116,12 +116,38 @@
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, atomname, top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(atomname), resnr, 1., 0.);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        getline(fl, tmp);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    fl.close();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;WARNING: topology created from .gro file, masses and charges are wrong!\n&quot;</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    getline(fl, tmp); <span class="comment">//read box line</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span>(fl.eof())</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;unexpected end of file in poly file, when boxline&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(tmp, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    vector&lt;double&gt; fields;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> ( fields.size() == 3 ) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      box.<a class="code" href="classvotca_1_1tools_1_1matrix.html#a784ae7baf534cb09ccd31a38db9d18b1" title="initialize the matrix with zeros">ZeroMatrix</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;3;i++) box[i][i] = fields[i];</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( fields.size() == 9 ) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      box[0][0]=  fields[0];</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      box[1][1]=  fields[1];</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      box[2][2]=  fields[2];</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      box[0][1]=  fields[3];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      box[0][2]=  fields[4];</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      box[1][1]=  fields[5];</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      box[1][2]=  fields[6];</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      box[2][1]=  fields[7];</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      box[2][2]=  fields[8];</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error while reading box (last) line of&quot;</span>+ file);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(box);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    fl.close();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;WARNING: topology created from .gro file, masses and charges are wrong!\n&quot;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->

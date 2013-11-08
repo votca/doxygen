@@ -52,8 +52,8 @@
 <div class="title">dlpolytopologyreader.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="dlpolytopologyreader_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2011 The VOTCA Development Team (http://www.votca.org)</span></div>
+<a href="dlpolytopologyreader_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2013 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -69,75 +69,95 @@
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef HAVE_NO_CONFIG</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;<a class="code" href="votca__config_8h.html">votca_config.h</a>&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dlpolytopologyreader_8h.html">dlpolytopologyreader.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dlp__io__layer_8h.html">dlpoly/dlp_io_layer.h</a>&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dlpolytopologyreader_8h.html">dlpolytopologyreader.h</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dlp__io__layer_8h.html">dlpoly/dlp_io_layer.h</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1DLPOLYTopologyReader.html#a9be238808d691a773005e99eca185509">   29</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1DLPOLYTopologyReader.html#a9be238808d691a773005e99eca185509" title="read a topology file">DLPOLYTopologyReader::ReadTopology</a>(<span class="keywordtype">string</span> <a class="code" href="installation_8dox.html#ac2179690bfbd3b163d0c82ce5e5eb0d2">file</a>, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">struct </span><a class="code" href="structFieldSpecsT.html">FieldSpecsT</a>  FieldBase;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">struct </span><a class="code" href="structFrameSpecsT.html">FrameSpecsT</a>  FrameBase;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">struct </span><a class="code" href="structMolecSpecsT.html">MolecSpecsT</a> *MolecBase;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">struct </span><a class="code" href="structFieldSiteT.html">FieldSiteT</a>  *FieldSite;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">struct </span><a class="code" href="structFrameSiteT.html">FrameSiteT</a>  *FrameSite;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1DLPOLYTopologyReader.html#a9be238808d691a773005e99eca185509">   26</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1DLPOLYTopologyReader.html#a9be238808d691a773005e99eca185509" title="read a topology file">DLPOLYTopologyReader::ReadTopology</a>(<span class="keywordtype">string</span> <a class="code" href="installation_8dox.html#ac2179690bfbd3b163d0c82ce5e5eb0d2">file</a>, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">struct </span><a class="code" href="structFieldSpecsT.html">FieldSpecsT</a>  FieldBase;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">struct </span><a class="code" href="structFrameSpecsT.html">FrameSpecsT</a>  FrameBase;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">struct </span><a class="code" href="structMolecSpecsT.html">MolecSpecsT</a> *MolecBase;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">struct </span><a class="code" href="structFieldSiteT.html">FieldSiteT</a>  *FieldSite;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">struct </span><a class="code" href="structFrameSiteT.html">FrameSiteT</a>  *FrameSite;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> idnode,matms,natms,nmols,nmolt;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> istateF;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> idnode,matms,natms,nmols,nmolt;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">int</span> istateF;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> inode=matms=natms=nmols=nmolt=0;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// TODO: istateF must be an enum!</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    istateF=1;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// TODO: we need to fix the file naming!</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="dlp__io__layer_8h.html#a9aa0d0a6e82a229df8cfc022a473aafc">field_scan_</a>(&amp;istateF,&amp;matms,&amp;natms,&amp;nmolt);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    MolecBase = <span class="keyword">new</span> <a class="code" href="structMolecSpecsT.html">MolecSpecsT</a>[nmolt];</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    FieldSite = <span class="keyword">new</span> <a class="code" href="structFieldSiteT.html">FieldSiteT</a>[natms];</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> inode=matms=natms=nmols=nmolt=0;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// TODO: istateF must be an enum!</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    istateF=1;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// TODO: we need to fix the file naming!</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="dlp__io__layer_8h.html#a9aa0d0a6e82a229df8cfc022a473aafc">field_scan_</a>(&amp;istateF,&amp;matms,&amp;natms,&amp;nmolt);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    MolecBase = <span class="keyword">new</span> <a class="code" href="structMolecSpecsT.html">MolecSpecsT</a>[nmolt];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    FieldSite = <span class="keyword">new</span> <a class="code" href="structFieldSiteT.html">FieldSiteT</a>[natms];</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    FieldBase.<a class="code" href="structFieldSpecsT.html#aba11d7dff1398543dcefc04384e7822d">nmols</a> = nmolt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    FieldBase.<a class="code" href="structFieldSpecsT.html#a019666a5c72f0965fa7a5e889b15acee">natms</a> = natms;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    FieldBase.<a class="code" href="structFieldSpecsT.html#aba11d7dff1398543dcefc04384e7822d">nmols</a> = nmolt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    FieldBase.<a class="code" href="structFieldSpecsT.html#a019666a5c72f0965fa7a5e889b15acee">natms</a> = natms;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="dlp__io__layer_8h.html#a8a0e96d4736e9c9045e7d1b8ac7cf45b">field_read_</a>(&amp;istateF,&amp;FieldBase,MolecBase,FieldSite);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// AB: if on return istateF &lt; 0  =&gt; in the next F-call the relevant F-arrays will be deallocated (at the end)</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// AB: NOT TO RE-/DE-ALLOCATE F-arrays in the next F-call, reset istateF = 0</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    istateF = 0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="dlp__io__layer_8h.html#a8a0e96d4736e9c9045e7d1b8ac7cf45b">field_read_</a>(&amp;istateF,&amp;FieldBase,MolecBase,FieldSite);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// AB: if on return istateF &lt; 0  =&gt; in the next F-call the relevant F-arrays will be deallocated (at the end)</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// AB: NOT TO RE-/DE-ALLOCATE F-arrays in the next F-call, reset istateF = 0</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    istateF = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// TODO: fix residue naming / assignment</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Residue.html" title="class for a residue">Residue</a> *res = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(<span class="stringliteral">&quot;no&quot;</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// TODO: fix residue naming / assignment</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Residue.html" title="class for a residue">Residue</a> *res = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(<span class="stringliteral">&quot;no&quot;</span>);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// read the atoms</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">int</span> is=0;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>=0; <a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>&lt;nmolt; <a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>++){</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> imr=0; imr&lt;MolecBase[<a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>].<a class="code" href="structMolecSpecsT.html#a9575b9660a082ee53beb6635183b87da">nrept</a>; ++imr) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mi = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a87a10bc0957a1465dad5b3899cb6e932" title="creates a new molecule">CreateMolecule</a>(MolecBase[<a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>].<a class="code" href="structFrameSiteT.html#a0e8e37e1c374ec75514d9287872a60d4">name</a>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> ims=0; ims&lt;MolecBase[<a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>].<a class="code" href="structMolecSpecsT.html#a5ac8881c59e02f8f3a81203b5ff6448f">nsites</a>; ims++) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *<a class="code" href="structFrameSiteT.html#a56ed3e62854a6bd3d90c555a12ed0b22">type</a> = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(FieldSite[is].name); <span class="comment">// what is </span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, FieldSite[is].type, type, res-&gt;<a class="code" href="classvotca_1_1csg_1_1Residue.html#a73f5bdc400ab24feb9280d52e50ced8c" title="get the name of the residue">getId</a>(), FieldSite[is].<a class="code" href="structFieldSiteT.html#a4d19ab6ca03b697068df52a2283a5724">m</a>, FieldSite[is].<a class="code" href="structFieldSiteT.html#ab2a7467fa2da0d2dcd433ee9635f2be1">q</a>);  </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                stringstream <a class="code" href="namespacevotca_1_1moo.html#a6a44f6663e516c56327f0baf6560f39da86367aaedaab59db76a29940f391973f">nm</a>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                nm &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#acdb7491b2507bdafe8f973d36918580e">getResnr</a>() + 1 &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9fec2f8d63ec726bf146ff0c587f5404">getResidue</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#acdb7491b2507bdafe8f973d36918580e">getResnr</a>())-&gt;getName() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aee92364498501cda96eec9dd9cb90c37">getName</a>();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bead, nm.str());</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">delete</span> [] MolecBase;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">delete</span> [] FieldSite;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;   </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}}</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// read the atoms</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> is=0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>=0; <a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>&lt;nmolt; <a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>++){</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> imr=0; imr&lt;MolecBase[<a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>].<a class="code" href="structMolecSpecsT.html#a9575b9660a082ee53beb6635183b87da">nrept</a>; ++imr) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mi = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a87a10bc0957a1465dad5b3899cb6e932" title="creates a new molecule">CreateMolecule</a>(MolecBase[<a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>].<a class="code" href="structFrameSiteT.html#a0e8e37e1c374ec75514d9287872a60d4">name</a>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> ims=0; ims&lt;MolecBase[<a class="code" href="structFrameSiteT.html#a7973f4c7a8ed211caf2191146a45890d">im</a>].<a class="code" href="structMolecSpecsT.html#a5ac8881c59e02f8f3a81203b5ff6448f">nsites</a>; ims++) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *<a class="code" href="structFrameSiteT.html#a56ed3e62854a6bd3d90c555a12ed0b22">type</a> = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(FieldSite[is].name); <span class="comment">// what is</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, FieldSite[is].type, type, res-&gt;<a class="code" href="classvotca_1_1csg_1_1Residue.html#a73f5bdc400ab24feb9280d52e50ced8c" title="get the name of the residue">getId</a>(), FieldSite[is].<a class="code" href="structFieldSiteT.html#a4d19ab6ca03b697068df52a2283a5724">m</a>, FieldSite[is].<a class="code" href="structFieldSiteT.html#ab2a7467fa2da0d2dcd433ee9635f2be1">q</a>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                stringstream <a class="code" href="namespacevotca_1_1moo.html#a6a44f6663e516c56327f0baf6560f39da86367aaedaab59db76a29940f391973f">nm</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                nm &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#acdb7491b2507bdafe8f973d36918580e">getResnr</a>() + 1 &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9fec2f8d63ec726bf146ff0c587f5404">getResidue</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#acdb7491b2507bdafe8f973d36918580e">getResnr</a>())-&gt;getName() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aee92364498501cda96eec9dd9cb90c37">getName</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bead, nm.str());</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">delete</span> [] MolecBase;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">delete</span> [] FieldSite;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::ifstream fl;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    fl.open(<span class="stringliteral">&quot;CONFIG&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span>(fl.is_open()) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keywordtype">string</span> line;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      getline(fl, line); <span class="comment">//title</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      getline(fl, line); <span class="comment">// 2nd header line</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> box_vectors[3];</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;3;i++){ <span class="comment">// read 3 box lines</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        getline(fl, line);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span>(fl.eof())</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;unexpected end of file in dlpoly file CONFIG, when reading box vector&quot;</span>  +</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;              boost::lexical_cast&lt;string&gt;(i));</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(line, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        vector&lt;double&gt; fields;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        box_vectors[i]=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(fields[0],fields[1],fields[2]);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box(box_vectors[0],box_vectors[1],box_vectors[2]);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(box);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;NOTE: Could open dlploy file CONFIG, so no boundary conditions, where set in the topology&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
