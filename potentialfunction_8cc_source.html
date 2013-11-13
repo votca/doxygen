@@ -133,25 +133,25 @@
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">double</span> r_init;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">char</span> flag;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">char</span> flag = <span class="charliteral">&#39;i&#39;</span>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">for</span> (r_init = rmin, i = 0; i &lt; ngrid - 1; r_init += step) {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// put point, result, flag at point out_x into the table</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">if</span>( r_init &lt; _min || r_init &gt; <a class="code" href="classPotentialFunction.html#aca752fc9cda7dd2686990981b37fb91e">_cut_off</a> )</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      flag = <span class="charliteral">&#39;o&#39;</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      flag = <span class="charliteral">&#39;i&#39;</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">//if( r_init &lt; _min || r_init &gt; _cut_off )</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">//flag = &#39;o&#39;;</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">//else</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">//flag = &#39;i&#39;;</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i++, r_init, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(r_init), flag);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordflow">if</span>( rcut &lt; _min || rcut &gt; <a class="code" href="classPotentialFunction.html#aca752fc9cda7dd2686990981b37fb91e">_cut_off</a> )</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    flag = <span class="charliteral">&#39;o&#39;</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    flag = <span class="charliteral">&#39;i&#39;</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="comment">//  if( rcut &lt; _min || rcut &gt; _cut_off )</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="comment">//    flag = &#39;o&#39;;</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="comment">//  else</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">//    flag = &#39;i&#39;;</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i, rcut, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(rcut), flag);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>

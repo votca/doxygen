@@ -747,41 +747,49 @@
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;</div>
 <div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    <span class="keywordtype">string</span> core = <a class="code" href="structPotentialInfo.html#a3f664a4e0c8ca39e7d1f01f38e39b288">_options</a>-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">&quot;re.cbspl.core&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#ac6d7e21b86efdf7525d0cc9f8e8feb5c" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;();</div>
 <div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;<span class="comment">    // determine minimum for B-spline from CG-MD rdf</span></div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;<span class="comment">    Table dist;</span></div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;<span class="comment">    string filename = potentialName + &quot;.dist.new&quot;;</span></div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;<span class="comment">    dist.Load(filename);</span></div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;<span class="comment">    double new_min;</span></div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<span class="comment">    for( int i = 0; i &lt; dist.size(); i++){</span></div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;<span class="comment">      if(dist.y(i) &gt; 1.0e-3){</span></div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;<span class="comment">        new_min = dist.x(i);</span></div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;<span class="comment">        break;</span></div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;<span class="comment">      }</span></div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;<span class="comment">    if(new_min &gt; rmin)</span></div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;<span class="comment">      rmin = new_min;</span></div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;<span class="comment">    */</span></div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    <a class="code" href="structPotentialInfo.html#adb9f276725446aba334343add01329a6">ucg</a> = <span class="keyword">new</span> <a class="code" href="classPotentialFunctionCBSPL.html">PotentialFunctionCBSPL</a>(<a class="code" href="structPotentialInfo.html#aa22d9442601f842e5393d0bd483077da">potentialName</a>, nlam, core, <a class="code" href="structPotentialInfo.html#ab89c93ffc45eb47e51825886cf281bbf">rmin</a>, rcut);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;  }</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Function form \&quot;&quot;</span></div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                             + <a class="code" href="structPotentialInfo.html#a69eeb84b9c963fcd3017ae9609b5bfa4">potentialFunction</a> + <span class="stringliteral">&quot;\&quot; selected for \&quot;&quot;</span></div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                             + <a class="code" href="structPotentialInfo.html#aa22d9442601f842e5393d0bd483077da">potentialName</a> + <span class="stringliteral">&quot;\&quot; is not available yet.\n&quot;</span></div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                             + <span class="stringliteral">&quot;Please specify either \&quot;lj126, ljg, or cbspl\&quot; &quot;</span></div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                             + <span class="stringliteral">&quot;in options file.&quot;</span>);</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    <span class="comment">// determine minimum for B-spline from CG-MD rdf</span></div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    <span class="keywordtype">double</span> new_min = 0.0;</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Table.html" title="class to store tables like rdfs, tabulated potentials, etc">Table</a> dist;</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    <span class="keywordtype">string</span> filename = <a class="code" href="structPotentialInfo.html#aa22d9442601f842e5393d0bd483077da">potentialName</a> + <span class="stringliteral">&quot;.dist.new&quot;</span>;</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    <span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;      dist.<a class="code" href="classvotca_1_1tools_1_1Table.html#a55a70d0eba652d0fb740cc99e5122ff8">Load</a>(filename);</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;      <span class="keywordflow">for</span>( <span class="keywordtype">int</span> i = 0; i &lt; dist.<a class="code" href="classvotca_1_1tools_1_1Table.html#aed1d11d48a380981145a6b0aaf952322">size</a>(); i++){</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;        <span class="keywordflow">if</span>(dist.<a class="code" href="classvotca_1_1tools_1_1Table.html#afbad877d2e4c92a63586f00e9667b018">y</a>(i) &gt; 1.0e-3){</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;          new_min = dist.<a class="code" href="classvotca_1_1tools_1_1Table.html#acd6d463b3b46ea23bc8304685ae88a34">x</a>(i);</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;        }</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;      }</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;      <span class="keywordflow">if</span>(new_min &gt; <a class="code" href="structPotentialInfo.html#ab89c93ffc45eb47e51825886cf281bbf">rmin</a>)</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <a class="code" href="structPotentialInfo.html#ab89c93ffc45eb47e51825886cf281bbf">rmin</a> = new_min;</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    }<span class="keywordflow">catch</span>(std::runtime_error){</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Missing file for CG rdf for the interaction &quot;</span>  &lt;&lt; <a class="code" href="structPotentialInfo.html#aa22d9442601f842e5393d0bd483077da">potentialName</a> &lt;&lt; endl;</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Hence, using user specified rmin = &quot;</span> &lt;&lt; <a class="code" href="structPotentialInfo.html#ab89c93ffc45eb47e51825886cf281bbf">rmin</a> &lt;&lt; endl;</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    }</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    <a class="code" href="structPotentialInfo.html#adb9f276725446aba334343add01329a6">ucg</a> = <span class="keyword">new</span> <a class="code" href="classPotentialFunctionCBSPL.html">PotentialFunctionCBSPL</a>(<a class="code" href="structPotentialInfo.html#aa22d9442601f842e5393d0bd483077da">potentialName</a>, nlam, core, <a class="code" href="structPotentialInfo.html#ab89c93ffc45eb47e51825886cf281bbf">rmin</a>, rcut);</div>
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  <span class="comment">// initialize cg potential with old parameters</span></div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  <span class="keywordtype">string</span> oldparam_file_name = <a class="code" href="structPotentialInfo.html#aa22d9442601f842e5393d0bd483077da">potentialName</a> + <span class="stringliteral">&quot;.&quot;</span> + param_in_ext_;</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  <a class="code" href="structPotentialInfo.html#adb9f276725446aba334343add01329a6">ucg</a>-&gt;<a class="code" href="classPotentialFunction.html#aae89d8518cc33496467e0f844a35ef26">setParam</a>(oldparam_file_name);</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;}</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  }</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Function form \&quot;&quot;</span></div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                             + <a class="code" href="structPotentialInfo.html#a69eeb84b9c963fcd3017ae9609b5bfa4">potentialFunction</a> + <span class="stringliteral">&quot;\&quot; selected for \&quot;&quot;</span></div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                             + <a class="code" href="structPotentialInfo.html#aa22d9442601f842e5393d0bd483077da">potentialName</a> + <span class="stringliteral">&quot;\&quot; is not available yet.\n&quot;</span></div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                             + <span class="stringliteral">&quot;Please specify either \&quot;lj126, ljg, or cbspl\&quot; &quot;</span></div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                             + <span class="stringliteral">&quot;in options file.&quot;</span>);</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;  <span class="comment">// initialize cg potential with old parameters</span></div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;  <span class="keywordtype">string</span> oldparam_file_name = <a class="code" href="structPotentialInfo.html#aa22d9442601f842e5393d0bd483077da">potentialName</a> + <span class="stringliteral">&quot;.&quot;</span> + param_in_ext_;</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;  <a class="code" href="structPotentialInfo.html#adb9f276725446aba334343add01329a6">ucg</a>-&gt;<a class="code" href="classPotentialFunction.html#aae89d8518cc33496467e0f844a35ef26">setParam</a>(oldparam_file_name);</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->

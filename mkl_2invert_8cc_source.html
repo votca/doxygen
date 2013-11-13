@@ -73,49 +73,45 @@
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix_proxy.hpp&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;votca/tools/votca_config.h&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef NOGSL</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;gsl/gsl_linalg.h&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;gsl/gsl_errno.h&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;gsl/gsl_eigen.h&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef NOMKL</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;mkl.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;mkl_lapacke.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#a27d45f23e2704e82e6030c4589be6c08" title="inverts A">linalg_invert</a>( ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::matrix&lt;double&gt; &amp;V){</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#ifdef NOGSL</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;linalg_invert is not compiled-in due to disabling of GSL - recompile Votca Tools with GSL support&quot;</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span>        <span class="comment">// matrix inversion using gsl</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="comment">// problem: after inversion, original matrix is overwritten!</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        gsl_error_handler_t *handler = gsl_set_error_handler_off();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> N = A.size1();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// signum s (for LU decomposition)</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">int</span> s;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        V.resize(N, N, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">// Define all the used matrices</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        gsl_matrix_view A_view = gsl_matrix_view_array(&amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>(0,0), N, N);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        gsl_matrix_view V_view = gsl_matrix_view_array(&amp;V(0,0), N, N);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        gsl_permutation * perm = gsl_permutation_alloc (N);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// Make LU decomposition of matrix A_view</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        gsl_linalg_LU_decomp (&amp;A_view.matrix, perm, &amp;s);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// Invert the matrix A_view</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">int</span> status = gsl_linalg_LU_invert (&amp;A_view.matrix, perm, &amp;V_view.matrix);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        gsl_set_error_handler(handler);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">// return (status != 0);</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif   </span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1tools.html#a27d45f23e2704e82e6030c4589be6c08" title="inverts A">linalg_invert</a>( ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::matrix&lt;double&gt; &amp;V){</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifdef NOMKL</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;linalg_invert is not compiled-in due to disabling of MKL - recompile Votca Tools with MKL support&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// matrix inversion using MKL</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// input matrix is destroyed, make local copy</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    ub::matrix&lt;double&gt; work = <a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// define LAPACK variables</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    MKL_INT n = A.size1();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    MKL_INT info;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    MKL_INT ipiv[n];</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// initialize V</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    V = ub::identity_matrix&lt;double&gt;(n,n);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// pointers for LAPACK</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">double</span> * pV = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;V.data().begin()[0]);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">double</span> * pwork = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;work.data().begin()[0]);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// solve</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    info = LAPACKE_dgesv( LAPACK_ROW_MAJOR, n, n, pwork , n, ipiv, pV, n );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif   </span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
