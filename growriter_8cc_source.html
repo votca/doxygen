@@ -97,8 +97,8 @@
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  fprintf (_out,<span class="stringliteral">&quot;%s\n&quot;</span>,<span class="stringliteral">&quot;what a nice title&quot;</span>);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  fprintf (_out,<span class="stringliteral">&quot;%5d\n&quot;</span>,top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad6ffd4e005205905f4456940e58c6af8">BeadCount</a>());</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">bool</span> v = <span class="keyword">false</span>; <span class="comment">// we don&#39;t write velocities!  </span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">int</span> pr = 3; <span class="comment">// precision of writeout</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">bool</span> v = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">HasVel</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">int</span> pr = 3; <span class="comment">// precision of writeout, given by the spec</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">/* build format string for printing, </span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     something like &quot;%8.3f&quot; for x and &quot;%8.4f&quot; for v */</span></div>
@@ -123,39 +123,40 @@
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            (resnr+1)%100000,resname.c_str(),atomname.c_str(),(i+1)%100000);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">/* next fprintf uses built format string */</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="kmc__old_8cc.html#ae243e7fff6a6d0eecd4adaa52b0fe8a2">r</a> = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#afeb069f0e094fc7b4e1da07efe9751ce">getPos</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> vv = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(0,0,0);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (v)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> (v) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> vv = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aebb8eed45cceece3347ad2f2ceb0ea3e">getVel</a>();</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      fprintf(_out,format,</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;              r.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>(), r.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>(), r.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>(), vv.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>(), vv.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>(), vv.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>());</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      fprintf(_out,format,</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;              r.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>(), r.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>(), r.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>());</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// write the boy</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c77ff03972cf2744dbf308636f30cf">getBox</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">if</span> (pr&lt;5) </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    pr=5;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  l=pr+5;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">if</span> (box[0][1] || box[0][2] || box[1][0] || box[1][2] ||</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      box[2][0] || box[2][1]) {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    sprintf(format,<span class="stringliteral">&quot;%%%d.%df%%%d.%df%%%d.%df&quot;</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="stringliteral">&quot;%%%d.%df%%%d.%df%%%d.%df%%%d.%df%%%d.%df%%%d.%df\n&quot;</span>,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            l,pr,l,pr,l,pr,l,pr,l,pr,l,pr,l,pr,l,pr,l,pr);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    fprintf(_out,format,</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            box[0][0],box[1][1],box[2][2],</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            box[1][0],box[2][0],box[0][1],</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            box[2][1],box[0][2],box[1][2]);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    sprintf(format,<span class="stringliteral">&quot;%%%d.%df%%%d.%df%%%d.%df\n&quot;</span>,l,pr,l,pr,l,pr);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    fprintf(_out,format,</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            box[0][0],box[1][1],box[2][2]);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  fflush(_out);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// write the boy</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c77ff03972cf2744dbf308636f30cf">getBox</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">if</span> (pr&lt;5) </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    pr=5;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  l=pr+5;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">if</span> (box[0][1] || box[0][2] || box[1][0] || box[1][2] ||</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      box[2][0] || box[2][1]) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    sprintf(format,<span class="stringliteral">&quot;%%%d.%df%%%d.%df%%%d.%df&quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="stringliteral">&quot;%%%d.%df%%%d.%df%%%d.%df%%%d.%df%%%d.%df%%%d.%df\n&quot;</span>,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            l,pr,l,pr,l,pr,l,pr,l,pr,l,pr,l,pr,l,pr,l,pr);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    fprintf(_out,format,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            box[0][0],box[1][1],box[2][2],</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            box[1][0],box[2][0],box[0][1],</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            box[2][1],box[0][2],box[1][2]);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    sprintf(format,<span class="stringliteral">&quot;%%%d.%df%%%d.%df%%%d.%df\n&quot;</span>,l,pr,l,pr,l,pr);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    fprintf(_out,format,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            box[0][0],box[1][1],box[2][2]);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  fflush(_out);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
