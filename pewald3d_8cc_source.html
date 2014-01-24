@@ -302,7 +302,7 @@
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordtype">double</span> R_overhead = 1.1;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keywordtype">double</span> R_add = 3;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keywordtype">double</span> R_max = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#ac0f78ea97967b21cc3fac2048728c90e">_R_co</a>*R_overhead+R_add;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordtype">double</span> R_max_shell = R_max + <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a3e13e82a75b81df0da60510ee68fa898">_polar_cutoff</a>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordtype">double</span> R_max_shell = R_max+2*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a3e13e82a75b81df0da60510ee68fa898">_polar_cutoff</a>+<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a93bb1f078df518680b96c25ef33bb44b">_max_int_dist_qm0</a>;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        this-&gt;<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#aaf4f42158445c7f3358fe85eb7ae656f">SetupMidground</a>(R_max);</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        </div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="comment">// FOR EACH FOREGROUND SEGMENT (FGC) ...</span></div>
@@ -633,13 +633,13 @@
 <div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    <span class="keywordtype">double</span> R_overhead = 1.1;</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <span class="keywordtype">double</span> R_add = 3;</div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    <span class="keywordtype">double</span> R_max = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#ac0f78ea97967b21cc3fac2048728c90e">_R_co</a>*R_overhead+R_add;</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <span class="keywordtype">double</span> R_max_shell = R_max+2*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a3e13e82a75b81df0da60510ee68fa898">_polar_cutoff</a>;</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <span class="keywordtype">double</span> R_max_shell = R_max+2*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a3e13e82a75b81df0da60510ee68fa898">_polar_cutoff</a>+<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a93bb1f078df518680b96c25ef33bb44b">_max_int_dist_qm0</a>;</div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    this-&gt;<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#aaf4f42158445c7f3358fe85eb7ae656f">SetupMidground</a>(R_max);</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    </div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;</div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    </div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    <span class="comment">// FOR EACH FOREGROUND SEGMENT (FGC) ...</span></div>
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    <span class="keywordtype">int</span> field_converged_count = 0;</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordflow">for</span> (sit1 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>.begin(); sit1 != <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>.end(); ++sit1) {        </div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordflow">for</span> (sit1 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>.begin(); sit1 != <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>.end(); ++sit1) {</div>
 <div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        (*sit1)-&gt;ClearPolarNbs();</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        </div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        <span class="comment">// Bin midground into shells</span></div>
@@ -651,7 +651,7 @@
 <div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            <span class="keywordtype">double</span> R = <a class="code" href="namespacevotca_1_1tools.html#abc0c90bbc5f6f5ad2695b3377f7e5684">votca::tools::abs</a>((*sit1)-&gt;getPos()-(*sit2)-&gt;getPos());</div>
 <div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;            <span class="keywordtype">int</span> shell_idx = int(R/dR_shell);</div>
 <div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            shelled_mg_N[shell_idx].push_back(*sit2);</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        }</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        }        </div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        </div>
 <div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        <span class="comment">// Sum over consecutive shells</span></div>
 <div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> sidx = 0; sidx &lt; N_shells; ++sidx) {</div>
@@ -659,11 +659,11 @@
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            <span class="keywordtype">double</span> shell_rms = 0.0;</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;            <span class="keywordtype">int</span> shell_count = 0;</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            <span class="comment">// Interact with shell</span></div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            vector&lt;PolarSeg*&gt; &amp;shell_mg = shelled_mg_N[sidx];            </div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            vector&lt;PolarSeg*&gt; &amp;shell_mg = shelled_mg_N[sidx];</div>
 <div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            <span class="keywordtype">double</span> shell_R = (sidx+1)*dR_shell;            </div>
 <div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;            <span class="keywordflow">if</span> (shell_mg.size() &lt; 1) <span class="keywordflow">continue</span>;            </div>
 <div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;            <span class="keywordflow">for</span> (sit2 = shell_mg.begin(); sit2 != shell_mg.end(); ++sit2) {</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                (*sit1)-&gt;AddPolarNb(*sit2);</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a830473658e4f935141d2ff567a209a69">_save_nblist</a>) (*sit1)-&gt;AddNewPolarNb(*sit2);</div>
 <div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;                <span class="keywordflow">for</span> (pit1 = (*sit1)-&gt;begin(); pit1 &lt; (*sit1)-&gt;end(); ++pit1) {</div>
 <div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                    <span class="keywordflow">for</span> (pit2 = (*sit2)-&gt;begin(); pit2 &lt; (*sit2)-&gt;end(); ++pit2) {</div>
 <div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;                        shell_rms += <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a437baa07228003a85886ea4216cfabbb">FPU12_ERFC_At_By</a>(*(*pit1), *(*pit2));</div>
@@ -706,210 +706,239 @@
 <div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;        assert(<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    }</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    </div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a443b199d23bb57221fc2fcf103220f5d">_did_field_pin_R_shell</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;}</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;</div>
-<div class="line"><a name="l00661"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a4ae43c8a1ebb0b90a6796de46903049c">  661</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a4ae43c8a1ebb0b90a6796de46903049c">PEwald3D3D::Field_ConvergeReciprocalSpaceSum</a>() {</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    this-&gt;<a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a577f61e0c53950e39ba2827523ecc765">GenerateKVectors</a>(<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>);</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="keywordtype">double</span> sum_re = 0.0;</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="keywordtype">double</span> sum_im = 0.0;</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#afea79121be98701472535b9a1ad85b31">_field_converged_K</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    <span class="keywordtype">double</span> rV = 1./<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8d647e4d7ffa5293a8045c5b31d407ab">_LxLyLz</a>;</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    </div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    vector&lt; EWD::KVector &gt;::iterator kvit;</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    </div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    <span class="comment">// TWO COMPONENTS ZERO, ONE NON-ZERO</span></div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>) &lt;&lt; flush </div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;K-lines through origin: Checking K resonances&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    <span class="keywordflow">for</span> (kvit = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a984f3686c0e26428b6d9b832a9881930">_kvecs_2_0</a>.begin(); kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a984f3686c0e26428b6d9b832a9881930">_kvecs_2_0</a>.end(); ++kvit) {</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html">EWD::KVector</a> kvec = *kvit;</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        <a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html">EWD::cmplx</a> f_as1s2 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a3decf2f3a79ec7932f4e1f7995b161b3">FPU12_AS1S2_At_By</a>(kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#a2333b9236a5f5608aaa8f029dc343561">getK</a>(), <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>, rV);</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        sum_re += sqrt(f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>);</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;        sum_im += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#aaa08e836245a1242500187a764c4b8d8">_im</a>;</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    }</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    </div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;        &lt;&lt; (format(<span class="stringliteral">&quot;  :: RE %1$+1.7e IM %2$+1.7e&quot;</span>)</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            % (sum_re*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>)</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;            % (sum_im*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>)).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;        </div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a830473658e4f935141d2ff567a209a69">_save_nblist</a>) </div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a443b199d23bb57221fc2fcf103220f5d">_did_field_pin_R_shell</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a443b199d23bb57221fc2fcf103220f5d">_did_field_pin_R_shell</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    </div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;<span class="comment">//    // THERE IS A MEMORY ISSUE HERE - VERY STRANGE</span></div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="comment">//    // Change 18000 to 20000 and the leak disappears!?</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;<span class="comment">//    double sum = 0.0;</span></div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="comment">//    _field_converged_R = false;</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;<span class="comment">//    LOG(logDEBUG,*_log) &lt;&lt; flush </span></div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;<span class="comment">//        &lt;&lt; &quot;R-space fields via midground&quot; &lt;&lt; flush;</span></div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;<span class="comment">//    </span></div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="comment">//    vector&lt;PolarSeg*&gt;::iterator sit1;</span></div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="comment">//    </span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;<span class="comment">//    // FOR EACH FOREGROUND SEGMENT (FGC) ...</span></div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;<span class="comment">//    int field_converged_count = 0;</span></div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;<span class="comment">//    for (sit1 = _fg_C.begin(); sit1 != _fg_C.end(); ++sit1) {</span></div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;<span class="comment">//        </span></div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;<span class="comment">//        for (int cnt = 0; cnt &lt; 18000; ++cnt) {</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;<span class="comment">//            PolarNb *new_nb = (*sit1)-&gt;AddNewPolarNb(*sit1);</span></div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;<span class="comment">//        }</span></div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;<span class="comment">//        </span></div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;<span class="comment">//        (*sit1)-&gt;ClearPolarNbs();</span></div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;<span class="comment">//        assert((*sit1)-&gt;PolarNbs().size() == 0);</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;<span class="comment">//        cout &lt;&lt; endl &lt;&lt; &quot;sit1 = ID &quot; &lt;&lt; (*sit1)-&gt;getId() &lt;&lt; flush;</span></div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;<span class="comment">//        </span></div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;<span class="comment">//        </span></div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="comment">//    }</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;<span class="comment">//    _did_field_pin_R_shell = true;    </span></div>
 <div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    </div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    <span class="comment">// ONE COMPONENT ZERO, TWO NON-ZERO</span></div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;K-planes through origin: Applying K resonances&quot;</span> &lt;&lt; flush;    </div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    </div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    <span class="keywordtype">double</span> crit_grade = 1. * <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a3440754eb82de7c5b09c6274504ba5ec">_kxyz_s1s2_norm</a>;</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    <span class="keywordtype">bool</span> converged12 = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    kvit = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a70335812bcda6472c335d703c1d5a54b">_kvecs_1_0</a>.begin();</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    <span class="keywordflow">while</span> (!converged12 &amp;&amp; kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a70335812bcda6472c335d703c1d5a54b">_kvecs_1_0</a>.end()) {</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        </div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;        <span class="keywordtype">double</span> shell_rms = 0.0;</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;        <span class="keywordtype">int</span> rms_count = 0;</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;        </div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;        <span class="keywordflow">while</span> (kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a70335812bcda6472c335d703c1d5a54b">_kvecs_1_0</a>.end()) {</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html">EWD::KVector</a> kvec = *kvit;</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            <span class="keywordflow">if</span> (kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#ac411c3c116a5e3a164c2ab2579d98353">getGrade</a>() &lt; crit_grade) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;            <a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html">EWD::cmplx</a> f_as1s2 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a3decf2f3a79ec7932f4e1f7995b161b3">FPU12_AS1S2_At_By</a>(kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#a2333b9236a5f5608aaa8f029dc343561">getK</a>(), <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>, rV);</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;            sum_re += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;            sum_im += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#aaa08e836245a1242500187a764c4b8d8">_im</a>;</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;            shell_rms += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>;</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;            <span class="comment">//cout &lt;&lt; endl &lt;&lt; std::showpos &lt;&lt; std::scientific </span></div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;            <span class="comment">//   &lt;&lt; kvec.getX() &lt;&lt; &quot; &quot; &lt;&lt; kvec.getY() &lt;&lt; &quot; &quot; &lt;&lt; kvec.getZ() </span></div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            <span class="comment">//   &lt;&lt; &quot; grade &quot; &lt;&lt; kvec.getGrade() &lt;&lt; &quot; re &quot; &lt;&lt; (as1s2._re/_LxLyLz*_ewdactor.int2eV) &lt;&lt; flush;            </span></div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            ++kvit;</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;            ++rms_count;</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;        }</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;        shell_rms = (rms_count &gt; 0) ? sqrt(shell_rms/rms_count)*EWD::int2V_m : 0.0;</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;        <span class="keywordtype">double</span> e_measure = shell_rms*1e-10*rms_count;</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        </div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        <span class="keywordflow">if</span> (rms_count &gt; 0) <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;             &lt;&lt; (format(<span class="stringliteral">&quot;  o M = %1$04d   G = %2$+1.3e   dF(rms) = %3$+1.3e V/m   [1eA =&gt; %4$+1.3e eV]&quot;</span>)</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;             % rms_count</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;             % crit_grade</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;             % shell_rms</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;             % e_measure).str() &lt;&lt; flush;</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;        </div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;        <span class="keywordflow">if</span> (rms_count &gt; 10 &amp;&amp; e_measure &lt;= <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a28b04e503bd88ed10413c2dcd357838c">_crit_dE</a>) {</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                &lt;&lt; (format(<span class="stringliteral">&quot;  :: RE %1$+1.7e IM %2$+1.7e&quot;</span>) </div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                % (sqrt(sum_re)*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>)</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                % (sum_im*EWD::int2V_m)).str() &lt;&lt; flush;</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;            converged12 = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;        }</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;        </div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        crit_grade /= 10.0;</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    }</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    </div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    <span class="comment">// ZERO COMPONENTS ZERO, THREE NON-ZERO</span></div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;K-space (off-axis): Applying K resonances&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    </div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    crit_grade = 1. * <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a3440754eb82de7c5b09c6274504ba5ec">_kxyz_s1s2_norm</a>;</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    <span class="keywordtype">double</span> converged03 = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    kvit = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a2e324361ec6b06fd564612b1f40246ca">_kvecs_0_0</a>.begin();</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;    <span class="keywordflow">while</span> (!converged03 &amp;&amp; kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a2e324361ec6b06fd564612b1f40246ca">_kvecs_0_0</a>.end()) {</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        </div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;        <span class="keywordtype">double</span> shell_rms = 0.0;</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;        <span class="keywordtype">int</span> rms_count = 0;</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;        </div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;        <span class="keywordflow">while</span> (kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a2e324361ec6b06fd564612b1f40246ca">_kvecs_0_0</a>.end()) {</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html">EWD::KVector</a> kvec = *kvit;</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;            <span class="keywordflow">if</span> (kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#ac411c3c116a5e3a164c2ab2579d98353">getGrade</a>() &lt; crit_grade) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;            <a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html">EWD::cmplx</a> f_as1s2 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a3decf2f3a79ec7932f4e1f7995b161b3">FPU12_AS1S2_At_By</a>(kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#a2333b9236a5f5608aaa8f029dc343561">getK</a>(), <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>, rV);</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;            sum_re += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>;</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;            sum_im += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#aaa08e836245a1242500187a764c4b8d8">_im</a>;</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;            shell_rms += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>;</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;            <span class="comment">//cout &lt;&lt; endl &lt;&lt; std::showpos &lt;&lt; std::scientific </span></div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;            <span class="comment">//   &lt;&lt; kvec.getX() &lt;&lt; &quot; &quot; &lt;&lt; kvec.getY() &lt;&lt; &quot; &quot; &lt;&lt; kvec.getZ() </span></div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            <span class="comment">//   &lt;&lt; &quot; grade &quot; &lt;&lt; kvec.getGrade() &lt;&lt; &quot; re &quot; &lt;&lt; (as1s2._re/_LxLyLz*_ewdactor.int2eV) &lt;&lt; flush;            </span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;            ++kvit;</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;            ++rms_count;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;}</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;</div>
+<div class="line"><a name="l00690"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a4ae43c8a1ebb0b90a6796de46903049c">  690</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a4ae43c8a1ebb0b90a6796de46903049c">PEwald3D3D::Field_ConvergeReciprocalSpaceSum</a>() {</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    this-&gt;<a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a577f61e0c53950e39ba2827523ecc765">GenerateKVectors</a>(<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>);</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    <span class="keywordtype">double</span> sum_re = 0.0;</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    <span class="keywordtype">double</span> sum_im = 0.0;</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#afea79121be98701472535b9a1ad85b31">_field_converged_K</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    <span class="keywordtype">double</span> rV = 1./<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8d647e4d7ffa5293a8045c5b31d407ab">_LxLyLz</a>;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    </div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    vector&lt; EWD::KVector &gt;::iterator kvit;</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    </div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    <span class="comment">// TWO COMPONENTS ZERO, ONE NON-ZERO</span></div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>) &lt;&lt; flush </div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;K-lines through origin: Checking K resonances&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    <span class="keywordflow">for</span> (kvit = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a984f3686c0e26428b6d9b832a9881930">_kvecs_2_0</a>.begin(); kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a984f3686c0e26428b6d9b832a9881930">_kvecs_2_0</a>.end(); ++kvit) {</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html">EWD::KVector</a> kvec = *kvit;</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;        <a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html">EWD::cmplx</a> f_as1s2 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a3decf2f3a79ec7932f4e1f7995b161b3">FPU12_AS1S2_At_By</a>(kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#a2333b9236a5f5608aaa8f029dc343561">getK</a>(), <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>, rV);</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        sum_re += sqrt(f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>);</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;        sum_im += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#aaa08e836245a1242500187a764c4b8d8">_im</a>;</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    }</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    </div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;        &lt;&lt; (format(<span class="stringliteral">&quot;  :: RE %1$+1.7e IM %2$+1.7e&quot;</span>)</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;            % (sum_re*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>)</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;            % (sum_im*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>)).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    </div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    <span class="comment">// ONE COMPONENT ZERO, TWO NON-ZERO</span></div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;K-planes through origin: Applying K resonances&quot;</span> &lt;&lt; flush;    </div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    </div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    <span class="keywordtype">double</span> crit_grade = 1. * <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a3440754eb82de7c5b09c6274504ba5ec">_kxyz_s1s2_norm</a>;</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    <span class="keywordtype">bool</span> converged12 = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    kvit = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a70335812bcda6472c335d703c1d5a54b">_kvecs_1_0</a>.begin();</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    <span class="keywordflow">while</span> (!converged12 &amp;&amp; kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a70335812bcda6472c335d703c1d5a54b">_kvecs_1_0</a>.end()) {</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;        </div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        <span class="keywordtype">double</span> shell_rms = 0.0;</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;        <span class="keywordtype">int</span> rms_count = 0;</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;        </div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;        <span class="keywordflow">while</span> (kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a70335812bcda6472c335d703c1d5a54b">_kvecs_1_0</a>.end()) {</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html">EWD::KVector</a> kvec = *kvit;</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;            <span class="keywordflow">if</span> (kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#ac411c3c116a5e3a164c2ab2579d98353">getGrade</a>() &lt; crit_grade) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;            <a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html">EWD::cmplx</a> f_as1s2 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a3decf2f3a79ec7932f4e1f7995b161b3">FPU12_AS1S2_At_By</a>(kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#a2333b9236a5f5608aaa8f029dc343561">getK</a>(), <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>, rV);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            sum_re += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>;</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;            sum_im += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#aaa08e836245a1242500187a764c4b8d8">_im</a>;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;            shell_rms += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>;</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;            <span class="comment">//cout &lt;&lt; endl &lt;&lt; std::showpos &lt;&lt; std::scientific </span></div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;            <span class="comment">//   &lt;&lt; kvec.getX() &lt;&lt; &quot; &quot; &lt;&lt; kvec.getY() &lt;&lt; &quot; &quot; &lt;&lt; kvec.getZ() </span></div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;            <span class="comment">//   &lt;&lt; &quot; grade &quot; &lt;&lt; kvec.getGrade() &lt;&lt; &quot; re &quot; &lt;&lt; (as1s2._re/_LxLyLz*_ewdactor.int2eV) &lt;&lt; flush;            </span></div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            ++kvit;</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;            ++rms_count;</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;        }</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        shell_rms = (rms_count &gt; 0) ? sqrt(shell_rms/rms_count)*EWD::int2V_m : 0.0;</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;        <span class="keywordtype">double</span> e_measure = shell_rms*1e-10*rms_count;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;        </div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;        <span class="keywordflow">if</span> (rms_count &gt; 0) <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;             &lt;&lt; (format(<span class="stringliteral">&quot;  o M = %1$04d   G = %2$+1.3e   dF(rms) = %3$+1.3e V/m   [1eA =&gt; %4$+1.3e eV]&quot;</span>)</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;             % rms_count</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;             % crit_grade</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;             % shell_rms</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;             % e_measure).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        </div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;        <span class="keywordflow">if</span> (rms_count &gt; 10 &amp;&amp; e_measure &lt;= <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a28b04e503bd88ed10413c2dcd357838c">_crit_dE</a>) {</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                &lt;&lt; (format(<span class="stringliteral">&quot;  :: RE %1$+1.7e IM %2$+1.7e&quot;</span>) </div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                % (sqrt(sum_re)*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>)</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                % (sum_im*EWD::int2V_m)).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;            converged12 = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;        }</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;        shell_rms = (rms_count &gt; 0) ? sqrt(shell_rms/rms_count)*EWD::int2V_m : 0.0;</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;        <span class="keywordtype">double</span> e_measure = shell_rms*1e-10*rms_count;</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;        </div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;        <span class="keywordflow">if</span> (rms_count &gt; 0) <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;             &lt;&lt; (format(<span class="stringliteral">&quot;  o M = %1$04d   G = %2$+1.3e   dF(rms) = %3$+1.3e V/m   [1eA =&gt; %4$+1.3e eV]&quot;</span>)</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;             % rms_count</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;             % crit_grade</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;             % shell_rms</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;             % e_measure).str() &lt;&lt; flush;</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        </div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;        <span class="keywordflow">if</span> (rms_count &gt; 10 &amp;&amp; e_measure &lt;= <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a28b04e503bd88ed10413c2dcd357838c">_crit_dE</a>) {</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                &lt;&lt; (format(<span class="stringliteral">&quot;  :: RE %1$+1.7e IM %2$+1.7e&quot;</span>) </div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                % (sqrt(sum_re)*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>)</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                % (sum_im*EWD::int2V_m)).str() &lt;&lt; flush;</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;            converged03 = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;        }</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;        </div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;        crit_grade /= 10.0;</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;    }</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;    </div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#afea79121be98701472535b9a1ad85b31">_field_converged_K</a> = converged12 &amp;&amp; converged03;</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;    </div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#afea79121be98701472535b9a1ad85b31">_field_converged_K</a>)</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;            &lt;&lt; (format(<span class="stringliteral">&quot;:::: Converged to precision, {0-2}, {1-2}, {0-3}.&quot;</span>))</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            &lt;&lt; flush;</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;    else ;</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;}</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;</div>
-<div class="line"><a name="l00790"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a7ea4d7fd49d83c25e92de10813f5d789">  790</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a7ea4d7fd49d83c25e92de10813f5d789">PEwald3D3D::Field_CalculateForegroundCorrection</a>() {</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    </div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;  o Foreground-correction to fields via FGN&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    </div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;    vector&lt;PolarSeg*&gt;::iterator sit1; </div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;    vector&lt;APolarSite*&gt; ::iterator pit1;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    vector&lt;PolarSeg*&gt;::iterator sit2; </div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;    vector&lt;APolarSite*&gt; ::iterator pit2;</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;    </div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;    <span class="keywordtype">double</span> rms = 0.0;</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="keywordtype">int</span> rms_count = 0;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;    <span class="keywordflow">for</span> (sit1 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>.begin(); sit1 &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>.end(); ++sit1) {</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        <span class="keywordflow">for</span> (sit2 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0249ff1f752a15c5f770bc7175da8a84">_fg_N</a>.begin(); sit2 &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0249ff1f752a15c5f770bc7175da8a84">_fg_N</a>.end(); ++sit2) {</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;            <span class="keywordflow">for</span> (pit1 = (*sit1)-&gt;begin(); pit1 &lt; (*sit1)-&gt;end(); ++pit1) {</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                <span class="keywordflow">for</span> (pit2 = (*sit2)-&gt;begin(); pit2 &lt; (*sit2)-&gt;end(); ++pit2) {</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                    rms += <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a789868111527458a7032f63b65af019f">FPU12_ERF_At_By</a>(*(*pit1), *(*pit2));</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                    rms_count += 1;</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                }</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            }</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;        }</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;    }</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;    rms = sqrt(rms/rms_count)*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>;</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    </div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;}</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;        </div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;        crit_grade /= 10.0;</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;    }</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    </div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    <span class="comment">// ZERO COMPONENTS ZERO, THREE NON-ZERO</span></div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;K-space (off-axis): Applying K resonances&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    </div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    crit_grade = 1. * <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a3440754eb82de7c5b09c6274504ba5ec">_kxyz_s1s2_norm</a>;</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    <span class="keywordtype">double</span> converged03 = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    kvit = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a2e324361ec6b06fd564612b1f40246ca">_kvecs_0_0</a>.begin();</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <span class="keywordflow">while</span> (!converged03 &amp;&amp; kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a2e324361ec6b06fd564612b1f40246ca">_kvecs_0_0</a>.end()) {</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;        </div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;        <span class="keywordtype">double</span> shell_rms = 0.0;</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;        <span class="keywordtype">int</span> rms_count = 0;</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;        </div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;        <span class="keywordflow">while</span> (kvit &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a2e324361ec6b06fd564612b1f40246ca">_kvecs_0_0</a>.end()) {</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html">EWD::KVector</a> kvec = *kvit;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;            <span class="keywordflow">if</span> (kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#ac411c3c116a5e3a164c2ab2579d98353">getGrade</a>() &lt; crit_grade) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;            <a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html">EWD::cmplx</a> f_as1s2 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a3decf2f3a79ec7932f4e1f7995b161b3">FPU12_AS1S2_At_By</a>(kvec.<a class="code" href="classvotca_1_1ctp_1_1EWD_1_1KVector.html#a2333b9236a5f5608aaa8f029dc343561">getK</a>(), <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>, rV);</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;            sum_re += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>;</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;            sum_im += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#aaa08e836245a1242500187a764c4b8d8">_im</a>;</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;            shell_rms += f_as1s2.<a class="code" href="structvotca_1_1ctp_1_1EWD_1_1cmplx.html#ae79eed9ba492950220560e378ddec0ff">_re</a>;</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;            <span class="comment">//cout &lt;&lt; endl &lt;&lt; std::showpos &lt;&lt; std::scientific </span></div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;            <span class="comment">//   &lt;&lt; kvec.getX() &lt;&lt; &quot; &quot; &lt;&lt; kvec.getY() &lt;&lt; &quot; &quot; &lt;&lt; kvec.getZ() </span></div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;            <span class="comment">//   &lt;&lt; &quot; grade &quot; &lt;&lt; kvec.getGrade() &lt;&lt; &quot; re &quot; &lt;&lt; (as1s2._re/_LxLyLz*_ewdactor.int2eV) &lt;&lt; flush;            </span></div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            ++kvit;</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;            ++rms_count;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;        }</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;        shell_rms = (rms_count &gt; 0) ? sqrt(shell_rms/rms_count)*EWD::int2V_m : 0.0;</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;        <span class="keywordtype">double</span> e_measure = shell_rms*1e-10*rms_count;</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;        </div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;        <span class="keywordflow">if</span> (rms_count &gt; 0) <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;             &lt;&lt; (format(<span class="stringliteral">&quot;  o M = %1$04d   G = %2$+1.3e   dF(rms) = %3$+1.3e V/m   [1eA =&gt; %4$+1.3e eV]&quot;</span>)</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;             % rms_count</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;             % crit_grade</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;             % shell_rms</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;             % e_measure).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;        </div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;        <span class="keywordflow">if</span> (rms_count &gt; 10 &amp;&amp; e_measure &lt;= <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a28b04e503bd88ed10413c2dcd357838c">_crit_dE</a>) {</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;            <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                &lt;&lt; (format(<span class="stringliteral">&quot;  :: RE %1$+1.7e IM %2$+1.7e&quot;</span>) </div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                % (sqrt(sum_re)*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>)</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                % (sum_im*EWD::int2V_m)).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            converged03 = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;        }</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        </div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        crit_grade /= 10.0;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;    }</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;    </div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#afea79121be98701472535b9a1ad85b31">_field_converged_K</a> = converged12 &amp;&amp; converged03;</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;    </div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#afea79121be98701472535b9a1ad85b31">_field_converged_K</a>)</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">logINFO</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;            &lt;&lt; (format(<span class="stringliteral">&quot;:::: Converged to precision, {0-2}, {1-2}, {0-3}.&quot;</span>))</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            &lt;&lt; flush;</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    else ;</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;}</div>
 <div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;</div>
-<div class="line"><a name="l00818"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#afabb3e0ca2f9bbf4a084319fcf45efdf">  818</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#afabb3e0ca2f9bbf4a084319fcf45efdf">PEwald3D3D::Field_CalculateShapeCorrection</a>() {</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>) &lt;&lt; flush</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;Field correction terms&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;  o Shape-correction to fields, using &#39;&quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0a819d9306b7745dcfdf99db3253c6fb">_shape</a> &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;    </div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    vector&lt;PolarSeg*&gt;::iterator sit1; </div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    vector&lt;APolarSite*&gt; ::iterator pit1;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    vector&lt;PolarSeg*&gt;::iterator sit2; </div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;    vector&lt;APolarSite*&gt; ::iterator pit2;</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;    </div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    <span class="keywordtype">double</span> rms = 0.0;</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <span class="keywordtype">int</span> rms_count = 0;    </div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0a819d9306b7745dcfdf99db3253c6fb">_shape</a> == <span class="stringliteral">&quot;xyslab&quot;</span>) {</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;        <span class="keywordtype">double</span> TwoPi_V = 2*M_PI/<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8d647e4d7ffa5293a8045c5b31d407ab">_LxLyLz</a>;</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;        </div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="comment">//        for (sit1 = _fg_C.begin(); sit1 &lt; _fg_C.end(); ++sit1) {</span></div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="comment">//           for (sit2 = _bg_P.begin(); sit2 &lt; _bg_P.end(); ++sit2) {</span></div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;<span class="comment">//              for (pit1 = (*sit1)-&gt;begin(); pit1 &lt; (*sit1)-&gt;end(); ++pit1) {</span></div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="comment">//                 for (pit2 = (*sit2)-&gt;begin(); pit2 &lt; (*sit2)-&gt;end(); ++pit2) {</span></div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="comment">//                    rms += _ewdactor.F12_XYSlab_At_By(*(*pit1), *(*pit2), TwoPi_V);</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="comment">//                    rms_count += 1;</span></div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;<span class="comment">//                 }</span></div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="comment">//              }</span></div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="comment">//           }</span></div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;<span class="comment">//        }</span></div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;        </div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a7b30a4fb9a95a85e329940bd0134f967">FPU12_XYSlab_ShapeField_At_By</a>(<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>, TwoPi_V);</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;        </div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    }</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">logERROR</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;            &lt;&lt; (format(<span class="stringliteral">&quot;Shape %1$s not implemented. Setting EJ = 0.0 ...&quot;</span>) </div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;            % <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0a819d9306b7745dcfdf99db3253c6fb">_shape</a>) &lt;&lt; flush;</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    }</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    rms = sqrt(rms/rms_count)*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>;</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    </div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;}</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;</div>
+<div class="line"><a name="l00819"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a7ea4d7fd49d83c25e92de10813f5d789">  819</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#a7ea4d7fd49d83c25e92de10813f5d789">PEwald3D3D::Field_CalculateForegroundCorrection</a>() {</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    </div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;  o Foreground-correction to fields via FGN&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    </div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;    vector&lt;PolarSeg*&gt;::iterator sit1; </div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    vector&lt;APolarSite*&gt; ::iterator pit1;</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    vector&lt;PolarSeg*&gt;::iterator sit2; </div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    vector&lt;APolarSite*&gt; ::iterator pit2;</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;    </div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;    <span class="keywordtype">double</span> rms = 0.0;</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    <span class="keywordtype">int</span> rms_count = 0;</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <span class="keywordflow">for</span> (sit1 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>.begin(); sit1 &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>.end(); ++sit1) {</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        <span class="keywordflow">for</span> (sit2 = <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0249ff1f752a15c5f770bc7175da8a84">_fg_N</a>.begin(); sit2 &lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0249ff1f752a15c5f770bc7175da8a84">_fg_N</a>.end(); ++sit2) {</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;            <span class="keywordflow">for</span> (pit1 = (*sit1)-&gt;begin(); pit1 &lt; (*sit1)-&gt;end(); ++pit1) {</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;                <span class="keywordflow">for</span> (pit2 = (*sit2)-&gt;begin(); pit2 &lt; (*sit2)-&gt;end(); ++pit2) {</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;                    rms += <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a789868111527458a7032f63b65af019f">FPU12_ERF_At_By</a>(*(*pit1), *(*pit2));</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                    rms_count += 1;</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                }</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;            }</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;        }</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    }</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    rms = sqrt(rms/rms_count)*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>;</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    </div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;}</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;</div>
+<div class="line"><a name="l00847"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#afabb3e0ca2f9bbf4a084319fcf45efdf">  847</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1PEwald3D3D.html#afabb3e0ca2f9bbf4a084319fcf45efdf">PEwald3D3D::Field_CalculateShapeCorrection</a>() {</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>) &lt;&lt; flush</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;Field correction terms&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;  o Shape-correction to fields, using &#39;&quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0a819d9306b7745dcfdf99db3253c6fb">_shape</a> &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    </div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    vector&lt;PolarSeg*&gt;::iterator sit1; </div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    vector&lt;APolarSite*&gt; ::iterator pit1;</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    vector&lt;PolarSeg*&gt;::iterator sit2; </div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    vector&lt;APolarSite*&gt; ::iterator pit2;</div>
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    </div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    </div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;}}</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    <span class="keywordtype">double</span> rms = 0.0;</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    <span class="keywordtype">int</span> rms_count = 0;    </div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0a819d9306b7745dcfdf99db3253c6fb">_shape</a> == <span class="stringliteral">&quot;xyslab&quot;</span>) {</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;        <span class="keywordtype">double</span> TwoPi_V = 2*M_PI/<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8d647e4d7ffa5293a8045c5b31d407ab">_LxLyLz</a>;</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        </div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;<span class="comment">//        for (sit1 = _fg_C.begin(); sit1 &lt; _fg_C.end(); ++sit1) {</span></div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="comment">//           for (sit2 = _bg_P.begin(); sit2 &lt; _bg_P.end(); ++sit2) {</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;<span class="comment">//              for (pit1 = (*sit1)-&gt;begin(); pit1 &lt; (*sit1)-&gt;end(); ++pit1) {</span></div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;<span class="comment">//                 for (pit2 = (*sit2)-&gt;begin(); pit2 &lt; (*sit2)-&gt;end(); ++pit2) {</span></div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;<span class="comment">//                    rms += _ewdactor.F12_XYSlab_At_By(*(*pit1), *(*pit2), TwoPi_V);</span></div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;<span class="comment">//                    rms_count += 1;</span></div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;<span class="comment">//                 }</span></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;<span class="comment">//              }</span></div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;<span class="comment">//           }</span></div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;<span class="comment">//        }</span></div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        </div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a55a7da10ebaafa413e0e8529a3b71d7d">_ewdactor</a>.<a class="code" href="classvotca_1_1ctp_1_1EwdInteractor.html#a7b30a4fb9a95a85e329940bd0134f967">FPU12_XYSlab_ShapeField_At_By</a>(<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a9d6ee12a5de241334e49c089ab7d241d">_fg_C</a>, <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a976903bc8631d97b6353a1f06ac62c92">_bg_P</a>, TwoPi_V);</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;        </div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    }</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">logERROR</a>,*<a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a8367f5a12611d2f96cbb26fd68c1ac2d">_log</a>)</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;            &lt;&lt; (format(<span class="stringliteral">&quot;Shape %1$s not implemented. Setting EJ = 0.0 ...&quot;</span>) </div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;            % <a class="code" href="classvotca_1_1ctp_1_1Ewald3DnD.html#a0a819d9306b7745dcfdf99db3253c6fb">_shape</a>) &lt;&lt; flush;</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    }</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    rms = sqrt(rms/rms_count)*<a class="code" href="namespacevotca_1_1ctp_1_1EWD.html#ac877ba4da7f5612ede53206868699744">EWD::int2V_m</a>;</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    </div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;}</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    </div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;    </div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->

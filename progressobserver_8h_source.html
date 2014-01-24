@@ -87,7 +87,7 @@
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a3859230dcbd8711a4768b30a1a18e5a8">   34</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html">ProgObserver</a>()</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        : _lockFile(<span class="stringliteral">&quot;__NOFILE__&quot;</span>), _progFile(<span class="stringliteral">&quot;__NOFILE__&quot;</span>), _cacheSize(-1),</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          _nextjit(NULL), _metajit(NULL) { ; }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          _nextjit(NULL), _metajit(NULL), _startJobsCount(0) { ; }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a707fe21e88a0ff944a53d9a7dc923266">   38</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a707fe21e88a0ff944a53d9a7dc923266">~ProgObserver</a>() { ; }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
@@ -124,27 +124,29 @@
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac392fb605a04e7963f3ba5c56f3d3814">   70</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac392fb605a04e7963f3ba5c56f3d3814">_restartMode</a>;</div>
 <div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a6860d811cb7a4d70c7d8dc27e6753f5b">   71</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a6860d811cb7a4d70c7d8dc27e6753f5b">_jobsReported</a>;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7f0878a5b9fbd89d94f26f6f5a64771">   73</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7f0878a5b9fbd89d94f26f6f5a64771">_moreJobsAvailable</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7f0878a5b9fbd89d94f26f6f5a64771">   73</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#ac7f0878a5b9fbd89d94f26f6f5a64771">_moreJobsAvailable</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a57238c79f2938c132bbc0f14e0e5c02b">   74</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#a57238c79f2938c132bbc0f14e0e5c02b">_startJobsCount</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#aea5d6b82ea2923dd565c0e56f915af81">   75</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1ProgObserver.html#aea5d6b82ea2923dd565c0e56f915af81">_maxJobs</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;JobContainer <a class="code" href="namespacevotca_1_1ctp.html#aa58203c52133cbefcfb86272e062fbb8">LOAD_JOBS</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;xml_file);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1ctp.html#af467cef9a1cd7f4500062344c5659034">WRITE_JOBS</a>(JobContainer &amp;jobs, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;job_file, <span class="keywordtype">string</span> fileformat);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1ctp.html#a113d9aacba8c12eb3d6a3537e51505a9">UPDATE_JOBS</a>(JobContainer &amp;from, JobContainer &amp;to, <span class="keywordtype">string</span> thisHost);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;JobContainer <a class="code" href="namespacevotca_1_1ctp.html#aa58203c52133cbefcfb86272e062fbb8">LOAD_JOBS</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;xml_file);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1ctp.html#af467cef9a1cd7f4500062344c5659034">WRITE_JOBS</a>(JobContainer &amp;jobs, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;job_file, <span class="keywordtype">string</span> fileformat);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> JobContainer, <span class="keyword">typename</span> pJob, <span class="keyword">typename</span> rJob&gt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacevotca_1_1ctp.html#a113d9aacba8c12eb3d6a3537e51505a9">UPDATE_JOBS</a>(JobContainer &amp;from, JobContainer &amp;to, <span class="keywordtype">string</span> thisHost);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->

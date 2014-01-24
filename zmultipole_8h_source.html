@@ -2207,15 +2207,15 @@
 <div class="line"><a name="l02236"></a><span class="lineno"> 2236</span>&#160;        }</div>
 <div class="line"><a name="l02237"></a><span class="lineno"> 2237</span>&#160;    }</div>
 <div class="line"><a name="l02238"></a><span class="lineno"> 2238</span>&#160;</div>
-<div class="line"><a name="l02239"></a><span class="lineno"> 2239</span>&#160;</div>
-<div class="line"><a name="l02240"></a><span class="lineno"> 2240</span>&#160;<span class="comment">//    FILE *out;</span></div>
-<div class="line"><a name="l02241"></a><span class="lineno"> 2241</span>&#160;<span class="comment">//    string shellFile = &quot;OuterShell.pdb&quot;;</span></div>
-<div class="line"><a name="l02242"></a><span class="lineno"> 2242</span>&#160;<span class="comment">//    out = fopen(shellFile.c_str(), &quot;w&quot;);</span></div>
-<div class="line"><a name="l02243"></a><span class="lineno"> 2243</span>&#160;<span class="comment">//    for (sit = _segsOutSphere.begin(); sit &lt; _segsOutSphere.end(); ++sit) {</span></div>
-<div class="line"><a name="l02244"></a><span class="lineno"> 2244</span>&#160;<span class="comment">//        (*sit)-&gt;WritePDB(out, &quot;Multipoles&quot;, &quot;&quot;);</span></div>
-<div class="line"><a name="l02245"></a><span class="lineno"> 2245</span>&#160;<span class="comment">//    }</span></div>
-<div class="line"><a name="l02246"></a><span class="lineno"> 2246</span>&#160;<span class="comment">//    fclose(out);</span></div>
-<div class="line"><a name="l02247"></a><span class="lineno"> 2247</span>&#160;</div>
+<div class="line"><a name="l02239"></a><span class="lineno"> 2239</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="structvotca_1_1tools_1_1globals.html#a68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a>) {</div>
+<div class="line"><a name="l02240"></a><span class="lineno"> 2240</span>&#160;        FILE *out;</div>
+<div class="line"><a name="l02241"></a><span class="lineno"> 2241</span>&#160;        <span class="keywordtype">string</span> shellFile = <span class="stringliteral">&quot;seg_&quot;</span> + <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>())+ <span class="stringliteral">&quot;.pdb&quot;</span>;</div>
+<div class="line"><a name="l02242"></a><span class="lineno"> 2242</span>&#160;        out = fopen(shellFile.c_str(), <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l02243"></a><span class="lineno"> 2243</span>&#160;        <span class="keywordflow">for</span> (sit = _segsPolSphere.begin(); sit &lt; _segsPolSphere.end(); ++sit) {</div>
+<div class="line"><a name="l02244"></a><span class="lineno"> 2244</span>&#160;            (*sit)-&gt;WritePDB(out, <span class="stringliteral">&quot;Multipoles&quot;</span>, <span class="stringliteral">&quot;Charges&quot;</span>);</div>
+<div class="line"><a name="l02245"></a><span class="lineno"> 2245</span>&#160;        }</div>
+<div class="line"><a name="l02246"></a><span class="lineno"> 2246</span>&#160;        fclose(out);        </div>
+<div class="line"><a name="l02247"></a><span class="lineno"> 2247</span>&#160;    }</div>
 <div class="line"><a name="l02248"></a><span class="lineno"> 2248</span>&#160;</div>
 <div class="line"><a name="l02249"></a><span class="lineno"> 2249</span>&#160;</div>
 <div class="line"><a name="l02250"></a><span class="lineno"> 2250</span>&#160;    <span class="comment">// +++++++++++++++++++++++++ //</span></div>

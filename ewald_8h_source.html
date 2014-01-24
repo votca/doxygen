@@ -292,25 +292,28 @@
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">if</span> (_pdb_check)</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        ewaldnd.WriteDensitiesPDB(xjob.getTag()+<span class="stringliteral">&quot;.densities.pdb&quot;</span>);</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    ewaldnd.Evaluate();</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">// GENERATE OUTPUT AND FORWARD TO PROGRESS OBSERVER (RETURN)</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> output = ewaldnd.GenerateOutputString();</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html">Job::JobResult</a> jres = <a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html">Job::JobResult</a>();</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a97775bc321c298b4a73674793ebcd5eb">setOutput</a>(output);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(<a class="code" href="classvotca_1_1ctp_1_1Job.html#a79d7d5eb023c6337e4895229ee534f2daf3a2542490c95aa116c4656a0a282f7d">Job::COMPLETE</a>);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">if</span> (!ewaldnd.Converged()) {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(<a class="code" href="classvotca_1_1ctp_1_1Job.html#a79d7d5eb023c6337e4895229ee534f2da9eca83351fb4657c5e251def89011ba2">Job::FAILED</a>);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a886bddca91fab244b6ab8c44faa2b5e6">setError</a>(ewaldnd.GenerateErrorString());</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">logERROR</a>,*log) &lt;&lt; ewaldnd.GenerateErrorString() &lt;&lt; flush;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">return</span> jres;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}}</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">if</span> (_pdb_check)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        ewaldnd.WriteDensitiesPtop(xjob.getTag()+<span class="stringliteral">&quot;.fg.ptop&quot;</span>, </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            xjob.getTag()+<span class="stringliteral">&quot;.mg.ptop&quot;</span>, xjob.getTag()+<span class="stringliteral">&quot;.bg.ptop&quot;</span>);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="comment">// GENERATE OUTPUT AND FORWARD TO PROGRESS OBSERVER (RETURN)</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> output = ewaldnd.GenerateOutputString();</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html">Job::JobResult</a> jres = <a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html">Job::JobResult</a>();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a97775bc321c298b4a73674793ebcd5eb">setOutput</a>(output);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(<a class="code" href="classvotca_1_1ctp_1_1Job.html#a79d7d5eb023c6337e4895229ee534f2daf3a2542490c95aa116c4656a0a282f7d">Job::COMPLETE</a>);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">if</span> (!ewaldnd.Converged()) {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(<a class="code" href="classvotca_1_1ctp_1_1Job.html#a79d7d5eb023c6337e4895229ee534f2da9eca83351fb4657c5e251def89011ba2">Job::FAILED</a>);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a886bddca91fab244b6ab8c44faa2b5e6">setError</a>(ewaldnd.GenerateErrorString());</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">logERROR</a>,*log) &lt;&lt; ewaldnd.GenerateErrorString() &lt;&lt; flush;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">return</span> jres;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;}}</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
