@@ -53,52 +53,126 @@
 </div><!--header-->
 <div class="contents">
 <a href="src_2libkmc_2calculators_2node_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * File:   node.h</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Author: malafeev</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Created on November 29, 2011, 3:17 PM</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef NODE_H</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define NODE_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span>votca::kmc;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">struct </span><a class="code" href="structlink__t.html">link_t</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * author: Kordt</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef NODE_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define NODE_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;<a class="code" href="vec_8h.html">votca/tools/vec.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using namespace </span>votca::kmc;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// KMCMULTIPLE PART //</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="src_2libkmc_2calculators_2node_8h.html#a4e7c3dd9f4f0aa1cb8ec6d7d4acb3429">   14</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">votca::tools::vec</a> <a class="code" href="carrier_8h.html#a4e7c3dd9f4f0aa1cb8ec6d7d4acb3429">myvec</a>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="classnode__t.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classnode__t.html">node_t</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html">VSSMGroup</a>&lt;link_t&gt; {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classnode__t.html#aa115df0321e197052c609653ffca8818">   18</a></span>&#160;        <a class="code" href="classnode__t.html">node_t</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;          : _id(id), _occ(0) {}</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classnode__t.html#a9666604d136d4b5dfa609fec5deced13">   20</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classnode__t.html#a9666604d136d4b5dfa609fec5deced13">_occ</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="classnode__t.html#a62dc7379a55f6dcb087e9c71ff627dce">   21</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classnode__t.html#a62dc7379a55f6dcb087e9c71ff627dce">_id</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="classnode__t.html#ab20e4131512336ea70ab59b009c59cbf">   23</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classnode__t.html#ab20e4131512336ea70ab59b009c59cbf">onExecute</a>() {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                _occ+=WaitingTime();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <a class="code" href="classvotca_1_1kmc_1_1VSSMGroup.html">VSSMGroup&lt;link_t&gt;::onExecute</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="structEvent.html">   16</a></span>&#160;<span class="keyword">struct </span><a class="code" href="classvotca_1_1kmc_1_1Event.html">Event</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="structEvent.html#aa456dc706f66d4c0657584539273e435">   18</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structEvent.html#aa456dc706f66d4c0657584539273e435">destination</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="structEvent.html#a70301d5fa55d6ff9a86d29609762e266">   19</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="structEvent.html#a70301d5fa55d6ff9a86d29609762e266">rate</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="structEvent.html#a592a6e5452b31c73b680a2049cb52ebf">   20</a></span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">votca::tools::vec</a> <a class="code" href="structEvent.html#a592a6e5452b31c73b680a2049cb52ebf">dr</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// stuff for Coulomb interaction</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="structEvent.html#aa7e9603100e27f601a249c043963ccd3">   23</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="structEvent.html#aa7e9603100e27f601a249c043963ccd3">Jeff2</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="structEvent.html#a2c0304a5308d430674db3e03d46e3554">   24</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="structEvent.html#a2c0304a5308d430674db3e03d46e3554">reorg_out</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="structEvent.html#ae6d6a54052cb0b42bf1ed41aa2e0a9f9">   25</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="structEvent.html#ae6d6a54052cb0b42bf1ed41aa2e0a9f9">initialrate</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="src_2libkmc_2calculators_2node_8h.html#aecd5a257e5366ac9f341b19494bf43b8">   29</a></span>&#160;<a class="code" href="classnode__t.html">node_t</a> *<a class="code" href="src_2libkmc_2calculators_2node_8h.html#aecd5a257e5366ac9f341b19494bf43b8">current</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="kmc__old_8cc.html#ae243e7fff6a6d0eecd4adaa52b0fe8a2">r</a>(0,0,0);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="structlink__t.html">   32</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structlink__t.html">link_t</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="structlink__t.html#a4bfa7ad093db948ef699e53837f0bf5a">   33</a></span>&#160;        <a class="code" href="structlink__t.html">link_t</a>(<a class="code" href="classnode__t.html">node_t</a> *dest, <span class="keywordtype">double</span> rate, <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="kmc__old_8cc.html#ae243e7fff6a6d0eecd4adaa52b0fe8a2">r</a>)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        : _dest(dest), _rate(rate), _r(r) {}</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="structlink__t.html#a326e852a44115ffa73e197be1bb014e5">   35</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structlink__t.html#a326e852a44115ffa73e197be1bb014e5">Rate</a>() {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordflow">return</span> _rate;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="structlink__t.html#aa95e192e8c8dbeaeebf9a5ea39a8804f">   39</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structlink__t.html#aa95e192e8c8dbeaeebf9a5ea39a8804f">onExecute</a>() {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <a class="code" href="kmc__old_8cc.html#ae243e7fff6a6d0eecd4adaa52b0fe8a2">r</a>+=_r;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <a class="code" href="src_2libkmc_2calculators_2node_8h.html#aecd5a257e5366ac9f341b19494bf43b8">current</a> = _dest;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structlink__t.html#a4ff3995700af3459d4e58a0fb3410524">   43</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structlink__t.html#a4ff3995700af3459d4e58a0fb3410524">_rate</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="structlink__t.html#ad6b4821ac654d42c56225eded25c0aa9">   44</a></span>&#160;        <a class="code" href="classnode__t.html">node_t</a> *<a class="code" href="structlink__t.html#ad6b4821ac654d42c56225eded25c0aa9">_dest</a>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="structlink__t.html#a99d5e1ed0a244c3a404af3b3cb7354b5">   45</a></span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> <a class="code" href="structlink__t.html#a99d5e1ed0a244c3a404af3b3cb7354b5">_r</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* NODE_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classNode.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classNode.html#a59a543130a10c95f1e8642cf8c5645e8">   32</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classNode.html#a59a543130a10c95f1e8642cf8c5645e8">id</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classNode.html#aca3c0aa434c9d2dfc726a568c2dbf416">   33</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classNode.html#aca3c0aa434c9d2dfc726a568c2dbf416">occupied</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classNode.html#ad48eb166f22d7f68e2659f494862304c">   34</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classNode.html#ad48eb166f22d7f68e2659f494862304c">injectable</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classNode.html#aa128ad44c345b0eb4c453a37809eb2f5">   35</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNode.html#aa128ad44c345b0eb4c453a37809eb2f5">escaperate</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classNode.html#aa6ee2c181f76ad179fecff879f73c3b7">   36</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNode.html#aa6ee2c181f76ad179fecff879f73c3b7">occupationtime</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classNode.html#a908a8d66bd91f0143f06610932153eca">   37</a></span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">myvec</a> <a class="code" href="classNode.html#a908a8d66bd91f0143f06610932153eca">position</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classNode.html#a4ae880166d926959cbfbafd3555258d2">   38</a></span>&#160;        vector&lt;Event&gt; <a class="code" href="classNode.html#a4ae880166d926959cbfbafd3555258d2">event</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// stuff for Coulomb interaction:</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classNode.html#a500ca976ab50a0b2976907b19c6c51ea">   40</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNode.html#a500ca976ab50a0b2976907b19c6c51ea">siteenergy</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classNode.html#a96fb0b358810247b2511b67e70f6c208">   41</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNode.html#a96fb0b358810247b2511b67e70f6c208">reorg_intorig</a>; <span class="comment">// UnCnN</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classNode.html#a1f4360928827c314dd361c4726c83df7">   42</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classNode.html#a1f4360928827c314dd361c4726c83df7">reorg_intdest</a>; <span class="comment">// UcNcC</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">double</span> EscapeRate();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> AddEvent(<span class="keywordtype">int</span> seg2, <span class="keywordtype">double</span> rate12, <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">myvec</a> dr, <span class="keywordtype">double</span> Jeff2, <span class="keywordtype">double</span> reorg_out);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> InitEscapeRate();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classNode.html#af43a2c3a16f616a602f2842d40f931b5">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classNode.html#af43a2c3a16f616a602f2842d40f931b5">Node::AddEvent</a>(<span class="keywordtype">int</span> seg2, <span class="keywordtype">double</span> rate12, <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">myvec</a> dr, <span class="keywordtype">double</span> Jeff2, <span class="keywordtype">double</span> reorg_out)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classvotca_1_1kmc_1_1Event.html">Event</a> newEvent;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    newEvent.destination = seg2;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    newEvent.<a class="code" href="classvotca_1_1kmc_1_1Event.html#af1a81a8767aa9d19289a928bf210004d">rate</a> = rate12;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    newEvent.initialrate = rate12;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    newEvent.dr = dr;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    newEvent.Jeff2 = Jeff2;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    newEvent.reorg_out = reorg_out;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    this-&gt;<span class="keyword">event</span>.push_back(newEvent);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classNode.html#aa342f42bf355b634c42f9a5ceef647d4">   63</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classNode.html#aa342f42bf355b634c42f9a5ceef647d4">Node::InitEscapeRate</a>()</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">double</span> newEscapeRate = 0;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>&lt;this-&gt;<span class="keyword">event</span>.size();<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>++)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        newEscapeRate += this-&gt;<span class="keyword">event</span>[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>].rate;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    this-&gt;escaperate = newEscapeRate;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// cout &lt;&lt; &quot;Escape rate for segment &quot; &lt;&lt; this-&gt;id &lt;&lt; &quot; was set to &quot; &lt;&lt; newEscapeRate &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="classNode.html#a56e53e4ed3bfe2084dbd3f2e431c5d55">   75</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classNode.html#a56e53e4ed3bfe2084dbd3f2e431c5d55">Node::EscapeRate</a>()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> escaperate;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">// END KMCMULTIPLE PART //</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">// KMCSINGLE PART //</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">struct link_t;</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">class node_t : public VSSMGroup&lt;link_t&gt; {</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">  public:</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">        node_t(int id)</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">          : _id(id), _occ(0) {}</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">        double _occ;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">        int _id;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">        void onExecute() {</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">                _occ+=WaitingTime();</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">                VSSMGroup&lt;link_t&gt;::onExecute();</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">};</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">node_t *current;</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">vec r(0,0,0);</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">struct link_t {</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">        link_t(node_t *dest, double rate, vec r)</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">        : _dest(dest), _rate(rate), _r(r) {}</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">        double Rate() {</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">                return _rate;</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">        void onExecute() {</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">                r+=_r;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">                current = _dest;</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">        double _rate;</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">        node_t *_dest;</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">        vec _r;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">};</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">// END KMCSINGLE PART // </span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* NODE_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->

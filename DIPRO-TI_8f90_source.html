@@ -110,7 +110,7 @@
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">real*8</span>, <span class="keywordtype">allocatable</span> :: diags(:,:), eigvec_t(:,:), transmat(:,:), jmat_eff(:,:)</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">real*8</span>, <span class="keywordtype">allocatable</span> :: eigval(:),work(:),eigval_sq(:)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">real*8</span> ti_hole, ti_elec, sum, tread</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">integer</span> i,  info,lwork, j, arg,k,cnt</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">integer</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,  info,lwork, j, arg,k,cnt</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
@@ -122,10 +122,10 @@
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordflow">if</span> (homoasub.ne.0) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;   <span class="keyword">allocate</span>(homoaind(homoasub))</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   <span class="keywordflow">do</span> i = 1, homoasub</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      arg=arg+1</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      CALL getarg(arg,linearg)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keyword">READ</span>(linearg,*) homoaind(i)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keyword">READ</span>(linearg,*) homoaind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
@@ -134,10 +134,10 @@
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">READ</span>(linearg,*) homobsub</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordflow">if</span> (homobsub.ne.0) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;   <span class="keyword">allocate</span>(homobind(homobsub))</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;   <span class="keywordflow">do</span> i = 1, homobsub</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homobsub</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      arg=arg+1</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      CALL getarg(arg,linearg)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keyword">READ</span>(linearg,*) homobind(i)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keyword">READ</span>(linearg,*) homobind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
@@ -147,10 +147,10 @@
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">READ</span>(linearg,*) lumoasub</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordflow">if</span> (lumoasub.ne.0) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;   <span class="keyword">allocate</span>(lumoaind(lumoasub))</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      arg=arg+1</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      CALL getarg(arg,linearg)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keyword">READ</span>(linearg,*) lumoaind(i)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keyword">READ</span>(linearg,*) lumoaind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
@@ -160,10 +160,10 @@
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">READ</span>(linearg,*) lumobsub</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordflow">if</span> (lumobsub.ne.0) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;   <span class="keyword">allocate</span>(lumobind(lumobsub))</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;   <span class="keywordflow">do</span> i = 1, lumobsub</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumobsub</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      arg=arg+1</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      CALL getarg(arg,linearg)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="keyword">READ</span>(linearg,*) lumobind(i)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="keyword">READ</span>(linearg,*) lumobind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
@@ -194,15 +194,15 @@
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;   <span class="keyword">allocate</span>(j_hole(homoasub,homobsub),j_elec(lumoasub,lumobsub))</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;   <span class="keywordflow">do</span> i = 1, homoasub</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keywordflow">do</span> j = 1, homobsub</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;         j_hole(i,j) = dot_product(dimcoef(homoaind(i),:),matmul(fock_diag,dimcoef(homobind(j),:)))</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;         j_hole(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j) = dot_product(dimcoef(homoaind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>),:),matmul(fock_diag,dimcoef(homobind(j),:)))</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <span class="keywordflow">do</span> j = 1, lumobsub</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;         j_elec(i,j) = dot_product(dimcoef(lumoaind(i),:),matmul(fock_diag,dimcoef(lumobind(j),:)))</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;         j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j) = dot_product(dimcoef(lumoaind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>),:),matmul(fock_diag,dimcoef(lumobind(j),:)))</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
@@ -210,51 +210,51 @@
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;   <span class="keyword">allocate</span>(lumoaboltz(lumoasub),lumobboltz(lumobsub)) </div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;   <span class="keywordflow">do</span> i = 1, homoasub</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      homoaboltz(i)=exp((dimen(homoaind(i))-dimen(homoaind(1)))/0.0256d0)</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      sum = sum + homoaboltz(i)*homoaboltz(i)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp((dimen(homoaind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))-dimen(homoaind(1)))/0.0256d0)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      sum = sum + homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;   homoaboltz=homoaboltz/sqrt(sum)</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;   <span class="keywordflow">do</span> i = 1, homobsub</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      homobboltz(i)=exp((dimen(homobind(i))-dimen(homobind(1)))/0.0256d0)</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      sum = sum + homobboltz(i)*homobboltz(i)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homobsub</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp((dimen(homobind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))-dimen(homobind(1)))/0.0256d0)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      sum = sum + homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;   homobboltz=homobboltz/sqrt(sum)</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      lumoaboltz(i)=exp(-(dimen(lumoaind(i))-dimen(lumoaind(1)))/0.0256d0)</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      sum = sum + lumoaboltz(i)*lumoaboltz(i)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp(-(dimen(lumoaind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))-dimen(lumoaind(1)))/0.0256d0)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      sum = sum + lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;   lumoaboltz=lumoaboltz/sqrt(sum)</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;   <span class="keywordflow">do</span> i = 1, lumobsub</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      lumobboltz(i)=exp(-(dimen(lumobind(i))-dimen(lumobind(1)))/0.0256d0)</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      sum = sum + lumobboltz(i)*lumobboltz(i)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumobsub</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp(-(dimen(lumobind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))-dimen(lumobind(1)))/0.0256d0)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      sum = sum + lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;   lumobboltz=lumobboltz/sqrt(sum)</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;   j_sq_degen_h = 0.0d0</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;   j_sq_boltz_h = 0.0d0</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;   <span class="keywordflow">do</span> i = 1, homoasub</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <span class="keywordflow">do</span> j = 1, homobsub</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;         j_sq_degen_h = j_sq_degen_h + j_hole(i,j)**2.0d0</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;         j_sq_boltz_h = j_sq_boltz_h + (homoaboltz(i)*j_hole(i,j)*homobboltz(j))**2.0d0</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;         j_sq_degen_h = j_sq_degen_h + j_hole(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)**2.0d0</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;         j_sq_boltz_h = j_sq_boltz_h + (homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*j_hole(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)*homobboltz(j))**2.0d0</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;   j_sq_degen_h = j_sq_degen_h/dble(homoasub*homobsub)</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;   j_sq_degen_e = 0.0d0</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;   j_sq_boltz_e = 0.0d0</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="keywordflow">do</span> j = 1, lumobsub</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;         j_sq_degen_e = j_sq_degen_e + j_elec(i,j)**2.0d0</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;         j_sq_boltz_e = j_sq_boltz_e + (lumoaboltz(i)*j_elec(i,j)*lumobboltz(j))**2.0d0</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;         j_sq_degen_e = j_sq_degen_e + j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)**2.0d0</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;         j_sq_boltz_e = j_sq_boltz_e + (lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)*lumobboltz(j))**2.0d0</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;   j_sq_degen_e = j_sq_degen_e/dble(lumoasub*lumobsub)</div>
@@ -273,9 +273,9 @@
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <span class="comment">!  DIPRO.x 8 8 7 6 5 4 3 2 1 8 8 7 6 5 4 3 2 1 6 9 10 11 12 13 14 6 9 10 11 12 13 14 G ma</span></div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="comment">! SMatrix of a dimer</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordflow">do</span> i = 1, nd</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nd</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  <span class="keywordflow">do</span> j = 1, nd</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keyword">write</span>(100,*) i,j, s(i,j)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keyword">write</span>(100,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j, s(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  <span class="keywordflow">end do</span>        </div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
@@ -286,15 +286,15 @@
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;   psib_dimbs = matmul(molbcoef, dimer_pro)</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keywordflow">do</span> i = 1, nd</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nd</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keywordflow">do</span> j = 1, ndt</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keyword">write</span>(102,*) i,j, dimer_pro(i,j)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keyword">write</span>(102,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j, dimer_pro(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordflow">end do</span>        </div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <span class="keywordflow">do</span> i = 1, nat</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nat</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <span class="keywordflow">do</span> j = 1, ndt</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keyword">write</span>(101,*) i,j, psia_dimbs(i,j)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keyword">write</span>(101,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j, psia_dimbs(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordflow">end do</span>        </div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
@@ -310,9 +310,9 @@
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;   jmat(nat+1:nat+nbt,nat+1:nat+nbt) = matmul(helpmat , transpose(psib_dimbs) )</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordflow">do</span> i = 1, nat+nbt</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nat+nbt</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="keywordflow">do</span> j = 1, nat+nbt</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keyword">write</span>(122,*) i,j, jmat(i,j)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keyword">write</span>(122,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j, jmat(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  <span class="keywordflow">end do</span>        </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
@@ -322,9 +322,9 @@
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;   smat(nat+1:nat+nbt,1:nat) = matmul(psib_dimbs , transpose(psia_dimbs) )</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;   smat(1:nat,nat+1:nat+nbt) = transpose( smat(nat+1:nat+nbt,1:nat))</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="keywordflow">do</span> i = 1, nat+nbt</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nat+nbt</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  <span class="keywordflow">do</span> j = 1, nat+nbt</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">write</span>(120,*) i,j, smat(i,j)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">write</span>(120,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j, smat(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
@@ -337,20 +337,20 @@
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;   <span class="keyword">allocate</span>( diags(nat+nbt,nat+nbt), eigvec_t(nat+nbt,nat+nbt), transmat(nat+nbt,nat+nbt) )</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;   <span class="comment">!eigval_sq     = sqrt(eigval)</span></div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;   diags = 0.0d0</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;   <span class="keywordflow">do</span> i = 1, nat+nbt</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      diags(i,i) = 1.0d0/sqrt(eigval(i))</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nat+nbt</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      diags(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>) = 1.0d0/sqrt(eigval(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;   eigvec_t = transpose(smat)</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;   transmat = matmul(smat, matmul(diags,eigvec_t))</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; <span class="keywordflow">do</span> i = 1, nat+nbt</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keyword">write</span>(140,*) i, eigval(i)</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nat+nbt</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keyword">write</span>(140,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>, eigval(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keywordflow">do</span> i = 1, nat+nbt</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nat+nbt</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keywordflow">do</span> j = 1, nat+nbt</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keyword">write</span>(130,*) i,j, transmat(i,j)</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keyword">write</span>(130,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j, transmat(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
@@ -359,9 +359,9 @@
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;   <span class="keyword">allocate</span>(jmat_eff(nat+nbt,nat+nbt))</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;   jmat_eff = matmul( transmat, matmul(jmat,transmat) )</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  <span class="keywordflow">do</span> i = 1, nat+nbt</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, nat+nbt</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  <span class="keywordflow">do</span> j = 1, nat+nbt</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keyword">write</span>(125,*) i,j, jmat_eff(i,j)/27.21138386</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keyword">write</span>(125,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j, jmat_eff(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)/27.21138386</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
@@ -369,9 +369,9 @@
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   <span class="keyword">allocate</span>(j_hole(homoasub,homobsub),j_elec(lumoasub,lumobsub))</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   j_hole = jmat_eff(1:homoasub,nat+1:nat+homobsub)</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      <span class="keywordflow">do</span> j = 1, lumobsub</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;         j_elec(i,j) = jmat_eff(homoasub+i,nat+homobsub+j)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;         j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j) = jmat_eff(homoasub+<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,nat+homobsub+j)</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
@@ -380,51 +380,51 @@
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;   <span class="keyword">allocate</span>(lumoaboltz(lumoasub),lumobboltz(lumobsub)) </div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;   <span class="keywordflow">do</span> i = 1, homoasub</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      homoaboltz(i)=exp((molaener(i)-molaener(1))/0.0256d0)</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      sum = sum + homoaboltz(i)*homoaboltz(i)</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp((molaener(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)-molaener(1))/0.0256d0)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      sum = sum + homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;   homoaboltz=homoaboltz/sqrt(sum)</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;   <span class="keywordflow">do</span> i = 1, homobsub</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      homobboltz(i)=exp((molbener(i)-molbener(1))/0.0256d0)</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      sum = sum + homobboltz(i)*homobboltz(i)</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homobsub</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp((molbener(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)-molbener(1))/0.0256d0)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      sum = sum + homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;   homobboltz=homobboltz/sqrt(sum)</div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      lumoaboltz(i)=exp(-(molaener(i+homoasub)-molaener(1+homoasub))/0.0256d0)</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      sum = sum + lumoaboltz(i)*lumoaboltz(i)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp(-(molaener(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+homoasub)-molaener(1+homoasub))/0.0256d0)</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      sum = sum + lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;   lumoaboltz=lumoaboltz/sqrt(sum)</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;   <span class="keywordflow">do</span> i = 1, lumobsub</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;      lumobboltz(i)=exp(-(molbener(i+homobsub)-molbener(1+homobsub))/0.0256d0)</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;      sum = sum + lumobboltz(i)*lumobboltz(i)</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumobsub</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;      lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp(-(molbener(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+homobsub)-molbener(1+homobsub))/0.0256d0)</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;      sum = sum + lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;   lumobboltz=lumobboltz/sqrt(sum)</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;   j_sq_degen_h = 0.0d0</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;   j_sq_boltz_h = 0.0d0</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;   <span class="keywordflow">do</span> i = 1, homoasub</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      <span class="keywordflow">do</span> j = 1, homobsub</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;         j_sq_degen_h = j_sq_degen_h + j_hole(i,j)**2.0d0</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;         j_sq_boltz_h = j_sq_boltz_h + (homoaboltz(i)*j_hole(i,j)*homobboltz(j))**2.0d0</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;         j_sq_degen_h = j_sq_degen_h + j_hole(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)**2.0d0</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;         j_sq_boltz_h = j_sq_boltz_h + (homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*j_hole(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)*homobboltz(j))**2.0d0</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;   j_sq_degen_h = j_sq_degen_h/dble(homoasub*homobsub)</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;   j_sq_degen_e = 0.0d0</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;   j_sq_boltz_e = 0.0d0</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      <span class="keywordflow">do</span> j = 1, lumobsub</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;         j_sq_degen_e = j_sq_degen_e + j_elec(i,j)**2.0d0</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;         j_sq_boltz_e = j_sq_boltz_e + (lumoaboltz(i)*j_elec(i,j)*lumobboltz(j))**2.0d0</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;         j_sq_degen_e = j_sq_degen_e + j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)**2.0d0</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;         j_sq_boltz_e = j_sq_boltz_e + (lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)*lumobboltz(j))**2.0d0</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;   j_sq_degen_e = j_sq_degen_e/dble(lumoasub*lumobsub)</div>
@@ -448,15 +448,15 @@
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;   <span class="keyword">read</span>(11,*) n_qp_a</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;   <span class="keyword">allocate</span>( qps_mola(homoasub+lumoasub,n_qp_a), qpe_mola(n_qp_a) )</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;   cnt=0</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;   <span class="keywordflow">do</span> i = 1, maxval(lumoaind)</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, maxval(lumoaind)</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      <span class="keyword">read</span>(11,*) k, tread</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      <span class="keywordflow">if</span> ( i .ge. minval(homoaind)) <span class="keywordflow">then</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      <span class="keywordflow">if</span> ( <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> .ge. minval(homoaind)) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;         cnt = cnt+1</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;         qpe_mola(cnt) = tread</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;      <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;      <span class="keywordflow">do</span> j = 1, n_qp_a</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;         <span class="keyword">read</span>(11,*) k, tread</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;         <span class="keywordflow">if</span> (i .ge. minval(homoaind)) <span class="keywordflow">then</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;         <span class="keywordflow">if</span> (<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> .ge. minval(homoaind)) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            qps_mola(cnt,j) = tread</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;         <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;      <span class="keywordflow">end do</span></div>
@@ -470,15 +470,15 @@
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;   <span class="keyword">read</span>(12,*) n_qp_b</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;   <span class="keyword">allocate</span>( qps_molb(homobsub+lumobsub,n_qp_b), qpe_molb(n_qp_b) )</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;   cnt=0</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;   <span class="keywordflow">do</span> i = 1, maxval(lumobind)</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, maxval(lumobind)</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;      <span class="keyword">read</span>(12,*) k, tread</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;      <span class="keywordflow">if</span> (i .ge. minval(homobind)) <span class="keywordflow">then</span></div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> .ge. minval(homobind)) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;         cnt=cnt+1</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;         qpe_molb(cnt) = tread</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;      <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;      <span class="keywordflow">do</span> j = 1, n_qp_b</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;         <span class="keyword">read</span>(12,*) k, tread</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;         <span class="keywordflow">if</span> (i.ge.minval(homobind)) <span class="keywordflow">then</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;         <span class="keywordflow">if</span> (<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>.ge.minval(homobind)) <span class="keywordflow">then</span></div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            qps_molb(cnt,j) = tread</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;         <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;      <span class="keywordflow">end do</span></div>
@@ -493,10 +493,10 @@
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;   <span class="keyword">allocate</span>( qps_dim(n_qp_d,n_qp_d), qpe_dim(n_qp_d,n_qp_d) )</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;   qps_dim = 0.0d0</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;   qpe_dim = 0.0d0</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;   <span class="keywordflow">do</span> i = 1, n_qp_d</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;      <span class="keyword">read</span>(10,*) k, qpe_dim(i,i)</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, n_qp_d</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;      <span class="keyword">read</span>(10,*) k, qpe_dim(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;      <span class="keywordflow">do</span> j = 1, n_qp_d</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;         <span class="keyword">read</span>(10,*) k, qps_dim(i,j)</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;         <span class="keyword">read</span>(10,*) k, qps_dim(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;   <span class="keyword">close</span>(10)</div>
@@ -585,8 +585,8 @@
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;   <span class="keyword">allocate</span>( diags(n_dim,n_dim), eigvec_t(n_dim,n_dim), transmat(n_dim,n_dim) )</div>
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;   <span class="comment">!eigval_sq     = sqrt(eigval)</span></div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;   diags = 0.0d0</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;   <span class="keywordflow">do</span> i = 1, n_dim</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;      diags(i,i) = 1.0d0/sqrt(eigval(i))</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, n_dim</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;      diags(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>) = 1.0d0/sqrt(eigval(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))</div>
 <div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;   eigvec_t = transpose(smat)</div>
 <div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;   transmat = matmul(smat, matmul(diags,eigvec_t))</div>
@@ -598,9 +598,9 @@
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;   <span class="keyword">allocate</span>(j_hole(homoasub,homobsub),j_elec(lumoasub,lumobsub))</div>
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;</div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;   j_hole = jmat_eff(1:homoasub,n_dim_a+1:n_dim_a+homobsub)</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;      <span class="keywordflow">do</span> j = 1, lumobsub</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;         j_elec(i,j) = jmat_eff(homoasub+i,n_dim_a+homobsub+j)</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;         j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j) = jmat_eff(homoasub+<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,n_dim_a+homobsub+j)</div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;</div>
@@ -614,51 +614,51 @@
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;   <span class="keyword">allocate</span>(lumoaboltz(lumoasub),lumobboltz(lumobsub)) </div>
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;   <span class="keywordflow">do</span> i = 1, homoasub</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;      homoaboltz(i)=exp((qpe_mola(i)-qpe_mola(1))/0.0256d0)</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;      sum = sum + homoaboltz(i)*homoaboltz(i)</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;      homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp((qpe_mola(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)-qpe_mola(1))/0.0256d0)</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;      sum = sum + homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;   homoaboltz=homoaboltz/sqrt(sum)</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;</div>
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;   <span class="keywordflow">do</span> i = 1, homobsub</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;      homobboltz(i)=exp((qpe_molb(i)-qpe_molb(1))/0.0256d0)</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;      sum = sum + homobboltz(i)*homobboltz(i)</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homobsub</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;      homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp((qpe_molb(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)-qpe_molb(1))/0.0256d0)</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;      sum = sum + homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*homobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;   homobboltz=homobboltz/sqrt(sum)</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;</div>
 <div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;</div>
 <div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;      lumoaboltz(i)=exp(-(qpe_mola(i+homoasub)-qpe_mola(1+homoasub))/0.0256d0)</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;      sum = sum + lumoaboltz(i)*lumoaboltz(i)</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;      lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp(-(qpe_mola(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+homoasub)-qpe_mola(1+homoasub))/0.0256d0)</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;      sum = sum + lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;   lumoaboltz=lumoaboltz/sqrt(sum)</div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;   sum = 0.0d0</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;   <span class="keywordflow">do</span> i = 1, lumobsub</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;      lumobboltz(i)=exp(-(qpe_molb(i+homobsub)-qpe_molb(1+homobsub))/0.0256d0)</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;      sum = sum + lumobboltz(i)*lumobboltz(i)</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumobsub</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;      lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)=exp(-(qpe_molb(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+homobsub)-qpe_molb(1+homobsub))/0.0256d0)</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;      sum = sum + lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*lumobboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;   lumobboltz=lumobboltz/sqrt(sum)</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;</div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;</div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;   j_sq_degen_h = 0.0d0</div>
 <div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;   j_sq_boltz_h = 0.0d0</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;   <span class="keywordflow">do</span> i = 1, homoasub</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;      <span class="keywordflow">do</span> j = 1, homobsub</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;         j_sq_degen_h = j_sq_degen_h + j_hole(i,j)**2.0d0</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;         j_sq_boltz_h = j_sq_boltz_h + (homoaboltz(i)*j_hole(i,j)*homobboltz(j))**2.0d0</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;         j_sq_degen_h = j_sq_degen_h + j_hole(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)**2.0d0</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;         j_sq_boltz_h = j_sq_boltz_h + (homoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*j_hole(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)*homobboltz(j))**2.0d0</div>
 <div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;   j_sq_degen_h = j_sq_degen_h/dble(homoasub*homobsub)</div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;</div>
 <div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;   j_sq_degen_e = 0.0d0</div>
 <div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;   j_sq_boltz_e = 0.0d0</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;   <span class="keywordflow">do</span> i = 1, lumoasub</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;   <span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;      <span class="keywordflow">do</span> j = 1, lumobsub</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;         j_sq_degen_e = j_sq_degen_e + j_elec(i,j)**2.0d0</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;         j_sq_boltz_e = j_sq_boltz_e + (lumoaboltz(i)*j_elec(i,j)*lumobboltz(j))**2.0d0</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;         j_sq_degen_e = j_sq_degen_e + j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)**2.0d0</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;         j_sq_boltz_e = j_sq_boltz_e + (lumoaboltz(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)*j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)*lumobboltz(j))**2.0d0</div>
 <div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;      <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;   <span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;   j_sq_degen_e = j_sq_degen_e/dble(lumoasub*lumobsub)</div>

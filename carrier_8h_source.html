@@ -73,44 +73,30 @@
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __VOTCA_KMC_CARRIER_H_</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vec_8h.html">votca/tools/vec.h</a>&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//#include &lt;votca/kmc/node.h&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="namespacevotca_1_1kmc.html">   24</a></span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>kmc {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7aacb49f5b199dd6f7c28b2790dc76fec16">   28</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a>{ <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7aa0c0b1051d48442ce596f039ed93ac7ad">Electron</a>, <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7aacb49f5b199dd6f7c28b2790dc76fec16">Hole</a>, <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7aa7018ae34b00fd81cdb01a1dc3be036db">Exciton</a> };</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a> {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="code" href="carrier_8h.html#a4e7c3dd9f4f0aa1cb8ec6d7d4acb3429">   23</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">votca::tools::vec</a> <a class="code" href="carrier_8h.html#a4e7c3dd9f4f0aa1cb8ec6d7d4acb3429">myvec</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>kmc {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7aa68428b2bb9ac57c197247ce8408fd4ed">   29</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a>{ <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7aa9e1f89e67b88a8ebd7821714f1b0dc3e">Electron</a>, <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7aa68428b2bb9ac57c197247ce8408fd4ed">Hole</a>};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a> {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#aaa1f6c40da27716758c40b98b2bdbcd7">   33</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#aaa1f6c40da27716758c40b98b2bdbcd7">getCarrierID</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _carrierID; }</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a68881a1e78e96f65784b15a8a02e9922">   34</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> &amp;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a68881a1e78e96f65784b15a8a02e9922">getType</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _type; }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//const Node *getNode() const { return _node; }</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a38327d2bbf6c1a1793936e0ca532e1bf">   36</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">tools::vec</a> &amp;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a38327d2bbf6c1a1793936e0ca532e1bf">getDistance</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _distance; }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a0cb51113b17efcd2d2b8d09a29f7fcda">   38</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a0cb51113b17efcd2d2b8d09a29f7fcda">setType</a>(<a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> type) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        _type = type;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">//void setNode(Node* position) {</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">//    //_node = position;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//}</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a66d486dcbcff1a7cb9af766b51516266">   46</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a66d486dcbcff1a7cb9af766b51516266">setCarrierID</a>(<span class="keywordtype">int</span> Id) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        _carrierID = Id;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;     </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a37e3c2b361a80020e826897b4ceb9fb3">   52</a></span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a37e3c2b361a80020e826897b4ceb9fb3">_type</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a7844961224ecb5b0b87ac42492c03118">   53</a></span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">tools::vec</a> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a7844961224ecb5b0b87ac42492c03118">_distance</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">//Node* _node;</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a7477d67dd4ab03969600533b3250242e">   55</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a7477d67dd4ab03969600533b3250242e">_carrierID</a>;    </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}} </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a5fe65c401e76d9d9681020d919001371">   35</a></span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a5fe65c401e76d9d9681020d919001371">carrier_type</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#ac1907aa2c2462e1461a32882c10177e3">   36</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#ac1907aa2c2462e1461a32882c10177e3">carrier_node_ID</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a258ba30ffba6af2e442c5926fcf5aa3c">   37</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a258ba30ffba6af2e442c5926fcf5aa3c">carrier_ID</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a9fd5b97ad006b4d7e2334f152c2b5b60">   38</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a9fd5b97ad006b4d7e2334f152c2b5b60">is_in_sim_box</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a73642ae6ebadfc2a1213d665cc703288">   39</a></span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">myvec</a> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a73642ae6ebadfc2a1213d665cc703288">carrier_distance</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a7306901187239f45a6ef8019c7196b72">   40</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a7306901187239f45a6ef8019c7196b72">srfrom</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a367147d5cb294a5290ab4176bc3b4814">   41</a></span>&#160;    vector&lt;double&gt; <a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a367147d5cb294a5290ab4176bc3b4814">srto</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}} </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -377,7 +377,7 @@
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;... ... OP &quot;</span> &lt;&lt; this-&gt;_id &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; flush;</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    this-&gt;_random.init(rand(), rand(), rand(), rand());</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Database.html" title="SQLite Database wrapper.">Database</a> db;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Database.html" title="SQLite Database wrapper.">Database</a> <a class="code" href="ImagePotential_8h.html#afc7408f815b875b40e9cf6d2d21a2a93">db</a>;</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    db.<a class="code" href="classvotca_1_1tools_1_1Database.html#a571911c19f24f9f665661ceb4f87eb54">Open</a>(_master-&gt;_stateFile);</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    </div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">if</span> (_master-&gt;_maverick) {</div>
@@ -387,7 +387,7 @@
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    }</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    </div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="comment">// Load segments &lt;=&gt; nodes</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a> *stmt = db.<a class="code" href="classvotca_1_1tools_1_1Database.html#afb2a4e03b21b167516b2313d73c96581">Prepare</a>(<span class="stringliteral">&quot;SELECT id, name FROM segments;&quot;</span>);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a> *<a class="code" href="ImagePotential_8h.html#a81eec84b9709b42225e8c020fc4b6935">stmt</a> = db.<a class="code" href="classvotca_1_1tools_1_1Database.html#afb2a4e03b21b167516b2313d73c96581">Prepare</a>(<span class="stringliteral">&quot;SELECT id, name FROM segments;&quot;</span>);</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    </div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">while</span> (stmt-&gt;<a class="code" href="classvotca_1_1tools_1_1Statement.html#a676ec07b2df9828eb8cd97b06cd99122" title="perform a step">Step</a>() != SQLITE_DONE) {</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        </div>
@@ -406,7 +406,7 @@
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        }</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    }</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keyword">delete</span> stmt;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keyword">delete</span> <a class="code" href="ImagePotential_8h.html#a81eec84b9709b42225e8c020fc4b6935">stmt</a>;</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    </div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="comment">// Load pairs &lt;=&gt; links</span></div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordtype">int</span> linkCount = 0;</div>
@@ -444,7 +444,7 @@
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        ++(++linkCount);</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    }</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keyword">delete</span> stmt;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keyword">delete</span> <a class="code" href="ImagePotential_8h.html#a81eec84b9709b42225e8c020fc4b6935">stmt</a>;</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    stmt = NULL;</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    </div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">if</span> (_master-&gt;_maverick) {</div>

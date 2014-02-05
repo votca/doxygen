@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>Votca: kmc/src/libkmc/eventfactory.cc Source File</title>
+<title>Votca: kmc/old/eventfactory.cc Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_c741326ea08d396393d58520352d4c66.html">kmc</a></li><li class="navelem"><a class="el" href="dir_dbcdfa600d5e13029fb504ea25ee5d6f.html">src</a></li><li class="navelem"><a class="el" href="dir_9c0a96830a8c36234c2966d87bf3437d.html">libkmc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_c741326ea08d396393d58520352d4c66.html">kmc</a></li><li class="navelem"><a class="el" href="dir_cf97b029b4c2bf6f7c142d5a6c546fc6.html">old</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,17 +72,39 @@
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="eventfactory_8h.html">votca/kmc/eventfactory.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;votca/kmc/eventfactory.h&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="votca__config_8h.html">votca_config.h</a>&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="electron__transfer_8h.html">events/electron_transfer.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>kmc {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#afeb9645b7e5fc4043e7aa7a948720f7e">   27</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#afeb9645b7e5fc4043e7aa7a948720f7e">EventFactory::RegisterAll</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#a28af4b24c26f352650d2c43ea7b3573a">Events</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#a93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>&lt; <a class="code" href="classvotca_1_1kmc_1_1ElectronTransfer.html">ElectronTransfer</a> &gt;         ( <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816a4a2e561ad84f1be8d6a757d6272b023d">_ElectronTransfer</a> );</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hole__transfer_8h.html">events/hole_transfer.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="electron__injection_8h.html">events/electron_injection.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hole__injection_8h.html">events/hole_injection.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="electron__collection_8h.html">events/electron_collection.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="hole__collection_8h.html">events/hole_collection.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="recombination_8h.html">events/recombination.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>kmc {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#afeb9645b7e5fc4043e7aa7a948720f7e">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#afeb9645b7e5fc4043e7aa7a948720f7e">EventFactory::RegisterAll</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;&lt;&lt;&lt;&lt;&lt;&lt;&lt; local</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">//Events().Register&lt; ElectronTransfer &gt;         ( _ElectronTransfer );</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">//Events().Register&lt; HoleTransfer &gt;         ( _HoleTransfer );</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">//Events().Register&lt; ElectronInjection &gt;         ( _ElectronInjection );</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">//Events().Register&lt; HoleInjection &gt;         ( _HoleInjection );</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="comment">//Events().Register&lt; ElectronCollection &gt;         ( _ElectronCollection );</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">//Events().Register&lt; HoleCollection &gt;         ( _HoleCollection );</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">//Events().Register&lt; Recombination &gt;         ( _Recombination );</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;=======</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#a28af4b24c26f352650d2c43ea7b3573a">Events</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#a93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>&lt; <a class="code" href="classvotca_1_1kmc_1_1ElectronTransfer.html">ElectronTransfer</a> &gt;         ( _ElectronTransfer );</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#a28af4b24c26f352650d2c43ea7b3573a">Events</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#a93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>&lt; <a class="code" href="classvotca_1_1kmc_1_1HoleTransfer.html">HoleTransfer</a> &gt;         ( _HoleTransfer );</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#a28af4b24c26f352650d2c43ea7b3573a">Events</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#a93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>&lt; <a class="code" href="classvotca_1_1kmc_1_1ElectronInjection.html">ElectronInjection</a> &gt;         ( _ElectronInjection );</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#a28af4b24c26f352650d2c43ea7b3573a">Events</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#a93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>&lt; <a class="code" href="classvotca_1_1kmc_1_1HoleInjection.html">HoleInjection</a> &gt;         ( _HoleInjection );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#a28af4b24c26f352650d2c43ea7b3573a">Events</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#a93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>&lt; <a class="code" href="classvotca_1_1kmc_1_1ElectronCollection.html">ElectronCollection</a> &gt;         ( _ElectronCollection );</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#a28af4b24c26f352650d2c43ea7b3573a">Events</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#a93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>&lt; <a class="code" href="classvotca_1_1kmc_1_1HoleCollection.html">HoleCollection</a> &gt;         ( _HoleCollection );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classvotca_1_1kmc_1_1EventFactory.html#a28af4b24c26f352650d2c43ea7b3573a">Events</a>().<a class="code" href="classvotca_1_1tools_1_1ObjectFactory.html#a93ffc9245ac0be282f444436d64dd8be" title="register an object">Register</a>&lt; <a class="code" href="classvotca_1_1kmc_1_1Recombination.html">Recombination</a> &gt;         ( _Recombination );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;&gt;&gt;&gt;&gt;&gt;&gt;&gt; other</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->

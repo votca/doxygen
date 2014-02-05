@@ -72,7 +72,7 @@
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">use </span><a class="code" href="classorbitals.html">orbitals</a></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">implicit none</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">character*100</span> printval</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">integer</span> n, i, j </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">integer</span> n, <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>, j </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">character*40</span> out(20), pval, filen, dlab, ival, jval</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">logical</span> ex</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">real*8</span> <a class="code" href="classvotca_1_1csg_1_1BeadPair.html#afb8db2786251d2c21491e038e33fc3b9">dist</a>(4)</div>
@@ -171,15 +171,15 @@
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;        &lt;/channel&gt;&#39;</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;        &lt;channel name=&quot;multi&quot;&gt;&#39;</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;           &lt;molecule name=&quot;A&quot;&gt;&#39;</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keywordflow">do</span> i = 1, homoasub</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;   <span class="keyword">write</span>(ival,*) i-1</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;   <span class="keyword">write</span>(ival,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>-1</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(ival)</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;   <span class="keywordflow">if</span> ( qcp .eq. <span class="stringliteral">&quot;T&quot;</span> ) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="keyword">write</span>(pval,*) dimen(homoaind(i))</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="keyword">write</span>(pval,*) dimen(homoaind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (qcp .eq. <span class="stringliteral">&quot;G&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="keyword">write</span>(pval,*) molaener(homoasub+1-i)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="keyword">write</span>(pval,*) molaener(homoasub+1-<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;   <span class="keywordflow">elseif</span> (qcp.eq.<span class="stringliteral">&quot;GW&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="keyword">write</span>(pval,*) qpe_mola(homoasub+1-i)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="keyword">write</span>(pval,*) qpe_mola(homoasub+1-<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;   <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(pval)</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;   printval=<span class="stringliteral">&#39;               &lt;e_HOMOm&#39;</span>//trim(ival)//<span class="stringliteral">&#39;&gt;&#39;</span>//trim(pval) // <span class="stringliteral">&#39;&lt;/e_HOMOm&#39;</span>//trim(ival)//<span class="stringliteral">&#39;&gt;&#39;</span></div>
@@ -187,15 +187,15 @@
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;           &lt;/molecule&gt;&#39;</span></div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;           &lt;molecule name=&quot;B&quot;&gt;&#39;</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keywordflow">do</span> i = 1, homobsub</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;   <span class="keyword">write</span>(ival,*) i-1</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homobsub</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;   <span class="keyword">write</span>(ival,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>-1</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(ival)</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;   <span class="keywordflow">if</span> ( qcp .eq. <span class="stringliteral">&quot;T&quot;</span> ) <span class="keywordflow">then</span> </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <span class="keyword">write</span>(pval,*) dimen(homobind(i))</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <span class="keyword">write</span>(pval,*) dimen(homobind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (qcp.eq.<span class="stringliteral">&quot;G&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="keyword">write</span>(pval,*) molbener(homobsub+1-i)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="keyword">write</span>(pval,*) molbener(homobsub+1-<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (qcp.eq.<span class="stringliteral">&quot;GW&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keyword">write</span>(pval,*) qpe_molb(homobsub+1-i)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keyword">write</span>(pval,*) qpe_molb(homobsub+1-<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;   <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(pval)</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;   printval=<span class="stringliteral">&#39;               &lt;e_HOMOm&#39;</span>//trim(ival)//<span class="stringliteral">&#39;&gt;&#39;</span>//trim(pval) // <span class="stringliteral">&#39;&lt;/e_HOMOm&#39;</span>//trim(ival)//<span class="stringliteral">&#39;&gt;&#39;</span></div>
@@ -204,16 +204,16 @@
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;           &lt;/molecule&gt;&#39;</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;               &lt;dimer name=&quot;integrals&quot;&gt;&#39;</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordflow">do</span> i = 1, homoasub</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;   <span class="keyword">write</span>(ival,*) i-1</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, homoasub</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;   <span class="keyword">write</span>(ival,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>-1</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(ival)</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;   <span class="keywordflow">do</span> j = 1, homobsub   </div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      <span class="keyword">write</span>(jval,*) j-1</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(jval)</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="keywordflow">if</span> (qcp.eq.<span class="stringliteral">&quot;T&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;         <span class="keyword">write</span>(pval,*) j_hole(i,j)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;         <span class="keyword">write</span>(pval,*) j_hole(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;         <span class="keyword">write</span>(pval,*) j_hole(homoasub+1-i,homobsub+1-j)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;         <span class="keyword">write</span>(pval,*) j_hole(homoasub+1-<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,homobsub+1-j)</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(pval)</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      printval=<span class="stringliteral">&#39;                    &lt;T_&#39;</span>//trim(ival)//trim(jval)//<span class="stringliteral">&#39;&gt;&#39;</span>//trim(pval) // <span class="stringliteral">&#39;&lt;/T_&#39;</span>//trim(ival)//trim(jval)//<span class="stringliteral">&#39;&gt;&#39;</span></div>
@@ -264,15 +264,15 @@
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;        &lt;channel name=&quot;multi&quot;&gt;&#39;</span></div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;               &lt;molecule name=&quot;A&quot;&gt;&#39;</span></div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keywordflow">do</span> i = 1, lumoasub</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;   <span class="keyword">write</span>(ival,*) i-1</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;   <span class="keyword">write</span>(ival,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>-1</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(ival)</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;   <span class="keywordflow">if</span> (qcp .eq. <span class="stringliteral">&quot;T&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <span class="keyword">write</span>(pval,*) dimen(lumoaind(i))</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <span class="keyword">write</span>(pval,*) dimen(lumoaind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (qcp.eq.<span class="stringliteral">&quot;G&quot;</span>)<span class="keywordflow">then</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <span class="keyword">write</span>(pval,*) molaener(homoasub+i)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <span class="keyword">write</span>(pval,*) molaener(homoasub+<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;   <span class="keywordflow">elseif</span> (qcp.eq.<span class="stringliteral">&quot;GW&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      <span class="keyword">write</span>(pval,*) qpe_mola(homoasub+i)</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      <span class="keyword">write</span>(pval,*) qpe_mola(homoasub+<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;   <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(pval)</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;   printval=<span class="stringliteral">&#39;                    &lt;e_LUMOp&#39;</span>//trim(ival)//<span class="stringliteral">&#39;&gt;&#39;</span>//trim(pval)//<span class="stringliteral">&#39;&lt;/e_LUMOp&#39;</span>//trim(ival)//<span class="stringliteral">&#39;&gt;&#39;</span></div>
@@ -282,15 +282,15 @@
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;               &lt;/molecule&gt;&#39;</span></div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;               &lt;molecule name=&quot;B&quot;&gt;&#39;</span></div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="keywordflow">do</span> i = 1, lumobsub</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;   <span class="keyword">write</span>(ival,*) i-1</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumobsub</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;   <span class="keyword">write</span>(ival,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>-1</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(ival)</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;   <span class="keywordflow">if</span> (qcp .eq. <span class="stringliteral">&quot;T&quot;</span> ) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      <span class="keyword">write</span>(pval,*) dimen(lumobind(i))</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      <span class="keyword">write</span>(pval,*) dimen(lumobind(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>))</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (qcp.eq.<span class="stringliteral">&quot;G&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      <span class="keyword">write</span>(pval,*) molbener(homobsub+i)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      <span class="keyword">write</span>(pval,*) molbener(homobsub+<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;   <span class="keywordflow">else</span> <span class="keywordflow">if</span> (qcp.eq.<span class="stringliteral">&quot;GW&quot;</span>) <span class="keywordflow">then</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      <span class="keyword">write</span>(pval,*) qpe_molb(homobsub+i)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      <span class="keyword">write</span>(pval,*) qpe_molb(homobsub+<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;   <span class="keywordflow">end if</span></div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(pval)</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;   printval=<span class="stringliteral">&#39;                    &lt;e_LUMOp&#39;</span>//trim(ival)//<span class="stringliteral">&#39;&gt;&#39;</span>//trim(pval)//<span class="stringliteral">&#39;&lt;/e_LUMOp&#39;</span>//trim(ival)//<span class="stringliteral">&#39;&gt;&#39;</span></div>
@@ -298,13 +298,13 @@
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keywordflow">end do</span></div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;               &lt;/molecule&gt;&#39;</span></div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">write</span>(16,*) <span class="stringliteral">&#39;               &lt;dimer name=&quot;integrals&quot;&gt;&#39;</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordflow">do</span> i = 1, lumoasub</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;   <span class="keyword">write</span>(ival,*) i-1</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordflow">do</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> = 1, lumoasub</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;   <span class="keyword">write</span>(ival,*) <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>-1</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;   CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(ival)</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;   <span class="keywordflow">do</span> j = 1, lumobsub   </div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="keyword">write</span>(jval,*) j-1</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(jval)</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <span class="keyword">write</span>(pval,*) j_elec(i,j)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <span class="keyword">write</span>(pval,*) j_elec(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>,j)</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      CALL <a class="code" href="classstrings.html#a15595b232883855ee75d1044d27694bd">removesp</a>(pval)</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      printval=<span class="stringliteral">&#39;                    &lt;T_&#39;</span>//trim(ival)//trim(jval)//<span class="stringliteral">&#39;&gt;&#39;</span>//trim(pval) // <span class="stringliteral">&#39;&lt;/T_&#39;</span>//trim(ival)//trim(jval)//<span class="stringliteral">&#39;&gt;&#39;</span></div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;      <span class="keyword">write</span>(16,*) trim(printval)</div>

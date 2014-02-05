@@ -126,9 +126,9 @@
 <div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="classvotca_1_1tools_1_1Database.html#afb2a4e03b21b167516b2313d73c96581">   72</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a> *<a class="code" href="classvotca_1_1tools_1_1Database.html#afb2a4e03b21b167516b2313d73c96581">Database::Prepare</a>(<span class="keywordtype">string</span> sql)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">//char *error;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    sqlite3_stmt *stmt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    sqlite3_stmt *<a class="code" href="ImagePotential_8h.html#a81eec84b9709b42225e8c020fc4b6935">stmt</a>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> ret = sqlite3_prepare_v2(<a class="code" href="classvotca_1_1tools_1_1Database.html#a6e2e8aba09680293e0243ce7a42f7a1d">_db</a>,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            sql.c_str(), -1, &amp;stmt, NULL);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            sql.c_str(), -1, &amp;<a class="code" href="ImagePotential_8h.html#a81eec84b9709b42225e8c020fc4b6935">stmt</a>, NULL);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">if</span>(ret != SQLITE_OK)</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">&quot;prepare statement failed&quot;</span>) +  <span class="stringliteral">&quot;\nSQL: &quot;</span> + sql);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Statement.html" title="Wrapper for sqlite prepared statements.">Statement</a>(stmt);</div>

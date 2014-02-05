@@ -72,44 +72,229 @@
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __VOTCA_KMC_EVENT_H_</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __VOTCA_KMC_EVENT_H_</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="carrier_8h.html">votca/kmc/carrier.h</a>&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>kmc {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816">   27</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816">EventType</a> { <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816a4a2e561ad84f1be8d6a757d6272b023d">_ElectronTransfer</a>, <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816ae75000425f5da807d8f9265123819565">_Injection</a>, <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816a7cec3dd316baa321f59811533ba48743">_Collection</a>, <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816a656da4a2179cb3f495b5814e3b1a573f">_Recombination</a>, <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816a5b6ffe10518f792ce4b42d1e6a0dde11">_Dissociation</a>, <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816a309a01c7addf3c7d9bbd91cb32e32e81">_ExcitonFormation</a> };</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="state_8h.html">votca/kmc/state.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="graph_8h.html">votca/kmc/graph.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="globaleventinfo_8h.html">votca/kmc/globaleventinfo.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>kmc {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * Abstract base class for all events  </span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1Event.html">Event</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a599d2c79f619622a4c3bf7ae5aa910e4">   36</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1Event.html#a599d2c79f619622a4c3bf7ae5aa910e4">Initialize</a>(<a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a> *carrier1, <a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a> *carrier2) { ; }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> onExecute() = 0;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a3d201603e0e5c68e333f47701ebb77a5">   40</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816">EventType</a> &amp;<a class="code" href="classvotca_1_1kmc_1_1Event.html#a3d201603e0e5c68e333f47701ebb77a5">getEventType</a>(){ <span class="keywordflow">return</span> _type; }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// maybe make _rate public (check the efficiency)) or inline it</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#af78f9e3de4141fb069ee7ecdd326b146">   43</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;<a class="code" href="classvotca_1_1kmc_1_1Event.html#af78f9e3de4141fb069ee7ecdd326b146">getRate</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _rate; }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#aa238ab988a0aea8ad4018615832049a4">   48</a></span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#a947182e35e1e38805b1269e503c32816">EventType</a> <a class="code" href="classvotca_1_1kmc_1_1Event.html#aa238ab988a0aea8ad4018615832049a4">_type</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#aeeb8af529c6402290281af76a7df2a33">   49</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1Event.html#aeeb8af529c6402290281af76a7df2a33">_rate</a>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a334b1729ce32dd67484d2dd9b67b6879">   50</a></span>&#160;    <a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a> *<a class="code" href="classvotca_1_1kmc_1_1Event.html#a334b1729ce32dd67484d2dd9b67b6879">_carrier1</a>; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a6480b84790901d981109a8e864cce120">   51</a></span>&#160;    <a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a> *<a class="code" href="classvotca_1_1kmc_1_1Event.html#a6480b84790901d981109a8e864cce120">_carrier2</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}} </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daacc63c2ae79de1ed93f7a46207342c97e">   29</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280da">From_step_event</a> {<a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daae2a503102750b8f99e024caa14f031f0">Fromtransfer</a>, <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daacc63c2ae79de1ed93f7a46207342c97e">Injection</a>, <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daa6374a8115f31b0b305ea4656c6a222db">Fromnotinbox</a>};</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aa712a8cfc8f5848dab12b55453dfa8648">   30</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> {<a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aa712a8cfc8f5848dab12b55453dfa8648">Totransfer</a>, <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aaa27ef240b520990ce81f5a5f25e76b87">Recombination</a>, <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aa2ffde056394692183a9e264ce7bc29f4">Collection</a>, <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aaf0ec8bf9bd5b0aea81aa26d17ac3253f">Blocking</a>, <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aae670339146c63618da2433fcca29f4b8">Tonotinbox</a>};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * Abstract base class for all events  </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1kmc_1_1Event.html">Event</a> {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#aab9007e63f1f731ccc2891002847da8a">   39</a></span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280da">From_step_event</a> <a class="code" href="classvotca_1_1kmc_1_1Event.html#aab9007e63f1f731ccc2891002847da8a">fromtype</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a64e71df3dad842eb2324f28ea72ce69c">   40</a></span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> <a class="code" href="classvotca_1_1kmc_1_1Event.html#a64e71df3dad842eb2324f28ea72ce69c">totype</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#af1a81a8767aa9d19289a928bf210004d">   41</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1Event.html#af1a81a8767aa9d19289a928bf210004d">rate</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#aa3e0cc2018ac800c1d73ec545338280f">   42</a></span>&#160;    <a class="code" href="classvotca_1_1kmc_1_1Graph.html">Graph</a>* <a class="code" href="classvotca_1_1kmc_1_1Event.html#aa3e0cc2018ac800c1d73ec545338280f">graph</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a190493bf2215bb3873c642605bd44ef2">   44</a></span>&#160;    <a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a>* <a class="code" href="classvotca_1_1kmc_1_1Event.html#a190493bf2215bb3873c642605bd44ef2">carrier</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#ad3f26c4863e3872edaaeb4403be62007">   45</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1kmc_1_1Event.html#ad3f26c4863e3872edaaeb4403be62007">tonode_ID</a>;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a8d2390a6d33a4a6f2c18c37a88434737">   47</a></span>&#160;    <a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* <a class="code" href="classvotca_1_1kmc_1_1Event.html#a8d2390a6d33a4a6f2c18c37a88434737">electrode</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#ad98805c5b428bbae38e719900567d7a9">   48</a></span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> <a class="code" href="classvotca_1_1kmc_1_1Event.html#ad98805c5b428bbae38e719900567d7a9">inject_cartype</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> Set_injection_event(<a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* electrode, <span class="keywordtype">int</span> injectnode_ID, <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> carrier_type,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                 <span class="keywordtype">double</span> from_longrange, <span class="keywordtype">double</span> to_longrange, <a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html">Globaleventinfo</a>* globevent);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> Set_non_injection_event(vector&lt;Node*&gt; nodes, <a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a>* carrier, <span class="keywordtype">int</span> jump_ID,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                 <span class="keywordtype">double</span> from_longrange, <span class="keywordtype">double</span> to_longrange, <a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html">Globaleventinfo</a>* globevent);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280da">From_step_event</a> Determine_non_injection_from_event_type(<a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a>* carrier);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> Determine_non_injection_to_event_type(<a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a>* carrier, <span class="keywordtype">int</span> jumpID, <a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* carriernode);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> Determine_injection_to_event_type(<a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> carrier_type, <a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* electrode, <span class="keywordtype">int</span> inject_nodeID);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">double</span> Compute_event_rate(<a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* fromnode, <span class="keywordtype">int</span> jump_ID, <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> carrier_type,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                            <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280da">From_step_event</a> from_event_type, <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> to_event_type,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                            <span class="keywordtype">double</span> from_shortrange, <span class="keywordtype">double</span> to_shortrange, <span class="keywordtype">double</span> from_longrange, <span class="keywordtype">double</span> to_longrange,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                            <a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html">Globaleventinfo</a>* globaleventinfo);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a6de18d208335d983942af35df8c1d43d">   67</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1Event.html#a6de18d208335d983942af35df8c1d43d">Event::Set_injection_event</a>(<a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* electrode, <span class="keywordtype">int</span> injectnode_ID, <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> carrier_type,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                              <span class="keywordtype">double</span> from_longrange, <span class="keywordtype">double</span> to_longrange, <a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html">Globaleventinfo</a>* globevent) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    fromtype = <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daacc63c2ae79de1ed93f7a46207342c97e">Injection</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    totype = Determine_injection_to_event_type(carrier_type, electrode, injectnode_ID);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    rate = Compute_event_rate(electrode, injectnode_ID, carrier_type, fromtype, totype,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                              0, 0.0, from_longrange, to_longrange, globevent);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;       </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a039eb8637beb743db02bbc73f5248700">   77</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1kmc_1_1Event.html#a039eb8637beb743db02bbc73f5248700">Event::Set_non_injection_event</a>(vector&lt;Node*&gt; nodes, <a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a>* carrier, <span class="keywordtype">int</span> jump_ID,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                 <span class="keywordtype">double</span> from_longrange, <span class="keywordtype">double</span> to_longrange, <a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html">Globaleventinfo</a>* globaleventinfo) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    fromtype = Determine_non_injection_from_event_type(carrier);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    totype = Determine_non_injection_to_event_type(carrier, jump_ID, nodes[carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#ac1907aa2c2462e1461a32882c10177e3">carrier_node_ID</a>]);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    rate = Compute_event_rate(nodes[carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#ac1907aa2c2462e1461a32882c10177e3">carrier_node_ID</a>], jump_ID, carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a5fe65c401e76d9d9681020d919001371">carrier_type</a>, fromtype, totype,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                     carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a7306901187239f45a6ef8019c7196b72">srfrom</a>, carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a367147d5cb294a5290ab4176bc3b4814">srto</a>[jump_ID], from_longrange, to_longrange,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                     globaleventinfo);    </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a0cf534932efb1d63d1c85250bc0e100c">   87</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1kmc_1_1Event.html#a0cf534932efb1d63d1c85250bc0e100c">Event::Compute_event_rate</a>(<a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* fromnode, <span class="keywordtype">int</span> jump_ID, <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> carrier_type,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                     <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280da">From_step_event</a> from_event_type, <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> to_event_type,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                     <span class="keywordtype">double</span> from_shortrange, <span class="keywordtype">double</span> to_shortrange, <span class="keywordtype">double</span> from_longrange, <span class="keywordtype">double</span> to_longrange,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                     <a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html">Globaleventinfo</a>* globevent){</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* jumptonode = fromnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a496b678092e5d99361ee10da9b2dbc78">pairing_nodes</a>[jump_ID];</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">double</span> prefactor = 1.0;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">double</span> charge;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">double</span> static_node_energy_from;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">double</span> static_node_energy_to;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span>(carrier_type == <a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7aa9e1f89e67b88a8ebd7821714f1b0dc3e">Electron</a>) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        charge = 1.0;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        prefactor *= globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a907ede5c24628c7efaf81dd7b75fc3ae">electron_prefactor</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        static_node_energy_from = fromnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a87e1a05d0b0124423b5df1643e9e92f0">static_electron_node_energy</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        static_node_energy_to = jumptonode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a87e1a05d0b0124423b5df1643e9e92f0">static_electron_node_energy</a>; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        charge = -1.0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        prefactor *= globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a73de22670ac54fad6647e466e5a96b3e">hole_prefactor</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        static_node_energy_from = fromnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#abc1a61172eae3e2f39f607e162ade91a">static_hole_node_energy</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        static_node_energy_to = jumptonode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#abc1a61172eae3e2f39f607e162ade91a">static_hole_node_energy</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">//first calculate quantum mechanical wavefunction overlap</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">myvec</a> distancevector = fromnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a53468d283cd8d8c879c83d891779e4b6">static_event_info</a>[jump_ID].distance;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">double</span> distance = <a class="code" href="namespacevotca_1_1tools.html#abc0c90bbc5f6f5ad2695b3377f7e5684">abs</a>(distancevector);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">double</span> distancefactor = exp(-1.0*globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a44879122f457db5ab1b8d0b4f4e34a75">alpha</a>*distance);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">//second, calculate boltzmann factor (Coulomb interaction still have to be implemented)</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;   </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">double</span> init_energy;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">double</span> final_energy;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">double</span> selfimpot_from = fromnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a69665d9309e3b06447b38add33411bb5">self_image_potential</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">double</span> selfimpot_to = jumptonode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a69665d9309e3b06447b38add33411bb5">self_image_potential</a>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">double</span> fromtype_energy = 0.0;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">double</span> totype_energy = 0.0;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">if</span>(from_event_type == <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daacc63c2ae79de1ed93f7a46207342c97e">Injection</a>) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        fromtype_energy -= globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#adf6189870749d372b9671420a77ea41c">injection_barrier</a>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        prefactor *= globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a693557bf8a87ae1843645d807c4429f9">injection_prefactor</a>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span>(to_event_type == <a class="code" href="classvotca_1_1kmc_1_1Recombination.html">Recombination</a>) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        totype_energy -= globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a56ffed083b330bf2e3645cc08eb2e97e">binding_energy</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        prefactor *= globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a6f8711eaca5d96dd648e6e42aeb64b31">recombination_prefactor</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">if</span>(to_event_type == <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aa2ffde056394692183a9e264ce7bc29f4">Collection</a>) {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        totype_energy -= globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#adf6189870749d372b9671420a77ea41c">injection_barrier</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        prefactor *= globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a717e3f62938ca3e26d8bf1db6cc1b7e8">collection_prefactor</a>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">double</span> coulomb_from;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordtype">double</span> coulomb_to;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">if</span> ((from_event_type != <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daacc63c2ae79de1ed93f7a46207342c97e">Injection</a>)) { </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        coulomb_from = globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a72bf16b60724b1ba7f652ac3488d7a00">coulomb_strength</a>*(from_shortrange+charge*from_longrange);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        coulomb_to = globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a72bf16b60724b1ba7f652ac3488d7a00">coulomb_strength</a>*(to_shortrange+charge*to_longrange);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(from_event_type == <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daacc63c2ae79de1ed93f7a46207342c97e">Injection</a>){</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        coulomb_from = 0.0;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        coulomb_to = charge*globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a72bf16b60724b1ba7f652ac3488d7a00">coulomb_strength</a>*(jumptonode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a077e585c21f01481de37662140388144">injection_potential</a>+to_longrange);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    init_energy = static_node_energy_from + selfimpot_from + coulomb_from;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    final_energy = static_node_energy_to + selfimpot_to + coulomb_to;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordtype">double</span> energycontrib;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">double</span> energyfactor;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">if</span> (globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#ae647e346fe3b08bcd8f262451c3e94fd">formalism</a> == <span class="stringliteral">&quot;Miller&quot;</span>) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span>(to_event_type == <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aaf0ec8bf9bd5b0aea81aa26d17ac3253f">Blocking</a>) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            energyfactor = 0.0; <span class="comment">// Keep this here for eventual simulation of bipolaron formation for example</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>((from_event_type == <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daa6374a8115f31b0b305ea4656c6a222db">Fromnotinbox</a>)&amp;&amp;(to_event_type == <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aae670339146c63618da2433fcca29f4b8">Tonotinbox</a>)) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            energyfactor = 0.0; <span class="comment">// Keep this here for eventual simulation of one-site events (on-node generation)</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            energycontrib = final_energy - init_energy -charge*globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#a554942b361327196000d4bef5a5282a8">efield</a>*distancevector.<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">if</span> (energycontrib&gt;0.0) {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                energyfactor = exp(-1.0*globevent-&gt;<a class="code" href="classvotca_1_1kmc_1_1Globaleventinfo.html#ab5f8400b63cc2f370d954cf46ba31dd1">beta</a>*energycontrib);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                energyfactor = 1.0;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordtype">double</span> jump_rate = prefactor*distancefactor*energyfactor;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> jump_rate;    </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#ad3999c0195fa5ce5f4642fd66ccadcf9">  180</a></span>&#160;<a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280da">From_step_event</a> <a class="code" href="classvotca_1_1kmc_1_1Event.html#ad3999c0195fa5ce5f4642fd66ccadcf9">Event::Determine_non_injection_from_event_type</a>(<a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a>* carrier){</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280da">From_step_event</a> from_type;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">if</span>(!carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a9fd5b97ad006b4d7e2334f152c2b5b60">is_in_sim_box</a>){</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        from_type = <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daa6374a8115f31b0b305ea4656c6a222db">Fromnotinbox</a>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        from_type = <a class="code" href="namespacevotca_1_1kmc.html#aa0e2e512b91e313222a1833af0b280daae2a503102750b8f99e024caa14f031f0">Fromtransfer</a>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">return</span> from_type;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#aae75ff4bcbe984037913914b736d5199">  195</a></span>&#160;<a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> <a class="code" href="classvotca_1_1kmc_1_1Event.html#aae75ff4bcbe984037913914b736d5199">Event::Determine_non_injection_to_event_type</a>(<a class="code" href="classvotca_1_1kmc_1_1Carrier.html">Carrier</a>* carrier, <span class="keywordtype">int</span> jumpID, <a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* carriernode){</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> to_type;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">if</span>(!carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a9fd5b97ad006b4d7e2334f152c2b5b60">is_in_sim_box</a>){</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        to_type = <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aae670339146c63618da2433fcca29f4b8">Tonotinbox</a>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordtype">int</span> node_degree = carriernode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a496b678092e5d99361ee10da9b2dbc78">pairing_nodes</a>.size();</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span>(jumpID &lt; node_degree) { <span class="comment">// hopping event exists in graph</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* jumpnode = carriernode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a496b678092e5d99361ee10da9b2dbc78">pairing_nodes</a>[jumpID];</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">if</span>(jumpnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#aaffd79de534db614629af4cecea00ce4">carriers_on_node</a>.empty()){</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                to_type = <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aa712a8cfc8f5848dab12b55453dfa8648">Totransfer</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(jumpnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#aaffd79de534db614629af4cecea00ce4">carriers_on_node</a>[0]-&gt;carrier_type == carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a5fe65c401e76d9d9681020d919001371">carrier_type</a>) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                to_type = <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aaf0ec8bf9bd5b0aea81aa26d17ac3253f">Blocking</a>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(jumpnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#aaffd79de534db614629af4cecea00ce4">carriers_on_node</a>[0]-&gt;carrier_type != carrier-&gt;<a class="code" href="classvotca_1_1kmc_1_1Carrier.html#a5fe65c401e76d9d9681020d919001371">carrier_type</a>) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                to_type = <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aaa27ef240b520990ce81f5a5f25e76b87">Recombination</a>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            to_type = <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aae670339146c63618da2433fcca29f4b8">Tonotinbox</a>;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">return</span> to_type;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="code" href="classvotca_1_1kmc_1_1Event.html#a9a764f7f808184eea33bf8d5249c36e8">  224</a></span>&#160;<a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81a">To_step_event</a> <a class="code" href="classvotca_1_1kmc_1_1Event.html#a9a764f7f808184eea33bf8d5249c36e8">Event::Determine_injection_to_event_type</a>(<a class="code" href="namespacevotca_1_1kmc.html#a4d7b92d90db214f312a06142173e6d7a">CarrierType</a> carrier_type, <a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* electrode, <span class="keywordtype">int</span> inject_nodeID){</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="classvotca_1_1kmc_1_1Node.html">Node</a>* injectnode = electrode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#a496b678092e5d99361ee10da9b2dbc78">pairing_nodes</a>[inject_nodeID];</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">if</span>(injectnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#aaffd79de534db614629af4cecea00ce4">carriers_on_node</a>.empty()){</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        totype = <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aa712a8cfc8f5848dab12b55453dfa8648">Totransfer</a>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(injectnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#aaffd79de534db614629af4cecea00ce4">carriers_on_node</a>[0]-&gt;carrier_type == carrier_type) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        totype = <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aaf0ec8bf9bd5b0aea81aa26d17ac3253f">Blocking</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(injectnode-&gt;<a class="code" href="classvotca_1_1kmc_1_1Node.html#aaffd79de534db614629af4cecea00ce4">carriers_on_node</a>[0]-&gt;carrier_type != carrier_type) {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        totype = <a class="code" href="namespacevotca_1_1kmc.html#ad03a10677eafbf62bab0ae4c06bcb81aaa27ef240b520990ce81f5a5f25e76b87">Recombination</a>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">return</span> totype;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}} </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
