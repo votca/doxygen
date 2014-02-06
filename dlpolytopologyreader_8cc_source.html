@@ -430,39 +430,40 @@
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(line, WhiteSpace);</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        vector&lt;double&gt; fields;</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        box_vectors[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>]=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(fields[0],fields[1],fields[2]);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor"></span>        cout &lt;&lt; <span class="stringliteral">&quot;Read from initial configuration file : &#39;&quot;</span> &lt;&lt; fixed &lt;&lt; setprecision(10) &lt;&lt; setw(20) &lt;&lt; fields[0] &lt;&lt; setw(20) &lt;&lt; fields[1] &lt;&lt; setw(20) &lt;&lt; fields[2] &lt;&lt; <span class="stringliteral">&quot;&#39; - box vector # &quot;</span> &lt;&lt; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1 &lt;&lt; <span class="stringliteral">&quot; (Angs)&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor"></span>      }</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box(box_vectors[0],box_vectors[1],box_vectors[2]);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;      <span class="keywordflow">if</span>(mpbct == 0) {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;      }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(mpbct == 1 || mpbct == 2 ) {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7">BoundaryCondition::typeOrthorhombic</a>;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      }</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(mpbct == 3) {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538">BoundaryCondition::typeTriclinic</a>;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;      }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;      top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(box,pbc_type);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      fl.close();</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="preprocessor"></span>      cout &lt;&lt; <span class="stringliteral">&quot;Read from initial configuration file : box/cell matrix - done with boundaries&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor"></span>    }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;NOTE: could not open dlpoly file &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;, so no PBC set in topology - assuming &#39;open box&#39;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    }</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;}</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;}}</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="comment">//Angs -&gt; nm</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        box_vectors[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>]=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(fields[0]/10.0,fields[1]/10.0,fields[2]/10.0);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor"></span>        cout &lt;&lt; <span class="stringliteral">&quot;Read from initial configuration file : &#39;&quot;</span> &lt;&lt; fixed &lt;&lt; setprecision(10) &lt;&lt; setw(20) &lt;&lt; fields[0] &lt;&lt; setw(20) &lt;&lt; fields[1] &lt;&lt; setw(20) &lt;&lt; fields[2] &lt;&lt; <span class="stringliteral">&quot;&#39; - box vector # &quot;</span> &lt;&lt; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1 &lt;&lt; <span class="stringliteral">&quot; (nm)&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor"></span>      }</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box(box_vectors[0],box_vectors[1],box_vectors[2]);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;      <span class="keywordflow">if</span>(mpbct == 0) {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;      }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(mpbct == 1 || mpbct == 2 ) {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7">BoundaryCondition::typeOrthorhombic</a>;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      }</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(mpbct == 3) {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538">BoundaryCondition::typeTriclinic</a>;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;      }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(box,pbc_type);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;      fl.close();</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor"></span>      cout &lt;&lt; <span class="stringliteral">&quot;Read from initial configuration file : box/cell matrix - done with boundaries&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="preprocessor"></span>    }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;NOTE: could not open dlpoly file &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;, so no PBC set in topology - assuming &#39;open box&#39;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;}</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;}}</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
