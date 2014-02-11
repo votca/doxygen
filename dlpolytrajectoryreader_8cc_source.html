@@ -141,7 +141,7 @@
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> hasVs  = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> hasFs  = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">int</span> nerrt = 0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> nerrt = 0;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">string</span> line;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
@@ -245,7 +245,7 @@
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        vector&lt;string&gt; fields;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(fields);</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span>( fields.size() &lt; 7 ) </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span>( fields.size() &lt; 6 ) </div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: too few directive switches (&lt;6) in &#39;timestep&#39; record&quot;</span>);      </div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        nstep  = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(fields[1]);</div>
@@ -272,113 +272,114 @@
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="comment">// total time - calculated as product due to differences between DL_POLY versions in HISTORY formats</span></div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2e350da244c24540d9996b8a840994c0">setTime</a>(nstep*dtime);</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="namespacevotca_1_1tools.html#abc0c90bbc5f6f5ad2695b3377f7e5684">std::abs</a>(stime - top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a1c9be221d3a494044d92e3283fe42da6">getTime</a>()) &gt; 1.e-10 ) {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;          <span class="keywordflow">if</span>( nerrt &lt; 11 ) {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Check: nstep = &quot;</span> &lt;&lt; nstep &lt;&lt; <span class="stringliteral">&quot;, dt = &quot;</span> &lt;&lt; dtime &lt;&lt; <span class="stringliteral">&quot;, time = &quot;</span> &lt;&lt; top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a1c9be221d3a494044d92e3283fe42da6">getTime</a>() &lt;&lt; <span class="stringliteral">&quot; (correct?)&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;          }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;          <span class="keywordflow">else</span> <span class="keywordflow">if</span>( nerrt == 11 ) {</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Check: timestep - more than 10 mismatches in total time found...&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;          }</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keywordflow">if</span>(npbct == 0) {</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;          pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        }</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(npbct == 1 || npbct == 2 ) {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;          pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7">BoundaryCondition::typeOrthorhombic</a>;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        }</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(npbct == 3) {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;          pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538">BoundaryCondition::typeTriclinic</a>;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> box_vectors[3];</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0;<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>&lt;3;<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>++) { <span class="comment">// read 3 box/cell lines</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor"></span>        cout &lt;&lt; <span class="stringliteral">&quot;Read from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39; - box vector # &quot;</span> &lt;&lt; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1 &lt;&lt; endl;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keywordflow">if</span>(_fl.eof())</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in &quot;</span>+_fname+<span class="stringliteral">&quot;, when reading box vector&quot;</span>+</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;              boost::lexical_cast&lt;string&gt;(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>));</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        vector&lt;double&gt; fields;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="comment">//Angs -&gt; nm</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        box_vectors[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>]=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(fields[0]/10.0,fields[1]/10.0,fields[2]/10.0);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box(box_vectors[0],box_vectors[1],box_vectors[2]);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(box,pbc_type);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0;<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>&lt;natoms;<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>++){</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;          <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line); <span class="comment">//atom header line</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor"></span>          cout &lt;&lt; <span class="stringliteral">&quot;Read from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;          <span class="keywordflow">if</span>(_fl.eof())</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in &quot;</span>+_fname+<span class="stringliteral">&quot;, when reading atom/bead # &quot;</span> +</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                boost::lexical_cast&lt;string&gt;(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1));</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;          vector&lt;string&gt; fields;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;          <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;          tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(fields);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;          <span class="keywordtype">int</span> <span class="keywordtype">id</span>=<a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(fields[1]);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          <span class="keywordflow">if</span> (<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1 != <span class="keywordtype">id</span> )</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected atom/bead index in &quot;</span>+_fname+<span class="stringliteral">&quot; : expected &quot;</span> +</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                 boost::lexical_cast&lt;string&gt;(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1) + <span class="stringliteral">&quot; but got &quot;</span> + boost::lexical_cast&lt;string&gt;(<span class="keywordtype">id</span>));</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        }</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a> = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> atom_vec[3];</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;min(navecs,2)+1;j++){</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;          <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line); <span class="comment">//read atom positions</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor"></span>          cout &lt;&lt; <span class="stringliteral">&quot;Read from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;          <span class="keywordflow">if</span>(_fl.eof())</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in &quot;</span>+_fname+<span class="stringliteral">&quot; when reading atom/bead vector # &quot;</span> +</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                boost::lexical_cast&lt;string&gt;(j) + <span class="stringliteral">&quot; of atom &quot;</span> + <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1) );</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;          vector&lt;double&gt; fields;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;          <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;          tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;          <span class="comment">//Angs -&gt; nm</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;          atom_vec[j]=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(fields[0]/10.0,fields[1]/10.0,fields[2]/10.0);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a0daade7eec7664a2ed25e1541c127351">setPos</a>(atom_vec[0]);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor"></span>        cout &lt;&lt; <span class="stringliteral">&quot;Crds from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; atom_vec[0] &lt;&lt; endl;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span> (navecs &gt; 0) {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;          b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad853fdd77951a390ba7d6ff8b4b078ae">setVel</a>(atom_vec[1]);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor"></span>          cout &lt;&lt; <span class="stringliteral">&quot;Vels from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; atom_vec[1] &lt;&lt; endl;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="preprocessor"></span>          <span class="keywordflow">if</span> (navecs &gt; 1) {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#af104565ecb5304fc372b75edc9812804">setF</a>(atom_vec[2]);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor"></span>            cout &lt;&lt; <span class="stringliteral">&quot;Frcs from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; atom_vec[2] &lt;&lt; endl;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor"></span>          }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      }</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    }</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">return</span> !_fl.eof();</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;}</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}}</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="namespacevotca_1_1tools.html#abc0c90bbc5f6f5ad2695b3377f7e5684">std::abs</a>(stime - top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a1c9be221d3a494044d92e3283fe42da6">getTime</a>()) &gt; 1.e-8 ) {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;          nerrt++;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;          <span class="keywordflow">if</span>( nerrt &lt; 11 ) {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Check: nstep = &quot;</span> &lt;&lt; nstep &lt;&lt; <span class="stringliteral">&quot;, dt = &quot;</span> &lt;&lt; dtime &lt;&lt; <span class="stringliteral">&quot;, time = &quot;</span> &lt;&lt; top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a1c9be221d3a494044d92e3283fe42da6">getTime</a>() &lt;&lt; <span class="stringliteral">&quot; (correct?)&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;          }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;          <span class="keywordflow">else</span> <span class="keywordflow">if</span>( nerrt == 11 ) {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Check: timestep - more than 10 mismatches in total time found...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;          }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordflow">if</span>(npbct == 0) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;          pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(npbct == 1 || npbct == 2 ) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7">BoundaryCondition::typeOrthorhombic</a>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(npbct == 3) {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;          pbc_type=<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538">BoundaryCondition::typeTriclinic</a>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> box_vectors[3];</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0;<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>&lt;3;<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>++) { <span class="comment">// read 3 box/cell lines</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor"></span>        cout &lt;&lt; <span class="stringliteral">&quot;Read from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39; - box vector # &quot;</span> &lt;&lt; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1 &lt;&lt; endl;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">if</span>(_fl.eof())</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in &quot;</span>+_fname+<span class="stringliteral">&quot;, when reading box vector&quot;</span>+</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;              boost::lexical_cast&lt;string&gt;(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>));</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        vector&lt;double&gt; fields;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="comment">//Angs -&gt; nm</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        box_vectors[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>]=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(fields[0]/10.0,fields[1]/10.0,fields[2]/10.0);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> box(box_vectors[0],box_vectors[1],box_vectors[2]);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(box,pbc_type);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0;<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>&lt;natoms;<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>++){</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;          <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line); <span class="comment">//atom header line</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor"></span>          cout &lt;&lt; <span class="stringliteral">&quot;Read from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;          <span class="keywordflow">if</span>(_fl.eof())</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in &quot;</span>+_fname+<span class="stringliteral">&quot;, when reading atom/bead # &quot;</span> +</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                boost::lexical_cast&lt;string&gt;(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1));</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;          vector&lt;string&gt; fields;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;          <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;          tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(fields);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          <span class="keywordtype">int</span> <span class="keywordtype">id</span>=<a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(fields[1]);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;          <span class="keywordflow">if</span> (<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1 != <span class="keywordtype">id</span> )</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected atom/bead index in &quot;</span>+_fname+<span class="stringliteral">&quot; : expected &quot;</span> +</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                 boost::lexical_cast&lt;string&gt;(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1) + <span class="stringliteral">&quot; but got &quot;</span> + boost::lexical_cast&lt;string&gt;(<span class="keywordtype">id</span>));</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a> = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> atom_vec[3];</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0;j&lt;min(navecs,2)+1;j++){</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;          <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line); <span class="comment">//read atom positions</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor"></span>          cout &lt;&lt; <span class="stringliteral">&quot;Read from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;          <span class="keywordflow">if</span>(_fl.eof())</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in &quot;</span>+_fname+<span class="stringliteral">&quot; when reading atom/bead vector # &quot;</span> +</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                boost::lexical_cast&lt;string&gt;(j) + <span class="stringliteral">&quot; of atom &quot;</span> + <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>+1) );</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;          vector&lt;double&gt; fields;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;          <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;          tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;          <span class="comment">//Angs -&gt; nm</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;          atom_vec[j]=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>(fields[0]/10.0,fields[1]/10.0,fields[2]/10.0);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a0daade7eec7664a2ed25e1541c127351">setPos</a>(atom_vec[0]);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor"></span>        cout &lt;&lt; <span class="stringliteral">&quot;Crds from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; atom_vec[0] &lt;&lt; endl;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span> (navecs &gt; 0) {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;          b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad853fdd77951a390ba7d6ff8b4b078ae">setVel</a>(atom_vec[1]);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor"></span>          cout &lt;&lt; <span class="stringliteral">&quot;Vels from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; atom_vec[1] &lt;&lt; endl;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="preprocessor"></span>          <span class="keywordflow">if</span> (navecs &gt; 1) {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#af104565ecb5304fc372b75edc9812804">setF</a>(atom_vec[2]);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor"></span>            cout &lt;&lt; <span class="stringliteral">&quot;Frcs from &quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; atom_vec[2] &lt;&lt; endl;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor"></span>          }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">return</span> !_fl.eof();</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
