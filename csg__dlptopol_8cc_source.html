@@ -250,7 +250,7 @@
 <div class="line"><a name="l00196"></a><span class="lineno"><a class="code" href="classDLPTopolApp.html#a33c1fae9922b6a856b1b845f5c3c3bb2">  196</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDLPTopolApp.html#a33c1fae9922b6a856b1b845f5c3c3bb2">DLPTopolApp::WriteMoleculeAtoms</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg)</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;{</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  out &lt;&lt; <span class="stringliteral">&quot;atoms &quot;</span> &lt;&lt; cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;# name mass charge nrept ifrozen (optional: ngroup, index, type, residue) \n&quot;</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;# name  mass  charge  nrept  ifrozen (optional: ngroup, index, name/type, type/residue, index/res-ID) \n&quot;</span>;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>&lt;cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>(); ++<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>) {</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>=cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#ab2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>);</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;       </div>
@@ -299,26 +299,27 @@
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        sout &lt;&lt; <span class="stringliteral">&quot; tab &quot;</span>;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>&lt;nb; ++<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;          sout &lt;&lt; ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a6fe5c01bfc4c08549391c57f6a4358a6">getBeadId</a>(<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>)+1 &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        sout &lt;&lt; <span class="stringliteral">&quot; # &quot;</span> &lt;&lt; ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a87c911adf31974aba1f875bb60f79ebb">getName</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    }</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">if</span>(sout.str()!=<span class="stringliteral">&quot;&quot;</span>) out &lt;&lt; n_entries &lt;&lt; endl &lt;&lt; sout.str();</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;}</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
-<div class="line"><a name="l00253"></a><span class="lineno"><a class="code" href="classDLPTopolApp.html#ab87f38b13a86630217572eb3c4ab2131">  253</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDLPTopolApp.html#ab87f38b13a86630217572eb3c4ab2131">DLPTopolApp::WriteMolecularType</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg, <span class="keywordtype">int</span> nummol)</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;{</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    out &lt;&lt; cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#acaab8d33edc32fe9e2a7fb43314887e1" title="get the name of the molecule">getName</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;nummols &quot;</span> &lt;&lt; nummol &lt;&lt; endl;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    WriteMoleculeAtoms(out, cg);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    WriteMoleculeInteractions(out, cg);</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;finish&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno"><a class="code" href="csg__dlptopol_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">  264</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="votca__property_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;{    </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <a class="code" href="classDLPTopolApp.html">DLPTopolApp</a> app;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#abf41008ac9573c3b2d4ea982443fc53a" title="executes the program">Exec</a>(argc, argv);        </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        sout &lt;&lt; <span class="stringliteral">&quot;   1.00000  0.00000&quot;</span> &lt;&lt; <span class="stringliteral">&quot; # &quot;</span> &lt;&lt; ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a87c911adf31974aba1f875bb60f79ebb">getName</a>() &lt;&lt; endl;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="comment">//sout &lt;&lt; &quot;   1.00000  0.00000&quot; &lt;&lt; &quot; # &quot; &lt;&lt; ic-&gt;getName() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">if</span>(sout.str()!=<span class="stringliteral">&quot;&quot;</span>) out &lt;&lt; n_entries &lt;&lt; endl &lt;&lt; sout.str();</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno"><a class="code" href="classDLPTopolApp.html#ab87f38b13a86630217572eb3c4ab2131">  254</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDLPTopolApp.html#ab87f38b13a86630217572eb3c4ab2131">DLPTopolApp::WriteMolecularType</a>(ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;cg, <span class="keywordtype">int</span> nummol)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;{</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    out &lt;&lt; cg.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#acaab8d33edc32fe9e2a7fb43314887e1" title="get the name of the molecule">getName</a>() &lt;&lt; endl;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;nummols &quot;</span> &lt;&lt; nummol &lt;&lt; endl;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    WriteMoleculeAtoms(out, cg);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    WriteMoleculeInteractions(out, cg);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;finish&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;}</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno"><a class="code" href="csg__dlptopol_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">  265</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="votca__property_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;{    </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <a class="code" href="classDLPTopolApp.html">DLPTopolApp</a> app;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> app.<a class="code" href="classvotca_1_1tools_1_1Application.html#abf41008ac9573c3b2d4ea982443fc53a" title="executes the program">Exec</a>(argc, argv);        </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
