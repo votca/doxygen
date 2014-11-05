@@ -260,11 +260,42 @@
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor"></span>}</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}}</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="namespacevotca_1_1tools.html#aef4efe58314fc9ce77156196baea1783">  236</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacevotca_1_1tools.html#aef4efe58314fc9ce77156196baea1783">linalg_eigenvalues_general</a>( ub::matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>,ub::matrix&lt;double&gt; &amp;B, ub::vector&lt;double&gt; &amp;E, ub::matrix&lt;double&gt; &amp;V)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#ifdef NOGSL</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;linalg_eigenvalues is not compiled-in due to disabling of GSL - recompile Votca Tools with GSL support&quot;</span>);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor"></span>    </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        gsl_error_handler_t *handler = gsl_set_error_handler_off();</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> N = A.size1();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="comment">// gsl does not handle conversion of a symmetric_matrix </span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        ub::matrix&lt;double&gt; _A( N,N );</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        _A = <a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        E.resize(N, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        V.resize(N, N, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        gsl_matrix_view A_view = gsl_matrix_view_array(&amp;_A(0,0), N, N);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        gsl_matrix_view B_view = gsl_matrix_view_array(&amp;B(0,0), N, N);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        gsl_vector_view E_view = gsl_vector_view_array(&amp;E(0), N);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        gsl_matrix_view V_view = gsl_matrix_view_array(&amp;V(0,0), N, N);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        gsl_eigen_gensymmv_workspace *w = gsl_eigen_gensymmv_alloc(N);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordtype">int</span> status = gsl_eigen_gensymmv(&amp;A_view.matrix,&amp;B_view.matrix, &amp;E_view.vector, &amp;V_view.matrix, w);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        gsl_eigen_gensymmv_sort(&amp;E_view.vector, &amp;V_view.matrix, GSL_EIGEN_SORT_VAL_ASC);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        gsl_eigen_gensymmv_free(w);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        gsl_set_error_handler(handler);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keywordflow">return</span> (status != 0);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor"></span>};</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}}</div>
 <div class="ttc" id="linalg_8h_html"><div class="ttname"><a href="linalg_8h.html">linalg.h</a></div></div>
 <div class="ttc" id="namespacevotca_1_1tools_html_a70042ba07c0a9b06bb6c6fa1e0dada20"><div class="ttname"><a href="namespacevotca_1_1tools.html#a70042ba07c0a9b06bb6c6fa1e0dada20">votca::tools::linalg_eigenvalues_symmetric</a></div><div class="ttdeci">bool linalg_eigenvalues_symmetric(ub::symmetric_matrix&lt; double &gt; &amp;A, ub::vector&lt; double &gt; &amp;E, ub::matrix&lt; double &gt; &amp;V)</div><div class="ttdoc">eigenvalues of a symmetric matrix A*x=E*x </div><div class="ttdef"><b>Definition:</b> <a href="gsl_2eigensystems_8cc_source.html#l00040">eigensystems.cc:40</a></div></div>
+<div class="ttc" id="namespacevotca_1_1tools_html_aef4efe58314fc9ce77156196baea1783"><div class="ttname"><a href="namespacevotca_1_1tools.html#aef4efe58314fc9ce77156196baea1783">votca::tools::linalg_eigenvalues_general</a></div><div class="ttdeci">bool linalg_eigenvalues_general(ub::matrix&lt; double &gt; &amp;A, ub::matrix&lt; double &gt; &amp;B, ub::vector&lt; double &gt; &amp;E, ub::matrix&lt; double &gt; &amp;V)</div><div class="ttdoc">eigenvalues of a symmetric matrix A*x=E*B*x double precision </div><div class="ttdef"><b>Definition:</b> <a href="gsl_2eigensystems_8cc_source.html#l00236">eigensystems.cc:236</a></div></div>
 <div class="ttc" id="namespacevotca_1_1tools_html_ac6505b9a0955e6b28ea9dba82777f622"><div class="ttname"><a href="namespacevotca_1_1tools.html#ac6505b9a0955e6b28ea9dba82777f622">votca::tools::linalg_eigenvalues</a></div><div class="ttdeci">bool linalg_eigenvalues(ub::matrix&lt; double &gt; &amp;A, ub::vector&lt; double &gt; &amp;E, ub::matrix&lt; double &gt; &amp;V)</div><div class="ttdoc">eigenvalues of a symmetric matrix A*x=E*x </div><div class="ttdef"><b>Definition:</b> <a href="gsl_2eigensystems_8cc_source.html#l00077">eigensystems.cc:77</a></div></div>
 <div class="ttc" id="linsolve_8m_html_a3b98e2dffc6cb06a89dcb0d5c60a0206"><div class="ttname"><a href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a></div><div class="ttdeci">A</div><div class="ttdef"><b>Definition:</b> <a href="linsolve_8m_source.html#l00001">linsolve.m:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
