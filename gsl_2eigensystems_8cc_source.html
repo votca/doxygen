@@ -72,18 +72,18 @@
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="linalg_8h.html">votca/tools/linalg.h</a>&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix_proxy.hpp&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;votca/tools/votca_config.h&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef NOGSL</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;gsl/gsl_linalg.h&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;gsl/gsl_errno.h&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;gsl/gsl_eigen.h&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix.hpp&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span>       <span class="comment">/* sqrt */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifndef NOGSL</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;gsl/gsl_linalg.h&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;gsl/gsl_errno.h&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;gsl/gsl_eigen.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="namespacevotca_1_1tools.html#a70042ba07c0a9b06bb6c6fa1e0dada20">   40</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacevotca_1_1tools.html#a70042ba07c0a9b06bb6c6fa1e0dada20">linalg_eigenvalues_symmetric</a>( ub::symmetric_matrix&lt;double&gt; &amp;<a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::vector&lt;double&gt; &amp;E, ub::matrix&lt;double&gt; &amp;V)</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
@@ -269,30 +269,61 @@
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        gsl_error_handler_t *handler = gsl_set_error_handler_off();</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> N = A.size1();</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="comment">// gsl does not handle conversion of a symmetric_matrix </span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="comment">// gsl destroys A so use copy</span></div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        ub::matrix&lt;double&gt; _A( N,N );</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        _A = <a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        E.resize(N, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        V.resize(N, N, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        gsl_matrix_view A_view = gsl_matrix_view_array(&amp;_A(0,0), N, N);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        gsl_matrix_view B_view = gsl_matrix_view_array(&amp;B(0,0), N, N);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        gsl_vector_view E_view = gsl_vector_view_array(&amp;E(0), N);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        gsl_matrix_view V_view = gsl_matrix_view_array(&amp;V(0,0), N, N);</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        gsl_eigen_gensymmv_workspace *w = gsl_eigen_gensymmv_alloc(N);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordtype">int</span> status = gsl_eigen_gensymmv(&amp;A_view.matrix,&amp;B_view.matrix, &amp;E_view.vector, &amp;V_view.matrix, w);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        gsl_eigen_gensymmv_sort(&amp;E_view.vector, &amp;V_view.matrix, GSL_EIGEN_SORT_VAL_ASC);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        gsl_eigen_gensymmv_free(w);</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        gsl_set_error_handler(handler);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keywordflow">return</span> (status != 0);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor"></span>};</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        ub::matrix&lt;double&gt; _B( N,N );</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        _B=B;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        E.resize(N, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        V.resize(N, N, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        gsl_matrix_view A_view = gsl_matrix_view_array(&amp;_A(0,0), N, N);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        gsl_matrix_view B_view = gsl_matrix_view_array(&amp;_B(0,0), N, N);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        gsl_vector_view E_view = gsl_vector_view_array(&amp;E(0), N);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        gsl_matrix_view V_view = gsl_matrix_view_array(&amp;V(0,0), N, N);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        gsl_eigen_gensymmv_workspace *w = gsl_eigen_gensymmv_alloc(N);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordtype">int</span> status = gsl_eigen_gensymmv(&amp;A_view.matrix,&amp;B_view.matrix, &amp;E_view.vector, &amp;V_view.matrix, w);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        gsl_eigen_gensymmv_sort(&amp;E_view.vector, &amp;V_view.matrix, GSL_EIGEN_SORT_VAL_ASC);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        gsl_eigen_gensymmv_free(w);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        gsl_set_error_handler(handler);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      </div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}}</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        ub::matrix&lt;double&gt; _temp= ub::prod(B,V);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        ub::matrix&lt;double&gt; n=ub::prod(ub::trans(V),_temp);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      <span class="comment">/*  </span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">        for (int i=0;i&lt;n.size1();i++){</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">          </span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">                for (int j=0;j&lt;n.size2();j++){</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">                cout &lt;&lt;&quot;n(&quot;&lt;&lt; i &lt;&lt; &quot;:&quot;&lt;&lt; j &lt;&lt;&quot;)= &quot; &lt;&lt;n(i,j)&lt;&lt; endl;      </span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">                }}</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">        </span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment">       */</span> </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>=0;<a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>&lt;n.size1();<a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>++){</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            ub::matrix_range&lt;ub::matrix&lt;double&gt; &gt; column=ub::subrange( V, 0, V.size2(),<a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>, <a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>+1 );</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="comment">//cout &lt;&lt;&quot;n(&quot;&lt;&lt; i &lt;&lt; &quot;:&quot;&lt;&lt; i &lt;&lt;&quot;)= &quot; &lt;&lt;n(i,i) &lt;&lt;&quot;:&quot; &lt;&lt;sqrt(n(i,i))&lt;&lt; endl; </span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="comment">//for (int j=0;j&lt;column.size1();j++){</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;           </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <span class="comment">//cout &lt;&lt;&quot;V(&quot;&lt;&lt;i&lt;&lt;&quot;:&quot;&lt;&lt;j&lt;&lt;&quot;)=&quot;&lt;&lt;column(j,0)&lt;&lt; endl;</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;              <span class="comment">//}</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            column=column/sqrt(n(<a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>,<a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>));</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">return</span> (status != 0);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor"></span>};</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}}</div>
+<div class="ttc" id="ImagePotential_8h_html_a7e98b8a17c0aad30ba64d47b74e2a6c1"><div class="ttname"><a href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="ImagePotential_8h_source.html#l00028">ImagePotential.h:28</a></div></div>
 <div class="ttc" id="linalg_8h_html"><div class="ttname"><a href="linalg_8h.html">linalg.h</a></div></div>
 <div class="ttc" id="namespacevotca_1_1tools_html_a70042ba07c0a9b06bb6c6fa1e0dada20"><div class="ttname"><a href="namespacevotca_1_1tools.html#a70042ba07c0a9b06bb6c6fa1e0dada20">votca::tools::linalg_eigenvalues_symmetric</a></div><div class="ttdeci">bool linalg_eigenvalues_symmetric(ub::symmetric_matrix&lt; double &gt; &amp;A, ub::vector&lt; double &gt; &amp;E, ub::matrix&lt; double &gt; &amp;V)</div><div class="ttdoc">eigenvalues of a symmetric matrix A*x=E*x </div><div class="ttdef"><b>Definition:</b> <a href="gsl_2eigensystems_8cc_source.html#l00040">eigensystems.cc:40</a></div></div>
 <div class="ttc" id="namespacevotca_1_1tools_html_aef4efe58314fc9ce77156196baea1783"><div class="ttname"><a href="namespacevotca_1_1tools.html#aef4efe58314fc9ce77156196baea1783">votca::tools::linalg_eigenvalues_general</a></div><div class="ttdeci">bool linalg_eigenvalues_general(ub::matrix&lt; double &gt; &amp;A, ub::matrix&lt; double &gt; &amp;B, ub::vector&lt; double &gt; &amp;E, ub::matrix&lt; double &gt; &amp;V)</div><div class="ttdoc">eigenvalues of a symmetric matrix A*x=E*B*x double precision </div><div class="ttdef"><b>Definition:</b> <a href="gsl_2eigensystems_8cc_source.html#l00236">eigensystems.cc:236</a></div></div>
