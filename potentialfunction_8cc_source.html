@@ -99,66 +99,40 @@
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classPotentialFunction.html#a3fca52f32d9cff5b6d142d80b9658397">   47</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPotentialFunction.html#a3fca52f32d9cff5b6d142d80b9658397">PotentialFunction::SavePotTab</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                   <span class="keyword">const</span> <span class="keywordtype">double</span> step){</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                   <span class="keyword">const</span> <span class="keywordtype">double</span> step)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">int</span> ngrid = (int) ((<a class="code" href="classPotentialFunction.html#aca752fc9cda7dd2686990981b37fb91e">_cut_off</a> - <a class="code" href="classPotentialFunction.html#ae87cdd9804da0045f544f8ec40beab17">_min</a>) / step + 1.00000001);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Table.html">Table</a> pot_tab;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a47894413bcdea56e3f9249edaad5844e">SetHasYErr</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a70585fe9d5244d7facafe607142b01d0">resize</a>(ngrid, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">double</span> r_init;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">// put point, result, flag at point out_x into the table</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">for</span> (r_init = <a class="code" href="classPotentialFunction.html#ae87cdd9804da0045f544f8ec40beab17">_min</a>, i = 0; i &lt; ngrid - 1; r_init += step)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i++, r_init, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(r_init), <span class="charliteral">&#39;i&#39;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i, <a class="code" href="classPotentialFunction.html#aca752fc9cda7dd2686990981b37fb91e">_cut_off</a>, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(<a class="code" href="classPotentialFunction.html#aca752fc9cda7dd2686990981b37fb91e">_cut_off</a>), <span class="charliteral">&#39;i&#39;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">// save table in the file</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#ae0282abe5afaab2c2cb147f32494fd36">Save</a>(filename);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classPotentialFunction.html#abb270d073be1470c254511f42c30bac1">   70</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPotentialFunction.html#a3fca52f32d9cff5b6d142d80b9658397">PotentialFunction::SavePotTab</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                   <span class="keyword">const</span> <span class="keywordtype">double</span> step,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                   <span class="keyword">const</span> <span class="keywordtype">double</span> rmin, <span class="keyword">const</span> <span class="keywordtype">double</span> rcut){</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">int</span> ngrid = (int) ((rcut - rmin) / step + 1.00000001);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Table.html">Table</a> pot_tab;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a47894413bcdea56e3f9249edaad5844e">SetHasYErr</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a70585fe9d5244d7facafe607142b01d0">resize</a>(ngrid, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">double</span> r_init;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">for</span> (r_init = <a class="code" href="classPotentialFunction.html#ae87cdd9804da0045f544f8ec40beab17">_min</a>, i = 0; i &lt; ngrid - 1; r_init += step)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i++, r_init, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(r_init), <span class="charliteral">&#39;i&#39;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i, <a class="code" href="classPotentialFunction.html#aca752fc9cda7dd2686990981b37fb91e">_cut_off</a>, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(<a class="code" href="classPotentialFunction.html#aca752fc9cda7dd2686990981b37fb91e">_cut_off</a>), <span class="charliteral">&#39;i&#39;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#ae0282abe5afaab2c2cb147f32494fd36">Save</a>(filename);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classPotentialFunction.html#abb270d073be1470c254511f42c30bac1">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPotentialFunction.html#a3fca52f32d9cff5b6d142d80b9658397">PotentialFunction::SavePotTab</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                   <span class="keyword">const</span> <span class="keywordtype">double</span> step,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                   <span class="keyword">const</span> <span class="keywordtype">double</span> rmin, <span class="keyword">const</span> <span class="keywordtype">double</span> rcut)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">int</span> ngrid = (int) ((rcut - rmin) / step + 1.00000001);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Table.html">Table</a> pot_tab;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a47894413bcdea56e3f9249edaad5844e">SetHasYErr</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a70585fe9d5244d7facafe607142b01d0">resize</a>(ngrid, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">double</span> r_init;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">char</span> flag = <span class="charliteral">&#39;i&#39;</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Table.html">Table</a> pot_tab;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a47894413bcdea56e3f9249edaad5844e">SetHasYErr</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a70585fe9d5244d7facafe607142b01d0">resize</a>(ngrid, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">double</span> r_init;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">char</span> flag = <span class="charliteral">&#39;i&#39;</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">for</span> (r_init = rmin, i = 0; i &lt; ngrid - 1; r_init += step) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// put point, result, flag at point out_x into the table</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">//if( r_init &lt; _min || r_init &gt; _cut_off )</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">//flag = &#39;o&#39;;</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">//else</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">//flag = &#39;i&#39;;</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i++, r_init, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(r_init), flag);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="comment">//  if( rcut &lt; _min || rcut &gt; _cut_off )</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="comment">//    flag = &#39;o&#39;;</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="comment">//  else</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">//    flag = &#39;i&#39;;</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i, rcut, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(rcut), flag);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="comment">// save table in the file</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#ae0282abe5afaab2c2cb147f32494fd36">Save</a>(filename);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">for</span> (r_init = rmin, i = 0; i &lt; ngrid - 1; r_init += step)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i++, r_init, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(r_init), flag);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a9e0477559e364063183752a573bfbfb3">set</a>(i, rcut, <a class="code" href="classPotentialFunction.html#a6db5a2876c0196283380737a8b46d58b">CalculateF</a>(rcut), flag);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#ae0282abe5afaab2c2cb147f32494fd36">Save</a>(filename);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
 <div class="ttc" id="classvotca_1_1tools_1_1Table_html_a70585fe9d5244d7facafe607142b01d0"><div class="ttname"><a href="classvotca_1_1tools_1_1Table.html#a70585fe9d5244d7facafe607142b01d0">votca::tools::Table::resize</a></div><div class="ttdeci">void resize(int N, bool preserve=true)</div><div class="ttdef"><b>Definition:</b> <a href="table_8cc_source.html#l00032">table.cc:32</a></div></div>
 <div class="ttc" id="ImagePotential_8h_html_a7e98b8a17c0aad30ba64d47b74e2a6c1"><div class="ttname"><a href="ImagePotential_8h.html#a7e98b8a17c0aad30ba64d47b74e2a6c1">i</a></div><div class="ttdeci">int i</div><div class="ttdef"><b>Definition:</b> <a href="ImagePotential_8h_source.html#l00028">ImagePotential.h:28</a></div></div>
 <div class="ttc" id="classPotentialFunction_html_aca752fc9cda7dd2686990981b37fb91e"><div class="ttname"><a href="classPotentialFunction.html#aca752fc9cda7dd2686990981b37fb91e">PotentialFunction::_cut_off</a></div><div class="ttdeci">double _cut_off</div><div class="ttdef"><b>Definition:</b> <a href="potentialfunction_8h_source.html#l00077">potentialfunction.h:77</a></div></div>
