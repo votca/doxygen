@@ -340,24 +340,25 @@
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    </div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    </div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="comment">// GENERATE OUTPUT AND FORWARD TO PROGRESS OBSERVER (RETURN)</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html">Job::JobResult</a> jres = <a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html">Job::JobResult</a>();</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a97775bc321c298b4a73674793ebcd5eb">setOutput</a>(xjob.getInfoLine());</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(<a class="code" href="classvotca_1_1ctp_1_1Job.html#a79d7d5eb023c6337e4895229ee534f2daf3a2542490c95aa116c4656a0a282f7d">Job::COMPLETE</a>);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">if</span> (!inductor.<a class="code" href="classvotca_1_1ctp_1_1XInductor.html#afaf132619ac860242f0af87151d4c46e">hasConverged</a>()) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(<a class="code" href="classvotca_1_1ctp_1_1Job.html#a79d7d5eb023c6337e4895229ee534f2da9eca83351fb4657c5e251def89011ba2">Job::FAILED</a>);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a886bddca91fab244b6ab8c44faa2b5e6">setError</a>(inductor.<a class="code" href="classvotca_1_1ctp_1_1XInductor.html#ae6ce51b93cb863b2f65db83d53be3e7c">getError</a>());</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">logERROR</a>,*log) &lt;&lt; inductor.<a class="code" href="classvotca_1_1ctp_1_1XInductor.html#ae6ce51b93cb863b2f65db83d53be3e7c">getError</a>() &lt;&lt; flush;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">return</span> jres;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> output = xjob.GenerateOutputProperty();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html">Job::JobResult</a> jres = <a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html">Job::JobResult</a>();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a97775bc321c298b4a73674793ebcd5eb">setOutput</a>(output);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(<a class="code" href="classvotca_1_1ctp_1_1Job.html#a79d7d5eb023c6337e4895229ee534f2daf3a2542490c95aa116c4656a0a282f7d">Job::COMPLETE</a>);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">if</span> (!inductor.<a class="code" href="classvotca_1_1ctp_1_1XInductor.html#afaf132619ac860242f0af87151d4c46e">hasConverged</a>()) {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(<a class="code" href="classvotca_1_1ctp_1_1Job.html#a79d7d5eb023c6337e4895229ee534f2da9eca83351fb4657c5e251def89011ba2">Job::FAILED</a>);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a886bddca91fab244b6ab8c44faa2b5e6">setError</a>(inductor.<a class="code" href="classvotca_1_1ctp_1_1XInductor.html#ae6ce51b93cb863b2f65db83d53be3e7c">getError</a>());</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">logERROR</a>,*log) &lt;&lt; inductor.<a class="code" href="classvotca_1_1ctp_1_1XInductor.html#ae6ce51b93cb863b2f65db83d53be3e7c">getError</a>() &lt;&lt; flush;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> jres;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;}}</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}}</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="preprocessor"></span></div>
 <div class="ttc" id="classvotca_1_1ctp_1_1XQMP_html_aa05327ce31843b0fc986dcbdf29b16ab"><div class="ttname"><a href="classvotca_1_1ctp_1_1XQMP.html#aa05327ce31843b0fc986dcbdf29b16ab">votca::ctp::XQMP::PreProcess</a></div><div class="ttdeci">void PreProcess(Topology *top)</div><div class="ttdef"><b>Definition:</b> <a href="xqmultipole_8h_source.html#l00177">xqmultipole.h:177</a></div></div>
 <div class="ttc" id="classvotca_1_1ctp_1_1Job_html"><div class="ttname"><a href="classvotca_1_1ctp_1_1Job.html">votca::ctp::Job</a></div><div class="ttdef"><b>Definition:</b> <a href="job_8h_source.html#l00017">job.h:17</a></div></div>
 <div class="ttc" id="classvotca_1_1ctp_1_1XInductor_html_aa4eb5f15dfc61b8131948b07ea7427c1"><div class="ttname"><a href="classvotca_1_1ctp_1_1XInductor.html#aa4eb5f15dfc61b8131948b07ea7427c1">votca::ctp::XInductor::Evaluate</a></div><div class="ttdeci">void Evaluate(XJob *job)</div><div class="ttdef"><b>Definition:</b> <a href="xinductor_8cc_source.html#l00010">xinductor.cc:10</a></div></div>
