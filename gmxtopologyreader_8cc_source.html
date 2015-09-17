@@ -149,29 +149,29 @@
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="stringliteral">&quot;you&#39;re missing the files to rerun grompp,\n contact the votca mailing list for a solution.&quot;</span>);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock) {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        gmx_moltype_t *mol</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                = &amp;(mtop.moltype[mtop.molblock[iblock].type]);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">string</span> molname =  *(mol-&gt;name);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">int</span> res_offset = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a74c28ddd1b95e242842bd59685bb8663">ResidueCount</a>();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        t_atoms *atoms=&amp;(mol-&gt;atoms);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; atoms-&gt;nres; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>++) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#if (GMX == 50)|| (GMX == 51)</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78">CreateResidue</a>(*(atoms-&gt;resinfo[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>].name));</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#elif GMX == 45</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78">CreateResidue</a>(*(atoms-&gt;resinfo[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>].name));</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#elif GMX == 40</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78">CreateResidue</a>(*(atoms-&gt;resname[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>]));</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#error Unsupported GMX version</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">int</span> ifirstatom = 0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">int</span> ifirstatom = 0;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        gmx_moltype_t *mol</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                = &amp;(mtop.moltype[mtop.molblock[iblock].type]);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">string</span> molname =  *(mol-&gt;name);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">int</span> res_offset = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a74c28ddd1b95e242842bd59685bb8663">ResidueCount</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        t_atoms *atoms=&amp;(mol-&gt;atoms);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>=0; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a> &lt; atoms-&gt;nres; <a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>++) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#if (GMX == 50)|| (GMX == 51)</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78">CreateResidue</a>(*(atoms-&gt;resinfo[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>].name));</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#elif GMX == 45</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78">CreateResidue</a>(*(atoms-&gt;resinfo[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>].name));</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#elif GMX == 40</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78">CreateResidue</a>(*(atoms-&gt;resname[<a class="code" href="ImagePotential_8h.html#acb559820d9ca11295b4500f179ef6392">i</a>]));</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#error Unsupported GMX version</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> imol=0; imol&lt;mtop.molblock[iblock].nmol; ++imol) {</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mi = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a87a10bc0957a1465dad5b3899cb6e932">CreateMolecule</a>(molname);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
