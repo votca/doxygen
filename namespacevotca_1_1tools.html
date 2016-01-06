@@ -228,6 +228,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad6bb14d50ebb7a0858fd23351cbfd68b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#ad6bb14d50ebb7a0858fd23351cbfd68b">linalg_singular_value_decomposition</a> (ub::matrix&lt; double &gt; &amp;<a class="el" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::matrix&lt; double &gt; &amp;VT, ub::vector&lt; double &gt; &amp;S)</td></tr>
 <tr class="memdesc:ad6bb14d50ebb7a0858fd23351cbfd68b"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes Singular value decomposition A = U S V^T double precision  <a href="#ad6bb14d50ebb7a0858fd23351cbfd68b">More...</a><br /></td></tr>
 <tr class="separator:ad6bb14d50ebb7a0858fd23351cbfd68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6e0639c41eb6ec4d035a92e9624099"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#a3d6e0639c41eb6ec4d035a92e9624099">linalg_invert_svd</a> (ub::matrix&lt; double &gt; &amp;<a class="el" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>, ub::matrix&lt; double &gt; &amp;V, double limitCN)</td></tr>
+<tr class="memdesc:a3d6e0639c41eb6ec4d035a92e9624099"><td class="mdescLeft">&#160;</td><td class="mdescRight">inverts A via svd  <a href="#a3d6e0639c41eb6ec4d035a92e9624099">More...</a><br /></td></tr>
+<tr class="separator:a3d6e0639c41eb6ec4d035a92e9624099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a185f5b96d55fe1b85c3720a94f2cbd56"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#a185f5b96d55fe1b85c3720a94f2cbd56">operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="classvotca_1_1tools_1_1matrix.html">matrix</a> &amp;m)</td></tr>
 <tr class="separator:a185f5b96d55fe1b85c3720a94f2cbd56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0824fe7c461cc12d7b42750f870f93ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvotca_1_1tools_1_1matrix.html">matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#a0824fe7c461cc12d7b42750f870f93ca">operator|</a> (const <a class="el" href="classvotca_1_1tools_1_1vec.html">vec</a> &amp;a, const <a class="el" href="classvotca_1_1tools_1_1vec.html">vec</a> &amp;<a class="el" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>)</td></tr>
@@ -1243,6 +1246,50 @@ template&lt;typename Target , typename Source &gt; </div>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="gsl_2invert_8cc_source.html#l00057">57</a> of file <a class="el" href="gsl_2invert_8cc_source.html">invert.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3d6e0639c41eb6ec4d035a92e9624099"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int votca::tools::linalg_invert_svd </td>
+          <td>(</td>
+          <td class="paramtype">ub::matrix&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ub::matrix&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>V</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>limitCN</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>inverts A via svd </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>symmetric positive definite matrix </td></tr>
+    <tr><td class="paramname">V</td><td>inverse matrix </td></tr>
+    <tr><td class="paramname">lower</td><td>limit of condition number of the matrix, singular values below that will be set to zero This function wraps the inversion of a matrix via svd </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="linalg_8cc_source.html#l00025">25</a> of file <a class="el" href="linalg_8cc_source.html">linalg.cc</a>.</p>
 
 </div>
 </div>
