@@ -116,25 +116,30 @@
 <a name="l00057"></a>00057     <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00058"></a>00058 }
 <a name="l00059"></a>00059 
-<a name="l00060"></a><a class="code" href="namespacevotca_1_1csg.html#afe5ad0a2afe6ebe672683c2635d2e47e">00060</a> <span class="keywordtype">bool</span> <a class="code" href="namespacevotca_1_1csg.html#afe5ad0a2afe6ebe672683c2635d2e47e">compareAtomId</a>(<span class="keyword">const</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">ExclusionList::exclusion_t</a> *a, <span class="keyword">const</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">ExclusionList::exclusion_t</a> *<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>){
+<a name="l00060"></a><a class="code" href="namespacevotca_1_1csg.html#aa0bbbcfd5d46cc320e2f4781a478d7f1">00060</a> <span class="keywordtype">bool</span> <a class="code" href="namespacevotca_1_1csg.html#aa0bbbcfd5d46cc320e2f4781a478d7f1">compareAtomIdiExclusionList</a>(<span class="keyword">const</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">ExclusionList::exclusion_t</a> *a, <span class="keyword">const</span> <a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html">ExclusionList::exclusion_t</a> *<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>){
 <a name="l00061"></a>00061     <span class="keywordflow">return</span> a-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#a2a8c89f0e641492e5e1962f0c9ec1b9b">_atom</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a0612a74f7f841050d11133e55c966f79">getId</a>() &lt; b-&gt;<a class="code" href="structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html#a2a8c89f0e641492e5e1962f0c9ec1b9b">_atom</a>-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a0612a74f7f841050d11133e55c966f79">getId</a>();
 <a name="l00062"></a>00062 }
 <a name="l00063"></a>00063 
-<a name="l00064"></a><a class="code" href="namespacevotca_1_1csg.html#a9be6f44643af1301cff032b5b7c44318">00064</a> std::ostream &amp;<a class="code" href="namespacevotca_1_1csg.html#a9be6f44643af1301cff032b5b7c44318">operator&lt;&lt;</a>(std::ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html">ExclusionList</a>&amp; exl)
-<a name="l00065"></a>00065 {
-<a name="l00066"></a>00066     exl.<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#a1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.sort(<a class="code" href="namespacevotca_1_1csg.html#afe5ad0a2afe6ebe672683c2635d2e47e">compareAtomId</a>);
-<a name="l00067"></a>00067     
-<a name="l00068"></a>00068     list&lt;ExclusionList::exclusion_t*&gt;::iterator ex;
-<a name="l00069"></a>00069     <span class="keywordflow">for</span>(ex=exl.<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#a1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.begin();ex!=exl.<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#a1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.end();++ex) {
-<a name="l00070"></a>00070         list&lt;Bead *&gt;::iterator i;
-<a name="l00071"></a>00071         out &lt;&lt; (int)((*ex)-&gt;_atom-&gt;getId()) + 1;
-<a name="l00072"></a>00072         <span class="keywordflow">for</span>(i=(*ex)-&gt;_exclude.begin(); i!=(*ex)-&gt;_exclude.end(); ++i) {
-<a name="l00073"></a>00073             out &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; ((*i)-&gt;getId()+1);
-<a name="l00074"></a>00074         }
-<a name="l00075"></a>00075         out &lt;&lt; endl;
-<a name="l00076"></a>00076     }
-<a name="l00077"></a>00077     <span class="keywordflow">return</span> out;
-<a name="l00078"></a>00078 }
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080 }}
+<a name="l00064"></a><a class="code" href="namespacevotca_1_1csg.html#adc3022c509cef6f7f70f839f868d59c2">00064</a> <span class="keywordtype">bool</span> <a class="code" href="namespacevotca_1_1csg.html#adc3022c509cef6f7f70f839f868d59c2">compareAtomIdBeadList</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *a, <span class="keyword">const</span> <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a>){
+<a name="l00065"></a>00065     <span class="keywordflow">return</span> a-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a0612a74f7f841050d11133e55c966f79">getId</a>() &lt; b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a0612a74f7f841050d11133e55c966f79">getId</a>();
+<a name="l00066"></a>00066 }
+<a name="l00067"></a>00067 
+<a name="l00068"></a><a class="code" href="namespacevotca_1_1csg.html#a9be6f44643af1301cff032b5b7c44318">00068</a> std::ostream &amp;<a class="code" href="namespacevotca_1_1csg.html#a9be6f44643af1301cff032b5b7c44318">operator&lt;&lt;</a>(std::ostream &amp;out, <a class="code" href="classvotca_1_1csg_1_1ExclusionList.html">ExclusionList</a>&amp; exl)
+<a name="l00069"></a>00069 {
+<a name="l00070"></a>00070     exl.<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#a1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.sort(<a class="code" href="namespacevotca_1_1csg.html#aa0bbbcfd5d46cc320e2f4781a478d7f1">compareAtomIdiExclusionList</a>);
+<a name="l00071"></a>00071     
+<a name="l00072"></a>00072     list&lt;ExclusionList::exclusion_t*&gt;::iterator ex;
+<a name="l00073"></a>00073     <span class="keywordflow">for</span>(ex=exl.<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#a1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.begin();ex!=exl.<a class="code" href="classvotca_1_1csg_1_1ExclusionList.html#a1dc860aec1efd007f2a13e17d9369a15">_exclusions</a>.end();++ex) {
+<a name="l00074"></a>00074         (*ex)-&gt;_exclude.sort(<a class="code" href="namespacevotca_1_1csg.html#adc3022c509cef6f7f70f839f868d59c2">compareAtomIdBeadList</a>);
+<a name="l00075"></a>00075         list&lt;Bead *&gt;::iterator i;
+<a name="l00076"></a>00076         out &lt;&lt; (int)((*ex)-&gt;_atom-&gt;getId()) + 1;
+<a name="l00077"></a>00077         <span class="keywordflow">for</span>(i=(*ex)-&gt;_exclude.begin(); i!=(*ex)-&gt;_exclude.end(); ++i) {
+<a name="l00078"></a>00078             out &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; ((*i)-&gt;getId()+1);
+<a name="l00079"></a>00079         }
+<a name="l00080"></a>00080         out &lt;&lt; endl;
+<a name="l00081"></a>00081     }
+<a name="l00082"></a>00082     <span class="keywordflow">return</span> out;
+<a name="l00083"></a>00083 }
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 }}
 </pre></div></div><!-- contents -->
