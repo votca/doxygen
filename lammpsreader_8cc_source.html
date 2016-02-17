@@ -91,196 +91,203 @@
 <a name="l00032"></a>00032    _fl.open(file.c_str());
 <a name="l00033"></a>00033     <span class="keywordflow">if</span>(!_fl.is_open())
 <a name="l00034"></a>00034         <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open topology file: &quot;</span> + file);
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036    NextFrame(top);
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038     _fl.close();
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00041"></a>00041 }
-<a name="l00042"></a>00042 
-<a name="l00043"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a6b16753136b37c376bde5ccdd32275d8">00043</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a6b16753136b37c376bde5ccdd32275d8" title="open a trejectory file">LAMMPSReader::Open</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;file)
-<a name="l00044"></a>00044 {
-<a name="l00045"></a>00045     _fl.open(file.c_str());
-<a name="l00046"></a>00046     <span class="keywordflow">if</span>(!_fl.is_open())
-<a name="l00047"></a>00047         <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open trajectory file: &quot;</span> + file);
-<a name="l00048"></a>00048     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00049"></a>00049 }
-<a name="l00050"></a>00050 
-<a name="l00051"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ac3421ddd2d6fe538b1d4ddebfecfbff8">00051</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ac3421ddd2d6fe538b1d4ddebfecfbff8">LAMMPSReader::Close</a>()
-<a name="l00052"></a>00052 {
-<a name="l00053"></a>00053     _fl.close();
-<a name="l00054"></a>00054 }
-<a name="l00055"></a>00055 
-<a name="l00056"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ae52f0a63e24b7f29a78c91398cadeb54">00056</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ae52f0a63e24b7f29a78c91398cadeb54" title="read in the first frame">LAMMPSReader::FirstFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)
-<a name="l00057"></a>00057 {
-<a name="l00058"></a>00058     _topology = <span class="keyword">false</span>;
-<a name="l00059"></a>00059     NextFrame(top);
-<a name="l00060"></a>00060     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00061"></a>00061 }
-<a name="l00062"></a>00062 
-<a name="l00063"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a2da0751a1624bfccc3fa275cf38d3048">00063</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a2da0751a1624bfccc3fa275cf38d3048" title="read in the next frame">LAMMPSReader::NextFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)
-<a name="l00064"></a>00064 {
-<a name="l00065"></a>00065     <span class="keywordtype">string</span> line;
-<a name="l00066"></a>00066     <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line);
-<a name="l00067"></a>00067     <span class="keywordflow">while</span>(!_fl.eof()) {
-<a name="l00068"></a>00068         <span class="keywordflow">if</span>(line.substr(0, 5) != <span class="stringliteral">&quot;ITEM:&quot;</span>)
-<a name="l00069"></a>00069             <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;unexpected line in lammps file:\n&quot;</span>+line);
-<a name="l00070"></a>00070         <span class="keywordflow">if</span>(line.substr(6,8) == <span class="stringliteral">&quot;TIMESTEP&quot;</span>) {
-<a name="l00071"></a>00071                 ReadTimestep(top, line);
-<a name="l00072"></a>00072         }
-<a name="l00073"></a>00073         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(line.substr(6,15) == <span class="stringliteral">&quot;NUMBER OF ATOMS&quot;</span>) {
-<a name="l00074"></a>00074                 ReadNumAtoms(top, line);
-<a name="l00075"></a>00075         }
-<a name="l00076"></a>00076         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(line.substr(6,10) == <span class="stringliteral">&quot;BOX BOUNDS&quot;</span>) {
-<a name="l00077"></a>00077                 ReadBox(top, line);
-<a name="l00078"></a>00078         }
-<a name="l00079"></a>00079         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(line.substr(6, 5) == <span class="stringliteral">&quot;ATOMS&quot;</span>) {
-<a name="l00080"></a>00080                 ReadAtoms(top, line);
-<a name="l00081"></a>00081                 <span class="keywordflow">break</span>;
-<a name="l00082"></a>00082         }
-<a name="l00083"></a>00083 
-<a name="l00084"></a>00084         <span class="keywordflow">else</span> {
-<a name="l00085"></a>00085             <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;unknown item lammps file : &quot;</span> + line.substr(6));
-<a name="l00086"></a>00086         }
-<a name="l00087"></a>00087         <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line);
-<a name="l00088"></a>00088     }
-<a name="l00089"></a>00089     <span class="keywordflow">if</span> (_topology) {
-<a name="l00090"></a>00090       cout &lt;&lt; <span class="stringliteral">&quot;WARNING: topology created from .dump file, masses, charges, types, residue names are wrong!\n&quot;</span>;
-<a name="l00091"></a>00091     }
-<a name="l00092"></a>00092     <span class="keywordflow">return</span> !_fl.eof();;
-<a name="l00093"></a>00093 }
-<a name="l00094"></a>00094 
-<a name="l00095"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a28249bf56f40cf10bab92127a624a2e1">00095</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a28249bf56f40cf10bab92127a624a2e1">LAMMPSReader::ReadTimestep</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top, <span class="keywordtype">string</span> itemline)
-<a name="l00096"></a>00096 {
-<a name="l00097"></a>00097     <span class="keywordtype">string</span> s;
-<a name="l00098"></a>00098     <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, s);
-<a name="l00099"></a>00099     top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a8fd83aa5f198ecbc87be823046eec623">setStep</a>(boost::lexical_cast&lt;int&gt;(s));
-<a name="l00100"></a>00100     cout &lt;&lt; <span class="stringliteral">&quot;Reading frame, timestep &quot;</span> &lt;&lt; top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a81334a5f36caa3e78ebb8759881b4288">getStep</a>() &lt;&lt; endl;
-<a name="l00101"></a>00101 }
-<a name="l00102"></a>00102 
-<a name="l00103"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ab61839f7ad19f80450acd1568b77db97">00103</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ab61839f7ad19f80450acd1568b77db97">LAMMPSReader::ReadBox</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top, <span class="keywordtype">string</span> itemline)
-<a name="l00104"></a>00104 {
-<a name="l00105"></a>00105     <span class="keywordtype">string</span> s;
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107     <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> m;
-<a name="l00108"></a>00108     m.<a class="code" href="classvotca_1_1tools_1_1matrix.html#a784ae7baf534cb09ccd31a38db9d18b1" title="initialize the matrix with zeros">ZeroMatrix</a>();
-<a name="l00109"></a>00109         
-<a name="l00110"></a>00110     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;3; ++i) {
-<a name="l00111"></a>00111         <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, s);
-<a name="l00112"></a>00112         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(s, <span class="stringliteral">&quot; &quot;</span>);
-<a name="l00113"></a>00113         vector&lt;double&gt; v;
-<a name="l00114"></a>00114         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>(v);
-<a name="l00115"></a>00115         <span class="keywordflow">if</span>(v.size()!=2)
-<a name="l00116"></a>00116             <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;invalid box format&quot;</span>);
-<a name="l00117"></a>00117         m[i][i] = v[1] - v[0];
-<a name="l00118"></a>00118     }
-<a name="l00119"></a>00119     top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(m );
-<a name="l00120"></a>00120 }
-<a name="l00121"></a>00121 
-<a name="l00122"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#aec935b344bd776f2259ea1527b44e66d">00122</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#aec935b344bd776f2259ea1527b44e66d">LAMMPSReader::ReadNumAtoms</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top, <span class="keywordtype">string</span> itemline)
-<a name="l00123"></a>00123 {
-<a name="l00124"></a>00124     <span class="keywordtype">string</span> s;
-<a name="l00125"></a>00125     <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, s);
-<a name="l00126"></a>00126     _natoms = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(s);
-<a name="l00127"></a>00127     <span class="keywordflow">if</span>(!_topology &amp;&amp; _natoms !=top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad6ffd4e005205905f4456940e58c6af8">BeadCount</a>())
-<a name="l00128"></a>00128         std::runtime_error(<span class="stringliteral">&quot;number of beads in topology and trajectory differ&quot;</span>);
-<a name="l00129"></a>00129 }
-<a name="l00130"></a>00130 
-<a name="l00131"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a096617905873b576bc846c0add52976a">00131</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a096617905873b576bc846c0add52976a">LAMMPSReader::ReadAtoms</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top, <span class="keywordtype">string</span> itemline) {
-<a name="l00132"></a>00132     <span class="keywordflow">if</span>(_topology){
-<a name="l00133"></a>00133       top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(<span class="stringliteral">&quot;dum&quot;</span>);
-<a name="l00134"></a>00134       <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;_natoms; ++i) {
-<a name="l00135"></a>00135         (void)top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, <span class="stringliteral">&quot;no&quot;</span>, top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(<span class="stringliteral">&quot;no&quot;</span>), 0, 0, 0);
-<a name="l00136"></a>00136       }
-<a name="l00137"></a>00137     }
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139     <span class="keywordtype">bool</span> pos=<span class="keyword">false</span>;
-<a name="l00140"></a>00140     <span class="keywordtype">bool</span> force=<span class="keyword">false</span>;
-<a name="l00141"></a>00141     <span class="keywordtype">bool</span> vel=<span class="keyword">false</span>;
-<a name="l00142"></a>00142     <span class="keywordtype">int</span> <span class="keywordtype">id</span>=-1;
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144     vector&lt;string&gt; fields;
+<a name="l00035"></a>00035    _fname=file;
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037    NextFrame(top);
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039     _fl.close();
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00042"></a>00042 }
+<a name="l00043"></a>00043 
+<a name="l00044"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a6b16753136b37c376bde5ccdd32275d8">00044</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a6b16753136b37c376bde5ccdd32275d8" title="open a trejectory file">LAMMPSReader::Open</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;file)
+<a name="l00045"></a>00045 {
+<a name="l00046"></a>00046     _fl.open(file.c_str());
+<a name="l00047"></a>00047     <span class="keywordflow">if</span>(!_fl.is_open())
+<a name="l00048"></a>00048         <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open trajectory file: &quot;</span> + file);
+<a name="l00049"></a>00049     _fname=file;
+<a name="l00050"></a>00050     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00051"></a>00051 }
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ac3421ddd2d6fe538b1d4ddebfecfbff8">00053</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ac3421ddd2d6fe538b1d4ddebfecfbff8">LAMMPSReader::Close</a>()
+<a name="l00054"></a>00054 {
+<a name="l00055"></a>00055     _fl.close();
+<a name="l00056"></a>00056 }
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ae52f0a63e24b7f29a78c91398cadeb54">00058</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ae52f0a63e24b7f29a78c91398cadeb54" title="read in the first frame">LAMMPSReader::FirstFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)
+<a name="l00059"></a>00059 {
+<a name="l00060"></a>00060     _topology = <span class="keyword">false</span>;
+<a name="l00061"></a>00061     NextFrame(top);
+<a name="l00062"></a>00062     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00063"></a>00063 }
+<a name="l00064"></a>00064 
+<a name="l00065"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a2da0751a1624bfccc3fa275cf38d3048">00065</a> <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a2da0751a1624bfccc3fa275cf38d3048" title="read in the next frame">LAMMPSReader::NextFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)
+<a name="l00066"></a>00066 {
+<a name="l00067"></a>00067     <span class="keywordtype">string</span> line;
+<a name="l00068"></a>00068     <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line);
+<a name="l00069"></a>00069     <span class="keywordflow">while</span>(!_fl.eof()) {
+<a name="l00070"></a>00070         <span class="keywordflow">if</span>(line.substr(0, 5) != <span class="stringliteral">&quot;ITEM:&quot;</span>)
+<a name="l00071"></a>00071             <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;unexpected line in lammps file:\n&quot;</span>+line);
+<a name="l00072"></a>00072         <span class="keywordflow">if</span>(line.substr(6,8) == <span class="stringliteral">&quot;TIMESTEP&quot;</span>) {
+<a name="l00073"></a>00073                 ReadTimestep(top, line);
+<a name="l00074"></a>00074         }
+<a name="l00075"></a>00075         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(line.substr(6,15) == <span class="stringliteral">&quot;NUMBER OF ATOMS&quot;</span>) {
+<a name="l00076"></a>00076                 ReadNumAtoms(top, line);
+<a name="l00077"></a>00077         }
+<a name="l00078"></a>00078         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(line.substr(6,10) == <span class="stringliteral">&quot;BOX BOUNDS&quot;</span>) {
+<a name="l00079"></a>00079                 ReadBox(top, line);
+<a name="l00080"></a>00080         }
+<a name="l00081"></a>00081         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(line.substr(6, 5) == <span class="stringliteral">&quot;ATOMS&quot;</span>) {
+<a name="l00082"></a>00082                 ReadAtoms(top, line);
+<a name="l00083"></a>00083                 <span class="keywordflow">break</span>;
+<a name="l00084"></a>00084         }
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086         <span class="keywordflow">else</span> {
+<a name="l00087"></a>00087             <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;unknown item lammps file : &quot;</span> + line.substr(6));
+<a name="l00088"></a>00088         }
+<a name="l00089"></a>00089         <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, line);
+<a name="l00090"></a>00090     }
+<a name="l00091"></a>00091     <span class="keywordflow">if</span> (_topology) {
+<a name="l00092"></a>00092       cout &lt;&lt; <span class="stringliteral">&quot;WARNING: topology created from .dump file, masses, charges, types, residue names are wrong!\n&quot;</span>;
+<a name="l00093"></a>00093     }
+<a name="l00094"></a>00094     <span class="keywordflow">return</span> !_fl.eof();;
+<a name="l00095"></a>00095 }
+<a name="l00096"></a>00096 
+<a name="l00097"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a28249bf56f40cf10bab92127a624a2e1">00097</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a28249bf56f40cf10bab92127a624a2e1">LAMMPSReader::ReadTimestep</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top, <span class="keywordtype">string</span> itemline)
+<a name="l00098"></a>00098 {
+<a name="l00099"></a>00099     <span class="keywordtype">string</span> s;
+<a name="l00100"></a>00100     <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, s);
+<a name="l00101"></a>00101     top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a8fd83aa5f198ecbc87be823046eec623">setStep</a>(boost::lexical_cast&lt;int&gt;(s));
+<a name="l00102"></a>00102     cout &lt;&lt; <span class="stringliteral">&quot;Reading frame, timestep &quot;</span> &lt;&lt; top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a81334a5f36caa3e78ebb8759881b4288">getStep</a>() &lt;&lt; endl;
+<a name="l00103"></a>00103 }
+<a name="l00104"></a>00104 
+<a name="l00105"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ab61839f7ad19f80450acd1568b77db97">00105</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#ab61839f7ad19f80450acd1568b77db97">LAMMPSReader::ReadBox</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top, <span class="keywordtype">string</span> itemline)
+<a name="l00106"></a>00106 {
+<a name="l00107"></a>00107     <span class="keywordtype">string</span> s;
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109     <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> m;
+<a name="l00110"></a>00110     m.<a class="code" href="classvotca_1_1tools_1_1matrix.html#a784ae7baf534cb09ccd31a38db9d18b1" title="initialize the matrix with zeros">ZeroMatrix</a>();
+<a name="l00111"></a>00111         
+<a name="l00112"></a>00112     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;3; ++i) {
+<a name="l00113"></a>00113         <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, s);
+<a name="l00114"></a>00114         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(s, <span class="stringliteral">&quot; &quot;</span>);
+<a name="l00115"></a>00115         vector&lt;double&gt; v;
+<a name="l00116"></a>00116         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27" title="store all words in a vector with type conversion.">ConvertToVector</a>(v);
+<a name="l00117"></a>00117         <span class="keywordflow">if</span>(v.size()!=2)
+<a name="l00118"></a>00118             <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;invalid box format&quot;</span>);
+<a name="l00119"></a>00119         m[i][i] = v[1] - v[0];
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121     top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(m );
+<a name="l00122"></a>00122 }
+<a name="l00123"></a>00123 
+<a name="l00124"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#aec935b344bd776f2259ea1527b44e66d">00124</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#aec935b344bd776f2259ea1527b44e66d">LAMMPSReader::ReadNumAtoms</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top, <span class="keywordtype">string</span> itemline)
+<a name="l00125"></a>00125 {
+<a name="l00126"></a>00126     <span class="keywordtype">string</span> s;
+<a name="l00127"></a>00127     <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, s);
+<a name="l00128"></a>00128     _natoms = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(s);
+<a name="l00129"></a>00129     <span class="keywordflow">if</span>(!_topology &amp;&amp; _natoms !=top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad6ffd4e005205905f4456940e58c6af8">BeadCount</a>())
+<a name="l00130"></a>00130         std::runtime_error(<span class="stringliteral">&quot;number of beads in topology and trajectory differ&quot;</span>);
+<a name="l00131"></a>00131 }
+<a name="l00132"></a>00132 
+<a name="l00133"></a><a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a096617905873b576bc846c0add52976a">00133</a> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1LAMMPSReader.html#a096617905873b576bc846c0add52976a">LAMMPSReader::ReadAtoms</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top, <span class="keywordtype">string</span> itemline) {
+<a name="l00134"></a>00134     <span class="keywordflow">if</span>(_topology){
+<a name="l00135"></a>00135       top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(<span class="stringliteral">&quot;dum&quot;</span>);
+<a name="l00136"></a>00136       <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;_natoms; ++i) {
+<a name="l00137"></a>00137         (void)top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, <span class="stringliteral">&quot;no&quot;</span>, top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(<span class="stringliteral">&quot;no&quot;</span>), 0, 0, 0);
+<a name="l00138"></a>00138       }
+<a name="l00139"></a>00139     }
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141     <span class="keywordtype">bool</span> pos=<span class="keyword">false</span>;
+<a name="l00142"></a>00142     <span class="keywordtype">bool</span> force=<span class="keyword">false</span>;
+<a name="l00143"></a>00143     <span class="keywordtype">bool</span> vel=<span class="keyword">false</span>;
+<a name="l00144"></a>00144     <span class="keywordtype">int</span> <span class="keywordtype">id</span>=-1;
 <a name="l00145"></a>00145 
-<a name="l00146"></a>00146     {
-<a name="l00147"></a>00147         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(itemline.substr(12), <span class="stringliteral">&quot; &quot;</span>);
-<a name="l00148"></a>00148         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(fields);
-<a name="l00149"></a>00149         <span class="keywordtype">int</span> j=0;
-<a name="l00150"></a>00150         <span class="keywordflow">for</span>(<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> i=tok.begin(); i!=tok.end(); ++i,++j) {
-<a name="l00151"></a>00151             <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;x&quot;</span> || *i == <span class="stringliteral">&quot;y&quot;</span> || *i == <span class="stringliteral">&quot;z&quot;</span>)
-<a name="l00152"></a>00152                 pos =<span class="keyword">true</span>;
-<a name="l00153"></a>00153             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;xu&quot;</span> || *i == <span class="stringliteral">&quot;yu&quot;</span> || *i == <span class="stringliteral">&quot;zu&quot;</span>)
+<a name="l00146"></a>00146     vector&lt;string&gt; fields;
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148     {
+<a name="l00149"></a>00149         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(itemline.substr(12), <span class="stringliteral">&quot; &quot;</span>);
+<a name="l00150"></a>00150         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(fields);
+<a name="l00151"></a>00151         <span class="keywordtype">int</span> j=0;
+<a name="l00152"></a>00152         <span class="keywordflow">for</span>(<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> i=tok.begin(); i!=tok.end(); ++i,++j) {
+<a name="l00153"></a>00153             <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;x&quot;</span> || *i == <span class="stringliteral">&quot;y&quot;</span> || *i == <span class="stringliteral">&quot;z&quot;</span>)
 <a name="l00154"></a>00154                 pos =<span class="keyword">true</span>;
-<a name="l00155"></a>00155             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;xs&quot;</span> || *i == <span class="stringliteral">&quot;ys&quot;</span> || *i == <span class="stringliteral">&quot;zs&quot;</span>)
+<a name="l00155"></a>00155             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;xu&quot;</span> || *i == <span class="stringliteral">&quot;yu&quot;</span> || *i == <span class="stringliteral">&quot;zu&quot;</span>)
 <a name="l00156"></a>00156                 pos =<span class="keyword">true</span>;
-<a name="l00157"></a>00157             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;vx&quot;</span> || *i == <span class="stringliteral">&quot;vy&quot;</span> || *i == <span class="stringliteral">&quot;vz&quot;</span>)
-<a name="l00158"></a>00158                 vel =<span class="keyword">true</span>;
-<a name="l00159"></a>00159             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;fx&quot;</span> || *i == <span class="stringliteral">&quot;fy&quot;</span> || *i == <span class="stringliteral">&quot;fz&quot;</span>)
-<a name="l00160"></a>00160                 force=<span class="keyword">true</span>;
-<a name="l00161"></a>00161             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;id&quot;</span>)
-<a name="l00162"></a>00162               <span class="keywordtype">id</span>=j;
-<a name="l00163"></a>00163         }
-<a name="l00164"></a>00164     }
-<a name="l00165"></a>00165     <span class="keywordflow">if</span> (<span class="keywordtype">id</span>&lt;0){
-<a name="l00166"></a>00166       <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;error, id not found in any column of the atoms section&quot;</span>);
-<a name="l00167"></a>00167     }
-<a name="l00168"></a>00168 
-<a name="l00169"></a>00169     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;_natoms; ++i) {
-<a name="l00170"></a>00170         <span class="keywordtype">string</span> s;
-<a name="l00171"></a>00171         <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, s);
-<a name="l00172"></a>00172 
-<a name="l00173"></a>00173         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(s, <span class="stringliteral">&quot; &quot;</span>);
-<a name="l00174"></a>00174         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> itok= tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>();
-<a name="l00175"></a>00175         vector&lt;string&gt; fields2;
-<a name="l00176"></a>00176         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(fields2);
-<a name="l00177"></a>00177         <span class="comment">// internal numbering begins with 0</span>
-<a name="l00178"></a>00178         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a> = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>((boost::lexical_cast&lt;int&gt;(fields2[<span class="keywordtype">id</span>]))-1);
-<a name="l00179"></a>00179         b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a1020e8444654907b7846d8caae2dc298">HasPos</a>(pos);
-<a name="l00180"></a>00180         b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ae9165977b5752fc0caff38b89676022d">HasF</a>(force);
-<a name="l00181"></a>00181         b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aeff5cc36627772258fffc87d48a0e8af">HasVel</a>(vel);
-<a name="l00182"></a>00182         <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> m=top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c77ff03972cf2744dbf308636f30cf">getBox</a>();
-<a name="l00183"></a>00183 
-<a name="l00184"></a>00184         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j=0; itok!=tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++itok, ++j) {
-<a name="l00185"></a>00185             <span class="keywordflow">if</span>(j == fields.size())
-<a name="l00186"></a>00186                 <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;error, wrong number of columns in atoms section&quot;</span>);
-<a name="l00187"></a>00187             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;x&quot;</span>)
-<a name="l00188"></a>00188                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00189"></a>00189             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;y&quot;</span>)
-<a name="l00190"></a>00190                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00191"></a>00191             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;z&quot;</span>)
-<a name="l00192"></a>00192                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00193"></a>00193             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;xu&quot;</span>)
-<a name="l00194"></a>00194                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00195"></a>00195             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;yu&quot;</span>)
-<a name="l00196"></a>00196                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00197"></a>00197             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;zu&quot;</span>)
-<a name="l00198"></a>00198                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00199"></a>00199             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;xs&quot;</span>)
-<a name="l00200"></a>00200                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok)*m[0][0];
-<a name="l00201"></a>00201             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;ys&quot;</span>)
-<a name="l00202"></a>00202                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok)*m[1][1];
-<a name="l00203"></a>00203             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;zs&quot;</span>)
-<a name="l00204"></a>00204                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok)*m[2][2];
-<a name="l00205"></a>00205             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;vx&quot;</span>)
-<a name="l00206"></a>00206                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab7013c840c8aea90f56f55dd1969379f">Vel</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00207"></a>00207             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;vy&quot;</span>)
-<a name="l00208"></a>00208                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab7013c840c8aea90f56f55dd1969379f">Vel</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00209"></a>00209             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;vz&quot;</span>)
-<a name="l00210"></a>00210                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab7013c840c8aea90f56f55dd1969379f">Vel</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00211"></a>00211             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;fx&quot;</span>)
-<a name="l00212"></a>00212                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aef651fc8e52652abf582ed7c055b88fa">F</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00213"></a>00213             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;fy&quot;</span>)
-<a name="l00214"></a>00214                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aef651fc8e52652abf582ed7c055b88fa">F</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00215"></a>00215             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;fz&quot;</span>)
-<a name="l00216"></a>00216                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aef651fc8e52652abf582ed7c055b88fa">F</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
-<a name="l00217"></a>00217             <span class="keywordflow">else</span> <span class="keywordflow">if</span>((fields[j] == <span class="stringliteral">&quot;type&quot;</span>)&amp;&amp;_topology){
-<a name="l00218"></a>00218                 <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(*itok);
-<a name="l00219"></a>00219                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab8a139e67f9cb8dd4eaa45d7f63a529f">setType</a>(type);
-<a name="l00220"></a>00220             }
-<a name="l00221"></a>00221         }
-<a name="l00222"></a>00222     }
-<a name="l00223"></a>00223 }
-<a name="l00224"></a>00224 
-<a name="l00225"></a>00225 }}
-<a name="l00226"></a>00226 
+<a name="l00157"></a>00157             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;xs&quot;</span> || *i == <span class="stringliteral">&quot;ys&quot;</span> || *i == <span class="stringliteral">&quot;zs&quot;</span>)
+<a name="l00158"></a>00158                 pos =<span class="keyword">true</span>;
+<a name="l00159"></a>00159             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;vx&quot;</span> || *i == <span class="stringliteral">&quot;vy&quot;</span> || *i == <span class="stringliteral">&quot;vz&quot;</span>)
+<a name="l00160"></a>00160                 vel =<span class="keyword">true</span>;
+<a name="l00161"></a>00161             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;fx&quot;</span> || *i == <span class="stringliteral">&quot;fy&quot;</span> || *i == <span class="stringliteral">&quot;fz&quot;</span>)
+<a name="l00162"></a>00162                 force=<span class="keyword">true</span>;
+<a name="l00163"></a>00163             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*i == <span class="stringliteral">&quot;id&quot;</span>)
+<a name="l00164"></a>00164               <span class="keywordtype">id</span>=j;
+<a name="l00165"></a>00165         }
+<a name="l00166"></a>00166     }
+<a name="l00167"></a>00167     <span class="keywordflow">if</span> (<span class="keywordtype">id</span>&lt;0){
+<a name="l00168"></a>00168       <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;error, id not found in any column of the atoms section&quot;</span>);
+<a name="l00169"></a>00169     }
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;_natoms; ++i) {
+<a name="l00172"></a>00172         <span class="keywordtype">string</span> s;
+<a name="l00173"></a>00173         <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_fl, s);
+<a name="l00174"></a>00174         <span class="keywordflow">if</span> (_fl.eof())
+<a name="l00175"></a>00175            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected end of lammps file &#39;&quot;</span> + _fname + <span class="stringliteral">&quot;&#39; only &quot;</span> + boost::lexical_cast&lt;string&gt;(i) + <span class="stringliteral">&quot; atoms of &quot;</span> + <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">string</span>&gt;(_natoms) + <span class="stringliteral">&quot; read.&quot;</span>);
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html" title="break string into words">Tokenizer</a> tok(s, <span class="stringliteral">&quot; &quot;</span>);
+<a name="l00178"></a>00178         <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a3661e0360aa55ef162db5500da9653e0">Tokenizer::iterator</a> itok= tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a05bdee6a6e83c11138e00e7dd75e969f" title="iterator to first element">begin</a>();
+<a name="l00179"></a>00179         vector&lt;string&gt; fields2;
+<a name="l00180"></a>00180         tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe" title="store all words in a vector of strings.">ToVector</a>(fields2);
+<a name="l00181"></a>00181         <span class="comment">// internal numbering begins with 0</span>
+<a name="l00182"></a>00182         <span class="keywordtype">int</span> atom_id = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">int</span>&gt;(fields2[id]);
+<a name="l00183"></a>00183         <span class="keywordflow">if</span> (atom_id &gt; _natoms)
+<a name="l00184"></a>00184            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: found atom with id &quot;</span>+ boost::lexical_cast&lt;string&gt;(atom_id) + <span class="stringliteral">&quot; but only &quot;</span>+ boost::lexical_cast&lt;string&gt;(_natoms) + <span class="stringliteral">&quot; atoms defined in header of file &#39;&quot;</span> + _fname + <span class="stringliteral">&quot;&#39;&quot;</span>);
+<a name="l00185"></a>00185         <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *<a class="code" href="linsolve_8m.html#a21ad0bd836b90d08f4cf640b4c298e7c">b</a> = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(atom_id-1);
+<a name="l00186"></a>00186         b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a1020e8444654907b7846d8caae2dc298">HasPos</a>(pos);
+<a name="l00187"></a>00187         b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ae9165977b5752fc0caff38b89676022d">HasF</a>(force);
+<a name="l00188"></a>00188         b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aeff5cc36627772258fffc87d48a0e8af">HasVel</a>(vel);
+<a name="l00189"></a>00189         <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> m=top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c77ff03972cf2744dbf308636f30cf">getBox</a>();
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191         <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j=0; itok!=tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a0387b5e153688840cd71845046b0e954" title="end iterator">end</a>(); ++itok, ++j) {
+<a name="l00192"></a>00192             <span class="keywordflow">if</span>(j == fields.size())
+<a name="l00193"></a>00193                 <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;error, wrong number of columns in atoms section&quot;</span>);
+<a name="l00194"></a>00194             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;x&quot;</span>)
+<a name="l00195"></a>00195                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00196"></a>00196             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;y&quot;</span>)
+<a name="l00197"></a>00197                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00198"></a>00198             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;z&quot;</span>)
+<a name="l00199"></a>00199                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00200"></a>00200             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;xu&quot;</span>)
+<a name="l00201"></a>00201                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00202"></a>00202             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;yu&quot;</span>)
+<a name="l00203"></a>00203                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00204"></a>00204             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;zu&quot;</span>)
+<a name="l00205"></a>00205                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00206"></a>00206             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;xs&quot;</span>)
+<a name="l00207"></a>00207                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok)*m[0][0];
+<a name="l00208"></a>00208             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;ys&quot;</span>)
+<a name="l00209"></a>00209                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok)*m[1][1];
+<a name="l00210"></a>00210             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;zs&quot;</span>)
+<a name="l00211"></a>00211                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad78bc3040541cca9c40dfea69866c90d">Pos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok)*m[2][2];
+<a name="l00212"></a>00212             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;vx&quot;</span>)
+<a name="l00213"></a>00213                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab7013c840c8aea90f56f55dd1969379f">Vel</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00214"></a>00214             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;vy&quot;</span>)
+<a name="l00215"></a>00215                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab7013c840c8aea90f56f55dd1969379f">Vel</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00216"></a>00216             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;vz&quot;</span>)
+<a name="l00217"></a>00217                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab7013c840c8aea90f56f55dd1969379f">Vel</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00218"></a>00218             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;fx&quot;</span>)
+<a name="l00219"></a>00219                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aef651fc8e52652abf582ed7c055b88fa">F</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a780dacdb9ba34a5d77ce6142b74295ab" title="get full access to x element">x</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00220"></a>00220             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;fy&quot;</span>)
+<a name="l00221"></a>00221                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aef651fc8e52652abf582ed7c055b88fa">F</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a637523087dd64b3d4633e1bc8b6f13b6" title="get full access to y element">y</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00222"></a>00222             <span class="keywordflow">else</span> <span class="keywordflow">if</span>(fields[j] == <span class="stringliteral">&quot;fz&quot;</span>)
+<a name="l00223"></a>00223                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aef651fc8e52652abf582ed7c055b88fa">F</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab6d9c99257adce04881b365c538896a0" title="get full access to z element">z</a>() = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;(*itok);
+<a name="l00224"></a>00224             <span class="keywordflow">else</span> <span class="keywordflow">if</span>((fields[j] == <span class="stringliteral">&quot;type&quot;</span>)&amp;&amp;_topology){
+<a name="l00225"></a>00225                 <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(*itok);
+<a name="l00226"></a>00226                 b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab8a139e67f9cb8dd4eaa45d7f63a529f">setType</a>(type);
+<a name="l00227"></a>00227             }
+<a name="l00228"></a>00228         }
+<a name="l00229"></a>00229     }
+<a name="l00230"></a>00230 }
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232 }}
+<a name="l00233"></a>00233 
 </pre></div></div><!-- contents -->
