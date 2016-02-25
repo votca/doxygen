@@ -78,46 +78,51 @@
 <a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define __VOTCA_TOOLS_CONSTANTS_H</span>
 <a name="l00020"></a>00020 <span class="preprocessor"></span>
 <a name="l00021"></a>00021 <span class="preprocessor">#include &lt;boost/math/constants/constants.hpp&gt;</span>
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
-<a name="l00024"></a>00024     
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;cmath&gt;</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>tools {
 <a name="l00025"></a>00025     
-<a name="l00026"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html">00026</a>     <span class="keyword">namespace </span>conv{
-<a name="l00027"></a>00027         
-<a name="l00028"></a>00028         <span class="comment">// mathematical constants </span>
-<a name="l00029"></a>00029         
-<a name="l00030"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">00030</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">Pi</a> = boost::math::constants::pi&lt;double&gt;();
-<a name="l00031"></a>00031         <span class="comment">// natural constants</span>
-<a name="l00032"></a>00032         
-<a name="l00033"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">00033</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">kB</a> = 8.617332478E-5; <span class="comment">// eV/K</span>
-<a name="l00034"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a26029968233863d33fa8a7abe6d34b0f">00034</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a26029968233863d33fa8a7abe6d34b0f">hbar</a> = 6.5821192815E-16; <span class="comment">// eV*s</span>
+<a name="l00026"></a>00026     
+<a name="l00027"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html">00027</a>     <span class="keyword">namespace </span>conv{
+<a name="l00028"></a>00028         
+<a name="l00029"></a>00029         <span class="comment">// mathematical constants </span>
+<a name="l00030"></a>00030         
+<a name="l00031"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">00031</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">Pi</a> = boost::math::constants::pi&lt;double&gt;();
+<a name="l00032"></a>00032     
+<a name="l00033"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a1a44e936a10450b3900c63b885bf6adb">00033</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a1a44e936a10450b3900c63b885bf6adb">rSqrtPi</a> = 1.0/sqrt(<a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">Pi</a>);
+<a name="l00034"></a>00034         <span class="comment">// natural constants</span>
 <a name="l00035"></a>00035         
-<a name="l00036"></a>00036         <span class="comment">//length conversions</span>
-<a name="l00037"></a>00037    <span class="comment">//votca xtp-uses for any conversions the following scheme unitA2unitB </span>
-<a name="l00038"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">00038</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">bohr2nm</a> =0.052917721092;
-<a name="l00039"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">00039</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">nm2bohr</a> =18.897259886;
-<a name="l00040"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5b8b61ab3a027e6cb419565bd73dea52">00040</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5b8b61ab3a027e6cb419565bd73dea52">ang2bohr</a> = 1.8897259886; 
-<a name="l00041"></a>00041     
-<a name="l00042"></a>00042     
-<a name="l00043"></a>00043     
-<a name="l00044"></a>00044     
-<a name="l00045"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a47c26b41bb24a3ea7535177735b71b73">00045</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a47c26b41bb24a3ea7535177735b71b73">ryd2ev</a>= 13.60569253;
-<a name="l00046"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a1ca5d00084dd59e37c7866cd488bf83f">00046</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a1ca5d00084dd59e37c7866cd488bf83f">ha2ev</a>=  27.21138602;
+<a name="l00036"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">00036</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">kB</a> = 8.617332478E-5; <span class="comment">// eV/K</span>
+<a name="l00037"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a26029968233863d33fa8a7abe6d34b0f">00037</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a26029968233863d33fa8a7abe6d34b0f">hbar</a> = 6.5821192815E-16; <span class="comment">// eV*s</span>
+<a name="l00038"></a>00038         
+<a name="l00039"></a>00039         <span class="comment">//length conversions</span>
+<a name="l00040"></a>00040    <span class="comment">//votca xtp-uses for any conversions the following scheme unitA2unitB </span>
+<a name="l00041"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">00041</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">bohr2nm</a> =0.052917721092;
+<a name="l00042"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">00042</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">nm2bohr</a> =18.897259886;
+<a name="l00043"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5b8b61ab3a027e6cb419565bd73dea52">00043</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5b8b61ab3a027e6cb419565bd73dea52">ang2bohr</a> = 1.8897259886; 
+<a name="l00044"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#ad925aaa34bb89398c09f2460a9bd9ca4">00044</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#ad925aaa34bb89398c09f2460a9bd9ca4">bohr2ang</a> =1.0/1.8897259886; 
+<a name="l00045"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#adc94986b0534ff57622ea09196b4ede5">00045</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#adc94986b0534ff57622ea09196b4ede5">nm2ang</a>=10.0;
+<a name="l00046"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6d8e43c53e68355a15199c54e1c82b1b">00046</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6d8e43c53e68355a15199c54e1c82b1b">ang2nm</a>=0.1;
 <a name="l00047"></a>00047     
-<a name="l00048"></a>00048     <span class="comment">//ewald internal to eV conversion</span>
-<a name="l00049"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a948ed71e88a4b8bed090fe9d977e5075">00049</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a948ed71e88a4b8bed090fe9d977e5075">int2eV</a> = 1/(4*<a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">Pi</a>*8.854187817e-12) * 1.602176487e-19 / 1.000e-9;
-<a name="l00050"></a>00050     
-<a name="l00051"></a>00051     <span class="comment">// energy conversions</span>
-<a name="l00052"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#aff57d8c5839d4dd466d4072b13ffd70e">00052</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#aff57d8c5839d4dd466d4072b13ffd70e">rydtoev</a> = 13.6058;
-<a name="l00053"></a>00053     
-<a name="l00054"></a>00054     <span class="comment">// floats for gwbse</span>
-<a name="l00055"></a>00055     
-<a name="l00056"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#af357dcfa9b0ff7f3cdbf3f9df82c1a1c">00056</a>     <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#af357dcfa9b0ff7f3cdbf3f9df82c1a1c">ryd2ev_f</a>= 13.60569253;
-<a name="l00057"></a>00057     
-<a name="l00058"></a>00058     }
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 }}
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 <span class="preprocessor">#endif  </span><span class="comment">/* CONVERSIONFACTORS */</span>
-<a name="l00063"></a>00063 
+<a name="l00048"></a>00048     
+<a name="l00049"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a47c26b41bb24a3ea7535177735b71b73">00049</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a47c26b41bb24a3ea7535177735b71b73">ryd2ev</a>= 13.60569253;
+<a name="l00050"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a1ca5d00084dd59e37c7866cd488bf83f">00050</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a1ca5d00084dd59e37c7866cd488bf83f">ha2ev</a>=  27.21138602;
+<a name="l00051"></a>00051     
+<a name="l00052"></a>00052     <span class="comment">//ewald internal to eV conversion</span>
+<a name="l00053"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a948ed71e88a4b8bed090fe9d977e5075">00053</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a948ed71e88a4b8bed090fe9d977e5075">int2eV</a> = 1/(4*<a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">Pi</a>*8.854187817e-12) * 1.602176487e-19 / 1.000e-9;
+<a name="l00054"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#ac98bf63e0a146355e1a78720fd8bf58f">00054</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#ac98bf63e0a146355e1a78720fd8bf58f">int2V_m</a> = 1/(4*<a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">Pi</a>*8.854187817e-12) * 1.602176487e-19 / 1.000e-18;
+<a name="l00055"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#a88184f9cb5aebd2b8e1601383cecacb2">00055</a>     <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a88184f9cb5aebd2b8e1601383cecacb2">int2V</a> = 1/(4*<a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">Pi</a>*8.854187817e-12) * 1.602176487e-19 / 1.000e-9;
+<a name="l00056"></a>00056     <span class="comment">// energy conversions</span>
+<a name="l00057"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#aff57d8c5839d4dd466d4072b13ffd70e">00057</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#aff57d8c5839d4dd466d4072b13ffd70e">rydtoev</a> = 13.6058;
+<a name="l00058"></a>00058     
+<a name="l00059"></a>00059     <span class="comment">// floats for gwbse</span>
+<a name="l00060"></a>00060     
+<a name="l00061"></a><a class="code" href="namespacevotca_1_1tools_1_1conv.html#af357dcfa9b0ff7f3cdbf3f9df82c1a1c">00061</a>     <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="namespacevotca_1_1tools_1_1conv.html#af357dcfa9b0ff7f3cdbf3f9df82c1a1c">ryd2ev_f</a>= 13.60569253;
+<a name="l00062"></a>00062     
+<a name="l00063"></a>00063     }
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 }}
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="preprocessor">#endif  </span><span class="comment">/* CONVERSIONFACTORS */</span>
+<a name="l00068"></a>00068 
 </pre></div></div><!-- contents -->
