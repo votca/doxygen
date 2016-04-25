@@ -188,94 +188,105 @@
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            atoms.push_back(i);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">int</span> index=0;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">while</span>(!atoms.empty()) {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <a class="code" href="classvotca_1_1csg_1_1Interaction.html" title="base calss for all interactions">Interaction</a> *ic;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;bond&quot;</span>)</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                ic = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1IBond.html" title="bond interaction">IBond</a>(atoms);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;angle&quot;</span>)</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                ic = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1IAngle.html" title="angle interaction">IAngle</a>(atoms);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;dihedral&quot;</span>)</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                ic = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1IDihedral.html" title="dihedral interaction">IDihedral</a>(atoms);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;unknown bonded type in map: &quot;</span> + (*ibnd)-&gt;name());</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a0e7ff51ae2454c4fafe079a2b31eaab6">setGroup</a>(iagroup);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#acb8b16c9302c38cefb6d63a892eb5b5a">setIndex</a>(index);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a8c93276fb7e05cc7f7774d91266c0a25">setMolecule</a>(minfo-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>());</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19">AddBondedInteraction</a>(ic);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            minfo-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a45418d76757c0733eaa29362f53326b9" title="Add an interaction to the molecule.">AddInteraction</a>(ic);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            index++;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> minfo;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;           </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">int</span> NrBeads=1;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;bond&quot;</span>)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            NrBeads=2;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;angle&quot;</span>)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            NrBeads=3;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;dihedral&quot;</span>)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            NrBeads=4;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">if</span>( (atoms.size() % NrBeads) != 0 )</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Number of atoms in interaction &#39;&quot;</span> + (*ibnd)-&gt;get(<span class="stringliteral">&quot;name&quot;</span>).as&lt;<span class="keywordtype">string</span>&gt;() + <span class="stringliteral">&quot;&#39; is not a multiple of &quot;</span> + lexical_cast&lt;string&gt;(NrBeads) + <span class="stringliteral">&quot;! Missing beads?&quot;</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordtype">int</span> index=0;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">while</span>(!atoms.empty()) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <a class="code" href="classvotca_1_1csg_1_1Interaction.html" title="base calss for all interactions">Interaction</a> *ic;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;bond&quot;</span>)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                ic = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1IBond.html" title="bond interaction">IBond</a>(atoms);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;angle&quot;</span>)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                ic = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1IAngle.html" title="angle interaction">IAngle</a>(atoms);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>((*ibnd)-&gt;name() == <span class="stringliteral">&quot;dihedral&quot;</span>)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                ic = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1IDihedral.html" title="dihedral interaction">IDihedral</a>(atoms);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;unknown bonded type in map: &quot;</span> + (*ibnd)-&gt;name());</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a1654156b409f8a2d1f709357987279c8">  162</a></span>&#160;<a class="code" href="classvotca_1_1csg_1_1Map.html">Map</a> *<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a1654156b409f8a2d1f709357987279c8">CGMoleculeDef::CreateMap</a>(<a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;in, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;out)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{       </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">if</span>((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)out.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>() != <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a14e53ab589d2f97e2389876cb15bcff9">_beads</a>.size()) {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;number of beads for cg molecule and mapping definition do &quot;</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="stringliteral">&quot;not match, check your molecule naming.&quot;</span>);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Map.html">Map</a> *map = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1Map.html">Map</a>(in, out);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">for</span>(vector&lt;beaddef_t *&gt;::iterator def = <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a14e53ab589d2f97e2389876cb15bcff9">_beads</a>.begin();</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            def != <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a14e53ab589d2f97e2389876cb15bcff9">_beads</a>.end(); ++def) {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a0e7ff51ae2454c4fafe079a2b31eaab6">setGroup</a>(iagroup);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#acb8b16c9302c38cefb6d63a892eb5b5a">setIndex</a>(index);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a8c93276fb7e05cc7f7774d91266c0a25">setMolecule</a>(minfo-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a99e7911a6bad2c58837b1c54ca6c30ba" title="get the molecule ID">getId</a>());</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19">AddBondedInteraction</a>(ic);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            minfo-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a45418d76757c0733eaa29362f53326b9" title="Add an interaction to the molecule.">AddInteraction</a>(ic);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            index++;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">return</span> minfo;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordtype">int</span> iout = out.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#aad666c8d41a4db60c4183ad1e9ade8a7" title="find a bead by it&#39;s name">getBeadByName</a>((*def)-&gt;_name);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span>(iout &lt; 0) </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">&quot;mapping error: reference molecule &quot;</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                    + (*def)-&gt;_name + <span class="stringliteral">&quot; does not exist&quot;</span>));</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *mdef = <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a57817411c87ee35fdf87515f8d57a9f5">getMapByName</a>((*def)-&gt;_mapping);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">if</span>(!mdef)</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">&quot;mapping &quot;</span> + (*def)-&gt;_mapping + <span class="stringliteral">&quot; not found&quot;</span>));</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <a class="code" href="classvotca_1_1csg_1_1BeadMap.html">BeadMap</a> *bmap;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">switch</span>((*def)-&gt;_symmetry) {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">case</span> 1:</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            bmap = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1Map__Sphere.html">Map_Sphere</a>();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">case</span> 3:</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            bmap = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1Map__Ellipsoid.html">Map_Ellipsoid</a>();</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">&quot;unknown symmetry in bead definition!&quot;</span>));</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        }</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        bmap-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadMap.html#ae87eb6d3c99f457567ebd226f21c98ec">Initialize</a>(&amp;in, out.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#ab2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(iout), ((*def)-&gt;_options), mdef);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        map-&gt;<a class="code" href="classvotca_1_1csg_1_1Map.html#a96728f32992aec22a20452d126a7e22a">AddBeadMap</a>(bmap);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span> map;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a81f60dbc313479bd847b982e1a9d6478">  204</a></span>&#160;<a class="code" href="structvotca_1_1csg_1_1CGMoleculeDef_1_1beaddef__t.html">CGMoleculeDef::beaddef_t</a> *<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a81f60dbc313479bd847b982e1a9d6478">CGMoleculeDef::getBeadByName</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;name)</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;{</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    map&lt;string, beaddef_t*&gt;::iterator iter = <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a2b97a7836968c39ad82d1109a6330c8d">_beads_by_name</a>.find(name);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span>(iter == <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a2b97a7836968c39ad82d1109a6330c8d">_beads_by_name</a>.end()) {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;cannot find: &lt;&quot;</span> &lt;&lt; name &lt;&lt; <span class="stringliteral">&quot;&gt; in &quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a08af3f13eae2d5e4d71299b5c5a14b1f">_name</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">return</span> NULL;        </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a1654156b409f8a2d1f709357987279c8">  173</a></span>&#160;<a class="code" href="classvotca_1_1csg_1_1Map.html">Map</a> *<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a1654156b409f8a2d1f709357987279c8">CGMoleculeDef::CreateMap</a>(<a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;in, <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> &amp;out)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{       </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">if</span>((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)out.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a2ae32e4dc7124badb92a291018437915" title="get the number of beads in the molecule">BeadCount</a>() != <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a14e53ab589d2f97e2389876cb15bcff9">_beads</a>.size()) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;number of beads for cg molecule and mapping definition do &quot;</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="stringliteral">&quot;not match, check your molecule naming.&quot;</span>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Map.html">Map</a> *map = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1Map.html">Map</a>(in, out);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">for</span>(vector&lt;beaddef_t *&gt;::iterator def = <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a14e53ab589d2f97e2389876cb15bcff9">_beads</a>.begin();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            def != <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a14e53ab589d2f97e2389876cb15bcff9">_beads</a>.end(); ++def) {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordtype">int</span> iout = out.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#aad666c8d41a4db60c4183ad1e9ade8a7" title="find a bead by it&#39;s name">getBeadByName</a>((*def)-&gt;_name);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">if</span>(iout &lt; 0) </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">&quot;mapping error: reference molecule &quot;</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                    + (*def)-&gt;_name + <span class="stringliteral">&quot; does not exist&quot;</span>));</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *mdef = <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a57817411c87ee35fdf87515f8d57a9f5">getMapByName</a>((*def)-&gt;_mapping);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">if</span>(!mdef)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">&quot;mapping &quot;</span> + (*def)-&gt;_mapping + <span class="stringliteral">&quot; not found&quot;</span>));</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="code" href="classvotca_1_1csg_1_1BeadMap.html">BeadMap</a> *bmap;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">switch</span>((*def)-&gt;_symmetry) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">case</span> 1:</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            bmap = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1Map__Sphere.html">Map_Sphere</a>();</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">case</span> 3:</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            bmap = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1Map__Ellipsoid.html">Map_Ellipsoid</a>();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="keywordtype">string</span>(<span class="stringliteral">&quot;unknown symmetry in bead definition!&quot;</span>));</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        bmap-&gt;<a class="code" href="classvotca_1_1csg_1_1BeadMap.html#ae87eb6d3c99f457567ebd226f21c98ec">Initialize</a>(&amp;in, out.<a class="code" href="classvotca_1_1csg_1_1Molecule.html#ab2245f939b0680f85aeacf81ceb97fdb" title="get the id of a bead in the molecule">getBead</a>(iout), ((*def)-&gt;_options), mdef);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        map-&gt;<a class="code" href="classvotca_1_1csg_1_1Map.html#a96728f32992aec22a20452d126a7e22a">AddBeadMap</a>(bmap);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        </div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">//assert(iter != _beadmap.end());</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">//return (*iter).second;</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">return</span> (*iter).second;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
-<div class="line"><a name="l00216"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a57817411c87ee35fdf87515f8d57a9f5">  216</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a57817411c87ee35fdf87515f8d57a9f5">CGMoleculeDef::getMapByName</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;name)</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;{</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    map&lt;string, Property *&gt;::iterator iter = <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#aaf214dd051a65f58faadcd28df8974ae">_maps</a>.find(name);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">if</span>(iter == <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#aaf214dd051a65f58faadcd28df8974ae">_maps</a>.end()) {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;cannot find map &quot;</span> &lt;&lt; name &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">return</span> NULL;        </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">//assert(iter != _beadmap.end());</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">//return (*iter).second;</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">return</span> (*iter).second;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}}</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">return</span> map;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a81f60dbc313479bd847b982e1a9d6478">  215</a></span>&#160;<a class="code" href="structvotca_1_1csg_1_1CGMoleculeDef_1_1beaddef__t.html">CGMoleculeDef::beaddef_t</a> *<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a81f60dbc313479bd847b982e1a9d6478">CGMoleculeDef::getBeadByName</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;name)</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;{</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    map&lt;string, beaddef_t*&gt;::iterator iter = <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a2b97a7836968c39ad82d1109a6330c8d">_beads_by_name</a>.find(name);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">if</span>(iter == <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a2b97a7836968c39ad82d1109a6330c8d">_beads_by_name</a>.end()) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;cannot find: &lt;&quot;</span> &lt;&lt; name &lt;&lt; <span class="stringliteral">&quot;&gt; in &quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a08af3f13eae2d5e4d71299b5c5a14b1f">_name</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">return</span> NULL;        </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">//assert(iter != _beadmap.end());</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">//return (*iter).second;</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">return</span> (*iter).second;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a57817411c87ee35fdf87515f8d57a9f5">  227</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *<a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#a57817411c87ee35fdf87515f8d57a9f5">CGMoleculeDef::getMapByName</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;name)</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;{</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    map&lt;string, Property *&gt;::iterator iter = <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#aaf214dd051a65f58faadcd28df8974ae">_maps</a>.find(name);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">if</span>(iter == <a class="code" href="classvotca_1_1csg_1_1CGMoleculeDef.html#aaf214dd051a65f58faadcd28df8974ae">_maps</a>.end()) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;cannot find map &quot;</span> &lt;&lt; name &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keywordflow">return</span> NULL;        </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="comment">//assert(iter != _beadmap.end());</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">//return (*iter).second;</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">return</span> (*iter).second;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
