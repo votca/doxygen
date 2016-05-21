@@ -149,7 +149,7 @@
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// temporary variables</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    ub::matrix&lt;double&gt; Q(2*ngrid, 2*ngrid);       <span class="comment">// Q matrix: QR decomposition of trans(B)</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    ub::matrix&lt;double&gt; Q_k(2*ngrid, 2*ngrid);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    ub::identity_matrix&lt;double&gt; I (2*ngrid);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    ub::identity_matrix&lt;double&gt; <a class="code" href="linsolve_8m.html#a66cc12e3c6d68de3fef6de89cf033f67">I</a> (2*ngrid);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    ub::vector&lt;double&gt; v(2*ngrid);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    Q = ub::zero_matrix&lt;double&gt;(2*ngrid, 2*ngrid);</div>
@@ -169,7 +169,7 @@
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    gsl_linalg_QR_decomp (&amp;gsl_constr.matrix, tau_qr);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    Q = I;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    Q = <a class="code" href="linsolve_8m.html#a66cc12e3c6d68de3fef6de89cf033f67">I</a>;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = ngrid; k &gt; 0 ; k--) {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
@@ -182,7 +182,7 @@
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;             v(icout) = gsl_matrix_get(&amp;gsl_constr.matrix, icout, k - 1 );</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        Q_k = I - gsl_vector_get(tau_qr, k - 1 ) * outer_prod ( v, v );</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        Q_k = <a class="code" href="linsolve_8m.html#a66cc12e3c6d68de3fef6de89cf033f67">I</a> - gsl_vector_get(tau_qr, k - 1 ) * outer_prod ( v, v );</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        Q = prec_prod(Q, Q_k);</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
