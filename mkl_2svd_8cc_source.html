@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_200ea662793a3f7f134aaae2a2007985.html">tools</a></li><li class="navelem"><a class="el" href="dir_c4c66537fe844021b54af6f7810bd214.html">src</a></li><li class="navelem"><a class="el" href="dir_2d66de20dcb70790716d0d711b38767d.html">libtools</a></li><li class="navelem"><a class="el" href="dir_55eea5528676495652bf385edc526fc0.html">linalg</a></li><li class="navelem"><a class="el" href="dir_818802b44fba01a46501354fde0a8519.html">mkl</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_4eeb864c4eec08c7d6b9d3b0352cfdde.html">tools</a></li><li class="navelem"><a class="el" href="dir_17cadb2edabe3078d28ce072d22225fa.html">src</a></li><li class="navelem"><a class="el" href="dir_6ce34105d1caf42993ffd183ede52b72.html">libtools</a></li><li class="navelem"><a class="el" href="dir_00fa7a8c5974f4a93b8df7485c9f6161.html">linalg</a></li><li class="navelem"><a class="el" href="dir_6b8cf071337294fff103730c605b5722.html">mkl</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -85,7 +85,7 @@
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// define LAPACK variables</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    MKL_INT m = A.size1();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    MKL_INT <a class="code" href="namespacevotca_1_1xtp.html#a070139a636c7a60c2d933998ee889e06af18903b817fa68d54425a9c6b8d03468">m</a> = A.size1();</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    MKL_INT n = A.size2();</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span> (m&gt;n){</div>
@@ -93,14 +93,14 @@
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">//MKL_INT info;</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//MKL_INT ipiv[n];</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    ub::matrix&lt;double&gt;work=ub::zero_matrix&lt;double&gt;(m,n);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    ub::matrix&lt;double&gt;work=ub::zero_matrix&lt;double&gt;(<a class="code" href="namespacevotca_1_1xtp.html#a070139a636c7a60c2d933998ee889e06af18903b817fa68d54425a9c6b8d03468">m</a>,n);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// initialize V</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    S.resize(n, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    VT.resize(n, n, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// pointers for LAPACK</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">double</span> * a = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;A.data().begin()[0]);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">double</span> * s = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;S.data().begin()[0]);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">double</span> * <a class="code" href="namespaceCart.html#a728e7dca1f41916ddf640546ab9f95e9a596bbf8c955d07e1c439c8cd42611fcd">s</a> = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;S.data().begin()[0]);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">double</span> * vt = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;VT.data().begin()[0]);   </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">double</span> * superb = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;work.data().begin()[0]);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// solve</span></div>
