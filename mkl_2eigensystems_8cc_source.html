@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_4eeb864c4eec08c7d6b9d3b0352cfdde.html">tools</a></li><li class="navelem"><a class="el" href="dir_17cadb2edabe3078d28ce072d22225fa.html">src</a></li><li class="navelem"><a class="el" href="dir_6ce34105d1caf42993ffd183ede52b72.html">libtools</a></li><li class="navelem"><a class="el" href="dir_00fa7a8c5974f4a93b8df7485c9f6161.html">linalg</a></li><li class="navelem"><a class="el" href="dir_6b8cf071337294fff103730c605b5722.html">mkl</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_200ea662793a3f7f134aaae2a2007985.html">tools</a></li><li class="navelem"><a class="el" href="dir_c4c66537fe844021b54af6f7810bd214.html">src</a></li><li class="navelem"><a class="el" href="dir_2d66de20dcb70790716d0d711b38767d.html">libtools</a></li><li class="navelem"><a class="el" href="dir_55eea5528676495652bf385edc526fc0.html">linalg</a></li><li class="navelem"><a class="el" href="dir_818802b44fba01a46501354fde0a8519.html">mkl</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -340,8 +340,8 @@
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;{</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="comment">// cout &lt;&lt; &quot; \n I&#39;m really using MKL! &quot; &lt;&lt; endl;</span></div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="comment">//check to see if matrices have same size</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">int</span> n = A.size1();</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordtype">int</span> lda = n ;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">int</span> lda = A.size1();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    MKL_INT n = lda ;</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordtype">int</span> ldb =B.size1();</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    ub::matrix&lt;double&gt; _B(ldb,ldb);</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    _B=B;</div>
@@ -350,33 +350,31 @@
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        exit(1);</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="comment">// make sure that containers for eigenvalues and eigenvectors are of correct size</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    E.resize(n);</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    V.resize(n, n);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    E.resize(lda);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    V.resize(lda, lda);</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="comment">// Query and allocate the optimal workspace </span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordtype">double</span> wkopt;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">double</span>* work;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordtype">int</span> info;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordtype">int</span> lwork;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    lwork = -1;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="comment">// MKL is different to GSL because it overwrites the input matrix</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    V = <a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>; <span class="comment">// make a copy (might actually be unnecessary in most cases!)</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="comment">// make a pointer to the ublas matrix so that LAPACK understands it </span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordtype">double</span> * pB = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;_B.data().begin()[0]);  </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordtype">double</span> * pV = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;V.data().begin()[0]);</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordtype">double</span> * pE = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;E.data()[0]);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="comment">// call LAPACK via C interface</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    info = LAPACKE_dsygv( LAPACK_ROW_MAJOR,1,<span class="charliteral">&#39;V&#39;</span>, <span class="charliteral">&#39;U&#39;</span>, n, pV , lda,pB,ldb, pE );</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">if</span>( info &gt; 0 ) {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    }</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;};</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;}}</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;   </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    MKL_INT info=0;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    MKL_INT LDA=lda;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    MKL_INT LDB=ldb;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="comment">// MKL is different to GSL because it overwrites the input matrix</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    V = <a class="code" href="linsolve_8m.html#a3b98e2dffc6cb06a89dcb0d5c60a0206">A</a>; <span class="comment">// make a copy (might actually be unnecessary in most cases!)</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="comment">// make a pointer to the ublas matrix so that LAPACK understands it </span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordtype">double</span> * pB = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;_B.data().begin()[0]);  </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordtype">double</span> * pV = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;V.data().begin()[0]);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordtype">double</span> * pE = <span class="keyword">const_cast&lt;</span><span class="keywordtype">double</span>*<span class="keyword">&gt;</span>(&amp;E.data()[0]);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="comment">// call LAPACK via C interface</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    info = LAPACKE_dsygv( LAPACK_ROW_MAJOR,1,<span class="charliteral">&#39;V&#39;</span>, <span class="charliteral">&#39;U&#39;</span>, n, pV , lda,pB,ldb, pE );</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">if</span>( info != 0 ) {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;};</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
