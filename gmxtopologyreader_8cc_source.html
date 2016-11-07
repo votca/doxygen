@@ -85,97 +85,95 @@
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">        #include &lt;gromacs/fileio/tpxio.h&gt;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">        #include &lt;gromacs/topology/atoms.h&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">        #include &lt;gromacs/topology/topology.h&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#elif GMX == 50</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">        #include &lt;gromacs/fileio/tpxio.h&gt;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span>    <span class="comment">// this one is needed because of bool is defined in one of the headers included by gmx</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">    #undef bool</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html#a698740c88e2547a2b4294a1f61dc364b">   44</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html#a698740c88e2547a2b4294a1f61dc364b" title="read a topology file">GMXTopologyReader::ReadTopology</a>(<span class="keywordtype">string</span> <a class="code" href="installation_8dox.html#ac2179690bfbd3b163d0c82ce5e5eb0d2">file</a>, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{ </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    gmx_mtop_t mtop;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">int</span> natoms;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// cleanup topology to store new data</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b" title="cleans up all the stored data">Cleanup</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    t_inputrec ir;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">::matrix</a> gbox;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#if GMX == 52</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span>    (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;ir,gbox,&amp;natoms,NULL,NULL,&amp;mtop);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span>    (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;ir,gbox,&amp;natoms,NULL,NULL,NULL,&amp;mtop);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> count=0;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        count+=mtop.molblock[iblock].nmol;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span>(count != mtop.mols.nr  ) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;gromacs topology contains inconsistency in molecule definitons\n\n&quot;</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="stringliteral">&quot;A possible reason is an outdated .tpr file. Please rerun grompp to generate a new tpr file.\n&quot;</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="stringliteral">&quot;If the problem remains or &quot;</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="stringliteral">&quot;you&#39;re missing the files to rerun grompp,\n contact the votca mailing list for a solution.&quot;</span>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">int</span> ifirstatom = 0;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        gmx_moltype_t *mol</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                = &amp;(mtop.moltype[mtop.molblock[iblock].type]);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#error Unsupported GMX version</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span>    <span class="comment">// this one is needed because of bool is defined in one of the headers included by gmx</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">    #undef bool</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>csg {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html#a698740c88e2547a2b4294a1f61dc364b">   42</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1GMXTopologyReader.html#a698740c88e2547a2b4294a1f61dc364b" title="read a topology file">GMXTopologyReader::ReadTopology</a>(<span class="keywordtype">string</span> <a class="code" href="installation_8dox.html#ac2179690bfbd3b163d0c82ce5e5eb0d2">file</a>, <a class="code" href="classvotca_1_1csg_1_1Topology.html" title="topology of the whole system">Topology</a> &amp;top)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{ </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    gmx_mtop_t mtop;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> natoms;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// cleanup topology to store new data</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b" title="cleans up all the stored data">Cleanup</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    t_inputrec ir;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">::matrix</a> gbox;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#if GMX == 52</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span>    (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;ir,gbox,&amp;natoms,NULL,NULL,&amp;mtop);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span>    (void)read_tpx((<span class="keywordtype">char</span> *)file.c_str(),&amp;ir,gbox,&amp;natoms,NULL,NULL,NULL,&amp;mtop);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span> count=0;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        count+=mtop.molblock[iblock].nmol;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span>(count != mtop.mols.nr  ) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;gromacs topology contains inconsistency in molecule definitons\n\n&quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="stringliteral">&quot;A possible reason is an outdated .tpr file. Please rerun grompp to generate a new tpr file.\n&quot;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="stringliteral">&quot;If the problem remains or &quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="stringliteral">&quot;you&#39;re missing the files to rerun grompp,\n contact the votca mailing list for a solution.&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> ifirstatom = 0;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iblock=0; iblock&lt;mtop.nmolblock; ++iblock) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        gmx_moltype_t *mol</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                = &amp;(mtop.moltype[mtop.molblock[iblock].type]);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">string</span> molname =  *(mol-&gt;name);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">string</span> molname =  *(mol-&gt;name);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">int</span> res_offset = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a74c28ddd1b95e242842bd59685bb8663">ResidueCount</a>();</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">int</span> res_offset = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a74c28ddd1b95e242842bd59685bb8663">ResidueCount</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        t_atoms *atoms=&amp;(mol-&gt;atoms);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        t_atoms *atoms=&amp;(mol-&gt;atoms);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i &lt; atoms-&gt;nres; i++) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(*(atoms-&gt;resinfo[i].name));</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> imol=0; imol&lt;mtop.molblock[iblock].nmol; ++imol) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mi = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a87a10bc0957a1465dad5b3899cb6e932" title="creates a new molecule">CreateMolecule</a>(molname);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="comment">// read the atoms</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iatom=0; iatom&lt;mtop.molblock[iblock].natoms_mol; iatom++) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                t_atom *a = &amp;(atoms-&gt;atom[iatom]);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(*(atoms-&gt;atomtype[iatom]));</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, *(atoms-&gt;atomname[iatom]), type, a-&gt;resind + res_offset, a-&gt;m, a-&gt;q);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                stringstream <a class="code" href="namespacevotca_1_1xtp.html#a070139a636c7a60c2d933998ee889e06a30f4ca8156982850be64a16ee5bb906e">nm</a>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                nm &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#acdb7491b2507bdafe8f973d36918580e">getResnr</a>() + 1 - res_offset &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9fec2f8d63ec726bf146ff0c587f5404">getResidue</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#acdb7491b2507bdafe8f973d36918580e">getResnr</a>())-&gt;getName() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aee92364498501cda96eec9dd9cb90c37">getName</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bead, nm.str());</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="comment">// add exclusions</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iatom=0; iatom&lt;mtop.molblock[iblock].natoms_mol; iatom++) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="comment">// read exclusions</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                t_blocka * excl = &amp;(mol-&gt;excls);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="comment">// insert exclusions</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                list&lt;Bead *&gt; excl_list;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k=excl-&gt;index[iatom]; k&lt;excl-&gt;index[iatom+1]; k++) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        excl_list.push_back(top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(excl-&gt;a[k]+ifirstatom));</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad53d06ddf5eee720e7968e2dd37ac861">InsertExclusion</a>(top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(iatom+ifirstatom), excl_list);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            ifirstatom+=mtop.molblock[iblock].natoms_mol;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> <a class="code" href="namespacevotca_1_1xtp.html#a070139a636c7a60c2d933998ee889e06af18903b817fa68d54425a9c6b8d03468">m</a>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            m[i][j] = gbox[j][i];</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(m);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i &lt; atoms-&gt;nres; i++) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a6afd6c41235c5ab30132963c4b50ff78" title="create a new resiude">CreateResidue</a>(*(atoms-&gt;resinfo[i].name));</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> imol=0; imol&lt;mtop.molblock[iblock].nmol; ++imol) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <a class="code" href="classvotca_1_1csg_1_1Molecule.html" title="information about molecules">Molecule</a> *mi = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a87a10bc0957a1465dad5b3899cb6e932" title="creates a new molecule">CreateMolecule</a>(molname);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="comment">// read the atoms</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iatom=0; iatom&lt;mtop.molblock[iblock].natoms_mol; iatom++) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                t_atom *a = &amp;(atoms-&gt;atom[iatom]);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <a class="code" href="classvotca_1_1csg_1_1BeadType.html" title="Bead Type informaton.">BeadType</a> *type = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a40784aeabaa935205d3de9c035f4a1f0" title="get bead type or create it">GetOrCreateBeadType</a>(*(atoms-&gt;atomtype[iatom]));</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="classvotca_1_1csg_1_1Bead.html" title="information about a bead">Bead</a> *bead = top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a179f41931a5a8dc9f40cee62ed4f3a4a" title="creates a new Bead">CreateBead</a>(1, *(atoms-&gt;atomname[iatom]), type, a-&gt;resind + res_offset, a-&gt;m, a-&gt;q);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                stringstream <a class="code" href="namespacevotca_1_1xtp.html#a070139a636c7a60c2d933998ee889e06a30f4ca8156982850be64a16ee5bb906e">nm</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                nm &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#acdb7491b2507bdafe8f973d36918580e">getResnr</a>() + 1 - res_offset &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9fec2f8d63ec726bf146ff0c587f5404">getResidue</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#acdb7491b2507bdafe8f973d36918580e">getResnr</a>())-&gt;getName() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aee92364498501cda96eec9dd9cb90c37">getName</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a5e6a7cbc7c66a4f95b9d61c6a1213e11" title="Add a bead to the molecule.">AddBead</a>(bead, nm.str());</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="comment">// add exclusions</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> iatom=0; iatom&lt;mtop.molblock[iblock].natoms_mol; iatom++) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="comment">// read exclusions</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                t_blocka * excl = &amp;(mol-&gt;excls);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="comment">// insert exclusions</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                list&lt;Bead *&gt; excl_list;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k=excl-&gt;index[iatom]; k&lt;excl-&gt;index[iatom+1]; k++) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                        excl_list.push_back(top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(excl-&gt;a[k]+ifirstatom));</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad53d06ddf5eee720e7968e2dd37ac861">InsertExclusion</a>(top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(iatom+ifirstatom), excl_list);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            ifirstatom+=mtop.molblock[iblock].natoms_mol;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> <a class="code" href="namespacevotca_1_1xtp.html#a070139a636c7a60c2d933998ee889e06af18903b817fa68d54425a9c6b8d03468">m</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            m[i][j] = gbox[j][i];</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#af8a379ac2984eaedfd1b6a9d3f6f6a47">setBox</a>(m);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
