@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>Votca: xtp/src/libxtp/extractors/occupationsextractor.h Source File</title>
+<title>Votca: ctp/src/libctp/extractors/occupationsextractor.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5ead47a849ab83a9193f978ca5e3ca3d.html">xtp</a></li><li class="navelem"><a class="el" href="dir_9490b4b587e39abe5b456b44b7d2a226.html">src</a></li><li class="navelem"><a class="el" href="dir_5cf6e40b1ca54ba1dd4ab59d9906ea77.html">libxtp</a></li><li class="navelem"><a class="el" href="dir_52b8fa195019887fe3f8418a809f8d04.html">extractors</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_925411c422adb34e5eac489a020527ce.html">ctp</a></li><li class="navelem"><a class="el" href="dir_879a0699ec76bc4b5af21d20f283ae7a.html">src</a></li><li class="navelem"><a class="el" href="dir_ed8f0ddc8237bdea34f90fc670e49fa6.html">libctp</a></li><li class="navelem"><a class="el" href="dir_e272478d9cf4c8225f0037886a3cdb85.html">extractors</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -52,102 +52,83 @@
 <div class="title">occupationsextractor.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="occupationsextractor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * You may not use this file except in compliance with the License.</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * You may obtain a copy of the License at</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *              http://www.apache.org/licenses/LICENSE-2.0</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * See the License for the specific language governing permissions and</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * limitations under the License.</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef VOTCA_XTP_OCCUPATIONSEXTRACTOR_H</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VOTCA_XTP_OCCUPATIONSEXTRACTOR_H</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="propertyiomanipulator_8h.html">votca/tools/propertyiomanipulator.h</a>&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="qmcalculator_8h.html">votca/xtp/qmcalculator.h</a>&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
+<a href="occupationsextractor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef VOTCA_CTP_OCCUPATIONSEXTRACTOR_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VOTCA_CTP_OCCUPATIONSEXTRACTOR_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="propertyiomanipulator_8h.html">votca/tools/propertyiomanipulator.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctp_2include_2votca_2ctp_2qmcalculator_8h.html">votca/ctp/qmcalculator.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html">OccupationsExtractor</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1ctp_1_1QMCalculator.html">QMCalculator</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#aeb4d21d7669dae13598748760897e5cd">   15</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#aeb4d21d7669dae13598748760897e5cd">OccupationsExtractor</a>() { };</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#a5eb46788398c791bec6639265374a475">   16</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#a5eb46788398c791bec6639265374a475">~OccupationsExtractor</a>() { };</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#af2b336ee0e81ac106c3550c6d6b6014b">   18</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#af2b336ee0e81ac106c3550c6d6b6014b" title="Calculator name.">Identify</a>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;extract.occupations&quot;</span>; }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#a051b7ee24a01b4c75830280d388fa04c" title="Initializes a calculator from an XML file with options.">Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#abf0eaab90569ac53f978a0d3e4864f0c">EvaluateFrame</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html">OccupationsExtractor</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1xtp_1_1QMCalculator.html">QMCalculator</a></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a5f8f4f1289e6cc9423e8935023eaba0a">   34</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a5f8f4f1289e6cc9423e8935023eaba0a">OccupationsExtractor</a>() { };</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a961d54202371706f04c44c1fb2a52e32">   35</a></span>&#160;   <a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a961d54202371706f04c44c1fb2a52e32">~OccupationsExtractor</a>() { };</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a53524779e1d7d7f02a15b58859fdfaab">   37</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a53524779e1d7d7f02a15b58859fdfaab" title="Calculator name.">Identify</a>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;extract.occupations&quot;</span>; }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#ac676582afb9a30cc09c907e10658a7d6" title="Initializes a calculator from an XML file with options.">Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a3d81993aefa9589e8ec99c61c99c26f0">EvaluateFrame</a>(<a class="code" href="classvotca_1_1xtp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#ac676582afb9a30cc09c907e10658a7d6">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#ac676582afb9a30cc09c907e10658a7d6" title="Initializes a calculator from an XML file with options.">OccupationsExtractor::Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a3d81993aefa9589e8ec99c61c99c26f0">   51</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a3d81993aefa9589e8ec99c61c99c26f0">OccupationsExtractor::EvaluateFrame</a>(<a class="code" href="classvotca_1_1xtp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">string</span> xmlfile = <a class="code" href="classvotca_1_1xtp_1_1OccupationsExtractor.html#a53524779e1d7d7f02a15b58859fdfaab" title="Calculator name.">Identify</a>() + <span class="stringliteral">&quot;.xml&quot;</span>;    </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> state(<span class="stringliteral">&quot;state&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> &amp;segs = state.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;segments&quot;</span>,<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *next = NULL;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">using</span> boost::format;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// SEGMENTS</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    vector&lt;Segment*&gt; ::iterator sit;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    next = &amp;segs;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (sit = top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a263d51edda1271a79918414ef4b207c7">Segments</a>().begin(); sit &lt; top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a263d51edda1271a79918414ef4b207c7">Segments</a>().end(); ++sit) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> *seg = *sit;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> &amp;segprop = next-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;segment&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;id&quot;</span>, (format(<span class="stringliteral">&quot;%1$d&quot;</span>) % seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#acd242536110ac2e9ccc2183e9d262689">getId</a>()).str());</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;name&quot;</span>, seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#a6abf96eaf4df5b75a4abc1687efb0305">getName</a>());</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;xyz&quot;</span>, (format(<span class="stringliteral">&quot;%1$+1.4f %2$+1.4f %3$+1.4f&quot;</span>)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            % seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#a7140b402a3a415540b1df57ae1120a01">getPos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>() % seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#a7140b402a3a415540b1df57ae1120a01">getPos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>() % seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#a7140b402a3a415540b1df57ae1120a01">getPos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()).str());</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span> (seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#a8e96d4e11e5e5216b263cc10bc7357f8">hasChrgState</a>(+1)) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> &amp;channel = segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;channel&quot;</span>,<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            channel.<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>(<span class="stringliteral">&quot;type&quot;</span>, <span class="stringliteral">&quot;hole&quot;</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            channel.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;occupation_h&quot;</span>, (format(<span class="stringliteral">&quot;%1$+1.7e&quot;</span>) % seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#a0984851c87d36d33fdc504681d68e481">getOcc</a>(+1)).str());</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#a8e96d4e11e5e5216b263cc10bc7357f8">hasChrgState</a>(-1)) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> &amp;channel = segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;channel&quot;</span>,<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            channel.<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>(<span class="stringliteral">&quot;type&quot;</span>, <span class="stringliteral">&quot;electron&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            channel.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;occupation_e&quot;</span>, (format(<span class="stringliteral">&quot;%1$+1.7e&quot;</span>) % seg-&gt;<a class="code" href="classvotca_1_1xtp_1_1Segment.html#a0984851c87d36d33fdc504681d68e481">getOcc</a>(-1)).str());</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }    </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    ofstream ofs;    </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    ofs.open(xmlfile.c_str(), ofstream::out);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span> (!ofs.is_open()) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Bad file handle: &quot;</span> + xmlfile);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    ofs &lt;&lt; <a class="code" href="namespacevotca_1_1tools.html#a9d8be4dc638961289dffe9e02253351f">tools::XML</a> &lt;&lt; state;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    ofs.close();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}}</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif // VOTCA_XTP_OCCUPATIONSEXTRACTOR_H</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#a051b7ee24a01b4c75830280d388fa04c">   27</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#a051b7ee24a01b4c75830280d388fa04c" title="Initializes a calculator from an XML file with options.">OccupationsExtractor::Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#abf0eaab90569ac53f978a0d3e4864f0c">   32</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#abf0eaab90569ac53f978a0d3e4864f0c">OccupationsExtractor::EvaluateFrame</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">string</span> xmlfile = <a class="code" href="classvotca_1_1ctp_1_1OccupationsExtractor.html#af2b336ee0e81ac106c3550c6d6b6014b" title="Calculator name.">Identify</a>() + <span class="stringliteral">&quot;.xml&quot;</span>;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> state(<span class="stringliteral">&quot;state&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> &amp;segs = state.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;segments&quot;</span>,<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *next = NULL;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">using</span> boost::format;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// SEGMENTS</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    vector&lt;Segment*&gt; ::iterator sit;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    next = &amp;segs;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">for</span> (sit = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a8574c0f1d39f227a22b6bb398adeb9fd">Segments</a>().begin(); sit &lt; top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a8574c0f1d39f227a22b6bb398adeb9fd">Segments</a>().end(); ++sit) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Segment.html">Segment</a> *seg = *sit;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> &amp;segprop = next-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;segment&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;id&quot;</span>, (format(<span class="stringliteral">&quot;%1$d&quot;</span>) % seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>()).str());</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;name&quot;</span>, seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a1b1729897c380441f297f0a30f33df4d">getName</a>());</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;xyz&quot;</span>, (format(<span class="stringliteral">&quot;%1$+1.4f %2$+1.4f %3$+1.4f&quot;</span>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            % seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#aa05429e4714e6037f0f088cd1db92f2c">getPos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>() % seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#aa05429e4714e6037f0f088cd1db92f2c">getPos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>() % seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#aa05429e4714e6037f0f088cd1db92f2c">getPos</a>().<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()).str());</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">if</span> (seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a6930cbe471ab4ead09df15da0b6c808e">hasChrgState</a>(+1)) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> &amp;channel = segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;channel&quot;</span>,<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            channel.<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>(<span class="stringliteral">&quot;type&quot;</span>, <span class="stringliteral">&quot;hole&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            channel.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;occupation_h&quot;</span>, (format(<span class="stringliteral">&quot;%1$+1.7e&quot;</span>) % seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a8349fac188e619ce35ec1b527de814ac">getOcc</a>(+1)).str());</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span> (seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a6930cbe471ab4ead09df15da0b6c808e">hasChrgState</a>(-1)) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> &amp;channel = segprop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;channel&quot;</span>,<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            channel.<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>(<span class="stringliteral">&quot;type&quot;</span>, <span class="stringliteral">&quot;electron&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            channel.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;occupation_e&quot;</span>, (format(<span class="stringliteral">&quot;%1$+1.7e&quot;</span>) % seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a8349fac188e619ce35ec1b527de814ac">getOcc</a>(-1)).str());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }    </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    ofstream ofs;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    ofs.open(xmlfile.c_str(), ofstream::out);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (!ofs.is_open()) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Bad file handle: &quot;</span> + xmlfile);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    ofs &lt;&lt; <a class="code" href="namespacevotca_1_1tools.html#a9d8be4dc638961289dffe9e02253351f">tools::XML</a> &lt;&lt; state;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    ofs.close();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif // VOTCA_CTP_OCCUPATIONSEXTRACTOR_H</span></div>
 </div><!-- fragment --></div><!-- contents -->

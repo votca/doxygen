@@ -75,8 +75,8 @@
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __XTP_AOBASIS__H</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="property_8h.html">votca/tools/property.h</a>&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="segment_8h.html">votca/xtp/segment.h</a>&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="qmatom_8h.html">votca/xtp/qmatom.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="segment_8h.html">votca/ctp/segment.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="qmatom_8h.html">votca/ctp/qmatom.h</a>&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix.hpp&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix_proxy.hpp&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;boost/math/constants/constants.hpp&gt;</span></div>
@@ -88,85 +88,86 @@
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="namespacevotca_1_1xtp.html">   35</a></span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>ub = boost::numeric::ublas;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span>CTP = votca::ctp;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> * A collection of shells associated with a specific element  </span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{   </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#adbb011b8aacb7667301ef7d1e4b34a8f">   48</a></span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#adbb011b8aacb7667301ef7d1e4b34a8f">AOBasis</a>( ) { ; }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        ~<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>(); </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;       <span class="comment">// template&lt; class T &gt;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;       <span class="comment">//static void ReorderMOs(ub::matrix&lt;T&gt; &amp;v, std::vector&lt;int&gt; const &amp;order )  {</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;       <span class="comment">//static void ReorderMOs(ub::matrix&lt;T&gt; &amp;v, std::string start, std::string target )  { </span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;       <span class="keywordtype">void</span> ReorderMOs(ub::matrix&lt;double&gt; &amp;v, std::string start, std::string target ); </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;       </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="comment">//template&lt; class T &gt;   </span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordtype">void</span> MultiplyMOs(ub::matrix&lt;double&gt; &amp;v, std::vector&lt;int&gt; <span class="keyword">const</span> &amp;multiplier );</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// void AOBasisFill( BasisSet* bs , std::vector&lt;Segment* &gt; segments);</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> AOBasisFill( <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>* bs , std::vector&lt;QMAtom* &gt; segments, <span class="keywordtype">int</span> fragbreak = -1);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> ECPFill( <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>* bs , std::vector&lt;QMAtom* &gt; segments); </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> NumFuncShell( std::string <a class="code" href="structvotca_1_1xtp_1_1shell.html">shell</a> );</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> NumFuncShell_cartesian( std::string <a class="code" href="structvotca_1_1xtp_1_1shell.html">shell</a> );</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span> OffsetFuncShell( std::string <a class="code" href="structvotca_1_1xtp_1_1shell.html">shell</a> );</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">int</span> OffsetFuncShell_cartesian( std::string <a class="code" href="structvotca_1_1xtp_1_1shell.html">shell</a> );</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aecb5fb3ac87eefff88d4ac473c276ed5">   66</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aecb5fb3ac87eefff88d4ac473c276ed5">AOBasisSize</a>() {<span class="keywordflow">return</span> _AOBasisSize; }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">   68</a></span>&#160;    <span class="keyword">typedef</span> std::vector&lt; AOShell* &gt;::iterator <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">AOShellIterator</a>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a569eb85c9001b9e2838600623b8f030e">   69</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">AOShellIterator</a> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a569eb85c9001b9e2838600623b8f030e">firstShell</a>() { <span class="keywordflow">return</span> _aoshells.begin(); }</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a1a6f54b2f9f7d52daf09407488488e65">   70</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">AOShellIterator</a> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a1a6f54b2f9f7d52daf09407488488e65">lastShell</a>(){ <span class="keywordflow">return</span> _aoshells.end(); }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * A collection of shells associated with a specific element  </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{   </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#adbb011b8aacb7667301ef7d1e4b34a8f">   49</a></span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#adbb011b8aacb7667301ef7d1e4b34a8f">AOBasis</a>( ) { ; }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        ~<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>(); </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;       <span class="comment">// template&lt; class T &gt;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;       <span class="comment">//static void ReorderMOs(ub::matrix&lt;T&gt; &amp;v, std::vector&lt;int&gt; const &amp;order )  {</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;       <span class="comment">//static void ReorderMOs(ub::matrix&lt;T&gt; &amp;v, std::string start, std::string target )  { </span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;       <span class="keywordtype">void</span> ReorderMOs(ub::matrix&lt;double&gt; &amp;v, std::string start, std::string target ); </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;       </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="comment">//template&lt; class T &gt;   </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordtype">void</span> MultiplyMOs(ub::matrix&lt;double&gt; &amp;v, std::vector&lt;int&gt; <span class="keyword">const</span> &amp;multiplier );</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// void AOBasisFill( BasisSet* bs , std::vector&lt;Segment* &gt; segments);</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> AOBasisFill( <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>* bs , std::vector&lt;CTP::QMAtom* &gt; segments, <span class="keywordtype">int</span> fragbreak = -1);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> ECPFill( <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>* bs , std::vector&lt;CTP::QMAtom* &gt; segments); </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> NumFuncShell( std::string shell );</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span> NumFuncShell_cartesian( std::string shell );</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">int</span> OffsetFuncShell( std::string shell );</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">int</span> OffsetFuncShell_cartesian( std::string shell );</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aecb5fb3ac87eefff88d4ac473c276ed5">   67</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aecb5fb3ac87eefff88d4ac473c276ed5">AOBasisSize</a>() {<span class="keywordflow">return</span> _AOBasisSize; }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">   69</a></span>&#160;    <span class="keyword">typedef</span> std::vector&lt; AOShell* &gt;::iterator <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">AOShellIterator</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a569eb85c9001b9e2838600623b8f030e">   70</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">AOShellIterator</a> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a569eb85c9001b9e2838600623b8f030e">firstShell</a>() { <span class="keywordflow">return</span> _aoshells.begin(); }</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a1a6f54b2f9f7d52daf09407488488e65">   71</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">AOShellIterator</a> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a1a6f54b2f9f7d52daf09407488488e65">lastShell</a>(){ <span class="keywordflow">return</span> _aoshells.end(); }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// std::string getType() { return _type; }</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// int    getNumFunc() { return _numFunc ;}</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a07d2fa374041ec529e050ee498a7f94b">   77</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a07d2fa374041ec529e050ee498a7f94b">getShell</a>( <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">AOShellIterator</a> it ) { <span class="keywordflow">return</span> (*it); }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aa5e4850443274162f9f67277221bae0c">   79</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aa5e4850443274162f9f67277221bae0c">getShell</a>( <span class="keywordtype">int</span> idx ){ <span class="keywordflow">return</span> _aoshells[idx] ;}</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* addShell( std::string shellType, <span class="keywordtype">double</span> shellScale, <span class="keywordtype">int</span> shellFunc, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> offset, <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> pos, std::string name, <span class="keywordtype">int</span> index ); </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aed326acf8b58cf55e05825b4dfa3e80e">   84</a></span>&#160;    std::vector&lt;AOShell*&gt; <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aed326acf8b58cf55e05825b4dfa3e80e">getShells</a>() { <span class="keywordflow">return</span> _aoshells; }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;   </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0a9b3c3decd6bc6cf241798d38919f5f">   88</a></span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0a9b3c3decd6bc6cf241798d38919f5f">_AOBasisSize</a>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a2b238bfd442bd39f86b881aac7979411">   89</a></span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a2b238bfd442bd39f86b881aac7979411">_AOBasisFragA</a>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#af1e636f451d8b7cc9b8a394565a90073">   90</a></span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#af1e636f451d8b7cc9b8a394565a90073">_AOBasisFragB</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;   </div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a5303fc8e34ab0f348e2854308271680f">   92</a></span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a5303fc8e34ab0f348e2854308271680f">_is_stable</a>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;   </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a6efdf5f4eabba94264a3a8752d06796a">   94</a></span>&#160;    std::vector&lt;AOShell*&gt; <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a6efdf5f4eabba94264a3a8752d06796a">_aoshells</a>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// void getReorderVector( std::string&amp; package, std::vector&lt;int&gt;&amp; neworder );</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> getReorderVector( std::string&amp; start, std::string&amp; target, std::vector&lt;int&gt;&amp; neworder );</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">//void addReorderShell( std::string&amp; package, std::string&amp; shell, std::vector&lt;int&gt;&amp; neworder );</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> addReorderShell( std::string&amp; start, std::string&amp; target, std::string&amp; <a class="code" href="structvotca_1_1xtp_1_1shell.html">shell</a>, std::vector&lt;int&gt;&amp; neworder );</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">//void getMultiplierVector( std::string&amp; package, std::vector&lt;int&gt;&amp; multiplier );</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> getMultiplierVector( std::string&amp; start, std::string&amp; target, std::vector&lt;int&gt;&amp; multiplier );</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">//void addMultiplierShell( std::string&amp; package, std::string&amp; shell, std::vector&lt;int&gt;&amp; multiplier );  </span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> addMultiplierShell( std::string&amp; start, std::string&amp; target, std::string&amp; <a class="code" href="structvotca_1_1xtp_1_1shell.html">shell</a>, std::vector&lt;int&gt;&amp; multiplier );  </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// std::string getType() { return _type; }</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// int    getNumFunc() { return _numFunc ;}</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a07d2fa374041ec529e050ee498a7f94b">   78</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a07d2fa374041ec529e050ee498a7f94b">getShell</a>( <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ad098dcef320b7e6ed8241180d37d0551">AOShellIterator</a> it ) { <span class="keywordflow">return</span> (*it); }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aa5e4850443274162f9f67277221bae0c">   80</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aa5e4850443274162f9f67277221bae0c">getShell</a>( <span class="keywordtype">int</span> idx ){ <span class="keywordflow">return</span> _aoshells[idx] ;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* addShell( std::string shellType, <span class="keywordtype">double</span> shellScale, <span class="keywordtype">int</span> shellFunc, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> offset, <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> pos, std::string name, <span class="keywordtype">int</span> index ); </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aed326acf8b58cf55e05825b4dfa3e80e">   85</a></span>&#160;    std::vector&lt;AOShell*&gt; <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aed326acf8b58cf55e05825b4dfa3e80e">getShells</a>() { <span class="keywordflow">return</span> _aoshells; }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;   </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0a9b3c3decd6bc6cf241798d38919f5f">   89</a></span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0a9b3c3decd6bc6cf241798d38919f5f">_AOBasisSize</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a2b238bfd442bd39f86b881aac7979411">   90</a></span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a2b238bfd442bd39f86b881aac7979411">_AOBasisFragA</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#af1e636f451d8b7cc9b8a394565a90073">   91</a></span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#af1e636f451d8b7cc9b8a394565a90073">_AOBasisFragB</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;   </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a5303fc8e34ab0f348e2854308271680f">   93</a></span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a5303fc8e34ab0f348e2854308271680f">_is_stable</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;   </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a6efdf5f4eabba94264a3a8752d06796a">   95</a></span>&#160;    std::vector&lt;AOShell*&gt; <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a6efdf5f4eabba94264a3a8752d06796a">_aoshells</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// void getReorderVector( std::string&amp; package, std::vector&lt;int&gt;&amp; neworder );</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> getReorderVector( std::string&amp; start, std::string&amp; target, std::vector&lt;int&gt;&amp; neworder );</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">//void addReorderShell( std::string&amp; package, std::string&amp; shell, std::vector&lt;int&gt;&amp; neworder );</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> addReorderShell( std::string&amp; start, std::string&amp; target, std::string&amp; shell, std::vector&lt;int&gt;&amp; neworder );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">//void getMultiplierVector( std::string&amp; package, std::vector&lt;int&gt;&amp; multiplier );</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> getMultiplierVector( std::string&amp; start, std::string&amp; target, std::vector&lt;int&gt;&amp; multiplier );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">//void addMultiplierShell( std::string&amp; package, std::string&amp; shell, std::vector&lt;int&gt;&amp; multiplier );  </span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> addMultiplierShell( std::string&amp; start, std::string&amp; target, std::string&amp; shell, std::vector&lt;int&gt;&amp; multiplier );  </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> getTransformationCartToSpherical( std::string&amp; package, ub::matrix&lt;double&gt;&amp; _trafomatrix );</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> addTrafoCartShell(  <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* <a class="code" href="structvotca_1_1xtp_1_1shell.html">shell</a> , ub::matrix_range&lt; ub::matrix&lt;double&gt; &gt;&amp; _submatrix );</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">int</span> getMaxFunctions ( );</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;};</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> getTransformationCartToSpherical( std::string&amp; package, ub::matrix&lt;double&gt;&amp; _trafomatrix );</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> addTrafoCartShell(  <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* shell , ub::matrix_range&lt; ub::matrix&lt;double&gt; &gt;&amp; _submatrix );</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> getMaxFunctions ( );</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;};</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}}</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* AOBASIS_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}}</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* AOBASIS_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->

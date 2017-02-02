@@ -244,7 +244,7 @@
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    MKL_INT lda;</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    MKL_INT info;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    MKL_INT lwork;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    MKL_INT il, iu, <a class="code" href="namespacevotca_1_1xtp.html#a070139a636c7a60c2d933998ee889e06af18903b817fa68d54425a9c6b8d03468">m</a>, ldz ;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    MKL_INT il, iu, <a class="code" href="namespacevotca_1_1moo.html#a6a44f6663e516c56327f0baf6560f39da522b856dcae786b6fd48bd5e2d802f5f">m</a>, ldz ;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    </div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">int</span> n = A.size1();</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    MKL_INT ifail[n];</div>
@@ -272,7 +272,7 @@
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment">// call LAPACK via C interface</span></div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    info = LAPACKE_dsyevx( LAPACK_ROW_MAJOR, <span class="charliteral">&#39;V&#39;</span>, <span class="charliteral">&#39;I&#39;</span>, <span class="charliteral">&#39;U&#39;</span>, n, pA , lda, vl, vu, il, iu, abstol, &amp;m, pE, pV, nmax,  ifail );</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">if</span>( info &gt; 0 ) {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">if</span>( info != 0 ) {</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -298,7 +298,7 @@
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    MKL_INT lda;</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    MKL_INT info;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    MKL_INT lwork;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    MKL_INT il, iu, <a class="code" href="namespacevotca_1_1xtp.html#a070139a636c7a60c2d933998ee889e06af18903b817fa68d54425a9c6b8d03468">m</a>, ldz ;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    MKL_INT il, iu, <a class="code" href="namespacevotca_1_1moo.html#a6a44f6663e516c56327f0baf6560f39da522b856dcae786b6fd48bd5e2d802f5f">m</a>, ldz ;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    </div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">int</span> n = A.size1();</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    MKL_INT ifail[n];</div>
@@ -326,7 +326,7 @@
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="comment">// call LAPACK via C interface</span></div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    info = LAPACKE_ssyevx( LAPACK_ROW_MAJOR, <span class="charliteral">&#39;V&#39;</span>, <span class="charliteral">&#39;I&#39;</span>, <span class="charliteral">&#39;U&#39;</span>, n, pA , lda, vl, vu, il, iu, abstol, &amp;m, pE, pV, nmax,  ifail );</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">if</span>( info &gt; 0 ) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">if</span>( info != 0 ) {</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>

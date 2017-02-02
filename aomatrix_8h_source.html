@@ -77,7 +77,7 @@
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="aobasis_8h.html">votca/xtp/aobasis.h</a>&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="aoshell_8h.html">votca/xtp/aoshell.h</a>&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="segment_8h.html">votca/xtp/segment.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="segment_8h.html">votca/ctp/segment.h</a>&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/matrix.hpp&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/lu.hpp&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;boost/numeric/ublas/io.hpp&gt;</span></div>
@@ -100,7 +100,7 @@
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">namespace </span>ub = boost::numeric::ublas;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">namespace </span>CTP = votca::ctp;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">/* &quot;superclass&quot; AOSuperMatrix contains all common functionality for</span></div>
@@ -136,7 +136,7 @@
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            this-&gt;_aomatrix = ub::zero_matrix&lt;double&gt;(size,size);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">void</span> Fill( <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* aobasis, ub::vector&lt;double&gt; <a class="code" href="kmc__old_8cc.html#ae243e7fff6a6d0eecd4adaa52b0fe8a2">r</a> = ub::zero_vector&lt;double&gt;(3) , <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* ecp = NULL );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">void</span> Fill( <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* aobasis, ub::vector&lt;double&gt; <a class="code" href="namespacevotca_1_1ctp.html#a21dd31736674efc0df09034f9f9142eb">r</a> = ub::zero_vector&lt;double&gt;(3) , <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* ecp = NULL );</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="comment">// matrix print </span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">void</span> Print( std::string _ident);</div>
@@ -216,7 +216,7 @@
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="comment">//block fill for overlap, implementation in aoesp.cc</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordtype">void</span> FillBlock( ub::matrix_range&lt; ub::matrix&lt;double&gt; &gt;&amp; _matrix, <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* _shell_row, <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* _shell_col, <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* ecp);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="comment">//void Print();</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordtype">void</span> Fillnucpotential( <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* aobasis, std::vector&lt;QMAtom*&gt;&amp; _atoms );</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordtype">void</span> Fillnucpotential( <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* aobasis, std::vector&lt;CTP::QMAtom*&gt;&amp; _atoms );</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        </div>
 <div class="line"><a name="l00167"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOESP.html#a805ecc7cf0bfc0acf5e2d83126518636">  167</a></span>&#160;        ub::matrix&lt;double&gt; <a class="code" href="classvotca_1_1xtp_1_1AOESP.html#a805ecc7cf0bfc0acf5e2d83126518636">_nuclearpotential</a>;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">// ~AOESP();</span></div>

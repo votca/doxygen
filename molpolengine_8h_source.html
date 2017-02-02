@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>Votca: xtp/include/votca/xtp/molpolengine.h Source File</title>
+<title>Votca: ctp/include/votca/ctp/molpolengine.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5ead47a849ab83a9193f978ca5e3ca3d.html">xtp</a></li><li class="navelem"><a class="el" href="dir_e68889d622b3b908fa842978c0731e88.html">include</a></li><li class="navelem"><a class="el" href="dir_f248f2f9b21ebad340ee5f8a788ac91b.html">votca</a></li><li class="navelem"><a class="el" href="dir_aa17cdc010f189b6507dc58f75183434.html">xtp</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_925411c422adb34e5eac489a020527ce.html">ctp</a></li><li class="navelem"><a class="el" href="dir_3928f137a3dfd29c0b38a229aee7d3fe.html">include</a></li><li class="navelem"><a class="el" href="dir_9eefca0be35225d909b8f7a66b1c1598.html">votca</a></li><li class="navelem"><a class="el" href="dir_d5ea7f6057959a88f055e98e6c896764.html">ctp</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -52,59 +52,40 @@
 <div class="title">molpolengine.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="molpolengine_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * You may not use this file except in compliance with the License.</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * You may obtain a copy of the License at</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *              http://www.apache.org/licenses/LICENSE-2.0</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * See the License for the specific language governing permissions and</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * limitations under the License.</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef VOTCA_XTP_MOLPOLENGINE_H</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VOTCA_XTP_MOLPOLENGINE_H</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="polartop_8h.html">votca/xtp/polartop.h</a>&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>votca {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html">MolPolEngine</a></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a7c66b723c048513bd5004ec2e5943494">   33</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a7c66b723c048513bd5004ec2e5943494">MolPolEngine</a>() </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        : <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0c4a66d7e49dfa54e61f2addd0662833">_aDamp</a>(0.390), <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#aa20c5fd79f8eade0548b3956ff355012">_wSOR</a>(0.30), <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a2960aab6ee9b331f734e66ba2e6c4aba">_maxIter</a>(1024), <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0ba2f8c338beb6927c5e23403d8a100c">_epsTol</a>(0.0001)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        { <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a1f0a82ce8cadb974930b07c910e84265">_actor</a>.<a class="code" href="classvotca_1_1xtp_1_1BasicInteractor.html#abe30263354327ee2a7dd1673cb12c775">SetADamp</a>(<a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0c4a66d7e49dfa54e61f2addd0662833">_aDamp</a>); }</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a4b499a43c7ede1da5f9a8e192d12029f">   36</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a7c66b723c048513bd5004ec2e5943494">MolPolEngine</a>(<span class="keywordtype">double</span> aDamp, <span class="keywordtype">double</span> wSOR, <span class="keywordtype">int</span> maxIter, <span class="keywordtype">double</span> epsTol)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        : <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0c4a66d7e49dfa54e61f2addd0662833">_aDamp</a>(aDamp), <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#aa20c5fd79f8eade0548b3956ff355012">_wSOR</a>(wSOR), <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a2960aab6ee9b331f734e66ba2e6c4aba">_maxIter</a>(maxIter), <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0ba2f8c338beb6927c5e23403d8a100c">_epsTol</a>(epsTol)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        { <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a1f0a82ce8cadb974930b07c910e84265">_actor</a>.<a class="code" href="classvotca_1_1xtp_1_1BasicInteractor.html#abe30263354327ee2a7dd1673cb12c775">SetADamp</a>(<a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0c4a66d7e49dfa54e61f2addd0662833">_aDamp</a>); }</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a728fb5ba2f1c0fc2862478350dee6254">   39</a></span>&#160;   <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a728fb5ba2f1c0fc2862478350dee6254">~MolPolEngine</a>() {}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a32648d45b691c3cd253459105f8a4d47">CalculateMolPol</a>(vector&lt;APolarSite*&gt; &amp;poles, <span class="keywordtype">bool</span> verbose = <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span>    <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a754a549c1325fa9dd7aa5eaf61d56dbc">SCF_Induce</a>(vector&lt;APolarSite*&gt; &amp;poles);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a1f0a82ce8cadb974930b07c910e84265">   46</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1BasicInteractor.html">BasicInteractor</a> <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a1f0a82ce8cadb974930b07c910e84265">_actor</a>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0c4a66d7e49dfa54e61f2addd0662833">   47</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0c4a66d7e49dfa54e61f2addd0662833">_aDamp</a>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#aa20c5fd79f8eade0548b3956ff355012">   48</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#aa20c5fd79f8eade0548b3956ff355012">_wSOR</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a2960aab6ee9b331f734e66ba2e6c4aba">   49</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a2960aab6ee9b331f734e66ba2e6c4aba">_maxIter</a>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0ba2f8c338beb6927c5e23403d8a100c">   50</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1MolPolEngine.html#a0ba2f8c338beb6927c5e23403d8a100c">_epsTol</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<a href="molpolengine_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef VOTCA_CTP_MOLPOLENGINE_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VOTCA_CTP_MOLPOLENGINE_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="polartop_8h.html">votca/ctp/polartop.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>votca {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>ctp {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html">MolPolEngine</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a55d979d842ded7a8eb9a8dedcd5eb526">   14</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a55d979d842ded7a8eb9a8dedcd5eb526">MolPolEngine</a>() </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        : <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#afe26207fcf8f8ace7bf87cecf992b147">_aDamp</a>(0.390), <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a75e0992e1e2a40bf677f4d31f292edf2">_wSOR</a>(0.30), <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#abe2715dddb9ea967a6a866a092787473">_maxIter</a>(1024), <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#aa066281430b60e6f5314ea3e0c435566">_epsTol</a>(0.0001)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        { <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a54200df38b080d3cd869f2a4e4b4bd4c">_actor</a>.<a class="code" href="classvotca_1_1ctp_1_1BasicInteractor.html#ab35a22d7276b88c257d602eb56530bee">SetADamp</a>(<a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#afe26207fcf8f8ace7bf87cecf992b147">_aDamp</a>); }</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a4fc9481b1ae737f62aaa32b2694a82e1">   17</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a55d979d842ded7a8eb9a8dedcd5eb526">MolPolEngine</a>(<span class="keywordtype">double</span> aDamp, <span class="keywordtype">double</span> wSOR, <span class="keywordtype">int</span> maxIter, <span class="keywordtype">double</span> epsTol)</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        : <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#afe26207fcf8f8ace7bf87cecf992b147">_aDamp</a>(aDamp), <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a75e0992e1e2a40bf677f4d31f292edf2">_wSOR</a>(wSOR), <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#abe2715dddb9ea967a6a866a092787473">_maxIter</a>(maxIter), <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#aa066281430b60e6f5314ea3e0c435566">_epsTol</a>(epsTol)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        { <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a54200df38b080d3cd869f2a4e4b4bd4c">_actor</a>.<a class="code" href="classvotca_1_1ctp_1_1BasicInteractor.html#ab35a22d7276b88c257d602eb56530bee">SetADamp</a>(<a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#afe26207fcf8f8ace7bf87cecf992b147">_aDamp</a>); }</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a43f3b2e209836db16ae3f83fe5179302">   20</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a43f3b2e209836db16ae3f83fe5179302">~MolPolEngine</a>() {}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1matrix.html">matrix</a> <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a9777f5d30a7c16ec37f7f88179d0b5a9">CalculateMolPol</a>(vector&lt;APolarSite*&gt; &amp;poles, <span class="keywordtype">bool</span> verbose = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span>    <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a62df31c8a04c058abeedca0e9bf5771a">SCF_Induce</a>(vector&lt;APolarSite*&gt; &amp;poles);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a54200df38b080d3cd869f2a4e4b4bd4c">   27</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1BasicInteractor.html">BasicInteractor</a> <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a54200df38b080d3cd869f2a4e4b4bd4c">_actor</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#afe26207fcf8f8ace7bf87cecf992b147">   28</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#afe26207fcf8f8ace7bf87cecf992b147">_aDamp</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a75e0992e1e2a40bf677f4d31f292edf2">   29</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#a75e0992e1e2a40bf677f4d31f292edf2">_wSOR</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#abe2715dddb9ea967a6a866a092787473">   30</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#abe2715dddb9ea967a6a866a092787473">_maxIter</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#aa066281430b60e6f5314ea3e0c435566">   31</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1ctp_1_1MolPolEngine.html#aa066281430b60e6f5314ea3e0c435566">_epsTol</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->

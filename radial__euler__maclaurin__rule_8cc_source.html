@@ -82,7 +82,7 @@
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp { </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">namespace </span>CTP = votca::ctp;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a3d361d10f3893e63266a021eec33a7ab">   33</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a3d361d10f3893e63266a021eec33a7ab">EulerMaclaurinGrid::getPruningIntervals</a>(<span class="keywordtype">string</span> element){</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        </div>
@@ -147,11 +147,11 @@
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    </div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a93a962f99f0a77c2ac7e2787ccde11ec">   96</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a93a962f99f0a77c2ac7e2787ccde11ec">EulerMaclaurinGrid::getRadialCutoffs</a>(std::vector&lt;QMAtom* &gt; _atoms, <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>* bs, <span class="keywordtype">string</span> gridtype) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a2bba212234b1342f1d7021acdb8367be">   96</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a2bba212234b1342f1d7021acdb8367be">EulerMaclaurinGrid::getRadialCutoffs</a>(std::vector&lt;CTP::QMAtom* &gt; _atoms, <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>* bs, <span class="keywordtype">string</span> gridtype) {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            map&lt;string, min_exp&gt;::iterator it;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            std::vector&lt; QMAtom* &gt; ::iterator ait;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            std::vector&lt; QMAtom* &gt; ::iterator bit;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            std::vector&lt; CTP::QMAtom* &gt; ::iterator ait;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            std::vector&lt; CTP::QMAtom* &gt; ::iterator bit;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            </div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordtype">double</span> eps = <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a6168a6a284b0fb47c5e182220513d2c8">Accuracy</a>[gridtype];</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordtype">double</span> _decaymin;</div>
@@ -173,7 +173,7 @@
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* _element = bs-&gt;<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a5e088d74dc0aa5b21dbb5bf58a2d01ea">getElement</a>(name);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    <span class="comment">// and loop over all shells to figure out minimum decay constant and angular momentum of this function</span></div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">Element::ShellIterator</a> its = _element-&gt;<a class="code" href="classvotca_1_1xtp_1_1Element.html#a44bd738dd7d9b46d8a341f6e75e44d1a">firstShell</a>(); its != _element-&gt;<a class="code" href="classvotca_1_1xtp_1_1Element.html#ab4a5544af9b99996ea9fb043060c7e15">lastShell</a>(); its++) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* <a class="code" href="structvotca_1_1xtp_1_1shell.html">shell</a> = (*its);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* shell = (*its);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        _decaymin = 1e7;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        _lvalue = 0;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                        <span class="keywordtype">int</span> _lmax = shell-&gt;<a class="code" href="classvotca_1_1xtp_1_1Shell.html#a12eb4693170ec1409426d45c0792823c">getLmax</a>();</div>
@@ -203,7 +203,7 @@
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="comment">// calculate overlap matrix</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> aobasis;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a60177779c14fb7d9de2cd0e6d8c3685b">AOBasisFill</a>(bs, _atoms);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0522e648dbf8090aba79691c670a1a29">AOBasisFill</a>(bs, _atoms);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <a class="code" href="classvotca_1_1xtp_1_1AOOverlap.html">AOOverlap</a> _overlap;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="comment">// initialize overlap matrix</span></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#a2a563fc5f5c11182eaa2c4c0aa8cb769">Initialize</a>(aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0a9b3c3decd6bc6cf241798d38919f5f">_AOBasisSize</a>);</div>
@@ -347,11 +347,11 @@
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    </div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    </div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    </div>
-<div class="line"><a name="l00296"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#afe44d455a107e685dcf1a4b7f49831fb">  296</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#afe44d455a107e685dcf1a4b7f49831fb">EulerMaclaurinGrid::getRadialGrid</a>(<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>* bs , std::vector&lt;QMAtom* &gt; _atoms, <span class="keywordtype">string</span> type, <a class="code" href="classvotca_1_1xtp_1_1GridContainers.html">GridContainers</a>&amp; _grid) {</div>
+<div class="line"><a name="l00296"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a61a654fa704dcb98530c6f590ce088d8">  296</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a61a654fa704dcb98530c6f590ce088d8">EulerMaclaurinGrid::getRadialGrid</a>(<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>* bs , std::vector&lt;CTP::QMAtom* &gt; _atoms, <span class="keywordtype">string</span> type, <a class="code" href="classvotca_1_1xtp_1_1GridContainers.html">GridContainers</a>&amp; _grid) {</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        </div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            map&lt;string, min_exp&gt;::iterator it;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a93a962f99f0a77c2ac7e2787ccde11ec">getRadialCutoffs</a>(_atoms,bs,type);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a2bba212234b1342f1d7021acdb8367be">getRadialCutoffs</a>(_atoms,bs,type);</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            </div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="comment">// go through all elements</span></div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keywordflow">for</span> ( it = <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a7f6e8aef76f2f9d4877b6b91bc88799b">_element_ranges</a>.begin() ; it != <a class="code" href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a7f6e8aef76f2f9d4877b6b91bc88799b">_element_ranges</a>.end() ; ++it){</div>
@@ -387,7 +387,7 @@
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        </div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; np; i++){</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            <span class="keywordtype">double</span> q = double(i+1)/(double(np)+1.0);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1xtp.html#a7a93e48e80871ce32cb617a156be8904">r</a> = -alpha*log(1.0-pow(q,3));</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1ctp.html#a21dd31736674efc0df09034f9f9142eb">r</a> = -alpha*log(1.0-pow(q,3));</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="keywordtype">double</span> w = factor * alpha * r*r/( 1.0 - pow(q,3) ) * pow(q,2);</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            </div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            point.push_back(r);</div>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>Votca: xtp/src/libxtp/poissongrid.cc Source File</title>
+<title>Votca: ctp/src/libctp/poissongrid.cc Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5ead47a849ab83a9193f978ca5e3ca3d.html">xtp</a></li><li class="navelem"><a class="el" href="dir_9490b4b587e39abe5b456b44b7d2a226.html">src</a></li><li class="navelem"><a class="el" href="dir_5cf6e40b1ca54ba1dd4ab59d9906ea77.html">libxtp</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_925411c422adb34e5eac489a020527ce.html">ctp</a></li><li class="navelem"><a class="el" href="dir_879a0699ec76bc4b5af21d20f283ae7a.html">src</a></li><li class="navelem"><a class="el" href="dir_ed8f0ddc8237bdea34f90fc670e49fa6.html">libctp</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -52,101 +52,82 @@
 <div class="title">poissongrid.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="poissongrid_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * You may not use this file except in compliance with the License.</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * You may obtain a copy of the License at</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *              http://www.apache.org/licenses/LICENSE-2.0</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * See the License for the specific language governing permissions and</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * limitations under the License.</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="poissongrid_8h.html">votca/xtp/poissongrid.h</a>&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>votca {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>POI {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#aac7ae02df889f84a40740b517feb4472">   27</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#aac7ae02df889f84a40740b517feb4472">PoissonGrid::PoissonGrid</a>(<a class="code" href="classvotca_1_1xtp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, std::vector&lt;PolarSeg*&gt; &amp;fg, std::vector&lt;PolarSeg*&gt; &amp;bg, </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a> *log) : _log(log) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
+<a href="poissongrid_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="poissongrid_8h.html">votca/ctp/poissongrid.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span>votca {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>ctp {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>POI {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a6d0cdf963572d051b19fd30f6a4085f9">    8</a></span>&#160;<a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a6d0cdf963572d051b19fd30f6a4085f9">PoissonGrid::PoissonGrid</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top, vector&lt;PolarSeg*&gt; &amp;fg, vector&lt;PolarSeg*&gt; &amp;bg, </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">Logger</a> *log) : _log(log) {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a9fa2392845a45cbb2418d2b2191ee803">_center</a> = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">votca::tools::vec</a>(0,0,0);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">for</span> (vector&lt;PolarSeg*&gt;::iterator sit = fg.begin(); sit &lt; fg.end();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        ++sit) <a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a9fa2392845a45cbb2418d2b2191ee803">_center</a> += (*sit)-&gt;getPos();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">if</span> (fg.size()&gt; 0) <a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a9fa2392845a45cbb2418d2b2191ee803">_center</a> /= fg.size();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">// Shift center to front lower left corner of central cell</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">//_center = _center - 0.5*vec(dx0, dy0, dz0);</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a11aa4d20691202225a139f7665da6e5f">_log</a>) &lt;&lt; flush;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">logDEBUG</a>,*<a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a11aa4d20691202225a139f7665da6e5f">_log</a>) &lt;&lt; <span class="stringliteral">&quot;Setup &lt;PoissonGrid&gt; @ &quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a9fa2392845a45cbb2418d2b2191ee803">_center</a> &lt;&lt; flush;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// GRID PARAMETERS</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">double</span> dx0 = 0.5;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">double</span> dx1 = 1.0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> threshold_dx0_dx1 = 4;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">double</span> x0 = <a class="code" href="classvotca_1_1ctp_1_1POI_1_1PoissonGrid.html#a9fa2392845a45cbb2418d2b2191ee803">_center</a>.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">double</span> x01 = threshold_dx0_dx1*dx0;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">double</span> x1 = 6.;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#a5a3872a99da3b6a5c322ab531acd6132">_center</a> = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">votca::tools::vec</a>(0,0,0);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;PolarSeg*&gt;::iterator sit = fg.begin(); sit &lt; fg.end();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        ++sit) <a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#a5a3872a99da3b6a5c322ab531acd6132">_center</a> += (*sit)-&gt;getPos();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (fg.size()&gt; 0) <a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#a5a3872a99da3b6a5c322ab531acd6132">_center</a> /= fg.size();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Shift center to front lower left corner of central cell</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//_center = _center - 0.5*vec(dx0, dy0, dz0);</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1xtp.html#a355f19c02187b0b890371ec3f678ca45af454207e70fbf32e8a228ab00c102f59">logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#a4e6fb77853fec8189455fa26ad7205ac">_log</a>) &lt;&lt; flush;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1xtp.html#a355f19c02187b0b890371ec3f678ca45af454207e70fbf32e8a228ab00c102f59">logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#a4e6fb77853fec8189455fa26ad7205ac">_log</a>) &lt;&lt; <span class="stringliteral">&quot;Setup &lt;PoissonGrid&gt; @ &quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#a5a3872a99da3b6a5c322ab531acd6132">_center</a> &lt;&lt; flush;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">//double dy0 = 0.5;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">//double dy1 = 1.0;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//int threshold_dy0_dy1 = 4;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">//double dz0 = 0.5;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//double dz1 = 0.5;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">//int threshold_dz0_dz1 = 4;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// GRID PARAMETERS</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">double</span> dx0 = 0.5;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">double</span> dx1 = 1.0;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">int</span> threshold_dx0_dx1 = 4;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">double</span> x0 = <a class="code" href="classvotca_1_1xtp_1_1POI_1_1PoissonGrid.html#a5a3872a99da3b6a5c322ab531acd6132">_center</a>.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">double</span> x01 = threshold_dx0_dx1*dx0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">double</span> x1 = 6.;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">//double dy0 = 0.5;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//double dy1 = 1.0;</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">//int threshold_dy0_dy1 = 4;</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">//double dz0 = 0.5;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">//double dz1 = 0.5;</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">//int threshold_dz0_dz1 = 4;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// x dimension</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::vector&lt; double &gt; array_dx;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">double</span> xi = x0;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">double</span> dx = dx0;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    array_dx.push_back(dx);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; <span class="keyword">true</span>; ++i) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (xi &lt;= x01) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            dx = dx0;            </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (xi &lt;= x1) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            dx =  (xi - x01) / (x1 - x01) * dx1</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                + (x1 - xi)  / (x1 - x01) * dx0;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            dx = dx1;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        xi += dx;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        array_dx.push_back(dx);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        cout &lt;&lt; endl &lt;&lt; dx &lt;&lt; <span class="stringliteral">&quot; =&gt; &quot;</span> &lt;&lt; xi &lt;&lt; flush;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (xi &gt; x1) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}}}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// x dimension</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    vector&lt; double &gt; array_dx;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">double</span> xi = x0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">double</span> dx = dx0;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    array_dx.push_back(dx);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; <span class="keyword">true</span>; ++i) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (xi &lt;= x01) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            dx = dx0;            </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (xi &lt;= x1) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            dx =  (xi - x01) / (x1 - x01) * dx1</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                + (x1 - xi)  / (x1 - x01) * dx0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            dx = dx1;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        xi += dx;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        array_dx.push_back(dx);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        cout &lt;&lt; endl &lt;&lt; dx &lt;&lt; <span class="stringliteral">&quot; =&gt; &quot;</span> &lt;&lt; xi &lt;&lt; flush;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (xi &gt; x1) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}}}</div>
 </div><!-- fragment --></div><!-- contents -->

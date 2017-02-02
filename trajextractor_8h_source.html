@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>Votca: xtp/src/libxtp/extractors/trajextractor.h Source File</title>
+<title>Votca: ctp/src/libctp/extractors/trajextractor.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5ead47a849ab83a9193f978ca5e3ca3d.html">xtp</a></li><li class="navelem"><a class="el" href="dir_9490b4b587e39abe5b456b44b7d2a226.html">src</a></li><li class="navelem"><a class="el" href="dir_5cf6e40b1ca54ba1dd4ab59d9906ea77.html">libxtp</a></li><li class="navelem"><a class="el" href="dir_52b8fa195019887fe3f8418a809f8d04.html">extractors</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_925411c422adb34e5eac489a020527ce.html">ctp</a></li><li class="navelem"><a class="el" href="dir_879a0699ec76bc4b5af21d20f283ae7a.html">src</a></li><li class="navelem"><a class="el" href="dir_ed8f0ddc8237bdea34f90fc670e49fa6.html">libctp</a></li><li class="navelem"><a class="el" href="dir_e272478d9cf4c8225f0037886a3cdb85.html">extractors</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -53,7 +53,7 @@
 </div><!--header-->
 <div class="contents">
 <a href="trajextractor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2012 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -72,56 +72,56 @@
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef VOTCA_XTP_TRAJEXTRACTOR_H</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VOTCA_XTP_TRAJEXTRACTOR_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef VOTCA_CTP_TRAJEXTRACTOR_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VOTCA_CTP_TRAJEXTRACTOR_H</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="qmcalculator_8h.html">votca/xtp/qmcalculator.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ctp_2include_2votca_2ctp_2qmcalculator_8h.html">votca/ctp/qmcalculator.h</a>&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html">TrajExtractor</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1xtp_1_1QMCalculator.html">QMCalculator</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html">TrajExtractor</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1ctp_1_1QMCalculator.html">QMCalculator</a></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a48ea7bd239a874d6ea872438e43d52af">   38</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a48ea7bd239a874d6ea872438e43d52af">TrajExtractor</a>() { };</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#ad8c9bfa218c63edd847f73a859a67e8a">   39</a></span>&#160;   <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#ad8c9bfa218c63edd847f73a859a67e8a">~TrajExtractor</a>() { };</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#ab587e1a687ab9a7c60bbc4ebc81d8354">   38</a></span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#ab587e1a687ab9a7c60bbc4ebc81d8354">TrajExtractor</a>() { };</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a5c1f9ca4c61513b9f953816307d291cc">   39</a></span>&#160;   <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a5c1f9ca4c61513b9f953816307d291cc">~TrajExtractor</a>() { };</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a0b65fa0ed6baa74249381ff0b1b11b28">   41</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a0b65fa0ed6baa74249381ff0b1b11b28" title="Calculator name.">Identify</a>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;extract.trajectory&quot;</span>; }</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a5abb72b1f4944944c7cd057a856de136">   41</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a5abb72b1f4944944c7cd057a856de136" title="Calculator name.">Identify</a>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;extract.trajectory&quot;</span>; }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a8b360cef673f0053f07e838aea0e876d" title="Initializes a calculator from an XML file with options.">Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#af9723652d646ff2d715065dd52e908ec">EvaluateFrame</a>(<a class="code" href="classvotca_1_1xtp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#aef28861ef563d6a3ead555dd9b24a2c9" title="Initializes a calculator from an XML file with options.">Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a7538755071f0609501fa2698abdff989">EvaluateFrame</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a139034db09c8c930bfe1515a122cabfa">   48</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a139034db09c8c930bfe1515a122cabfa">_outPDBmd</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a4fd8b8dfc42c3f5bd38c8ef6659429d5">   49</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a4fd8b8dfc42c3f5bd38c8ef6659429d5">_outPDBqm</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#ab85ad0157bcda411e9e5f701faffc4a4">   48</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#ab85ad0157bcda411e9e5f701faffc4a4">_outPDBmd</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a6a98cb3c4e99df23f7dad006b70f9458">   49</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a6a98cb3c4e99df23f7dad006b70f9458">_outPDBqm</a>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a8b360cef673f0053f07e838aea0e876d">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a8b360cef673f0053f07e838aea0e876d" title="Initializes a calculator from an XML file with options.">TrajExtractor::Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#aef28861ef563d6a3ead555dd9b24a2c9">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#aef28861ef563d6a3ead555dd9b24a2c9" title="Initializes a calculator from an XML file with options.">TrajExtractor::Initialize</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *options) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a139034db09c8c930bfe1515a122cabfa">_outPDBmd</a> = <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a0b65fa0ed6baa74249381ff0b1b11b28" title="Calculator name.">Identify</a>() + <span class="stringliteral">&quot;_md.pdb&quot;</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a4fd8b8dfc42c3f5bd38c8ef6659429d5">_outPDBqm</a> = <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a0b65fa0ed6baa74249381ff0b1b11b28" title="Calculator name.">Identify</a>() + <span class="stringliteral">&quot;_qm.pdb&quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#ab85ad0157bcda411e9e5f701faffc4a4">_outPDBmd</a> = <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a5abb72b1f4944944c7cd057a856de136" title="Calculator name.">Identify</a>() + <span class="stringliteral">&quot;_md.pdb&quot;</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a6a98cb3c4e99df23f7dad006b70f9458">_outPDBqm</a> = <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a5abb72b1f4944944c7cd057a856de136" title="Calculator name.">Identify</a>() + <span class="stringliteral">&quot;_qm.pdb&quot;</span>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#af9723652d646ff2d715065dd52e908ec">   60</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#af9723652d646ff2d715065dd52e908ec">TrajExtractor::EvaluateFrame</a>(<a class="code" href="classvotca_1_1xtp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a7538755071f0609501fa2698abdff989">   60</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a7538755071f0609501fa2698abdff989">TrajExtractor::EvaluateFrame</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top) {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Rigidify std::system (if possible)</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (!top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a8524376755c66c89f794220d5795df17">Rigidify</a>()) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Rigidify system (if possible)</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (!top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a1473e4d37a5b875dceb107ba5445be1c">Rigidify</a>()) <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Print coordinates</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    FILE *outPDBmd = NULL;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    FILE *outPDBqm = NULL;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    outPDBmd = fopen(<a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a139034db09c8c930bfe1515a122cabfa">_outPDBmd</a>.c_str(), <span class="stringliteral">&quot;w&quot;</span>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    outPDBqm = fopen(<a class="code" href="classvotca_1_1xtp_1_1TrajExtractor.html#a4fd8b8dfc42c3f5bd38c8ef6659429d5">_outPDBqm</a>.c_str(), <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    outPDBmd = fopen(<a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#ab85ad0157bcda411e9e5f701faffc4a4">_outPDBmd</a>.c_str(), <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    outPDBqm = fopen(<a class="code" href="classvotca_1_1ctp_1_1TrajExtractor.html#a6a98cb3c4e99df23f7dad006b70f9458">_outPDBqm</a>.c_str(), <span class="stringliteral">&quot;w&quot;</span>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    fprintf(outPDBmd, <span class="stringliteral">&quot;TITLE     VOT CAtastrophic title \n&quot;</span>);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    fprintf(outPDBmd, <span class="stringliteral">&quot;Model %8d \n&quot;</span> , 1);</div>
@@ -130,8 +130,8 @@
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    fprintf(outPDBqm, <span class="stringliteral">&quot;Model %8d \n&quot;</span>, 1);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    vector&lt; Segment* &gt; ::iterator sit;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">for</span> (sit = top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a263d51edda1271a79918414ef4b207c7">Segments</a>().begin();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;         sit &lt; top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a263d51edda1271a79918414ef4b207c7">Segments</a>().end();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">for</span> (sit = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a8574c0f1d39f227a22b6bb398adeb9fd">Segments</a>().begin();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;         sit &lt; top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a8574c0f1d39f227a22b6bb398adeb9fd">Segments</a>().end();</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;         sit++) {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        (*sit)-&gt;WritePDB(outPDBmd, <span class="stringliteral">&quot;Atoms&quot;</span>, <span class="stringliteral">&quot;MD&quot;</span>);</div>
@@ -150,5 +150,5 @@
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}}</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif // VOTCA_XTP_TRAJEXTRACTOR_H</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif // VOTCA_CTP_TRAJEXTRACTOR_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
