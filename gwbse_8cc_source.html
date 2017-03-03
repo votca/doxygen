@@ -528,7 +528,7 @@
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">CTP::logDEBUG</a>, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1TimeStamp.html" title="Timestamp returns the current time as a string Example: cout &lt;&lt; TimeStamp()">CTP::TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Converted DFT orbital coefficient order from &quot;</span> &lt;&lt; _dft_package &lt;&lt; <span class="stringliteral">&quot; to VOTCA&quot;</span> &lt;&lt; flush;</div>
 <div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">CTP::logDEBUG</a>, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1TimeStamp.html" title="Timestamp returns the current time as a string Example: cout &lt;&lt; TimeStamp()">CTP::TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Integrating Vxc in VOTCA with gridsize: &quot;</span> &lt;&lt; _grid &lt;&lt; <span class="stringliteral">&quot; and functional &quot;</span> &lt;&lt; _functional &lt;&lt; flush;</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                    ub::matrix&lt;double&gt; &amp;DMAT = _orbitals-&gt;DensityMatrixGroundState(_dft_orbitals);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                    ub::matrix&lt;double&gt; DMAT = _orbitals-&gt;DensityMatrixGroundState(_dft_orbitals);</div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                    _vxc_ao = _numint.<a class="code" href="classvotca_1_1xtp_1_1NumericalIntegration.html#a3f0f13bbc938af1d21dbc33eacc5416d">IntegrateVXC_Atomblock</a>(DMAT, &amp;dftbasis, _functional);</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                    <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">CTP::logDEBUG</a>, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1TimeStamp.html" title="Timestamp returns the current time as a string Example: cout &lt;&lt; TimeStamp()">CTP::TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Calculated Vxc in VOTCA&quot;</span> &lt;&lt; flush;</div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;</div>
@@ -916,19 +916,12 @@
 <div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                }</div>
 <div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;</div>
 <div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            }</div>
 <div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;                <a class="code" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">CTP::logDEBUG</a>, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1ctp_1_1TimeStamp.html" title="Timestamp returns the current time as a string Example: cout &lt;&lt; TimeStamp()">CTP::TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; GWBSE calculation finished &quot;</span> &lt;&lt; flush;</div>
 <div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;            }</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;</div>
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;        }</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    }</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;};</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;        }</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    }</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
