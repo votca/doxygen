@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>Votca: xtp/src/libxtp/parallelpaircalc.cc Source File</title>
+<title>Votca: ctp/src/libctp/parallelpaircalc.cc Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5ead47a849ab83a9193f978ca5e3ca3d.html">xtp</a></li><li class="navelem"><a class="el" href="dir_9490b4b587e39abe5b456b44b7d2a226.html">src</a></li><li class="navelem"><a class="el" href="dir_5cf6e40b1ca54ba1dd4ab59d9906ea77.html">libxtp</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_925411c422adb34e5eac489a020527ce.html">ctp</a></li><li class="navelem"><a class="el" href="dir_879a0699ec76bc4b5af21d20f283ae7a.html">src</a></li><li class="navelem"><a class="el" href="dir_ed8f0ddc8237bdea34f90fc670e49fa6.html">libctp</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -53,7 +53,7 @@
 </div><!--header-->
 <div class="contents">
 <a href="parallelpaircalc_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2012 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -72,27 +72,27 @@
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="parallelpaircalc_8h.html">votca/xtp/parallelpaircalc.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="parallelpaircalc_8h.html">votca/ctp/parallelpaircalc.h</a>&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>ctp {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#ad8551662d0921b8a3590203fae5a82ce">   25</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#ad8551662d0921b8a3590203fae5a82ce">ParallelPairCalculator::EvaluateFrame</a>(<a class="code" href="classvotca_1_1xtp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a6f56ff944e5392b3b92af1a41c24336c">   25</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a6f56ff944e5392b3b92af1a41c24336c">ParallelPairCalculator::EvaluateFrame</a>(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top) {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Rigidify if (a) not rigid yet (b) rigidification at all possible</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">if</span> (!top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#aeab197f2d4fbd4af369e489faaca5dcc">isRigid</a>()) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">bool</span> isRigid = top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a8524376755c66c89f794220d5795df17">Rigidify</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">if</span> (!top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a5700a8b67d7d3a9b010de448df731666">isRigid</a>()) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">bool</span> isRigid = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a1473e4d37a5b875dceb107ba5445be1c">Rigidify</a>();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span> (!isRigid) { <span class="keywordflow">return</span> 0; }</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">else</span> { cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... System is already rigidified.&quot;</span>; }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    cout &lt;&lt; endl;        </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    std::vector&lt;PairOperator*&gt; pairOps;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    this-&gt;<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a202275d4743d1579c9de5fc0641a0574">InitSlotData</a>(top);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    vector&lt;PairOperator*&gt; pairOps;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    this-&gt;<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a3950d9ffc6ca05916c4c4ff2d56206c3">InitSlotData</a>(top);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a7dcd9b932403510e138d5bc502be1a8a">_nextPair</a> = top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a28e353e9e07f24caa0be734b5327aeb8">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a777aae1be02460855d63db209b7e7cbd">begin</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a03d697b389095c362693a74c0c6b38ca">_nextPair</a> = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a777aae1be02460855d63db209b7e7cbd">begin</a>();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <span class="keywordtype">id</span> = 0; <span class="keywordtype">id</span> &lt; <a class="code" href="classvotca_1_1tools_1_1Calculator.html#a305ed3a26f320834c9a8f03715658008">_nThreads</a>; <span class="keywordtype">id</span>++) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator_1_1PairOperator.html">PairOperator</a> *newOp = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator_1_1PairOperator.html">PairOperator</a>(<span class="keywordtype">id</span>, top, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator_1_1PairOperator.html">PairOperator</a> *newOp = <span class="keyword">new</span> <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator_1_1PairOperator.html">PairOperator</a>(<span class="keywordtype">id</span>, top, <span class="keyword">this</span>);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        pairOps.push_back(newOp);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
@@ -110,7 +110,7 @@
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    pairOps.clear();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    this-&gt;<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#ab3c10c0562bc3e0d76116a3415cd8032">PostProcess</a>(top);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    this-&gt;<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a4dcc44e1b0a7268fec098b7d50cf4ae7">PostProcess</a>(top);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
@@ -119,22 +119,22 @@
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">// Thread Management //</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// +++++++++++++++++ //</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a045d321db5e463d663853053baea8927">   68</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1QMPair.html">QMPair</a> *<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a045d321db5e463d663853053baea8927">ParallelPairCalculator::RequestNextPair</a>(<span class="keywordtype">int</span> opId, <a class="code" href="classvotca_1_1xtp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a64d0077f208d63ef5298d37168f79e3e">   68</a></span>&#160;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a64d0077f208d63ef5298d37168f79e3e">ParallelPairCalculator::RequestNextPair</a>(<span class="keywordtype">int</span> opId, <a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">Topology</a> *top) {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a1f4212b56337ab7e5d1a492b56f6c8d0">_nextPairMutex</a>.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#a82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#ac1d3c39936f19b8bc3dabff7dd396daa">_nextPairMutex</a>.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#a82ecdca62e83a4be3bb8dadf404a48d9">Lock</a>();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1QMPair.html">QMPair</a> *workOnThis;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *workOnThis;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a7dcd9b932403510e138d5bc502be1a8a">_nextPair</a> == top-&gt;<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a28e353e9e07f24caa0be734b5327aeb8">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a0ce372735a6cd3bacbe3cc9402d795a5">end</a>()) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a03d697b389095c362693a74c0c6b38ca">_nextPair</a> == top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a0ce372735a6cd3bacbe3cc9402d795a5">end</a>()) {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        workOnThis = NULL;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1QMPair.html">QMPair</a> *workOnThat = *<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a7dcd9b932403510e138d5bc502be1a8a">_nextPair</a>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a7dcd9b932403510e138d5bc502be1a8a">_nextPair</a>++;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *workOnThat = *<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a03d697b389095c362693a74c0c6b38ca">_nextPair</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a03d697b389095c362693a74c0c6b38ca">_nextPair</a>++;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        workOnThis = workOnThat;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a1f4212b56337ab7e5d1a492b56f6c8d0">_nextPairMutex</a>.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#a98b8edeae80de9fa33f06faa55c1c053">Unlock</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#ac1d3c39936f19b8bc3dabff7dd396daa">_nextPairMutex</a>.<a class="code" href="classvotca_1_1tools_1_1Mutex.html#a98b8edeae80de9fa33f06faa55c1c053">Unlock</a>();</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> workOnThis;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
@@ -143,14 +143,14 @@
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">// PairOperator Member Functions //</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">// +++++++++++++++++++++++++++++ //</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator_1_1PairOperator.html#aba56a58c9279e60caf28567300be2198">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator_1_1PairOperator.html#aba56a58c9279e60caf28567300be2198" title="Run() executes the actual code. Overload it.">ParallelPairCalculator::PairOperator::Run</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator_1_1PairOperator.html#a6f8580ef9e5bef1cbea60fc84de394d0">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator_1_1PairOperator.html#a6f8580ef9e5bef1cbea60fc84de394d0" title="Run() executes the actual code. Overload it.">ParallelPairCalculator::PairOperator::Run</a>(<span class="keywordtype">void</span>) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1QMPair.html">QMPair</a> *qmpair = <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator_1_1PairOperator.html#a1e529f0f1a3882185054d56bd6453a38">_master</a>-&gt;<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#a045d321db5e463d663853053baea8927">RequestNextPair</a>(<a class="code" href="classvotca_1_1xtp_1_1QMThread.html#a32fbd6127b82ab621a79a47e4b23044e">_id</a>, <a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator_1_1PairOperator.html#ae0aac1cbc42ba73167543847c13d1dd0">_top</a>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">QMPair</a> *qmpair = <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator_1_1PairOperator.html#a7a70bd42338d7ecdadb3ff49c3919c13">_master</a>-&gt;<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#a64d0077f208d63ef5298d37168f79e3e">RequestNextPair</a>(<a class="code" href="classvotca_1_1ctp_1_1QMThread.html#a72dcf699cfa0e71d8af867a85ce5aa55">_id</a>, <a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator_1_1PairOperator.html#af7d3016a8f66bacf917a9bce5f5c1ef5">_top</a>);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">if</span> (qmpair == NULL) { <span class="keywordflow">break</span>; }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">else</span> { this-&gt;<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator_1_1PairOperator.html#a1e529f0f1a3882185054d56bd6453a38">_master</a>-&gt;<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator.html#aa4bcc59004fb97eed197ad2d07b4d98d">EvalPair</a>(<a class="code" href="classvotca_1_1xtp_1_1ParallelPairCalculator_1_1PairOperator.html#ae0aac1cbc42ba73167543847c13d1dd0">_top</a>, qmpair, <span class="keyword">this</span>); }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">else</span> { this-&gt;<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator_1_1PairOperator.html#a7a70bd42338d7ecdadb3ff49c3919c13">_master</a>-&gt;<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator.html#ae3a40c93d45e202eeeb3cc9bb13a21d4">EvalPair</a>(<a class="code" href="classvotca_1_1ctp_1_1ParallelPairCalculator_1_1PairOperator.html#af7d3016a8f66bacf917a9bce5f5c1ef5">_top</a>, qmpair, <span class="keyword">this</span>); }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>

@@ -75,53 +75,52 @@
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mulliken_8h.html">votca/xtp/mulliken.h</a>&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="aomatrix_8h.html">votca/xtp/aomatrix.h</a>&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">namespace </span>CTP = votca::ctp;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#afb0fa61f70521273329228c68a95d67a">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#afb0fa61f70521273329228c68a95d67a">Mulliken::EvaluateMulliken</a>(vector&lt; CTP::QMAtom* &gt;&amp; _atomlist, ub::matrix&lt;double&gt; &amp;_dmat,<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;basis,<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> &amp;bs,  <span class="keywordtype">bool</span> _do_transition){</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOOverlap.html">AOOverlap</a> _overlap;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// initialize overlap matrix</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#a2a563fc5f5c11182eaa2c4c0aa8cb769">Initialize</a>(basis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0a9b3c3decd6bc6cf241798d38919f5f">_AOBasisSize</a>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Fill overlap</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ac09e2647efb9732b3ae24aee8ae0d295">Fill</a>(&amp;basis);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    ub::matrix&lt;double&gt; _prodmat = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _dmat, _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ace73d002cf84dd532b5110c5a709bca6">_aomatrix</a> );</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    vector &lt; CTP::QMAtom* &gt; :: iterator atom;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> <span class="keywordtype">id</span> =0;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span> (atom = _atomlist.begin(); atom &lt; _atomlist.end(); ++atom){</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;         <span class="comment">// get element type and determine its nuclear charge</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;         <span class="keywordflow">if</span> (!_do_transition){</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;             <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#a24a197e868b8aa1c9e69636f4bb736f4">_use_ecp</a>){</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;             (*atom)-&gt;charge=<a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#a5a523db87d100df314519ab32ba242e1">_elements</a>.<a class="code" href="classvotca_1_1xtp_1_1Elements.html#af6042854b0553251d1d980c7a3d91501">getNucCrgECP</a>((*atom)-&gt;type);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;             }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;             <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;             (*atom)-&gt;charge=<a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#a5a523db87d100df314519ab32ba242e1">_elements</a>.<a class="code" href="classvotca_1_1xtp_1_1Elements.html#aa0ec05cdb22e0066e523c7f3a31842fc">getNucCrg</a>((*atom)-&gt;type); </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;             }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;             <span class="comment">//cout &lt;&lt; (*atom)-&gt;type &lt;&lt; &quot; &quot; &lt;&lt; (*atom)-&gt;charge &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;         }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;         <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;             (*atom)-&gt;charge=0.0;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;         }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;         <span class="comment">// a little messy, have to use basis set to find out which entries in dmat belong to each atom.</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;         <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* element = bs.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a5e088d74dc0aa5b21dbb5bf58a2d01ea">getElement</a>((*atom)-&gt;type);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;         <span class="keywordtype">int</span> nooffunc=0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;         <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">Element::ShellIterator</a> its = element-&gt;<a class="code" href="classvotca_1_1xtp_1_1Element.html#a44bd738dd7d9b46d8a341f6e75e44d1a">firstShell</a>(); its != element-&gt;<a class="code" href="classvotca_1_1xtp_1_1Element.html#ab4a5544af9b99996ea9fb043060c7e15">lastShell</a>(); its++) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;             <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* shell = (*its);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;             nooffunc+=shell-&gt;<a class="code" href="classvotca_1_1xtp_1_1Shell.html#aad37f0fc37d96b1de368ac3d8f46e6ac">getnumofFunc</a>();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;         }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;         <span class="comment">//cout &lt;&lt; id &lt;&lt; &quot; &quot;&lt;&lt; id+nooffunc &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;         <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> _i = <span class="keywordtype">id</span> ; _i &lt; <span class="keywordtype">id</span>+nooffunc; _i++){</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                (*atom)-&gt;charge -= _prodmat(_i,_i);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;         <span class="keywordtype">id</span>+=nooffunc;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">//cout &lt;&lt; id &lt;&lt; &quot; &quot; &lt;&lt; _dmat.size1() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#a33a60b5cbaa0a168c23719e444749226">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#a33a60b5cbaa0a168c23719e444749226">Mulliken::EvaluateMulliken</a>(vector&lt; ctp::QMAtom* &gt;&amp; _atomlist, ub::matrix&lt;double&gt; &amp;_dmat,<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;basis,<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> &amp;bs,  <span class="keywordtype">bool</span> _do_transition){</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOOverlap.html">AOOverlap</a> _overlap;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// initialize overlap matrix</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#a2a563fc5f5c11182eaa2c4c0aa8cb769">Initialize</a>(basis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0a9b3c3decd6bc6cf241798d38919f5f">_AOBasisSize</a>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Fill overlap</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ae4ffea11b0bfe5535f2e3502b5e83c4e">Fill</a>(&amp;basis);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ub::matrix&lt;double&gt; _prodmat = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _dmat, _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ace73d002cf84dd532b5110c5a709bca6">_aomatrix</a> );</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    vector &lt; ctp::QMAtom* &gt; :: iterator atom;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> <span class="keywordtype">id</span> =0;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">for</span> (atom = _atomlist.begin(); atom &lt; _atomlist.end(); ++atom){</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;         <span class="comment">// get element type and determine its nuclear charge</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;         <span class="keywordflow">if</span> (!_do_transition){</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;             <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#a24a197e868b8aa1c9e69636f4bb736f4">_use_ecp</a>){</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;             (*atom)-&gt;charge=<a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#a5a523db87d100df314519ab32ba242e1">_elements</a>.<a class="code" href="classvotca_1_1xtp_1_1Elements.html#af6042854b0553251d1d980c7a3d91501">getNucCrgECP</a>((*atom)-&gt;type);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;             }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;             <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;             (*atom)-&gt;charge=<a class="code" href="classvotca_1_1xtp_1_1Mulliken.html#a5a523db87d100df314519ab32ba242e1">_elements</a>.<a class="code" href="classvotca_1_1xtp_1_1Elements.html#aa0ec05cdb22e0066e523c7f3a31842fc">getNucCrg</a>((*atom)-&gt;type); </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;             }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;             <span class="comment">//cout &lt;&lt; (*atom)-&gt;type &lt;&lt; &quot; &quot; &lt;&lt; (*atom)-&gt;charge &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;         }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;         <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;             (*atom)-&gt;charge=0.0;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;         }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;         <span class="comment">// a little messy, have to use basis set to find out which entries in dmat belong to each atom.</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;         <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* element = bs.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a5e088d74dc0aa5b21dbb5bf58a2d01ea">getElement</a>((*atom)-&gt;type);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;         <span class="keywordtype">int</span> nooffunc=0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;         <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">Element::ShellIterator</a> its = element-&gt;<a class="code" href="classvotca_1_1xtp_1_1Element.html#a44bd738dd7d9b46d8a341f6e75e44d1a">firstShell</a>(); its != element-&gt;<a class="code" href="classvotca_1_1xtp_1_1Element.html#ab4a5544af9b99996ea9fb043060c7e15">lastShell</a>(); its++) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;             <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* shell = (*its);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;             nooffunc+=shell-&gt;<a class="code" href="classvotca_1_1xtp_1_1Shell.html#aad37f0fc37d96b1de368ac3d8f46e6ac">getnumofFunc</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;         <span class="comment">//cout &lt;&lt; id &lt;&lt; &quot; &quot;&lt;&lt; id+nooffunc &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;         <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> _i = <span class="keywordtype">id</span> ; _i &lt; <span class="keywordtype">id</span>+nooffunc; _i++){</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                (*atom)-&gt;charge -= _prodmat(_i,_i);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;         <span class="keywordtype">id</span>+=nooffunc;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">//cout &lt;&lt; id &lt;&lt; &quot; &quot; &lt;&lt; _dmat.size1() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->

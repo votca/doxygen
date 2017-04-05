@@ -83,431 +83,228 @@
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span>votca::tools;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">//namespace CTP = votca::ctp;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">class </span>Shell;  </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">class </span>Element;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">class </span>BasisSet;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// Gaussian function: contraction*exp(-decay*r^2)</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a> </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a7edf259cb12b10b3f2b1af7cf09d5664">   41</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a96c7dc3fd836687cd35870d7f0765e79">   43</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a96c7dc3fd836687cd35870d7f0765e79">power</a>; <span class="comment">// used in pseudopotenials only</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#acabf7a8257e3143b723892395d2c82c4">   44</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#acabf7a8257e3143b723892395d2c82c4">decay</a>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a4121f5110e5b25e78f4e60bd85f48201">   45</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a4121f5110e5b25e78f4e60bd85f48201">contraction</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a6bb6a56c71c76a3d69e103091ceadb12">   46</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a6bb6a56c71c76a3d69e103091ceadb12">shell</a>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// private constructor, only a shell can create a primitive</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a26aa5e57e05031ed102798e60e03e555">   49</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>( <span class="keywordtype">double</span> _decay, std::vector&lt;double&gt; _contraction, <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a> *_shell = NULL ) </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    : decay(_decay),</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    contraction(_contraction),</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    shell(_shell) { ; }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a9a7643af6c7de594b0acb2f4b534b178">   54</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>( <span class="keywordtype">int</span> _power, <span class="keywordtype">double</span> _decay, std::vector&lt;double&gt; _contraction, <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a> *_shell = NULL ) </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    : power(_power),</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    decay(_decay),</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    contraction(_contraction),</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    shell(_shell) { ; }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};      </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * S, P, or D functions in a Gaussian-basis expansion</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html">   64</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a> </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a016b821f88c7c0a2de1451c175cefbf9">   66</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>;   </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#ada8dda8ed2a1c0af17da56856db45415">   69</a></span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Shell.html#ada8dda8ed2a1c0af17da56856db45415">getType</a>() { <span class="keywordflow">return</span> _type; }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="comment">/*  int getLmax(  ) {</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">        int _lmax;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">        if ( _type == &quot;S&quot; ) _lmax = 0;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">        if ( _type == &quot;SP&quot; ) _lmax = 1;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">        if ( _type == &quot;SPD&quot; ) _lmax = 2;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">        if ( _type == &quot;P&quot; ) _lmax = 1;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">        if ( _type == &quot;PD&quot; ) _lmax = 2;</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">        if ( _type == &quot;D&quot; ) _lmax = 2;</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">        if ( _type == &quot;F&quot; ) _lmax = 3;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">        if ( _type == &quot;SPDF&quot; ) _lmax = 3;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">        return _lmax;</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">    }; */</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a59ca30aff49e4edf3e2c6ffdce2c82b9">   85</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a59ca30aff49e4edf3e2c6ffdce2c82b9">combined</a>(){</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> (_type.length()&gt;1){</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;   </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a12eb4693170ec1409426d45c0792823c">   94</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a12eb4693170ec1409426d45c0792823c">getLmax</a>(  ) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">return</span> FindLmax(_type);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a659766a50d4b612eb7d78fada38ff74f">   98</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a659766a50d4b612eb7d78fada38ff74f">FindLmax</a>( <span class="keywordtype">string</span> _type ){</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordtype">int</span> _lmax;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">// single type shells</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span> ( _type.length() == 1 ){</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">if</span> ( _type == <span class="stringliteral">&quot;S&quot;</span> ){ _lmax = 0;}</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span> ( _type == <span class="stringliteral">&quot;P&quot;</span> ){ _lmax = 1;}</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">if</span> ( _type == <span class="stringliteral">&quot;D&quot;</span> ){ _lmax = 2;}</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> ( _type == <span class="stringliteral">&quot;F&quot;</span> ){ _lmax = 3;}</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">if</span> ( _type == <span class="stringliteral">&quot;G&quot;</span> ){ _lmax = 4;}</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            _lmax = -1;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; _type.length(); ++i) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordtype">string</span> local_shell = string( _type, i, 1 );</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordtype">int</span> _test = this-&gt;FindLmax( local_shell  );</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <span class="keywordflow">if</span> ( _test &gt; _lmax ) { _lmax = _test;} </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }   </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> _lmax;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacevotca_1_1xtp.html#a51834634534958f76e6da894769e4442">FindLmax</a>(<span class="keywordtype">string</span> _type);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacevotca_1_1xtp.html#ad63a72d0dc16ad82358ba33d7c89f310">FindLmin</a>(<span class="keywordtype">string</span> _type);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacevotca_1_1xtp.html#a7e4bd971b96cafd52e85150f039f7b47">OffsetFuncShell</a>(<span class="keywordtype">string</span> shell_type);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacevotca_1_1xtp.html#aebba5626d317f26d5112ffe9bb81ec17">NumFuncShell</a>(<span class="keywordtype">string</span> shell_type);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacevotca_1_1xtp.html#a0c89e89fe24b73953dbea1ae6a3443ee">NumFuncShell_cartesian</a>(<span class="keywordtype">string</span> shell_type);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="namespacevotca_1_1xtp.html#a7744f48f7e27e53532e30d7ffc9d1009">OffsetFuncShell_cartesian</a>(<span class="keywordtype">string</span> shell_type);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::vector&lt;int&gt; <a class="code" href="namespacevotca_1_1xtp.html#ac5d528fa020b66ae779f38ead61a1cc5">NumFuncSubShell</a>(<span class="keywordtype">string</span> shell_type);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">class </span>Shell;  </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">class </span>Element;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">class </span>BasisSet;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// Gaussian function: contraction*exp(-decay*r^2)</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">   53</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a> </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a7edf259cb12b10b3f2b1af7cf09d5664">   55</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a96c7dc3fd836687cd35870d7f0765e79">   57</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a96c7dc3fd836687cd35870d7f0765e79">power</a>; <span class="comment">// used in pseudopotenials only</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#acabf7a8257e3143b723892395d2c82c4">   58</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#acabf7a8257e3143b723892395d2c82c4">decay</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a4121f5110e5b25e78f4e60bd85f48201">   59</a></span>&#160;    std::vector&lt;double&gt; <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a4121f5110e5b25e78f4e60bd85f48201">contraction</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a6bb6a56c71c76a3d69e103091ceadb12">   60</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a6bb6a56c71c76a3d69e103091ceadb12">shell</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// private constructor, only a shell can create a primitive</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a26aa5e57e05031ed102798e60e03e555">   63</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>( <span class="keywordtype">double</span> _decay, std::vector&lt;double&gt; _contraction, <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a> *_shell = NULL ) </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    : decay(_decay),</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    contraction(_contraction),</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    shell(_shell) { ; }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html#a9a7643af6c7de594b0acb2f4b534b178">   68</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>( <span class="keywordtype">int</span> _power, <span class="keywordtype">double</span> _decay, std::vector&lt;double&gt; _contraction, <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a> *_shell = NULL ) </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    : power(_power),</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    decay(_decay),</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    contraction(_contraction),</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    shell(_shell) { ; }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};      </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> * S, P, or D functions in a Gaussian-basis expansion</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html">   78</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a> </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a016b821f88c7c0a2de1451c175cefbf9">   80</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>;   </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#ada8dda8ed2a1c0af17da56856db45415">   83</a></span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Shell.html#ada8dda8ed2a1c0af17da56856db45415">getType</a>() { <span class="keywordflow">return</span> _type; }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a59ca30aff49e4edf3e2c6ffdce2c82b9">   88</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a59ca30aff49e4edf3e2c6ffdce2c82b9">combined</a>(){</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span> (_type.length()&gt;1){</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;   </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a12eb4693170ec1409426d45c0792823c">   97</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a12eb4693170ec1409426d45c0792823c">getLmax</a>(  ) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1xtp.html#a51834634534958f76e6da894769e4442">FindLmax</a>(_type);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#af42cf8d4bcdc2b58df9251b62dffb7ff">  101</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#af42cf8d4bcdc2b58df9251b62dffb7ff">getLmin</a>(  ) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1xtp.html#ad63a72d0dc16ad82358ba33d7c89f310">FindLmin</a>(_type);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#aad37f0fc37d96b1de368ac3d8f46e6ac">  107</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#aad37f0fc37d96b1de368ac3d8f46e6ac">getnumofFunc</a>() {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1xtp.html#aebba5626d317f26d5112ffe9bb81ec17">NumFuncShell</a>(_type);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#aaf0d78615507c0f6dccbb604b4188f95">  116</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#aaf0d78615507c0f6dccbb604b4188f95">getScale</a>() { <span class="keywordflow">return</span> _scale; }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a70ac71162797dc769db38fc2faac733f">  118</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a70ac71162797dc769db38fc2faac733f">getSize</a>() { <span class="keywordflow">return</span> _gaussians.size(); }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// iterator over pairs (decay constant; contraction coefficient)</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a512c9c2952e10e28d7c7f9a04245ac08">  121</a></span>&#160;    <span class="keyword">typedef</span> vector&lt; GaussianPrimitive* &gt;::iterator <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a512c9c2952e10e28d7c7f9a04245ac08">GaussianIterator</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a7bde686fe308056c14e1be287ced4cb1">  122</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a512c9c2952e10e28d7c7f9a04245ac08">GaussianIterator</a> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a7bde686fe308056c14e1be287ced4cb1">firstGaussian</a>() { <span class="keywordflow">return</span> _gaussians.begin(); }</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a1e04614c8d5d020391638b0c7e62ba40">  123</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a512c9c2952e10e28d7c7f9a04245ac08">GaussianIterator</a> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a1e04614c8d5d020391638b0c7e62ba40">lastGaussian</a>(){ <span class="keywordflow">return</span> _gaussians.end(); }</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;   </div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a86065cefbed32cd7aa7d04ad0980f7f2">  125</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a86065cefbed32cd7aa7d04ad0980f7f2">OffsetFuncShell</a>( <span class="keywordtype">string</span> shell_type ) {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">int</span> _nbf;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// single type shells</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> ( shell_type.length() == 1 ){</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;       <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;S&quot;</span> ){ _nbf = 0;}</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;       <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;P&quot;</span> ){ _nbf = 1;}</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;       <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;D&quot;</span> ){ _nbf = 4;}</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;       <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;F&quot;</span> ){ _nbf = 9;}</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;       <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;G&quot;</span> ){ _nbf = 16;}</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">// for combined shells, go over all contributions and find minimal offset</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        _nbf = 1000;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; shell_type.length(); ++i) {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordtype">string</span> local_shell = string( shell_type, i, 1 );</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordtype">int</span> _test = this-&gt;OffsetFuncShell( local_shell  );</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">if</span> ( _test &lt; _nbf ) { _nbf = _test;} </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }   </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">return</span> _nbf;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        } </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// adds a Gaussian </span></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#ab297f083841f71f854d628d385fd7b1e">  126</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>*  addGaussian( <span class="keywordtype">double</span> decay, std::vector&lt;double&gt; contraction ) </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>* gaussian = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>(decay, contraction, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        _gaussians.push_back( gaussian );</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">return</span> gaussian;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">// adds a Gaussian of a pseudopotential</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a11732146d3718ec5ba7816a660c3fd7c">  134</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>*  addGaussian( <span class="keywordtype">int</span> power, <span class="keywordtype">double</span> decay, std::vector&lt;double&gt; contraction ) </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>* gaussian = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>(power, decay, contraction, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        _gaussians.push_back( gaussian );</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">return</span> gaussian;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }    </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keyword">private</span>:   </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// only class Element can construct shells    </span></div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a42f52012ae5605113f9e37fc10999516">  144</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a42f52012ae5605113f9e37fc10999516">Shell</a>( std::string type, <span class="keywordtype">double</span> scale, <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* element = NULL ) : _type(type), _scale(scale) { ; }</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    </div>
-<div class="line"><a name="l00152"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#aad37f0fc37d96b1de368ac3d8f46e6ac">  152</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#aad37f0fc37d96b1de368ac3d8f46e6ac">getnumofFunc</a>() {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> FindnumofFunc(_type);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a22a59ebc9669a19e469c619a93561eb2">  157</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a22a59ebc9669a19e469c619a93561eb2">FindnumofFunc</a>( <span class="keywordtype">string</span> shell_type) {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordtype">int</span> _nbf = 0;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="comment">// single type shells</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">if</span> ( shell_type.length() == 1 ){</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;S&quot;</span> ){ _nbf = 1;}</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;P&quot;</span> ){ _nbf = 3;}</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;D&quot;</span> ){ _nbf = 5;}</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;F&quot;</span> ){ _nbf = 7;}</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">if</span> ( shell_type == <span class="stringliteral">&quot;G&quot;</span> ){ _nbf = 9;}</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="comment">// for combined shells, go over all contributions and add functions</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        _nbf = 0;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;           <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; shell_type.length(); ++i) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    <span class="keywordtype">string</span> local_shell = string(shell_type, i, 1);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    _nbf += this-&gt;FindnumofFunc(local_shell);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            }   </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> _nbf;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// only class Element can destruct shells</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a4fa03636246603f09cf38779e3b9ba87">  147</a></span>&#160;   ~<a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>() </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;   { </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;       <span class="keywordflow">for</span> (vector&lt; GaussianPrimitive* &gt;::iterator it = _gaussians.begin(); it != _gaussians.end() ; it++ ) <span class="keyword">delete</span> (*it); </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;       _gaussians.clear();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;   }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// shell type (S, P, D))</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a9cd08e3bfa50908aafd2e4295b0a1270">  154</a></span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a9cd08e3bfa50908aafd2e4295b0a1270">_type</a>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">// scaling factor</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#ad91adc87bac52bff9cf0a4a02f194d01">  156</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#ad91adc87bac52bff9cf0a4a02f194d01">_scale</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;     </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">//Element* _element;</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// vector of pairs of decay constants and contraction coefficients</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a38c60c8bc3c9e8f29d392175b7fee217">  161</a></span>&#160;    vector&lt; GaussianPrimitive* &gt; <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a38c60c8bc3c9e8f29d392175b7fee217">_gaussians</a>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;};</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"> * A collection of shells associated with a specific element  </span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html">  168</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a> </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{   </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a1414e4505d7768e77a6f36082dfc9d5a">  170</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">  173</a></span>&#160;    <span class="keyword">typedef</span> vector&lt; Shell* &gt;::iterator <a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">ShellIterator</a>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a44bd738dd7d9b46d8a341f6e75e44d1a">  174</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">ShellIterator</a> <a class="code" href="classvotca_1_1xtp_1_1Element.html#a44bd738dd7d9b46d8a341f6e75e44d1a">firstShell</a>() { <span class="keywordflow">return</span> _shells.begin(); }</div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#ab4a5544af9b99996ea9fb043060c7e15">  175</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">ShellIterator</a> <a class="code" href="classvotca_1_1xtp_1_1Element.html#ab4a5544af9b99996ea9fb043060c7e15">lastShell</a>(){ <span class="keywordflow">return</span> _shells.end(); }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a3850c5103709ca1cb22f33f006d6478d">  177</a></span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Element.html#a3850c5103709ca1cb22f33f006d6478d">getType</a>() { <span class="keywordflow">return</span> _type; }</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    </div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#aad5d4fe37ecda04df0d9bbfc62974912">  179</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html#aad5d4fe37ecda04df0d9bbfc62974912">getLmax</a>() { <span class="keywordflow">return</span> _lmax; }</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    </div>
-<div class="line"><a name="l00181"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#aaf0d78615507c0f6dccbb604b4188f95">  181</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#aaf0d78615507c0f6dccbb604b4188f95">getScale</a>() { <span class="keywordflow">return</span> _scale; }</div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a8402a129389700c8391f76baf39fdd40">  181</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html#a8402a129389700c8391f76baf39fdd40">getNcore</a>() { <span class="keywordflow">return</span> _ncore; }</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    </div>
-<div class="line"><a name="l00183"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a70ac71162797dc769db38fc2faac733f">  183</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a70ac71162797dc769db38fc2faac733f">getSize</a>() { <span class="keywordflow">return</span> _gaussians.size(); }</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a2a68fb19fe25eb92b86904e4d58c21f9">  183</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* <a class="code" href="classvotca_1_1xtp_1_1Element.html#a2a68fb19fe25eb92b86904e4d58c21f9">getShell</a>( <a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">ShellIterator</a> it ) { <span class="keywordflow">return</span> (*it); }</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// iterator over pairs (decay constant; contraction coefficient)</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a512c9c2952e10e28d7c7f9a04245ac08">  186</a></span>&#160;    <span class="keyword">typedef</span> vector&lt; GaussianPrimitive* &gt;::iterator <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a512c9c2952e10e28d7c7f9a04245ac08">GaussianIterator</a>;</div>
-<div class="line"><a name="l00187"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a7bde686fe308056c14e1be287ced4cb1">  187</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a512c9c2952e10e28d7c7f9a04245ac08">GaussianIterator</a> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a7bde686fe308056c14e1be287ced4cb1">firstGaussian</a>() { <span class="keywordflow">return</span> _gaussians.begin(); }</div>
-<div class="line"><a name="l00188"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a1e04614c8d5d020391638b0c7e62ba40">  188</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a512c9c2952e10e28d7c7f9a04245ac08">GaussianIterator</a> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a1e04614c8d5d020391638b0c7e62ba40">lastGaussian</a>(){ <span class="keywordflow">return</span> _gaussians.end(); }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;   </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">// adds a Gaussian </span></div>
-<div class="line"><a name="l00191"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#ab297f083841f71f854d628d385fd7b1e">  191</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>*  addGaussian( <span class="keywordtype">double</span> decay, std::vector&lt;double&gt; contraction ) </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>* gaussian = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>(decay, contraction, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        _gaussians.push_back( gaussian );</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">return</span> gaussian;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">// adds a Gaussian of a pseudopotential</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a11732146d3718ec5ba7816a660c3fd7c">  199</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>*  addGaussian( <span class="keywordtype">int</span> power, <span class="keywordtype">double</span> decay, std::vector&lt;double&gt; contraction ) </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>* gaussian = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1GaussianPrimitive.html">GaussianPrimitive</a>(power, decay, contraction, <span class="keyword">this</span>);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        _gaussians.push_back( gaussian );</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">return</span> gaussian;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    }    </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword">private</span>:   </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment">// only class Element can construct shells    </span></div>
-<div class="line"><a name="l00209"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a42f52012ae5605113f9e37fc10999516">  209</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a42f52012ae5605113f9e37fc10999516">Shell</a>( std::string type, <span class="keywordtype">double</span> scale, <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* element = NULL ) : _type(type), _scale(scale) { ; }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">// only class Element can destruct shells</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a4fa03636246603f09cf38779e3b9ba87">  212</a></span>&#160;   ~<a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>() </div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;   { </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;       <span class="keywordflow">for</span> (vector&lt; GaussianPrimitive* &gt;::iterator it = _gaussians.begin(); it != _gaussians.end() ; it++ ) <span class="keyword">delete</span> (*it); </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;       _gaussians.clear();</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;   }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment">// shell type (S, P, D))</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a9cd08e3bfa50908aafd2e4295b0a1270">  219</a></span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a9cd08e3bfa50908aafd2e4295b0a1270">_type</a>;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="comment">// scaling factor</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#ad91adc87bac52bff9cf0a4a02f194d01">  221</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html#ad91adc87bac52bff9cf0a4a02f194d01">_scale</a>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;     </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">//Element* _element;</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="comment">// vector of pairs of decay constants and contraction coefficients</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Shell.html#a38c60c8bc3c9e8f29d392175b7fee217">  226</a></span>&#160;    vector&lt; GaussianPrimitive* &gt; <a class="code" href="classvotca_1_1xtp_1_1Shell.html#a38c60c8bc3c9e8f29d392175b7fee217">_gaussians</a>;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;};</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment"> * A collection of shells associated with a specific element  </span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html">  233</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a> </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;{   </div>
-<div class="line"><a name="l00235"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a1414e4505d7768e77a6f36082dfc9d5a">  235</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    </div>
-<div class="line"><a name="l00238"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">  238</a></span>&#160;    <span class="keyword">typedef</span> vector&lt; Shell* &gt;::iterator <a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">ShellIterator</a>;</div>
-<div class="line"><a name="l00239"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a44bd738dd7d9b46d8a341f6e75e44d1a">  239</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">ShellIterator</a> <a class="code" href="classvotca_1_1xtp_1_1Element.html#a44bd738dd7d9b46d8a341f6e75e44d1a">firstShell</a>() { <span class="keywordflow">return</span> _shells.begin(); }</div>
-<div class="line"><a name="l00240"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#ab4a5544af9b99996ea9fb043060c7e15">  240</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">ShellIterator</a> <a class="code" href="classvotca_1_1xtp_1_1Element.html#ab4a5544af9b99996ea9fb043060c7e15">lastShell</a>(){ <span class="keywordflow">return</span> _shells.end(); }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
-<div class="line"><a name="l00242"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a3850c5103709ca1cb22f33f006d6478d">  242</a></span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Element.html#a3850c5103709ca1cb22f33f006d6478d">getType</a>() { <span class="keywordflow">return</span> _type; }</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#aee0d922428e42ce3cba679810c0af604">  185</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* addShell( std::string shellType, <span class="keywordtype">double</span> shellScale ) </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    { </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* shell = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>( shellType, shellScale, <span class="keyword">this</span> );</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        _shells.push_back(shell); </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">return</span> shell;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    </div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a7b9e6cd5df5dcd0ec3b408ef704e847d">  192</a></span>&#160;    vector&lt;Shell*&gt; <a class="code" href="classvotca_1_1xtp_1_1Element.html#a7b9e6cd5df5dcd0ec3b408ef704e847d">getShells</a>() { <span class="keywordflow">return</span> _shells; }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keyword">private</span>:  </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// only class BasisSet can create Elements</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a78c12fb015fea076207b7f6ba142ac49">  197</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html#a78c12fb015fea076207b7f6ba142ac49">Element</a>( std::string type ) : _type(type) { ; }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="comment">// used for the pseudopotential</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a350f54394553d7462de0487880bcebb6">  200</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html#a350f54394553d7462de0487880bcebb6">Element</a>( std::string type, <span class="keywordtype">int</span> lmax, <span class="keywordtype">int</span> ncore ) : _type(type), _lmax(lmax), _ncore(ncore)  { ; }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment">// only class BasisSet can destruct Elements</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#abe2ce09d0ca18cf68c30744ad829ca35">  203</a></span>&#160;   ~<a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>() </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;   { </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;       <span class="keywordflow">for</span> (vector&lt; Shell* &gt;::iterator it = _shells.begin(); it != _shells.end() ; it++ ) <span class="keyword">delete</span> (*it); </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;       _shells.clear();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;   }    </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;   </div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a3736613452ba369cc420a2fb1159ffbb">  209</a></span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Element.html#a3736613452ba369cc420a2fb1159ffbb">_type</a>;    </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="comment">// lmax is used in the pseudopotentials only (applies to the highest angular momentum lmax)</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a2f37ee4250af42fa3b37ffe8aeea3183">  211</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html#a2f37ee4250af42fa3b37ffe8aeea3183">_lmax</a>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">// ncore is used in the pseudopotentials only (replaces ncore electrons))</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#ada6ad14742afe437d8e647b7d47ead09">  213</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html#ada6ad14742afe437d8e647b7d47ead09">_ncore</a>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    </div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a31d256a4a0db3e0497928177ade04eba">  215</a></span>&#160;    vector&lt;Shell*&gt; <a class="code" href="classvotca_1_1xtp_1_1Element.html#a31d256a4a0db3e0497928177ade04eba">_shells</a>;    </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;};</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment"> * A collection of elements and shells forms the basis set </span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">  221</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">void</span> LoadBasisSet ( std::string name );</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordtype">void</span> LoadPseudopotentialSet ( std::string name );</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* addElement(std::string elementType );</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="comment">// used for pseudopotentials only</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* addElement(std::string elementType, <span class="keywordtype">int</span> lmax, <span class="keywordtype">int</span> ncore );</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a5e088d74dc0aa5b21dbb5bf58a2d01ea">  234</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a5e088d74dc0aa5b21dbb5bf58a2d01ea">getElement</a>( std::string element_type ) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;         map&lt;std::string,Element*&gt;::iterator itm = _elements.find( element_type );</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;         </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;         <span class="keywordflow">if</span> ( itm == _elements.end() ) <span class="keywordflow">throw</span> std::runtime_error( <span class="stringliteral">&quot;Basis set does not have element of type &quot;</span> + element_type );</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;         </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;         <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* element = (*itm).second;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;         <span class="keywordflow">return</span> element; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;     }</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    </div>
-<div class="line"><a name="l00244"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#aad5d4fe37ecda04df0d9bbfc62974912">  244</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html#aad5d4fe37ecda04df0d9bbfc62974912">getLmax</a>() { <span class="keywordflow">return</span> _lmax; }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    ~<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>();</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    </div>
-<div class="line"><a name="l00246"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a8402a129389700c8391f76baf39fdd40">  246</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html#a8402a129389700c8391f76baf39fdd40">getNcore</a>() { <span class="keywordflow">return</span> _ncore; }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">private</span>:    </div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    </div>
-<div class="line"><a name="l00248"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a2a68fb19fe25eb92b86904e4d58c21f9">  248</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* <a class="code" href="classvotca_1_1xtp_1_1Element.html#a2a68fb19fe25eb92b86904e4d58c21f9">getShell</a>( <a class="code" href="classvotca_1_1xtp_1_1Element.html#a98088b7e6dfcaac06682eaddaa084bfe">ShellIterator</a> it ) { <span class="keywordflow">return</span> (*it); }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    </div>
-<div class="line"><a name="l00250"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#aee0d922428e42ce3cba679810c0af604">  250</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* addShell( std::string shellType, <span class="keywordtype">double</span> shellScale ) </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    { </div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* shell = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>( shellType, shellScale, <span class="keyword">this</span> );</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        _shells.push_back(shell); </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">return</span> shell;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    </div>
-<div class="line"><a name="l00257"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a7b9e6cd5df5dcd0ec3b408ef704e847d">  257</a></span>&#160;    vector&lt;Shell*&gt; <a class="code" href="classvotca_1_1xtp_1_1Element.html#a7b9e6cd5df5dcd0ec3b408ef704e847d">getShells</a>() { <span class="keywordflow">return</span> _shells; }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keyword">private</span>:  </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="comment">// only class BasisSet can create Elements</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a78c12fb015fea076207b7f6ba142ac49">  262</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html#a78c12fb015fea076207b7f6ba142ac49">Element</a>( std::string type ) : _type(type) { ; }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">// used for the pseudopotential</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a350f54394553d7462de0487880bcebb6">  265</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html#a350f54394553d7462de0487880bcebb6">Element</a>( std::string type, <span class="keywordtype">int</span> lmax, <span class="keywordtype">int</span> ncore ) : _type(type), _lmax(lmax), _ncore(ncore)  { ; }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="comment">// only class BasisSet can destruct Elements</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#abe2ce09d0ca18cf68c30744ad829ca35">  268</a></span>&#160;   ~<a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>() </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;   { </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;       <span class="keywordflow">for</span> (vector&lt; Shell* &gt;::iterator it = _shells.begin(); it != _shells.end() ; it++ ) <span class="keyword">delete</span> (*it); </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;       _shells.clear();</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;   }    </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;   </div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a3736613452ba369cc420a2fb1159ffbb">  274</a></span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Element.html#a3736613452ba369cc420a2fb1159ffbb">_type</a>;    </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="comment">// lmax is used in the pseudopotentials only (applies to the highest angular momentum lmax)</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a2f37ee4250af42fa3b37ffe8aeea3183">  276</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html#a2f37ee4250af42fa3b37ffe8aeea3183">_lmax</a>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="comment">// ncore is used in the pseudopotentials only (replaces ncore electrons))</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#ada6ad14742afe437d8e647b7d47ead09">  278</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html#ada6ad14742afe437d8e647b7d47ead09">_ncore</a>;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    </div>
-<div class="line"><a name="l00280"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Element.html#a31d256a4a0db3e0497928177ade04eba">  280</a></span>&#160;    vector&lt;Shell*&gt; <a class="code" href="classvotca_1_1xtp_1_1Element.html#a31d256a4a0db3e0497928177ade04eba">_shells</a>;    </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;};</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment"> * A collection of elements and shells forms the basis set </span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">  286</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;{</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordtype">void</span> LoadBasisSet ( std::string name );</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordtype">void</span> LoadPseudopotentialSet ( std::string name );</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* addElement(std::string elementType );</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="comment">// used for pseudopotentials only</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* addElement(std::string elementType, <span class="keywordtype">int</span> lmax, <span class="keywordtype">int</span> ncore );</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
-<div class="line"><a name="l00299"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a5e088d74dc0aa5b21dbb5bf58a2d01ea">  299</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a5e088d74dc0aa5b21dbb5bf58a2d01ea">getElement</a>( std::string element_type ) {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        </div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;         map&lt;std::string,Element*&gt;::iterator itm = _elements.find( element_type );</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;         </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;         <span class="keywordflow">if</span> ( itm == _elements.end() ) <span class="keywordflow">throw</span> std::runtime_error( <span class="stringliteral">&quot;Basis set does not have element of type &quot;</span> + element_type );</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;         </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;         <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* element = (*itm).second;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;         <span class="keywordflow">return</span> element; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;     }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    </div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    ~<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a>();</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="keyword">private</span>:    </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    </div>
-<div class="line"><a name="l00313"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#af941343ab96aed7a8148e65471b34d86">  313</a></span>&#160;    map&lt;std::string,Element*&gt; <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#af941343ab96aed7a8148e65471b34d86">_elements</a>;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;};</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
-<div class="line"><a name="l00317"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a50532d111867bdc11ca89aa2358b1db3">  317</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> BasisSet::LoadBasisSet ( std::string name ) </div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;{    </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> basis_property;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="comment">// get the path to the shared folders with xml files</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordtype">char</span> *votca_share = getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>);</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span>(votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VOTCASHARE not set, cannot open help files.&quot;</span>);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    std::string xmlFile = std::string(getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>)) + std::string(<span class="stringliteral">&quot;/xtp/basis_sets/&quot;</span>) + name + std::string(<span class="stringliteral">&quot;.xml&quot;</span>);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordtype">bool</span> success = <a class="code" href="namespacevotca_1_1tools.html#af135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(basis_property, xmlFile);</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordflow">if</span> ( !success ) {; }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    list&lt;Property*&gt; elementProps = basis_property.<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;basis.element&quot;</span>);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        </div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator  ite = elementProps.begin(); ite != elementProps.end(); ++ite) </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    {       </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        std::string elementName = (*ite)-&gt;getAttribute&lt;std::string&gt;(<span class="stringliteral">&quot;name&quot;</span>);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a> *element = addElement( elementName );</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="comment">//cout &lt;&lt; &quot;\nElement &quot; &lt;&lt; elementName;</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        </div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        list&lt;Property*&gt; shellProps = (*ite)-&gt;Select(<span class="stringliteral">&quot;shell&quot;</span>);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator  its = shellProps.begin(); its != shellProps.end(); ++its) </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        {            </div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            std::string shellType = (*its)-&gt;getAttribute&lt;std::string&gt;(<span class="stringliteral">&quot;type&quot;</span>);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordtype">double</span> shellScale = (*its)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;scale&quot;</span>);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            </div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* shell = element-&gt;addShell( shellType, shellScale );</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="comment">//cout &lt;&lt; &quot;\n\tShell &quot; &lt;&lt; shellType;</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            list&lt;Property*&gt; constProps = (*its)-&gt;Select(<span class="stringliteral">&quot;constant&quot;</span>);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator  itc = constProps.begin(); itc != constProps.end(); ++itc) </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keywordtype">double</span> decay = (*itc)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;decay&quot;</span>);</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                <span class="comment">// &lt;&lt; &quot; decay &quot;&lt;&lt;decay&lt;&lt;endl;</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                std::vector&lt;double&gt; contraction;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                contraction.resize(shell-&gt;getLmax()+1); </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                list&lt;Property*&gt; contrProps = (*itc)-&gt;Select(<span class="stringliteral">&quot;contractions&quot;</span>);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator itcont = contrProps.begin(); itcont != contrProps.end(); ++itcont)</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                {</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    std::string contrType = (*itcont)-&gt;getAttribute&lt;std::string&gt;(<span class="stringliteral">&quot;type&quot;</span>);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                    <span class="keywordtype">double</span> contrFactor = (*itcont)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;factor&quot;</span>);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                    <span class="comment">//cout &lt;&lt; &quot; factor &quot; &lt;&lt; contrFactor &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    <span class="keywordflow">if</span> ( contrType == <span class="stringliteral">&quot;S&quot;</span> ) contraction[0] = contrFactor;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                    <span class="keywordflow">if</span> ( contrType == <span class="stringliteral">&quot;P&quot;</span> ) contraction[1] = contrFactor;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    <span class="keywordflow">if</span> ( contrType == <span class="stringliteral">&quot;D&quot;</span> ) contraction[2] = contrFactor;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    <span class="keywordflow">if</span> ( contrType == <span class="stringliteral">&quot;F&quot;</span> ) contraction[3] = contrFactor;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    <span class="keywordflow">if</span> ( contrType == <span class="stringliteral">&quot;G&quot;</span> ) contraction[4] = contrFactor;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                }    </div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                shell-&gt;<a class="code" href="classvotca_1_1xtp_1_1Shell.html#ab297f083841f71f854d628d385fd7b1e">addGaussian</a>(decay, contraction);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            }</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            </div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;       </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    }</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;}</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
-<div class="line"><a name="l00376"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a506821458b33d70b79c82e1553f1bb06">  376</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> BasisSet::LoadPseudopotentialSet ( std::string name ) </div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;{    </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> basis_property;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="comment">// get the path to the shared folders with xml files</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="keywordtype">char</span> *votca_share = getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordflow">if</span>(votca_share == NULL) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VOTCASHARE not set, cannot open help files.&quot;</span>);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    std::string xmlFile = std::string(getenv(<span class="stringliteral">&quot;VOTCASHARE&quot;</span>)) + std::string(<span class="stringliteral">&quot;/xtp/basis_sets/&quot;</span>) + name + std::string(<span class="stringliteral">&quot;.xml&quot;</span>);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    </div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordtype">bool</span> success = <a class="code" href="namespacevotca_1_1tools.html#af135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(basis_property, xmlFile);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    </div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">if</span> ( !success ) {; }</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    </div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    list&lt;Property*&gt; elementProps = basis_property.<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;pseudopotential.element&quot;</span>);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator  ite = elementProps.begin(); ite != elementProps.end(); ++ite) </div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    {       </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        std::string elementName = (*ite)-&gt;getAttribute&lt;std::string&gt;(<span class="stringliteral">&quot;name&quot;</span>);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="keywordtype">int</span> lmax = (*ite)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;lmax&quot;</span>);</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="keywordtype">int</span> ncore = (*ite)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ncore&quot;</span>);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a> *element = addElement( elementName, lmax, ncore );</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <span class="comment">//cout &lt;&lt; &quot;\nElement &quot; &lt;&lt; elementName;</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        list&lt;Property*&gt; shellProps = (*ite)-&gt;Select(<span class="stringliteral">&quot;shell&quot;</span>);</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator  its = shellProps.begin(); its != shellProps.end(); ++its) </div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        {            </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            std::string shellType = (*its)-&gt;getAttribute&lt;std::string&gt;(<span class="stringliteral">&quot;type&quot;</span>);</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            <span class="keywordtype">double</span> shellScale = 1.0;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            <a class="code" href="classvotca_1_1xtp_1_1Shell.html">Shell</a>* shell = element-&gt;addShell( shellType, shellScale );</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <span class="comment">//cout &lt;&lt; &quot;\n\tShell &quot; &lt;&lt; shellType;</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            </div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            list&lt;Property*&gt; constProps = (*its)-&gt;Select(<span class="stringliteral">&quot;constant&quot;</span>);</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator  itc = constProps.begin(); itc != constProps.end(); ++itc) </div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            {</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                <span class="keywordtype">int</span> power = (*itc)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;power&quot;</span>);</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                <span class="keywordtype">double</span> decay = (*itc)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;decay&quot;</span>);</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                <span class="comment">//double contraction = (*itc)-&gt;getAttribute&lt;double&gt;(&quot;contraction&quot;);</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                std::vector&lt;double&gt; contraction;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                <span class="comment">// just testing here with single value </span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                contraction.push_back((*itc)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;contraction&quot;</span>));</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                <span class="comment">//shell-&gt;addGaussian(decay, contraction);</span></div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                shell-&gt;<a class="code" href="classvotca_1_1xtp_1_1Shell.html#ab297f083841f71f854d628d385fd7b1e">addGaussian</a>(power, decay, contraction);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                <span class="comment">//cout &lt;&lt; &quot;\n\t\t&quot; &lt;&lt; decay &lt;&lt; &quot; &quot; &lt;&lt; contraction &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            }</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;       </div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    }</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="comment">// adding an Element to a Basis Set</span></div>
-<div class="line"><a name="l00431"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a2a918634bd8953dbce787adb6d92d88b">  431</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* BasisSet::addElement( std::string elementType ) {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a> *element = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>( elementType );</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    _elements[elementType] = element;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordflow">return</span> element;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;};</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="comment">// adding an Element to a Pseudopotential Library</span></div>
-<div class="line"><a name="l00438"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e2836307f52f4dff334208ff4668dc4">  438</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>* BasisSet::addElement( std::string elementType, <span class="keywordtype">int</span> lmax, <span class="keywordtype">int</span> ncore ) {</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a> *element = <span class="keyword">new</span> <a class="code" href="classvotca_1_1xtp_1_1Element.html">Element</a>( elementType, lmax, ncore );</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    _elements[elementType] = element;</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">return</span> element;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;};</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment">// cleanup the basis set</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#aaa6226f5e454e58aedf96f8fd7c555f8">  445</a></span>&#160;<span class="keyword">inline</span> BasisSet::~BasisSet() {</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    </div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="keywordflow">for</span> ( map&lt; std::string,Element* &gt;::iterator it = _elements.begin(); it !=  _elements.end(); it++ ) {</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;         <span class="keyword">delete</span> (*it).second;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;     }</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    </div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    _elements.clear();</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;};</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;}}</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* BASISSET_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#af941343ab96aed7a8148e65471b34d86">  248</a></span>&#160;    map&lt;std::string,Element*&gt; <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#af941343ab96aed7a8148e65471b34d86">_elements</a>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;};</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}}</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* BASISSET_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
