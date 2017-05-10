@@ -102,54 +102,56 @@
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    frame.bStep = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    frame.step = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a81334a5f36caa3e78ebb8759881b4288">getStep</a>();;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    frame.x = <a class="code" href="namespaceCart.html#a728e7dca1f41916ddf640546ab9f95e9a8fa4feb4dcb48e37dd97e10914465361">x</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    frame.bTitle=<span class="keyword">false</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    frame.bLambda=<span class="keyword">false</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    frame.bAtoms=<span class="keyword">false</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    frame.bPrec=<span class="keyword">false</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    frame.bX = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    frame.bF=conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#acbb59a7d58342850089adc219c5b9c6e">HasForce</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    frame.bBox=<span class="keyword">true</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    frame.bV=conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">HasVel</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            frame.box[j][i] = box[i][j];</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;N; ++i) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> pos = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#afeb069f0e094fc7b4e1da07efe9751ce">getPos</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        x[i][0] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        x[i][1] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        x[i][2] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordflow">if</span> (frame.bV){</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    v = <span class="keyword">new</span> rvec[N];</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;N; ++i) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        frame.v = v;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> vel = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aebb8eed45cceece3347ad2f2ceb0ea3e">getVel</a>();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        v[i][0] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        v[i][1] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        v[i][2] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; <span class="keywordflow">if</span> (frame.bF){</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;     f = <span class="keyword">new</span> rvec[N];</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;N; ++i) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        frame.f = f;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> force = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad535e866229fdbca437157541edf9b4b" title="get the force acting on the bead">getF</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        f[i][0] = force.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        f[i][1] = force.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        f[i][2] = force.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;     </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    write_trxframe(<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">_file</a>, &amp;frame, NULL);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    step++;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">delete</span>[] <a class="code" href="namespaceCart.html#a728e7dca1f41916ddf640546ab9f95e9a8fa4feb4dcb48e37dd97e10914465361">x</a>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (frame.bV) <span class="keyword">delete</span>[] v;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (frame.bF) <span class="keyword">delete</span>[] f;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#if GMX &lt; 52</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span>    frame.bTitle=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span>    frame.bLambda=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    frame.bAtoms=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    frame.bPrec=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    frame.bX = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    frame.bF=conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#acbb59a7d58342850089adc219c5b9c6e">HasForce</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    frame.bBox=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    frame.bV=conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">HasVel</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            frame.box[j][i] = box[i][j];</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;N; ++i) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> pos = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#afeb069f0e094fc7b4e1da07efe9751ce">getPos</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        x[i][0] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        x[i][1] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        x[i][2] = pos.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordflow">if</span> (frame.bV){</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    v = <span class="keyword">new</span> rvec[N];</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;N; ++i) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        frame.v = v;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> vel = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aebb8eed45cceece3347ad2f2ceb0ea3e">getVel</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        v[i][0] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        v[i][1] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        v[i][2] = vel.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; <span class="keywordflow">if</span> (frame.bF){</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;     f = <span class="keyword">new</span> rvec[N];</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;N; ++i) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        frame.f = f;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a> force = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#aeb5c7b45bcc49101c7aa8f79a697f277">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad535e866229fdbca437157541edf9b4b" title="get the force acting on the bead">getF</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        f[i][0] = force.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        f[i][1] = force.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        f[i][2] = force.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;     </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    write_trxframe(<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">_file</a>, &amp;frame, NULL);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    step++;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">delete</span>[] <a class="code" href="namespaceCart.html#a728e7dca1f41916ddf640546ab9f95e9a8fa4feb4dcb48e37dd97e10914465361">x</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (frame.bV) <span class="keyword">delete</span>[] v;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span> (frame.bF) <span class="keyword">delete</span>[] f;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->
