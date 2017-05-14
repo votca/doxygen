@@ -53,7 +53,7 @@
 </div><!--header-->
 <div class="contents">
 <a href="aoshell_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2017 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -90,14 +90,14 @@
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;          <span class="keyword">const</span> <span class="keywordtype">double</span> distsq =  center*center;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">typedef</span> vector&lt; AOGaussianPrimitive* &gt;::iterator <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a55a9beee093282ff3659ab5b3fb4884d">GaussianIterator</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">typedef</span> vector&lt; AOGaussianPrimitive* &gt;::const_iterator <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a9849cd50fb162f53f3ab57bf41f4f1e6">GaussianIterator</a>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">// iterate over Gaussians in this shell</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">for</span> (GaussianIterator itr = <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a0266d35faf6d6fac9d1ac822c68581e1">firstGaussian</a>(); itr != <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a7e0ddf6b17516d1a638ff1094cbc6eeb">lastGaussian</a>(); ++itr) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">for</span> (GaussianIterator itr = <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a7e027a92c37a5d67a987d5e301f84395">firstGaussian</a>(); itr != <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#ad4633465bf49ecf38719eafd37b7d550">lastGaussian</a>(); ++itr) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> alpha = (*itr)-&gt;decay;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                std::vector&lt;double&gt;&amp; _contractions = (*itr)-&gt;contraction;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> alpha = (*itr)-&gt;getDecay();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keyword">const</span> std::vector&lt;double&gt;&amp; _contractions = (*itr)-&gt;getContraction();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordtype">double</span> _expofactor = (*itr)-&gt;powfactor * exp(-alpha * distsq);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordtype">double</span> _expofactor = (*itr)-&gt;getPowfactor() * exp(-alpha * distsq);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="comment">// split combined shells</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordtype">int</span> _i_func = -1;</div>
@@ -352,99 +352,98 @@
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;             <span class="keyword">const</span> <span class="keywordtype">double</span> center_y = center.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>();</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;             <span class="keyword">const</span> <span class="keywordtype">double</span> center_z = center.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>();</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;             <span class="keyword">const</span> <span class="keywordtype">double</span> distsq =  center*center;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;             <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1xtp.html#a8a88a1839c9151de4c7d1d3baf101aa6">pi</a> = boost::math::constants::pi&lt;double&gt;();</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keyword">typedef</span> vector&lt; AOGaussianPrimitive* &gt;::iterator <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a55a9beee093282ff3659ab5b3fb4884d">GaussianIterator</a>;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="comment">// iterate over Gaussians in this shell</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">for</span> (GaussianIterator itr = <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a0266d35faf6d6fac9d1ac822c68581e1">firstGaussian</a>(); itr != <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a7e0ddf6b17516d1a638ff1094cbc6eeb">lastGaussian</a>(); ++itr) {</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> alpha = (*itr)-&gt;decay;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                <span class="keyword">const</span> std::vector&lt;double&gt;&amp; _contractions = (*itr)-&gt;contraction;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                <span class="keywordtype">double</span> _expofactor = pow(2.0 * alpha / pi, 0.75) * exp(-alpha * distsq);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                <span class="comment">// split combined shells</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="keywordtype">int</span> _i_func = -1;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; shell_type.length(); ++i) {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    <span class="keywordtype">char</span> single_shell = shell_type[i];</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                    <span class="comment">// single type shells</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                    <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;S&#39;</span>) {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                        AOvalues(0, _i_func + 1) += _contractions[0] * _expofactor; <span class="comment">// s-function        </span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                        _i_func++;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;P&#39;</span>) {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                        <span class="keywordtype">double</span> factor = 2.*sqrt(alpha)*_contractions[1];</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                      AOvalues(0, _i_func + 1) += factor * center_z* _expofactor; <span class="comment">// Y 1,0</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                      AOvalues(0, _i_func + 2) += factor * center_y* _expofactor; <span class="comment">// Y 1,-1</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                      AOvalues(0, _i_func + 3) += factor * center_x* _expofactor; <span class="comment">// Y 1,1</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                      _i_func += 3;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                    }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;D&#39;</span>) {</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                       <span class="keywordtype">double</span> factor = 2.*alpha*_contractions[2];</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                      <span class="keywordtype">double</span> factor_1 =  factor/sqrt(3.);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                      AOvalues(0, _i_func + 1) += factor_1 * (3.*center_z*center_z - distsq) * _expofactor; <span class="comment">// Y 2,0</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                      AOvalues(0, _i_func + 2) += 2.*factor * (center_y*center_z) * _expofactor; <span class="comment">// Y 2,-1</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                      AOvalues(0, _i_func + 3) += 2.*factor * (center_x*center_z) * _expofactor; <span class="comment">// Y 2,1</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                      AOvalues(0, _i_func + 4) += 2.*factor * (center_x*center_y) * _expofactor; <span class="comment">// Y 2,-2</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                      AOvalues(0, _i_func + 5) += factor * (center_x*center_x - center_y*center_y) * _expofactor; <span class="comment">// Y 2,2</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                      _i_func += 5;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                    }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;F&#39;</span>) {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                      <span class="keywordtype">double</span> factor = 2.*pow(alpha,1.5)*_contractions[3];</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                      <span class="keywordtype">double</span> factor_1 = factor*2./sqrt(15.);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                      <span class="keywordtype">double</span> factor_2 = factor*sqrt(2.)/sqrt(5.);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                      <span class="keywordtype">double</span> factor_3 = factor*sqrt(2.)/sqrt(3.);</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                      <span class="keywordtype">double</span> cx_cx = center_x*center_x;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                      <span class="keywordtype">double</span> cy_cy = center_y*center_y;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                      <span class="keywordtype">double</span> cz_cz = center_z*center_z;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                      AOvalues(0, _i_func + 1) += factor_1 * center_z * (5.*cz_cz - 3.*distsq) * _expofactor; <span class="comment">// Y 3,0</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                      AOvalues(0, _i_func + 2) += factor_2 * center_y * (5.*cz_cz - distsq) * _expofactor; <span class="comment">// Y 3,-1</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                      AOvalues(0, _i_func + 3) += factor_2 * center_x * (5.*cz_cz - distsq) * _expofactor; <span class="comment">// Y 3,1</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                      AOvalues(0, _i_func + 4) += 4.*factor * center_x * center_y * center_z * _expofactor; <span class="comment">// Y 3,-2</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                      AOvalues(0, _i_func + 5) += 2.*factor * center_z * (cx_cx - cy_cy) * _expofactor; <span class="comment">// Y 3,2</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                      AOvalues(0, _i_func + 6) += factor_3 * center_y * (3.*cx_cx - cy_cy) * _expofactor; <span class="comment">// Y 3,-3</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                      AOvalues(0, _i_func + 7) += factor_3 * center_x * (cx_cx - 3.*cy_cy) * _expofactor; <span class="comment">// Y 3,3</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                      _i_func += 7;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                    }</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;G&#39;</span>) {</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                      <span class="keywordtype">double</span> factor = 2./sqrt(3.)*alpha*alpha*_contractions[4];</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                      <span class="keywordtype">double</span> factor_1 = factor/sqrt(35.);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                      <span class="keywordtype">double</span> factor_2 = factor*4./sqrt(14.);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                      <span class="keywordtype">double</span> factor_3 = factor*2./sqrt(7.);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                      <span class="keywordtype">double</span> factor_4 = factor*2.*sqrt(2.);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                      <span class="keywordtype">double</span> cx_cx = center_x*center_x;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                      <span class="keywordtype">double</span> cx_cy = center_x*center_y;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                      <span class="keywordtype">double</span> cx_cz = center_x*center_z;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                      <span class="keywordtype">double</span> cy_cy = center_y*center_y;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                      <span class="keywordtype">double</span> cy_cz = center_y*center_z;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                      <span class="keywordtype">double</span> cz_cz = center_z*center_z;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                      AOvalues(0, _i_func + 1) += factor_1 * (35.*cz_cz*cz_cz - 30.*cz_cz*distsq + 3.*distsq*distsq) * _expofactor; <span class="comment">// Y 4,0</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                      AOvalues(0, _i_func + 2) += factor_2 * cy_cz * (7.*cz_cz - 3.*distsq) * _expofactor; <span class="comment">// Y 4,-1</span></div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                      AOvalues(0, _i_func + 3) += factor_2 * cx_cz * (7.*cz_cz - 3.*distsq) * _expofactor; <span class="comment">// Y 4,1</span></div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                      AOvalues(0, _i_func + 4) += 2.*factor_3 * cx_cy * (7.*cz_cz - distsq) * _expofactor; <span class="comment">// Y 4,-2</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                      AOvalues(0, _i_func + 5) += factor_3 * (cx_cx - cy_cy) * (7.*cz_cz - distsq) * _expofactor; <span class="comment">// Y 4,2</span></div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                      AOvalues(0, _i_func + 6) += factor_4 * cy_cz * (3.*cx_cx - cy_cy) * _expofactor; <span class="comment">// Y 4,-3</span></div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                      AOvalues(0, _i_func + 7) += factor_4 * cx_cz * (cx_cx - 3.*cy_cy) * _expofactor; <span class="comment">// Y 4,3</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                      AOvalues(0, _i_func + 8) += 4.*factor * cx_cy * (cx_cx - cy_cy) * _expofactor; <span class="comment">// Y 4,-4</span></div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                      AOvalues(0, _i_func + 9) += factor * (cx_cx*cx_cx - 6.*cx_cx*cy_cy + cy_cy*cy_cy) * _expofactor; <span class="comment">// Y 4,4</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                      _i_func += 9;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                    }</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                        cerr &lt;&lt; <span class="stringliteral">&quot;Single shell type&quot;</span>&lt;&lt;single_shell&lt;&lt;<span class="stringliteral">&quot; not known &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                        exit(1);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                    }</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            } <span class="comment">// contractions</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keyword">typedef</span> vector&lt; AOGaussianPrimitive* &gt;::const_iterator <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a9849cd50fb162f53f3ab57bf41f4f1e6">GaussianIterator</a>;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="comment">// iterate over Gaussians in this shell</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="keywordflow">for</span> (GaussianIterator itr = <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a7e027a92c37a5d67a987d5e301f84395">firstGaussian</a>(); itr != <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#ad4633465bf49ecf38719eafd37b7d550">lastGaussian</a>(); ++itr) {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> alpha = (*itr)-&gt;getDecay();</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                <span class="keyword">const</span> std::vector&lt;double&gt;&amp; _contractions = (*itr)-&gt;getContraction();</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                <span class="keywordtype">double</span> _expofactor =(*itr)-&gt;getPowfactor() * exp(-alpha * distsq);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                <span class="comment">// split combined shells</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                <span class="keywordtype">int</span> _i_func = -1;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; shell_type.length(); ++i) {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                    <span class="keywordtype">char</span> single_shell = shell_type[i];</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    <span class="comment">// single type shells</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                    <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;S&#39;</span>) {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                        AOvalues(0, _i_func + 1) += _contractions[0] * _expofactor; <span class="comment">// s-function        </span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                        _i_func++;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;P&#39;</span>) {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                        <span class="keywordtype">double</span> factor = 2.*sqrt(alpha)*_contractions[1];</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                      AOvalues(0, _i_func + 1) += factor * center_z* _expofactor; <span class="comment">// Y 1,0</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                      AOvalues(0, _i_func + 2) += factor * center_y* _expofactor; <span class="comment">// Y 1,-1</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                      AOvalues(0, _i_func + 3) += factor * center_x* _expofactor; <span class="comment">// Y 1,1</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                      _i_func += 3;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                    }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;D&#39;</span>) {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                       <span class="keywordtype">double</span> factor = 2.*alpha*_contractions[2];</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                      <span class="keywordtype">double</span> factor_1 =  factor/sqrt(3.);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                      AOvalues(0, _i_func + 1) += factor_1 * (3.*center_z*center_z - distsq) * _expofactor; <span class="comment">// Y 2,0</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                      AOvalues(0, _i_func + 2) += 2.*factor * (center_y*center_z) * _expofactor; <span class="comment">// Y 2,-1</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                      AOvalues(0, _i_func + 3) += 2.*factor * (center_x*center_z) * _expofactor; <span class="comment">// Y 2,1</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                      AOvalues(0, _i_func + 4) += 2.*factor * (center_x*center_y) * _expofactor; <span class="comment">// Y 2,-2</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                      AOvalues(0, _i_func + 5) += factor * (center_x*center_x - center_y*center_y) * _expofactor; <span class="comment">// Y 2,2</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                      _i_func += 5;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    }</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;F&#39;</span>) {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                      <span class="keywordtype">double</span> factor = 2.*pow(alpha,1.5)*_contractions[3];</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                      <span class="keywordtype">double</span> factor_1 = factor*2./sqrt(15.);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                      <span class="keywordtype">double</span> factor_2 = factor*sqrt(2.)/sqrt(5.);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                      <span class="keywordtype">double</span> factor_3 = factor*sqrt(2.)/sqrt(3.);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                      <span class="keywordtype">double</span> cx_cx = center_x*center_x;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                      <span class="keywordtype">double</span> cy_cy = center_y*center_y;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                      <span class="keywordtype">double</span> cz_cz = center_z*center_z;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                      AOvalues(0, _i_func + 1) += factor_1 * center_z * (5.*cz_cz - 3.*distsq) * _expofactor; <span class="comment">// Y 3,0</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                      AOvalues(0, _i_func + 2) += factor_2 * center_y * (5.*cz_cz - distsq) * _expofactor; <span class="comment">// Y 3,-1</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                      AOvalues(0, _i_func + 3) += factor_2 * center_x * (5.*cz_cz - distsq) * _expofactor; <span class="comment">// Y 3,1</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                      AOvalues(0, _i_func + 4) += 4.*factor * center_x * center_y * center_z * _expofactor; <span class="comment">// Y 3,-2</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                      AOvalues(0, _i_func + 5) += 2.*factor * center_z * (cx_cx - cy_cy) * _expofactor; <span class="comment">// Y 3,2</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                      AOvalues(0, _i_func + 6) += factor_3 * center_y * (3.*cx_cx - cy_cy) * _expofactor; <span class="comment">// Y 3,-3</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                      AOvalues(0, _i_func + 7) += factor_3 * center_x * (cx_cx - 3.*cy_cy) * _expofactor; <span class="comment">// Y 3,3</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                      _i_func += 7;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (single_shell == <span class="charliteral">&#39;G&#39;</span>) {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                      <span class="keywordtype">double</span> factor = 2./sqrt(3.)*alpha*alpha*_contractions[4];</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                      <span class="keywordtype">double</span> factor_1 = factor/sqrt(35.);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                      <span class="keywordtype">double</span> factor_2 = factor*4./sqrt(14.);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                      <span class="keywordtype">double</span> factor_3 = factor*2./sqrt(7.);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                      <span class="keywordtype">double</span> factor_4 = factor*2.*sqrt(2.);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                      <span class="keywordtype">double</span> cx_cx = center_x*center_x;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                      <span class="keywordtype">double</span> cx_cy = center_x*center_y;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                      <span class="keywordtype">double</span> cx_cz = center_x*center_z;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                      <span class="keywordtype">double</span> cy_cy = center_y*center_y;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                      <span class="keywordtype">double</span> cy_cz = center_y*center_z;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                      <span class="keywordtype">double</span> cz_cz = center_z*center_z;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                      AOvalues(0, _i_func + 1) += factor_1 * (35.*cz_cz*cz_cz - 30.*cz_cz*distsq + 3.*distsq*distsq) * _expofactor; <span class="comment">// Y 4,0</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                      AOvalues(0, _i_func + 2) += factor_2 * cy_cz * (7.*cz_cz - 3.*distsq) * _expofactor; <span class="comment">// Y 4,-1</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                      AOvalues(0, _i_func + 3) += factor_2 * cx_cz * (7.*cz_cz - 3.*distsq) * _expofactor; <span class="comment">// Y 4,1</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                      AOvalues(0, _i_func + 4) += 2.*factor_3 * cx_cy * (7.*cz_cz - distsq) * _expofactor; <span class="comment">// Y 4,-2</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                      AOvalues(0, _i_func + 5) += factor_3 * (cx_cx - cy_cy) * (7.*cz_cz - distsq) * _expofactor; <span class="comment">// Y 4,2</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                      AOvalues(0, _i_func + 6) += factor_4 * cy_cz * (3.*cx_cx - cy_cy) * _expofactor; <span class="comment">// Y 4,-3</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                      AOvalues(0, _i_func + 7) += factor_4 * cx_cz * (cx_cx - 3.*cy_cy) * _expofactor; <span class="comment">// Y 4,3</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                      AOvalues(0, _i_func + 8) += 4.*factor * cx_cy * (cx_cx - cy_cy) * _expofactor; <span class="comment">// Y 4,-4</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                      AOvalues(0, _i_func + 9) += factor * (cx_cx*cx_cx - 6.*cx_cx*cy_cy + cy_cy*cy_cy) * _expofactor; <span class="comment">// Y 4,4</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                      _i_func += 9;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                    }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                    <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                        cerr &lt;&lt; <span class="stringliteral">&quot;Single shell type&quot;</span>&lt;&lt;single_shell&lt;&lt;<span class="stringliteral">&quot; not known &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                        exit(1);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                    }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            } <span class="comment">// contractions</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;}}</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->

@@ -53,7 +53,7 @@
 </div><!--header-->
 <div class="contents">
 <a href="xtp_2src_2libxtp_2tools_2log2mps_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2017 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -149,7 +149,7 @@
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;\nERROR Parsing &quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1Log2Mps.html#a0368c648587fcabb3e5a7d98a85e5683">_logfile</a> &lt;&lt; <span class="stringliteral">&quot;failed. Abort.&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;(see above, parsing error)&quot;</span>);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }    </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    vector&lt;ctp::QMAtom*&gt; &amp;qmatoms = *orbs.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a894e723e3434d6a776cef857a3d5795d">getAtoms</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    vector&lt;ctp::QMAtom*&gt; &amp;qmatoms = orbs.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a1299f8aad28c05704b09e0f33d783df0">QMAtoms</a>();</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    vector&lt;ctp::QMAtom*&gt;::iterator it;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// Sanity checks, total charge</span></div>
@@ -169,12 +169,12 @@
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="comment">// Convert to polar segment &amp; write mps-file</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1QMMInterface.html">QMMInterface</a> qmmface;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1PolarSeg.html">ctp::PolarSeg</a> *pseg = qmmface.<a class="code" href="classvotca_1_1xtp_1_1QMMInterface.html#a64e415c58138d876abde2cfa31605005">Convert</a>(qmatoms);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1PolarSeg.html">ctp::PolarSeg</a> pseg = qmmface.<a class="code" href="classvotca_1_1xtp_1_1QMMInterface.html#aa7b2ee87c9ff931704558b4fecf6f0ff">Convert</a>(qmatoms);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">string</span> tag = <span class="stringliteral">&quot;::LOG2MPS &quot;</span> </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        + (boost::format(<span class="stringliteral">&quot;(log-file=&#39;%1$s&#39; : %2$d QM atoms)&quot;</span>)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        % <a class="code" href="classvotca_1_1xtp_1_1Log2Mps.html#a0368c648587fcabb3e5a7d98a85e5683">_logfile</a> % qmatoms.size()).str();    </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    pseg-&gt;<a class="code" href="classvotca_1_1ctp_1_1PolarSeg.html#aa912c932be613012c49f9b32ae6549cc">WriteMPS</a>(<a class="code" href="classvotca_1_1xtp_1_1Log2Mps.html#a594f5010a4c0ae311d23b8f922a5a1d4">_mpsfile</a>, tag);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    pseg.<a class="code" href="classvotca_1_1ctp_1_1PolarSeg.html#aa912c932be613012c49f9b32ae6549cc">WriteMPS</a>(<a class="code" href="classvotca_1_1xtp_1_1Log2Mps.html#a594f5010a4c0ae311d23b8f922a5a1d4">_mpsfile</a>, tag);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>

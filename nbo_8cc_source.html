@@ -53,7 +53,7 @@
 </div><!--header-->
 <div class="contents">
 <a href="nbo_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2017 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -77,23 +77,23 @@
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="linalg_8h.html">votca/tools/linalg.h</a>&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>votca { <span class="keyword">namespace </span>xtp {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1NBO.html#a1b8436ab4a4a5b5de8cd5e2278317eb2">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1NBO.html#a1b8436ab4a4a5b5de8cd5e2278317eb2">NBO::EvaluateNBO</a>(std::vector&lt; ctp::QMAtom* &gt;&amp; _atomlist,  ub::matrix&lt;double&gt; &amp;_dmat,<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;basis,<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> &amp;bs){</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1NBO.html#a086510d3a6e48e3613150025e54eb647">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1NBO.html#a086510d3a6e48e3613150025e54eb647">NBO::EvaluateNBO</a>(std::vector&lt; ctp::QMAtom* &gt;&amp; _atomlist,<span class="keyword">const</span>  ub::matrix&lt;double&gt; &amp;_dmat,<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;basis, <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> &amp;bs){</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AOOverlap.html">AOOverlap</a> _overlap;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// initialize overlap matrix</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#a2a563fc5f5c11182eaa2c4c0aa8cb769">Initialize</a>(basis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a0a9b3c3decd6bc6cf241798d38919f5f">_AOBasisSize</a>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#a2a563fc5f5c11182eaa2c4c0aa8cb769">Initialize</a>(basis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#ac1fa1b5a7906f9f815d1740596fd6b85">AOBasisSize</a>());</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Fill overlap</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ae4ffea11b0bfe5535f2e3502b5e83c4e">Fill</a>(&amp;basis);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#a838441f2e050fe4ca3aa274b17d7a0b9">Fill</a>(basis);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    ub::matrix&lt;double&gt; _prodmat = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _dmat, _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ace73d002cf84dd532b5110c5a709bca6">_aomatrix</a> );</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    ub::matrix&lt;double&gt; _prodmat = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _dmat, _overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ab0f1e3cc254840033ddf1f00ebfcbcd1">Matrix</a>() );</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ub::matrix&lt;double&gt; P=<a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>(_overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ace73d002cf84dd532b5110c5a709bca6">_aomatrix</a>,_prodmat);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ub::matrix&lt;double&gt; P=<a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>(_overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ab0f1e3cc254840033ddf1f00ebfcbcd1">Matrix</a>(),_prodmat);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ub::matrix&lt;double&gt; PNAOs_trans=<a class="code" href="classvotca_1_1xtp_1_1NBO.html#acec6fa9866af3c917b7b0bc84dea246d">IntercenterOrthogonalisation</a>(P,_overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ace73d002cf84dd532b5110c5a709bca6">_aomatrix</a>, _atomlist ,bs);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ub::matrix&lt;double&gt; PNAOs_trans=<a class="code" href="classvotca_1_1xtp_1_1NBO.html#acec6fa9866af3c917b7b0bc84dea246d">IntercenterOrthogonalisation</a>(P,_overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ab0f1e3cc254840033ddf1f00ebfcbcd1">Matrix</a>(), _atomlist ,bs);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    cout&lt;&lt;P&lt;&lt;endl;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    cout&lt;&lt;_overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ace73d002cf84dd532b5110c5a709bca6">_aomatrix</a>&lt;&lt;endl;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    cout&lt;&lt;_overlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ab0f1e3cc254840033ddf1f00ebfcbcd1">Matrix</a>()&lt;&lt;endl;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    vector &lt; ctp::QMAtom* &gt; :: iterator atom;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">for</span> (atom = _atomlist.begin(); atom &lt; _atomlist.end(); ++atom){</div>
@@ -112,7 +112,7 @@
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1NBO.html#acec6fa9866af3c917b7b0bc84dea246d">   61</a></span>&#160;ub::matrix&lt;double&gt;<a class="code" href="classvotca_1_1xtp_1_1NBO.html#acec6fa9866af3c917b7b0bc84dea246d">NBO::IntercenterOrthogonalisation</a>(ub::matrix&lt;double&gt; &amp;P,ub::matrix&lt;double&gt; &amp;<a class="code" href="classvotca_1_1xtp_1_1Overlap.html" title="Evaluates electronic coupling elements.">Overlap</a>,vector&lt; ctp::QMAtom* &gt;&amp; _atomlist ,<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> &amp;bs){</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1NBO.html#acec6fa9866af3c917b7b0bc84dea246d">   61</a></span>&#160;ub::matrix&lt;double&gt;<a class="code" href="classvotca_1_1xtp_1_1NBO.html#acec6fa9866af3c917b7b0bc84dea246d">NBO::IntercenterOrthogonalisation</a>(ub::matrix&lt;double&gt; &amp;P, ub::matrix&lt;double&gt; &amp;<a class="code" href="classvotca_1_1xtp_1_1Overlap.html" title="Evaluates electronic coupling elements.">Overlap</a>,vector&lt; ctp::QMAtom* &gt;&amp; _atomlist , <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> &amp;bs){</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    vector&lt; ctp::QMAtom* &gt;::iterator atom;</div>
@@ -132,12 +132,12 @@
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;           <span class="comment">// for loop because shells can also consist of SP shells or alike</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt;(*its)-&gt;getType().length(); ++i) {</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordtype">string</span> local_shell = string( (*its)-&gt;getType(), i, 1 );</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordtype">int</span> l=<a class="code" href="namespacevotca_1_1xtp.html#a51834634534958f76e6da894769e4442">FindLmax</a>(local_shell);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordtype">int</span> l=<a class="code" href="namespacevotca_1_1xtp.html#acf581a2cebeee68f5f3865df42dc48ca">FindLmax</a>(local_shell);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            std::vector&lt; int &gt;&amp; index =shellsort[l];</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;           </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            index.push_back(functionindex);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            functionindex+=<a class="code" href="namespacevotca_1_1xtp.html#aebba5626d317f26d5112ffe9bb81ec17">NumFuncShell</a>(local_shell);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            functionindex+=<a class="code" href="namespacevotca_1_1xtp.html#a2c9fb903257ef2c2da045b2bbe0e16d7">NumFuncShell</a>(local_shell);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        sorting.push_back(shellsort);</div>

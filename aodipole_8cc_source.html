@@ -53,7 +53,7 @@
 </div><!--header-->
 <div class="contents">
 <a href="aodipole_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2016 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2017 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -85,7 +85,7 @@
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">namespace </span>ub = boost::numeric::ublas;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a362e8fc80becc7575f5f5a94638ec197">   34</a></span>&#160;    <span class="keywordtype">void</span> AODipole::FillBlock( std::vector&lt; ub::matrix_range&lt; ub::matrix&lt;double&gt; &gt; &gt;&amp; _matrix, <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* _shell_row, <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* _shell_col , <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* ecp) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AODipole.html#af7a56708d9b381528e2fc604846e1b5d">   34</a></span>&#160;    <span class="keywordtype">void</span> AODipole::FillBlock( std::vector&lt; ub::matrix_range&lt; ub::matrix&lt;double&gt; &gt; &gt;&amp; _matrix,<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* _shell_row,<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>* _shell_col , <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>* ecp) {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">/* Calculating the AO matrix of the gradient operator requires </span></div>
@@ -94,8 +94,8 @@
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">         */</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">// shell info, only lmax tells how far to go</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">int</span> _lmax_row = _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a705f52979185dacc9371dc7c417b2d7c">getLmax</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">int</span> _lmax_col = _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a705f52979185dacc9371dc7c417b2d7c">getLmax</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">int</span> _lmax_row = _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a1632bfc1f4e5af3a2af9462ae6829fdc">getLmax</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">int</span> _lmax_col = _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a1632bfc1f4e5af3a2af9462ae6829fdc">getLmax</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">if</span> ( _lmax_col &gt; 4 ) {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            cerr &lt;&lt; <span class="stringliteral">&quot;Momentum transition dipoles only implemented for S,P,D,F,G functions in DFT basis!&quot;</span> &lt;&lt; flush;</div>
@@ -118,10 +118,10 @@
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        ub::matrix&lt;double&gt; _ol = ub::zero_matrix&lt;double&gt;(_nrows,_ncols);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;         <span class="comment">// get shell positions</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>&amp; _pos_row = _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a3544471775ca8bc056971fa2584d2879">getPos</a>();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>&amp; _pos_col = _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a3544471775ca8bc056971fa2584d2879">getPos</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>&amp; _pos_row = _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#ada763d93e5be18b5d3905b1bde430ffc">getPos</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>&amp; _pos_col = _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#ada763d93e5be18b5d3905b1bde430ffc">getPos</a>();</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">vec</a>  _diff    = _pos_row - _pos_col;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">double</span> _distsq = (_diff.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>()*_diff.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>()) + (_diff.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>()*_diff.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>()) + (_diff.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()*_diff.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()); </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">double</span> _distsq = (_diff*_diff); </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
@@ -173,16 +173,16 @@
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        std::vector&lt;double&gt; _center(3,0.0); <span class="comment">// here: origin, can be changed later</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        std::vector&lt;double&gt; _pmc(3,0.0);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">typedef</span> std::vector&lt; AOGaussianPrimitive* &gt;::iterator GaussianIterator;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        </div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">// iterate over Gaussians in this _shell_row</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">for</span> ( GaussianIterator itr = _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a0266d35faf6d6fac9d1ac822c68581e1">firstGaussian</a>(); itr != _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a7e0ddf6b17516d1a638ff1094cbc6eeb">lastGaussian</a>(); ++itr){</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">for</span> ( <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a9849cd50fb162f53f3ab57bf41f4f1e6">AOShell::GaussianIterator</a> itr = _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a7e027a92c37a5d67a987d5e301f84395">firstGaussian</a>(); itr != _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#ad4633465bf49ecf38719eafd37b7d550">lastGaussian</a>(); ++itr){</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="comment">// iterate over Gaussians in this _shell_col</span></div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="comment">// get decay constant</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; _decay_row = (*itr)-&gt;decay;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">double</span> _decay_row = (*itr)-&gt;getDecay();</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">for</span> ( GaussianIterator itc = _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a0266d35faf6d6fac9d1ac822c68581e1">firstGaussian</a>(); itc != _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a7e0ddf6b17516d1a638ff1094cbc6eeb">lastGaussian</a>(); ++itc){</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">for</span> ( <a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a9849cd50fb162f53f3ab57bf41f4f1e6">AOShell::GaussianIterator</a> itc = _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a7e027a92c37a5d67a987d5e301f84395">firstGaussian</a>(); itc != _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#ad4633465bf49ecf38719eafd37b7d550">lastGaussian</a>(); ++itc){</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="comment">//get decay constant</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; _decay_col = (*itc)-&gt;decay;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> _decay_col = (*itc)-&gt;getDecay();</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;       </div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> _fak  = 0.5/(_decay_row + _decay_col);</div>
@@ -628,49 +628,37 @@
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;} <span class="comment">// end if (_lmax_col &gt; 3)</span></div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;</div>
 <div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        <span class="comment">// normalization and cartesian -&gt; spherical factors</span></div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        <span class="keywordtype">int</span> _ntrafo_row = _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#abb1bc95a6d1fa7fdb14ada29cf981e2b">getNumFunc</a>() + _shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#af0cf445c95dceecdd00e9863fd3f0eaa">getOffset</a>();</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        <span class="keywordtype">int</span> _ntrafo_col = _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#abb1bc95a6d1fa7fdb14ada29cf981e2b">getNumFunc</a>() + _shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#af0cf445c95dceecdd00e9863fd3f0eaa">getOffset</a>();</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        </div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        <span class="comment">//cout &lt;&lt; &quot; _ntrafo_row &quot; &lt;&lt; _ntrafo_row &lt;&lt; &quot;:&quot; &lt;&lt; _shell_row-&gt;getType() &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        <span class="comment">//cout &lt;&lt; &quot; _ntrafo_col &quot; &lt;&lt; _ntrafo_col &lt;&lt; &quot;:&quot; &lt;&lt; _shell_col-&gt;getType() &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        ub::matrix&lt;double&gt; _trafo_row = ub::zero_matrix&lt;double&gt;(_ntrafo_row,_nrows);</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        ub::matrix&lt;double&gt; _trafo_col = ub::zero_matrix&lt;double&gt;(_ntrafo_col,_ncols);</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        <span class="comment">// get transformation matrices</span></div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;           <span class="comment">// get transformation matrices including contraction coefficients</span></div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        std::vector&lt;double&gt; _contractions_row = (*itr)-&gt;contraction;</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        std::vector&lt;double&gt; _contractions_col = (*itc)-&gt;contraction;</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        </div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        this-&gt;getTrafo( _trafo_row, _lmax_row, _decay_row, _contractions_row);</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        this-&gt;getTrafo( _trafo_col, _lmax_col, _decay_col, _contractions_col);</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        ub::matrix&lt;double&gt; _trafo_col_tposed = ub::trans( _trafo_col );</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        <span class="comment">// cartesian -&gt; spherical</span></div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;       </div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> _i_comp = 0; _i_comp &lt; 3; _i_comp++){</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            ub::matrix&lt;double&gt; _dip_tmp = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _trafo_row, _dip[ _i_comp ] );</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            ub::matrix&lt;double&gt; _dip_sph = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _dip_tmp, _trafo_col_tposed );</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            </div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            <span class="comment">// save to _matrix</span></div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">unsigned</span> i = 0; i&lt; _matrix[0].size1(); i++ ) {</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0; j &lt; _matrix[0].size2(); j++){</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                    _matrix[ _i_comp ](i,j) += _dip_sph(i+_shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#af0cf445c95dceecdd00e9863fd3f0eaa">getOffset</a>(),j+_shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#af0cf445c95dceecdd00e9863fd3f0eaa">getOffset</a>());</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;                }</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            }</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;        }</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        </div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;        _ol.clear();</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;            }<span class="comment">// _shell_col Gaussians</span></div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        }<span class="comment">// _shell_row Gaussians</span></div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    }</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    </div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  </div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;        </div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    </div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    </div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;}}</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;       </div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        </div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        ub::matrix&lt;double&gt; _trafo_row = getTrafo(*itr);</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        ub::matrix&lt;double&gt; _trafo_col_tposed = ub::trans(getTrafo(*itc));       </div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        <span class="comment">//ub::matrix&lt;double&gt; _trafo_col_tposed = ub::trans( _trafo_col );</span></div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        <span class="comment">// cartesian -&gt; spherical</span></div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;       </div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> _i_comp = 0; _i_comp &lt; 3; _i_comp++){</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;            ub::matrix&lt;double&gt; _dip_tmp = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _trafo_row, _dip[ _i_comp ] );</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;            ub::matrix&lt;double&gt; _dip_sph = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _dip_tmp, _trafo_col_tposed );</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            </div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;            <span class="comment">// save to _matrix</span></div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;            <span class="keywordflow">for</span> ( <span class="keywordtype">unsigned</span> i = 0; i&lt; _matrix[0].size1(); i++ ) {</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0; j &lt; _matrix[0].size2(); j++){</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                    _matrix[ _i_comp ](i,j) += _dip_sph(i+_shell_row-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#aa3810d7db520897686f6fa04fe7fd822">getOffset</a>(),j+_shell_col-&gt;<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#aa3810d7db520897686f6fa04fe7fd822">getOffset</a>());</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;                }</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            }</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        }</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        </div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        _ol.clear();</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            }<span class="comment">// _shell_col Gaussians</span></div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        }<span class="comment">// _shell_row Gaussians</span></div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    }</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    </div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;  </div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        </div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    </div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    </div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;}}</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
