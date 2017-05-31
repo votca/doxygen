@@ -484,7 +484,7 @@ int idB = poutput.getAttribute&lt;int&gt;("idB");
 string typeA = poutput.getAttribute&lt;string&gt;("typeA");
 string typeB = poutput.getAttribute&lt;string&gt;("typeB");
 </pre><p>cout &lt;&lt; idA &lt;&lt; ":" &lt;&lt; idB &lt;&lt; "\n"; Segment *segA = top-&gt;getSegment(idA); Segment *segB = top-&gt;getSegment(idB); QMPair *qmp = nblist.FindPair(segA,segB);</p>
-<p>there is no pair in the neighbor list with this name if (qmp == NULL) { <a class="el" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG(logINFO, log)</a> &lt;&lt; "No pair " &lt;&lt; idA &lt;&lt; ":" &lt;&lt; idB &lt;&lt; " found in the neighbor list. Ignoring" &lt;&lt; flush; } else { </p>
+<p>there is no pair in the neighbor list with this name if (qmp == NULL) { <a class="el" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG(logINFO, log)</a> &lt;&lt; "No pair " &lt;&lt; idA &lt;&lt; ":" &lt;&lt; idB &lt;&lt; " found in the neighbor list. Ignoring" &lt;&lt; flush; } else { </p>
 <pre class="fragment">_current_pairs++;
 
 list&lt;Property*&gt; pOverlap = poutput.Select("overlap");
@@ -506,8 +506,8 @@ if ( orbA == homoA+1 &amp;&amp; orbB == homoB+1 ) {
         qmp-&gt;setIsPathCarrier(true, -1);
 }
 </pre><p> } }</p>
-<p>} else { // output not found, job failed - report - throw an exception in the future _incomplete_jobs++; <a class="el" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG(logINFO, log)</a> &lt;&lt; "Job " &lt;&lt; (*it)-&gt;get( "id" ).as&lt;string&gt;() &lt;&lt; " status is: " &lt;&lt; (*it)-&gt;get( "status" ).as&lt;string&gt;() &lt;&lt; endl; } }</p>
-<p><a class="el" href="logger_8h.html#aef431335aa7f51e232e71c5c00e1433a">LOG(logINFO, log)</a> &lt;&lt; "Pairs [total:saved] " &lt;&lt; _number_of_pairs &lt;&lt; ":" &lt;&lt; _current_pairs &lt;&lt; " Incomplete jobs: " &lt;&lt; _incomplete_jobs &lt;&lt; flush; cout &lt;&lt; log; } Imports electronic couplings with superexchange </p>
+<p>} else { // output not found, job failed - report - throw an exception in the future _incomplete_jobs++; <a class="el" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG(logINFO, log)</a> &lt;&lt; "Job " &lt;&lt; (*it)-&gt;get( "id" ).as&lt;string&gt;() &lt;&lt; " status is: " &lt;&lt; (*it)-&gt;get( "status" ).as&lt;string&gt;() &lt;&lt; endl; } }</p>
+<p><a class="el" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG(logINFO, log)</a> &lt;&lt; "Pairs [total:saved] " &lt;&lt; _number_of_pairs &lt;&lt; ":" &lt;&lt; _current_pairs &lt;&lt; " Incomplete jobs: " &lt;&lt; _incomplete_jobs &lt;&lt; flush; cout &lt;&lt; log; } Imports electronic couplings with superexchange </p>
 
 <p>Reimplemented from <a class="el" href="classvotca_1_1ctp_1_1JobCalculator.html#a5b0ddadd8f8b1a20bee2e0e09b3c2208">votca::ctp::JobCalculator</a>.</p>
 
