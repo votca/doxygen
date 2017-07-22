@@ -735,219 +735,182 @@
 <div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;</div>
 <div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;                    <span class="keywordflow">if</span> (_has_atoms == <span class="keyword">false</span>) {</div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                        _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a0d7f3546bd331245a7d3d0badc61e285">AddAtom</a>(atom_type, 0, 0, 0, atom_charge);</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                    } <span class="keywordflow">if</span> (charge_pos != std::string::npos &amp;&amp; <a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a580c068b6ff5e941196dddad33a508d4">_get_charges</a>) {</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, *<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Getting charges&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                <span class="comment">//_has_charges = true;</span></div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_input_file, _line);</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                <span class="comment">//getline(_input_file, _line);</span></div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;                <span class="keywordtype">bool</span> _has_atoms = _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ae129fc8d1b1de792408e4e2a5d7451c1">hasQMAtoms</a>();</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                std::vector&lt;std::string&gt; _row;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_input_file, _line);</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                boost::trim(_line);</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                <span class="comment">//cout &lt;&lt; _line &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                boost::algorithm::split(_row, _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on);</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;                <span class="keywordtype">int</span> nfields = _row.size();</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                <span class="comment">//cout &lt;&lt; _row.size() &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                <span class="keywordflow">while</span> (nfields == 4) {</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                    <span class="keywordtype">int</span> atom_id = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">int</span> &gt;(_row.at(0));</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                    atom_id++;</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                    <span class="comment">//int atom_number = boost::lexical_cast&lt; int &gt;(_row.at(0));</span></div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                    std::string atom_type = _row.at(1);</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                    <span class="keywordtype">double</span> atom_charge = <a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt; <span class="keywordtype">double</span> &gt;(_row.at(3));</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                    <span class="keywordflow">if</span> ( <a class="code" href="structvotca_1_1tools_1_1globals.html#a68680885a1bd6265f3aacdcca5ab61c4" title="be loud and noisy">tools::globals::verbose</a> ) cout &lt;&lt; <span class="stringliteral">&quot;... ... &quot;</span> &lt;&lt; atom_id &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; atom_type &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; atom_charge &lt;&lt; endl;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_input_file, _line);</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                    boost::trim(_line);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                    boost::algorithm::split(_row, _line, boost::is_any_of(<span class="stringliteral">&quot;\t &quot;</span>), boost::algorithm::token_compress_on);</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                    nfields = _row.size();</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                    <span class="comment">//_orbitals-&gt;_has_atoms = true;</span></div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                    }<span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                        <a class="code" href="classvotca_1_1ctp_1_1QMAtom.html" title="container for QM atoms">ctp::QMAtom</a>* pAtom = _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a66a77085a7adb9061dc84289c1736caa">_atoms</a>.at(atom_id - 1);</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                        pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#ac32157cca42e59c7f166ab1af89f066d">type</a> = atom_type;</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                        pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#a284fbbc70c85e8845aa8d04d7fcfc23d">charge</a> = atom_charge;</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                    }</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                }</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                <span class="comment">//_orbitals-&gt;_has_atoms = true;</span></div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;            }</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;        }</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    </div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Alpha electrons: &quot;</span> &lt;&lt; _number_of_electrons &lt;&lt; flush ;</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    <span class="keywordtype">int</span> _occupied_levels = _number_of_electrons;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="keywordtype">int</span> _unoccupied_levels = _levels - _occupied_levels;</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Occupied levels: &quot;</span> &lt;&lt; _occupied_levels &lt;&lt; flush;</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Unoccupied levels: &quot;</span> &lt;&lt; _unoccupied_levels &lt;&lt; flush;  </div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;   </div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        </div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;   <span class="comment">/************************************************************/</span></div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160; </div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    <span class="comment">// copying information to the orbitals object</span></div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;   <span class="comment">/* _orbitals-&gt;setBasisSetSize(  _basis_size );*/</span></div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a9f9fe336ee35c09473bc0d1cf98084e7">setBasisSetSize</a>(  _levels );</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;   </div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa6ea0a0aa54d07b43f704de6fe8480de">setNumberOfElectrons</a>( _number_of_electrons );</div>
 <div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                    <span class="keywordflow">if</span> (_has_atoms == <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                        _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a0d7f3546bd331245a7d3d0badc61e285">AddAtom</a>(atom_type, 0, 0, 0, atom_charge);</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                        <a class="code" href="classvotca_1_1ctp_1_1QMAtom.html" title="container for QM atoms">ctp::QMAtom</a>* pAtom = _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a66a77085a7adb9061dc84289c1736caa">_atoms</a>.at(atom_id - 1);</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                        pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#ac32157cca42e59c7f166ab1af89f066d">type</a> = atom_type;</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                        pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#a284fbbc70c85e8845aa8d04d7fcfc23d">charge</a> = atom_charge;</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                    }</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                }</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                <span class="comment">//_orbitals-&gt;_has_atoms = true;</span></div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;            }<span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                        <a class="code" href="classvotca_1_1ctp_1_1QMAtom.html" title="container for QM atoms">ctp::QMAtom</a>* pAtom = _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a66a77085a7adb9061dc84289c1736caa">_atoms</a>.at(atom_id - 1);</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                        pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#ac32157cca42e59c7f166ab1af89f066d">type</a> = atom_type;</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                        pAtom-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMAtom.html#a284fbbc70c85e8845aa8d04d7fcfc23d">charge</a> = atom_charge;</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                    }</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                }</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                <span class="comment">//_orbitals-&gt;_has_atoms = true;</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;            }</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;        }</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;    </div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Alpha electrons: &quot;</span> &lt;&lt; _number_of_electrons &lt;&lt; flush ;</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keywordtype">int</span> _occupied_levels = _number_of_electrons;</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    <span class="keywordtype">int</span> _unoccupied_levels = _levels - _occupied_levels;</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Occupied levels: &quot;</span> &lt;&lt; _occupied_levels &lt;&lt; flush;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Unoccupied levels: &quot;</span> &lt;&lt; _unoccupied_levels &lt;&lt; flush;  </div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;   </div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;        </div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;   <span class="comment">/************************************************************/</span></div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160; </div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    <span class="comment">// copying information to the orbitals object</span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;   <span class="comment">/* _orbitals-&gt;setBasisSetSize(  _basis_size );*/</span></div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;    _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a9f9fe336ee35c09473bc0d1cf98084e7">setBasisSetSize</a>(  _levels );</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;   </div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;    _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa6ea0a0aa54d07b43f704de6fe8480de">setNumberOfElectrons</a>( _number_of_electrons );</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;    _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a58fc00cb274bf966c274aa01e421e025">setNumberOfLevels</a>( _occupied_levels , _unoccupied_levels );</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    </div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a9151e310d779015760828c827bc0e383">setSelfEnergy</a>(0.0);</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    </div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;   <span class="comment">// copying energies to a matrix  </span></div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;   _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ae371f1f74cbcfa8d9f37208a41615d14">_mo_energies</a>.resize( _levels );</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;   <span class="comment">//_level = 1;</span></div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ae371f1f74cbcfa8d9f37208a41615d14">_mo_energies</a>.size(); i++) {</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;         _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ae371f1f74cbcfa8d9f37208a41615d14">_mo_energies</a>[i] = _energies[ i ];</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    }</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;   </div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;   <span class="comment">// cleanup</span></div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;  <span class="comment">// _coefficients.clear();</span></div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;   _energies.clear();</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;   _occ.clear();</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a58fc00cb274bf966c274aa01e421e025">setNumberOfLevels</a>( _occupied_levels , _unoccupied_levels );</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    </div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a9151e310d779015760828c827bc0e383">setSelfEnergy</a>(0.0);</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    </div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;   <span class="comment">// copying energies to a matrix  </span></div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;   _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ae371f1f74cbcfa8d9f37208a41615d14">_mo_energies</a>.resize( _levels );</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;   <span class="comment">//_level = 1;</span></div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ae371f1f74cbcfa8d9f37208a41615d14">_mo_energies</a>.size(); i++) {</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;         _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ae371f1f74cbcfa8d9f37208a41615d14">_mo_energies</a>[i] = _energies[ i ];</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    }</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;   </div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;   <span class="comment">// cleanup</span></div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;  <span class="comment">// _coefficients.clear();</span></div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;   _energies.clear();</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;   _occ.clear();</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;   <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, *<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Done reading Log file&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;   <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;}<span class="comment">//ParseOrbitalFile(Orbital* _orbital)</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;</div>
+<div class="line"><a name="l00744"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Orca.html#aaa1126664c09b46e5071c463b60ca838">  744</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Orca.html#aaa1126664c09b46e5071c463b60ca838">Orca::CheckLogFile</a>() {</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    </div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    <span class="comment">// check if the log file exists</span></div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    ifstream _input_file((<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a6778351ada4a76c3d4c05ad66db5e1fd">_run_dir</a> + <span class="stringliteral">&quot;/&quot;</span> + <a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#ae6745558f1b028aff9217078cf5f0412">_log_file_name</a>).c_str());</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    </div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;    <span class="keywordflow">if</span> (_input_file.fail()) {</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">ctp::logERROR</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Orca LOG is not found&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    };</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    </div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    std::string _line;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;    <span class="keywordflow">while</span> (_input_file) {</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_input_file,_line);</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;        boost::trim(_line);</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;        </div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;        std::string::size_type error = _line.find(<span class="stringliteral">&quot;FATAL ERROR ENCOUNTERED&quot;</span>);</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;        </div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;        <span class="keywordflow">if</span> (error != std::string::npos) {</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;            <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">ctp::logERROR</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;ORCA encountered a fatal error, maybe a look in the log file may help.&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;        } </div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        error = _line.find(<span class="stringliteral">&quot;mpirun detected that one or more processes exited with non-zero status&quot;</span>);</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;        </div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;        <span class="keywordflow">if</span> (error != std::string::npos) {</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;            <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">ctp::logERROR</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;ORCA had an mpi problem, maybe your openmpi version is not good.&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;        } </div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    } </div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;}</div>
 <div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;   <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, *<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Done reading Log file&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;   <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;}<span class="comment">//ParseOrbitalFile(Orbital* _orbital)</span></div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;</div>
-<div class="line"><a name="l00781"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Orca.html#aaa1126664c09b46e5071c463b60ca838">  781</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Orca.html#aaa1126664c09b46e5071c463b60ca838">Orca::CheckLogFile</a>() {</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    </div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;    <span class="comment">// check if the log file exists</span></div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;    ifstream _input_file((<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a6778351ada4a76c3d4c05ad66db5e1fd">_run_dir</a> + <span class="stringliteral">&quot;/&quot;</span> + <a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#ae6745558f1b028aff9217078cf5f0412">_log_file_name</a>).c_str());</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    </div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    <span class="keywordflow">if</span> (_input_file.fail()) {</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">ctp::logERROR</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Orca LOG is not found&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    };</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    </div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    std::string _line;</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    <span class="keywordflow">while</span> (_input_file) {</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0" title="Wrapper for a getline function.">getline</a>(_input_file,_line);</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;        boost::trim(_line);</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;        </div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;        std::string::size_type error = _line.find(<span class="stringliteral">&quot;FATAL ERROR ENCOUNTERED&quot;</span>);</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;        </div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;        <span class="keywordflow">if</span> (error != std::string::npos) {</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">ctp::logERROR</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;ORCA encountered a fatal error, maybe a look in the log file may help.&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;        } </div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        error = _line.find(<span class="stringliteral">&quot;mpirun detected that one or more processes exited with non-zero status&quot;</span>);</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        </div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;        <span class="keywordflow">if</span> (error != std::string::npos) {</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;            <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a083e7e6de6236e85180a6cdb8373d373">ctp::logERROR</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;ORCA had an mpi problem, maybe your openmpi version is not good.&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;        } </div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    } </div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;}</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160; <span class="comment">// Parses the Orca gbw file and stores data in the Orbitals object </span></div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160; </div>
-<div class="line"><a name="l00815"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Orca.html#a26a80d74687c2e356864126b224baede">  815</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a26a80d74687c2e356864126b224baede">Orca::ParseOrbitalsFile</a>( <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitals ) {</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;<span class="keywordflow">if</span> ( !<a class="code" href="classvotca_1_1xtp_1_1Orca.html#aaa1126664c09b46e5071c463b60ca838">CheckLogFile</a>() ) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;std::vector&lt;double&gt; _coefficients;</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;<span class="keywordtype">int</span> _basis_size=_orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a5cfcbf266e40308b7eb60f66c252d1a8">getBasisSetSize</a>();</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;<span class="keywordtype">int</span> _levels=_orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afe838de42ff28a901b7809ef23f4b6d9">getNumberOfLevels</a>();</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="keywordflow">if</span> (_basis_size==0 || _levels==0){</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Basis size not set, calculator does not parse log file first&quot;</span>);</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;}</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;   <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Reading the gbw file, this may or may not work so be careful: &quot;</span> &lt;&lt; flush ;</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    ifstream infile;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    infile.open(( <a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a6778351ada4a76c3d4c05ad66db5e1fd">_run_dir</a> + <span class="stringliteral">&quot;/&quot;</span> + <a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a458eeeb71bbf1d2c7fe0130dfc196e54">_orb_file_name</a>).c_str(), ios::binary | ios::in);</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;    <span class="keywordflow">if</span> (!infile){</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;        <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Could not open &quot;</span>+<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a458eeeb71bbf1d2c7fe0130dfc196e54">_orb_file_name</a>+<span class="stringliteral">&quot; file&quot;</span>);</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    }</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    infile.seekg(24, ios::beg); </div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    <span class="keywordtype">char</span>* buffer= <span class="keyword">new</span> <span class="keywordtype">char</span> [8];</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;    infile.read(buffer,8);</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">int</span> offset= *((<span class="keywordtype">long</span> <span class="keywordtype">int</span>*)buffer);</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;    </div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;    infile.seekg(offset,ios::beg);</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;    infile.read(buffer,4);</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    <span class="keywordtype">int</span> op_read= *((<span class="keywordtype">int</span>*)buffer);</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;    infile.seekg(offset+4,ios::beg);</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    infile.read(buffer,4);</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    <span class="keywordtype">int</span> dim_read= *((<span class="keywordtype">int</span>*)buffer);</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    infile.seekg(offset+8,ios::beg);</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Number of operators: &quot;</span>&lt;&lt; op_read&lt;&lt; <span class="stringliteral">&quot; Basis dimension: &quot;</span>&lt;&lt;dim_read&lt;&lt; flush ;</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;    <span class="keywordtype">int</span> n=op_read*dim_read*dim_read;</div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    <span class="keyword">delete</span>[] buffer;</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    buffer =<span class="keyword">new</span> <span class="keywordtype">char</span> [8];</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;n;i++){</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;        infile.read(buffer,8);</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;        <span class="keywordtype">double</span> mocoeff=*((<span class="keywordtype">double</span>*)buffer);</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;         <span class="comment">//CTP_LOG(logDEBUG,*_pLog) &lt;&lt; mocoeff&lt;&lt; flush ;</span></div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;        _coefficients.push_back(mocoeff);</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;    }</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    <span class="keyword">delete</span>[] buffer;</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    </div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    infile.close();</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    <span class="comment">//cout&lt;&lt; &quot;basissize &quot; &lt;&lt;_basis_size &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;coeffvektor size &quot;&lt;&lt; _coefficients.size() &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    </div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    </div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    <span class="comment">// i -&gt; MO, j -&gt; AO </span></div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;      (_orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab4396779d5e3e48e84af42d41352dddf">_mo_coefficients</a>).resize( _levels, _basis_size );     </div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab4396779d5e3e48e84af42d41352dddf">_mo_coefficients</a>.size1(); i++) {</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j = 0 ; j &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab4396779d5e3e48e84af42d41352dddf">_mo_coefficients</a>.size2(); j++) {</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;         _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab4396779d5e3e48e84af42d41352dddf">_mo_coefficients</a>(i,j) = _coefficients[j*_basis_size+i];</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;         <span class="comment">//cout &lt;&lt;  _coefficients[i][j] &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;         <span class="comment">//cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;        }</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    }</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;   </div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;      <span class="comment">//cout&lt;&lt;&quot;MO1:1 :&quot; &lt;&lt;setprecision(15)&lt;&lt;_orbitals-&gt;_mo_coefficients(0,0)&lt;&lt; endl;</span></div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;      <span class="comment">//cout&lt;&lt;&quot;MO-1:-1&quot;&lt;&lt;setprecision(15)&lt;&lt; _orbitals-&gt;_mo_coefficients(_levels-1,_levels-1)&lt;&lt; endl;</span></div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;      </div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;      </div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Done parsing&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;}</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;</div>
-<div class="line"><a name="l00878"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Orca.html#ace086abe6d9c048d80c8307f876e449f">  878</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#ace086abe6d9c048d80c8307f876e449f">Orca::getLName</a>(<span class="keywordtype">int</span> lnum){</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;<span class="keywordflow">if</span> ( lnum==0){<span class="keywordflow">return</span> <span class="stringliteral">&quot;S&quot;</span>;}</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;<span class="keywordflow">else</span> <span class="keywordflow">if</span>( lnum==1){<span class="keywordflow">return</span> <span class="stringliteral">&quot;P&quot;</span>;}</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;<span class="keywordflow">else</span> <span class="keywordflow">if</span>( lnum==2){<span class="keywordflow">return</span> <span class="stringliteral">&quot;D&quot;</span>;}</div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;<span class="keywordflow">else</span> <span class="keywordflow">if</span>( lnum==3){<span class="keywordflow">return</span> <span class="stringliteral">&quot;F&quot;</span>;}</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;<span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Orca::getLName functions higher than F not implemented&quot;</span>);</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;}</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span>;</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;}</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;</div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;</div>
-<div class="line"><a name="l00891"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">  891</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">Orca::indent</a>( <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;number ) {</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    std::stringstream _ssnumber;</div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    <span class="keywordflow">if</span> ( number &gt;= 0) {</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;        _ssnumber &lt;&lt; <span class="stringliteral">&quot;    &quot;</span>;</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    } <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;        _ssnumber &lt;&lt; <span class="stringliteral">&quot;   &quot;</span>;</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    }</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;        </div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;    _ssnumber &lt;&lt;  setiosflags(ios::fixed) &lt;&lt; setprecision(15) &lt;&lt; std::scientific &lt;&lt; number;</div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;    std::string _snumber = _ssnumber.str(); </div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;    <span class="comment">//boost::replace_first(_snumber, &quot;e&quot;, &quot;D&quot;);</span></div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;    <span class="keywordflow">return</span> _snumber;</div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;}</div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;        </div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;</div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;</div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;</div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;}}</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160; <span class="comment">// Parses the Orca gbw file and stores data in the Orbitals object </span></div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160; </div>
+<div class="line"><a name="l00778"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Orca.html#a26a80d74687c2e356864126b224baede">  778</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a26a80d74687c2e356864126b224baede">Orca::ParseOrbitalsFile</a>( <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* _orbitals ) {</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;<span class="keywordflow">if</span> ( !<a class="code" href="classvotca_1_1xtp_1_1Orca.html#aaa1126664c09b46e5071c463b60ca838">CheckLogFile</a>() ) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;std::vector&lt;double&gt; _coefficients;</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;<span class="keywordtype">int</span> _basis_size=_orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a5cfcbf266e40308b7eb60f66c252d1a8">getBasisSetSize</a>();</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;<span class="keywordtype">int</span> _levels=_orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afe838de42ff28a901b7809ef23f4b6d9">getNumberOfLevels</a>();</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;<span class="keywordflow">if</span> (_basis_size==0 || _levels==0){</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Basis size not set, calculator does not parse log file first&quot;</span>);</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;}</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;   <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Reading the gbw file, this may or may not work so be careful: &quot;</span> &lt;&lt; flush ;</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    ifstream infile;</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    infile.open(( <a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a6778351ada4a76c3d4c05ad66db5e1fd">_run_dir</a> + <span class="stringliteral">&quot;/&quot;</span> + <a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a458eeeb71bbf1d2c7fe0130dfc196e54">_orb_file_name</a>).c_str(), ios::binary | ios::in);</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="keywordflow">if</span> (!infile){</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Could not open &quot;</span>+<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a458eeeb71bbf1d2c7fe0130dfc196e54">_orb_file_name</a>+<span class="stringliteral">&quot; file&quot;</span>);</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;    }</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    infile.seekg(24, ios::beg); </div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;    <span class="keywordtype">char</span>* buffer= <span class="keyword">new</span> <span class="keywordtype">char</span> [8];</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;    infile.read(buffer,8);</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">int</span> offset= *((<span class="keywordtype">long</span> <span class="keywordtype">int</span>*)buffer);</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;    </div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;    infile.seekg(offset,ios::beg);</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;    infile.read(buffer,4);</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="keywordtype">int</span> op_read= *((<span class="keywordtype">int</span>*)buffer);</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;    infile.seekg(offset+4,ios::beg);</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;    infile.read(buffer,4);</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;    <span class="keywordtype">int</span> dim_read= *((<span class="keywordtype">int</span>*)buffer);</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;    infile.seekg(offset+8,ios::beg);</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Number of operators: &quot;</span>&lt;&lt; op_read&lt;&lt; <span class="stringliteral">&quot; Basis dimension: &quot;</span>&lt;&lt;dim_read&lt;&lt; flush ;</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    <span class="keywordtype">int</span> n=op_read*dim_read*dim_read;</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;    <span class="keyword">delete</span>[] buffer;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    buffer =<span class="keyword">new</span> <span class="keywordtype">char</span> [8];</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0;i&lt;n;i++){</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;        infile.read(buffer,8);</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;        <span class="keywordtype">double</span> mocoeff=*((<span class="keywordtype">double</span>*)buffer);</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;         <span class="comment">//CTP_LOG(logDEBUG,*_pLog) &lt;&lt; mocoeff&lt;&lt; flush ;</span></div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;        _coefficients.push_back(mocoeff);</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    }</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    <span class="keyword">delete</span>[] buffer;</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;    </div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    infile.close();</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    <span class="comment">//cout&lt;&lt; &quot;basissize &quot; &lt;&lt;_basis_size &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    <span class="comment">//cout &lt;&lt; &quot;coeffvektor size &quot;&lt;&lt; _coefficients.size() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    </div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    </div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    <span class="comment">// i -&gt; MO, j -&gt; AO </span></div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;      (_orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab4396779d5e3e48e84af42d41352dddf">_mo_coefficients</a>).resize( _levels, _basis_size );     </div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;   <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab4396779d5e3e48e84af42d41352dddf">_mo_coefficients</a>.size1(); i++) {</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j = 0 ; j &lt; _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab4396779d5e3e48e84af42d41352dddf">_mo_coefficients</a>.size2(); j++) {</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;         _orbitals-&gt;<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab4396779d5e3e48e84af42d41352dddf">_mo_coefficients</a>(i,j) = _coefficients[j*_basis_size+i];</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;         <span class="comment">//cout &lt;&lt;  _coefficients[i][j] &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;         <span class="comment">//cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;        }</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    }</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;   </div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;      <span class="comment">//cout&lt;&lt;&quot;MO1:1 :&quot; &lt;&lt;setprecision(15)&lt;&lt;_orbitals-&gt;_mo_coefficients(0,0)&lt;&lt; endl;</span></div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;      <span class="comment">//cout&lt;&lt;&quot;MO-1:-1&quot;&lt;&lt;setprecision(15)&lt;&lt; _orbitals-&gt;_mo_coefficients(_levels-1,_levels-1)&lt;&lt; endl;</span></div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;      </div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;      </div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>,*<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a27f5a300702a17453aef3c83aea973a3">_pLog</a>) &lt;&lt; <span class="stringliteral">&quot;Done parsing&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;}</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;</div>
+<div class="line"><a name="l00841"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Orca.html#ace086abe6d9c048d80c8307f876e449f">  841</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#ace086abe6d9c048d80c8307f876e449f">Orca::getLName</a>(<span class="keywordtype">int</span> lnum){</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="keywordflow">if</span> ( lnum==0){<span class="keywordflow">return</span> <span class="stringliteral">&quot;S&quot;</span>;}</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="keywordflow">else</span> <span class="keywordflow">if</span>( lnum==1){<span class="keywordflow">return</span> <span class="stringliteral">&quot;P&quot;</span>;}</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;<span class="keywordflow">else</span> <span class="keywordflow">if</span>( lnum==2){<span class="keywordflow">return</span> <span class="stringliteral">&quot;D&quot;</span>;}</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;<span class="keywordflow">else</span> <span class="keywordflow">if</span>( lnum==3){<span class="keywordflow">return</span> <span class="stringliteral">&quot;F&quot;</span>;}</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;<span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Orca::getLName functions higher than F not implemented&quot;</span>);</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;}</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;0&quot;</span>;</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;}</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;</div>
+<div class="line"><a name="l00854"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">  854</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">Orca::indent</a>( <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;number ) {</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    std::stringstream _ssnumber;</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    <span class="keywordflow">if</span> ( number &gt;= 0) {</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;        _ssnumber &lt;&lt; <span class="stringliteral">&quot;    &quot;</span>;</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    } <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;        _ssnumber &lt;&lt; <span class="stringliteral">&quot;   &quot;</span>;</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    }</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;        </div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    _ssnumber &lt;&lt;  setiosflags(ios::fixed) &lt;&lt; setprecision(15) &lt;&lt; std::scientific &lt;&lt; number;</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;    std::string _snumber = _ssnumber.str(); </div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;    <span class="comment">//boost::replace_first(_snumber, &quot;e&quot;, &quot;D&quot;);</span></div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    <span class="keywordflow">return</span> _snumber;</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;}</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;        </div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;}}</div>
 </div><!-- fragment --></div><!-- contents -->

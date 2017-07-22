@@ -84,7 +84,7 @@
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    newEvent.<a class="code" href="structvotca_1_1xtp_1_1GLink.html#a73547be3e02f2cea75c68e346e8abb6a">destination</a> = -1;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    newEvent.<a class="code" href="structvotca_1_1xtp_1_1GLink.html#a921f44b31dc705071d5aa78ec2c5edc8">rate</a> = _decayrate;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    newEvent.<a class="code" href="structvotca_1_1xtp_1_1GLink.html#adbe91545c524e6c8bd1f54a72fc45bdb">initialrate</a> = _decayrate;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    newEvent.<a class="code" href="structvotca_1_1xtp_1_1GLink.html#a0a88517778a787d4093269c7dc291fbd">dr</a> = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">votca::tools::vec</a>(0,0,0);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    newEvent.<a class="code" href="structvotca_1_1xtp_1_1GLink.html#a0a88517778a787d4093269c7dc291fbd">dr</a> = <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">votca::tools::vec</a>(0.0);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    newEvent.<a class="code" href="structvotca_1_1xtp_1_1GLink.html#a2ee4e1edd0e903d11c4485b4386fd3dc">Jeff2</a> = 0.0;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    newEvent.<a class="code" href="structvotca_1_1xtp_1_1GLink.html#a67e838d518bf58cdb8eb38e4a5c59f82">decayevent</a>=<span class="keyword">true</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    newEvent.<a class="code" href="structvotca_1_1xtp_1_1GLink.html#a3c5bbc3e8807a6945d2153c19e13c954">reorg_out</a> = 0.0;</div>
@@ -120,31 +120,46 @@
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GNode.html#a8f6e7bf0eafe2cf44748e8981bf1f8fd">   66</a></span>&#160; <span class="keywordtype">void</span> GNode::ReadfromSegment(<a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a>* seg,<span class="keywordtype">int</span> carriertype){</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;     </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;     position=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#aa05429e4714e6037f0f088cd1db92f2c">getPos</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;     <span class="keywordtype">id</span>=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;     <span class="keywordtype">id</span>=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>()-1;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;     siteenergy=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#adaea28e76dc938e523dadf602858834d">getSiteEnergy</a>(carriertype);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;     <span class="keywordflow">if</span> (carriertype&lt;2){</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;         reorg_intorig=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#ad1287e76c12e0d5088b7fc31552fd3f5">getU_nC_nN</a>(carriertype);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;         reorg_intdest=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a5bd89e218cdccc0a4aa6c2aa3f2f8041">getU_cN_cC</a>(carriertype);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;     }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;     <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;          reorg_intorig=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a06e47e7eec4d8ba06ce6a8a73a23c71c">getU_nX_nN</a>(carriertype);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;         reorg_intdest=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#ac0d279fa8569223c8e0b232c3948edef">getU_xN_xX</a>(carriertype);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;     }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span>; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;     </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;     <span class="keywordflow">if</span> (carriertype&lt;2){</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;         reorg_intorig=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#ad1287e76c12e0d5088b7fc31552fd3f5">getU_nC_nN</a>(carriertype);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;         reorg_intdest=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a5bd89e218cdccc0a4aa6c2aa3f2f8041">getU_cN_cC</a>(carriertype);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;     }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;     <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;         reorg_intorig=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a06e47e7eec4d8ba06ce6a8a73a23c71c">getU_nX_nN</a>(carriertype);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;         reorg_intdest=seg-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#ac0d279fa8569223c8e0b232c3948edef">getU_xN_xX</a>(carriertype);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;     }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span>; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GNode.html#a59f7b0cc1840c6230fbc37b75711a66b">   83</a></span>&#160; <span class="keywordtype">void</span> GNode::AddEventfromQmPair(<a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a>* pair,<span class="keywordtype">int</span> carriertype){</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> destination=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ac57db6f8041b0af246516de6b32f6c89">Seg2</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">tools::vec</a> dr=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#aea3c0464bc8223d54d154fbe103f114b">getR</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">double</span> rate12=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a625deeea83891128a4d06eb615a88e93">getRate12</a>(carriertype);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">double</span> Jeff2=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a6f71c419dba4517745a6a1701ad1a533">getJeff2</a>(carriertype);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">double</span> reorg_out=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a279f7a533caa9b1cafbbfc909e7de695">getLambdaO</a>(carriertype);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    AddEvent(destination,rate12,dr,Jeff2,reorg_out);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;     </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span>; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GNode.html#a59f7b0cc1840c6230fbc37b75711a66b">   84</a></span>&#160; <span class="keywordtype">void</span> GNode::AddEventfromQmPair(<a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a>* pair,<span class="keywordtype">int</span> carriertype){</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;     <span class="keywordtype">double</span> Jeff2=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a6f71c419dba4517745a6a1701ad1a533">getJeff2</a>(carriertype);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;     <span class="keywordflow">if</span>(pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#afe7ad4c511042a7abca4b7a9f8cd8258">getType</a>()==ctp::QMPair::PairType::Excitoncl &amp;&amp; carriertype!=2){</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;         <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;     }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;     <span class="keywordtype">int</span> destination=0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;     <span class="keywordtype">double</span> rate12=0.0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;     <a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">tools::vec</a> dr=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">tools::vec</a>(0.0);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;     <span class="keywordflow">if</span>(<span class="keywordtype">id</span>==pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ae3bbc86e96fd3c81901f43a4407796ea">Seg1</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>()-1){</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        destination=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ac57db6f8041b0af246516de6b32f6c89">Seg2</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>()-1;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        rate12=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a625deeea83891128a4d06eb615a88e93">getRate12</a>(carriertype);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        dr=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#aea3c0464bc8223d54d154fbe103f114b">getR</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;     }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;     <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;         destination=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ae3bbc86e96fd3c81901f43a4407796ea">Seg1</a>()-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>()-1;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;         rate12=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a4b90ac8a051e69570f1c7ddbbbc61e16">getRate21</a>(carriertype);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;         dr=-pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#aea3c0464bc8223d54d154fbe103f114b">getR</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;     }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">double</span> reorg_out=pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a279f7a533caa9b1cafbbfc909e7de695">getLambdaO</a>(carriertype);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    AddEvent(destination,rate12,dr,Jeff2,reorg_out);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;     </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span>; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->

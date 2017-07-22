@@ -90,10 +90,10 @@
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::string key = <span class="stringliteral">&quot;options.&quot;</span> + Identify();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    _insertions=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a255c767bd7a50a836964b00ddf435aa0">ifExistsReturnElseThrowRuntimeError</a>&lt;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&gt;(key+<span class="stringliteral">&quot;.numberofinsertions&quot;</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    _seed=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a255c767bd7a50a836964b00ddf435aa0">ifExistsReturnElseThrowRuntimeError</a>&lt;<span class="keywordtype">int</span>&gt;(key+<span class="stringliteral">&quot;seed&quot;</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    _seed=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a255c767bd7a50a836964b00ddf435aa0">ifExistsReturnElseThrowRuntimeError</a>&lt;<span class="keywordtype">int</span>&gt;(key+<span class="stringliteral">&quot;.seed&quot;</span>);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    _numberofcharges=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a255c767bd7a50a836964b00ddf435aa0">ifExistsReturnElseThrowRuntimeError</a>&lt;<span class="keywordtype">int</span>&gt;(key+<span class="stringliteral">&quot;.numberofcharges&quot;</span>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    _injection_name=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a255c767bd7a50a836964b00ddf435aa0">ifExistsReturnElseThrowRuntimeError</a>&lt;<span class="keywordtype">int</span>&gt;(key+<span class="stringliteral">&quot;.injectionpattern&quot;</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    _lifetimefile=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a255c767bd7a50a836964b00ddf435aa0">ifExistsReturnElseThrowRuntimeError</a>&lt;<span class="keywordtype">int</span>&gt;(key+<span class="stringliteral">&quot;.lifetimefile&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    _injection_name=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a255c767bd7a50a836964b00ddf435aa0">ifExistsReturnElseThrowRuntimeError</a>&lt;std::string&gt;(key+<span class="stringliteral">&quot;.injectionpattern&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    _lifetimefile=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a255c767bd7a50a836964b00ddf435aa0">ifExistsReturnElseThrowRuntimeError</a>&lt;<span class="keywordtype">string</span>&gt;(key+<span class="stringliteral">&quot;.lifetimefile&quot;</span>);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    _maxrealtime=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a5bb3ca89a46b7b0bec0920cd26c6be2b">ifExistsReturnElseReturnDefault</a>&lt;<span class="keywordtype">double</span>&gt;(key+<span class="stringliteral">&quot;.maxrealtime&quot;</span>,1E10);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;     _trajectoryfile=options-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a5bb3ca89a46b7b0bec0920cd26c6be2b">ifExistsReturnElseReturnDefault</a>&lt;std::string&gt;(key+<span class="stringliteral">&quot;.trajectoryfile&quot;</span>,<span class="stringliteral">&quot;trajectory.csv&quot;</span>);</div>
@@ -112,8 +112,8 @@
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    _carriertype = 2;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;carrier type: singlets&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    _field=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">tools::vec</a>(0.0,0.0,0.0);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;carrier type:&quot;</span>&lt;&lt;CarrierInttoLongString(_carriertype) &lt;&lt; endl;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    _field=<a class="code" href="classvotca_1_1tools_1_1vec.html" title="Vector class for a 3 component vector.">tools::vec</a>(0.0);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (_rates != <span class="stringliteral">&quot;statefile&quot;</span> &amp;&amp; _rates != <span class="stringliteral">&quot;calculate&quot;</span>) {</div>
@@ -136,11 +136,11 @@
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">for</span> (list&lt;tools::Property*&gt; ::iterator  it = jobProps.begin(); it != jobProps.end(); ++it) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordtype">int</span> site_id =(*it)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;id&quot;</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordtype">int</span> site_id =(*it)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;id&quot;</span>)-1;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordtype">double</span> lifetime=<a class="code" href="namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127">boost::lexical_cast</a>&lt;<span class="keywordtype">double</span>&gt;((*it)-&gt;value());</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordtype">bool</span> check=<span class="keyword">false</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i=0;i&lt;_nodes.size();i++){</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">if</span> (_nodes[i]-&gt;<span class="keywordtype">id</span>==site_id-1 &amp;&amp; !(_nodes[i]-&gt;hasdecay)){</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">if</span> (_nodes[i]-&gt;<span class="keywordtype">id</span>==site_id &amp;&amp; !(_nodes[i]-&gt;hasdecay)){</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    _nodes[i]-&gt;AddDecayEvent(1.0/lifetime);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    check=<span class="keyword">true</span>;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="keywordflow">break</span>;</div>
@@ -279,7 +279,7 @@
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                        difflength+=<a class="code" href="namespacevotca_1_1tools.html#a2b1e6d0c1e06702a7df0e330d9d9d13f" title="elementwise product">tools::elementwiseproduct</a>(affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a677f7cc064f7c0ce69e4f6f8fde4229c">dr_travelled</a>,affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a677f7cc064f7c0ce69e4f6f8fde4229c">dr_travelled</a>);</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        traj &lt;&lt; simtime&lt;&lt;<span class="stringliteral">&quot;\t&quot;</span>&lt;&lt;insertioncount&lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>&lt;&lt; affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#ad00aa42bc5fe57c6c4e19d2c1f437fef">id</a>&lt;&lt;<span class="stringliteral">&quot;\t&quot;</span>&lt;&lt; affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#ab0323fa053038da05bc6ce1f070177e6">getLifetime</a>()&lt;&lt;<span class="stringliteral">&quot;\t&quot;</span>&lt;&lt;affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#af85965ab9eb7cee468134a8e345f8f9e">getSteps</a>()&lt;&lt;<span class="stringliteral">&quot;\t&quot;</span>&lt;&lt; affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a245e8112f23127ff3e0611a628470f9a">getCurrentNodeId</a>()+1&lt;&lt;<span class="stringliteral">&quot;\t&quot;</span>&lt;&lt;affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a677f7cc064f7c0ce69e4f6f8fde4229c">dr_travelled</a>.<a class="code" href="classvotca_1_1tools_1_1vec.html#ab45304f25d8d52b149491a05b1c09a43" title="read only access to x element">getX</a>()&lt;&lt;<span class="stringliteral">&quot;\t&quot;</span>&lt;&lt;affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a677f7cc064f7c0ce69e4f6f8fde4229c">dr_travelled</a>.<a class="code" href="classvotca_1_1tools_1_1vec.html#a272a8c6a3be544a2b9dd4b9f5960b02f" title="read only access to y element">getY</a>()&lt;&lt;<span class="stringliteral">&quot;\t&quot;</span>&lt;&lt;affectedcarrier-&gt;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a677f7cc064f7c0ce69e4f6f8fde4229c">dr_travelled</a>.<a class="code" href="classvotca_1_1tools_1_1vec.html#acc1ceb986d70006789a06cf60169dea4" title="read only access to z element">getZ</a>()&lt;&lt;endl;</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        <span class="keywordflow">if</span>(_insertions&lt;1500 ||insertioncount% (_insertions/1000)==0 || insertioncount&lt;0.001*_insertions){</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                            std::cout &lt;&lt; <span class="stringliteral">&quot;\rInsertion &quot;</span> &lt;&lt; insertioncount&lt;&lt;<span class="stringliteral">&quot; of &quot;</span>&lt;&lt;_insertions;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                            std::cout &lt;&lt; <span class="stringliteral">&quot;\rInsertion &quot;</span> &lt;&lt; insertioncount+1&lt;&lt;<span class="stringliteral">&quot; of &quot;</span>&lt;&lt;_insertions;</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                            std::cout &lt;&lt; std::flush;</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        }</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                        RandomlyAssignCarriertoSite(affectedcarrier);</div>
@@ -357,28 +357,27 @@
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        std::srand(_seed); <span class="comment">// srand expects any integer in order to initialise the random number generator</span></div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        _RandomVariable = <span class="keyword">new</span> <a class="code" href="classvotca_1_1tools_1_1Random2.html" title="MARSAGLIA pseudo random number generator.">tools::Random2</a>();</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        _RandomVariable-&gt;init(rand(), rand(), rand(), rand());</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        LoadGraph(top);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        ReadLifetimeFile(_lifetimefile);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        </div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keywordflow">if</span>(_rates == <span class="stringliteral">&quot;calculate&quot;</span>)</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;           cout &lt;&lt; <span class="stringliteral">&quot;Calculating rates (i.e. rates from state file are not used).&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            InitialRates();</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        }</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Using rates from state file.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        }</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        RunVSSM(top);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        time_t now = time(0);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        tm* localtm = localtime(&amp;now);</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;      KMCLIFETIME finished at:&quot;</span> &lt;&lt;asctime(localtm) &lt;&lt;  std::endl;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        LoadGraph(top);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        ReadLifetimeFile(_lifetimefile);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordflow">if</span>(_rates == <span class="stringliteral">&quot;calculate&quot;</span>)</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;           cout &lt;&lt; <span class="stringliteral">&quot;Calculating rates (i.e. rates from state file are not used).&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            InitialRates();</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Using rates from state file.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        RunVSSM(top);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        time_t now = time(0);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        tm* localtm = localtime(&amp;now);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;      KMCLIFETIME finished at:&quot;</span> &lt;&lt;asctime(localtm) &lt;&lt;  std::endl;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->

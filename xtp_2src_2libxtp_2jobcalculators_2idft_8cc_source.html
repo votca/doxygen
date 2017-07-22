@@ -600,345 +600,350 @@
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        </div>
 <div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html" title="Manipulates the format state of the output stream.">votca::tools::PropertyIOManipulator</a> iomXML(<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a7ceeda9c1e61929aa165b1ab420be364">votca::tools::PropertyIOManipulator::XML</a>, 1, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        sout &lt;&lt;  iomXML &lt;&lt; _job_summary;</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;   } </div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;   </div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;   <span class="comment">// cleanup whatever is not needed</span></div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;   _qmpackage-&gt;<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a2f68d7359075f0d061f238e1915cf2e0">CleanUp</a>();</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;   <span class="keyword">delete</span> _qmpackage;</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;   </div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a97775bc321c298b4a73674793ebcd5eb">setOutput</a>( _job_summary );   </div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(ctp::Job::COMPLETE);</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    </div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <span class="keywordflow">return</span> jres;</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;}</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;</div>
-<div class="line"><a name="l00562"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1IDFT.html#a81b401ae7c455a52e1e1e9682e290253">  562</a></span>&#160;<span class="keywordtype">void</span> IDFT::WriteJobFile(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">ctp::Topology</a> *top) {</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;    cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... Writing job file &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    std::ofstream ofs;</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    ofs.open(_jobfile.c_str(), std::ofstream::out);</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    <span class="keywordflow">if</span> (!ofs.is_open()) <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;\nERROR: bad file handle: &quot;</span> + _jobfile);</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160; </div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1PairList.html#a96d4f6684f71f92709538d3818201dd6">ctp::QMNBList::iterator</a> pit;</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1QMNBList.html">ctp::QMNBList</a> &amp;nblist = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>();    </div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="keywordtype">int</span> jobCount = 0;</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    <span class="keywordflow">if</span> (nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a4966ad2ca0645b7c8ab21a79200585bc">size</a>() == 0) {</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... No pairs in neighbor list, skip.&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    }    </div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    ofs &lt;&lt; <span class="stringliteral">&quot;&lt;jobs&gt;&quot;</span> &lt;&lt; endl;    </div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <span class="keywordtype">string</span> tag = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    </div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <span class="keywordflow">for</span> (pit = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a777aae1be02460855d63db209b7e7cbd">begin</a>(); pit != nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a0ce372735a6cd3bacbe3cc9402d795a5">end</a>(); ++pit) {</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        <span class="keywordtype">int</span> id1 = (*pit)-&gt;Seg1()-&gt;getId();</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <span class="keywordtype">string</span> name1 = (*pit)-&gt;Seg1()-&gt;getName();</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        <span class="keywordtype">int</span> id2 = (*pit)-&gt;Seg2()-&gt;getId();</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <span class="keywordtype">string</span> name2 = (*pit)-&gt;Seg2()-&gt;getName();   </div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <span class="keywordtype">int</span> <span class="keywordtype">id</span> = ++jobCount;</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> Input;</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *pInput = &amp;Input.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;input&quot;</span>,<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *pSegment =  &amp;pInput-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;segment&quot;</span> , boost::lexical_cast&lt;string&gt;(id1) );</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        pSegment-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;type&quot;</span>, name1 );</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        pSegment-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;id&quot;</span>, id1 );</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        pSegment =  &amp;pInput-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;segment&quot;</span> , boost::lexical_cast&lt;string&gt;(id2) );</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        pSegment-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;type&quot;</span>, name2 );</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        pSegment-&gt;setAttribute&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;id&quot;</span>, id2 );</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        </div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Job.html">ctp::Job</a> job(<span class="keywordtype">id</span>, tag, Input, ctp::Job::AVAILABLE );</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        job.ToStream(ofs,<span class="stringliteral">&quot;xml&quot;</span>);</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        <span class="comment">// Flo: moved next line from below</span></div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a97775bc321c298b4a73674793ebcd5eb">setOutput</a>( _job_summary );   </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;   } </div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;   </div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;   <span class="comment">// cleanup whatever is not needed</span></div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;   _qmpackage-&gt;<a class="code" href="classvotca_1_1xtp_1_1QMPackage.html#a2f68d7359075f0d061f238e1915cf2e0">CleanUp</a>();</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;   <span class="keyword">delete</span> _qmpackage;</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    <span class="comment">// Flo: _job_summary&#39;s output property is only added if _do_project || _do_extract.</span></div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    <span class="comment">//      so I moved it into that block</span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <span class="comment">// jres.setOutput( _job_summary );   </span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    jres.<a class="code" href="classvotca_1_1ctp_1_1Job_1_1JobResult.html#a6070f9e52843925aed4468396352c14a">setStatus</a>(ctp::Job::COMPLETE);</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    </div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    <span class="keywordflow">return</span> jres;</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;}</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;</div>
+<div class="line"><a name="l00565"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1IDFT.html#a81b401ae7c455a52e1e1e9682e290253">  565</a></span>&#160;<span class="keywordtype">void</span> IDFT::WriteJobFile(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">ctp::Topology</a> *top) {</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... Writing job file &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    std::ofstream ofs;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    ofs.open(_jobfile.c_str(), std::ofstream::out);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    <span class="keywordflow">if</span> (!ofs.is_open()) <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;\nERROR: bad file handle: &quot;</span> + _jobfile);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160; </div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1PairList.html#a96d4f6684f71f92709538d3818201dd6">ctp::QMNBList::iterator</a> pit;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1QMNBList.html">ctp::QMNBList</a> &amp;nblist = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>();    </div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    <span class="keywordtype">int</span> jobCount = 0;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    <span class="keywordflow">if</span> (nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a4966ad2ca0645b7c8ab21a79200585bc">size</a>() == 0) {</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... No pairs in neighbor list, skip.&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    }    </div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    ofs &lt;&lt; <span class="stringliteral">&quot;&lt;jobs&gt;&quot;</span> &lt;&lt; endl;    </div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    <span class="keywordtype">string</span> tag = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    </div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    <span class="keywordflow">for</span> (pit = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a777aae1be02460855d63db209b7e7cbd">begin</a>(); pit != nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a0ce372735a6cd3bacbe3cc9402d795a5">end</a>(); ++pit) {</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <span class="keywordtype">int</span> id1 = (*pit)-&gt;Seg1()-&gt;getId();</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        <span class="keywordtype">string</span> name1 = (*pit)-&gt;Seg1()-&gt;getName();</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <span class="keywordtype">int</span> id2 = (*pit)-&gt;Seg2()-&gt;getId();</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        <span class="keywordtype">string</span> name2 = (*pit)-&gt;Seg2()-&gt;getName();   </div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        <span class="keywordtype">int</span> <span class="keywordtype">id</span> = ++jobCount;</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> Input;</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *pInput = &amp;Input.<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;input&quot;</span>,<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *pSegment =  &amp;pInput-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;segment&quot;</span> , boost::lexical_cast&lt;string&gt;(id1) );</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        pSegment-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;type&quot;</span>, name1 );</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        pSegment-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;id&quot;</span>, id1 );</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        pSegment =  &amp;pInput-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a9187d691efaa8be919d423c73231b106" title="add a new property to structure">add</a>(<span class="stringliteral">&quot;segment&quot;</span> , boost::lexical_cast&lt;string&gt;(id2) );</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        pSegment-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#afc53d5fab6fb3bf5a5207d4818a456f8" title="set an attribute">setAttribute</a>&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;type&quot;</span>, name2 );</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        pSegment-&gt;setAttribute&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;id&quot;</span>, id2 );</div>
 <div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        </div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    }</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <span class="comment">// CLOSE STREAM</span></div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    ofs &lt;&lt; <span class="stringliteral">&quot;&lt;/jobs&gt;&quot;</span> &lt;&lt; endl;    </div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    ofs.close();</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    </div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... In total &quot;</span> &lt;&lt; jobCount &lt;&lt; <span class="stringliteral">&quot; jobs&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    </div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;}</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;</div>
-<div class="line"><a name="l00704"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1IDFT.html#a0a9e3814d6cb3451abb72440d76b716f">  704</a></span>&#160;<span class="keywordtype">void</span> IDFT::ReadJobFile(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">ctp::Topology</a> *top) {</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> xml;</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    vector&lt;Property*&gt; records;</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    </div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <span class="comment">// gets the neighborlist from the topology</span></div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1QMNBList.html">ctp::QMNBList</a> &amp;nblist = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>();</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    <span class="keywordtype">int</span> _number_of_pairs = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a4966ad2ca0645b7c8ab21a79200585bc">size</a>();</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    <span class="keywordtype">int</span> _current_pairs = 0;</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    <span class="keywordtype">int</span> _incomplete_jobs = 0;</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    </div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    <span class="comment">// output using logger</span></div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">ctp::Logger</a> _log;</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    _log.<a class="code" href="classvotca_1_1ctp_1_1Logger.html#a4aaba21cb5f7f531cb666369d6122b47">setReportLevel</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    </div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    <span class="comment">// generate lists of bridges for superexchange pairs</span></div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    nblist.<a class="code" href="classvotca_1_1ctp_1_1QMNBList.html#a1c6082c0277c1a763485d28fce2b4929" title="Adds SuperExchange pairs to the neighbor list.">GenerateSuperExchange</a>();</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    <span class="comment">// load the QC results in a vector indexed by the pair ID</span></div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#af135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(xml, _jobfile);</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    list&lt;Property*&gt; jobProps = xml.<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;jobs.job&quot;</span>);</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    </div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    records.resize( jobProps.size() + 1  );</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;    </div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="comment">// loop over all jobs = pair records in the job file</span></div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator  it = jobProps.begin(); it != jobProps.end(); ++it) {</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160; </div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        <span class="comment">// if job produced an output, then continue with analysis</span></div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        <span class="keywordflow">if</span> ( (*it)-&gt;exists(<span class="stringliteral">&quot;output&quot;</span>) &amp;&amp; (*it)-&gt;exists(<span class="stringliteral">&quot;output.pair&quot;</span>) ) {</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;            </div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;            <span class="comment">// get the output records</span></div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> poutput = (*it)-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">&quot;output.pair&quot;</span>);</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            <span class="comment">// id&#39;s of two segments of a pair</span></div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;            <span class="keywordtype">int</span> idA = poutput.<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idA&quot;</span>);</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;            <span class="keywordtype">int</span> idB = poutput.<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idB&quot;</span>);</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;            <span class="comment">// segments which correspond to these ids           </span></div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a> *segA = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a5044f2e642b6055161c5bc8c0deabead">getSegment</a>(idA);</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a> *segB = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a5044f2e642b6055161c5bc8c0deabead">getSegment</a>(idB);</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;            <span class="comment">// pair that corresponds to the two segments</span></div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a> *qmp = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a76ec0c80117231af3fe4e638e24eb14f">FindPair</a>(segA,segB);</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;            </div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;            <span class="keywordflow">if</span> (qmp == NULL) { <span class="comment">// there is no pair in the neighbor list with this name</span></div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                <a class="code" href="logger_8h.html#a6fdd97d4330e587039f5e9db3441459d">CTP_LOG_SAVE</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; <span class="stringliteral">&quot;No pair &quot;</span> &lt;&lt;  idA &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; idB &lt;&lt; <span class="stringliteral">&quot; found in the neighbor list. Ignoring&quot;</span> &lt;&lt; flush; </div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;            }   <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                <span class="comment">//CTP_LOG(logINFO, _log) &lt;&lt; &quot;Store in record: &quot; &lt;&lt;  idA &lt;&lt; &quot;:&quot; &lt;&lt; idB &lt;&lt; flush; </span></div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                records[qmp-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>()] = &amp; ((*it)-&gt;get(<span class="stringliteral">&quot;output.pair&quot;</span>));</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;            }</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> thebadone = (*it)-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">&quot;id&quot;</span>);</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;\nERROR: Job file incomplete.\n Job with id &quot;</span>+thebadone.<a class="code" href="classvotca_1_1tools_1_1Property.html#ac6d7e21b86efdf7525d0cc9f8e8feb5c" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;()+<span class="stringliteral">&quot; is not finished. Check your job file for FAIL, AVAILABLE, or ASSIGNED. Exiting\n&quot;</span>);</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;        }</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    } <span class="comment">// finished loading from the file</span></div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;    <span class="comment">// loop over all pairs in the neighbor list</span></div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Neighborlist size &quot;</span> &lt;&lt; top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a4966ad2ca0645b7c8ab21a79200585bc">size</a>() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1csg_1_1PairList.html#a96d4f6684f71f92709538d3818201dd6">ctp::QMNBList::iterator</a> ipair = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a777aae1be02460855d63db209b7e7cbd">begin</a>(); ipair != top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a0ce372735a6cd3bacbe3cc9402d795a5">end</a>(); ++ipair) {</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;        </div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a> *pair = *ipair;</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a>* segmentA = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ae3bbc86e96fd3c81901f43a4407796ea">Seg1</a>();</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a>* segmentB = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ac57db6f8041b0af246516de6b32f6c89">Seg2</a>();</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        </div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;        <span class="keywordtype">double</span> Jhop2_homo = 0;</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;        <span class="keywordtype">double</span> Jeff_homo = 0;</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;        <span class="keywordtype">double</span> Jeff_lumo = 0;</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;        </div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;\nProcessing pair &quot;</span> &lt;&lt; segmentA-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; segmentB-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>() &lt;&lt; flush;</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;        </div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ad49706885e7733d9a1394f44cfdf6c63">ctp::QMPair::PairType</a> _ptype = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#afe7ad4c511042a7abca4b7a9f8cd8258">getType</a>();</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a>* pair_property = records[ pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() ];</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160; </div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;        <span class="keywordtype">int</span> homoA = pair_property-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;homoA&quot;</span>);</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;        <span class="keywordtype">int</span> homoB = pair_property-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;homoB&quot;</span>);</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;       </div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;        <span class="comment">// If a pair is of a direct type </span></div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;        <span class="keywordflow">if</span> ( _ptype == ctp::QMPair::Hopping ||  _ptype == ctp::QMPair::SuperExchangeAndHopping ) {</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;:hopping&quot;</span> ;</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;            list&lt;Property*&gt; pOverlap = pair_property-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;overlap&quot;</span>);</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160; </div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;            <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator itOverlap = pOverlap.begin(); itOverlap != pOverlap.end(); ++itOverlap) {</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Job.html">ctp::Job</a> job(<span class="keywordtype">id</span>, tag, Input, ctp::Job::AVAILABLE );</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        job.ToStream(ofs,<span class="stringliteral">&quot;xml&quot;</span>);</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        </div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    }</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    <span class="comment">// CLOSE STREAM</span></div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    ofs &lt;&lt; <span class="stringliteral">&quot;&lt;/jobs&gt;&quot;</span> &lt;&lt; endl;    </div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    ofs.close();</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    </div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;... ... In total &quot;</span> &lt;&lt; jobCount &lt;&lt; <span class="stringliteral">&quot; jobs&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    </div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;}</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;</div>
+<div class="line"><a name="l00622"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1IDFT.html#a0a9e3814d6cb3451abb72440d76b716f">  622</a></span>&#160;<span class="keywordtype">void</span> IDFT::ReadJobFile(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">ctp::Topology</a> *top) {</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> xml;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    vector&lt;Property*&gt; records;</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    </div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    <span class="comment">// gets the neighborlist from the topology</span></div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1QMNBList.html">ctp::QMNBList</a> &amp;nblist = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>();</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    <span class="keywordtype">int</span> _number_of_pairs = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a4966ad2ca0645b7c8ab21a79200585bc">size</a>();</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    <span class="keywordtype">int</span> _current_pairs = 0;</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    <span class="keywordtype">int</span> _incomplete_jobs = 0;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    </div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    <span class="comment">// output using logger</span></div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    <a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">ctp::Logger</a> _log;</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    _log.<a class="code" href="classvotca_1_1ctp_1_1Logger.html#a4aaba21cb5f7f531cb666369d6122b47">setReportLevel</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>);</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    </div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    <span class="comment">// generate lists of bridges for superexchange pairs</span></div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    nblist.<a class="code" href="classvotca_1_1ctp_1_1QMNBList.html#a1c6082c0277c1a763485d28fce2b4929" title="Adds SuperExchange pairs to the neighbor list.">GenerateSuperExchange</a>();</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <span class="comment">// load the QC results in a vector indexed by the pair ID</span></div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#af135f0aaaac442ad3d3285a3b1d539b7">load_property_from_xml</a>(xml, _jobfile);</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    list&lt;Property*&gt; jobProps = xml.<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;jobs.job&quot;</span>);</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    </div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    records.resize( jobProps.size() + 1  );</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    </div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    <span class="comment">// loop over all jobs = pair records in the job file</span></div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator  it = jobProps.begin(); it != jobProps.end(); ++it) {</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160; </div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;        <span class="comment">// if job produced an output, then continue with analysis</span></div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        <span class="keywordflow">if</span> ( (*it)-&gt;exists(<span class="stringliteral">&quot;output&quot;</span>) &amp;&amp; (*it)-&gt;exists(<span class="stringliteral">&quot;output.pair&quot;</span>) ) {</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;            </div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;            <span class="comment">// get the output records</span></div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> poutput = (*it)-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">&quot;output.pair&quot;</span>);</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;            <span class="comment">// id&#39;s of two segments of a pair</span></div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;            <span class="keywordtype">int</span> idA = poutput.<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idA&quot;</span>);</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;            <span class="keywordtype">int</span> idB = poutput.<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idB&quot;</span>);</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;            <span class="comment">// segments which correspond to these ids           </span></div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a> *segA = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a5044f2e642b6055161c5bc8c0deabead">getSegment</a>(idA);</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a> *segB = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#a5044f2e642b6055161c5bc8c0deabead">getSegment</a>(idB);</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;            <span class="comment">// pair that corresponds to the two segments</span></div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;            <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a> *qmp = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a76ec0c80117231af3fe4e638e24eb14f">FindPair</a>(segA,segB);</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;            </div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;            <span class="keywordflow">if</span> (qmp == NULL) { <span class="comment">// there is no pair in the neighbor list with this name</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;                <a class="code" href="logger_8h.html#a6fdd97d4330e587039f5e9db3441459d">CTP_LOG_SAVE</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; <span class="stringliteral">&quot;No pair &quot;</span> &lt;&lt;  idA &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; idB &lt;&lt; <span class="stringliteral">&quot; found in the neighbor list. Ignoring&quot;</span> &lt;&lt; flush; </div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;            }   <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;                <span class="comment">//CTP_LOG(logINFO, _log) &lt;&lt; &quot;Store in record: &quot; &lt;&lt;  idA &lt;&lt; &quot;:&quot; &lt;&lt; idB &lt;&lt; flush; </span></div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;                records[qmp-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>()] = &amp; ((*it)-&gt;get(<span class="stringliteral">&quot;output.pair&quot;</span>));</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;            }</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;            <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> thebadone = (*it)-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#a3d205067df14b752467239235e0d1895" title="get existing property">get</a>(<span class="stringliteral">&quot;id&quot;</span>);</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;            <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;\nERROR: Job file incomplete.\n Job with id &quot;</span>+thebadone.<a class="code" href="classvotca_1_1tools_1_1Property.html#ac6d7e21b86efdf7525d0cc9f8e8feb5c" title="return value as type">as</a>&lt;<span class="keywordtype">string</span>&gt;()+<span class="stringliteral">&quot; is not finished. Check your job file for FAIL, AVAILABLE, or ASSIGNED. Exiting\n&quot;</span>);</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;        }</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    } <span class="comment">// finished loading from the file</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    <span class="comment">// loop over all pairs in the neighbor list</span></div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Neighborlist size &quot;</span> &lt;&lt; top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a4966ad2ca0645b7c8ab21a79200585bc">size</a>() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1csg_1_1PairList.html#a96d4f6684f71f92709538d3818201dd6">ctp::QMNBList::iterator</a> ipair = top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a777aae1be02460855d63db209b7e7cbd">begin</a>(); ipair != top-&gt;<a class="code" href="classvotca_1_1ctp_1_1Topology.html#ac546b928e29e690be03b3f273e9e2d05">NBList</a>().<a class="code" href="classvotca_1_1csg_1_1PairList.html#a0ce372735a6cd3bacbe3cc9402d795a5">end</a>(); ++ipair) {</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;        </div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a> *pair = *ipair;</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a>* segmentA = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ae3bbc86e96fd3c81901f43a4407796ea">Seg1</a>();</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a>* segmentB = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ac57db6f8041b0af246516de6b32f6c89">Seg2</a>();</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        </div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        <span class="keywordtype">double</span> Jhop2_homo = 0;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;        <span class="keywordtype">double</span> Jeff_homo = 0;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        <span class="keywordtype">double</span> Jeff_lumo = 0;</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        </div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;\nProcessing pair &quot;</span> &lt;&lt; segmentA-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; segmentB-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>() &lt;&lt; flush;</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        </div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ad49706885e7733d9a1394f44cfdf6c63">ctp::QMPair::PairType</a> _ptype = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#afe7ad4c511042a7abca4b7a9f8cd8258">getType</a>();</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a>* pair_property = records[ pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() ];</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160; </div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        <span class="keywordtype">int</span> homoA = pair_property-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;homoA&quot;</span>);</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;        <span class="keywordtype">int</span> homoB = pair_property-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;homoB&quot;</span>);</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;       </div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;        <span class="comment">// If a pair is of a direct type </span></div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;        <span class="keywordflow">if</span> ( _ptype == ctp::QMPair::Hopping ||  _ptype == ctp::QMPair::SuperExchangeAndHopping ) {</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;:hopping&quot;</span> ;</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            list&lt;Property*&gt; pOverlap = pair_property-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;overlap&quot;</span>);</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160; </div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;            <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator itOverlap = pOverlap.begin(); itOverlap != pOverlap.end(); ++itOverlap) {</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                <span class="keywordtype">double</span> overlapAB = (*itOverlap)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;jAB&quot;</span>);</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                <span class="keywordtype">int</span> orbA = (*itOverlap)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;orbA&quot;</span>);</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                <span class="keywordtype">int</span> orbB = (*itOverlap)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;orbB&quot;</span>);</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;                <span class="comment">// cout &lt;&lt; &quot; orbA:orbB &quot; &lt;&lt; orbA &lt;&lt; &quot;:&quot; &lt;&lt; orbB &lt;&lt; flush;</span></div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                <span class="keywordflow">if</span> ( orbA == homoA &amp;&amp; orbB == homoB ) {</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                    Jeff_homo += overlapAB;</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                    Jhop2_homo += overlapAB*overlapAB;</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                }</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                <span class="keywordflow">if</span> ( orbA == homoA+1 &amp;&amp; orbB == homoB+1 ) {</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                    Jeff_lumo += overlapAB;</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                }</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                </div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;            }    </div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;            </div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;        }</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;        </div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;        <span class="comment">// if pair has bridges</span></div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;        <span class="keywordflow">if</span> ( _ptype == ctp::QMPair::SuperExchange  ||  _ptype == ctp::QMPair::SuperExchangeAndHopping ) {</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;:superexchange&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;            list&lt;Property*&gt; pOverlap = pair_property-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;overlap&quot;</span>);</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;            <span class="comment">/*</span></div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;<span class="comment">            // this is to select HOMO_A and HOMO_B </span></div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;<span class="comment">            double overlapAB=0.0;</span></div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;<span class="comment">            int orbA=0;</span></div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;<span class="comment">            int orbB=0;</span></div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="comment">            double energyA=0.0;</span></div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="comment">            double energyB=0.0;</span></div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;<span class="comment">            </span></div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;<span class="comment">            for (list&lt;Property*&gt; ::iterator itOverlap = pOverlap.begin(); itOverlap != pOverlap.end(); ++itOverlap) {</span></div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;<span class="comment">               orbA = (*itOverlap)-&gt;getAttribute&lt;int&gt;(&quot;orbA&quot;);</span></div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;<span class="comment">               orbB = (*itOverlap)-&gt;getAttribute&lt;int&gt;(&quot;orbB&quot;);</span></div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;<span class="comment">               if ( orbA == homoA &amp;&amp; orbB == homoB ) {  </span></div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;<span class="comment">                    overlapAB = (*itOverlap)-&gt;getAttribute&lt;double&gt;(&quot;jAB&quot;);</span></div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;<span class="comment">                    energyA = (*itOverlap)-&gt;getAttribute&lt;double&gt;(&quot;eA&quot;);</span></div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;<span class="comment">                    energyB = (*itOverlap)-&gt;getAttribute&lt;double&gt;(&quot;eB&quot;);</span></div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="comment">                    break;</span></div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="comment">            */</span></div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            <span class="comment">// cout &lt;&lt; &quot; homoA:homoB, orbA:orbB &quot; &lt;&lt; homoA &lt;&lt; &quot;:&quot; &lt;&lt; homoB &lt;&lt; &quot;,&quot; &lt;&lt; orbA &lt;&lt; &quot;:&quot; &lt;&lt; orbB;</span></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;            <span class="comment">/*QMNBList::iterator nit;</span></div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="comment">            for (nit = nblist.begin(); nit != nblist.end(); ++nit) {</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;<span class="comment">                </span></div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="comment">                QMPair *qmp = *nit;</span></div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="comment">                Segment *seg1 = qmp-&gt;Seg1();</span></div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="comment">                Segment *seg2 = qmp-&gt;Seg2();</span></div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="comment">                </span></div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;<span class="comment">                cout &lt;&lt; &quot;ID1 &quot; &lt;&lt; seg1-&gt;getId();</span></div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;<span class="comment">                cout &lt;&lt; &quot; &lt;&gt; ID2 &quot; &lt;&lt; seg2-&gt;getId() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;<span class="comment">                </span></div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="comment">            }*/</span></div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;            <span class="comment">// loop over the bridging segments</span></div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;            <span class="keywordflow">for</span> ( vector&lt; ctp::Segment* &gt;::const_iterator itBridge = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a871d0d81b70143dfa03094495f0d5e35">getBridgingSegments</a>().begin() ; itBridge != pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a871d0d81b70143dfa03094495f0d5e35">getBridgingSegments</a>().end(); itBridge++ ) {</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                        </div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a>* Bridge = *itBridge;</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                <span class="keywordtype">int</span> IDBridge = Bridge-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>();</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                </div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot; bridging molecule:&quot;</span> &lt;&lt; IDBridge &lt;&lt; <span class="stringliteral">&quot;\n    bridge constructed via the pairs&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                <span class="comment">// pairs from the bridge to the donor and acceptor</span></div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a>* Bridge_A = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a76ec0c80117231af3fe4e638e24eb14f">FindPair</a>( segmentA, Bridge );</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                <span class="keywordflow">if</span>( Bridge_A == NULL ) cout &lt;&lt; <span class="stringliteral">&quot;Bridge-SegmentA pair not found&quot;</span> &lt;&lt; std::endl;  </div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a>* Bridge_B = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a76ec0c80117231af3fe4e638e24eb14f">FindPair</a>( segmentB, Bridge );</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                <span class="keywordflow">if</span>( Bridge_B == NULL ) cout &lt;&lt; <span class="stringliteral">&quot;Bridge-SegmentB pair not found &quot;</span> &lt;&lt; segmentB-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; Bridge-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>()&lt;&lt; std::endl;</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                </div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                <span class="comment">// cout &lt;&lt; &quot; IDBA:IDBB &quot; &lt;&lt; Bridge_A-&gt;getId() &lt;&lt; &quot;:&quot; &lt;&lt; Bridge_B-&gt;getId() &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                </div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a>* pBridge_A = records[ Bridge_A-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() ];</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a>* pBridge_B = records[ Bridge_B-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() ];</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                list&lt;Property*&gt; pOverlapA = pBridge_A-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;overlap&quot;</span>);</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;                list&lt;Property*&gt; pOverlapB = pBridge_B-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;overlap&quot;</span>);</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                <span class="comment">// IDs of the Donor and Acceptor</span></div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                <span class="comment">//int IdA = segmentA-&gt;getId();</span></div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                <span class="comment">//int IdB = segmentB-&gt;getId();</span></div>
 <div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                <span class="keywordtype">double</span> overlapAB = (*itOverlap)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;jAB&quot;</span>);</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                <span class="keywordtype">int</span> orbA = (*itOverlap)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;orbA&quot;</span>);</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                <span class="keywordtype">int</span> orbB = (*itOverlap)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;orbB&quot;</span>);</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                <span class="comment">// cout &lt;&lt; &quot; orbA:orbB &quot; &lt;&lt; orbA &lt;&lt; &quot;:&quot; &lt;&lt; orbB &lt;&lt; flush;</span></div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                <span class="keywordflow">if</span> ( orbA == homoA &amp;&amp; orbB == homoB ) {</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                    Jeff_homo += overlapAB;</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                    Jhop2_homo += overlapAB*overlapAB;</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                }</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                <span class="keywordflow">if</span> ( orbA == homoA+1 &amp;&amp; orbB == homoB+1 ) {</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                    Jeff_lumo += overlapAB;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                }</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                </div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;            }    </div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            </div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;        }</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;        </div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        <span class="comment">// if pair has bridges</span></div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        <span class="keywordflow">if</span> ( _ptype == ctp::QMPair::SuperExchange  ||  _ptype == ctp::QMPair::SuperExchangeAndHopping ) {</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;:superexchange&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;            list&lt;Property*&gt; pOverlap = pair_property-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;overlap&quot;</span>);</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;            <span class="comment">/*</span></div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;<span class="comment">            // this is to select HOMO_A and HOMO_B </span></div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;<span class="comment">            double overlapAB=0.0;</span></div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;<span class="comment">            int orbA=0;</span></div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;<span class="comment">            int orbB=0;</span></div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;<span class="comment">            double energyA=0.0;</span></div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;<span class="comment">            double energyB=0.0;</span></div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;<span class="comment">            </span></div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;<span class="comment">            for (list&lt;Property*&gt; ::iterator itOverlap = pOverlap.begin(); itOverlap != pOverlap.end(); ++itOverlap) {</span></div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;<span class="comment">               orbA = (*itOverlap)-&gt;getAttribute&lt;int&gt;(&quot;orbA&quot;);</span></div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;<span class="comment">               orbB = (*itOverlap)-&gt;getAttribute&lt;int&gt;(&quot;orbB&quot;);</span></div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;<span class="comment">               if ( orbA == homoA &amp;&amp; orbB == homoB ) {  </span></div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;<span class="comment">                    overlapAB = (*itOverlap)-&gt;getAttribute&lt;double&gt;(&quot;jAB&quot;);</span></div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;<span class="comment">                    energyA = (*itOverlap)-&gt;getAttribute&lt;double&gt;(&quot;eA&quot;);</span></div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="comment">                    energyB = (*itOverlap)-&gt;getAttribute&lt;double&gt;(&quot;eB&quot;);</span></div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;<span class="comment">                    break;</span></div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;<span class="comment">                }</span></div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;<span class="comment">            */</span></div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;            <span class="comment">// cout &lt;&lt; &quot; homoA:homoB, orbA:orbB &quot; &lt;&lt; homoA &lt;&lt; &quot;:&quot; &lt;&lt; homoB &lt;&lt; &quot;,&quot; &lt;&lt; orbA &lt;&lt; &quot;:&quot; &lt;&lt; orbB;</span></div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;            <span class="comment">/*QMNBList::iterator nit;</span></div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;<span class="comment">            for (nit = nblist.begin(); nit != nblist.end(); ++nit) {</span></div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;<span class="comment">                </span></div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;<span class="comment">                QMPair *qmp = *nit;</span></div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;<span class="comment">                Segment *seg1 = qmp-&gt;Seg1();</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;<span class="comment">                Segment *seg2 = qmp-&gt;Seg2();</span></div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;<span class="comment">                </span></div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="comment">                cout &lt;&lt; &quot;ID1 &quot; &lt;&lt; seg1-&gt;getId();</span></div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="comment">                cout &lt;&lt; &quot; &lt;&gt; ID2 &quot; &lt;&lt; seg2-&gt;getId() &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;<span class="comment">                </span></div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="comment">            }*/</span></div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            <span class="comment">// loop over the bridging segments</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;            <span class="keywordflow">for</span> ( vector&lt; ctp::Segment* &gt;::const_iterator itBridge = pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a871d0d81b70143dfa03094495f0d5e35">getBridgingSegments</a>().begin() ; itBridge != pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a871d0d81b70143dfa03094495f0d5e35">getBridgingSegments</a>().end(); itBridge++ ) {</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                        </div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1Segment.html">ctp::Segment</a>* Bridge = *itBridge;</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                <span class="keywordtype">int</span> IDBridge = Bridge-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>();</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;                </div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot; bridging molecule:&quot;</span> &lt;&lt; IDBridge &lt;&lt; <span class="stringliteral">&quot;\n    bridge constructed via the pairs&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;                <span class="comment">// pairs from the bridge to the donor and acceptor</span></div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a>* Bridge_A = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a76ec0c80117231af3fe4e638e24eb14f">FindPair</a>( segmentA, Bridge );</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                <span class="keywordflow">if</span>( Bridge_A == NULL ) cout &lt;&lt; <span class="stringliteral">&quot;Bridge-SegmentA pair not found&quot;</span> &lt;&lt; std::endl;  </div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                                </div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                <span class="comment">// IDs stored in the file</span></div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                <span class="keywordtype">int</span> id1A = pBridge_A-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idA&quot;</span>);</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                <span class="keywordtype">int</span> id2A = pBridge_A-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idB&quot;</span>);</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                <span class="keywordtype">int</span> id1B = pBridge_B-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idA&quot;</span>);</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                <span class="keywordtype">int</span> id2B = pBridge_B-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idB&quot;</span>);</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                </div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;    &quot;</span> &lt;&lt; id1A &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; id2A &lt;&lt; <span class="stringliteral">&quot; (id:&quot;</span> &lt;&lt;   Bridge_A-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() &lt;&lt; <span class="stringliteral">&quot;) &quot;</span> &lt;&lt; <span class="stringliteral">&quot;  |  &quot;</span>  &lt;&lt; id1B &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; id2B &lt;&lt; <span class="stringliteral">&quot; (id:&quot;</span> &lt;&lt;   Bridge_B-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() &lt;&lt; <span class="stringliteral">&quot;) &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                        </div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                <span class="comment">// suffix for the donor and acceptor </span></div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                <span class="keywordtype">string</span> suffixA = ( id1A == IDBridge ) ? <span class="stringliteral">&quot;B&quot;</span> : <span class="stringliteral">&quot;A&quot;</span>; <span class="comment">// use &quot;A&quot; as a bridge </span></div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                <span class="keywordtype">string</span> suffixB = ( id1B == IDBridge ) ? <span class="stringliteral">&quot;B&quot;</span> : <span class="stringliteral">&quot;A&quot;</span>; <span class="comment">// use &quot;A&quot; as a bridge </span></div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                <span class="keywordtype">string</span> suffixBridgeA = ( id1A == IDBridge ) ? <span class="stringliteral">&quot;A&quot;</span> : <span class="stringliteral">&quot;B&quot;</span>;</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                <span class="keywordtype">string</span> suffixBridgeB = ( id1B == IDBridge ) ? <span class="stringliteral">&quot;A&quot;</span> : <span class="stringliteral">&quot;B&quot;</span>;</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                </div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                <span class="comment">// cout &lt;&lt; &quot; id1A:id1B &quot; &lt;&lt; id1A &lt;&lt; &quot;:&quot; &lt;&lt; id1B &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                </div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                <span class="comment">//cout &lt;&lt; *pBridge_A &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                <span class="comment">//cout &lt;&lt; *pBridge_B &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;               </div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                <span class="comment">//double check if the records are correct</span></div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                <span class="keywordtype">int</span> homoBridgeA = pBridge_A-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;homo&quot;</span> + suffixBridgeA );</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                <span class="comment">//int homoBridgeB = pBridge_B-&gt;getAttribute&lt;int&gt;(&quot;homo&quot; + suffixBridgeB );</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;                assert( homoBridgeA == pBridge_B-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;homo&quot;</span> + suffixBridgeB ) );</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                <span class="keywordtype">int</span> homoBridge = homoBridgeA;</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                </div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                <span class="comment">// double loop over all levels of A and B</span></div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                <span class="keywordtype">int</span> levelcount = 0;</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;LEVEL &quot;</span> &lt;&lt; <span class="stringliteral">&quot;, ENERGY &quot;</span> &lt;&lt; <span class="stringliteral">&quot;, ENERGYDIFF &quot;</span> &lt;&lt; <span class="stringliteral">&quot; , JEFFSINGLE &quot;</span> &lt;&lt;  <span class="stringliteral">&quot;, JEFF &quot;</span> &lt;&lt; <span class="stringliteral">&quot;, J_DB &quot;</span> &lt;&lt; <span class="stringliteral">&quot;, J_BA &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator itOverlapA = pOverlapA.begin(); itOverlapA != pOverlapA.end(); ++itOverlapA) {</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;                <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator itOverlapB = pOverlapB.begin(); itOverlapB != pOverlapB.end(); ++itOverlapB) {</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;                    </div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;                    <span class="keywordtype">int</span> orbDonor = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;( <span class="stringliteral">&quot;orb&quot;</span> + suffixA );</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                    <span class="keywordtype">int</span> orbAcceptor = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;( <span class="stringliteral">&quot;orb&quot;</span> + suffixB );</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                    <span class="keywordtype">int</span> orbBridgeA  = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;( <span class="stringliteral">&quot;orb&quot;</span> + suffixBridgeA );</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                    <span class="keywordtype">int</span> orbBridgeB = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;( <span class="stringliteral">&quot;orb&quot;</span> + suffixBridgeB );</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                    </div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;                    <span class="keywordflow">if</span> (  orbDonor == homoA &amp;&amp; orbAcceptor == homoB &amp;&amp; orbBridgeA == orbBridgeB &amp;&amp; orbBridgeA &lt;= homoBridge) {</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;                        </div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                        <span class="keywordtype">double</span> jDB = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;jAB&quot;</span> );</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                        <span class="keywordtype">double</span> jBA = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;jAB&quot;</span> );</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                        <span class="keywordtype">double</span> eA  = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;e&quot;</span> + suffixA );</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;                        <span class="keywordtype">double</span> eB  = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;e&quot;</span> + suffixB );</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;                        </div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;                        <span class="keywordtype">double</span> eBridgeA  = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;e&quot;</span> + suffixBridgeA );</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;                        <span class="keywordtype">double</span> eBridgeB  = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;e&quot;</span> + suffixBridgeB );</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;                        </div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                        <span class="comment">//assert( eBridgeA - eBridgeB &lt; 1e-50 );</span></div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                     </div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;                        <span class="comment">// cout &lt;&lt; &quot;    bridge level: &quot; &lt;&lt; (*itOverlapA)-&gt;getAttribute&lt;int&gt;( &quot;orb&quot; + suffixBridgeA ) &lt;&lt; &quot; (hole transfer)&quot;;</span></div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;                        <span class="comment">// cout &lt;&lt;  &quot; (HOMO: &quot; &lt;&lt; homoBridge &lt;&lt; &quot;)&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                        <span class="comment">// cout &lt;&lt; &quot;      J_DB = &quot; &lt;&lt; jDB &lt;&lt; &quot;  |  J_BA = &quot; &lt;&lt; jBA &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                        <span class="comment">// cout &lt;&lt; &quot;      E_D = &quot; &lt;&lt; eA &lt;&lt; &quot;, E_B = &quot; &lt;&lt;  eBridgeA &lt;&lt; &quot;, E_A = &quot; &lt;&lt; eB &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                        </div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                        <span class="comment">// This in principle violates detailed balance. Any ideas?</span></div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;                        Jeff_homo += 0.5 * (jDB*jBA / (eA - eBridgeA) + jDB*jBA / (eB - eBridgeB));</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                        </div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;                        cout &lt;&lt; orbBridgeA &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; eBridgeA &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; eA-eBridgeA &lt;&lt; <span class="stringliteral">&quot; , &quot;</span> &lt;&lt;   0.5 * (jDB*jBA / (eA - eBridgeA) + jDB*jBA / (eB - eBridgeB)) &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; Jeff_homo &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; jDB &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; jBA &lt;&lt; endl;</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;                        levelcount += 1;</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                                </div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                    }</div>
 <div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                <a class="code" href="classvotca_1_1ctp_1_1QMPair.html">ctp::QMPair</a>* Bridge_B = nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#a76ec0c80117231af3fe4e638e24eb14f">FindPair</a>( segmentB, Bridge );</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                <span class="keywordflow">if</span>( Bridge_B == NULL ) cout &lt;&lt; <span class="stringliteral">&quot;Bridge-SegmentB pair not found &quot;</span> &lt;&lt; segmentB-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; Bridge-&gt;<a class="code" href="classvotca_1_1ctp_1_1Segment.html#a83945ef058d7bb6efb596d04633bb497">getId</a>()&lt;&lt; std::endl;</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                </div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;                <span class="comment">// cout &lt;&lt; &quot; IDBA:IDBB &quot; &lt;&lt; Bridge_A-&gt;getId() &lt;&lt; &quot;:&quot; &lt;&lt; Bridge_B-&gt;getId() &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                </div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a>* pBridge_A = records[ Bridge_A-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() ];</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a>* pBridge_B = records[ Bridge_B-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() ];</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                list&lt;Property*&gt; pOverlapA = pBridge_A-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;overlap&quot;</span>);</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;                list&lt;Property*&gt; pOverlapB = pBridge_B-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#ad7987d4a19543a46ca8d38dd8b26121a" title="select property based on a filter">Select</a>(<span class="stringliteral">&quot;overlap&quot;</span>);</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;                <span class="comment">// IDs of the Donor and Acceptor</span></div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                <span class="comment">//int IdA = segmentA-&gt;getId();</span></div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;                <span class="comment">//int IdB = segmentB-&gt;getId();</span></div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;                                </div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;                <span class="comment">// IDs stored in the file</span></div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                <span class="keywordtype">int</span> id1A = pBridge_A-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idA&quot;</span>);</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                <span class="keywordtype">int</span> id2A = pBridge_A-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idB&quot;</span>);</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;                <span class="keywordtype">int</span> id1B = pBridge_B-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idA&quot;</span>);</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;                <span class="keywordtype">int</span> id2B = pBridge_B-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;idB&quot;</span>);</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;                </div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;    &quot;</span> &lt;&lt; id1A &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; id2A &lt;&lt; <span class="stringliteral">&quot; (id:&quot;</span> &lt;&lt;   Bridge_A-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() &lt;&lt; <span class="stringliteral">&quot;) &quot;</span> &lt;&lt; <span class="stringliteral">&quot;  |  &quot;</span>  &lt;&lt; id1B &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; id2B &lt;&lt; <span class="stringliteral">&quot; (id:&quot;</span> &lt;&lt;   Bridge_B-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a24b39a974865abbf243b3a86a86601a2">getId</a>() &lt;&lt; <span class="stringliteral">&quot;) &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;                        </div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;                <span class="comment">// suffix for the donor and acceptor </span></div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;                <span class="keywordtype">string</span> suffixA = ( id1A == IDBridge ) ? <span class="stringliteral">&quot;B&quot;</span> : <span class="stringliteral">&quot;A&quot;</span>; <span class="comment">// use &quot;A&quot; as a bridge </span></div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;                <span class="keywordtype">string</span> suffixB = ( id1B == IDBridge ) ? <span class="stringliteral">&quot;B&quot;</span> : <span class="stringliteral">&quot;A&quot;</span>; <span class="comment">// use &quot;A&quot; as a bridge </span></div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;                <span class="keywordtype">string</span> suffixBridgeA = ( id1A == IDBridge ) ? <span class="stringliteral">&quot;A&quot;</span> : <span class="stringliteral">&quot;B&quot;</span>;</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;                <span class="keywordtype">string</span> suffixBridgeB = ( id1B == IDBridge ) ? <span class="stringliteral">&quot;A&quot;</span> : <span class="stringliteral">&quot;B&quot;</span>;</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;                </div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;                <span class="comment">// cout &lt;&lt; &quot; id1A:id1B &quot; &lt;&lt; id1A &lt;&lt; &quot;:&quot; &lt;&lt; id1B &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;                </div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;                <span class="comment">//cout &lt;&lt; *pBridge_A &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;                <span class="comment">//cout &lt;&lt; *pBridge_B &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;               </div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;                <span class="comment">//double check if the records are correct</span></div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;                <span class="keywordtype">int</span> homoBridgeA = pBridge_A-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;homo&quot;</span> + suffixBridgeA );</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;                <span class="comment">//int homoBridgeB = pBridge_B-&gt;getAttribute&lt;int&gt;(&quot;homo&quot; + suffixBridgeB );</span></div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;                assert( homoBridgeA == pBridge_B-&gt;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa0c6daa1cecc3dfc804d31a5787bf6c8" title="return attribute as type">getAttribute</a>&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;homo&quot;</span> + suffixBridgeB ) );</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;                <span class="keywordtype">int</span> homoBridge = homoBridgeA;</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;                </div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;                <span class="comment">// double loop over all levels of A and B</span></div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;                <span class="keywordtype">int</span> levelcount = 0;</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;LEVEL &quot;</span> &lt;&lt; <span class="stringliteral">&quot;, ENERGY &quot;</span> &lt;&lt; <span class="stringliteral">&quot;, ENERGYDIFF &quot;</span> &lt;&lt; <span class="stringliteral">&quot; , JEFFSINGLE &quot;</span> &lt;&lt;  <span class="stringliteral">&quot;, JEFF &quot;</span> &lt;&lt; <span class="stringliteral">&quot;, J_DB &quot;</span> &lt;&lt; <span class="stringliteral">&quot;, J_BA &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;                <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator itOverlapA = pOverlapA.begin(); itOverlapA != pOverlapA.end(); ++itOverlapA) {</div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;                <span class="keywordflow">for</span> (list&lt;Property*&gt; ::iterator itOverlapB = pOverlapB.begin(); itOverlapB != pOverlapB.end(); ++itOverlapB) {</div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;                    </div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;                    <span class="keywordtype">int</span> orbDonor = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;( <span class="stringliteral">&quot;orb&quot;</span> + suffixA );</div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;                    <span class="keywordtype">int</span> orbAcceptor = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;( <span class="stringliteral">&quot;orb&quot;</span> + suffixB );</div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;                    <span class="keywordtype">int</span> orbBridgeA  = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;( <span class="stringliteral">&quot;orb&quot;</span> + suffixBridgeA );</div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;                    <span class="keywordtype">int</span> orbBridgeB = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">int</span>&gt;( <span class="stringliteral">&quot;orb&quot;</span> + suffixBridgeB );</div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;                    </div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;                    <span class="keywordflow">if</span> (  orbDonor == homoA &amp;&amp; orbAcceptor == homoB &amp;&amp; orbBridgeA == orbBridgeB &amp;&amp; orbBridgeA &lt;= homoBridge) {</div>
-<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;                        </div>
-<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;                        <span class="keywordtype">double</span> jDB = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;jAB&quot;</span> );</div>
-<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;                        <span class="keywordtype">double</span> jBA = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;jAB&quot;</span> );</div>
-<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;                        <span class="keywordtype">double</span> eA  = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;e&quot;</span> + suffixA );</div>
-<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;                        <span class="keywordtype">double</span> eB  = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;e&quot;</span> + suffixB );</div>
-<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;                        </div>
-<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;                        <span class="keywordtype">double</span> eBridgeA  = (*itOverlapA)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;e&quot;</span> + suffixBridgeA );</div>
-<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;                        <span class="keywordtype">double</span> eBridgeB  = (*itOverlapB)-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;( <span class="stringliteral">&quot;e&quot;</span> + suffixBridgeB );</div>
-<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;                        </div>
-<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;                        <span class="comment">//assert( eBridgeA - eBridgeB &lt; 1e-50 );</span></div>
-<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;                     </div>
-<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;                        <span class="comment">// cout &lt;&lt; &quot;    bridge level: &quot; &lt;&lt; (*itOverlapA)-&gt;getAttribute&lt;int&gt;( &quot;orb&quot; + suffixBridgeA ) &lt;&lt; &quot; (hole transfer)&quot;;</span></div>
-<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;                        <span class="comment">// cout &lt;&lt;  &quot; (HOMO: &quot; &lt;&lt; homoBridge &lt;&lt; &quot;)&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;                        <span class="comment">// cout &lt;&lt; &quot;      J_DB = &quot; &lt;&lt; jDB &lt;&lt; &quot;  |  J_BA = &quot; &lt;&lt; jBA &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;                        <span class="comment">// cout &lt;&lt; &quot;      E_D = &quot; &lt;&lt; eA &lt;&lt; &quot;, E_B = &quot; &lt;&lt;  eBridgeA &lt;&lt; &quot;, E_A = &quot; &lt;&lt; eB &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;                        </div>
-<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;                        <span class="comment">// This in principle violates detailed balance. Any ideas?</span></div>
-<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;                        Jeff_homo += 0.5 * (jDB*jBA / (eA - eBridgeA) + jDB*jBA / (eB - eBridgeB));</div>
-<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;                        </div>
-<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;                        cout &lt;&lt; orbBridgeA &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; eBridgeA &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; eA-eBridgeA &lt;&lt; <span class="stringliteral">&quot; , &quot;</span> &lt;&lt;   0.5 * (jDB*jBA / (eA - eBridgeA) + jDB*jBA / (eB - eBridgeB)) &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; Jeff_homo &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; jDB &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; jBA &lt;&lt; endl;</div>
-<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;                        levelcount += 1;</div>
-<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;                                </div>
-<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;                    }</div>
-<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;</div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;                    <span class="keywordflow">if</span> (  orbDonor == homoA+1 &amp;&amp; orbAcceptor == homoB+1 &amp;&amp; orbBridgeA == orbBridgeB &amp;&amp; orbBridgeA &gt; homoBridge) {</div>
-<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;                        </div>
-<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;                        <span class="comment">// cout &lt;&lt; &quot; electron transfer&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;                        <span class="comment">//double jDB = (*itOverlapA)-&gt;getAttribute&lt;double&gt;( &quot;jAB&quot; );</span></div>
-<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;                        <span class="comment">//double jBA = (*itOverlapB)-&gt;getAttribute&lt;double&gt;( &quot;jAB&quot; );</span></div>
-<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;                        <span class="comment">//double eA  = (*itOverlapA)-&gt;getAttribute&lt;double&gt;( &quot;e&quot; + suffixA );</span></div>
-<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;                        <span class="comment">//double eB  = (*itOverlapB)-&gt;getAttribute&lt;double&gt;( &quot;e&quot; + suffixB );</span></div>
-<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;                        </div>
-<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;                        <span class="comment">//double eBridgeA  = (*itOverlapA)-&gt;getAttribute&lt;double&gt;( &quot;e&quot; + suffixBridgeA );</span></div>
-<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;                        <span class="comment">//double eBridgeB  = (*itOverlapB)-&gt;getAttribute&lt;double&gt;( &quot;e&quot; + suffixBridgeB );</span></div>
-<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;                        </div>
-<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;                         <span class="comment">// This in principle violates detailed balance. Any ideas?</span></div>
-<div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;                        <span class="comment">//double Jeff_lumo = 0.5 * (jDB*jBA / (eA - eBridgeA) + jDB*jBA / (eB - eBridgeB));</span></div>
-<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;                                </div>
-<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;                    }</div>
-<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;                    </div>
-<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;                     </div>
-<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;                }}</div>
-<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;            } <span class="comment">// end over bridges </span></div>
-<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;          </div>
-<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;        } <span class="comment">// end of if superexchange</span></div>
-<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;        </div>
-<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;        <span class="keywordtype">double</span> Jeff2_homo = Jeff_homo*Jeff_homo;</div>
-<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;        <span class="keywordtype">double</span> Jeff2_lumo = Jeff_lumo*Jeff_lumo;</div>
-<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;        </div>
-<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;</div>
-<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot; Jhop2_HOMO: &quot;</span> &lt;&lt; Jhop2_homo &lt;&lt; endl;</div>
-<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot; Jeff2_HOMO: &quot;</span> &lt;&lt; Jeff2_homo &lt;&lt; <span class="stringliteral">&quot; (+&quot;</span> &lt;&lt; (Jeff2_homo-Jhop2_homo)/Jhop2_homo*100 &lt;&lt; <span class="stringliteral">&quot; %)&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;        <span class="comment">// cout &lt;&lt; &quot; Jeff2_LUMO: &quot; &lt;&lt; Jeff2_lumo &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;        </div>
-<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;        cout &lt;&lt; endl;</div>
-<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;                    </div>
-<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;        pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ae4e508a3d6622f2bc91e697f389a55bf">setJeff2</a>(Jeff2_homo, 1);</div>
-<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;        pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a564ccb7cd501d9cdb93ed7961356c260">setIsPathCarrier</a>(<span class="keyword">true</span>, 1);</div>
-<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;        </div>
-<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;        pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ae4e508a3d6622f2bc91e697f389a55bf">setJeff2</a>(Jeff2_lumo, -1);</div>
-<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;        pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a564ccb7cd501d9cdb93ed7961356c260">setIsPathCarrier</a>(<span class="keyword">true</span>, -1);</div>
-<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;</div>
-<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;    }</div>
-<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;                    </div>
-<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;    <a class="code" href="logger_8h.html#a6fdd97d4330e587039f5e9db3441459d">CTP_LOG_SAVE</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; <span class="stringliteral">&quot;Pairs [total:updated] &quot;</span> &lt;&lt;  _number_of_pairs &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; _current_pairs &lt;&lt; <span class="stringliteral">&quot; Incomplete jobs: &quot;</span> &lt;&lt; _incomplete_jobs &lt;&lt; flush; </div>
-<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;    cout &lt;&lt; _log;</div>
-<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;}</div>
-<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;</div>
-<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;</div>
-<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;</div>
-<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;}};</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                    <span class="keywordflow">if</span> (  orbDonor == homoA+1 &amp;&amp; orbAcceptor == homoB+1 &amp;&amp; orbBridgeA == orbBridgeB &amp;&amp; orbBridgeA &gt; homoBridge) {</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                        </div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                        <span class="comment">// cout &lt;&lt; &quot; electron transfer&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                        <span class="comment">//double jDB = (*itOverlapA)-&gt;getAttribute&lt;double&gt;( &quot;jAB&quot; );</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;                        <span class="comment">//double jBA = (*itOverlapB)-&gt;getAttribute&lt;double&gt;( &quot;jAB&quot; );</span></div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                        <span class="comment">//double eA  = (*itOverlapA)-&gt;getAttribute&lt;double&gt;( &quot;e&quot; + suffixA );</span></div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                        <span class="comment">//double eB  = (*itOverlapB)-&gt;getAttribute&lt;double&gt;( &quot;e&quot; + suffixB );</span></div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                        </div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;                        <span class="comment">//double eBridgeA  = (*itOverlapA)-&gt;getAttribute&lt;double&gt;( &quot;e&quot; + suffixBridgeA );</span></div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                        <span class="comment">//double eBridgeB  = (*itOverlapB)-&gt;getAttribute&lt;double&gt;( &quot;e&quot; + suffixBridgeB );</span></div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                        </div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;                         <span class="comment">// This in principle violates detailed balance. Any ideas?</span></div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                        <span class="comment">//double Jeff_lumo = 0.5 * (jDB*jBA / (eA - eBridgeA) + jDB*jBA / (eB - eBridgeB));</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;                                </div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                    }</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;                    </div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;                     </div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;                }}</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;            } <span class="comment">// end over bridges </span></div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;          </div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;        } <span class="comment">// end of if superexchange</span></div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;        </div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;        <span class="keywordtype">double</span> Jeff2_homo = Jeff_homo*Jeff_homo;</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        <span class="keywordtype">double</span> Jeff2_lumo = Jeff_lumo*Jeff_lumo;</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;        </div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot; Jhop2_HOMO: &quot;</span> &lt;&lt; Jhop2_homo &lt;&lt; endl;</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot; Jeff2_HOMO: &quot;</span> &lt;&lt; Jeff2_homo &lt;&lt; <span class="stringliteral">&quot; (+&quot;</span> &lt;&lt; (Jeff2_homo-Jhop2_homo)/Jhop2_homo*100 &lt;&lt; <span class="stringliteral">&quot; %)&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;        <span class="comment">// cout &lt;&lt; &quot; Jeff2_LUMO: &quot; &lt;&lt; Jeff2_lumo &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;        </div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;        cout &lt;&lt; endl;</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;                    </div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;        pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ae4e508a3d6622f2bc91e697f389a55bf">setJeff2</a>(Jeff2_homo, 1);</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;        pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a564ccb7cd501d9cdb93ed7961356c260">setIsPathCarrier</a>(<span class="keyword">true</span>, 1);</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        </div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;        pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#ae4e508a3d6622f2bc91e697f389a55bf">setJeff2</a>(Jeff2_lumo, -1);</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;        pair-&gt;<a class="code" href="classvotca_1_1ctp_1_1QMPair.html#a564ccb7cd501d9cdb93ed7961356c260">setIsPathCarrier</a>(<span class="keyword">true</span>, -1);</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    }</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;                    </div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    <a class="code" href="logger_8h.html#a6fdd97d4330e587039f5e9db3441459d">CTP_LOG_SAVE</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; <span class="stringliteral">&quot;Pairs [total:updated] &quot;</span> &lt;&lt;  _number_of_pairs &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; _current_pairs &lt;&lt; <span class="stringliteral">&quot; Incomplete jobs: &quot;</span> &lt;&lt; _incomplete_jobs &lt;&lt; flush; </div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    cout &lt;&lt; _log;</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;}</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;}};</div>
 </div><!-- fragment --></div><!-- contents -->

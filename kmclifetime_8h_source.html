@@ -89,43 +89,49 @@
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ad2c2c7f02a4236909160e0dc1225ca47">   37</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ad2c2c7f02a4236909160e0dc1225ca47">KMCLifetime</a>() {};</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a69d98bd6cce03300540d3d1238e2b1e7">   38</a></span>&#160;   <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a69d98bd6cce03300540d3d1238e2b1e7">~KMCLifetime</a>() {};</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ab42bfc69c554f9abf91914d9fe54796b">   39</a></span>&#160;   std::string <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ab42bfc69c554f9abf91914d9fe54796b" title="Calculator name.">Identify</a>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;kmclifetime&quot;</span>; }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> Initialize(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">tools::Property</a> *options);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> EvaluateFrame(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">ctp::Topology</a> *top);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;       </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;       </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordtype">void</span>  RunVSSM(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">ctp::Topology</a> *top);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordtype">void</span> ReadLifetimeFile( <span class="keywordtype">string</span> filename);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">//tools::vec _field;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a69d98bd6cce03300540d3d1238e2b1e7">   38</a></span>&#160;   <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a69d98bd6cce03300540d3d1238e2b1e7">~KMCLifetime</a>() {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;       <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; node:_nodes){</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;           <span class="keyword">delete</span> node;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;       }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; carrier:_carriers){</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;           <span class="keyword">delete</span> carrier;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;       }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">delete</span> _RandomVariable;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ab42bfc69c554f9abf91914d9fe54796b">   46</a></span>&#160;   std::string <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ab42bfc69c554f9abf91914d9fe54796b" title="Calculator name.">Identify</a>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;kmclifetime&quot;</span>; }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> Initialize(<a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">tools::Property</a> *options);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">bool</span> EvaluateFrame(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">ctp::Topology</a> *top);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;       </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;       </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#aea74ac2865b9e3a0993a9b045d9dd390">   55</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#aea74ac2865b9e3a0993a9b045d9dd390">_do_carrierenergy</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a1f1b975c6320b8a1c0e08770dd5ad651">   56</a></span>&#160;            <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a1f1b975c6320b8a1c0e08770dd5ad651">_energy_outputfile</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ad11a5d8b1f4b5461adfa83af8c730cb2">   57</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ad11a5d8b1f4b5461adfa83af8c730cb2">_alpha</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a0453cf737e7bf7eaeb72f76a79f49e3d">   58</a></span>&#160;            <span class="keywordtype">unsigned</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a0453cf737e7bf7eaeb72f76a79f49e3d">_outputsteps</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a3a1ed7bf9e163f202b5b163cb3aaabb4">   59</a></span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a3a1ed7bf9e163f202b5b163cb3aaabb4">_insertions</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a9219fa34ed91a48ce2badd22a4c13d8f">   60</a></span>&#160;            std::string <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a9219fa34ed91a48ce2badd22a4c13d8f">_lifetimefile</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#af3a47abb00e3bdf9ebd6c1ece177ec04">   61</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#af3a47abb00e3bdf9ebd6c1ece177ec04">_maxrealtime</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a652b2886265fb174d1162f318686d27f">   62</a></span>&#160;            <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a652b2886265fb174d1162f318686d27f">_trajectoryfile</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a382d69e03af772a315578c4fff049a91">   63</a></span>&#160;            <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a382d69e03af772a315578c4fff049a91">_carriertype</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#acfbc6c1d592eb47226eb46489328d808">   64</a></span>&#160;            <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#acfbc6c1d592eb47226eb46489328d808">_outputfile</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#afef825711762074b39d41bc2d3b4d607">   65</a></span>&#160;            <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#afef825711762074b39d41bc2d3b4d607">_filename</a>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordtype">void</span>  RunVSSM(<a class="code" href="classvotca_1_1ctp_1_1Topology.html" title="Container for molecules, conjugated segments, rigid fragments, and atoms.">ctp::Topology</a> *top);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordtype">void</span> ReadLifetimeFile( <span class="keywordtype">string</span> filename);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="comment">//tools::vec _field;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#aea74ac2865b9e3a0993a9b045d9dd390">   62</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#aea74ac2865b9e3a0993a9b045d9dd390">_do_carrierenergy</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a1f1b975c6320b8a1c0e08770dd5ad651">   63</a></span>&#160;            <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a1f1b975c6320b8a1c0e08770dd5ad651">_energy_outputfile</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ad11a5d8b1f4b5461adfa83af8c730cb2">   64</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#ad11a5d8b1f4b5461adfa83af8c730cb2">_alpha</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a0453cf737e7bf7eaeb72f76a79f49e3d">   65</a></span>&#160;            <span class="keywordtype">unsigned</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a0453cf737e7bf7eaeb72f76a79f49e3d">_outputsteps</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a3a1ed7bf9e163f202b5b163cb3aaabb4">   66</a></span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a3a1ed7bf9e163f202b5b163cb3aaabb4">_insertions</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a9219fa34ed91a48ce2badd22a4c13d8f">   67</a></span>&#160;            std::string <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a9219fa34ed91a48ce2badd22a4c13d8f">_lifetimefile</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#af3a47abb00e3bdf9ebd6c1ece177ec04">   68</a></span>&#160;            <span class="keywordtype">double</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#af3a47abb00e3bdf9ebd6c1ece177ec04">_maxrealtime</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a652b2886265fb174d1162f318686d27f">   69</a></span>&#160;            <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#a652b2886265fb174d1162f318686d27f">_trajectoryfile</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#acfbc6c1d592eb47226eb46489328d808">   70</a></span>&#160;            <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#acfbc6c1d592eb47226eb46489328d808">_outputfile</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#afef825711762074b39d41bc2d3b4d607">   71</a></span>&#160;            <span class="keywordtype">string</span> <a class="code" href="classvotca_1_1xtp_1_1KMCLifetime.html#afef825711762074b39d41bc2d3b4d607">_filename</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_KMC_MULTIPLE_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_KMC_MULTIPLE_H */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->

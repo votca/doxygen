@@ -418,85 +418,86 @@
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;  ====== singlet energies (eV) ====== &quot;</span>)).str() &lt;&lt; flush;</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keyword">const</span> ub::vector&lt;real_gwbse&gt; &amp;  _bse_singlet_energies = _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a9b9331a15b648a2d5daefd7375b3b3b2">BSESingletEnergies</a>();</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keyword">const</span> std::vector&lt;tools::vec &gt; &amp; _transition_dipoles=_orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ac7081bb512c018229d16e5b9bd4cfa9e">TransitionDipoles</a>();</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordtype">unsigned</span> size=_bse_singlet_energies.size();</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keywordflow">if</span> (_transition_dipoles.size()&lt;_bse_singlet_energies.size()){</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                size=_transition_dipoles.size();</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            }</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> _i=0;_i&lt;size;_i++){</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;  S = %1$4d Omega = %2$+1.12f eV  lamdba = %3$+3.2f nm&quot;</span>)</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                    % (_i + 1) % (<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> * _bse_singlet_energies(_i)) % (1240.0/(<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> * _bse_singlet_energies(_i)))).str() &lt;&lt; flush;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                <span class="keywordflow">if</span> ( _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a30057e4829d212f2276965329f69ad4c">hasTransitionDipoles</a>()){</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                    <span class="keywordtype">double</span> trstrength =(_transition_dipoles[_i]*_transition_dipoles[_i]);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                    </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                    <span class="keywordtype">double</span> oscstrength =2*trstrength/3.0*_bse_singlet_energies[_i];</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;           TrDipole length gauge[e*bohr]  dx = %1$+1.4f dy = %2$+1.4f dz = %3$+1.4f |d|^2 = %4$+1.4f f = %5$+1.4f&quot;</span>) </div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                                    % (_transition_dipoles[_i].getX()) % (_transition_dipoles[_i].getY()) % (_transition_dipoles[_i].getZ()) % (trstrength) </div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                    % oscstrength).str() &lt;&lt; flush;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                }</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            std::vector&lt;double&gt; oscs=_orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a94483c1556dd8e3772eba422139d3902">Oscillatorstrengths</a>();</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keywordtype">unsigned</span> size=_bse_singlet_energies.size();</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            <span class="keywordflow">if</span> (_transition_dipoles.size()&lt;_bse_singlet_energies.size()){</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                size=_transition_dipoles.size();</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> _i=0;_i&lt;size;_i++){</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;  S = %1$4d Omega = %2$+1.12f eV  lamdba = %3$+3.2f nm&quot;</span>)</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                    % (_i + 1) % (<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> * _bse_singlet_energies(_i)) % (1240.0/(<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> * _bse_singlet_energies(_i)))).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                <span class="keywordflow">if</span> ( _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a30057e4829d212f2276965329f69ad4c">hasTransitionDipoles</a>()){</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                    <span class="keywordtype">double</span> trstrength =(_transition_dipoles[_i]*_transition_dipoles[_i]);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                    </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    <span class="keywordtype">double</span> oscstrength =oscs[_i];</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                    <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;           TrDipole length gauge[e*bohr]  dx = %1$+1.4f dy = %2$+1.4f dz = %3$+1.4f |d|^2 = %4$+1.4f f = %5$+1.4f&quot;</span>) </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                    % (_transition_dipoles[_i].getX()) % (_transition_dipoles[_i].getY()) % (_transition_dipoles[_i].getZ()) % (trstrength) </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                                    % oscstrength).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                }</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                </div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                </div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            }</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        }    </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE singlet excitons:   not stored&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    }  </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        }    </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        </div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE singlet excitons:   not stored&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    }  </div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    </div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    </div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="comment">// Transition dipole moments</span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">if</span> ( !_orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a30057e4829d212f2276965329f69ad4c">hasTransitionDipoles</a>()){</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE transition dipoles: not stored&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    }  </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    </div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;       </div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="comment">// BSE triplet excitons</span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="keywordflow">if</span> ( _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a2b782de5c9a2a54ac56afa8b96c31dbd">hasBSETriplets</a>()){</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE triplet excitons:   &quot;</span> &lt;&lt; _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ac319c6576dd9d626a1a9fc136ae6e9fd">BSETripletEnergies</a>().size() &lt;&lt; flush;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        </div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="comment">// Transition dipole moments</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordflow">if</span> ( !_orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a30057e4829d212f2276965329f69ad4c">hasTransitionDipoles</a>()){</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE transition dipoles: not stored&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    }  </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;       </div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="comment">// BSE triplet excitons</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keywordflow">if</span> ( _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a2b782de5c9a2a54ac56afa8b96c31dbd">hasBSETriplets</a>()){</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE triplet excitons:   &quot;</span> &lt;&lt; _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ac319c6576dd9d626a1a9fc136ae6e9fd">BSETripletEnergies</a>().size() &lt;&lt; flush;</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        </div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">if</span>(_print_BSE_triplets){</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;             <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;  ====== triplet energies (eV) ====== &quot;</span>)).str() &lt;&lt; flush;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;             <span class="keyword">const</span> ub::vector&lt;real_gwbse&gt; &amp;  _bse_triplet_energies = _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ac319c6576dd9d626a1a9fc136ae6e9fd">BSETripletEnergies</a>();</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;             cout &lt;&lt; _bse_triplet_energies.size()&lt;&lt;endl;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;             <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> _i=0;_i&lt;_bse_triplet_energies.size();_i++){</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;             <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;  T = %1$4d Omega = %2$+1.12f eV  lamdba = %3$+3.2f nm&quot;</span>)</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                                % (_i + 1) % (<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> * _bse_triplet_energies(_i)) % (1240.0/(<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> * _bse_triplet_energies(_i)))).str() &lt;&lt; flush;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;             </div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            }</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        }</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE triplet excitons:   not stored&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    }  </div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        </div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keywordflow">if</span>(_print_BSE_triplets){</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;             <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;  ====== triplet energies (eV) ====== &quot;</span>)).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;             <span class="keyword">const</span> ub::vector&lt;real_gwbse&gt; &amp;  _bse_triplet_energies = _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ac319c6576dd9d626a1a9fc136ae6e9fd">BSETripletEnergies</a>();</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;             cout &lt;&lt; _bse_triplet_energies.size()&lt;&lt;endl;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;             <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> _i=0;_i&lt;_bse_triplet_energies.size();_i++){</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;             <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a8c6c5f605ebba63a742e19471883f0bb">ctp::logINFO</a>, _log) &lt;&lt; (format(<span class="stringliteral">&quot;  T = %1$4d Omega = %2$+1.12f eV  lamdba = %3$+3.2f nm&quot;</span>)</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                                % (_i + 1) % (<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> * _bse_triplet_energies(_i)) % (1240.0/(<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> * _bse_triplet_energies(_i)))).str() &lt;&lt; flush;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;             </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            }</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        }</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE triplet excitons:   not stored&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    }  </div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="comment">// BSE singlet couplings</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">if</span> ( _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a9ea39690f065e284c8187f434afdf9fa">hasSingletCouplings</a>()){</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE singlet couplings:  between &quot;</span> &lt;&lt; _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa70765c33d565380c21670cf847ca5c9">getCoupledExcitonsA</a>() &lt;&lt; <span class="stringliteral">&quot; lowest excitons&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE singlet couplings:  not stored&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    } </div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    </div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="comment">// BSE triplet couplings</span></div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordflow">if</span> ( _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#af3105790173ba50c811229803c831231">hasTripletCouplings</a>()){</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE triplet couplings:  between &quot;</span> &lt;&lt; _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa70765c33d565380c21670cf847ca5c9">getCoupledExcitonsA</a>() &lt;&lt; <span class="stringliteral">&quot; lowest excitons&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE triplet couplings:  not stored&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    }  </div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    </div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;   </div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    </div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="comment">// BSE singlet couplings</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keywordflow">if</span> ( _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a9ea39690f065e284c8187f434afdf9fa">hasSingletCouplings</a>()){</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE singlet couplings:  between &quot;</span> &lt;&lt; _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa70765c33d565380c21670cf847ca5c9">getCoupledExcitonsA</a>() &lt;&lt; <span class="stringliteral">&quot; lowest excitons&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE singlet couplings:  not stored&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    } </div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="comment">// BSE triplet couplings</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">if</span> ( _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#af3105790173ba50c811229803c831231">hasTripletCouplings</a>()){</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE triplet couplings:  between &quot;</span> &lt;&lt; _orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa70765c33d565380c21670cf847ca5c9">getCoupledExcitonsA</a>() &lt;&lt; <span class="stringliteral">&quot; lowest excitons&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        <a class="code" href="logger_8h.html#ad144516788c83f08acfbbe29b2e25de5">CTP_LOG</a>(<a class="code" href="namespacevotca_1_1ctp.html#a6ca95ba08b5f1943b39d7c0d0fad0616a316f858e85e6a70732b82e35ac4e190f">ctp::logDEBUG</a>, _log) &lt;&lt; <span class="stringliteral">&quot;      BSE triplet couplings:  not stored&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    }  </div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;   </div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    </div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="keywordflow">return</span>;    </div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;}</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;}}</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="keywordflow">return</span>;    </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;}</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;}}</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
