@@ -230,26 +230,26 @@
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                _gwbse.<a class="code" href="classvotca_1_1xtp_1_1GWBSE.html#a90505f1af407ede171586e9bf62d0f1f">Initialize</a>(&amp;_gwbse_options);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                _gwbse.<a class="code" href="classvotca_1_1xtp_1_1GWBSE.html#a14e5b9661eecd20836279aad86de4e9d">Evaluate</a>();</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keywordflow">if</span> (_redirect_logger) SaveRedirectedLogger(&amp;_gwbse_engine_logger);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="comment">/* Saves a redirected logger (run output) to file */</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GWBSEENGINE.html#a03abe425836f65cc82f3389af4a8e0b2">  184</a></span>&#160;        <span class="keywordtype">void</span> GWBSEENGINE::SaveRedirectedLogger(<a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">ctp::Logger</a>* pLog) {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="comment">// write logger to log file</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            std::ofstream ofs;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="comment">//string gwbse_logfile = &quot;gwbse.log&quot;;</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            ofs.open(_logger_file.c_str(), std::ofstream::out);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">if</span> (!ofs.is_open()) {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Bad file handle: &quot;</span> + _logger_file);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            ofs &lt;&lt; (*pLog) &lt;&lt; endl;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            ofs.close();</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <a class="code" href="classvotca_1_1tools_1_1Property.html" title="class to manage program options with xml serialization functionality">Property</a> *_output_summary = &amp;(_summary.add(<span class="stringliteral">&quot;output&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                _gwbse.<a class="code" href="classvotca_1_1xtp_1_1GWBSE.html#a85d4d651f10e7bcedb32396bfe1dde92">addoutput</a>(_output_summary);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="comment">/* Saves a redirected logger (run output) to file */</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1GWBSEENGINE.html#a03abe425836f65cc82f3389af4a8e0b2">  186</a></span>&#160;        <span class="keywordtype">void</span> GWBSEENGINE::SaveRedirectedLogger(<a class="code" href="classvotca_1_1ctp_1_1Logger.html" title="Logger is used for thread-safe output of messages.">ctp::Logger</a>* pLog) {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="comment">// write logger to log file</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            std::ofstream ofs;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="comment">//string gwbse_logfile = &quot;gwbse.log&quot;;</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            ofs.open(_logger_file.c_str(), std::ofstream::out);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">if</span> (!ofs.is_open()) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Bad file handle: &quot;</span> + _logger_file);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            ofs &lt;&lt; (*pLog) &lt;&lt; endl;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            ofs.close();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
