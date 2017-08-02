@@ -1197,13 +1197,13 @@
 <div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;    </div>
 <div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;</div>
 <div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;    </div>
-<div class="line"><a name="l01146"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOCoulomb.html#a9b49f6326bd0e88b14a8c36cc8251df8"> 1146</a></span>&#160;    <span class="keywordtype">void</span> AOCoulomb::Symmetrize(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOOverlap.html">AOOverlap</a>&amp; _gwoverlap,<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; gwbasis, ub::matrix&lt;double&gt;&amp; _gwoverlap_inverse, ub::matrix&lt;double&gt;&amp; _gwoverlap_cholesky_inverse){</div>
-<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;       </div>
+<div class="line"><a name="l01146"></a><span class="lineno"><a class="code" href="classvotca_1_1xtp_1_1AOCoulomb.html#a54f668127c4fd0fdee693ac6349d0729"> 1146</a></span>&#160;    <span class="keywordtype">int</span> AOCoulomb::Symmetrize(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOOverlap.html">AOOverlap</a>&amp; _gwoverlap,<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; gwbasis, ub::matrix&lt;double&gt;&amp; _gwoverlap_inverse, ub::matrix&lt;double&gt;&amp; _gwoverlap_cholesky_inverse){</div>
+<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;        <span class="keywordtype">int</span> removed_functions=0;</div>
 <div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;        <span class="keywordflow">if</span> ( gwbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a5303fc8e34ab0f348e2854308271680f">_is_stable</a> ){</div>
 <div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;            </div>
 <div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;            <span class="comment">// get inverse of _aooverlap</span></div>
 <div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;            </div>
-<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#ab8df58c91d84820242aa10f0976cc569" title="inverts A">linalg_invert</a>( _gwoverlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ab0f1e3cc254840033ddf1f00ebfcbcd1">Matrix</a>(), _gwoverlap_inverse );</div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;           removed_functions=<a class="code" href="namespacevotca_1_1tools.html#a8c8913a42885e23742625c8202322fe0" title="inverts A via svd">linalg_invert_svd</a>( _gwoverlap.<a class="code" href="classvotca_1_1xtp_1_1AOMatrix.html#ab0f1e3cc254840033ddf1f00ebfcbcd1">Matrix</a>(), _gwoverlap_inverse,1e7 );</div>
 <div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;            </div>
 <div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;            </div>
 <div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;            <span class="comment">// make copy of _gwoverlap, because matrix is overwritten in GSL</span></div>
@@ -1220,33 +1220,35 @@
 <div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;            </div>
 <div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;            <span class="comment">// invert L to get L^-1</span></div>
 <div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;           </div>
-<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#ab8df58c91d84820242aa10f0976cc569" title="inverts A">linalg_invert</a>(  _gwoverlap_cholesky, _gwoverlap_cholesky_inverse );</div>
-<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;         </div>
-<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;            </div>
-<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;            <span class="comment">// calculate V&#39; = L^-1 V (L^-1)^T</span></div>
-<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;            ub::matrix&lt;double&gt; _temp = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _gwoverlap_cholesky_inverse , _aomatrix );</div>
-<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;            _aomatrix = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _temp, ub::trans(_gwoverlap_cholesky_inverse));</div>
-<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;            </div>
-<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#a06e8ef154cdc830942855e5b9a9ec1ad" title="calculates matrix sqrt of a matrix">linalg_matrixsqrt</a>(_aomatrix);</div>
-<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;           </div>
-<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;            <span class="comment">// multiply with L from the left and L+ from the right</span></div>
-<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;            _temp = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _gwoverlap_cholesky , _aomatrix );</div>
-<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;            _aomatrix = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _temp ,ub::trans( _gwoverlap_cholesky ));</div>
-<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;            </div>
-<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;            _aomatrix = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>(_aomatrix , _gwoverlap_inverse);</div>
-<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160; </div>
-<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;</div>
-<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;        }</div>
-<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;        <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;            cout&lt;&lt;<span class="stringliteral">&quot;WARNING: gwbasis is not stable.&quot;</span>&lt;&lt;endl;</div>
-<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;        }</div>
-<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;      <span class="keywordflow">return</span>;  </div>
-<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;    }</div>
-<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;    </div>
-<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;    </div>
+<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;            <span class="keywordtype">int</span> removed2=<a class="code" href="namespacevotca_1_1tools.html#a8c8913a42885e23742625c8202322fe0" title="inverts A via svd">linalg_invert_svd</a>(  _gwoverlap_cholesky, _gwoverlap_cholesky_inverse,1e7 );</div>
+<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;            <span class="keywordflow">if</span>(removed2&gt;removed_functions){</div>
+<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;                removed_functions=removed2;</div>
+<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;            }</div>
+<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;            </div>
+<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;            <span class="comment">// calculate V&#39; = L^-1 V (L^-1)^T</span></div>
+<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;            ub::matrix&lt;double&gt; _temp = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _gwoverlap_cholesky_inverse , _aomatrix );</div>
+<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;            _aomatrix = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _temp, ub::trans(_gwoverlap_cholesky_inverse));</div>
+<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;            </div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;            <a class="code" href="namespacevotca_1_1tools.html#a06e8ef154cdc830942855e5b9a9ec1ad" title="calculates matrix sqrt of a matrix">linalg_matrixsqrt</a>(_aomatrix);</div>
+<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;           </div>
+<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;            <span class="comment">// multiply with L from the left and L+ from the right</span></div>
+<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;            _temp = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _gwoverlap_cholesky , _aomatrix );</div>
+<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;            _aomatrix = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>( _temp ,ub::trans( _gwoverlap_cholesky ));</div>
+<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;            </div>
+<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;            _aomatrix = <a class="code" href="namespaceboost_1_1numeric_1_1ublas.html#a7469e86915702a005be35a731cac8042">ub::prod</a>(_aomatrix , _gwoverlap_inverse);</div>
+<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160; </div>
+<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;</div>
+<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;        }</div>
+<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;        <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;            cout&lt;&lt;<span class="stringliteral">&quot;WARNING: gwbasis is not stable.&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;        }</div>
+<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;      <span class="keywordflow">return</span> removed_functions;  </div>
+<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;    }</div>
 <div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;    </div>
-<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;</div>
+<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;    </div>
 <div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;    </div>
-<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;}}</div>
-<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;</div>
+<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;</div>
+<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;    </div>
+<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;}}</div>
+<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
