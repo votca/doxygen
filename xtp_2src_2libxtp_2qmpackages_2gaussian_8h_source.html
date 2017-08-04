@@ -96,7 +96,7 @@
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">    * monomer orbitals</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">    */</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#ae413c970dfd88c570fd0ff969d4b6027">WriteInputFile</a>( std::vector&lt; ctp::Segment* &gt; segments, <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* orbitals_guess = NULL);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#a9c5ce55e4c00d4fd9a7f605c268549b1">WriteShellScript</a>();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#a123841d4e893f4291c8c0a2bda33902b">Run</a>();</div>
@@ -126,14 +126,19 @@
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#ad552ed20aa103f5f08c2e6d9578c7e24">BasisSetSize</a>( std::string _line ); </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#a36efd501e9455e6a40432036a68f4628">EnergiesFromLog</a>( std::string _line, std::ifstream inputfile ); </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::string <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#ac48f3d08a2db074c3b6e29536263e8bc">FortranFormat</a>(<span class="keywordtype">double</span> number);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#a8dfcc2da63b46ee254aaf81dd152dd60">WriteBasisset</a>(ofstream&amp; _com_file, std::vector&lt;ctp::QMAtom*&gt;&amp; qmatoms);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#a69068ed4b0584007b656aa76853303df">WriteECP</a>(ofstream&amp; _com_file, std::vector&lt;ctp::QMAtom*&gt;&amp; qmatoms);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#abe8d30bc76bfc508d874516199317621">WriteBackgroundCharges</a>(ofstream&amp; _com_file, std::vector&lt;ctp::QMAtom*&gt;&amp; qmatoms);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#a9455688a0e1bfa2776fd982f3f358cea">WriteGuess</a>(<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html" title="container for molecular orbitals">Orbitals</a>* orbitals_guess, ofstream&amp; _com_file);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#ab227741d879ff227a37220c27bbb5d3d">WriteVXCRunInputFile</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#a1f13864c9c4d15f81905aa6a211d9a60">WriteCoordinates</a>(ofstream&amp; _com_file, std::vector&lt;ctp::QMAtom*&gt;&amp; qmatoms);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1Gaussian.html#a27f4ac5b1ab4cdc71bf07b3c00d3b321">WriteHeader</a>(ofstream&amp; _com_file);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_XTP_GAUSSAIN_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __VOTCA_XTP_GAUSSAIN_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
