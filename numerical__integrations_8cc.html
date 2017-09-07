@@ -56,6 +56,7 @@ $(function() {
 <code>#include &lt;<a class="el" href="sphere__lebedev__rule_8h_source.html">votca/xtp/sphere_lebedev_rule.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="aoshell_8h_source.html">votca/xtp/aoshell.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="constants_8h_source.html">votca/tools/constants.h</a>&gt;</code><br />
+<code>#include &lt;numeric&gt;</code><br />
 <code>#include &lt;<a class="el" href="aomatrix_8h_source.html">votca/xtp/aomatrix.h</a>&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;boost/timer/timer.hpp&gt;</code><br />
@@ -67,27 +68,26 @@ Include dependency graph for numerical_integrations.cc:</div>
 <div class="dyncontent">
 <div class="center"><img src="numerical__integrations_8cc__incl.png" border="0" usemap="#_2home_2votca_2votca_2xtp_2src_2libxtp_2numerical__integration_2numerical__integrations_8cc" alt=""/></div>
 <map name="_2home_2votca_2votca_2xtp_2src_2libxtp_2numerical__integration_2numerical__integrations_8cc" id="_2home_2votca_2votca_2xtp_2src_2libxtp_2numerical__integration_2numerical__integrations_8cc">
-<area shape="rect" id="node2" href="linalg_8h.html" title="votca/tools/linalg.h" alt="" coords="1839,310,1969,337"/>
-<area shape="rect" id="node8" href="numerical__integrations_8h.html" title="votca/xtp/numerical\l_integrations.h" alt="" coords="1561,124,1697,165"/>
-<area shape="rect" id="node36" href="aoshell_8h.html" title="votca/xtp/aoshell.h" alt="" coords="1238,399,1370,426"/>
-<area shape="rect" id="node37" href="constants_8h.html" title="votca/tools/constants.h" alt="" coords="937,489,1095,515"/>
-<area shape="rect" id="node38" href="radial__euler__maclaurin__rule_8h.html" title="votca/xtp/radial_euler\l_maclaurin_rule.h" alt="" coords="1132,213,1279,255"/>
-<area shape="rect" id="node39" href="sphere__lebedev__rule_8h.html" title="votca/xtp/sphere_lebedev\l_rule.h" alt="" coords="2261,213,2432,255"/>
-<area shape="rect" id="node40" href="aomatrix_8h.html" title="votca/xtp/aomatrix.h" alt="" coords="636,310,777,337"/>
-<area shape="rect" id="node10" href="basisset_8h.html" title="votca/xtp/basisset.h" alt="" coords="773,489,913,515"/>
-<area shape="rect" id="node26" href="aobasis_8h.html" title="votca/xtp/aobasis.h" alt="" coords="1445,399,1581,426"/>
-<area shape="rect" id="node27" href="qmatom_8h.html" title="votca/ctp/qmatom.h" alt="" coords="1547,489,1685,515"/>
-<area shape="rect" id="node32" href="grid__containers_8h.html" title="votca/xtp/grid_containers.h" alt="" coords="1585,310,1764,337"/>
-<area shape="rect" id="node33" href="vxc__functionals_8h.html" title="votca/xtp/vxc_functionals.h" alt="" coords="2139,578,2322,605"/>
-<area shape="rect" id="node34" href="exchange__correlation_8h.html" title="votca/xtp/exchange\l_correlation.h" alt="" coords="2089,303,2225,344"/>
-<area shape="rect" id="node35" href="gridbox_8h.html" title="votca/xtp/gridbox.h" alt="" coords="1720,221,1853,247"/>
-<area shape="rect" id="node14" href="property_8h.html" title="votca/tools/property.h" alt="" coords="1795,578,1943,605"/>
-<area shape="rect" id="node18" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="1821,667,1923,694"/>
-<area shape="rect" id="node22" href="vec_8h.html" title="vec.h" alt="" coords="1235,667,1290,694"/>
-<area shape="rect" id="node25" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="1301,757,1387,783"/>
-<area shape="rect" id="node41" href="apolarsite_8h.html" title="votca/ctp/apolarsite.h" alt="" coords="192,489,339,515"/>
-<area shape="rect" id="node45" href="polarseg_8h.html" title="votca/ctp/polarseg.h" alt="" coords="195,399,335,426"/>
-<area shape="rect" id="node44" href="matrix_8h.html" title="votca/tools/matrix.h" alt="" coords="345,578,482,605"/>
+<area shape="rect" id="node2" href="linalg_8h.html" title="votca/tools/linalg.h" alt="" coords="815,310,945,337"/>
+<area shape="rect" id="node8" href="numerical__integrations_8h.html" title="votca/xtp/numerical\l_integrations.h" alt="" coords="1101,124,1237,165"/>
+<area shape="rect" id="node36" href="aoshell_8h.html" title="votca/xtp/aoshell.h" alt="" coords="589,310,721,337"/>
+<area shape="rect" id="node37" href="constants_8h.html" title="votca/tools/constants.h" alt="" coords="305,399,463,426"/>
+<area shape="rect" id="node38" href="radial__euler__maclaurin__rule_8h.html" title="votca/xtp/radial_euler\l_maclaurin_rule.h" alt="" coords="1449,213,1596,255"/>
+<area shape="rect" id="node39" href="sphere__lebedev__rule_8h.html" title="votca/xtp/sphere_lebedev\l_rule.h" alt="" coords="1620,213,1791,255"/>
+<area shape="rect" id="node41" href="aomatrix_8h.html" title="votca/xtp/aomatrix.h" alt="" coords="1973,221,2115,247"/>
+<area shape="rect" id="node10" href="basisset_8h.html" title="votca/xtp/basisset.h" alt="" coords="1203,489,1343,515"/>
+<area shape="rect" id="node26" href="aobasis_8h.html" title="votca/xtp/aobasis.h" alt="" coords="1205,399,1341,426"/>
+<area shape="rect" id="node27" href="qmatom_8h.html" title="votca/ctp/qmatom.h" alt="" coords="1645,489,1784,515"/>
+<area shape="rect" id="node32" href="grid__containers_8h.html" title="votca/xtp/grid_containers.h" alt="" coords="1315,310,1493,337"/>
+<area shape="rect" id="node33" href="vxc__functionals_8h.html" title="votca/xtp/vxc_functionals.h" alt="" coords="494,578,677,605"/>
+<area shape="rect" id="node34" href="exchange__correlation_8h.html" title="votca/xtp/exchange\l_correlation.h" alt="" coords="144,392,280,433"/>
+<area shape="rect" id="node35" href="gridbox_8h.html" title="votca/xtp/gridbox.h" alt="" coords="1183,221,1316,247"/>
+<area shape="rect" id="node14" href="property_8h.html" title="votca/tools/property.h" alt="" coords="1305,578,1453,605"/>
+<area shape="rect" id="node18" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="1551,667,1654,694"/>
+<area shape="rect" id="node22" href="vec_8h.html" title="vec.h" alt="" coords="1730,667,1785,694"/>
+<area shape="rect" id="node25" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="902,757,989,783"/>
+<area shape="rect" id="node42" href="apolarsite_8h.html" title="votca/ctp/apolarsite.h" alt="" coords="2057,399,2204,426"/>
+<area shape="rect" id="node45" href="polarseg_8h.html" title="votca/ctp/polarseg.h" alt="" coords="1974,310,2114,337"/>
 </map>
 </div>
 </div>
