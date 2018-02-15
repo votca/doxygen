@@ -245,6 +245,7 @@ var menudata={children:[
 {text:"w",url:"globals.html#index_w"},
 {text:"y",url:"globals.html#index_y"}]},
 {text:"Functions",url:"globals_func.html",children:[
+{text:"b",url:"globals_func.html#index_b"},
 {text:"c",url:"globals_func.html#index_c"},
 {text:"f",url:"globals_func.html#index_f"},
 {text:"h",url:"globals_func.html#index_h"},
