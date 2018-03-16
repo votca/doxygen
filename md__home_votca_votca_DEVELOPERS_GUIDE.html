@@ -42,7 +42,9 @@ $(function() {
 <div class="title">Developers Guide </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The page is designed to give new developers general guidelines for implementing code consistent with the VOTCA and c++ style and standard.</p>
+<div class="textblock"><p>function/class summary</p><ul>
+<li>The page is designed to give new developers general guidelines for implementing code consistent with the VOTCA and c++ style and standard.</li>
+</ul>
 <h2>Resources</h2>
 <p>A good starting point is to take a look at the c++ standard. Though the code has not always consistently followed the c++ standard we now make an effort to really enforce it and follow best practices.</p>
 <ul>
@@ -68,7 +70,15 @@ $(function() {
 <h2>CPP Codeing Style Guide</h2>
 <p>VOTCA uses the clang formatter to automatically ensure consistent style. The style is essentially the same, as what is used by google, with the exception that types and = are aligned to make the code more readable. Have a look at <code>.clang-format file</code> in the <a href="https://github.com/votca/votca/blob/master/.clang-format">main votca repository</a> for details.</p>
 <p>To run the clang-format function on file.cc</p>
-<div class="fragment"><div class="line">clang-format -i -style=file file.cc</div></div><!-- fragment --><p>'-i' ensures it will make change to file.cc, omitting the '-i' will display the changes without implementing them. '-style=file' ensures the format is read from the .clang-format file otherwise it will use a default style guide. </p>
+<div class="fragment"><div class="line">clang-format -i -style=file file.cc</div></div><!-- fragment --><p>'-i' ensures it will make change to file.cc, omitting the '-i' will display the changes without implementing them. '-style=file' ensures the format is read from the .clang-format file otherwise it will use a default style guide.</p>
+<h2>CPP Comment Guide</h2>
+<p>It is preferential that the following guidelines be followed when adding comments to code:</p>
+<ol type="1">
+<li>The <code>/* */</code> comment blocks should be avoided and the <code>//</code> used in their place. This is so that the <code>/* */</code> comment blocks can be easily used for debugging.</li>
+<li>It would be preferential that the following doxygen commenting stencil be used in the header files above each class and function description.</li>
+</ol>
+<div class="fragment"><div class="line">/**</div><div class="line">** Detailed function/class description if needed</div><div class="line">*</div><div class="line">* @param [in] - description of parameter 1</div><div class="line">* @param [out] - description of parameter 2</div><div class="line">* @param [in,out] - description of parameter 3</div><div class="line">* :</div><div class="line">* @return - description of return type</div><div class="line">*/</div></div><!-- fragment --><p>The doxygen commenting will help future developers maintain the code, in its fully compiled state it may be found at: <a href="http://doc.votca.org">http://doc.votca.org</a></p>
+<p>NOTE: Compilation of the doxygen documentation is automated when code is merged into the master votca branch! </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
