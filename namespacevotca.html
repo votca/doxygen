@@ -74,8 +74,26 @@ Namespaces</h2></td></tr>
 <p>Takes a list of atoms, and the corresponding density matrix and puts out a table of mulliken partial charges.</p>
 <p>Takes a list of atoms, and creates different grids for it. Right now only CHELPG grid.</p>
 <p>For earlier commit history see ctp commit 77795ea591b29e664153f9404c8655ba28dc14e9.</p>
+<p>A graph visitor class for creating graph visitor objects.</p>
+<p>A graph visitor determines the graph topology.</p>
+<p>This file is a compilation of graph related algorithms.</p>
+<p>A breadth first (BF) graph visitor.</p>
 <p>Implements relative method - do not use for comparing with zero use this most of the time, tolerance needs to be meaningful in your context</p>
-<p>Function taken from <a href="https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison">https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison</a> user ShitalShal </p>
+<p>Function taken from <a href="https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison">https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison</a> user ShitalShal</p>
+<p>This graph visitor will explore the vertices closest to the starting node first and proceed outwards.</p>
+<p>These algorithms require the interplay of the graph and graph visitor classes and thus cannot be made methods of either. In most cases a graph visitor is specified explores the graph to determine some metric</p>
+<p>This visitor will calculate the distance of each node from the starting node it is built on top of the graph breadth first visitor. As the visitor moves through the graph it adds a 'Dist' attribute to each graph node with an integer value corresponding to how far it is removed from the starting node.</p>
+<p>E.g.</p>
+<p>0 - 1 - 2 - 3</p>
+<p>If vertex 1 is the starting vertex than the graph node associated with vertex 1 will have a distance of 0. Vertices 0 and 2 a distance of 1 and vertex 3 a distnace of 2.</p>
+<p>This class serves as the base class for creating graph visitor objects it contains the framework by which all derived graph visitors should follow. The function of the graph visitor is to explore a graph, this can be done in different ways such as a breadth first or depth first algorithm or others.</p>
+<p>The general flow of the class is as follows:</p>
+<ol type="1">
+<li>Set the node the graph visitor will start on and create an edge queue</li>
+<li>Get an edge from the edge queue</li>
+<li>Explore the edge and operate on the unexplored node(optional) add more edges to the edge queue.</li>
+<li>Repeat until no more edges exist in the queue. </li>
+</ol>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
