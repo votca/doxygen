@@ -328,6 +328,12 @@ Functions</h2></td></tr>
 <tr class="separator:a880e2474d3c75c1760403bb9854d5ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae11b73c8fee03d3789db168565c113e6"><td class="memItemLeft" align="right" valign="top">map&lt; string, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1ctp.html#ae11b73c8fee03d3789db168565c113e6">POLAR_TABLE</a> ()</td></tr>
 <tr class="separator:ae11b73c8fee03d3789db168565c113e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a6125ae0c835292be3e145731f3e7a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1ctp.html#a4a6125ae0c835292be3e145731f3e7a5">linalg_invert</a> (const ub::matrix&lt; double &gt; &amp;A, ub::matrix&lt; double &gt; &amp;V)</td></tr>
+<tr class="memdesc:a4a6125ae0c835292be3e145731f3e7a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">inverts A  <a href="#a4a6125ae0c835292be3e145731f3e7a5">More...</a><br /></td></tr>
+<tr class="separator:a4a6125ae0c835292be3e145731f3e7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27049f1b2b33c1d63f60aef3144c6777"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1ctp.html#a27049f1b2b33c1d63f60aef3144c6777">linalg_eigenvalues</a> (const ub::matrix&lt; double &gt; &amp;A, ub::vector&lt; double &gt; &amp;E, ub::matrix&lt; double &gt; &amp;V)</td></tr>
+<tr class="memdesc:a27049f1b2b33c1d63f60aef3144c6777"><td class="mdescLeft">&#160;</td><td class="mdescRight">eigenvalues of a symmetric matrix A*x=E*x  <a href="#a27049f1b2b33c1d63f60aef3144c6777">More...</a><br /></td></tr>
+<tr class="separator:a27049f1b2b33c1d63f60aef3144c6777"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a599f1d9464c14b7800357511049fcecf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1ctp.html#a599f1d9464c14b7800357511049fcecf">inv_sqrt</a> (double x)</td></tr>
 <tr class="separator:a599f1d9464c14b7800357511049fcecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a305d422587d89f40dc1aa3df9c6b1c34"><td class="memTemplParams" colspan="2">template&lt;typename JobContainer , typename pJob , typename rJob &gt; </td></tr>
@@ -616,7 +622,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="overlap_8cc_source.html#l00039">39</a> of file <a class="el" href="overlap_8cc_source.html">overlap.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="overlap_8cc_source.html#l00033">33</a> of file <a class="el" href="overlap_8cc_source.html">overlap.cc</a>.</p>
 
 </div>
 </div>
@@ -644,6 +650,93 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="ctp_2include_2votca_2ctp_2jobcalculatorfactory_8h_source.html#l00050">50</a> of file <a class="el" href="ctp_2include_2votca_2ctp_2jobcalculatorfactory_8h_source.html">jobcalculatorfactory.h</a>.</p>
+
+</div>
+</div>
+<a id="a27049f1b2b33c1d63f60aef3144c6777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27049f1b2b33c1d63f60aef3144c6777">&#9670;&nbsp;</a></span>linalg_eigenvalues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool votca::ctp::linalg_eigenvalues </td>
+          <td>(</td>
+          <td class="paramtype">const ub::matrix&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ub::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>E</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ub::matrix&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>V</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>eigenvalues of a symmetric matrix A*x=E*x </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">E</td><td>vector of eigenvalues </td></tr>
+    <tr><td class="paramname">V</td><td>input: matrix to diagonalize </td></tr>
+    <tr><td class="paramname">V</td><td>output: eigenvectors <br />
+ This function wrapps gsl_eigen_symmv / DSYEV </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ctp_2src_2libctp_2linalg_8cc_source.html#l00057">57</a> of file <a class="el" href="ctp_2src_2libctp_2linalg_8cc_source.html">linalg.cc</a>.</p>
+
+</div>
+</div>
+<a id="a4a6125ae0c835292be3e145731f3e7a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a6125ae0c835292be3e145731f3e7a5">&#9670;&nbsp;</a></span>linalg_invert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::ctp::linalg_invert </td>
+          <td>(</td>
+          <td class="paramtype">const ub::matrix&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ub::matrix&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>V</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>inverts A </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>symmetric positive definite matrix </td></tr>
+    <tr><td class="paramname">V</td><td>inverse matrix</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function wraps the inversion of a matrix </p>
+
+<p class="definition">Definition at line <a class="el" href="ctp_2src_2libctp_2linalg_8cc_source.html#l00029">29</a> of file <a class="el" href="ctp_2src_2libctp_2linalg_8cc_source.html">linalg.cc</a>.</p>
 
 </div>
 </div>

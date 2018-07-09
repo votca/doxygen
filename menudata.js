@@ -230,6 +230,7 @@ var menudata={children:[
 {text:"f",url:"functions_eval.html#index_f"},
 {text:"h",url:"functions_eval.html#index_h"},
 {text:"n",url:"functions_eval.html#index_n"},
+{text:"o",url:"functions_eval.html#index_o"},
 {text:"s",url:"functions_eval.html#index_s"},
 {text:"t",url:"functions_eval.html#index_t"},
 {text:"x",url:"functions_eval.html#index_x"}]},
