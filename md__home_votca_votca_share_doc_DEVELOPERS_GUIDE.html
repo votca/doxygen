@@ -44,7 +44,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>function/class summary</p><ul>
-<li>The page is designed to give new developers general guidelines for implementing code consistent with the VOTCA and c++ style and standard.</li>
+<li>The page is designed to give new developers general guidelines for implementing code consistent with the VOTCA and cpp style and standard.<ul>
+<li><a href="#Reporting-Bugs">Reporting Bugs</a></li>
+<li><a href="#CPP-Resources">CPP Resoures</a></li>
+<li><a href="#CPP-Tips">CPP Tips</a></li>
+<li><a href="#Testing">Testing</a></li>
+<li><a href="#CPP-Codeing-Style-Guide">CPP Codeing Style Guide</a></li>
+<li><a href="#CPP-Comment-Guide">CPP Comment Guide</a></li>
+</ul>
+</li>
 </ul>
 <h2>Reporting Bugs</h2>
 <p>To report a bug please create an issue on the appropriate github repo. Please be sure to provide as much information as possible such as:</p>
@@ -66,11 +74,73 @@ $(function() {
 <li><a href="https://github.com/votca/xtp/issues">xtp</a></li>
 <li><a href="https://github.com/votca/votca/issues">votca</a></li>
 </ul>
-<h2>C++ Resources</h2>
-<p>A good starting point is to take a look at the c++ standard. Though the code has not always consistently followed the c++ standard we now make an effort to really enforce it and follow best practices.</p>
+<h2>CPP Resources</h2>
+<p>A good starting point is to take a look at the cpp standard. Though the code has not always consistently followed the cpp standard we now make an effort to really enforce it and follow best practices.</p>
 <ul>
 <li><a href="https://www.gitbook.com/book/lefticus/cpp-best-practices/details">Best Practices1</a></li>
 <li><a href="https://google.github.io/styleguide/cppguide.html">Best Practices2</a></li>
+</ul>
+<h2>CPP Tips</h2>
+<p>Here are a few general tips that should be followed:</p>
+<h3>Files</h3>
+<ul>
+<li>each class goes into a separate file</li>
+<li>filename is name of class in lowercase</li>
+</ul>
+<h3>Header Files</h3>
+<ul>
+<li>One class, one header.</li>
+<li>When creating header gruards use the following form, where "VOTCA-REPO-NAME" is replaced by whichever repo the header is in tools/csg/ctp/xtp, and where "CLASS-NAME" is replaced by the name of the class described in the header file: <div class="fragment"><div class="line">#ifndef _VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div><div class="line">#define _VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div><div class="line">:</div><div class="line">Code</div><div class="line">:</div><div class="line">#endif // _VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div></div><!-- fragment --></li>
+<li>Never use the "using namespace" in a header file.</li>
+<li>Avoid using includes in header files. If possible forward declare a class instead.</li>
+</ul>
+<h3>Braces</h3>
+<ul>
+<li>in functions/classes, the { is in the next line</li>
+<li>for for loops, if, ..., the { is n the same line as if,for</li>
+</ul>
+<h3>Classes</h3>
+<ul>
+<li>normally begin in upper case</li>
+<li>exceptions: classes which define "small" types (e.g. <code>vec</code>, <code>matrix</code>)</li>
+<li>order in class definition:<ul>
+<li>first <code>public</code> all functions</li>
+<li>then <code>private</code>/<code>protected</code> all member variables</li>
+<li>then <code>private</code>/<code>protected</code> member functions</li>
+<li>no rule where to define a <code>public typedef</code> in the class</li>
+</ul>
+</li>
+<li>all member variables are <code>private</code>/<code>public</code> (again exception e.g. <code>vec</code>, <code>matrix</code>)</li>
+<li>maximum one-line-function implementation in class declaration, everything else moves to separate file or inline at end of header.</li>
+</ul>
+<h3>Naming in Classes</h3>
+<ul>
+<li>all member variables are in lower case and end with <code>_</code></li>
+<li>all functions start with upper case, no <code>_</code> in names</li>
+<li>exception: <code>get</code>/<code>set</code> functions</li>
+</ul>
+<h3>get/set Functions</h3>
+<ul>
+<li>get/set functions start with a lowercase set/get (these are only functions which directly set/get a private member variable)</li>
+<li>get must return a constant reference and keep the <code>class const</code>: <code>const int &amp;getId() const;</code></li>
+<li>set only sets the member, e.g. <code>void setId(const int &amp;id) {_id=id;}</code></li>
+</ul>
+<h3>Functions</h3>
+<ul>
+<li>Make functions short.</li>
+<li>Functions should not have more than one use. So use boolean arguments sparingly.</li>
+</ul>
+<h3>General</h3>
+<ul>
+<li>Do not comment out code, if you do not use it delete it.</li>
+<li>Variables should have clear and explicit names.</li>
+<li>Do not duplicate code.</li>
+<li>Functions should have no more than 3 arguments. Otherwise create a class.</li>
+<li>XYZ positions should be described using tools::vec, 3x3 matrices tools::matrix, or classes and or functions in the eigen library.</li>
+<li>Readability is more important the elegant design.</li>
+<li>Leave the code better than you found it.</li>
+<li>Use pointers sparingly and especially try not to pass them around objects. Prefer references.</li>
+<li>Do not write code, which you may use in the future. Only write code you will use now. Write code, you need later, later. This avoids cluttering the codebase with unused "at some point we will need this functions".</li>
 </ul>
 <h2>Testing</h2>
 <p>Each repository contains a src folder. Within the src folder exists a library folder: libtools, libcsg etc... and a tools folder. A tests folder should also exist in the src folder. If it does not you should create one.</p>
