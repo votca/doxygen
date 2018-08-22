@@ -49,6 +49,7 @@ $(function() {
 <li><a href="#cpp-resources">CPP Resoures</a></li>
 <li><a href="#cpp-tips">CPP Tips</a></li>
 <li><a href="#testing">Testing</a></li>
+<li><a href="#failed-travis-builds">Failed Travis Builds</a></li>
 <li><a href="#cpp-codeing-style-guide">CPP Codeing Style Guide</a></li>
 <li><a href="#cpp-comment-guide">CPP Comment Guide</a></li>
 <li><a href="#updating-git-submodules">Updating Git Submodules</a></li>
@@ -160,6 +161,10 @@ $(function() {
 <li>To compile and test the code create a folder tools/build and run the following commands:</li>
 </ol>
 <div class="fragment"><div class="line">cmake -DENABLE_TESTING=ON ../</div><div class="line">make </div><div class="line">make test</div></div><!-- fragment --><p>Ensure you have an up to date version of cmake or use cmake3</p>
+<h2>Failed Travis Builds</h2>
+<p>There may come a time where one of the docker builds fails. It may be the case that the error message is clear and it can be reproduced on your host os. However, in the case that the error is specific to the enviorment used in the build the local enviornment can be simulated using a docker container.</p>
+<p>Before you can use this approach docker must be installed on your host OS. Begin by running a docker image the default is:</p>
+<div class="fragment"><div class="line">docker run -it votca/buildenv:fedora /bin/bash</div></div><!-- fragment --><p>This will run an interative docker container which you can interact with in bash . The next commands will need to be adjusted to whatever local environment you need to reproduce to test the error in the travis build.</p>
 <h2>CPP Codeing Style Guide</h2>
 <p>VOTCA uses the clang formatter to automatically ensure consistent style. The style follows the google style fomatting rules. Have a look at <code>.clang-format file</code> in the <a href="https://github.com/votca/votca/blob/master/.clang-format">main votca repository</a> for details.</p>
 <p>To run the clang-format function on file.cc <br />
