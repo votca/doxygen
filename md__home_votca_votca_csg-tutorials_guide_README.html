@@ -46,13 +46,14 @@ $(function() {
 <div class="textblock"><p>(Based on the 2011-2017 CECAM meetings)</p>
 <p>Please pick topics you are most interested in, since finishing the tutorial might take longer than one afternoon.</p>
 <h1>Installation</h1>
-<h2>Building executables</h2>
-<p>The simplest way is to use the build script which can be downloaded from github project</p>
-<div class="fragment"><div class="line">prefix=~/votca # installation folder (executables will be in the $prefix/bin)</div><div class="line">git clone --recursive https://github.com/votca/votca.git</div><div class="line">cd votca</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -DCMAKE_INSTALL_PREFIX=${prefix} ..</div><div class="line">make -j5</div><div class="line">make install</div></div><!-- fragment --><p>The following option might be needed to disable sqlite3 libraries <code>-DWITH_SQLITE3=OFF</code>. To build a gromacs version use</p>
-<div class="fragment"><div class="line">cmake -DBUILD_OWN_GROMACS=ON ..</div><div class="line">make -j5</div><div class="line">make innstall</div></div><!-- fragment --><h2>Using the tutorials</h2>
+<h2>Building VOTCA</h2>
+<p>The simplest way is to use CMake:</p>
+<div class="fragment"><div class="line">prefix=~/votca</div><div class="line">version=master # or &#39;stable&#39; or &#39;v1.4.1&#39;</div><div class="line">git clone -b ${version} --recursive https://github.com/votca/votca.git</div><div class="line">cd votca</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake -DCMAKE_INSTALL_PREFIX=${prefix} ..</div><div class="line">make -j5</div><div class="line">make install</div></div><!-- fragment --><p>The following option might be needed to disable sqlite3 libraries <code>-DWITH_SQLITE3=OFF</code>.</p>
+<p>To build a gromacs version for VOTCA use</p>
+<div class="fragment"><div class="line">cmake -DBUILD_OWN_GROMACS=ON ..</div><div class="line">make -j5</div><div class="line">make install</div></div><!-- fragment --><h2>Using the tutorials</h2>
 <p>All the tutorials are in the installation folder, i.e. <code>${prefix}/share/votca/csg-tutorials</code>.</p>
 <h2>Downloading the manual</h2>
-<p>The corresponding version of the manual can be found on <a href="https://github.com/votca/csg-manual/releases">github</a> (development version <a href="http://doc.votca.org/manual.pdf">here</a>), also have a look at the online reference: <a href="http://www.votca.org/Documentation/coarse-graining">http://www.votca.org/Documentation/coarse-graining</a></p>
+<p>The corresponding version of the manual can be found on <a href="https://github.com/votca/csg-manual/releases">github</a> (development version <a href="http://doc.votca.org/manual.pdf">here</a>).</p>
 <h1>Running GROMACS</h1>
 <p>The tutorial uses GROMACS, a molecular dynamics (MD) package, for generating the reference data. If you are not familiar with GROMACS, please read the following section for a brief overview on how to set up and run MD simulations using GROMACS. You can find all the GROMACS input files in the <code>atomistic</code> folder of each tutorial, e.g., for a box of atomistic water see <code>csg-tutorials/spce/atomistic/</code>.</p>
 <h2>Input files</h2>
