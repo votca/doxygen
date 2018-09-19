@@ -53,38 +53,44 @@ $(function() {
 <div class="textblock"><code>#include &lt;<a class="el" href="qmcalculator_8h_source.html">votca/ctp/qmcalculator.h</a>&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="tokenizer_8h_source.html">votca/tools/tokenizer.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="qmstate_8h_source.html">votca/xtp/qmstate.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="histogramnew_8h_source.html">votca/tools/histogramnew.h</a>&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;numeric&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for eanalyze.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="xtp_2src_2libxtp_2calculators_2eanalyze_8h__incl.png" border="0" usemap="#_2home_2votca_2votca_2xtp_2src_2libxtp_2calculators_2eanalyze_8h" alt=""/></div>
 <map name="_2home_2votca_2votca_2xtp_2src_2libxtp_2calculators_2eanalyze_8h" id="_2home_2votca_2votca_2xtp_2src_2libxtp_2calculators_2eanalyze_8h">
-<area shape="rect" id="node2" href="qmcalculator_8h.html" title="votca/ctp/qmcalculator.h" alt="" coords="1581,109,1764,136"/>
-<area shape="rect" id="node19" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="1381,796,1476,823"/>
-<area shape="rect" id="node3" href="calculator_8h.html" title="votca/tools/calculator.h" alt="" coords="1586,483,1759,509"/>
-<area shape="rect" id="node26" href="ctp_2include_2votca_2ctp_2topology_8h.html" title="votca/ctp/topology.h" alt="" coords="804,184,957,211"/>
-<area shape="rect" id="node4" href="tools_2include_2votca_2tools_2property_8h.html" title="votca/tools/property.h" alt="" coords="1560,632,1723,659"/>
-<area shape="rect" id="node22" href="propertyiomanipulator_8h.html" title="votca/tools/propertyiomanipulator.h" alt="" coords="1668,557,1922,584"/>
-<area shape="rect" id="node24" href="globals_8h.html" title="votca/tools/globals.h" alt="" coords="1354,557,1511,584"/>
-<area shape="rect" id="node10" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="1293,714,1404,741"/>
-<area shape="rect" id="node15" href="vec_8h.html" title="vec.h" alt="" coords="858,714,916,741"/>
-<area shape="rect" id="node17" href="floatingpointcomparison_8h.html" title="votca/tools/floatingpointcomparison.h" alt="" coords="270,796,538,823"/>
-<area shape="rect" id="node23" href="colors_8h.html" title="colors.h" alt="" coords="1758,632,1832,659"/>
-<area shape="rect" id="node27" href="boundarycondition_8h.html" title="votca/csg/boundarycondition.h" alt="" coords="459,333,680,360"/>
-<area shape="rect" id="node32" href="openbox_8h.html" title="votca/csg/openbox.h" alt="" coords="686,259,842,285"/>
-<area shape="rect" id="node33" href="orthorhombicbox_8h.html" title="votca/csg/orthorhombicbox.h" alt="" coords="203,259,414,285"/>
-<area shape="rect" id="node34" href="triclinicbox_8h.html" title="votca/csg/triclinicbox.h" alt="" coords="438,259,610,285"/>
-<area shape="rect" id="node35" href="polarsite_8h.html" title="votca/ctp/polarsite.h" alt="" coords="631,557,786,584"/>
-<area shape="rect" id="node36" href="ctp_2include_2votca_2ctp_2apolarsite_8h.html" title="votca/ctp/apolarsite.h" alt="" coords="810,557,972,584"/>
-<area shape="rect" id="node39" href="ctp_2include_2votca_2ctp_2atom_8h.html" title="votca/ctp/atom.h" alt="" coords="356,557,488,584"/>
-<area shape="rect" id="node41" href="ctp_2include_2votca_2ctp_2fragment_8h.html" title="votca/ctp/fragment.h" alt="" coords="864,483,1022,509"/>
-<area shape="rect" id="node42" href="ctp_2include_2votca_2ctp_2segmenttype_8h.html" title="votca/ctp/segmenttype.h" alt="" coords="102,557,286,584"/>
-<area shape="rect" id="node43" href="ctp_2include_2votca_2ctp_2segment_8h.html" title="votca/ctp/segment.h" alt="" coords="727,408,882,435"/>
-<area shape="rect" id="node44" href="ctp_2include_2votca_2ctp_2molecule_8h.html" title="votca/ctp/molecule.h" alt="" coords="214,333,373,360"/>
-<area shape="rect" id="node45" href="ctp_2include_2votca_2ctp_2qmpair_8h.html" title="votca/ctp/qmpair.h" alt="" coords="1086,333,1229,360"/>
-<area shape="rect" id="node47" href="ctp_2include_2votca_2ctp_2qmnblist_8h.html" title="votca/ctp/qmnblist.h" alt="" coords="968,259,1123,285"/>
-<area shape="rect" id="node28" href="matrix_8h.html" title="votca/tools/matrix.h" alt="" coords="493,632,646,659"/>
-<area shape="rect" id="node31" href="types_8h.html" title="types.h" alt="" coords="534,714,605,741"/>
-<area shape="rect" id="node48" href="pairlist_8h.html" title="votca/csg/pairlist.h" alt="" coords="1073,632,1218,659"/>
+<area shape="rect" id="node2" href="qmcalculator_8h.html" title="votca/ctp/qmcalculator.h" alt="" coords="1189,109,1372,136"/>
+<area shape="rect" id="node19" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="1639,796,1733,823"/>
+<area shape="rect" id="node46" href="qmstate_8h.html" title="votca/xtp/qmstate.h" alt="" coords="1847,184,2000,211"/>
+<area shape="rect" id="node47" href="histogramnew_8h.html" title="votca/tools/histogramnew.h" alt="" coords="1666,632,1869,659"/>
+<area shape="rect" id="node3" href="calculator_8h.html" title="votca/tools/calculator.h" alt="" coords="177,483,350,509"/>
+<area shape="rect" id="node25" href="ctp_2include_2votca_2ctp_2topology_8h.html" title="votca/ctp/topology.h" alt="" coords="1204,184,1357,211"/>
+<area shape="rect" id="node4" href="tools_2include_2votca_2tools_2property_8h.html" title="votca/tools/property.h" alt="" coords="457,632,619,659"/>
+<area shape="rect" id="node22" href="propertyiomanipulator_8h.html" title="votca/tools/propertyiomanipulator.h" alt="" coords="77,557,332,584"/>
+<area shape="rect" id="node24" href="globals_8h.html" title="votca/tools/globals.h" alt="" coords="81,796,238,823"/>
+<area shape="rect" id="node10" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="43,714,153,741"/>
+<area shape="rect" id="node15" href="vec_8h.html" title="vec.h" alt="" coords="1121,714,1179,741"/>
+<area shape="rect" id="node17" href="tools_2include_2votca_2tools_2eigen_8h.html" title="votca/tools/eigen.h" alt="" coords="1313,796,1459,823"/>
+<area shape="rect" id="node23" href="colors_8h.html" title="colors.h" alt="" coords="80,632,153,659"/>
+<area shape="rect" id="node26" href="boundarycondition_8h.html" title="votca/csg/boundarycondition.h" alt="" coords="987,333,1209,360"/>
+<area shape="rect" id="node29" href="openbox_8h.html" title="votca/csg/openbox.h" alt="" coords="1260,259,1416,285"/>
+<area shape="rect" id="node30" href="orthorhombicbox_8h.html" title="votca/csg/orthorhombicbox.h" alt="" coords="777,259,987,285"/>
+<area shape="rect" id="node31" href="triclinicbox_8h.html" title="votca/csg/triclinicbox.h" alt="" coords="1012,259,1184,285"/>
+<area shape="rect" id="node32" href="polarsite_8h.html" title="votca/ctp/polarsite.h" alt="" coords="1121,557,1275,584"/>
+<area shape="rect" id="node33" href="ctp_2include_2votca_2ctp_2apolarsite_8h.html" title="votca/ctp/apolarsite.h" alt="" coords="1299,557,1462,584"/>
+<area shape="rect" id="node36" href="ctp_2include_2votca_2ctp_2atom_8h.html" title="votca/ctp/atom.h" alt="" coords="867,557,999,584"/>
+<area shape="rect" id="node38" href="ctp_2include_2votca_2ctp_2fragment_8h.html" title="votca/ctp/fragment.h" alt="" coords="1399,483,1557,509"/>
+<area shape="rect" id="node39" href="ctp_2include_2votca_2ctp_2segmenttype_8h.html" title="votca/ctp/segmenttype.h" alt="" coords="1537,557,1721,584"/>
+<area shape="rect" id="node40" href="ctp_2include_2votca_2ctp_2segment_8h.html" title="votca/ctp/segment.h" alt="" coords="1286,408,1441,435"/>
+<area shape="rect" id="node41" href="ctp_2include_2votca_2ctp_2molecule_8h.html" title="votca/ctp/molecule.h" alt="" coords="1340,333,1499,360"/>
+<area shape="rect" id="node42" href="ctp_2include_2votca_2ctp_2qmpair_8h.html" title="votca/ctp/qmpair.h" alt="" coords="745,333,888,360"/>
+<area shape="rect" id="node44" href="ctp_2include_2votca_2ctp_2qmnblist_8h.html" title="votca/ctp/qmnblist.h" alt="" coords="497,259,651,285"/>
+<area shape="rect" id="node27" href="matrix_8h.html" title="votca/tools/matrix.h" alt="" coords="996,632,1149,659"/>
+<area shape="rect" id="node28" href="types_8h.html" title="types.h" alt="" coords="1203,714,1273,741"/>
+<area shape="rect" id="node49" href="table_8h.html" title="table.h" alt="" coords="1635,714,1702,741"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
