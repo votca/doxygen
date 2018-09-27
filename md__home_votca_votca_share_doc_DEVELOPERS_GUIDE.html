@@ -89,10 +89,15 @@ $(function() {
 <li>each class goes into a separate file</li>
 <li>filename is name of class in lowercase</li>
 </ul>
+<h3>Includes</h3>
+<ul>
+<li>When including a header file from within the same repo that you are working use the relative includes. This consists of using quotation marks i.e. <div class="fragment"><div class="line">#include &quot;molecule.h&quot;</div></div><!-- fragment --></li>
+<li>When including from another repository, for instance you are working in the csg repostory and want to include a file from the tools repo use the anglular brackets i.e. <div class="fragment"><div class="line">#include &lt;votca/tools/table.h&gt;</div></div><!-- fragment --></li>
+</ul>
 <h3>Header Files</h3>
 <ul>
 <li>One class, one header.</li>
-<li>When creating header gruards use the following form, where "VOTCA-REPO-NAME" is replaced by whichever repo the header is in tools/csg/ctp/xtp, and where "CLASS-NAME" is replaced by the name of the class described in the header file: <div class="fragment"><div class="line">#ifndef _VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div><div class="line">#define _VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div><div class="line">:</div><div class="line">Code</div><div class="line">:</div><div class="line">#endif // _VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div></div><!-- fragment --></li>
+<li>When creating header gruards use the following form, where "VOTCA-REPO-NAME" is replaced by whichever repo the header is in tools/csg/ctp/xtp, and where "CLASS-NAME" is replaced by the name of the class described in the header file: <div class="fragment"><div class="line">#ifndef VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div><div class="line">#define VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div><div class="line">:</div><div class="line">Code</div><div class="line">:</div><div class="line">#endif // VOTCA_VOTCA-REPO-NAME_CLASS-NAME_H</div></div><!-- fragment --></li>
 <li>Never use the "using namespace" in a header file.</li>
 <li>Avoid using includes in header files. If possible forward declare a class instead.</li>
 </ul>
