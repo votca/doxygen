@@ -97,10 +97,6 @@ Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ae5e8d1856437ae1f1ef0be7ec872bbbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#ae5e8d1856437ae1f1ef0be7ec872bbbf">UpdateHessian</a> (const Eigen::VectorXd &amp;delta_pos, const Eigen::VectorXd &amp;delta_gradient)</td></tr>
 <tr class="separator:ae5e8d1856437ae1f1ef0be7ec872bbbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a7a39c57405382631c8a55891f2ba69"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#a6a7a39c57405382631c8a55891f2ba69">CalculateInitialStep</a> (const Eigen::MatrixXd &amp;gradient) const</td></tr>
-<tr class="separator:a6a7a39c57405382631c8a55891f2ba69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af68703a6f9784acebaf0edbbe1812e9f"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#af68703a6f9784acebaf0edbbe1812e9f">CalculateRegularizedStep</a> (const Eigen::VectorXd &amp;delta_pos, const Eigen::VectorXd &amp;gradient) const</td></tr>
-<tr class="separator:af68703a6f9784acebaf0edbbe1812e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e774da0cc810b24babd7c9a92b21e06"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#a1e774da0cc810b24babd7c9a92b21e06">QuadraticEnergy</a> (const Eigen::VectorXd &amp;gradient, const Eigen::VectorXd &amp;delta_pos) const</td></tr>
 <tr class="separator:a1e774da0cc810b24babd7c9a92b21e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5110c65267bcfdb56423981718a5b4e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#a5110c65267bcfdb56423981718a5b4e5">AcceptRejectStep</a> (const Eigen::VectorXd &amp;delta_pos, const Eigen::VectorXd &amp;gradient, double energy_delta)</td></tr>
@@ -128,7 +124,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af5cbabcdbf5c56537b7b3b7c806ed5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a804c90a39d528ef4473a786474a46e39"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#a804c90a39d528ef4473a786474a46e39">_trust_radius</a> =0.1</td></tr>
 <tr class="separator:a804c90a39d528ef4473a786474a46e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20651300dd1261534636dcf3619fbf8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#a20651300dd1261534636dcf3619fbf8a">_max_iteration</a> =50</td></tr>
+<tr class="memitem:a20651300dd1261534636dcf3619fbf8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#a20651300dd1261534636dcf3619fbf8a">_max_iteration</a> =200</td></tr>
 <tr class="separator:a20651300dd1261534636dcf3619fbf8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a073d43db8d336ba81ee3f6d25a8101e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvotca_1_1ctp_1_1Logger.html">ctp::Logger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvotca_1_1xtp_1_1BFGSTRM.html#a073d43db8d336ba81ee3f6d25a8101e3">_pLog</a></td></tr>
 <tr class="separator:a073d43db8d336ba81ee3f6d25a8101e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,73 +202,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00077">77</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
-
-</div>
-</div>
-<a id="a6a7a39c57405382631c8a55891f2ba69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a7a39c57405382631c8a55891f2ba69">&#9670;&nbsp;</a></span>CalculateInitialStep()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Eigen::VectorXd votca::xtp::BFGSTRM::CalculateInitialStep </td>
-          <td>(</td>
-          <td class="paramtype">const Eigen::MatrixXd &amp;&#160;</td>
-          <td class="paramname"><em>gradient</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00120">120</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
-
-</div>
-</div>
-<a id="af68703a6f9784acebaf0edbbe1812e9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af68703a6f9784acebaf0edbbe1812e9f">&#9670;&nbsp;</a></span>CalculateRegularizedStep()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Eigen::VectorXd votca::xtp::BFGSTRM::CalculateRegularizedStep </td>
-          <td>(</td>
-          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>delta_pos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>gradient</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00125">125</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00073">73</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
 
 </div>
 </div>
@@ -427,7 +357,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00026">26</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00027">27</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
 
 </div>
 </div>
@@ -465,7 +395,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00149">149</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00116">116</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
 
 </div>
 </div>
@@ -670,7 +600,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00109">109</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8cc_source.html#l00105">105</a> of file <a class="el" href="bfgs-trm_8cc_source.html">bfgs-trm.cc</a>.</p>
 
 </div>
 </div>
@@ -695,7 +625,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00081">81</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00078">78</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -719,7 +649,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00086">86</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00083">83</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -767,7 +697,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00076">76</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00073">73</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -791,7 +721,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00083">83</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00080">80</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -815,7 +745,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00079">79</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00076">76</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -839,7 +769,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00078">78</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00075">75</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -853,7 +783,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int votca::xtp::BFGSTRM::_max_iteration =50</td>
+          <td class="memname">int votca::xtp::BFGSTRM::_max_iteration =200</td>
         </tr>
       </table>
   </td>
@@ -863,7 +793,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00090">90</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00087">87</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -887,7 +817,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00084">84</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00081">81</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -911,7 +841,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00092">92</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00089">89</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -935,7 +865,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00077">77</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00074">74</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
@@ -959,7 +889,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00088">88</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bfgs-trm_8h_source.html#l00085">85</a> of file <a class="el" href="bfgs-trm_8h_source.html">bfgs-trm.h</a>.</p>
 
 </div>
 </div>
