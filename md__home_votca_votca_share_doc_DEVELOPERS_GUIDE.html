@@ -106,6 +106,10 @@ $(function() {
 <li>in functions/classes, the { is in the next line</li>
 <li>for for loops, if, ..., the { is n the same line as if,for</li>
 </ul>
+<h3>Auto</h3>
+<ul>
+<li>avoid using auto unless the type is very long, the reason being auto obscures the underlying type and can make it difficult to discern what a variable is meant to be used for</li>
+</ul>
 <h3>Classes</h3>
 <ul>
 <li>normally begin in upper case</li>
@@ -151,6 +155,7 @@ $(function() {
 <li>Do not write code, which you may use in the future. Only write code you will use now. Write code, you need later, later. This avoids cluttering the codebase with unused "at some point we will need this functions".</li>
 </ul>
 <h2>Testing</h2>
+<h3>Unit Testing</h3>
 <p>Each repository contains a src folder. Within the src folder exists a library folder: libtools, libcsg etc... and a tools folder. A tests folder should also exist in the src folder. If it does not you should create one.</p>
 <p>For every new object and algorithm created there should exist a test. We use the Boost libraries testing framework. Good documentation can be found here:</p>
 <ul>
@@ -166,6 +171,44 @@ $(function() {
 <li>To compile and test the code create a folder tools/build and run the following commands:</li>
 </ol>
 <div class="fragment"><div class="line">cmake -DENABLE_TESTING=ON ../</div><div class="line">make </div><div class="line">make test</div></div><!-- fragment --><p>Ensure you have an up to date version of cmake or use cmake3</p>
+<h3>Testing Across Repos</h3>
+<p>There may come a case where changes have to be committed across more than one repo at the same time. Attempting to merge one repo at a time will cause the continuous integration to fail as changes in the other repos will not be pulled in. To do this correctly the following steps should be taken.</p>
+<p>Assuming you are in the votca/votca repository: </p><pre class="fragment">git checkout &lt;base_branch&gt;
+git submodule update
+git checkout -b &lt;some_descriptive_branch_name&gt;
+git submodule foreach git remote update
+git -C &lt;module1&gt; checkout &lt;sha_or_branch_of_module1_to_test&gt;
+git -C &lt;module2&gt; checkout &lt;sha_or_branch_of_module2_to_test&gt;
+git add &lt;module1&gt; &lt;module2&gt;
+git commit -m "test &lt;module1&gt; with &lt;module2&gt;"
+git push origin &lt;some_descriptive_branch_name&gt;
+</pre><ol type="1">
+<li><p class="startli">Here <code>base_branch</code> will typically be the master or stable branch.</p>
+<p class="startli">git checkout &lt;base_branch&gt;</p>
+</li>
+<li><p class="startli">The submodules are updated to be sure they have incorporated the latest changes in your local repository</p>
+<p class="startli">git submodule update</p>
+</li>
+<li><p class="startli">Create a branch with a descriptive name</p>
+<p class="startli">git checkout -b &lt;some_descriptive_name&gt;</p>
+</li>
+<li><p class="startli">Update each of the submodules, by pulling in any remote changes to the submodules.</p>
+<p class="startli">git submodule foreach git remote update</p>
+</li>
+<li><p class="startli">'-C' changes directory to the submodule directory and then checks out the appropriate commit</p>
+<p class="startli">git -C &lt;module1&gt; checkout &lt;sha_or_branch_of_module1_to_test&gt; <br />
+ git -C &lt;module2&gt; checkout &lt;sha_or_branch_of_module2_to_test&gt; <br />
+</p>
+</li>
+<li><p class="startli">The changes are then added and commited</p>
+<p class="startli">git add &lt;module1&gt; &lt;module2&gt; <br />
+ git commit -m "test &lt;module1&gt; with &lt;module2&gt;"</p>
+</li>
+<li><p class="startli">Finally, they are pushed to the remote branch</p>
+<p class="startli">git push origin &lt;some_descriptive_branch_name&gt;</p>
+</li>
+</ol>
+<p>A pull request is then made for the votca/votca repo using the branch name. Once the branch passes all tests it can be merged. Pull requests for each of repos changed can then be made. They will now compile against the updated votca/votca repo. Once they pass their tests they can be merged. If a pull request was already made the travis tests may simply need to be restarted.</p>
 <h2>Failed Travis Builds</h2>
 <p>There may come a time where one of the docker builds fails. It may be the case that the error message is clear and it can be reproduced on your host os. However, in the case that the error is specific to the enviorment used in the build the local enviornment can be simulated using a docker container.</p>
 <p>Before you can use this approach docker must be installed on your host OS. Begin by running a docker image the default is:</p>
@@ -175,6 +218,9 @@ $(function() {
 <p>To run the clang-format function on file.cc <br />
  </p><div class="fragment"><div class="line">clang-format -i -style=file file.cc</div></div><!-- fragment --><p>'-i' ensures it will make change to file.cc, omitting the '-i' will display the changes without implementing them. '-style=file' ensures the format is read from the .clang-format file otherwise it will use a default style guide.</p>
 <p>By default tabs should not be used to indent, avoid inserting '', it is preferable that spaces be used instead.</p>
+<p>Clang formatting can be automated at every commit using the script found in the <a href="https://github.com/votca/dev-tools">dev-tools</a> repository. To use it copy the file <code>pre-commit</code> to your local .git subfolder to the hooks folder. E.g. </p><pre class="fragment">chmod 777 dev-tools/pre-commit  
+cp dev-tools/pre-commit tools/.git/hooks/
+</pre><p>The above will make the script executable and then copy it to the local .git/hooks directory in the tools repository. The script not only updates the file format of every file staged during a commit it will also update the license date.</p>
 <h2>CPP Comment Guide</h2>
 <p>It is preferential that the following guidelines be followed when adding comments to code:</p>
 <ol type="1">
