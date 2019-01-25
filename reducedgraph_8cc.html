@@ -50,7 +50,8 @@ $(function() {
 <div class="title">reducedgraph.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;cassert&gt;</code><br />
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;<a class="el" href="tools_2include_2votca_2tools_2edge_8h_source.html">votca/tools/edge.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="reducedgraph_8h_source.html">votca/tools/reducedgraph.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -58,12 +59,12 @@ Include dependency graph for reducedgraph.cc:</div>
 <div class="dyncontent">
 <div class="center"><img src="reducedgraph_8cc__incl.png" border="0" usemap="#_2home_2votca_2votca_2tools_2src_2libtools_2reducedgraph_8cc" alt=""/></div>
 <map name="_2home_2votca_2votca_2tools_2src_2libtools_2reducedgraph_8cc" id="_2home_2votca_2votca_2tools_2src_2libtools_2reducedgraph_8cc">
-<area shape="rect" id="node3" href="tools_2include_2votca_2tools_2edge_8h.html" title="votca/tools/edge.h" alt="" coords="603,319,746,345"/>
-<area shape="rect" id="node8" href="reducedgraph_8h.html" title="votca/tools/reducedgraph.h" alt="" coords="582,95,780,121"/>
-<area shape="rect" id="node9" href="tools_2include_2votca_2tools_2graph_8h.html" title="votca/tools/graph.h" alt="" coords="272,169,418,196"/>
-<area shape="rect" id="node16" href="reducededge_8h.html" title="votca/tools/reducededge.h" alt="" coords="585,169,780,196"/>
-<area shape="rect" id="node12" href="edgecontainer_8h.html" title="votca/tools/edgecontainer.h" alt="" coords="410,244,613,271"/>
-<area shape="rect" id="node15" href="graphnode_8h.html" title="votca/tools/graphnode.h" alt="" coords="93,244,272,271"/>
+<area shape="rect" id="node4" href="tools_2include_2votca_2tools_2edge_8h.html" title="votca/tools/edge.h" alt="" coords="552,319,695,345"/>
+<area shape="rect" id="node9" href="reducedgraph_8h.html" title="votca/tools/reducedgraph.h" alt="" coords="582,95,780,121"/>
+<area shape="rect" id="node10" href="tools_2include_2votca_2tools_2graph_8h.html" title="votca/tools/graph.h" alt="" coords="272,169,418,196"/>
+<area shape="rect" id="node17" href="reducededge_8h.html" title="votca/tools/reducededge.h" alt="" coords="585,169,780,196"/>
+<area shape="rect" id="node13" href="edgecontainer_8h.html" title="votca/tools/edgecontainer.h" alt="" coords="410,244,613,271"/>
+<area shape="rect" id="node16" href="graphnode_8h.html" title="votca/tools/graphnode.h" alt="" coords="93,244,272,271"/>
 </map>
 </div>
 </div>
@@ -81,8 +82,18 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ab69db647aa2031bd5d874dc1fe178169"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#ab69db647aa2031bd5d874dc1fe178169">votca::tools::compareChainWithChains_</a> (const vector&lt; int &gt; &amp;chain, const vector&lt; vector&lt; int &gt;&gt; &amp;chains)</td></tr>
 <tr class="separator:ab69db647aa2031bd5d874dc1fe178169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a614d01b40e664eb5a1bef4b8de00e7de"><td class="memItemLeft" align="right" valign="top">set&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#a614d01b40e664eb5a1bef4b8de00e7de">votca::tools::getVertexJunctions_</a> (const vector&lt; ReducedEdge &gt; &amp;reduced_edges)</td></tr>
+<tr class="separator:a614d01b40e664eb5a1bef4b8de00e7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea31f2ed20e77c4ba3914e75393443e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#aea31f2ed20e77c4ba3914e75393443e4">votca::tools::addEdgeIfNotLoop_</a> (vector&lt; Edge &gt; &amp;edges, const ReducedEdge reduced_edge, unordered_map&lt; Edge, vector&lt; vector&lt; int &gt;&gt;&gt; &amp;expanded_edges)</td></tr>
+<tr class="separator:aea31f2ed20e77c4ba3914e75393443e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347a987bb91200c2dc46e7f9d7272ad4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#a347a987bb91200c2dc46e7f9d7272ad4">votca::tools::orderChainAfterInitialVertex_</a> (vector&lt; int &gt; &amp;chain)</td></tr>
+<tr class="separator:a347a987bb91200c2dc46e7f9d7272ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a138488c76551d5aa091dc7b9d43eaabe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#a138488c76551d5aa091dc7b9d43eaabe">votca::tools::reordereAndStoreChainIfDoesNotExist_</a> (vector&lt; Edge &gt; &amp;edges, unordered_map&lt; Edge, vector&lt; vector&lt; int &gt;&gt;&gt; &amp;expanded_edges, vector&lt; int &gt; chain, int vertex, size_t &amp;chain_index)</td></tr>
+<tr class="separator:a138488c76551d5aa091dc7b9d43eaabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0eac8de869015cbe02f9ee48299cb6b"><td class="memItemLeft" align="right" valign="top">set&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#ab0eac8de869015cbe02f9ee48299cb6b">votca::tools::getAllVertices_</a> (const std::vector&lt; ReducedEdge &gt; &amp;reduced_edges)</td></tr>
 <tr class="separator:ab0eac8de869015cbe02f9ee48299cb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac00bb079d70d96d5b13982a170c43cb9"><td class="memItemLeft" align="right" valign="top">set&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#ac00bb079d70d96d5b13982a170c43cb9">votca::tools::getAllConnectedVertices_</a> (const unordered_map&lt; Edge, vector&lt; vector&lt; int &gt;&gt;&gt; &amp;expanded_edges)</td></tr>
+<tr class="separator:ac00bb079d70d96d5b13982a170c43cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66625b523c4e942021b6b3aa9433740c"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html#a66625b523c4e942021b6b3aa9433740c">votca::tools::operator&lt;&lt;</a> (ostream &amp;os, const ReducedGraph graph)</td></tr>
 <tr class="separator:a66625b523c4e942021b6b3aa9433740c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
