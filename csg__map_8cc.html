@@ -50,48 +50,50 @@ $(function() {
 <div class="title">csg_map.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;math.h&gt;</code><br />
-<code>#include &lt;boost/tokenizer.hpp&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
+<div class="textblock"><code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;<a class="el" href="csgapplication_8h_source.html">votca/csg/csgapplication.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="csg_2include_2votca_2csg_2topology_8h_source.html">votca/csg/topology.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="trajectorywriter_8h_source.html">votca/csg/trajectorywriter.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for csg_map.cc:</div>
 <div class="dyncontent">
 <div class="center"><img src="csg__map_8cc__incl.png" border="0" usemap="#_2home_2votca_2votca_2csg_2src_2tools_2csg__map_8cc" alt=""/></div>
 <map name="_2home_2votca_2votca_2csg_2src_2tools_2csg__map_8cc" id="_2home_2votca_2votca_2csg_2src_2tools_2csg__map_8cc">
-<area shape="rect" id="node6" href="csgapplication_8h.html" title="votca/csg/csgapplication.h" alt="" coords="1122,95,1317,121"/>
-<area shape="rect" id="node50" href="trajectorywriter_8h.html" title="votca/csg/trajectorywriter.h" alt="" coords="2077,169,2277,196"/>
-<area shape="rect" id="node7" href="application_8h.html" title="votca/tools/application.h" alt="" coords="1408,169,1591,196"/>
-<area shape="rect" id="node24" href="csg_2include_2votca_2csg_2topology_8h.html" title="topology.h" alt="" coords="965,244,1055,271"/>
-<area shape="rect" id="node41" href="topologymap_8h.html" title="topologymap.h" alt="" coords="1869,169,1989,196"/>
-<area shape="rect" id="node43" href="cgobserver_8h.html" title="cgobserver.h" alt="" coords="875,169,980,196"/>
-<area shape="rect" id="node44" href="thread_8h.html" title="votca/tools/thread.h" alt="" coords="1055,169,1207,196"/>
-<area shape="rect" id="node46" href="mutex_8h.html" title="votca/tools/mutex.h" alt="" coords="1231,169,1383,196"/>
-<area shape="rect" id="node47" href="trajectoryreader_8h.html" title="trajectoryreader.h" alt="" coords="711,169,850,196"/>
-<area shape="rect" id="node9" href="tools_2include_2votca_2tools_2property_8h.html" title="property.h" alt="" coords="1799,468,1885,495"/>
-<area shape="rect" id="node14" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="2028,550,2139,577"/>
-<area shape="rect" id="node18" href="vec_8h.html" title="vec.h" alt="" coords="1005,550,1063,577"/>
-<area shape="rect" id="node22" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="1227,632,1321,659"/>
-<area shape="rect" id="node20" href="floatingpointcomparison_8h.html" title="votca/tools/floatingpointcomparison.h" alt="" coords="368,632,636,659"/>
-<area shape="rect" id="node21" href="tools_2include_2votca_2tools_2eigen_8h.html" title="votca/tools/eigen.h" alt="" coords="1005,632,1151,659"/>
-<area shape="rect" id="node26" href="types_8h.html" title="votca/tools/types.h" alt="" coords="490,550,637,577"/>
-<area shape="rect" id="node27" href="matrix_8h.html" title="votca/tools/matrix.h" alt="" coords="381,468,535,495"/>
-<area shape="rect" id="node30" href="exclusionlist_8h.html" title="exclusionlist.h" alt="" coords="1349,319,1465,345"/>
-<area shape="rect" id="node31" href="bead_8h.html" title="bead.h" alt="" coords="887,393,954,420"/>
-<area shape="rect" id="node33" href="csg_2include_2votca_2csg_2molecule_8h.html" title="molecule.h" alt="" coords="1832,319,1927,345"/>
-<area shape="rect" id="node34" href="residue_8h.html" title="residue.h" alt="" coords="1661,393,1743,420"/>
-<area shape="rect" id="node35" href="beadtype_8h.html" title="beadtype.h" alt="" coords="213,468,308,495"/>
-<area shape="rect" id="node36" href="boundarycondition_8h.html" title="boundarycondition.h" alt="" coords="389,393,543,420"/>
-<area shape="rect" id="node37" href="triclinicbox_8h.html" title="triclinicbox.h" alt="" coords="586,319,693,345"/>
-<area shape="rect" id="node38" href="orthorhombicbox_8h.html" title="orthorhombicbox.h" alt="" coords="251,319,396,345"/>
-<area shape="rect" id="node39" href="openbox_8h.html" title="openbox.h" alt="" coords="421,319,511,345"/>
-<area shape="rect" id="node40" href="interaction_8h.html" title="interaction.h" alt="" coords="869,319,973,345"/>
-<area shape="rect" id="node32" href="basebead_8h.html" title="basebead.h" alt="" coords="813,468,911,495"/>
-<area shape="rect" id="node42" href="map_8h.html" title="map.h" alt="" coords="2200,244,2263,271"/>
-<area shape="rect" id="node48" href="fileformatfactory_8h.html" title="fileformatfactory.h" alt="" coords="1029,393,1172,420"/>
-<area shape="rect" id="node49" href="objectfactory_8h.html" title="votca/tools/objectfactory.h" alt="" coords="1290,468,1485,495"/>
+<area shape="rect" id="node6" href="csgapplication_8h.html" title="votca/csg/csgapplication.h" alt="" coords="805,95,1000,121"/>
+<area shape="rect" id="node21" href="csg_2include_2votca_2csg_2topology_8h.html" title="topology.h" alt="" coords="1191,244,1280,271"/>
+<area shape="rect" id="node50" href="trajectorywriter_8h.html" title="votca/csg/trajectorywriter.h" alt="" coords="168,169,368,196"/>
+<area shape="rect" id="node7" href="application_8h.html" title="votca/tools/application.h" alt="" coords="907,169,1090,196"/>
+<area shape="rect" id="node41" href="topologymap_8h.html" title="topologymap.h" alt="" coords="2030,169,2150,196"/>
+<area shape="rect" id="node43" href="cgobserver_8h.html" title="cgobserver.h" alt="" coords="1166,169,1271,196"/>
+<area shape="rect" id="node44" href="thread_8h.html" title="votca/tools/thread.h" alt="" coords="730,169,882,196"/>
+<area shape="rect" id="node46" href="mutex_8h.html" title="votca/tools/mutex.h" alt="" coords="554,169,706,196"/>
+<area shape="rect" id="node47" href="trajectoryreader_8h.html" title="trajectoryreader.h" alt="" coords="392,169,530,196"/>
+<area shape="rect" id="node9" href="tools_2include_2votca_2tools_2property_8h.html" title="property.h" alt="" coords="1148,468,1235,495"/>
+<area shape="rect" id="node13" href="lexical__cast_8h.html" title="lexical_cast.h" alt="" coords="1127,550,1238,577"/>
+<area shape="rect" id="node15" href="vec_8h.html" title="vec.h" alt="" coords="1778,550,1835,577"/>
+<area shape="rect" id="node19" href="tokenizer_8h.html" title="tokenizer.h" alt="" coords="2067,632,2162,659"/>
+<area shape="rect" id="node17" href="floatingpointcomparison_8h.html" title="votca/tools/floatingpointcomparison.h" alt="" coords="1775,632,2043,659"/>
+<area shape="rect" id="node18" href="tools_2include_2votca_2tools_2eigen_8h.html" title="votca/tools/eigen.h" alt="" coords="1553,632,1700,659"/>
+<area shape="rect" id="node24" href="bead_8h.html" title="bead.h" alt="" coords="1721,393,1788,420"/>
+<area shape="rect" id="node26" href="types_8h.html" title="votca/tools/types.h" alt="" coords="1505,550,1652,577"/>
+<area shape="rect" id="node29" href="beadtype_8h.html" title="beadtype.h" alt="" coords="2152,468,2247,495"/>
+<area shape="rect" id="node30" href="boundarycondition_8h.html" title="boundarycondition.h" alt="" coords="1158,393,1313,420"/>
+<area shape="rect" id="node31" href="matrix_8h.html" title="votca/tools/matrix.h" alt="" coords="1340,468,1494,495"/>
+<area shape="rect" id="node33" href="exclusionlist_8h.html" title="exclusionlist.h" alt="" coords="588,319,704,345"/>
+<area shape="rect" id="node34" href="csg_2include_2votca_2csg_2molecule_8h.html" title="molecule.h" alt="" coords="2186,319,2280,345"/>
+<area shape="rect" id="node35" href="openbox_8h.html" title="openbox.h" alt="" coords="1190,319,1281,345"/>
+<area shape="rect" id="node36" href="orthorhombicbox_8h.html" title="orthorhombicbox.h" alt="" coords="1306,319,1451,345"/>
+<area shape="rect" id="node37" href="residue_8h.html" title="residue.h" alt="" coords="1569,468,1652,495"/>
+<area shape="rect" id="node38" href="triclinicbox_8h.html" title="triclinicbox.h" alt="" coords="1009,319,1116,345"/>
+<area shape="rect" id="node39" href="interaction_8h.html" title="interaction.h" alt="" coords="881,319,985,345"/>
+<area shape="rect" id="node27" href="basebead_8h.html" title="basebead.h" alt="" coords="2031,468,2128,495"/>
+<area shape="rect" id="node28" href="topologyitem_8h.html" title="votca/csg/topologyitem.h" alt="" coords="2012,550,2198,577"/>
+<area shape="rect" id="node42" href="map_8h.html" title="map.h" alt="" coords="2059,244,2122,271"/>
+<area shape="rect" id="node48" href="fileformatfactory_8h.html" title="fileformatfactory.h" alt="" coords="311,393,454,420"/>
+<area shape="rect" id="node49" href="objectfactory_8h.html" title="votca/tools/objectfactory.h" alt="" coords="526,468,721,495"/>
 </map>
 </div>
 </div>
@@ -134,7 +136,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="csg__map_8cc_source.html#l00174">174</a> of file <a class="el" href="csg__map_8cc_source.html">csg_map.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="csg__map_8cc_source.html#l00187">187</a> of file <a class="el" href="csg__map_8cc_source.html">csg_map.cc</a>.</p>
 
 </div>
 </div>
