@@ -53,14 +53,6 @@ $(function() {
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacevotca_1_1csg"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1csg.html">csg</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacevotca_1_1ctp"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1ctp.html">ctp</a></td></tr>
-<tr class="memdesc:namespacevotca_1_1ctp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge transport classes. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacevotca_1_1kmc"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1kmc.html">kmc</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacevotca_1_1moo"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1moo.html">moo</a></td></tr>
-<tr class="memdesc:namespacevotca_1_1moo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Molecular orbital overlap. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacevotca_1_1tools"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1tools.html">tools</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacevotca_1_1xtp"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevotca_1_1xtp.html">xtp</a></td></tr>
@@ -70,11 +62,21 @@ Namespaces</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides a means for comparing floating point numbers. </p>
 <p>Calculates three electron overlap integrals for GW and DFT.</p>
+<p>Small wrapper for a segment id and the corresponding QMState or filename.</p>
+<p>base class to derive regions from</p>
+<p>defines a qm region and runs dft and gwbse calculations</p>
+<p>Container to define fragments of QMmolecules, containing atomindices, no pointers to atoms, it also handles the parsing of strings etc.. Values should have own destructor.</p>
+<p>Takes a list of atoms, and the corresponding density matrix and puts out a table of wavefunction partial charges.</p>
+<p>defines a polar region and of interacting electrostatic and induction segments</p>
 <p>Takes a list of atoms, and the corresponding density and overlap matrices and puts out a table of partial charges.</p>
-<p>Takes a list of atoms, and the corresponding density matrix and puts out a table of mulliken partial charges.</p>
+<p>Class to set up the topology, e.g division of molecules into different regions for a specific job.</p>
+<p>Small container for convergence checking, stores current and last value and gives the diff, or just the current value in the first iteration.</p>
 <p>Takes a list of atoms, and creates CHELPG grid.</p>
 <p>Calculates four center electron overlap integrals for DFT.</p>
 <p>Takes a list of atoms, and the corresponding density matrix and puts out a table of partial charges.</p>
+<p>Small container for the individual energy terms in a polar region.</p>
+<p>Small container to keep occupation of BSE states for each atom.</p>
+<p>Basic Container for QMAtoms,PolarSites and Atoms.</p>
 <p>base class for all analasys tools</p>
 <p>A graph visitor class for creating graph visitor objects.</p>
 <p>A graph visitor determines the graph topology.</p>
@@ -98,7 +100,10 @@ Namespaces</h2></td></tr>
 <li>Repeat until no more edges exist in the queue.</li>
 </ol>
 <p>This is the base class for all analasys tool. </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>do option functions!!! </dd></dl>
-<p>For earlier commit history see ctp commit 77795ea591b29e664153f9404c8655ba28dc14e9</p>
+<p>How energies are evaluated depends critically on the id of the region. a) Lower ids means being evaluated later. So expensive regions should have low ids, as they can then already incorporate partially converged results from higher id regions b) The energy of a region, includes all interactions with regions of higher ids. i.e. E(region0)=E0+E01+E02, whereas E(region1)=E1+E12 and not E10 The reason is that DFT codes only return E0+ all interaction energies and not the individual terms, this has to be changed once we want to have multiple QM regions.</p>
+<p>PATHWAYS TO A NEW THREADED CALCULATOR ... 1 Define 'JobContainer' (needs to define iterator), 'pJob' ( = *iterator) ... 2 Derive new calculator as ': public ParallelXJobCalc&lt;JobContainer,pJob&gt;' ... 3 Specialize XJOBS_FROM_TABLE&lt; JobContainer, pJob&gt; in xjob.cc ... 4 Register new calculator (see end of <a class="el" href="parallelxjobcalc_8cc.html">parallelxjobcalc.cc</a>) REQUIRED MEMBERS FOR pJob pJob::JobResult (struct)</p>
+<p>For an earlier history see ctp repo commit 77795ea591b29e664153f9404c8655ba28dc14e9</p>
+<p>For earlier commit history see ctp commit 77795ea591b29e664153f9404c8655ba28dc14e9 </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

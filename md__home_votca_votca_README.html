@@ -55,7 +55,7 @@ git clone -b ${version} --recursive https://github.com/votca/votca.git
 cd votca
 mkdir build
 cd build
-cmake -DBUILD_CSGAPPS=ON -DBUILD_CTP=ON -DBUILD_XTP=ON -DCMAKE_INSTALL_PREFIX=${prefix} ..
+cmake -DBUILD_CSGAPPS=ON -DBUILD_XTP=ON -DCMAKE_INSTALL_PREFIX=${prefix} ..
 make -j&lt;number of cores&gt;
 make install
 </pre><p>Using this code via docker: </p><pre class="fragment">docker pull votca/votca
@@ -65,9 +65,17 @@ docker run -it votca/votca /bin/bash
 <li><a class="el" href="INSTALL_8md.html">Installation</a></li>
 <li><a href="http://www.votca.org">Further Information</a></li>
 <li><a class="el" href="DEVELOPERS__GUIDE_8md.html">Developers Guide</a></li>
-<li><a class="el" href="CODE__OF__CONDUCT_8md.html">Code of Conduct</a> </li>
+<li><a class="el" href="CODE__OF__CONDUCT_8md.html">Code of Conduct</a></li>
 </ol>
-</div></div><!-- PageDoc -->
+<p>If you want to install CTP </p><pre class="fragment">prefix=WHERE/TO/INSTALL/VOTCA
+git clone -b ctp --recursive https://github.com/votca/votca.git
+cd votca
+mkdir build
+cd build
+cmake -DBUILD_CTP=ON -DCMAKE_INSTALL_PREFIX=${prefix} ..
+make -j&lt;number of cores&gt;
+make install
+</pre> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -48,10 +48,9 @@ $(function() {
 <ul>
 <li>TOOLS - general tools</li>
 <li>CSG - topographical classes and course graining functionality</li>
-<li>CTP - charge transport classes and functionality</li>
 <li>XTP - exciton and excited states functionality GW-BSE and DFT engine</li>
 </ul>
-<p>TOOLS -&gt; CSG -&gt; CTP -&gt; XTP</p>
+<p>TOOLS -&gt; CSG -&gt; XTP</p>
 <h3>Dependency Installation</h3>
 <h4>Ubuntu</h4>
 <p>Dependencies for core functionality </p><pre class="fragment">apt-get install make cmake git g++ libexpat-dev libfftw3-dev libgsl-dev libboost-all-dev txt2tags libsqlite3-dev octave gnuplot python-numpy libhdf5-dev graphviz pkg-config psmisc libint2-dev libeigen3-dev libxc-dev libceres-dev libgromacs-dev gromacs-openmpi
@@ -66,7 +65,7 @@ git clone -b ${version} --recursive https://github.com/votca/votca.git
 cd votca
 mkdir build
 cd build
-cmake -DBUILD_CSGAPPS=ON -DBUILD_CTP=ON -DBUILD_XTP=ON -DCMAKE_INSTALL_PREFIX=${prefix} ..
+cmake -DBUILD_CSGAPPS=ON -DBUILD_XTP=ON -DCMAKE_INSTALL_PREFIX=${prefix} ..
 make -j5
 make install
 </pre><h3>Resolving the 'not found' dependency errors</h3>
@@ -79,14 +78,12 @@ make install
 <ul>
 <li><code>BUILD_CSGAPPS</code> - Build the extra csg applications repo (ON/OFF, Default OFF)</li>
 <li><code>BUILD_XTP</code> - Build the xtp repo (ON/OFF, Default OFF)</li>
-<li><code>BUILD_CTP</code> - Build the ctp repo (ON/OFF, Default OFF)</li>
 <li><code>CMAKE_INSTALL_PREFIX</code> - where to install the votca executables (Default is /usr/local/bin)</li>
 <li><code>ENABLE_TESTING</code> - compile tests (ON/OFF, Default OFF)</li>
 </ul>
 <h3>Other CMake Flags</h3>
 <ul>
 <li><code>BUILD_CSG_MANUAL</code> - Build csg pdf manual</li>
-<li><code>BUILD_CTP_MANUAL</code> - Build ctp pdf manual</li>
 <li><code>BUILD_XTP_MANUAL</code> - Build xtp pdf manual</li>
 <li><code>WITH_GMX</code> - Build with Gromacs support (ON/OFF, Default ON)</li>
 <li><code>CMAKE_DISABLE_FIND_PACKAGE_&lt;name&gt;</code> - Disable using an optional package called <code>&lt;name&gt;</code> (ON/OFF)</li>
@@ -99,7 +96,7 @@ mkdir -p ${prefix}/src
 cd ${prefix}/src
 wget https://raw.githubusercontent.com/votca/buildutil/master/build.sh
 chmod +x build.sh
-./build.sh --prefix ${prefix} --dev tools csg ctp xtp
+./build.sh --prefix ${prefix} --dev tools csg xtp
 </pre><p>Replace the <em>WHERE/TO/INSTALL/VOTCA</em> with directory where you want to install votca, usually \${HOME}/votca is good choice.</p>
 <p>This commands will:</p>
 <ul>
