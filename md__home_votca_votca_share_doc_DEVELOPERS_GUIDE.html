@@ -56,6 +56,8 @@ $(function() {
 <li><a href="#merging-with-stable">Merging With Stable</a></li>
 <li><a href="#failed-release-builds">Failed Release Builds</a></li>
 <li><a href="#gitlab-server">Setting Up A GitLab Runner Server</a></li>
+<li><a href="#units-in-votca">Units in VOTCA</a></li>
+<li><a href="#indexing-in-votca">Indexing in VOTCA</a></li>
 </ul>
 <h2>Reporting Bugs</h2>
 <p>To report a bug please create an issue on the appropriate github repo. Please be sure to provide as much information as possible such as:</p>
@@ -330,7 +332,15 @@ mock -r epel-7-ppc64le --forcearch ppc64le --dnf --no-clean votca-1.5-1.*.src.rp
 </pre><p>You will also need to install a text editor if you want to change the source files before running the interactive instance. </p><pre class="fragment">mock -r epel-7-ppc64le --forcearch ppc64le --install vim
 </pre><p>Note: we have used this process with the <b>ppc64le</b> architecture as an example, but the same procedure can be extended with different architectures and diferent operating systems. For example you could use the <b>aarch64</b> or <b>armv7hl</b> architecture in place of <b>pcc64le</b>. You could also replace the <b>epel-7-ppc64le</b> os-architecure to <b>fedora-28-ppc64le</b>, <b>fedora-27-aarch64</b> or some other combination. A final point, if you simply want to build natively for instance if you are running fedora on an <b>x86_64</b> machine the <code>frocearch pcc64le</code> in the above case could just be dropped.</p>
 <h2>Gitlab Server</h2>
-<p>To setup a gitlab server the instructions on the official <a href="https://docs.gitlab.com/runner/register/">gitlab website</a> should be followed. To obtain the access token contact one of the votca administrators. It is also advisable to setup a cron job to help monitor the docker containers, images and volumes which can use a substantial amount of space if not cleaned. A docker cleanup script has been added in the <a href="https://github.com/votca/dev-tools">dev-tools</a> repo, instructions on how to set it up are provided in the script. </p>
+<p>To setup a gitlab server the instructions on the official <a href="https://docs.gitlab.com/runner/register/">gitlab website</a> should be followed. To obtain the access token contact one of the votca administrators. It is also advisable to setup a cron job to help monitor the docker containers, images and volumes which can use a substantial amount of space if not cleaned. A docker cleanup script has been added in the <a href="https://github.com/votca/dev-tools">dev-tools</a> repo, instructions on how to set it up are provided in the script.</p>
+<h2>Units in VOTCA</h2>
+<p>VOTCA tried as much as possible to standarize units across both CSG and XTP. Externally we parse in the units of the respective file format, e.g. <code>.xyz</code> <code>Angstroem</code>, <code>.gro</code> <code>nm</code>. Internally we convert all parsed units to:</p>
+<ul>
+<li>CSG: length <code>nm</code>, energy <code>kJ/mol</code> and time <code>ps</code></li>
+<li>XTP: length <code>bohr</code>, energy <code>Hartree</code> and time <code>ps</code></li>
+</ul>
+<h2>Indexing in VOTCA</h2>
+<p>All indeces in VOTCA start at <code>0</code>. This is useful, because C++ arrays start at index 0. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
