@@ -132,7 +132,9 @@ spack install votca-xtp
 <p>Votca is also available through docker and can be accessed and run with the following docker commands: </p><pre class="fragment">docker pull votca/votca
 docker run -it votca/votca /bin/bash
 </pre><h2>Linking Error: Undefined reference to</h2>
-<p>This error can happen due to a multitude of reasons. You may have forgotten to add paths to the <code>LD_LIBRARY_PATH</code> or forgotten to import an environment module. In these cases deleting the <code>CMakeCache.txt</code> in your <code>build</code> folder and rerunning <code>cmake</code> will help. Unfortunately another cause might be ABI incompability between libraries due to different libraries being compiled with different compilers or compiler versions. Click <a href="https://github.com/ICRAR/shark/issues/1">here</a> for an example. </p>
+<p>This error can happen due to a multitude of reasons. You may have forgotten to add paths to the <code>LD_LIBRARY_PATH</code> or forgotten to import an environment module. In these cases deleting the <code>CMakeCache.txt</code> in your <code>build</code> folder and rerunning <code>cmake</code> will help. Unfortunately another cause might be ABI incompability between libraries due to different libraries being compiled with different compilers or compiler versions. Click <a href="https://github.com/ICRAR/shark/issues/1">here</a> for an example.</p>
+<h2>GCC and MKL : undefined symbol:</h2>
+<p>This can happen with some GCC versions. Adding the <code>-Wl,--no-as-needed</code> to <code>CMAKE_EXE_LINKER_FLAGS:STRING=</code> to the <code>CMakeCache.txt</code> in the <code>build</code> directory can fix this. For more information look <a href="https://software.intel.com/en-us/articles/symbol-lookup-error-when-linking-intel-mkl-with-gcc-on-ubuntu">here</a> </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
