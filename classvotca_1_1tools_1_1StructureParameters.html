@@ -74,14 +74,14 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>Provides a means to standardise the constructors of different classes. </p>
 <p>The purpose of this class is for use primarily in io readers, it provides a means to standardize the use of templated classes in the readers.</p>
 <p>E.g. Say I have two atom classes</p>
-<p>class Atom1 { public: Atom1(StructureParameters parameters) : id_(parameters.get&lt;int&gt;(StructureParameter::BeadId)), mass_(parameters.get&lt;double&gt;(StructureParameter::Mass)){};</p>
-<p>private: int id_; double mass_; };</p>
-<p>class Atom2 { public: Atom2(StructureParameters parameters) : id_(parameters.get&lt;int&gt;(StructureParameter::BeadId)), element_(parameters.get&lt;string&gt;(StructureParameter::Element)){};</p>
-<p>private: int id_; string element_; };</p>
+<p>class Atom1 { public: Atom1(StructureParameters parameters) : id_(parameters.get&lt;Index&gt;(StructureParameter::BeadId)), mass_(parameters.get&lt;double&gt;(StructureParameter::Mass)){};</p>
+<p>private: Index id_; double mass_; };</p>
+<p>class Atom2 { public: Atom2(StructureParameters parameters) : id_(parameters.get&lt;Index&gt;(StructureParameter::BeadId)), element_(parameters.get&lt;string&gt;(StructureParameter::Element)){};</p>
+<p>private: Index id_; string element_; };</p>
 <p>Pseudo code below, our file reader has a method that creates the atoms (shown below), now because we have a standardized constructor the templated file method can be used with either class without specialization.</p>
 <p>class FileReader {</p>
 <p>template&lt;class T&gt; T CreateAtomOrBead {</p>
-<p>string element = "C"; int id = 1; double mass = 12.01;</p>
+<p>string element = "C"; Index id = 1; double mass = 12.01;</p>
 <p><a class="el" href="classvotca_1_1tools_1_1StructureParameters.html" title="Provides a means to standardise the constructors of different classes.">StructureParameters</a> parameters; parameters.set(StructureParameter::Element,element); parameters.set(StructureParameter::Mass,mass); parameters.set(StructureParameter::BeadId,id);</p>
 <p>T atom_or_bead(parameters); return atom_or_bead; }</p>
 <p>}; </p>
