@@ -300,6 +300,7 @@ var menudata={children:[
 {text:"_",url:"globals_defs.html#index__5F"},
 {text:"b",url:"globals_defs_b.html#index_b"},
 {text:"c",url:"globals_defs_c.html#index_c"},
+{text:"e",url:"globals_defs_e.html#index_e"},
 {text:"h",url:"globals_defs_h.html#index_h"},
 {text:"v",url:"globals_defs_v.html#index_v"},
 {text:"x",url:"globals_defs_x.html#index_x"}]}]}]}]}
