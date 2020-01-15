@@ -120,6 +120,7 @@ var menudata={children:[
 {text:"z",url:"namespacemembers_eval_z.html#index_z"}]}]}]},
 {text:"Classes",url:"annotated.html",children:[
 {text:"Class List",url:"annotated.html"},
+{text:"Class Index",url:"classes.html"},
 {text:"Class Hierarchy",url:"inherits.html"},
 {text:"Class Members",url:"functions.html",children:[
 {text:"All",url:"functions.html",children:[
@@ -277,8 +278,7 @@ var menudata={children:[
 {text:"s",url:"globals_s.html#index_s"},
 {text:"v",url:"globals_v.html#index_v"},
 {text:"w",url:"globals_w.html#index_w"},
-{text:"x",url:"globals_x.html#index_x"},
-{text:"y",url:"globals_y.html#index_y"}]},
+{text:"x",url:"globals_x.html#index_x"}]},
 {text:"Functions",url:"globals_func.html",children:[
 {text:"b",url:"globals_func.html#index_b"},
 {text:"c",url:"globals_func_c.html#index_c"},
@@ -294,7 +294,6 @@ var menudata={children:[
 {text:"s",url:"globals_func_s.html#index_s"},
 {text:"v",url:"globals_func_v.html#index_v"},
 {text:"w",url:"globals_func_w.html#index_w"}]},
-{text:"Variables",url:"globals_vars.html"},
 {text:"Typedefs",url:"globals_type.html"},
 {text:"Macros",url:"globals_defs.html",children:[
 {text:"_",url:"globals_defs.html#index__5F"},
