@@ -27,6 +27,7 @@ var searchData=
   ['xtp_5frun_2ecc',['xtp_run.cc',['../xtp__run_8cc.html',1,'']]],
   ['xtp_5ftools_2ecc',['xtp_tools.cc',['../xtp__tools_8cc.html',1,'']]],
   ['xtp_5fvxc_5fgrid_5fh',['XTP_VXC_GRID_H',['../vxc__grid_8h.html#a1abe31a4927ac5ff9563ea4bcf4e017a',1,'vxc_grid.h']]],
+  ['xtp_5fvxc_5fnewton_5frapson_5fh',['XTP_VXC_NEWTON_RAPSON_H',['../newton__rapson_8h.html#a986b0760b600f52bb32e989af5815066',1,'newton_rapson.h']]],
   ['xtp_5fvxc_5fpotential_5fh',['XTP_VXC_POTENTIAL_H',['../vxc__potential_8h.html#ab482eccda2da8878acdef2a51de7fe97',1,'vxc_potential.h']]],
   ['xtpapplication',['XtpApplication',['../classvotca_1_1xtp_1_1XtpApplication.html',1,'votca::xtp::XtpApplication'],['../classvotca_1_1xtp_1_1XtpApplication.html#a57e4aaa28984f4d5cef228164b30cdc1',1,'votca::xtp::XtpApplication::XtpApplication()']]],
   ['xtpapplication_2ecc',['xtpapplication.cc',['../xtpapplication_8cc.html',1,'']]],

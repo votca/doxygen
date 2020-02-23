@@ -61,6 +61,7 @@ var searchData=
   ['findpair',['FindPair',['../classvotca_1_1csg_1_1PairList.html#a76ec0c80117231af3fe4e638e24eb14f',1,'votca::csg::PairList::FindPair(element_type e1, element_type e2)'],['../classvotca_1_1csg_1_1PairList.html#a342c27099cb8265a6dcc1cb3b7836d1a',1,'votca::csg::PairList::FindPair(element_type e1, element_type e2) const']]],
   ['findpartners',['FindPartners',['../classvotca_1_1csg_1_1PairList.html#ab1d3fcba2bee9261663dd4b3b9aac3d3',1,'votca::csg::PairList']]],
   ['findreplacepathsinoptions',['FindReplacePathsInOptions',['../classvotca_1_1xtp_1_1JobTopology.html#a1d06e5ac75312a337c9772714fea6fd3',1,'votca::xtp::JobTopology']]],
+  ['findroot',['FindRoot',['../classvotca_1_1xtp_1_1NewtonRapson.html#a8d639bcc41629fe54443d0145bd2b614',1,'votca::xtp::NewtonRapson']]],
   ['findshortnameofelementclosestinmass_5f',['findShortNameOfElementClosestInMass_',['../classvotca_1_1tools_1_1Elements.html#a2ebe409158a10d167fa5c26bcb5e0ea0',1,'votca::tools::Elements']]],
   ['findsignificantshells',['FindSignificantShells',['../classvotca_1_1xtp_1_1GridBox.html#ad06180ef246ea0638be1c17c70f047ae',1,'votca::xtp::GridBox::FindSignificantShells()'],['../classvotca_1_1xtp_1_1Vxc__Grid.html#a04382d2b1d84e1404f72b4b1d2c920ff',1,'votca::xtp::Vxc_Grid::FindSignificantShells()']]],
   ['findstructureid',['findStructureId',['../namespacevotca_1_1tools.html#ad6400bb1448528a98f8a5c359e6f30fb',1,'votca::tools']]],

@@ -21,6 +21,7 @@ var searchData=
   ['qmtoolfactory',['QMToolFactory',['../classvotca_1_1xtp_1_1QMToolFactory.html#a11c40417a41eb43b8ecd38978215d27f',1,'votca::xtp::QMToolFactory']]],
   ['qmtools',['QMTools',['../namespacevotca_1_1xtp.html#ad4c2a9b6a3bef2d3a4d3a3bb8b2ea6f9',1,'votca::xtp']]],
   ['qpdiag',['QPdiag',['../classvotca_1_1xtp_1_1Orbitals.html#ac1a3c8c67ecc81334c77bde0b0754706',1,'votca::xtp::Orbitals::QPdiag() const'],['../classvotca_1_1xtp_1_1Orbitals.html#a9bf19d62bacf812a6b28c6fc5ba8a0af',1,'votca::xtp::Orbitals::QPdiag()']]],
+  ['qpfunc',['QPFunc',['../classvotca_1_1xtp_1_1GW_1_1QPFunc.html#a5ef4633ab577af75fc1aacb4ad28efd4',1,'votca::xtp::GW::QPFunc']]],
   ['qppertenergies',['QPpertEnergies',['../classvotca_1_1xtp_1_1Orbitals.html#a683ea77e2cd30766364309d0f8bdf285',1,'votca::xtp::Orbitals::QPpertEnergies() const'],['../classvotca_1_1xtp_1_1Orbitals.html#a903287a706245f28441ffd819b9bdb44',1,'votca::xtp::Orbitals::QPpertEnergies()']]],
   ['qr',['qr',['../classvotca_1_1xtp_1_1DavidsonSolver.html#af0fb52eb44aedc8da35c49f2d929145d',1,'votca::xtp::DavidsonSolver']]],
   ['quadraticenergy',['QuadraticEnergy',['../classvotca_1_1xtp_1_1BFGSTRM.html#a1e774da0cc810b24babd7c9a92b21e06',1,'votca::xtp::BFGSTRM']]],

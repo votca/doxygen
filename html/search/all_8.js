@@ -43,6 +43,7 @@ var searchData=
   ['hasqpdiag',['hasQPdiag',['../classvotca_1_1xtp_1_1Orbitals.html#a120e88f83b42812bf8354aa36c4c9e70',1,'votca::xtp::Orbitals']]],
   ['hasqppert',['hasQPpert',['../classvotca_1_1xtp_1_1Orbitals.html#ab4cb57aa43fb038beaf556c8d3d498c5',1,'votca::xtp::Orbitals']]],
   ['hasrpaindices',['hasRPAindices',['../classvotca_1_1xtp_1_1Orbitals.html#a156f30e305804f9596b444f42ed04726',1,'votca::xtp::Orbitals']]],
+  ['hasrpainputenergies',['hasRPAInputEnergies',['../classvotca_1_1xtp_1_1Orbitals.html#a54f857202eded3a3f1d2045abd781bf9',1,'votca::xtp::Orbitals']]],
   ['hastime',['hasTime',['../classvotca_1_1xtp_1_1Job.html#a8a929495871fae7fb3bd7b23737799d8',1,'votca::xtp::Job']]],
   ['hastransitiondipoles',['hasTransitionDipoles',['../classvotca_1_1xtp_1_1Orbitals.html#a877da807b176a4d760d2edac44b3a36b',1,'votca::xtp::Orbitals']]],
   ['hasu',['HasU',['../classvotca_1_1csg_1_1Bead.html#afc5dc868285639c552a7c5975a19cc05',1,'votca::csg::Bead::HasU()'],['../classvotca_1_1csg_1_1Bead.html#a0ebf766a641564c016bd5ef9ada7ac4b',1,'votca::csg::Bead::HasU(bool b)']]],

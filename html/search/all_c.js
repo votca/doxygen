@@ -55,7 +55,7 @@ var searchData=
   ['leftchild',['leftChild',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#a4f18c1137ce2a34eb88d45dcb965ea9d',1,'votca::xtp::huffmanTree::huffmanNode']]],
   ['leftleaf',['leftLeaf',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#aa43a32b419f005b861b536b79ef0e7da',1,'votca::xtp::huffmanTree::huffmanNode']]],
   ['level',['Level',['../structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43',1,'votca::Log::Level()'],['../classVotcaProperty.html#aa96297d88cf4722925a7ec36d963f293',1,'VotcaProperty::level()']]],
-  ['levelshift',['levelshift',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a7dbf84817a995c5252894e154ca0905d',1,'votca::xtp::ConvergenceAcc::options::levelshift()'],['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a8a1779458fc1ee6c80e850caf99ecca1',1,'votca::xtp::ConvergenceAcc::Levelshift()']]],
+  ['levelshift',['Levelshift',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a8a1779458fc1ee6c80e850caf99ecca1',1,'votca::xtp::ConvergenceAcc::Levelshift()'],['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a7dbf84817a995c5252894e154ca0905d',1,'votca::xtp::ConvergenceAcc::options::levelshift()']]],
   ['levelshiftend',['levelshiftend',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a5cbb163454060239cbb1b55b381ea56f',1,'votca::xtp::ConvergenceAcc::options']]],
   ['lexical_5fcast',['lexical_cast',['../namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127',1,'votca::tools']]],
   ['lexical_5fcast_2eh',['lexical_cast.h',['../lexical__cast_8h.html',1,'']]],

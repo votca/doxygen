@@ -6,6 +6,7 @@ var searchData=
   ['single_5fbead',['single_bead',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010adee109dd3c2e62142b4c48853dc1f68b',1,'votca::csg::BeadMotif']]],
   ['single_5fstructure',['single_structure',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010ae021c3b951d140cbf153d14500304992',1,'votca::csg::BeadMotif']]],
   ['singlet',['Singlet',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac2ca29ef89597f341a74e08f205c4552',1,'votca::xtp::QMStateType']]],
+  ['smalldenom',['smalldenom',['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741af85d9dd78d4c83fb4fa4bd3c2a6fff9c',1,'votca::xtp::NewtonRapson']]],
   ['spherical',['spherical',['../classvotca_1_1csg_1_1Bead.html#ade14b4e053285b8614fc426792c29497a757027bc74952e6fc2b703a8da02031d',1,'votca::csg::Bead']]],
   ['splinederivativezero',['splineDerivativeZero',['../classvotca_1_1tools_1_1Spline.html#adaf3067dc9a25e1e02378d1b211a7b21a5cfc1e0fed791da51b3a251f615be358',1,'votca::tools::Spline']]],
   ['splinenormal',['splineNormal',['../classvotca_1_1tools_1_1Spline.html#adaf3067dc9a25e1e02378d1b211a7b21aac5fdf79ff8e65b78c992d621b070cbe',1,'votca::tools::Spline']]],
@@ -14,6 +15,7 @@ var searchData=
   ['style_5fangle_5fbond_5fmolecule',['style_angle_bond_molecule',['../classvotca_1_1csg_1_1LAMMPSDataReader.html#ae76bccdc98b7781dec93aa2f174ad509acc816f649c0493090c4816b6dbc94486',1,'votca::csg::LAMMPSDataReader']]],
   ['style_5fatomic',['style_atomic',['../classvotca_1_1csg_1_1LAMMPSDataReader.html#ae76bccdc98b7781dec93aa2f174ad509a1d5eb7e830610c02335439b7ec6de194',1,'votca::csg::LAMMPSDataReader']]],
   ['style_5ffull',['style_full',['../classvotca_1_1csg_1_1LAMMPSDataReader.html#ae76bccdc98b7781dec93aa2f174ad509a22edbfbf09c5402beff7960cd2f89a15',1,'votca::csg::LAMMPSDataReader']]],
+  ['success',['success',['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741a576fc1c2b12e5a37263ca38822839d9b',1,'votca::xtp::NewtonRapson']]],
   ['symm',['SYMM',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a41135fe9cee4cfc37775e3d65cd2c646a611bc763b0f7bb8bce79f0fef2521ed9',1,'votca::xtp::DavidsonSolver']]],
   ['symmetry',['Symmetry',['../namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1afaeacdf8be0084ad09cfc3c5f14e1175',1,'votca::tools']]]
 ];

@@ -10,7 +10,7 @@ var searchData=
   ['objectfactoryregister',['ObjectFactoryRegister',['../classvotca_1_1tools_1_1ObjectFactoryRegister.html',1,'votca::tools']]],
   ['openbox',['OpenBox',['../classvotca_1_1csg_1_1OpenBox.html',1,'votca::csg']]],
   ['optimiser_5fcostfunction',['Optimiser_costfunction',['../classvotca_1_1xtp_1_1Optimiser__costfunction.html',1,'votca::xtp']]],
-  ['options',['options',['../structvotca_1_1xtp_1_1Sigma__base_1_1options.html',1,'votca::xtp::Sigma_base::options'],['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html',1,'votca::xtp::ConvergenceAcc::options'],['../structvotca_1_1xtp_1_1GW_1_1options.html',1,'votca::xtp::GW::options'],['../structvotca_1_1xtp_1_1BSE_1_1options.html',1,'votca::xtp::BSE::options']]],
+  ['options',['options',['../structvotca_1_1xtp_1_1Sigma__base_1_1options.html',1,'votca::xtp::Sigma_base::options'],['../structvotca_1_1xtp_1_1BSE_1_1options.html',1,'votca::xtp::BSE::options'],['../structvotca_1_1xtp_1_1GW_1_1options.html',1,'votca::xtp::GW::options'],['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html',1,'votca::xtp::ConvergenceAcc::options']]],
   ['options_5ft',['options_t',['../structvotca_1_1tools_1_1Histogram_1_1options__t.html',1,'votca::tools::Histogram']]],
   ['orbitals',['Orbitals',['../classvotca_1_1xtp_1_1Orbitals.html',1,'votca::xtp']]],
   ['orca',['Orca',['../classvotca_1_1xtp_1_1Orca.html',1,'votca::xtp']]],
