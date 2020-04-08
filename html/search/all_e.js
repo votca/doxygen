@@ -76,9 +76,6 @@ var searchData=
   ['numofshells',['NumOfShells',['../classvotca_1_1xtp_1_1Element.html#a2a1273506f6701aad7714cfb6eb15f63',1,'votca::xtp::Element::NumOfShells()'],['../classvotca_1_1xtp_1_1ECPElement.html#ab5379ef582bde9e96d1eaedab03b9801',1,'votca::xtp::ECPElement::NumOfShells()']]],
   ['numparameters',['NumParameters',['../classvotca_1_1xtp_1_1ADIIS__costfunction.html#a144c53a8d0f47cc321e909ed94cad03d',1,'votca::xtp::ADIIS_costfunction::NumParameters()'],['../classvotca_1_1xtp_1_1Energy__costfunction.html#a24454767a9bdba19cec567444e762ef0',1,'votca::xtp::Energy_costfunction::NumParameters()'],['../classvotca_1_1xtp_1_1Optimiser__costfunction.html#ac8c904d93da35bb286e80bf1d672b063',1,'votca::xtp::Optimiser_costfunction::NumParameters()']]],
   ['numrows',['numRows',['../classvotca_1_1xtp_1_1CptTable.html#ab644c748241806f009b2a60f3b78b7df',1,'votca::xtp::CptTable']]],
-  ['nwchem',['NWChem',['../classvotca_1_1xtp_1_1NWChem.html',1,'votca::xtp']]],
-  ['nwchem_2ecc',['nwchem.cc',['../nwchem_8cc.html',1,'']]],
-  ['nwchem_2eh',['nwchem.h',['../nwchem_8h.html',1,'']]],
   ['nx',['nx',['../classvotca_1_1xtp_1_1AOTransform.html#af733305eb495aace2aba1508ec7a0f29',1,'votca::xtp::AOTransform']]],
   ['ny',['ny',['../classvotca_1_1xtp_1_1AOTransform.html#acf1ede1cdd89ee1996498440592d198e',1,'votca::xtp::AOTransform']]],
   ['nz',['nz',['../classvotca_1_1xtp_1_1AOTransform.html#ad2537b7a33ccd603d147487167b9cea0',1,'votca::xtp::AOTransform']]]

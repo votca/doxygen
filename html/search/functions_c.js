@@ -43,6 +43,7 @@ var searchData=
   ['linalg_5feigenvalues',['linalg_eigenvalues',['../namespacevotca_1_1tools.html#a74c52cc2e5c35a3386788b14a2534589',1,'votca::tools']]],
   ['linspline',['LinSpline',['../classvotca_1_1tools_1_1LinSpline.html#ab75b44e6889928af4fdd0d42ce5d4885',1,'votca::tools::LinSpline']]],
   ['load',['Load',['../classvotca_1_1tools_1_1Table.html#a89f608836b0e4a68a653c8f36cec0b6a',1,'votca::tools::Table::Load()'],['../classvotca_1_1csg_1_1CGMoleculeDef.html#a45ac7c285b4f19bd9c4e77406f1ab24c',1,'votca::csg::CGMoleculeDef::Load()'],['../classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93',1,'votca::xtp::BasisSet::Load()'],['../classvotca_1_1xtp_1_1ECPBasisSet.html#abce90999ca3466403d21d7d37f528508',1,'votca::xtp::ECPBasisSet::Load()']]],
+  ['load_5ffrom_5fxml',['load_from_xml',['../classvotca_1_1xtp_1_1Settings.html#a6c961270237415ce7a96654325109b74',1,'votca::xtp::Settings']]],
   ['load_5fjobs',['LOAD_JOBS',['../namespacevotca_1_1xtp.html#ac8d1e70d4343752569ff918f1912cbf3',1,'votca::xtp']]],
   ['loadfromfile',['LoadFromFile',['../classvotca_1_1xtp_1_1ClassicalSegment.html#aa0564471205b153e214b61266af2e02e',1,'votca::xtp::ClassicalSegment::LoadFromFile()'],['../classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530',1,'votca::xtp::QMMolecule::LoadFromFile()']]],
   ['loadfromxml',['LoadFromXML',['../classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24',1,'votca::tools::Property']]],

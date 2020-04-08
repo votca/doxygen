@@ -8,7 +8,6 @@ var searchData=
   ['ang2bohr',['ang2bohr',['../namespacevotca_1_1tools_1_1conv.html#a5b8b61ab3a027e6cb419565bd73dea52',1,'votca::tools::conv']]],
   ['ang2nm',['ang2nm',['../namespacevotca_1_1tools_1_1conv.html#a6d8e43c53e68355a15199c54e1c82b1b',1,'votca::tools::conv']]],
   ['aoranges',['aoranges',['../classvotca_1_1xtp_1_1GridBox.html#ac5015c340fb285a31bd89db6b28918c6',1,'votca::xtp::GridBox']]],
-  ['ascii_5fmo_5ffile_5fname',['ascii_mo_file_name',['../classvotca_1_1xtp_1_1NWChem.html#a94144c9fa8ba375f429cb0888044614d',1,'votca::xtp::NWChem']]],
   ['atname',['atname',['../classvotca_1_1csg_1_1BondBead.html#aed1ca140824e8cbd9d9581c734723dcd',1,'votca::csg::BondBead']]],
   ['atom_5fforce_5fgroup_5f',['atom_force_group_',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#a46bbf3df60db4d9099234a8d251bcd2f',1,'votca::csg::H5MDTrajectoryReader']]],
   ['atom_5fid_5fgroup_5f',['atom_id_group_',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#a92bdec4e222cd0f94abf3ba993e8a8e2',1,'votca::csg::H5MDTrajectoryReader']]],

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['gaussian',['Gaussian',['../classvotca_1_1xtp_1_1Gaussian.html',1,'votca::xtp']]],
   ['gaussianprimitive',['GaussianPrimitive',['../classvotca_1_1xtp_1_1GaussianPrimitive.html',1,'votca::xtp']]],
   ['gencube',['GenCube',['../classvotca_1_1xtp_1_1GenCube.html',1,'votca::xtp']]],
   ['generic_5fproduct_5fimpl_3c_20votca_3a_3axtp_3a_3adipoledipoleinteraction_2c_20vtype_2c_20denseshape_2c_20denseshape_2c_20gemvproduct_20_3e',['generic_product_impl&lt; votca::xtp::DipoleDipoleInteraction, Vtype, DenseShape, DenseShape, GemvProduct &gt;',['../structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1DipoleDipoleInteraction_00de97570f9381c4a05ef5b13b91bb2fcc.html',1,'Eigen::internal']]],

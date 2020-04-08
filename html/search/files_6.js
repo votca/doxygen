@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['gaussian_2ecc',['gaussian.cc',['../gaussian_8cc.html',1,'']]],
-  ['gaussian_2eh',['gaussian.h',['../gaussian_8h.html',1,'']]],
   ['gencube_2ecc',['gencube.cc',['../gencube_8cc.html',1,'']]],
   ['gencube_2eh',['gencube.h',['../gencube_8h.html',1,'']]],
   ['geometry_5foptimization_2ecc',['geometry_optimization.cc',['../geometry__optimization_8cc.html',1,'']]],
