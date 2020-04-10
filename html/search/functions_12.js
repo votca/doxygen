@@ -99,7 +99,7 @@ var searchData=
   ['resetregion',['ResetRegion',['../classvotca_1_1xtp_1_1StaticRegion.html#a8b65629bea35ecc23fdeb1680b5ae8b2',1,'votca::xtp::StaticRegion']]],
   ['residue',['Residue',['../classvotca_1_1csg_1_1Residue.html#a29afc0d27d2e7e86c3be3f3d90f6ed3b',1,'votca::csg::Residue']]],
   ['residuecount',['ResidueCount',['../classvotca_1_1csg_1_1Topology.html#a4d5e570d0547c9748b122d92555446b4',1,'votca::csg::Topology']]],
-  ['residues',['Residues',['../classvotca_1_1csg_1_1Topology.html#a0170fbccf8838eac2f00c5bf7becd922',1,'votca::csg::Topology::Residues()'],['../classvotca_1_1xtp_1_1DavidsonSolver.html#a7bbc138074489eeb8bc3ae06ec5e0b90',1,'votca::xtp::DavidsonSolver::residues()']]],
+  ['residues',['residues',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a7bbc138074489eeb8bc3ae06ec5e0b90',1,'votca::xtp::DavidsonSolver::residues()'],['../classvotca_1_1csg_1_1Topology.html#a0170fbccf8838eac2f00c5bf7becd922',1,'votca::csg::Topology::Residues()']]],
   ['resize',['resize',['../classvotca_1_1tools_1_1Table.html#ab4801775533302deab075a0b59a92e63',1,'votca::tools::Table']]],
   ['restart',['restart',['../classvotca_1_1xtp_1_1DavidsonSolver.html#ab6050a926c46e62cb70b557023c5bdd0',1,'votca::xtp::DavidsonSolver']]],
   ['reupdatelamda',['REUpdateLamda',['../classCsgREupdate.html#ace5af5765f6ff0b99f8d1c66931289c6',1,'CsgREupdate']]],
