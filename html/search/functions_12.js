@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r',['R',['../classvotca_1_1xtp_1_1QMPair.html#ab4cf8e15d2b4d9f62caf881bc8dcf3f4',1,'votca::xtp::QMPair::R()'],['../classvotca_1_1csg_1_1BeadPair.html#a0f18fedaaccabfe5486075069da0b408',1,'votca::csg::BeadPair::r()']]],
+  ['r',['r',['../classvotca_1_1csg_1_1BeadPair.html#a0f18fedaaccabfe5486075069da0b408',1,'votca::csg::BeadPair::r()'],['../classvotca_1_1xtp_1_1QMPair.html#ab4cf8e15d2b4d9f62caf881bc8dcf3f4',1,'votca::xtp::QMPair::R()']]],
   ['r12',['r12',['../classvotca_1_1csg_1_1BeadTriple.html#a9b44c5ee0f7e7b843ac53caf704f88be',1,'votca::csg::BeadTriple']]],
   ['r13',['r13',['../classvotca_1_1csg_1_1BeadTriple.html#abbe9cfd5402fa3fa514a50039bb9b42c',1,'votca::csg::BeadTriple']]],
   ['r23',['r23',['../classvotca_1_1csg_1_1BeadTriple.html#ac4e2791ffe43d60a887bbf9e70ca5d94',1,'votca::csg::BeadTriple']]],

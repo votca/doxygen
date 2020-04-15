@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t',['t',['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()'],['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()']]],
+  ['t',['T',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()'],['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()']]],
   ['tex',['TEX',['../namespacevotca_1_1tools.html#ad71d84b1ff136d282308f7dec24626be',1,'votca::tools']]],
   ['theta',['theta',['../structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html#a2ac92b952d8f407dc51e62b1c153abe0',1,'votca::xtp::GridContainers::spherical_grid']]],
   ['threebody',['threebody',['../structCGForceMatching_1_1SplineInfo.html#a80cab7c0f8348cdf8f08d91528ff24a4',1,'CGForceMatching::SplineInfo']]],

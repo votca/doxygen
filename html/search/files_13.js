@@ -31,6 +31,7 @@ var searchData=
   ['test_5fbse_2ecc',['test_bse.cc',['../test__bse_8cc.html',1,'']]],
   ['test_5fbse_5foperator_2ecc',['test_bse_operator.cc',['../test__bse__operator_8cc.html',1,'']]],
   ['test_5fbsecoupling_2ecc',['test_bsecoupling.cc',['../test__bsecoupling_8cc.html',1,'']]],
+  ['test_5fcalculator_2ecc',['test_calculator.cc',['../test__calculator_8cc.html',1,'']]],
   ['test_5fconstants_2ecc',['test_constants.cc',['../test__constants_8cc.html',1,'']]],
   ['test_5fconvergenceacc_2ecc',['test_convergenceacc.cc',['../test__convergenceacc_8cc.html',1,'']]],
   ['test_5fcorrelate_2ecc',['test_correlate.cc',['../test__correlate_8cc.html',1,'']]],

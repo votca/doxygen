@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t',['t',['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()'],['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()']]],
+  ['t',['T',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()'],['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()']]],
   ['table',['Table',['../classvotca_1_1tools_1_1Table.html',1,'votca::tools']]],
   ['table_2ecc',['table.cc',['../table_8cc.html',1,'']]],
   ['table_2eh',['table.h',['../table_8h.html',1,'']]],
@@ -37,6 +37,7 @@ var searchData=
   ['test_5fbse_2ecc',['test_bse.cc',['../test__bse_8cc.html',1,'']]],
   ['test_5fbse_5foperator_2ecc',['test_bse_operator.cc',['../test__bse__operator_8cc.html',1,'']]],
   ['test_5fbsecoupling_2ecc',['test_bsecoupling.cc',['../test__bsecoupling_8cc.html',1,'']]],
+  ['test_5fcalculator_2ecc',['test_calculator.cc',['../test__calculator_8cc.html',1,'']]],
   ['test_5fconstants_2ecc',['test_constants.cc',['../test__constants_8cc.html',1,'']]],
   ['test_5fconvergenceacc_2ecc',['test_convergenceacc.cc',['../test__convergenceacc_8cc.html',1,'']]],
   ['test_5fcorrelate_2ecc',['test_correlate.cc',['../test__correlate_8cc.html',1,'']]],
@@ -222,7 +223,7 @@ var searchData=
   ['trustregionfunction',['TrustRegionFunction',['../classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html',1,'votca::xtp::TrustRegion::TrustRegionFunction'],['../classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html#adf29c9ef8ac205360bf540655e1d4123',1,'votca::xtp::TrustRegion::TrustRegionFunction::TrustRegionFunction()']]],
   ['tutorial_2emd',['TUTORIAL.md',['../TUTORIAL_8md.html',1,'']]],
   ['txt',['TXT',['../classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a3a59332bc990c42e746cdd7aa2f9022c',1,'votca::tools::PropertyIOManipulator::TXT()'],['../namespacevotca_1_1tools.html#a46ae41e1fd7e17c6463c653d827fea0e',1,'votca::tools::TXT()'],['../namespacevotca_1_1tools.html#a296bb9044f3701d955398f898de6b816',1,'votca::tools::TXT(PropertyIOManipulator::TXT)']]],
-  ['type',['Type',['../classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268',1,'votca::tools::PropertyIOManipulator::Type()'],['../classvotca_1_1xtp_1_1QMStateType.html#a00b18b72c87c9327e2b7847b5aca63fd',1,'votca::xtp::QMStateType::Type()'],['../classvotca_1_1xtp_1_1QMState.html#a27edfce89be5cd71aa17447790a0ee19',1,'votca::xtp::QMState::Type()'],['../classvotca_1_1csg_1_1XMLBead.html#a0a223d55f45206dbe0fd06def7342c08',1,'votca::csg::XMLBead::type()']]],
+  ['type',['type',['../classvotca_1_1csg_1_1XMLBead.html#a0a223d55f45206dbe0fd06def7342c08',1,'votca::csg::XMLBead::type()'],['../classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268',1,'votca::tools::PropertyIOManipulator::Type()'],['../classvotca_1_1xtp_1_1QMStateType.html#a00b18b72c87c9327e2b7847b5aca63fd',1,'votca::xtp::QMStateType::Type()'],['../classvotca_1_1xtp_1_1QMState.html#a27edfce89be5cd71aa17447790a0ee19',1,'votca::xtp::QMState::Type()']]],
   ['type1',['type1',['../structCGForceMatching_1_1SplineInfo.html#af5611f59e826bb4fd1e51a698036e49c',1,'CGForceMatching::SplineInfo::type1()'],['../structPotentialInfo.html#af115e4091bba620459ace6bdcc3b6067',1,'PotentialInfo::type1()']]],
   ['type2',['type2',['../structCGForceMatching_1_1SplineInfo.html#a25250a163ccf038d5b422b25c4d4c8eb',1,'CGForceMatching::SplineInfo::type2()'],['../structPotentialInfo.html#a8b363a4df2452f030fb6c341c9160c0c',1,'PotentialInfo::type2()']]],
   ['type2maxorder',['Type2MaxOrder',['../classvotca_1_1xtp_1_1LebedevGrid.html#aca2a812c0306a6176e0b87da0bb4f2aa',1,'votca::xtp::LebedevGrid::Type2MaxOrder(const std::string &amp;element, const std::string &amp;type) const'],['../classvotca_1_1xtp_1_1LebedevGrid.html#af450f37602ca1cd63d8dfb745601e169',1,'votca::xtp::LebedevGrid::Type2MaxOrder(const std::map&lt; std::string, Index &gt; &amp;map, const std::string &amp;element) const']]],

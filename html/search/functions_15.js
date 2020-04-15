@@ -21,7 +21,7 @@ var searchData=
   ['updateprojection',['updateProjection',['../classvotca_1_1xtp_1_1DavidsonSolver.html#acc5c8ad56db9c0c2c7aa86f2aa775370',1,'votca::xtp::DavidsonSolver']]],
   ['updaterpainputenergies',['UpdateRPAInputEnergies',['../classvotca_1_1xtp_1_1RPA.html#ad95486903835d809aade457442e4ae4e',1,'votca::xtp::RPA']]],
   ['updatesteps',['updateSteps',['../classvotca_1_1xtp_1_1Chargecarrier.html#a469107480e7a675d1653b0690a54b12d',1,'votca::xtp::Chargecarrier']]],
-  ['updatewithuseroptions',['UpdateWithUserOptions',['../classvotca_1_1tools_1_1Calculator.html#a039acbfefb89e45a185c592aea4f2194',1,'votca::tools::Calculator']]],
+  ['updatewithuseroptions',['UpdateWithUserOptions',['../classvotca_1_1tools_1_1Calculator.html#a0ad5f4fc29781db93a6b6c0006221749',1,'votca::tools::Calculator']]],
   ['uppermatrix',['UpperMatrix',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html#ac7f2deb025068be396a27d185aa74399',1,'votca::xtp::Symmetric_Matrix']]],
   ['useblock',['useBlock',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html#a0a863985cc46609152004467442c22c2',1,'votca::xtp::BSE_OPERATOR::useBlock()'],['../classvotca_1_1xtp_1_1MatrixFreeOperator.html#a3354d809664d0df5d2f1feb7c05bca06',1,'votca::xtp::MatrixFreeOperator::useBlock()'],['../classBlockOperator.html#a91566bc0df49086a0d94aefa3466e4b7',1,'BlockOperator::useBlock()']]],
   ['userow',['useRow',['../classvotca_1_1xtp_1_1MatrixFreeOperator.html#a5f2e24c451625438374fd15f4218e99f',1,'votca::xtp::MatrixFreeOperator::useRow()'],['../classBlockOperator.html#aee6583c8302c60a4011b654fa0fca920',1,'BlockOperator::useRow()']]]
