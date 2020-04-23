@@ -428,6 +428,7 @@ var searchData=
   ['_5fiteration',['_iteration',['../classvotca_1_1xtp_1_1BFGSTRM.html#a5c28640f971023bd4191d679170faee3',1,'votca::xtp::BFGSTRM::_iteration()'],['../classvotca_1_1xtp_1_1Energy__costfunction.html#a39ff3470ea77742aa1e0728008fe1867',1,'votca::xtp::Energy_costfunction::_iteration()']]],
   ['_5fjeff2',['_Jeff2',['../classvotca_1_1xtp_1_1QMPair.html#aa134cd391655b4423f597d038ebffa0a',1,'votca::xtp::QMPair']]],
   ['_5fjob',['_job',['../classvotca_1_1xtp_1_1JobTopology.html#a75f39518fca94f510eee8d97257f3d7e',1,'votca::xtp::JobTopology']]],
+  ['_5fjob_5fname',['_job_name',['../classvotca_1_1xtp_1_1QMTool.html#a2b9ed413eb94bec671f19850fd90d8da',1,'votca::xtp::QMTool']]],
   ['_5fjobfile',['_jobfile',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#a1bd552626929aa7b89ea6a6b4283ce81',1,'votca::xtp::ParallelXJobCalc']]],
   ['_5fjobs',['_jobs',['../classvotca_1_1xtp_1_1ProgObserver.html#a0d5fe82bae132e5bb0f01758da572539',1,'votca::xtp::ProgObserver']]],
   ['_5fjobsreported',['_jobsReported',['../classvotca_1_1xtp_1_1ProgObserver.html#a646c497eb77aeebd269434063295b14c',1,'votca::xtp::ProgObserver']]],

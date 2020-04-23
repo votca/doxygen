@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r',['r',['../classvotca_1_1csg_1_1BeadPair.html#a0f18fedaaccabfe5486075069da0b408',1,'votca::csg::BeadPair::r()'],['../classvotca_1_1xtp_1_1QMPair.html#ab4cf8e15d2b4d9f62caf881bc8dcf3f4',1,'votca::xtp::QMPair::R()']]],
+  ['r',['R',['../classvotca_1_1xtp_1_1QMPair.html#ab4cf8e15d2b4d9f62caf881bc8dcf3f4',1,'votca::xtp::QMPair::R()'],['../classvotca_1_1csg_1_1BeadPair.html#a0f18fedaaccabfe5486075069da0b408',1,'votca::csg::BeadPair::r()']]],
   ['r12',['r12',['../classvotca_1_1csg_1_1BeadTriple.html#a9b44c5ee0f7e7b843ac53caf704f88be',1,'votca::csg::BeadTriple']]],
   ['r13',['r13',['../classvotca_1_1csg_1_1BeadTriple.html#abbe9cfd5402fa3fa514a50039bb9b42c',1,'votca::csg::BeadTriple']]],
   ['r23',['r23',['../classvotca_1_1csg_1_1BeadTriple.html#ac4e2791ffe43d60a887bbf9e70ca5d94',1,'votca::csg::BeadTriple']]],
@@ -99,7 +99,7 @@ var searchData=
   ['resetregion',['ResetRegion',['../classvotca_1_1xtp_1_1StaticRegion.html#a8b65629bea35ecc23fdeb1680b5ae8b2',1,'votca::xtp::StaticRegion']]],
   ['residue',['Residue',['../classvotca_1_1csg_1_1Residue.html#a29afc0d27d2e7e86c3be3f3d90f6ed3b',1,'votca::csg::Residue']]],
   ['residuecount',['ResidueCount',['../classvotca_1_1csg_1_1Topology.html#a4d5e570d0547c9748b122d92555446b4',1,'votca::csg::Topology']]],
-  ['residues',['residues',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a7bbc138074489eeb8bc3ae06ec5e0b90',1,'votca::xtp::DavidsonSolver::residues()'],['../classvotca_1_1csg_1_1Topology.html#a0170fbccf8838eac2f00c5bf7becd922',1,'votca::csg::Topology::Residues()']]],
+  ['residues',['Residues',['../classvotca_1_1csg_1_1Topology.html#a0170fbccf8838eac2f00c5bf7becd922',1,'votca::csg::Topology::Residues()'],['../classvotca_1_1xtp_1_1DavidsonSolver.html#a7bbc138074489eeb8bc3ae06ec5e0b90',1,'votca::xtp::DavidsonSolver::residues()']]],
   ['resize',['resize',['../classvotca_1_1tools_1_1Table.html#ab4801775533302deab075a0b59a92e63',1,'votca::tools::Table']]],
   ['restart',['restart',['../classvotca_1_1xtp_1_1DavidsonSolver.html#ab6050a926c46e62cb70b557023c5bdd0',1,'votca::xtp::DavidsonSolver']]],
   ['reupdatelamda',['REUpdateLamda',['../classCsgREupdate.html#ace5af5765f6ff0b99f8d1c66931289c6',1,'CsgREupdate']]],
