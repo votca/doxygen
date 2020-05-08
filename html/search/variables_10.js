@@ -15,6 +15,7 @@ var searchData=
   ['posx',['posX',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a884b3844962654b9673c3868015258b4',1,'votca::xtp::PolarSite::data::posX()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#aa21698b2f461896d7543020b25852e79',1,'votca::xtp::StaticSite::data::posX()']]],
   ['posy',['posY',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a752ee4ee252bd3413f00d4362923ea84',1,'votca::xtp::PolarSite::data::posY()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#a9534e0b23f798b3341f7af5ec4012563',1,'votca::xtp::StaticSite::data::posY()']]],
   ['posz',['posZ',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#ad38e5b289d506f66b75496f91ebb1e26',1,'votca::xtp::PolarSite::data::posZ()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#a260d4fa479a8d8f02a36842d92030c4d',1,'votca::xtp::StaticSite::data::posZ()']]],
+  ['pot_5fenergy',['pot_energy',['../classKSpace.html#a6f99d39cdb5b2d5609c892a181c83657',1,'KSpace::pot_energy()'],['../classRSpace.html#abd0608f99d80e97d3f328a343705825c',1,'RSpace::pot_energy()']]],
   ['potentialfunction',['potentialFunction',['../structPotentialInfo.html#a9e2ed3a8865e155b5db6a975f90299c8',1,'PotentialInfo']]],
   ['potentialindex',['potentialIndex',['../structPotentialInfo.html#a681ddc669ab716100acb08430b28dbe7',1,'PotentialInfo']]],
   ['potentialname',['potentialName',['../structPotentialInfo.html#a6853cab4e31a28215d623f89f86f139b',1,'PotentialInfo']]],

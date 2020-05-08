@@ -9,5 +9,8 @@ var searchData=
   ['int_5fvals_5f',['int_vals_',['../classvotca_1_1tools_1_1GraphNode.html#a7817947122ed1bfa9f1e44ea8916cf79',1,'votca::tools::GraphNode']]],
   ['inv_5franges',['inv_ranges',['../classvotca_1_1xtp_1_1GridBox.html#a1aa2295cb065adb1228f283060f66b92',1,'votca::xtp::GridBox']]],
   ['ioindex',['IOindex',['../classvotca_1_1tools_1_1Property.html#aff5a4cdf04530275a7faf892ee00685d',1,'votca::tools::Property']]],
+  ['is_5fdipole',['is_dipole',['../classKSpace.html#a148045970bbd2b32ce3db72c7914c42a',1,'KSpace::is_dipole()'],['../classRSpace.html#a3a0ba284f69476a75674ba6ff2e39adb',1,'RSpace::is_dipole()']]],
+  ['is_5fmonopole',['is_monopole',['../classKSpace.html#a1616fc7e9a8341f5e04a9f44df696ce9',1,'KSpace::is_monopole()'],['../classRSpace.html#a6ee57ceb729dc1c5772684768c058f52',1,'RSpace::is_monopole()']]],
+  ['is_5fquadrupole',['is_quadrupole',['../classKSpace.html#a7dbef2d5f20ab284148439f897681687',1,'KSpace::is_quadrupole()'],['../classRSpace.html#a2622dc4395484f3fa0dc197d3a2abb22',1,'RSpace::is_quadrupole()']]],
   ['isonlastlevel',['isOnLastLevel',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#aa0a56507d447edeab85ef8b2696679dc',1,'votca::xtp::huffmanTree::huffmanNode']]]
 ];

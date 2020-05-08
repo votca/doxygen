@@ -10,7 +10,7 @@ var searchData=
   ['rate_5fengine_2eh',['rate_engine.h',['../rate__engine_8h.html',1,'']]],
   ['rdf_5fcalculator_2ecc',['rdf_calculator.cc',['../rdf__calculator_8cc.html',1,'']]],
   ['rdf_5fcalculator_2eh',['rdf_calculator.h',['../rdf__calculator_8h.html',1,'']]],
-  ['readme_2emd',['README.md',['../tools_2README_8md.html',1,'(Global Namespace)'],['../csg_2README_8md.html',1,'(Global Namespace)'],['../csg_2src_2tools_2references_2spce_23mols_2README_8md.html',1,'(Global Namespace)'],['../csg_2src_2tools_2references_2spce_2sources_2README_8md.html',1,'(Global Namespace)'],['../csg-tutorials_2guide_2README_8md.html',1,'(Global Namespace)'],['../csgapps_2README_8md.html',1,'(Global Namespace)'],['../xtp_2README_8md.html',1,'(Global Namespace)'],['../xtp-tutorials_2README_8md.html',1,'(Global Namespace)']]],
+  ['readme_2emd',['README.md',['../tools_2README_8md.html',1,'(Global Namespace)'],['../csg_2README_8md.html',1,'(Global Namespace)'],['../csg_2src_2tools_2references_2spce_23mols_2README_8md.html',1,'(Global Namespace)'],['../csg_2src_2tools_2references_2spce_2sources_2README_8md.html',1,'(Global Namespace)'],['../csg-tutorials_2guide_2README_8md.html',1,'(Global Namespace)'],['../csgapps_2README_8md.html',1,'(Global Namespace)'],['../xtp_2README_8md.html',1,'(Global Namespace)'],['../xtp_2src_2QDMEwald_2README_8md.html',1,'(Global Namespace)'],['../xtp-tutorials_2README_8md.html',1,'(Global Namespace)']]],
   ['reducededge_2ecc',['reducededge.cc',['../reducededge_8cc.html',1,'']]],
   ['reducededge_2eh',['reducededge.h',['../reducededge_8h.html',1,'']]],
   ['reducedgraph_2ecc',['reducedgraph.cc',['../reducedgraph_8cc.html',1,'']]],
@@ -21,5 +21,6 @@ var searchData=
   ['regular_5fgrid_2eh',['regular_grid.h',['../regular__grid_8h.html',1,'']]],
   ['residue_2eh',['residue.h',['../residue_8h.html',1,'']]],
   ['rpa_2ecc',['rpa.cc',['../rpa_8cc.html',1,'']]],
-  ['rpa_2eh',['rpa.h',['../rpa_8h.html',1,'']]]
+  ['rpa_2eh',['rpa.h',['../rpa_8h.html',1,'']]],
+  ['rspace_2ehpp',['RSpace.hpp',['../RSpace_8hpp.html',1,'']]]
 ];

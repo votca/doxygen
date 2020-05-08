@@ -1,6 +1,7 @@
 var searchData=
 [
   ['q',['Q',['../classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393',1,'votca::xtp::StaticSite']]],
+  ['qdmewald',['QDMEwald',['../classQDMEwald.html#a16a015d0f5d8b27f3883455043dfb166',1,'QDMEwald::QDMEwald()'],['../classQDMEwald.html#a47ab50591dba0610603fee0553c4e073',1,'QDMEwald::QDMEwald(T alpha, T k_max, T r_max, T l)']]],
   ['qmatom',['QMAtom',['../classvotca_1_1xtp_1_1QMAtom.html#aeb40a89640e656d9e1e127f173061448',1,'votca::xtp::QMAtom::QMAtom(Index index, std::string element, Eigen::Vector3d pos)'],['../classvotca_1_1xtp_1_1QMAtom.html#a682719aef546a8b7206082f14ed3a376',1,'votca::xtp::QMAtom::QMAtom(const data &amp;d)']]],
   ['qmatoms',['QMAtoms',['../classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4',1,'votca::xtp::Orbitals::QMAtoms() const'],['../classvotca_1_1xtp_1_1Orbitals.html#aae4cb26c969ca4d60d2316fcbd26d124',1,'votca::xtp::Orbitals::QMAtoms()']]],
   ['qmatoms2vector',['QMAtoms2Vector',['../classvotca_1_1xtp_1_1Energy__costfunction.html#a51ceb328b37bdc4c240b91c4d46b6828',1,'votca::xtp::Energy_costfunction']]],

@@ -2,7 +2,7 @@ var searchData=
 [
   ['g_5fsc_5flimit',['g_sc_limit',['../structvotca_1_1xtp_1_1GW_1_1options.html#ad062678863bffe6d9147c22d6eb23b0c',1,'votca::xtp::GW::options']]],
   ['g_5fsc_5fmax_5fiterations',['g_sc_max_iterations',['../structvotca_1_1xtp_1_1GW_1_1options.html#aa301bc6aea19b7dafedfbf5676cbd538',1,'votca::xtp::GW::options']]],
-  ['gamma',['gamma',['../structCGForceMatching_1_1SplineInfo.html#a2baadc8f8326e1ab1293627792c747d2',1,'CGForceMatching::SplineInfo']]],
+  ['gamma',['gamma',['../structCGForceMatching_1_1SplineInfo.html#a2baadc8f8326e1ab1293627792c747d2',1,'CGForceMatching::SplineInfo::gamma()'],['../classKSpace.html#aeb4c27ca32e46abc664c53d5ba812aa6',1,'KSpace::gamma()']]],
   ['graph_5f',['graph_',['../classvotca_1_1csg_1_1BeadStructure.html#afe5f4a438a4aa57a72d74a660e4ee6ff',1,'votca::csg::BeadStructure']]],
   ['graphdistvisitor',['GraphDistVisitor',['../classvotca_1_1tools_1_1GraphNode.html#afb69b77399f79d34254a35bc9daddced',1,'votca::tools::GraphNode']]],
   ['graphnodes_5f',['graphnodes_',['../classvotca_1_1csg_1_1BeadStructure.html#a65cc405ccf46e688146f554e1ec79c2e',1,'votca::csg::BeadStructure']]],

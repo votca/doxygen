@@ -16,6 +16,7 @@ var searchData=
   ['nmtoev',['nmtoev',['../classvotca_1_1xtp_1_1Spectrum.html#adb915584b2e3b8b576cdefd431e48689',1,'votca::xtp::Spectrum']]],
   ['nmtoinvcm',['nmtoinvcm',['../classvotca_1_1xtp_1_1Spectrum.html#a6337997940b5f14918c407cdecd2ae7e',1,'votca::xtp::Spectrum']]],
   ['nodeforeveryvertex_5f',['nodeForEveryVertex_',['../namespacevotca_1_1tools.html#aa9916f2a332f9e70b84ae8c132b0562e',1,'votca::tools']]],
+  ['norm',['norm',['../namespacekokkos__linalg__3d.html#a1fcecf058c19a9fcf41395e9cbc7615b',1,'kokkos_linalg_3d']]],
   ['normalize',['Normalize',['../classvotca_1_1tools_1_1Histogram.html#aad4fb7f52057e93d9eacb5e20571a159',1,'votca::tools::Histogram::Normalize()'],['../classvotca_1_1tools_1_1HistogramNew.html#a79306f06ffbb4d5d126bee1f69134d25',1,'votca::tools::HistogramNew::Normalize()']]],
   ['normalizecontraction',['normalizeContraction',['../classvotca_1_1xtp_1_1AOShell.html#a282d6d9ec22a5106b0e6442a7c8f94a3',1,'votca::xtp::AOShell']]],
   ['nsize',['nsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#aa5f18293f9e44e4270d4094d04b3a17e',1,'votca::xtp::TCMatrix_gwbse']]],

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['qdmewald_2ehpp',['QDMEwald.hpp',['../QDMEwald_8hpp.html',1,'']]],
   ['qmatom_2ecc',['qmatom.cc',['../qmatom_8cc.html',1,'']]],
   ['qmatom_2eh',['qmatom.h',['../qmatom_8h.html',1,'']]],
   ['qmcalculator_2eh',['qmcalculator.h',['../qmcalculator_8h.html',1,'']]],

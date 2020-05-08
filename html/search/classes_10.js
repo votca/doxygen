@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['qdmewald',['QDMEwald',['../classQDMEwald.html',1,'']]],
   ['qmatom',['QMAtom',['../classvotca_1_1xtp_1_1QMAtom.html',1,'votca::xtp']]],
   ['qmcalculator',['QMCalculator',['../classvotca_1_1xtp_1_1QMCalculator.html',1,'votca::xtp']]],
   ['qmfragment',['QMFragment',['../classvotca_1_1xtp_1_1QMFragment.html',1,'votca::xtp']]],

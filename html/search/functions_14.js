@@ -21,6 +21,7 @@ var searchData=
   ['tostream',['ToStream',['../classvotca_1_1xtp_1_1Job.html#a323e7202c26f9693d6e04dcfce7452cf',1,'votca::xtp::Job']]],
   ['tostring',['ToString',['../classvotca_1_1xtp_1_1QMStateType.html#a879d4a4c90b3043dd05e7c6882d6371d',1,'votca::xtp::QMStateType::ToString()'],['../classvotca_1_1xtp_1_1QMState.html#a538bcb5ebbb52080e9da42ba19e96580',1,'votca::xtp::QMState::ToString()']]],
   ['tovector',['ToVector',['../classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe',1,'votca::tools::Tokenizer::ToVector(std::vector&lt; std::string &gt; &amp;v)'],['../classvotca_1_1tools_1_1Tokenizer.html#ad8fc0b021690857dac2e21ad3fc27215',1,'votca::tools::Tokenizer::ToVector()']]],
+  ['trace',['trace',['../namespacekokkos__linalg__3d.html#a806ef1464538d89d1569c7fe4a3e0033',1,'kokkos_linalg_3d']]],
   ['traceofprod',['TraceofProd',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html#a56f5c2492fb8abe52562ee839f433200',1,'votca::xtp::Symmetric_Matrix']]],
   ['trajectorywriter',['TrajectoryWriter',['../classvotca_1_1csg_1_1TrajectoryWriter.html#ac10197ace33ac3e6a40090762051af16',1,'votca::csg::TrajectoryWriter']]],
   ['transitiondensitymatrix',['TransitionDensityMatrix',['../classvotca_1_1xtp_1_1Orbitals.html#a1d3c3224a7064ba7c09f3d9bcc1b09a7',1,'votca::xtp::Orbitals']]],

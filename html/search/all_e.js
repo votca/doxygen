@@ -54,6 +54,7 @@ var searchData=
   ['noe_5fv',['noE_V',['../namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102afd85e2a98e16e4481d58eb397c183b95',1,'votca::xtp']]],
   ['noisy',['noisy',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#af381a6e026c1fa2b7743301736b0416a',1,'votca::xtp::ConvergenceAcc::options']]],
   ['none',['NONE',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#a1852124710d79eac338b8ea1b67e5225ae509f8b4a4bbdb3d5dc9298a24876d32',1,'votca::csg::H5MDTrajectoryReader']]],
+  ['norm',['norm',['../namespacekokkos__linalg__3d.html#a1fcecf058c19a9fcf41395e9cbc7615b',1,'kokkos_linalg_3d']]],
   ['normalize',['Normalize',['../classvotca_1_1tools_1_1Histogram.html#aad4fb7f52057e93d9eacb5e20571a159',1,'votca::tools::Histogram::Normalize()'],['../classvotca_1_1tools_1_1HistogramNew.html#a79306f06ffbb4d5d126bee1f69134d25',1,'votca::tools::HistogramNew::Normalize()']]],
   ['normalizecontraction',['normalizeContraction',['../classvotca_1_1xtp_1_1AOShell.html#a282d6d9ec22a5106b0e6442a7c8f94a3',1,'votca::xtp::AOShell']]],
   ['notconverged',['notconverged',['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741add4c6db6996d2b2bf4e49b728c1b9171',1,'votca::xtp::NewtonRapson']]],

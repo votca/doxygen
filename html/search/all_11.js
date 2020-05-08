@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['qdmewald',['QDMEwald',['../md_xtp_src_QDMEwald_README.html',1,'']]],
   ['q',['Q',['../classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393',1,'votca::xtp::StaticSite::Q()'],['../classvotca_1_1csg_1_1XMLBead.html#a4f2d7f61752d77769a6ddaa23513e80a',1,'votca::csg::XMLBead::q()'],['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html#a298657c3243a930117efbe0455b9006f',1,'votca::xtp::DavidsonSolver::RitzEigenPair::q()']]],
   ['q00',['Q00',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#ac11af0bee880ab59995f9dba8374f724',1,'votca::xtp::PolarSite::data::Q00()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#a64410d9eb43e90e3814ac6d166379afb',1,'votca::xtp::StaticSite::data::Q00()']]],
   ['q10',['Q10',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a361a10173a8628ffdaf84a1110313c74',1,'votca::xtp::PolarSite::data::Q10()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#a7bdb5c4ef7b6c8aed87aa63055c5176e',1,'votca::xtp::StaticSite::data::Q10()']]],
@@ -10,6 +11,8 @@ var searchData=
   ['q21s',['Q21s',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a3b20893225a6baf6da9965d981ced8c3',1,'votca::xtp::PolarSite::data::Q21s()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#aa333a6b2a365854c2cea66587ffb4ae5',1,'votca::xtp::StaticSite::data::Q21s()']]],
   ['q22c',['Q22c',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a220349508416f96399fde8e5d1f043dc',1,'votca::xtp::PolarSite::data::Q22c()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#ab3b5ba29d0bee035a7bb0573e1fc8933',1,'votca::xtp::StaticSite::data::Q22c()']]],
   ['q22s',['Q22s',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#acd98edde43b92b923e8929648e5d70d9',1,'votca::xtp::PolarSite::data::Q22s()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#ab5946ef6edeba28840602467109d2289',1,'votca::xtp::StaticSite::data::Q22s()']]],
+  ['qdmewald',['QDMEwald',['../classQDMEwald.html',1,'QDMEwald&lt; T &gt;'],['../classQDMEwald.html#a16a015d0f5d8b27f3883455043dfb166',1,'QDMEwald::QDMEwald()'],['../classQDMEwald.html#a47ab50591dba0610603fee0553c4e073',1,'QDMEwald::QDMEwald(T alpha, T k_max, T r_max, T l)']]],
+  ['qdmewald_2ehpp',['QDMEwald.hpp',['../QDMEwald_8hpp.html',1,'']]],
   ['qmatom',['QMAtom',['../classvotca_1_1xtp_1_1QMAtom.html',1,'votca::xtp::QMAtom'],['../classvotca_1_1xtp_1_1QMAtom.html#aeb40a89640e656d9e1e127f173061448',1,'votca::xtp::QMAtom::QMAtom(Index index, std::string element, Eigen::Vector3d pos)'],['../classvotca_1_1xtp_1_1QMAtom.html#a682719aef546a8b7206082f14ed3a376',1,'votca::xtp::QMAtom::QMAtom(const data &amp;d)']]],
   ['qmatom_2ecc',['qmatom.cc',['../qmatom_8cc.html',1,'']]],
   ['qmatom_2eh',['qmatom.h',['../qmatom_8h.html',1,'']]],
