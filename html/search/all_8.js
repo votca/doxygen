@@ -92,7 +92,6 @@ var searchData=
   ['huffmantree',['huffmanTree',['../classvotca_1_1xtp_1_1huffmanTree.html',1,'votca::xtp']]],
   ['huffmantree_2eh',['huffmantree.h',['../huffmantree_8h.html',1,'']]],
   ['huffmantree_3c_20votca_3a_3axtp_3a_3aglink_20_3e',['huffmanTree&lt; votca::xtp::GLink &gt;',['../classvotca_1_1xtp_1_1huffmanTree.html',1,'votca::xtp']]],
-  ['huffmantree_5fh',['HUFFMANTREE_H',['../huffmantree_8h.html#aa54176539a21c2e5076fe5cd528223c5',1,'huffmantree.h']]],
   ['hxblock',['HxBlock',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html#a6f4147474ea8e7cfc1e4f78f59e574a9',1,'votca::xtp::BSE_OPERATOR']]],
   ['hxoperator',['HxOperator',['../namespacevotca_1_1xtp.html#ad6242c3edfe4e95b5ddd13435b7c2bdb',1,'votca::xtp']]],
   ['how_20to_20prepare_20the_20files_20for_20a_20votca_20xtp_20system',['How to prepare the files for a VOTCA XTP system',['../md_xtp-tutorials_guide_HOW_TO_PREPARE_INPUTS.html',1,'']]]
