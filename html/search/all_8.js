@@ -73,7 +73,7 @@ var searchData=
   ['hist_3c_20eigen_3a_3amatrixxd_20_3e',['hist&lt; Eigen::MatrixXd &gt;',['../classvotca_1_1xtp_1_1hist.html',1,'votca::xtp']]],
   ['hist_3c_20votca_3a_3axtp_3a_3aenergy_5fterms_20_3e',['hist&lt; votca::xtp::Energy_terms &gt;',['../classvotca_1_1xtp_1_1hist.html',1,'votca::xtp']]],
   ['histlength',['histlength',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a2d368e72164943e0a1b665a4b854711d',1,'votca::xtp::ConvergenceAcc::options']]],
-  ['histogram',['Histogram',['../classvotca_1_1tools_1_1Histogram.html',1,'votca::tools::Histogram'],['../classvotca_1_1tools_1_1Histogram.html#a77beaf4088d8dbaa7e70a24d1db17335',1,'votca::tools::Histogram::Histogram(options_t op)'],['../classvotca_1_1tools_1_1Histogram.html#ae65164fcec06e1d1e70c14e652fe3654',1,'votca::tools::Histogram::Histogram()']]],
+  ['histogram',['Histogram',['../classvotca_1_1tools_1_1Histogram.html',1,'votca::tools::Histogram'],['../classvotca_1_1tools_1_1Histogram.html#ae13f40199e8a03cace862db9765f6341',1,'votca::tools::Histogram::Histogram(const options_t &amp;op)'],['../classvotca_1_1tools_1_1Histogram.html#ae65164fcec06e1d1e70c14e652fe3654',1,'votca::tools::Histogram::Histogram()']]],
   ['histogram_2ecc',['histogram.cc',['../histogram_8cc.html',1,'']]],
   ['histogram_2eh',['histogram.h',['../histogram_8h.html',1,'']]],
   ['histogramnew',['HistogramNew',['../classvotca_1_1tools_1_1HistogramNew.html',1,'votca::tools']]],
