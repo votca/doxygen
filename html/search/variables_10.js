@@ -5,7 +5,7 @@ var searchData=
   ['p2',['p2',['../classvotca_1_1tools_1_1AkimaSpline.html#a26e9b057669132b88757eb8539a086f3',1,'votca::tools::AkimaSpline']]],
   ['p3',['p3',['../classvotca_1_1tools_1_1AkimaSpline.html#a6fe6fdb264b4ac9a79742f41bf211409',1,'votca::tools::AkimaSpline']]],
   ['pair_5ftype',['pair_type',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#a5f0375e1475e3c17165ab416a4e2d491',1,'votca::xtp::QMPair::data']]],
-  ['parameters',['parameters',['../classvotca_1_1tools_1_1StructureParameters.html#a30ebf52c883c51b7d702da875dd65cf1',1,'votca::tools::StructureParameters']]],
+  ['parameters',['parameters',['../classvotca_1_1tools_1_1StructureParameters.html#aba6b5217fda94aa83d6093570ccc1097',1,'votca::tools::StructureParameters']]],
   ['parent_5fbeads_5f',['parent_beads_',['../classvotca_1_1csg_1_1Bead.html#affea4046b1c0b6f1fd2c536ebc1decbd',1,'votca::csg::Bead']]],
   ['particle_5fgroup_5f',['particle_group_',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#a52445f715b204c38b8f3510b59e0762e',1,'votca::csg::H5MDTrajectoryReader']]],
   ['periodic',['periodic',['../structCGForceMatching_1_1SplineInfo.html#a0de5d9601c89e3c851e798d384175ae4',1,'CGForceMatching::SplineInfo']]],
