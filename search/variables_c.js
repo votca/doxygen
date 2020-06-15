@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['l',['l',['../structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#a42460cd02d8777e35b4ac8939239639f',1,'votca::xtp::EulerMaclaurinGrid::min_exp']]],
+  ['l',['l',['../structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#a42460cd02d8777e35b4ac8939239639f',1,'votca::xtp::EulerMaclaurinGrid::min_exp::l()'],['../classKSpace.html#aa8e92cc340ca2639f6b7407be1f98179',1,'KSpace::l()'],['../classRSpace.html#a18c74cd4a4fe5ae77c3ad5101ea72633',1,'RSpace::l()']]],
   ['label',['label',['../structvotca_1_1tools_1_1globals_1_1tex.html#a2516d84cd7f90d77f295edba9dcdca06',1,'votca::tools::globals::tex']]],
   ['lambda',['lambda',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html#a46902b7058ac515767c2e23cd8e14476',1,'votca::xtp::DavidsonSolver::RitzEigenPair']]],
   ['lambda0e',['lambda0e',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#a1bda80970c5674e1a50edffabeff5716',1,'votca::xtp::QMPair::data']]],

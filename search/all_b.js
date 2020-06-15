@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['k_5fmax_5fint',['k_max_int',['../classKSpace.html#a10a76ef1dcd6d3911d5e732248c5734c',1,'KSpace']]],
+  ['k_5fsq_5fint',['k_sq_int',['../classKSpace.html#a14f69f70366052e2d308b70dc4ec6b58',1,'KSpace']]],
   ['kb',['kB',['../namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf',1,'votca::tools::conv']]],
   ['kcal2kj',['kcal2kj',['../namespacevotca_1_1tools_1_1conv.html#a39ff797da0c58c07ce20d2c40bf82dd5',1,'votca::tools::conv']]],
   ['kilocalories',['kilocalories',['../namespacevotca_1_1tools.html#a9bad48919a06a85cfa246ccd38569318acf74f9e33a648fe57f178498ee90e8d4',1,'votca::tools']]],
@@ -23,6 +25,10 @@ var searchData=
   ['kmcmultiple',['KMCMultiple',['../classvotca_1_1xtp_1_1KMCMultiple.html',1,'votca::xtp::KMCMultiple'],['../classvotca_1_1xtp_1_1KMCMultiple.html#ae05f449a760768142c34ce574cd2b72f',1,'votca::xtp::KMCMultiple::KMCMultiple()']]],
   ['kmcmultiple_2ecc',['kmcmultiple.cc',['../kmcmultiple_8cc.html',1,'']]],
   ['kmcmultiple_2eh',['kmcmultiple.h',['../kmcmultiple_8h.html',1,'']]],
+  ['kokkos_5flinalg_2ehpp',['kokkos_linalg.hpp',['../kokkos__linalg_8hpp.html',1,'']]],
+  ['kokkos_5flinalg_5f3d',['kokkos_linalg_3d',['../namespacekokkos__linalg__3d.html',1,'']]],
   ['ksmode',['KSmode',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71',1,'votca::xtp::ConvergenceAcc']]],
+  ['kspace',['KSpace',['../classKSpace.html',1,'KSpace&lt; T &gt;'],['../classQDMEwald.html#ab5e38b00133761e57044fd586197790b',1,'QDMEwald::kspace()'],['../classKSpace.html#a16f8e8d327f22bfc04882df40d3a50d8',1,'KSpace::KSpace()'],['../classKSpace.html#ac3678ee53bf8d5d4392db34df51fa385',1,'KSpace::KSpace(const T _alpha, const T _k_max, const T _l)']]],
+  ['kspace_2ehpp',['KSpace.hpp',['../KSpace_8hpp.html',1,'']]],
   ['ksstate',['KSstate',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a734e21875c92fc7531db01ec3af9a745',1,'votca::xtp::QMStateType']]]
 ];

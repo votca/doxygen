@@ -5,6 +5,8 @@ var searchData=
   ['segment_2eh',['segment.h',['../segment_8h.html',1,'']]],
   ['segmentmapper_2ecc',['segmentmapper.cc',['../segmentmapper_8cc.html',1,'']]],
   ['segmentmapper_2eh',['segmentmapper.h',['../segmentmapper_8h.html',1,'']]],
+  ['settings_2ecc',['settings.cc',['../settings_8cc.html',1,'']]],
+  ['settings_2eh',['settings.h',['../settings_8h.html',1,'']]],
   ['sigma_5fbase_2ecc',['sigma_base.cc',['../sigma__base_8cc.html',1,'']]],
   ['sigma_5fbase_2eh',['sigma_base.h',['../sigma__base_8h.html',1,'']]],
   ['sigma_5fexact_2ecc',['sigma_exact.cc',['../sigma__exact_8cc.html',1,'']]],

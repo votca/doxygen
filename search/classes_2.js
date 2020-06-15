@@ -3,7 +3,7 @@ var searchData=
   ['calculator',['Calculator',['../classvotca_1_1tools_1_1Calculator.html',1,'votca::tools']]],
   ['calculatorfactory',['Calculatorfactory',['../classvotca_1_1xtp_1_1Calculatorfactory.html',1,'votca::xtp']]],
   ['cartesian_5fgridpoint',['Cartesian_gridpoint',['../structvotca_1_1xtp_1_1GridContainers_1_1Cartesian__gridpoint.html',1,'votca::xtp::GridContainers']]],
-  ['cell_5ft',['cell_t',['../structvotca_1_1csg_1_1NBListGrid__3Body_1_1cell__t.html',1,'votca::csg::NBListGrid_3Body::cell_t'],['../structvotca_1_1csg_1_1NBListGrid_1_1cell__t.html',1,'votca::csg::NBListGrid::cell_t']]],
+  ['cell_5ft',['cell_t',['../structvotca_1_1csg_1_1NBListGrid_1_1cell__t.html',1,'votca::csg::NBListGrid::cell_t'],['../structvotca_1_1csg_1_1NBListGrid__3Body_1_1cell__t.html',1,'votca::csg::NBListGrid_3Body::cell_t']]],
   ['cg_5fimc_5fsolve',['CG_IMC_solve',['../classCG__IMC__solve.html',1,'']]],
   ['cgengine',['CGEngine',['../classvotca_1_1csg_1_1CGEngine.html',1,'votca::csg']]],
   ['cgforcematching',['CGForceMatching',['../classCGForceMatching.html',1,'']]],

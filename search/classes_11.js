@@ -13,5 +13,6 @@ var searchData=
   ['residue',['Residue',['../classvotca_1_1csg_1_1Residue.html',1,'votca::csg']]],
   ['ritzeigenpair',['RitzEigenPair',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html',1,'votca::xtp::DavidsonSolver']]],
   ['rpa',['RPA',['../classvotca_1_1xtp_1_1RPA.html',1,'votca::xtp']]],
-  ['rpa_5feigensolution',['rpa_eigensolution',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html',1,'votca::xtp::RPA']]]
+  ['rpa_5feigensolution',['rpa_eigensolution',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html',1,'votca::xtp::RPA']]],
+  ['rspace',['RSpace',['../classRSpace.html',1,'']]]
 ];

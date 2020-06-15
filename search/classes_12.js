@@ -5,6 +5,7 @@ var searchData=
   ['segment',['Segment',['../classvotca_1_1xtp_1_1Segment.html',1,'votca::xtp']]],
   ['segmentmapper',['SegmentMapper',['../classvotca_1_1xtp_1_1SegmentMapper.html',1,'votca::xtp']]],
   ['selection',['selection',['../classvotca_1_1tools_1_1DataCollection_1_1selection.html',1,'votca::tools::DataCollection']]],
+  ['settings',['Settings',['../classvotca_1_1xtp_1_1Settings.html',1,'votca::xtp']]],
   ['shell',['Shell',['../classvotca_1_1xtp_1_1Shell.html',1,'votca::xtp']]],
   ['sigma_5fbase',['Sigma_base',['../classvotca_1_1xtp_1_1Sigma__base.html',1,'votca::xtp']]],
   ['sigma_5fexact',['Sigma_Exact',['../classvotca_1_1xtp_1_1Sigma__Exact.html',1,'votca::xtp']]],

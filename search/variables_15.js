@@ -11,6 +11,7 @@ var searchData=
   ['unassigned_5fresidue_5fid',['unassigned_residue_id',['../namespacevotca_1_1tools_1_1topology__constants.html#a456c2b904bc094f9d8685f0f603d7652',1,'votca::tools::topology_constants']]],
   ['unassigned_5fresidue_5ftype',['unassigned_residue_type',['../namespacevotca_1_1tools_1_1topology__constants.html#a752b92e0ebf01e410971d764fdfad8b6',1,'votca::tools::topology_constants']]],
   ['url',['url',['../structvotca_1_1tools_1_1globals.html#a408070115bc674bc07b2a7578dd5840a',1,'votca::tools::globals']]],
+  ['use_5fhqp_5foffdiag',['use_Hqp_offdiag',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a05e6a4fd8a751545141d0567369d2443',1,'votca::xtp::BSE::options']]],
   ['usediis',['usediis',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#abd8b825e0622a4ef74c753ac3e62e8b5',1,'votca::xtp::ConvergenceAcc::options']]],
   ['usetda',['useTDA',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a659a54cb1fcd033929c79d48476ce374',1,'votca::xtp::BSE::options']]]
 ];

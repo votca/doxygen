@@ -21,5 +21,6 @@ var searchData=
   ['regular_5fgrid_2eh',['regular_grid.h',['../regular__grid_8h.html',1,'']]],
   ['residue_2eh',['residue.h',['../residue_8h.html',1,'']]],
   ['rpa_2ecc',['rpa.cc',['../rpa_8cc.html',1,'']]],
-  ['rpa_2eh',['rpa.h',['../rpa_8h.html',1,'']]]
+  ['rpa_2eh',['rpa.h',['../rpa_8h.html',1,'']]],
+  ['rspace_2ehpp',['RSpace.hpp',['../RSpace_8hpp.html',1,'']]]
 ];

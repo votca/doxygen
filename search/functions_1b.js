@@ -80,6 +80,7 @@ var searchData=
   ['_7eregion',['~Region',['../classvotca_1_1xtp_1_1Region.html#ad087154dfc72512176995f1f051ca3be',1,'votca::xtp::Region']]],
   ['_7esegment',['~Segment',['../classvotca_1_1xtp_1_1Segment.html#a442ca3d5cfb9ab8ca9ba0666c03b4d5c',1,'votca::xtp::Segment']]],
   ['_7eselection',['~selection',['../classvotca_1_1tools_1_1DataCollection_1_1selection.html#a23f7aaee8c499e976a565dee2e8553f4',1,'votca::tools::DataCollection::selection']]],
+  ['_7esettings',['~Settings',['../classvotca_1_1xtp_1_1Settings.html#a8dc9e677810128fa44606a67cedc7532',1,'votca::xtp::Settings']]],
   ['_7esigma_5fbase',['~Sigma_base',['../classvotca_1_1xtp_1_1Sigma__base.html#abb618e9c09f2fd0cb940272f3bebb99f',1,'votca::xtp::Sigma_base']]],
   ['_7espectrum',['~Spectrum',['../classvotca_1_1xtp_1_1Spectrum.html#aaa1b22af0e91f573a67667b9e1003723',1,'votca::xtp::Spectrum']]],
   ['_7espline',['~Spline',['../classvotca_1_1tools_1_1Spline.html#aa2053ce8fcf04f0ba1afb2319c5a6044',1,'votca::tools::Spline']]],

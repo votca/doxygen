@@ -6,5 +6,6 @@ var searchData=
   ['newtons',['newtons',['../namespacevotca_1_1tools.html#a57cc746da9eee19c1cc299966d7a5c23abc4a4993542489a90426fb868bce4aca',1,'votca::tools']]],
   ['newtons_5fper_5fmole',['newtons_per_mole',['../namespacevotca_1_1tools.html#a3dcc9b8baac70960cb94c0edc2c8f858a297c35860dc80b46d12a1ca90f48740d',1,'votca::tools']]],
   ['noe_5fv',['noE_V',['../namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102afd85e2a98e16e4481d58eb397c183b95',1,'votca::xtp']]],
-  ['none',['NONE',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#a1852124710d79eac338b8ea1b67e5225ae509f8b4a4bbdb3d5dc9298a24876d32',1,'votca::csg::H5MDTrajectoryReader']]]
+  ['none',['NONE',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#a1852124710d79eac338b8ea1b67e5225ae509f8b4a4bbdb3d5dc9298a24876d32',1,'votca::csg::H5MDTrajectoryReader']]],
+  ['notconverged',['notconverged',['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741add4c6db6996d2b2bf4e49b728c1b9171',1,'votca::xtp::NewtonRapson']]]
 ];

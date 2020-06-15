@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['qdmewald',['QDMEwald',['../classQDMEwald.html',1,'']]],
   ['qmatom',['QMAtom',['../classvotca_1_1xtp_1_1QMAtom.html',1,'votca::xtp']]],
   ['qmcalculator',['QMCalculator',['../classvotca_1_1xtp_1_1QMCalculator.html',1,'votca::xtp']]],
   ['qmfragment',['QMFragment',['../classvotca_1_1xtp_1_1QMFragment.html',1,'votca::xtp']]],
@@ -18,5 +19,6 @@ var searchData=
   ['qmstatetype',['QMStateType',['../classvotca_1_1xtp_1_1QMStateType.html',1,'votca::xtp']]],
   ['qmthread',['QMThread',['../classvotca_1_1xtp_1_1QMThread.html',1,'votca::xtp']]],
   ['qmtool',['QMTool',['../classvotca_1_1xtp_1_1QMTool.html',1,'votca::xtp']]],
-  ['qmtoolfactory',['QMToolFactory',['../classvotca_1_1xtp_1_1QMToolFactory.html',1,'votca::xtp']]]
+  ['qmtoolfactory',['QMToolFactory',['../classvotca_1_1xtp_1_1QMToolFactory.html',1,'votca::xtp']]],
+  ['qpfunc',['QPFunc',['../classvotca_1_1xtp_1_1GW_1_1QPFunc.html',1,'votca::xtp::GW']]]
 ];

@@ -8,5 +8,5 @@ var searchData=
   ['nbo',['NBO',['../classvotca_1_1xtp_1_1NBO.html',1,'votca::xtp']]],
   ['neighborlist',['Neighborlist',['../classvotca_1_1xtp_1_1Neighborlist.html',1,'votca::xtp']]],
   ['nematicorder',['NematicOrder',['../classvotca_1_1csg_1_1NematicOrder.html',1,'votca::csg']]],
-  ['nwchem',['NWChem',['../classvotca_1_1xtp_1_1NWChem.html',1,'votca::xtp']]]
+  ['newtonrapson',['NewtonRapson',['../classvotca_1_1xtp_1_1NewtonRapson.html',1,'votca::xtp']]]
 ];

@@ -11,6 +11,7 @@ var searchData=
   ['connections_5f',['connections_',['../classvotca_1_1csg_1_1BeadStructure.html#a2cdaa92afda27f913f2281cdae9e975d',1,'votca::csg::BeadStructure']]],
   ['coordfiles',['coordfiles',['../structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html#aea90ac73f17781279e8a7f55f2d36b18',1,'votca::xtp::SegmentMapper::Seginfo']]],
   ['copyright',['copyright',['../structvotca_1_1tools_1_1globals_1_1man.html#af7a2c563a57e313223c53b74e6a976c2',1,'votca::tools::globals::man']]],
+  ['cos_5ffac',['cos_fac',['../classKSpace.html#a512f67b7513f832e0a5cd3fccef9c7d2',1,'KSpace']]],
   ['current_5flevel',['current_level',['../structvotca_1_1Log.html#a0b1b9ad8af2f61537c7a51b2243958bb',1,'votca::Log']]],
   ['cyan',['Cyan',['../namespacevotca_1_1tools_1_1Colors.html#a4a25ba1a14e65fd4362cfb478aaa9337',1,'votca::tools::Colors']]]
 ];

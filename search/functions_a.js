@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['job',['Job',['../classvotca_1_1xtp_1_1Job.html#a75cebef8e97062f511a540f7d251559a',1,'votca::xtp::Job::Job(const tools::Property &amp;prop)'],['../classvotca_1_1xtp_1_1Job.html#a3755a4e1157bdfb07c2d96d78ef6253c',1,'votca::xtp::Job::Job(Index id, const std::string &amp;tag, const tools::Property &amp;input, JobStatus stat)']]],
+  ['job',['Job',['../classvotca_1_1xtp_1_1Job.html#a75cebef8e97062f511a540f7d251559a',1,'votca::xtp::Job::Job(const tools::Property &amp;prop)'],['../classvotca_1_1xtp_1_1Job.html#a437abb6b9154d85bbe4978758d65b75e',1,'votca::xtp::Job::Job(Index id, const std::string &amp;tag, const tools::Property &amp;input, JobStatus status)']]],
   ['jobapplication',['JobApplication',['../classvotca_1_1xtp_1_1JobApplication.html#aa2ace65346808f4becfbd7af427993fd',1,'votca::xtp::JobApplication']]],
   ['jobcalculator',['JobCalculator',['../classvotca_1_1xtp_1_1JobCalculator.html#a8611a8b008f1343a4580f849b61339e5',1,'votca::xtp::JobCalculator']]],
   ['jobcalculatorfactory',['JobCalculatorfactory',['../classvotca_1_1xtp_1_1JobCalculatorfactory.html#a2260bf33868f2de187af8e43812bf071',1,'votca::xtp::JobCalculatorfactory']]],

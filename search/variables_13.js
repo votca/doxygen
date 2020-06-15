@@ -11,6 +11,7 @@ var searchData=
   ['sigma',['sigma',['../structCGForceMatching_1_1SplineInfo.html#a24b4b2825bff1b938b308e60c3c74f1d',1,'CGForceMatching::SplineInfo']]],
   ['sigma_5fintegration',['sigma_integration',['../structvotca_1_1xtp_1_1GW_1_1options.html#addc4a0055ef69df0a1b942fe8939763e',1,'votca::xtp::GW::options']]],
   ['significant_5fshells',['significant_shells',['../classvotca_1_1xtp_1_1GridBox.html#a59ff711d98e877cb22f99ce9db680fa8',1,'votca::xtp::GridBox']]],
+  ['sin_5ffac',['sin_fac',['../classKSpace.html#a8f4be47955191451eeb094b6020184c9',1,'KSpace']]],
   ['single_5fstructure_5f',['single_structure_',['../classvotca_1_1csg_1_1BeadStructure.html#a58faffb3c4d3df08bded01efb401bb55',1,'votca::csg::BeadStructure']]],
   ['single_5fstructureuptodate_5f',['single_structureUpToDate_',['../classvotca_1_1csg_1_1BeadStructure.html#a2ada81b4123414baec93e7271c99f0c8',1,'votca::csg::BeadStructure']]],
   ['size',['size',['../structvotca_1_1xtp_1_1GridboxRange.html#af0002dbc20a48cd14fab05d9b03f1f33',1,'votca::xtp::GridboxRange']]],
