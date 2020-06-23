@@ -28,7 +28,7 @@ var searchData=
   ['kokkos_5flinalg_2ehpp',['kokkos_linalg.hpp',['../kokkos__linalg_8hpp.html',1,'']]],
   ['kokkos_5flinalg_5f3d',['kokkos_linalg_3d',['../namespacekokkos__linalg__3d.html',1,'']]],
   ['ksmode',['KSmode',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71',1,'votca::xtp::ConvergenceAcc']]],
-  ['kspace',['KSpace',['../classKSpace.html',1,'KSpace&lt; T &gt;'],['../classQDMEwald.html#ab5e38b00133761e57044fd586197790b',1,'QDMEwald::kspace()'],['../classKSpace.html#a16f8e8d327f22bfc04882df40d3a50d8',1,'KSpace::KSpace()'],['../classKSpace.html#ac3678ee53bf8d5d4392db34df51fa385',1,'KSpace::KSpace(const T _alpha, const T _k_max, const T _l)']]],
+  ['kspace',['KSpace',['../classKSpace.html',1,'KSpace&lt; T &gt;'],['../classKSpace.html#a16f8e8d327f22bfc04882df40d3a50d8',1,'KSpace::KSpace()'],['../classKSpace.html#ac3678ee53bf8d5d4392db34df51fa385',1,'KSpace::KSpace(const T _alpha, const T _k_max, const T _l)'],['../classQDMEwald.html#ab5e38b00133761e57044fd586197790b',1,'QDMEwald::kspace()']]],
   ['kspace_2ehpp',['KSpace.hpp',['../KSpace_8hpp.html',1,'']]],
   ['ksstate',['KSstate',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a734e21875c92fc7531db01ec3af9a745',1,'votca::xtp::QMStateType']]]
 ];

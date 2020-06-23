@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t',['t',['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()'],['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()']]],
+  ['t',['T',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()'],['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()']]],
   ['table',['Table',['../classvotca_1_1tools_1_1Table.html',1,'votca::tools']]],
   ['table_2ecc',['table.cc',['../table_8cc.html',1,'']]],
   ['table_2eh',['table.h',['../table_8h.html',1,'']]],
@@ -195,7 +195,7 @@ var searchData=
   ['total_5fenergy',['total_energy',['../classQDMEwald.html#a4bf627d0f730a6d16aad7ddf1af40f0e',1,'QDMEwald']]],
   ['total_5fvirial',['total_virial',['../classQDMEwald.html#a09c566a9e56d0533c2e0ece655520673',1,'QDMEwald']]],
   ['tovector',['ToVector',['../classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe',1,'votca::tools::Tokenizer::ToVector(std::vector&lt; std::string &gt; &amp;v)'],['../classvotca_1_1tools_1_1Tokenizer.html#ad8fc0b021690857dac2e21ad3fc27215',1,'votca::tools::Tokenizer::ToVector()']]],
-  ['tqe',['tqe',['../classKSpace.html#aa8abf891b459a46c7eda0c926cb7e369',1,'KSpace::tqe()'],['../classRSpace.html#aa929c1ac4b31607ceb2539b824464fc1',1,'RSpace::tqe()']]],
+  ['tqe',['tqe',['../classKSpace.html#adb639579ce25aa177a942aec6e889209',1,'KSpace::tqe()'],['../classRSpace.html#a02488e4b5419e235234633c3e98701ae',1,'RSpace::tqe()']]],
   ['trace',['trace',['../namespacekokkos__linalg__3d.html#a806ef1464538d89d1569c7fe4a3e0033',1,'kokkos_linalg_3d']]],
   ['traceofprod',['TraceofProd',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html#a56f5c2492fb8abe52562ee839f433200',1,'votca::xtp::Symmetric_Matrix']]],
   ['traits_3c_20votca_3a_3axtp_3a_3adipoledipoleinteraction_20_3e',['traits&lt; votca::xtp::DipoleDipoleInteraction &gt;',['../structEigen_1_1internal_1_1traits_3_01votca_1_1xtp_1_1DipoleDipoleInteraction_01_4.html',1,'Eigen::internal']]],
