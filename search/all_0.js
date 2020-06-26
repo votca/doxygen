@@ -1,11 +1,6 @@
 var searchData=
 [
   ['_5f4c_5fvector',['_4c_vector',['../classvotca_1_1xtp_1_1FCMatrix.html#aa8256d9f2bd66478be8bcad1d7d81a0d',1,'votca::xtp::FCMatrix']]],
-  ['_5f_5fvotca_5fxtp_5fdeltaq_5ffilter_5fh',['__VOTCA_XTP_DELTAQ_FILTER_H',['../DeltaQ__filter_8h.html#ac198cb3cab6d3174c6c2ed155fc75a26',1,'DeltaQ_filter.h']]],
-  ['_5f_5fvotca_5fxtp_5fdensity_5ffilter_5fh',['__VOTCA_XTP_DENSITY_FILTER_H',['../Density__filter_8h.html#a0a1bd74f7bdbf792adf9ed8239535f69',1,'Density_filter.h']]],
-  ['_5f_5fvotca_5fxtp_5flocalisation_5ffilter_5fh',['__VOTCA_XTP_LOCALISATION_FILTER_H',['../Localisation__filter_8h.html#a600df2fc55d50b6b656ef2ba46f8b3bd',1,'Localisation_filter.h']]],
-  ['_5f_5fvotca_5fxtp_5foscillatorstrength_5ffilter_5fh',['__VOTCA_XTP_OSCILLATORSTRENGTH_FILTER_H',['../OscillatorStrength__filter_8h.html#a2f57fb09ee411cd125ce8cd1b35df866',1,'OscillatorStrength_filter.h']]],
-  ['_5f_5fvotca_5fxtp_5foverlap_5ffilter_5fh',['__VOTCA_XTP_OVERLAP_FILTER_H',['../Overlap__filter_8h.html#acf0ed7a7b1e301d04999c5a0bb213f32',1,'Overlap_filter.h']]],
   ['_5fa',['_A',['../classCGForceMatching.html#a944f9c142283d0193d1600b6dcacfe89',1,'CGForceMatching::_A()'],['../classvotca_1_1xtp_1_1HamiltonianOperator.html#a83c9c62432399502b7c0a90e143a0cd3',1,'votca::xtp::HamiltonianOperator::_A()']]],
   ['_5faardfnorms',['_aardfnorms',['../classCsgREupdate.html#a571a7e250de6000aa08a4b7be20766b6',1,'CsgREupdate']]],
   ['_5faardfs',['_aardfs',['../classCsgREupdate.html#a5483ef66e17c2325078d4bde84b80186',1,'CsgREupdate']]],
@@ -850,7 +845,6 @@ var searchData=
   ['_5fvdwmk',['_VdWMK',['../classvotca_1_1tools_1_1Elements.html#a8ed75c3fec756831b4c4ecd634090e4b',1,'votca::tools::Elements']]],
   ['_5fvisible_5foptions',['_visible_options',['../classvotca_1_1tools_1_1Application.html#acc316b51cfc9a4d127246cd5f1d45740',1,'votca::tools::Application']]],
   ['_5fvmin',['_vmin',['../classvotca_1_1xtp_1_1vc2index.html#a2465234b560241e11846721d7a0898d0',1,'votca::xtp::vc2index']]],
-  ['_5fvotca_5fxtp_5fqmsandbox_5fh',['_VOTCA_XTP_QMSANDBOX_H',['../qmsandbox_8h.html#a374cce1c145006660bcff051649d299c',1,'qmsandbox.h']]],
   ['_5fvxc',['_vxc',['../classvotca_1_1xtp_1_1GW.html#afcc091d924a7f0092174f369395fb13e',1,'votca::xtp::GW']]],
   ['_5fwarnpreface',['_warnPreface',['../classvotca_1_1xtp_1_1LogBuffer.html#ac6728daa90a3b6403f96ecb0afd74395',1,'votca::xtp::LogBuffer']]],
   ['_5fweight',['_weight',['../structvotca_1_1csg_1_1Map__Sphere_1_1element__t.html#a23c16b511db6f9d2e7b884c39e3d3ea2',1,'votca::csg::Map_Sphere::element_t']]],
