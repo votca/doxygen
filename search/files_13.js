@@ -168,6 +168,5 @@ var searchData=
   ['triplelist_2eh',['triplelist.h',['../triplelist_8h.html',1,'']]],
   ['trustregion_2ecc',['trustregion.cc',['../trustregion_8cc.html',1,'']]],
   ['trustregion_2eh',['trustregion.h',['../trustregion_8h.html',1,'']]],
-  ['tutorial_2emd',['TUTORIAL.md',['../TUTORIAL_8md.html',1,'']]],
   ['types_2eh',['types.h',['../types_8h.html',1,'']]]
 ];

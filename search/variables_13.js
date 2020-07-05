@@ -30,6 +30,7 @@ var searchData=
   ['structure_5fid_5f',['structure_id_',['../classvotca_1_1csg_1_1BeadStructure.html#a023aa1bfbc57ee2eb7c03d68b1730139',1,'votca::csg::BeadStructure']]],
   ['structureiduptodate',['structureIdUpToDate',['../classvotca_1_1csg_1_1BeadStructure.html#a059c840c1c2d40f653dcaf17d0233b54',1,'votca::csg::BeadStructure']]],
   ['success',['success',['../classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935',1,'votca::xtp::ADIIS::success()'],['../classvotca_1_1xtp_1_1DIIS.html#a84ad7cbfc404884c3facbbd299ab5877',1,'votca::xtp::DIIS::success()']]],
+  ['suffix_5funits',['suffix_units',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#abfc6f863980d861babfd743cd72b6ded',1,'votca::csg::H5MDTrajectoryReader']]],
   ['sum_5f',['sum_',['../classThreadTest.html#a4c73abea5151688d7d0f8994bc6b56ca',1,'ThreadTest']]],
   ['sum_5fof_5fvalues',['sum_of_values',['../classvotca_1_1xtp_1_1huffmanTree.html#a6f8887d7bf4c3020c90ed6c500f88870',1,'votca::xtp::huffmanTree']]],
   ['symmetry_5f',['symmetry_',['../classvotca_1_1csg_1_1Bead.html#ad5e1df038403ad0f456efd2e5d3e3da3',1,'votca::csg::Bead']]],

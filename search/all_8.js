@@ -83,7 +83,6 @@ var searchData=
   ['hole',['Hole',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a3a56862aa0951018fa19253c6beba87f',1,'votca::xtp::QMStateType']]],
   ['homo',['homo',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a57839ecb760e85120a293dab767fcc26',1,'votca::xtp::BSE::options::homo()'],['../structvotca_1_1xtp_1_1BSEOperator__Options.html#a7ae02227cbd56ee667b9b4e44cb57555',1,'votca::xtp::BSEOperator_Options::homo()'],['../structvotca_1_1xtp_1_1GW_1_1options.html#abdcfac461a76c9869139366ccd2c9677',1,'votca::xtp::GW::options::homo()'],['../structvotca_1_1xtp_1_1Sigma__base_1_1options.html#ab59a27cf4f0b5968a63d2975b890ad90',1,'votca::xtp::Sigma_base::options::homo()']]],
   ['hopping',['Hopping',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7a697909d7a40aa2caf084053e5cb4b1c0',1,'votca::xtp::QMPair']]],
-  ['how_5fto_5fprepare_5finputs_2emd',['HOW_TO_PREPARE_INPUTS.md',['../HOW__TO__PREPARE__INPUTS_8md.html',1,'']]],
   ['hqp_5frow',['Hqp_row',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html#a9198f89be61eff99909b1e22d5e2a494',1,'votca::xtp::BSE_OPERATOR']]],
   ['hqpoperator',['HqpOperator',['../namespacevotca_1_1xtp.html#a4527afbfe852069c52477d63b21a5dac',1,'votca::xtp']]],
   ['hrt2ev',['hrt2ev',['../namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179',1,'votca::tools::conv']]],
@@ -93,6 +92,5 @@ var searchData=
   ['huffmantree_2eh',['huffmantree.h',['../huffmantree_8h.html',1,'']]],
   ['huffmantree_3c_20votca_3a_3axtp_3a_3aglink_20_3e',['huffmanTree&lt; votca::xtp::GLink &gt;',['../classvotca_1_1xtp_1_1huffmanTree.html',1,'votca::xtp']]],
   ['hxblock',['HxBlock',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html#a6f4147474ea8e7cfc1e4f78f59e574a9',1,'votca::xtp::BSE_OPERATOR']]],
-  ['hxoperator',['HxOperator',['../namespacevotca_1_1xtp.html#ad6242c3edfe4e95b5ddd13435b7c2bdb',1,'votca::xtp']]],
-  ['how_20to_20prepare_20the_20files_20for_20a_20votca_20xtp_20system',['How to prepare the files for a VOTCA XTP system',['../md_xtp-tutorials_guide_HOW_TO_PREPARE_INPUTS.html',1,'']]]
+  ['hxoperator',['HxOperator',['../namespacevotca_1_1xtp.html#ad6242c3edfe4e95b5ddd13435b7c2bdb',1,'votca::xtp']]]
 ];

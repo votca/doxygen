@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s',['S',['../classvotca_1_1xtp_1_1AOTransform.html#a0f0f53f4121c6af640aa1c8773d38278',1,'votca::xtp::AOTransform::S()'],['../classvotca_1_1xtp_1_1AOTransform.html#a0f0f53f4121c6af640aa1c8773d38278a745d06ded325ab665331b4f3ba6e75bc',1,'votca::xtp::AOTransform::s()'],['../namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903',1,'votca::xtp::Cart::s()']]],
+  ['s',['s',['../classvotca_1_1xtp_1_1AOTransform.html#a0f0f53f4121c6af640aa1c8773d38278a745d06ded325ab665331b4f3ba6e75bc',1,'votca::xtp::AOTransform::s()'],['../classvotca_1_1xtp_1_1AOTransform.html#a0f0f53f4121c6af640aa1c8773d38278',1,'votca::xtp::AOTransform::S()'],['../namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903',1,'votca::xtp::Cart::s()']]],
   ['safe',['SAFE',['../classvotca_1_1xtp_1_1DavidsonSolver.html#abd786a02625d5fb3a2030a510bc4f399a0221062d465ef762d58513dcb21598e8',1,'votca::xtp::DavidsonSolver']]],
   ['samevalueformultipleentries',['SameValueForMultipleEntries',['../classvotca_1_1xtp_1_1Md2QmEngine.html#a595e0ec60b3a7531aab10be1774b0805',1,'votca::xtp::Md2QmEngine']]],
   ['save',['Save',['../classvotca_1_1tools_1_1Table.html#ad0e6ad7c62b19e785c9ebd7bb5669711',1,'votca::tools::Table']]],
@@ -234,7 +234,7 @@ var searchData=
   ['size_5fupdate',['size_update',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#a061c9d19257cf9f435d16d62b23f2e2b',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
   ['skipimpropers_5f',['SkipImpropers_',['../classvotca_1_1csg_1_1LAMMPSDataReader.html#afc892f2878c9507b886f663fd648eec6',1,'votca::csg::LAMMPSDataReader']]],
   ['smalldenom',['smalldenom',['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741af85d9dd78d4c83fb4fa4bd3c2a6fff9c',1,'votca::xtp::NewtonRapson']]],
-  ['smallesteigenvalue',['smallestEigenvalue',['../classvotca_1_1xtp_1_1AOOverlap.html#ad41ecf35a33ebcb707c6d92b9a419755',1,'votca::xtp::AOOverlap::smallestEigenvalue()'],['../classvotca_1_1xtp_1_1AOOverlap.html#a5c2495b9932855aef28f6641209967f3',1,'votca::xtp::AOOverlap::SmallestEigenValue() const']]],
+  ['smallesteigenvalue',['SmallestEigenValue',['../classvotca_1_1xtp_1_1AOOverlap.html#a5c2495b9932855aef28f6641209967f3',1,'votca::xtp::AOOverlap::SmallestEigenValue() const'],['../classvotca_1_1xtp_1_1AOOverlap.html#ad41ecf35a33ebcb707c6d92b9a419755',1,'votca::xtp::AOOverlap::smallestEigenvalue()']]],
   ['sminusahalf',['Sminusahalf',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a62051c4a95b316eb100ba34b92aabeec',1,'votca::xtp::ConvergenceAcc']]],
   ['smooth',['Smooth',['../classvotca_1_1tools_1_1Table.html#ad89c3a53ec6c63a92fb2a117a61ed8d1',1,'votca::tools::Table']]],
   ['smooth_5f',['Smooth_',['../classvotca_1_1csg_1_1TabulatedPotential.html#aefe4d5353783ee700bbdd23ff139e28e',1,'votca::csg::TabulatedPotential']]],
@@ -340,6 +340,7 @@ var searchData=
   ['subtractcubes',['subtractCubes',['../classvotca_1_1xtp_1_1GenCube.html#a61421db6b8cf967d49c9718607a55c81',1,'votca::xtp::GenCube']]],
   ['success',['success',['../classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935',1,'votca::xtp::ADIIS::success()'],['../classvotca_1_1xtp_1_1DIIS.html#a84ad7cbfc404884c3facbbd299ab5877',1,'votca::xtp::DIIS::success()'],['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741a576fc1c2b12e5a37263ca38822839d9b',1,'votca::xtp::NewtonRapson::success()'],['../classvotca_1_1xtp_1_1BFGSTRM.html#a3f5759bf7cab5d93a9cf5946bf733554',1,'votca::xtp::BFGSTRM::Success()']]],
   ['successful',['Successful',['../classvotca_1_1xtp_1_1Region.html#aa0309b921b98e1609098ccd95bf1bd80',1,'votca::xtp::Region']]],
+  ['suffix_5funits',['suffix_units',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#abfc6f863980d861babfd743cd72b6ded',1,'votca::csg::H5MDTrajectoryReader']]],
   ['sum',['sum',['../classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html#aa6660fa45aa14bdb3a3134f79465595d',1,'votca::xtp::eeInteractor::E_terms']]],
   ['sum_5f',['sum_',['../classThreadTest.html#a4c73abea5151688d7d0f8994bc6b56ca',1,'ThreadTest']]],
   ['sum_5fof_5fvalues',['sum_of_values',['../classvotca_1_1xtp_1_1huffmanTree.html#a6f8887d7bf4c3020c90ed6c500f88870',1,'votca::xtp::huffmanTree']]],

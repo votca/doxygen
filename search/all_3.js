@@ -130,7 +130,6 @@ var searchData=
   ['cgobserver',['CGObserver',['../classvotca_1_1csg_1_1CGObserver.html',1,'votca::csg']]],
   ['cgobserver_2eh',['cgobserver.h',['../cgobserver_8h.html',1,'']]],
   ['cgorderparam',['CGOrderParam',['../classCGOrderParam.html',1,'']]],
-  ['changelog_2emd',['CHANGELOG.md',['../tools_2CHANGELOG_8md.html',1,'(Global Namespace)'],['../csg_2CHANGELOG_8md.html',1,'(Global Namespace)'],['../xtp_2CHANGELOG_8md.html',1,'(Global Namespace)']]],
   ['char_5fhndl',['char_hndl',['../namespacevotca_1_1tools.html#a14693c99eb64f60fd82e50485d9d7ec0',1,'votca::tools']]],
   ['charge',['charge',['../classvotca_1_1xtp_1_1MMRegion.html#ad00620fd0613fbfae86e7ba1512fbf9d',1,'votca::xtp::MMRegion::charge()'],['../classvotca_1_1xtp_1_1QMRegion.html#ae5d6136ee4b21096f0995d80d2a32b11',1,'votca::xtp::QMRegion::charge()'],['../classvotca_1_1xtp_1_1Region.html#a19b1876d30e4e2f03f53f74cf51b57d2',1,'votca::xtp::Region::charge()'],['../namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234',1,'votca::tools::Charge()']]],
   ['charge_5f',['charge_',['../classvotca_1_1csg_1_1Bead.html#abdff1cb8a71ce310da1c17355bf5577f',1,'votca::csg::Bead']]],
@@ -189,7 +188,6 @@ var searchData=
   ['cmpvertnodepair',['cmpVertNodePair',['../namespacevotca_1_1tools.html#a667686d353cae3a7d61d79f3338ebada',1,'votca::tools::cmpVertNodePair(const std::pair&lt; Index, GraphNode &gt; &amp;id_and_node1, const std::pair&lt; Index, GraphNode &gt; &amp;id_and_node2)'],['../namespacevotca_1_1tools.html#a4bf2bcb0a9585eca0b64bd9e067e47fc',1,'votca::tools::cmpVertNodePair(const pair&lt; Index, GraphNode &gt; &amp;id_and_node1, const pair&lt; Index, GraphNode &gt; &amp;id_and_node2)']]],
   ['coarsegrid',['CoarseGrid',['../classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a7e9859122103d4240418c13660057cc9',1,'votca::xtp::EulerMaclaurinGrid']]],
   ['coarseorder',['CoarseOrder',['../classvotca_1_1xtp_1_1LebedevGrid.html#a652c86ea9d415c1bc9697b51a0cf5438',1,'votca::xtp::LebedevGrid']]],
-  ['code_5fof_5fconduct_2emd',['CODE_OF_CONDUCT.md',['../CODE__OF__CONDUCT_8md.html',1,'']]],
   ['col',['col',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html#a8c6b417caed65a90924315beb3fdc8ba',1,'votca::xtp::DipoleDipoleInteraction::InnerIterator']]],
   ['collapseresults',['CollapseResults',['../classvotca_1_1xtp_1_1StateTracker.html#af049d06b3b51ff1ed2f18489a8bbf4ab',1,'votca::xtp::StateTracker']]],
   ['color',['Color',['../classvotca_1_1tools_1_1Color.html',1,'votca::tools']]],
@@ -331,11 +329,5 @@ var searchData=
   ['cudapipeline_2eh',['cudapipeline.h',['../cudapipeline_8h.html',1,'']]],
   ['current_5flevel',['current_level',['../structvotca_1_1Log.html#a0b1b9ad8af2f61537c7a51b2243958bb',1,'votca::Log']]],
   ['customizelogger',['CustomizeLogger',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#ac7ce67896525050391ca787c704bfba3',1,'votca::xtp::ParallelXJobCalc']]],
-  ['cyan',['Cyan',['../classvotca_1_1tools_1_1ColorSchemeBase.html#a9f245ad8f83caf15d1cb4bb3dffe69d6',1,'votca::tools::ColorSchemeBase::Cyan()'],['../classvotca_1_1tools_1_1Color.html#a5e1f9cd70165337e260f09d80d5809a9',1,'votca::tools::Color::Cyan()'],['../namespacevotca_1_1tools_1_1Colors.html#a4a25ba1a14e65fd4362cfb478aaa9337',1,'votca::tools::Colors::Cyan()']]],
-  ['changelog',['CHANGELOG',['../md_csg_CHANGELOG.html',1,'']]],
-  ['changelog',['CHANGELOG',['../md_tools_CHANGELOG.html',1,'']]],
-  ['changelog',['CHANGELOG',['../md_xtp_CHANGELOG.html',1,'']]],
-  ['contributor_20covenant_20code_20of_20conduct',['Contributor Covenant Code of Conduct',['../md_xtp_CODE_OF_CONDUCT.html',1,'']]],
-  ['content',['Content',['../md_xtp_share_README.html',1,'']]],
-  ['content',['Content',['../md_xtp_share_xtp_README.html',1,'']]]
+  ['cyan',['Cyan',['../classvotca_1_1tools_1_1ColorSchemeBase.html#a9f245ad8f83caf15d1cb4bb3dffe69d6',1,'votca::tools::ColorSchemeBase::Cyan()'],['../classvotca_1_1tools_1_1Color.html#a5e1f9cd70165337e260f09d80d5809a9',1,'votca::tools::Color::Cyan()'],['../namespacevotca_1_1tools_1_1Colors.html#a4a25ba1a14e65fd4362cfb478aaa9337',1,'votca::tools::Colors::Cyan()']]]
 ];

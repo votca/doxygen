@@ -7,7 +7,6 @@ var searchData=
   ['lammpsdumpwriter_2ecc',['lammpsdumpwriter.cc',['../lammpsdumpwriter_8cc.html',1,'']]],
   ['lammpsdumpwriter_2eh',['lammpsdumpwriter.h',['../lammpsdumpwriter_8h.html',1,'']]],
   ['lexical_5fcast_2eh',['lexical_cast.h',['../lexical__cast_8h.html',1,'']]],
-  ['license_2emd',['LICENSE.md',['../LICENSE_8md.html',1,'']]],
   ['linalg_2ecc',['linalg.cc',['../linalg_8cc.html',1,'']]],
   ['linalg_2eh',['linalg.h',['../linalg_8h.html',1,'']]],
   ['linspline_2ecc',['linspline.cc',['../linspline_8cc.html',1,'']]],

@@ -54,12 +54,12 @@ var searchData=
   ['lebedevgrid',['LebedevGrid',['../classvotca_1_1xtp_1_1LebedevGrid.html',1,'votca::xtp::LebedevGrid'],['../classvotca_1_1xtp_1_1LebedevGrid.html#a5954bce7939df65f41e9bc9424c28e42',1,'votca::xtp::LebedevGrid::LebedevGrid()']]],
   ['leftchild',['leftChild',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#a4f18c1137ce2a34eb88d45dcb965ea9d',1,'votca::xtp::huffmanTree::huffmanNode']]],
   ['leftleaf',['leftLeaf',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#aa43a32b419f005b861b536b79ef0e7da',1,'votca::xtp::huffmanTree::huffmanNode']]],
+  ['length_5fscaling_5f',['length_scaling_',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#a2983c86bac84df1af700fd9fbdee71a1',1,'votca::csg::H5MDTrajectoryReader']]],
   ['level',['Level',['../structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43',1,'votca::Log::Level()'],['../classVotcaProperty.html#aa96297d88cf4722925a7ec36d963f293',1,'VotcaProperty::level()']]],
   ['levelshift',['Levelshift',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a8a1779458fc1ee6c80e850caf99ecca1',1,'votca::xtp::ConvergenceAcc::Levelshift()'],['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a7dbf84817a995c5252894e154ca0905d',1,'votca::xtp::ConvergenceAcc::options::levelshift()']]],
   ['levelshiftend',['levelshiftend',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a5cbb163454060239cbb1b55b381ea56f',1,'votca::xtp::ConvergenceAcc::options']]],
   ['lexical_5fcast',['lexical_cast',['../namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127',1,'votca::tools']]],
   ['lexical_5fcast_2eh',['lexical_cast.h',['../lexical__cast_8h.html',1,'']]],
-  ['license_2emd',['LICENSE.md',['../LICENSE_8md.html',1,'']]],
   ['lifetime',['lifetime',['../classvotca_1_1xtp_1_1Chargecarrier.html#ae0fb2050b1090d304c640543df00e5c3',1,'votca::xtp::Chargecarrier']]],
   ['linalg_2ecc',['linalg.cc',['../linalg_8cc.html',1,'']]],
   ['linalg_2eh',['linalg.h',['../linalg_8h.html',1,'']]],
@@ -95,6 +95,5 @@ var searchData=
   ['logger_2eh',['logger.h',['../logger_8h.html',1,'']]],
   ['loop',['loop',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010a15339fc3b884bb0aa776617c1eb96105',1,'votca::csg::BeadMotif::loop()'],['../classvotca_1_1tools_1_1Edge.html#aca47b6004e80478ed5fd684140631209',1,'votca::tools::Edge::loop()']]],
   ['lorentzian',['Lorentzian',['../classvotca_1_1xtp_1_1Spectrum.html#a2229271607767fc2615f65a7d3e1d705',1,'votca::xtp::Spectrum']]],
-  ['lowdin',['Lowdin',['../namespacevotca_1_1xtp.html#aff13e6c9840361fdcf20e081a25c2fcd',1,'votca::xtp']]],
-  ['license',['LICENSE',['../md_xtp_LICENSE.html',1,'']]]
+  ['lowdin',['Lowdin',['../namespacevotca_1_1xtp.html#aff13e6c9840361fdcf20e081a25c2fcd',1,'votca::xtp']]]
 ];
