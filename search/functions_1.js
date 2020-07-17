@@ -93,7 +93,7 @@ var searchData=
   ['atomicguess_5972',['AtomicGuess',['../classvotca_1_1xtp_1_1DFTEngine.html#a64f27a8072a65458620fd164bf35a090',1,'votca::xtp::DFTEngine']]],
   ['attach_5fmatrix_5973',['attach_matrix',['../classHermitianBlockOperator.html#a63c3595b3c09cb6946c99132cd68c7a1',1,'HermitianBlockOperator']]],
   ['autocorrelate_5974',['AutoCorrelate',['../classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb',1,'votca::tools::CrossCorrelate']]],
-  ['autodetectboxtype_5975',['autoDetectBoxType',['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()'],['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()']]],
+  ['autodetectboxtype_5975',['AutoDetectBoxType',['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()'],['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()']]],
   ['auxsize_5976',['auxsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a1e3665caf22aded3f0e2c4cb038022bf',1,'votca::xtp::TCMatrix_gwbse']]],
   ['available_5ftable_5977',['available_table',['../classvotca_1_1xtp_1_1LebedevGrid.html#a2f7fe3a7dd9f692540eb35eb1f23fd54',1,'votca::xtp::LebedevGrid']]],
   ['axa_5978',['AxA',['../classvotca_1_1xtp_1_1eeInteractor_1_1AxA.html#aa2a089773026e7781cc1118238a0001b',1,'votca::xtp::eeInteractor::AxA']]]

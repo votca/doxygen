@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_868',['a',['../classvotca_1_1tools_1_1LinSpline.html#aa7b629597c199fd8e9099349887bb355',1,'votca::tools::LinSpline::a()'],['../structCGForceMatching_1_1SplineInfo.html#acb610d0db7f099f0274a7e2e553cc3d0',1,'CGForceMatching::SplineInfo::a()'],['../classvotca_1_1tools_1_1CubicSpline.html#a7cf9d2bb98c99d7736f96b65fbfadd7c',1,'votca::tools::CubicSpline::A()']]],
+  ['a_868',['A',['../classvotca_1_1tools_1_1CubicSpline.html#a7cf9d2bb98c99d7736f96b65fbfadd7c',1,'votca::tools::CubicSpline::A()'],['../classvotca_1_1tools_1_1LinSpline.html#aa7b629597c199fd8e9099349887bb355',1,'votca::tools::LinSpline::a()'],['../structCGForceMatching_1_1SplineInfo.html#acb610d0db7f099f0274a7e2e553cc3d0',1,'CGForceMatching::SplineInfo::a()']]],
   ['a_5fprime_5fl_869',['A_prime_l',['../classvotca_1_1tools_1_1CubicSpline.html#af924a7e71d472df6a621e8ce8aac0d56',1,'votca::tools::CubicSpline']]],
   ['a_5fprime_5fr_870',['A_prime_r',['../classvotca_1_1tools_1_1CubicSpline.html#ab70ee3234eb180795e2293903cef4f8a',1,'votca::tools::CubicSpline']]],
   ['aaavgbonded_871',['AAavgBonded',['../classCsgREupdate.html#a7697db17db5318ab7bfe5716417b333f',1,'CsgREupdate']]],
@@ -179,7 +179,7 @@ var searchData=
   ['attributeiterator_1044',['AttributeIterator',['../classvotca_1_1tools_1_1Property.html#aeb596e3566ee67fd655d7182c9edbc31',1,'votca::tools::Property']]],
   ['authors_1045',['authors',['../structvotca_1_1tools_1_1globals_1_1man.html#ab81470c57f33f937e5fa91110a0fee41',1,'votca::tools::globals::man']]],
   ['autocorrelate_1046',['AutoCorrelate',['../classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb',1,'votca::tools::CrossCorrelate']]],
-  ['autodetectboxtype_1047',['autoDetectBoxType',['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()'],['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()']]],
+  ['autodetectboxtype_1047',['AutoDetectBoxType',['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()'],['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()']]],
   ['auxsize_1048',['auxsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a1e3665caf22aded3f0e2c4cb038022bf',1,'votca::xtp::TCMatrix_gwbse']]],
   ['av_1049',['AV',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#ae7b060aed5f37ec5902315811bffb552',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
   ['available_1050',['AVAILABLE',['../classvotca_1_1xtp_1_1Job.html#a6d513fce9236d7fc7e0fd97dff92d7bfa6f9a8d5568d7a5d089bc9314b16d460b',1,'votca::xtp::Job']]],
