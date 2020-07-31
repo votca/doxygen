@@ -25,10 +25,11 @@ var searchData=
   ['jobtopology_2654',['JobTopology',['../classvotca_1_1xtp_1_1JobTopology.html',1,'votca::xtp::JobTopology'],['../classvotca_1_1xtp_1_1JobTopology.html#ae6186fdca6cc753605b98c024d683f98',1,'votca::xtp::JobTopology::JobTopology()']]],
   ['jobtopology_2ecc_2655',['jobtopology.cc',['../jobtopology_8cc.html',1,'']]],
   ['jobtopology_2eh_2656',['jobtopology.h',['../jobtopology_8h.html',1,'']]],
-  ['joules_2657',['joules',['../namespacevotca_1_1tools.html#a9bad48919a06a85cfa246ccd38569318ad02ce10ed233168553eac37fcb500277',1,'votca::tools']]],
-  ['joules_5fper_5fmole_2658',['joules_per_mole',['../namespacevotca_1_1tools.html#a2e1c6d4d81c50c4700d9fae168480335a427c4bfe2b6a34d6b8ab22f7044ff24f',1,'votca::tools']]],
-  ['jumpaccordingevent_2659',['jumpAccordingEvent',['../classvotca_1_1xtp_1_1Chargecarrier.html#a7664d305b29b8c061f2f6f9a67989123',1,'votca::xtp::Chargecarrier']]],
-  ['junctionexist_5f_2660',['junctionExist_',['../classvotca_1_1csg_1_1BeadMotif.html#abde5d199fb7f4ddd16d0d14dc0b45390',1,'votca::csg::BeadMotif']]],
-  ['junctions_5f_2661',['junctions_',['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_()'],['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_()']]],
-  ['junctionsuptodate_5f_2662',['junctionsUpToDate_',['../classvotca_1_1csg_1_1BeadMotif.html#a78c4cc3f943a69f98ad714c71c16421f',1,'votca::csg::BeadMotif']]]
+  ['jobtopology_5fversion_2657',['jobtopology_version',['../classvotca_1_1xtp_1_1JobTopology.html#a6732052c97f3b269e0804ba73347d39a',1,'votca::xtp::JobTopology']]],
+  ['joules_2658',['joules',['../namespacevotca_1_1tools.html#a9bad48919a06a85cfa246ccd38569318ad02ce10ed233168553eac37fcb500277',1,'votca::tools']]],
+  ['joules_5fper_5fmole_2659',['joules_per_mole',['../namespacevotca_1_1tools.html#a2e1c6d4d81c50c4700d9fae168480335a427c4bfe2b6a34d6b8ab22f7044ff24f',1,'votca::tools']]],
+  ['jumpaccordingevent_2660',['jumpAccordingEvent',['../classvotca_1_1xtp_1_1Chargecarrier.html#a7664d305b29b8c061f2f6f9a67989123',1,'votca::xtp::Chargecarrier']]],
+  ['junctionexist_5f_2661',['junctionExist_',['../classvotca_1_1csg_1_1BeadMotif.html#abde5d199fb7f4ddd16d0d14dc0b45390',1,'votca::csg::BeadMotif']]],
+  ['junctions_5f_2662',['junctions_',['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_()'],['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_()']]],
+  ['junctionsuptodate_5f_2663',['junctionsUpToDate_',['../classvotca_1_1csg_1_1BeadMotif.html#a78c4cc3f943a69f98ad714c71c16421f',1,'votca::csg::BeadMotif']]]
 ];

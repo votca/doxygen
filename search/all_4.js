@@ -89,7 +89,7 @@ var searchData=
   ['direct_5fcontrib_1592',['direct_contrib',['../structvotca_1_1xtp_1_1BSE_1_1Interaction.html#af45fcff72a934c43da15d2f10b144920',1,'votca::xtp::BSE::Interaction']]],
   ['disablepreface_1593',['DisablePreface',['../classvotca_1_1xtp_1_1LogBuffer.html#a680163008ee20393a38bd2a121ca469c',1,'votca::xtp::LogBuffer::DisablePreface()'],['../classvotca_1_1xtp_1_1Logger.html#ad52281ec02c6ced2b1187e0dc14ba47a',1,'votca::xtp::Logger::DisablePreface()']]],
   ['displayoptions_1594',['DisplayOptions',['../classvotca_1_1tools_1_1Calculator.html#a905efc9d69e58df9232d8d8a9d7b3107',1,'votca::tools::Calculator']]],
-  ['dist_1595',['Dist',['../classvotca_1_1xtp_1_1QMPair.html#af531f93611fa3e8919484a9e3448bfcd',1,'votca::xtp::QMPair::Dist()'],['../classvotca_1_1csg_1_1BeadPair.html#afb8db2786251d2c21491e038e33fc3b9',1,'votca::csg::BeadPair::dist()']]],
+  ['dist_1595',['dist',['../classvotca_1_1csg_1_1BeadPair.html#afb8db2786251d2c21491e038e33fc3b9',1,'votca::csg::BeadPair::dist()'],['../classvotca_1_1xtp_1_1QMPair.html#af531f93611fa3e8919484a9e3448bfcd',1,'votca::xtp::QMPair::Dist()']]],
   ['dist12_1596',['dist12',['../classvotca_1_1csg_1_1BeadTriple.html#a1a0dd3803b22a115f34294402a5cead5',1,'votca::csg::BeadTriple']]],
   ['dist13_1597',['dist13',['../classvotca_1_1csg_1_1BeadTriple.html#a897a903452319ab4d0db1fd3595add50',1,'votca::csg::BeadTriple']]],
   ['dist23_1598',['dist23',['../classvotca_1_1csg_1_1BeadTriple.html#ae17e06a8025e23caa467fcdbbdf7fe2d',1,'votca::csg::BeadTriple']]],
