@@ -899,18 +899,18 @@ $(function() {
 <div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160; </div>
 <div class="line"><a name="l00839"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a8605b8d6040fb4d7d79c28de0f284a38">  839</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a8605b8d6040fb4d7d79c28de0f284a38">Orca::WriteMethod</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;  std::stringstream stream;</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;  std::string opt = (_settings.get&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;optimize&quot;</span>)) ? <span class="stringliteral">&quot; Opt &quot;</span> : <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;  std::string opt = (_settings.get&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;optimize&quot;</span>)) ? <span class="stringliteral">&quot;Opt&quot;</span> : <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;  <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>&amp; orca = _settings.property(<span class="stringliteral">&quot;orca&quot;</span>);</div>
 <div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;  std::string user_method =</div>
 <div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;      (orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a62682e5003be4c0fdf440635b57bf8f4">exists</a>(<span class="stringliteral">&quot;method&quot;</span>)) ? orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;method&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;() : <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;  std::string convergence = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;  <span class="keywordflow">if</span> (!orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a62682e5003be4c0fdf440635b57bf8f4">exists</a>(<span class="stringliteral">&quot;scf&quot;</span>)) {</div>
 <div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    convergence =</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;        this-&gt;_convergence_map.at(_settings.get(<span class="stringliteral">&quot;convergence_tightness&quot;</span>)) +</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;        <span class="stringliteral">&quot;SCF &quot;</span>;</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  }</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;! DFT &quot;</span> &lt;&lt; this-&gt;GetOrcaFunctionalName() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; convergence</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;         &lt;&lt; opt</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;        this-&gt;_convergence_map.at(_settings.get(<span class="stringliteral">&quot;convergence_tightness&quot;</span>));</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;  }</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;! DFT &quot;</span> &lt;&lt; this-&gt;GetOrcaFunctionalName() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; convergence</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;         &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; opt</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;         &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;         <span class="comment">// additional properties provided by the user</span></div>
 <div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;         &lt;&lt; user_method &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;  <span class="keywordflow">return</span> stream.str();</div>
