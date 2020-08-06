@@ -1,14 +1,17 @@
 var searchData=
 [
-  ['vaverage_2ecc_5861',['vaverage.cc',['../vaverage_8cc.html',1,'']]],
-  ['vaverage_2eh_5862',['vaverage.h',['../vaverage_8h.html',1,'']]],
-  ['vc2index_2eh_5863',['vc2index.h',['../vc2index_8h.html',1,'']]],
-  ['version_2ecc_5864',['version.cc',['../tools_2src_2libtools_2version_8cc.html',1,'(Global Namespace)'],['../csg_2src_2libcsg_2version_8cc.html',1,'(Global Namespace)'],['../xtp_2src_2libxtp_2version_8cc.html',1,'(Global Namespace)']]],
-  ['version_2eh_5865',['version.h',['../tools_2include_2votca_2tools_2version_8h.html',1,'(Global Namespace)'],['../csg_2include_2votca_2csg_2version_8h.html',1,'(Global Namespace)'],['../xtp_2include_2votca_2xtp_2version_8h.html',1,'(Global Namespace)']]],
-  ['votca_5fproperty_2ecc_5866',['votca_property.cc',['../votca__property_8cc.html',1,'']]],
-  ['vxc_5ffunctionals_2eh_5867',['vxc_functionals.h',['../vxc__functionals_8h.html',1,'']]],
-  ['vxc_5fgrid_2ecc_5868',['vxc_grid.cc',['../vxc__grid_8cc.html',1,'']]],
-  ['vxc_5fgrid_2eh_5869',['vxc_grid.h',['../vxc__grid_8h.html',1,'']]],
-  ['vxc_5fpotential_2ecc_5870',['vxc_potential.cc',['../vxc__potential_8cc.html',1,'']]],
-  ['vxc_5fpotential_2eh_5871',['vxc_potential.h',['../vxc__potential_8h.html',1,'']]]
+  ['vaverage_2ecc_6036',['vaverage.cc',['../vaverage_8cc.html',1,'']]],
+  ['vaverage_2eh_6037',['vaverage.h',['../vaverage_8h.html',1,'']]],
+  ['vc2index_2eh_6038',['vc2index.h',['../vc2index_8h.html',1,'']]],
+  ['version_2ecc_6039',['version.cc',['../tools_2src_2libtools_2version_8cc.html',1,'(Global Namespace)'],['../csg_2src_2libcsg_2version_8cc.html',1,'(Global Namespace)'],['../xtp_2src_2libxtp_2version_8cc.html',1,'(Global Namespace)']]],
+  ['version_2eh_6040',['version.h',['../tools_2include_2votca_2tools_2version_8h.html',1,'(Global Namespace)'],['../csg_2include_2votca_2csg_2version_8h.html',1,'(Global Namespace)'],['../xtp_2include_2votca_2xtp_2version_8h.html',1,'(Global Namespace)']]],
+  ['votca_5fproperty_2ecc_6041',['votca_property.cc',['../votca__property_8cc.html',1,'']]],
+  ['vxc_2emm_6042',['vxc.mm',['../vxc_8mm.html',1,'']]],
+  ['vxc2_2emm_6043',['vxc2.mm',['../vxc2_8mm.html',1,'']]],
+  ['vxc_5ffunctionals_2eh_6044',['vxc_functionals.h',['../vxc__functionals_8h.html',1,'']]],
+  ['vxc_5fgrid_2ecc_6045',['vxc_grid.cc',['../vxc__grid_8cc.html',1,'']]],
+  ['vxc_5fgrid_2eh_6046',['vxc_grid.h',['../vxc__grid_8h.html',1,'']]],
+  ['vxc_5fpotential_2ecc_6047',['vxc_potential.cc',['../vxc__potential_8cc.html',1,'']]],
+  ['vxc_5fpotential_2eh_6048',['vxc_potential.h',['../vxc__potential_8h.html',1,'']]],
+  ['vxc_5fref_2emm_6049',['vxc_ref.mm',['../vxc__ref_8mm.html',1,'']]]
 ];
