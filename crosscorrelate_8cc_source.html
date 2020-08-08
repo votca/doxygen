@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.1</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="crosscorrelate_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -87,36 +87,40 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="crosscorrelate_8h.html">votca/tools/crosscorrelate.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="crosscorrelate_8h.html">votca/tools/crosscorrelate.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tools_2include_2votca_2tools_2eigen_8h.html">votca/tools/eigen.h</a>&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// include after eigen.h</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;unsupported/Eigen/FFT&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">   24</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">CrossCorrelate::AutoCorrelate</a>(<a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;::selection</a>&amp; data) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> N = data[0].<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#ae5d03059803d0f589b81aff9f8bbad78">size</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  Eigen::Map&lt;Eigen::VectorXd&gt; input(data[0].data(), N);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  Eigen::FFT&lt;double&gt; fft;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  Eigen::VectorXcd frequency = fft.fwd(input);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  Eigen::VectorXcd magnitude = frequency.cwiseAbs2();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#a921ebe15125ef021228d0b52cf95d259">_corrfunc</a>.resize(N);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  Eigen::Map&lt;Eigen::VectorXd&gt; corr_map(<a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#a921ebe15125ef021228d0b52cf95d259">_corrfunc</a>.data(), N);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  corr_map = fft.inv(magnitude);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">double</span> d = corr_map(0);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  corr_map.array() /= d;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}  <span class="comment">// namespace tools</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">   27</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">CrossCorrelate::AutoCorrelate</a>(<a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;::selection</a>&amp; data) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> N = data[0].<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#ae5d03059803d0f589b81aff9f8bbad78">size</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  Eigen::Map&lt;Eigen::VectorXd&gt; input(data[0].data(), N);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  Eigen::FFT&lt;double&gt; fft;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  Eigen::VectorXcd frequency = fft.fwd(input);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  Eigen::VectorXcd magnitude = frequency.cwiseAbs2();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#a921ebe15125ef021228d0b52cf95d259">_corrfunc</a>.resize(N);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  Eigen::Map&lt;Eigen::VectorXd&gt; corr_map(<a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#a921ebe15125ef021228d0b52cf95d259">_corrfunc</a>.data(), N);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  corr_map = fft.inv(magnitude);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">double</span> d = corr_map(0);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  corr_map.array() /= d;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}  <span class="comment">// namespace tools</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
 <div class="ttc" id="acrosscorrelate_8h_html"><div class="ttname"><a href="crosscorrelate_8h.html">crosscorrelate.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html">votca::tools::DataCollection</a></div><div class="ttdoc">This class handles a set of arrays which can be identified by name tags.</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00043">datacollection.h:43</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html_acc795bfa536422388d19d14fb7c9f7cb"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">votca::tools::CrossCorrelate::AutoCorrelate</a></div><div class="ttdeci">void AutoCorrelate(DataCollection&lt; double &gt;::selection &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8cc_source.html#l00024">crosscorrelate.cc:24</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html_a921ebe15125ef021228d0b52cf95d259"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html#a921ebe15125ef021228d0b52cf95d259">votca::tools::CrossCorrelate::_corrfunc</a></div><div class="ttdeci">std::vector&lt; double &gt; _corrfunc</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8h_source.html#l00047">crosscorrelate.h:47</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html_ae5d03059803d0f589b81aff9f8bbad78"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html#ae5d03059803d0f589b81aff9f8bbad78">votca::tools::DataCollection::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00106">datacollection.h:106</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html">votca::tools::DataCollection</a></div><div class="ttdoc">This class handles a set of arrays which can be identified by name tags.</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00040">datacollection.h:40</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html_acc795bfa536422388d19d14fb7c9f7cb"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">votca::tools::CrossCorrelate::AutoCorrelate</a></div><div class="ttdeci">void AutoCorrelate(DataCollection&lt; double &gt;::selection &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8cc_source.html#l00027">crosscorrelate.cc:27</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html_a921ebe15125ef021228d0b52cf95d259"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html#a921ebe15125ef021228d0b52cf95d259">votca::tools::CrossCorrelate::_corrfunc</a></div><div class="ttdeci">std::vector&lt; double &gt; _corrfunc</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8h_source.html#l00044">crosscorrelate.h:44</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html_ae5d03059803d0f589b81aff9f8bbad78"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html#ae5d03059803d0f589b81aff9f8bbad78">votca::tools::DataCollection::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00103">datacollection.h:103</a></div></div>
+<div class="ttc" id="atools_2include_2votca_2tools_2eigen_8h_html"><div class="ttname"><a href="tools_2include_2votca_2tools_2eigen_8h.html">eigen.h</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

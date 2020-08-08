@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.1</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="gmxtrajectorywriter_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -87,120 +87,114 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Standard includes</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// Local private VOTCA includes</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gmxtrajectorywriter_8h.html">gmxtrajectorywriter.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// Third party includes</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;gromacs/fileio/trxio.h&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;gromacs/trajectory/trajectoryframe.h&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// this one is needed because of bool is defined in one of the headers included</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// by gmx</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#undef bool</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span>csg {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gmxtrajectorywriter_8h.html">gmxtrajectorywriter.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;gromacs/fileio/trxio.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;gromacs/trajectory/trajectoryframe.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// this one is needed because of bool is defined in one of the headers included</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// by gmx</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#undef bool</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>csg {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8fe9d2a47606cd4da1f05d687d09395b">   29</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8fe9d2a47606cd4da1f05d687d09395b">GMXTrajectoryWriter::Open</a>(std::string file, <span class="keywordtype">bool</span>) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">_file</a> = open_trx((<span class="keywordtype">char</span> *)file.c_str(), <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a7bd9e31add1a10c92a1b79321db985c8">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a7bd9e31add1a10c92a1b79321db985c8">GMXTrajectoryWriter::Close</a>() { close_trx(<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">_file</a>); }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8fe9d2a47606cd4da1f05d687d09395b">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8fe9d2a47606cd4da1f05d687d09395b">GMXTrajectoryWriter::Open</a>(std::string file, <span class="keywordtype">bool</span>) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">_file</a> = open_trx((<span class="keywordtype">char</span> *)file.c_str(), <span class="stringliteral">&quot;w&quot;</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a7bd9e31add1a10c92a1b79321db985c8">   39</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a7bd9e31add1a10c92a1b79321db985c8">GMXTrajectoryWriter::Close</a>() { close_trx(<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">_file</a>); }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a21331ca6fca57b41992412f0566d4db9">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a21331ca6fca57b41992412f0566d4db9">GMXTrajectoryWriter::Write</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *conf) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keyword">static</span> <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> step = 0;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> N = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  t_trxframe frame;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  rvec *<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = <span class="keyword">new</span> rvec[N];</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  rvec *v = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  rvec *f = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  Eigen::Matrix3d box = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a34e10c4b79e77e13506dee6218b03562">getBox</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  frame.natoms = (int)N;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  frame.bTime = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  frame.time = real(conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a0538da13c8e6d80316aac5ffbdb622b0">getTime</a>());</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  frame.bStep = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  frame.step = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a88263b2615bae8b697c5ec449951daa2">getStep</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  frame.x = <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  frame.bLambda = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  frame.bAtoms = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  frame.bPrec = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  frame.bX = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  frame.bF = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#acbb59a7d58342850089adc219c5b9c6e">HasForce</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  frame.bBox = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  frame.bV = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">HasVel</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a21331ca6fca57b41992412f0566d4db9">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a21331ca6fca57b41992412f0566d4db9">GMXTrajectoryWriter::Write</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *conf) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">static</span> <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> step = 0;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> N = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  t_trxframe frame;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  rvec *<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = <span class="keyword">new</span> rvec[N];</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  rvec *v = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  rvec *f = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  Eigen::Matrix3d box = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a34e10c4b79e77e13506dee6218b03562">getBox</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  frame.natoms = (int)N;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  frame.bTime = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  frame.time = real(conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a0538da13c8e6d80316aac5ffbdb622b0">getTime</a>());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  frame.bStep = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  frame.step = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a88263b2615bae8b697c5ec449951daa2">getStep</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  frame.x = <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  frame.bLambda = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  frame.bAtoms = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  frame.bPrec = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  frame.bX = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  frame.bF = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#acbb59a7d58342850089adc219c5b9c6e">HasForce</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  frame.bBox = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  frame.bV = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">HasVel</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 3; i++) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; 3; j++) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      frame.box[j][i] = real(box(i, j));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 3; i++) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; 3; j++) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      frame.box[j][i] = real(box(i, j));</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; N; ++i) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    Eigen::Vector3d pos = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad0a835d8b93803ac36387a0f32b53df7">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>[i][0] = real(pos.x());</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>[i][1] = real(pos.y());</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>[i][2] = real(pos.z());</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (frame.bV) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    v = <span class="keyword">new</span> rvec[N];</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; N; ++i) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      frame.v = v;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      Eigen::Vector3d vel = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad0a835d8b93803ac36387a0f32b53df7">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      v[i][0] = real(vel.x());</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      v[i][1] = real(vel.y());</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      v[i][2] = real(vel.z());</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">if</span> (frame.bF) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    f = <span class="keyword">new</span> rvec[N];</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; N; ++i) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      frame.f = f;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      Eigen::Vector3d force = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad0a835d8b93803ac36387a0f32b53df7">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a210486ed3918387b21d52bb82b866ab5">getF</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      f[i][0] = real(force.x());</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      f[i][1] = real(force.y());</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      f[i][2] = real(force.z());</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  write_trxframe(<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">_file</a>, &amp;frame, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  step++;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keyword">delete</span>[] <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">if</span> (frame.bV) {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">delete</span>[] v;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordflow">if</span> (frame.bF) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">delete</span>[] f;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; N; ++i) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    Eigen::Vector3d pos = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad0a835d8b93803ac36387a0f32b53df7">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>[i][0] = real(pos.x());</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>[i][1] = real(pos.y());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>[i][2] = real(pos.z());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">if</span> (frame.bV) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    v = <span class="keyword">new</span> rvec[N];</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; N; ++i) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      frame.v = v;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      Eigen::Vector3d vel = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad0a835d8b93803ac36387a0f32b53df7">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      v[i][0] = real(vel.x());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      v[i][1] = real(vel.y());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      v[i][2] = real(vel.z());</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (frame.bF) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    f = <span class="keyword">new</span> rvec[N];</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; N; ++i) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      frame.f = f;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      Eigen::Vector3d force = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ad0a835d8b93803ac36387a0f32b53df7">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a210486ed3918387b21d52bb82b866ab5">getF</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      f[i][0] = real(force.x());</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      f[i][1] = real(force.y());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      f[i][2] = real(force.z());</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  write_trxframe(<a class="code" href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">_file</a>, &amp;frame, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  step++;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">delete</span>[] <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">if</span> (frame.bV) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">delete</span>[] v;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">if</span> (frame.bF) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">delete</span>[] f;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a0538da13c8e6d80316aac5ffbdb622b0"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a0538da13c8e6d80316aac5ffbdb622b0">votca::csg::Topology::getTime</a></div><div class="ttdeci">double getTime() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00316">topology.h:316</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a834c715f33e214e02b30c022d4c3df6b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">votca::csg::Topology::BeadCount</a></div><div class="ttdeci">Index BeadCount() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00144">topology.h:144</a></div></div>
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BaseBead_html_a6b261b998f05cf0ea5fa34eda2895a61"><div class="ttname"><a href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">votca::csg::BaseBead::getPos</a></div><div class="ttdeci">virtual const Eigen::Vector3d &amp; getPos() const</div><div class="ttdef"><b>Definition:</b> <a href="basebead_8h_source.html#l00161">basebead.h:161</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html">votca::csg::Topology</a></div><div class="ttdoc">topology of the whole system</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00059">topology.h:59</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html_ab588d73efc4bd91791981b7904a7ca5f"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">votca::csg::Bead::getVel</a></div><div class="ttdeci">const Eigen::Vector3d &amp; getVel() const</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00320">bead.h:320</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html_a8fe9d2a47606cd4da1f05d687d09395b"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8fe9d2a47606cd4da1f05d687d09395b">votca::csg::GMXTrajectoryWriter::Open</a></div><div class="ttdeci">void Open(std::string file, bool=false) override</div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8cc_source.html#l00035">gmxtrajectorywriter.cc:35</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_acbb59a7d58342850089adc219c5b9c6e"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#acbb59a7d58342850089adc219c5b9c6e">votca::csg::Topology::HasForce</a></div><div class="ttdeci">bool HasForce()</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00401">topology.h:401</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ad0a835d8b93803ac36387a0f32b53df7"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ad0a835d8b93803ac36387a0f32b53df7">votca::csg::Topology::getBead</a></div><div class="ttdeci">Bead * getBead(const Index i) const</div><div class="ttdoc">Returns a pointer to the bead with index i.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00220">topology.h:220</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a34e10c4b79e77e13506dee6218b03562"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a34e10c4b79e77e13506dee6218b03562">votca::csg::Topology::getBox</a></div><div class="ttdeci">const Eigen::Matrix3d &amp; getBox() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00297">topology.h:297</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a0538da13c8e6d80316aac5ffbdb622b0"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a0538da13c8e6d80316aac5ffbdb622b0">votca::csg::Topology::getTime</a></div><div class="ttdeci">double getTime() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00302">topology.h:302</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a834c715f33e214e02b30c022d4c3df6b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">votca::csg::Topology::BeadCount</a></div><div class="ttdeci">Index BeadCount() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00140">topology.h:140</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BaseBead_html_a6b261b998f05cf0ea5fa34eda2895a61"><div class="ttname"><a href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">votca::csg::BaseBead::getPos</a></div><div class="ttdeci">virtual const Eigen::Vector3d &amp; getPos() const</div><div class="ttdef"><b>Definition:</b> <a href="basebead_8h_source.html#l00146">basebead.h:146</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html">votca::csg::Topology</a></div><div class="ttdoc">topology of the whole system</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00055">topology.h:55</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html_ab588d73efc4bd91791981b7904a7ca5f"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">votca::csg::Bead::getVel</a></div><div class="ttdeci">const Eigen::Vector3d &amp; getVel() const</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00317">bead.h:317</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html_a8fe9d2a47606cd4da1f05d687d09395b"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8fe9d2a47606cd4da1f05d687d09395b">votca::csg::GMXTrajectoryWriter::Open</a></div><div class="ttdeci">void Open(std::string file, bool=false) override</div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8cc_source.html#l00029">gmxtrajectorywriter.cc:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_acbb59a7d58342850089adc219c5b9c6e"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#acbb59a7d58342850089adc219c5b9c6e">votca::csg::Topology::HasForce</a></div><div class="ttdeci">bool HasForce()</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00386">topology.h:386</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ad0a835d8b93803ac36387a0f32b53df7"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ad0a835d8b93803ac36387a0f32b53df7">votca::csg::Topology::getBead</a></div><div class="ttdeci">Bead * getBead(const Index i) const</div><div class="ttdoc">Returns a pointer to the bead with index i.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00213">topology.h:213</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a34e10c4b79e77e13506dee6218b03562"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a34e10c4b79e77e13506dee6218b03562">votca::csg::Topology::getBox</a></div><div class="ttdeci">const Eigen::Matrix3d &amp; getBox() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00290">topology.h:290</a></div></div>
 <div class="ttc" id="agmxtrajectorywriter_8h_html"><div class="ttname"><a href="gmxtrajectorywriter_8h.html">gmxtrajectorywriter.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html_a21331ca6fca57b41992412f0566d4db9"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a21331ca6fca57b41992412f0566d4db9">votca::csg::GMXTrajectoryWriter::Write</a></div><div class="ttdeci">void Write(Topology *conf) override</div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8cc_source.html#l00041">gmxtrajectorywriter.cc:41</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">votca::xtp::Cart::x</a></div><div class="ttdeci">@ x</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00035">aotransform.h:35</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html_a7bd9e31add1a10c92a1b79321db985c8"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a7bd9e31add1a10c92a1b79321db985c8">votca::csg::GMXTrajectoryWriter::Close</a></div><div class="ttdeci">void Close() override</div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8cc_source.html#l00039">gmxtrajectorywriter.cc:39</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a2663c5cd9c0fa90753c5099414188d9b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">votca::csg::Topology::HasVel</a></div><div class="ttdeci">bool HasVel()</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00398">topology.h:398</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html_a210486ed3918387b21d52bb82b866ab5"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html#a210486ed3918387b21d52bb82b866ab5">votca::csg::Bead::getF</a></div><div class="ttdeci">const Eigen::Vector3d &amp; getF() const</div><div class="ttdoc">get the force acting on the bead</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00361">bead.h:361</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html_a8bb78e2f578841d40dc7a9de2d1ad12a"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">votca::csg::GMXTrajectoryWriter::_file</a></div><div class="ttdeci">t_trxstatus * _file</div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8h_source.html#l00056">gmxtrajectorywriter.h:56</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a88263b2615bae8b697c5ec449951daa2"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a88263b2615bae8b697c5ec449951daa2">votca::csg::Topology::getStep</a></div><div class="ttdeci">Index getStep() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00328">topology.h:328</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html_a21331ca6fca57b41992412f0566d4db9"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a21331ca6fca57b41992412f0566d4db9">votca::csg::GMXTrajectoryWriter::Write</a></div><div class="ttdeci">void Write(Topology *conf) override</div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8cc_source.html#l00035">gmxtrajectorywriter.cc:35</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">votca::xtp::Cart::x</a></div><div class="ttdeci">@ x</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00034">aotransform.h:34</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html_a7bd9e31add1a10c92a1b79321db985c8"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a7bd9e31add1a10c92a1b79321db985c8">votca::csg::GMXTrajectoryWriter::Close</a></div><div class="ttdeci">void Close() override</div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8cc_source.html#l00033">gmxtrajectorywriter.cc:33</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a2663c5cd9c0fa90753c5099414188d9b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">votca::csg::Topology::HasVel</a></div><div class="ttdeci">bool HasVel()</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00383">topology.h:383</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html_a210486ed3918387b21d52bb82b866ab5"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html#a210486ed3918387b21d52bb82b866ab5">votca::csg::Bead::getF</a></div><div class="ttdeci">const Eigen::Vector3d &amp; getF() const</div><div class="ttdoc">get the force acting on the bead</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00358">bead.h:358</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html_a8bb78e2f578841d40dc7a9de2d1ad12a"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a8bb78e2f578841d40dc7a9de2d1ad12a">votca::csg::GMXTrajectoryWriter::_file</a></div><div class="ttdeci">t_trxstatus * _file</div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8h_source.html#l00041">gmxtrajectorywriter.h:41</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a88263b2615bae8b697c5ec449951daa2"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a88263b2615bae8b697c5ec449951daa2">votca::csg::Topology::getStep</a></div><div class="ttdeci">Index getStep() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00314">topology.h:314</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
