@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.1</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -89,56 +89,59 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pdbwriter_8h.html">votca/csg/pdbwriter.h</a>&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xyzreader_8h.html">votca/csg/xyzreader.h</a>&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xyzwriter_8h.html">votca/csg/xyzwriter.h</a>&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="elements_8h.html">votca/tools/elements.h</a>&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="checkpointreader_8h.html">votca/xtp/checkpointreader.h</a>&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="checkpointwriter_8h.html">votca/xtp/checkpointwriter.h</a>&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="qmmolecule_8h.html">votca/xtp/qmmolecule.h</a>&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// VOTCA includes</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pdbwriter_8h.html">votca/csg/pdbwriter.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xyzreader_8h.html">votca/csg/xyzreader.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xyzwriter_8h.html">votca/csg/xyzwriter.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="elements_8h.html">votca/tools/elements.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="checkpointreader_8h.html">votca/xtp/checkpointreader.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="checkpointwriter_8h.html">votca/xtp/checkpointwriter.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="qmmolecule_8h.html">votca/xtp/qmmolecule.h</a>&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1QMMolecule.html#a3ea17e5933810cfeaccef7f661232bd0">   34</a></span>&#160;<span class="keywordtype">void</span> QMMolecule::WriteXYZ(std::string filename, std::string header)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1XYZWriter.html">csg::XYZWriter</a> writer;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  writer.<a class="code" href="classvotca_1_1csg_1_1XYZWriter.html#a6d5ec8519549877688c7c44e2b99e892">Open</a>(filename, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  writer.<a class="code" href="classvotca_1_1csg_1_1XYZWriter.html#ab1609ed8f73de3a809b83d3d00ad459c">Write</a>(*<span class="keyword">this</span>, header);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  writer.<a class="code" href="classvotca_1_1csg_1_1XYZWriter.html#a0a89b8077af883abd13c16bc48c9ca41">Close</a>();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">   42</a></span>&#160;<span class="keywordtype">void</span> QMMolecule::LoadFromFile(std::string filename) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1XYZReader.html">csg::XYZReader</a> reader;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  reader.<a class="code" href="classvotca_1_1csg_1_1XYZReader.html#a83d69942ee10356a68f46b2c602b9f61">Open</a>(filename);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  reader.<a class="code" href="classvotca_1_1csg_1_1XYZReader.html#a75d7db64178765ec8d4affe34e0181e0">ReadFile</a>&lt;<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>&gt;(*this);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  reader.<a class="code" href="classvotca_1_1csg_1_1XYZReader.html#aeadf9e82d8b4ea9e4d99f558b717eee5">Close</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1QMMolecule.html#a3ea17e5933810cfeaccef7f661232bd0">   37</a></span>&#160;<span class="keywordtype">void</span> QMMolecule::WriteXYZ(std::string filename, std::string header)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1XYZWriter.html">csg::XYZWriter</a> writer;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  writer.<a class="code" href="classvotca_1_1csg_1_1XYZWriter.html#a6d5ec8519549877688c7c44e2b99e892">Open</a>(filename, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  writer.<a class="code" href="classvotca_1_1csg_1_1XYZWriter.html#ab1609ed8f73de3a809b83d3d00ad459c">Write</a>(*<span class="keyword">this</span>, header);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  writer.<a class="code" href="classvotca_1_1csg_1_1XYZWriter.html#a0a89b8077af883abd13c16bc48c9ca41">Close</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">   45</a></span>&#160;<span class="keywordtype">void</span> QMMolecule::LoadFromFile(std::string filename) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1XYZReader.html">csg::XYZReader</a> reader;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  reader.<a class="code" href="classvotca_1_1csg_1_1XYZReader.html#a83d69942ee10356a68f46b2c602b9f61">Open</a>(filename);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  reader.<a class="code" href="classvotca_1_1csg_1_1XYZReader.html#a75d7db64178765ec8d4affe34e0181e0">ReadFile</a>&lt;<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>&gt;(*this);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  reader.<a class="code" href="classvotca_1_1csg_1_1XYZReader.html#aeadf9e82d8b4ea9e4d99f558b717eee5">Close</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00030">qmmolecule.h:30</a></div></div>
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1XYZReader_html"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZReader.html">votca::csg::XYZReader</a></div><div class="ttdoc">class for reading xyz files</div><div class="ttdef"><b>Definition:</b> <a href="xyzreader_8h_source.html#l00039">xyzreader.h:39</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1XYZReader_html"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZReader.html">votca::csg::XYZReader</a></div><div class="ttdoc">class for reading xyz files</div><div class="ttdef"><b>Definition:</b> <a href="xyzreader_8h_source.html#l00045">xyzreader.h:45</a></div></div>
 <div class="ttc" id="apdbwriter_8h_html"><div class="ttname"><a href="pdbwriter_8h.html">pdbwriter.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1XYZWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZWriter.html">votca::csg::XYZWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="xyzwriter_8h_source.html#l00029">xyzwriter.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1XYZWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZWriter.html">votca::csg::XYZWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="xyzwriter_8h_source.html#l00035">xyzwriter.h:35</a></div></div>
 <div class="ttc" id="acheckpointwriter_8h_html"><div class="ttname"><a href="checkpointwriter_8h.html">checkpointwriter.h</a></div></div>
 <div class="ttc" id="acheckpointreader_8h_html"><div class="ttname"><a href="checkpointreader_8h.html">checkpointreader.h</a></div></div>
 <div class="ttc" id="axyzreader_8h_html"><div class="ttname"><a href="xyzreader_8h.html">xyzreader.h</a></div></div>
 <div class="ttc" id="aelements_8h_html"><div class="ttname"><a href="elements_8h.html">elements.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1XYZReader_html_a83d69942ee10356a68f46b2c602b9f61"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZReader.html#a83d69942ee10356a68f46b2c602b9f61">votca::csg::XYZReader::Open</a></div><div class="ttdeci">bool Open(const std::string &amp;file) override</div><div class="ttdoc">open a trajectory file</div><div class="ttdef"><b>Definition:</b> <a href="xyzreader_8cc_source.html#l00044">xyzreader.cc:44</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1XYZReader_html_a83d69942ee10356a68f46b2c602b9f61"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZReader.html#a83d69942ee10356a68f46b2c602b9f61">votca::csg::XYZReader::Open</a></div><div class="ttdeci">bool Open(const std::string &amp;file) override</div><div class="ttdoc">open a trajectory file</div><div class="ttdef"><b>Definition:</b> <a href="xyzreader_8cc_source.html#l00052">xyzreader.cc:52</a></div></div>
 <div class="ttc" id="aqmmolecule_8h_html"><div class="ttname"><a href="qmmolecule_8h.html">qmmolecule.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1XYZWriter_html_ab1609ed8f73de3a809b83d3d00ad459c"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZWriter.html#ab1609ed8f73de3a809b83d3d00ad459c">votca::csg::XYZWriter::Write</a></div><div class="ttdeci">void Write(Topology *conf) override</div><div class="ttdef"><b>Definition:</b> <a href="xyzwriter_8cc_source.html#l00034">xyzwriter.cc:34</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00027">akimaspline.h:27</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00030">akimaspline.h:30</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1XYZWriter_html_a6d5ec8519549877688c7c44e2b99e892"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZWriter.html#a6d5ec8519549877688c7c44e2b99e892">votca::csg::XYZWriter::Open</a></div><div class="ttdeci">void Open(std::string file, bool bAppend=false) override</div><div class="ttdef"><b>Definition:</b> <a href="xyzwriter_8cc_source.html#l00024">xyzwriter.cc:24</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1XYZReader_html_a75d7db64178765ec8d4affe34e0181e0"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZReader.html#a75d7db64178765ec8d4affe34e0181e0">votca::csg::XYZReader::ReadFile</a></div><div class="ttdeci">void ReadFile(T &amp;container)</div><div class="ttdef"><b>Definition:</b> <a href="xyzreader_8h_source.html#l00055">xyzreader.h:55</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1XYZReader_html_a75d7db64178765ec8d4affe34e0181e0"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZReader.html#a75d7db64178765ec8d4affe34e0181e0">votca::csg::XYZReader::ReadFile</a></div><div class="ttdeci">void ReadFile(T &amp;container)</div><div class="ttdef"><b>Definition:</b> <a href="xyzreader_8h_source.html#l00063">xyzreader.h:63</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1XYZWriter_html_a0a89b8077af883abd13c16bc48c9ca41"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZWriter.html#a0a89b8077af883abd13c16bc48c9ca41">votca::csg::XYZWriter::Close</a></div><div class="ttdeci">void Close() override</div><div class="ttdef"><b>Definition:</b> <a href="xyzwriter_8cc_source.html#l00032">xyzwriter.cc:32</a></div></div>
 <div class="ttc" id="axyzwriter_8h_html"><div class="ttname"><a href="xyzwriter_8h.html">xyzwriter.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1XYZReader_html_aeadf9e82d8b4ea9e4d99f558b717eee5"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZReader.html#aeadf9e82d8b4ea9e4d99f558b717eee5">votca::csg::XYZReader::Close</a></div><div class="ttdeci">void Close() override</div><div class="ttdef"><b>Definition:</b> <a href="xyzreader_8cc_source.html#l00054">xyzreader.cc:54</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1XYZReader_html_aeadf9e82d8b4ea9e4d99f558b717eee5"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZReader.html#aeadf9e82d8b4ea9e4d99f558b717eee5">votca::csg::XYZReader::Close</a></div><div class="ttdeci">void Close() override</div><div class="ttdef"><b>Definition:</b> <a href="xyzreader_8cc_source.html#l00062">xyzreader.cc:62</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
