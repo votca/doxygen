@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.1</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="beadmotifconnector_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -87,64 +87,60 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="beadmotifconnector_8h.html">votca/csg/beadmotifconnector.h</a>&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>csg {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">   27</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">element</a> = reduced_edge_to_edges_map::value_type;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a5831810a3bef5e77520c236aef68a3ce">   29</a></span>&#160;<span class="keywordtype">void</span> BeadMotifConnector::AddMotifAndBeadEdge(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a>&amp; motif_edge,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                             <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a>&amp; bead_edge) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  motif_and_bead_edges_.insert(<a class="code" href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">element</a>(motif_edge, bead_edge));</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a38a57e0229fa8bbbb8adc4e42924f6cd">   34</a></span>&#160;vector&lt;Edge&gt; BeadMotifConnector::getBeadEdges(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a>&amp; motif_edge)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">auto</span> left_iterator_range = motif_and_bead_edges_.left.equal_range(motif_edge);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  vector&lt;Edge&gt; bead_edges;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> iterator = left_iterator_range.first;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;       iterator != left_iterator_range.second; ++iterator) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    bead_edges.push_back(iterator-&gt;second);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">return</span> bead_edges;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a5051fa9f94ff7e962c497b48676281e2">   44</a></span>&#160;vector&lt;Edge&gt; BeadMotifConnector::getBeadEdges() const noexcept {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  vector&lt;Edge&gt; bead_edges;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> left_iterator = motif_and_bead_edges_.left.begin();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;       left_iterator != motif_and_bead_edges_.left.end(); ++left_iterator) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    bead_edges.push_back(left_iterator-&gt;second);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">return</span> bead_edges;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a0a13e1cb84e2ad622f14ee95f2b5da44">   53</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> BeadMotifConnector::getMotifEdge(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a>&amp; bead_edge)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  assert(motif_and_bead_edges_.right.count(bead_edge) &amp;&amp;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;         <span class="stringliteral">&quot;bead_edge is not contained in beadmotifconnector.&quot;</span>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">return</span> motif_and_bead_edges_.right.at(bead_edge);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#ab7976ffffe72c9ea743cfc439e3e19d9">   59</a></span>&#160;unordered_set&lt;Edge&gt; BeadMotifConnector::getMotifEdges() const noexcept {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  unordered_set&lt;Edge&gt; motif_edges;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> left_iterator = motif_and_bead_edges_.left.begin();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;       left_iterator != motif_and_bead_edges_.left.end(); ++left_iterator) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    motif_edges.insert(left_iterator-&gt;first);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">return</span> motif_edges;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="beadmotifconnector_8h.html">votca/csg/beadmotifconnector.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>csg {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">   26</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">element</a> = boost_bimap::value_type;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a677af222db6d00b8c3f518f14270820c">   28</a></span>&#160;<span class="keywordtype">void</span> BeadMotifConnector::AddMotifAndBeadEdge(<a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> motif_edge, <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> bead_edge) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  motif_and_bead_edges_.insert(<a class="code" href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">element</a>(motif_edge, bead_edge));</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#ad4bf8383ab478d9a005c2a2b792b5426">   32</a></span>&#160;vector&lt;Edge&gt; BeadMotifConnector::getBeadEdges(<a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> motif_edge) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">auto</span> left_iterator_range = motif_and_bead_edges_.left.equal_range(motif_edge);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  vector&lt;Edge&gt; bead_edges;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> iterator = left_iterator_range.first;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;       iterator != left_iterator_range.second; ++iterator) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    bead_edges.push_back(iterator-&gt;second);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">return</span> bead_edges;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a504bbf2216e4ff6cd895ee46ea5f67cf">   42</a></span>&#160;vector&lt;Edge&gt; BeadMotifConnector::getBeadEdges() {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  vector&lt;Edge&gt; bead_edges;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> left_iterator = motif_and_bead_edges_.left.begin();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;       left_iterator != motif_and_bead_edges_.left.end(); ++left_iterator) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    bead_edges.push_back(left_iterator-&gt;second);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> bead_edges;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a565f43cdbf453841519628de4592e963">   51</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> BeadMotifConnector::getMotifEdge(<a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> bead_edge) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> motif_and_bead_edges_.right.at(bead_edge);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a214584c4add8fa11fe0a9c926eced962">   55</a></span>&#160;unordered_set&lt;Edge&gt; BeadMotifConnector::getMotifEdges() {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  unordered_set&lt;Edge&gt; motif_edges;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> left_iterator = motif_and_bead_edges_.left.begin();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;       left_iterator != motif_and_bead_edges_.left.end(); ++left_iterator) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    motif_edges.insert(left_iterator-&gt;first);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">return</span> motif_edges;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1csg_html_a003ea66dffb6d19e96ac90345ed027d2"><div class="ttname"><a href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">votca::csg::element</a></div><div class="ttdeci">reduced_edge_to_edges_map::value_type element</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00027">beadmotifconnector.cc:27</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00042">edge.h:42</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00040">edge.h:40</a></div></div>
 <div class="ttc" id="abeadmotifconnector_8h_html"><div class="ttname"><a href="beadmotifconnector_8h.html">beadmotifconnector.h</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00030">akimaspline.h:30</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00027">akimaspline.h:27</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1csg_html_a5d8d52096cac1dd0a9fbfb9565a3efbc"><div class="ttname"><a href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">votca::csg::element</a></div><div class="ttdeci">boost_bimap::value_type element</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00026">beadmotifconnector.cc:26</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

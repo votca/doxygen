@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.1</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="graph__bf__visitor_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2019 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -89,81 +89,80 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="graph__bf__visitor_8h.html">votca/tools/graph_bf_visitor.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="edge_8h.html">votca/tools/edge.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="graph_8h.html">votca/tools/graph.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="graphnode_8h.html">votca/tools/graphnode.h</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>tools {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__BF__Visitor.html#aa916fca43d9a09ddd583732024562461">   31</a></span>&#160;<span class="keywordtype">bool</span> Graph_BF_Visitor::queEmpty()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> edge_que_.empty(); }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__BF__Visitor.html#aac356a186961bea950885567fdcf1f1d">   33</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> Graph_BF_Visitor::getEdge_() {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> oldest_edge = edge_que_.at(0).front();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  edge_que_.at(0).pop();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">if</span> (edge_que_.at(0).size() == 0) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    edge_que_.pop_front();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">return</span> oldest_edge;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// Add edges to be explored</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__BF__Visitor.html#abda7edf2d8f217b996371320dc245288">   43</a></span>&#160;<span class="keywordtype">void</span> Graph_BF_Visitor::addEdges_(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Graph.html">Graph</a> &amp;graph, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> vertex) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  vector&lt;Edge&gt; newest_edges = graph.<a class="code" href="classvotca_1_1tools_1_1Graph.html#a53dd186849a1e4dbfeeb04c60de693d1">getNeighEdges</a>(vertex);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">// If first edges to be added</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">if</span> (edge_que_.empty()) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    queue&lt;Edge&gt; first_edge_queue;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> &amp;edge : newest_edges) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigh_vert = edge.getOtherEndPoint(vertex);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">if</span> (explored_.count(neigh_vert) == 0) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        first_edge_queue.push(edge);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (!first_edge_queue.empty()) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      edge_que_.push_back(first_edge_queue);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (edge_que_.size() == 1) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      queue&lt;Edge&gt; new_edge_queue;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> &amp;edge : newest_edges) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigh_vert = edge.getOtherEndPoint(vertex);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span> (explored_.count(neigh_vert) == 0) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;          new_edge_queue.push(edge);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">if</span> (!new_edge_queue.empty()) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        edge_que_.push_back(new_edge_queue);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> &amp;edge : newest_edges) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigh_vert = edge.getOtherEndPoint(vertex);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span> (explored_.count(neigh_vert) == 0) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;          edge_que_.at(1).push(edge);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}  <span class="comment">// namespace tools</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="edge_8h.html">votca/tools/edge.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="graph_8h.html">votca/tools/graph.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="graph__bf__visitor_8h.html">votca/tools/graph_bf_visitor.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="graphnode_8h.html">votca/tools/graphnode.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__BF__Visitor.html#aa916fca43d9a09ddd583732024562461">   30</a></span>&#160;<span class="keywordtype">bool</span> Graph_BF_Visitor::queEmpty()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> edge_que_.empty(); }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__BF__Visitor.html#aac356a186961bea950885567fdcf1f1d">   32</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> Graph_BF_Visitor::getEdge_() {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> oldest_edge = edge_que_.at(0).front();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  edge_que_.at(0).pop();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">if</span> (edge_que_.at(0).size() == 0) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    edge_que_.pop_front();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">return</span> oldest_edge;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// Add edges to be explored</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__BF__Visitor.html#abda7edf2d8f217b996371320dc245288">   42</a></span>&#160;<span class="keywordtype">void</span> Graph_BF_Visitor::addEdges_(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Graph.html">Graph</a> &amp;graph, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> vertex) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  vector&lt;Edge&gt; newest_edges = graph.<a class="code" href="classvotca_1_1tools_1_1Graph.html#a53dd186849a1e4dbfeeb04c60de693d1">getNeighEdges</a>(vertex);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="comment">// If first edges to be added</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">if</span> (edge_que_.empty()) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    queue&lt;Edge&gt; first_edge_queue;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> &amp;edge : newest_edges) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigh_vert = edge.getOtherEndPoint(vertex);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="keywordflow">if</span> (explored_.count(neigh_vert) == 0) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        first_edge_queue.push(edge);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (!first_edge_queue.empty()) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      edge_que_.push_back(first_edge_queue);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (edge_que_.size() == 1) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      queue&lt;Edge&gt; new_edge_queue;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> &amp;edge : newest_edges) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigh_vert = edge.getOtherEndPoint(vertex);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (explored_.count(neigh_vert) == 0) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;          new_edge_queue.push(edge);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">if</span> (!new_edge_queue.empty()) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        edge_que_.push_back(new_edge_queue);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> &amp;edge : newest_edges) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigh_vert = edge.getOtherEndPoint(vertex);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (explored_.count(neigh_vert) == 0) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;          edge_que_.at(1).push(edge);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}  <span class="comment">// namespace tools</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph.html">votca::tools::Graph</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00043">graph.h:43</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00042">edge.h:42</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph.html">votca::tools::Graph</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00041">graph.h:41</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00040">edge.h:40</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
 <div class="ttc" id="aedge_8h_html"><div class="ttname"><a href="edge_8h.html">edge.h</a></div></div>
 <div class="ttc" id="agraph__bf__visitor_8h_html"><div class="ttname"><a href="graph__bf__visitor_8h.html">graph_bf_visitor.h</a></div></div>
 <div class="ttc" id="agraph_8h_html"><div class="ttname"><a href="graph_8h.html">graph.h</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
 <div class="ttc" id="agraphnode_8h_html"><div class="ttname"><a href="graphnode_8h.html">graphnode.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph_html_a53dd186849a1e4dbfeeb04c60de693d1"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph.html#a53dd186849a1e4dbfeeb04c60de693d1">votca::tools::Graph::getNeighEdges</a></div><div class="ttdeci">std::vector&lt; Edge &gt; getNeighEdges(Index vertex) const</div><div class="ttdoc">Returns all the edges in the graph connected to vertex vertex</div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00110">graph.h:110</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph_html_a53dd186849a1e4dbfeeb04c60de693d1"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph.html#a53dd186849a1e4dbfeeb04c60de693d1">votca::tools::Graph::getNeighEdges</a></div><div class="ttdeci">std::vector&lt; Edge &gt; getNeighEdges(Index vertex) const</div><div class="ttdoc">Returns all the edges in the graph connected to vertex vertex</div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00108">graph.h:108</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

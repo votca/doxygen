@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.1</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__crosscorrelate_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -90,74 +90,66 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__crosscorrelate_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   19</a></span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE crosscorrelate_test</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="test__crosscorrelate_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   21</a></span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Standard includes</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Third party includes</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="crosscorrelate_8h.html">votca/tools/crosscorrelate.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="test__crosscorrelate_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   21</a></span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="crosscorrelate_8h.html">votca/tools/crosscorrelate.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;BOOST_AUTO_TEST_SUITE(crosscorrelate_test)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="test__crosscorrelate_8cc.html#a9a79c2e3674353925495a706a8faec9f">   31</a></span>&#160;<a class="code" href="test__crosscorrelate_8cc.html#a9a79c2e3674353925495a706a8faec9f">BOOST_AUTO_TEST_CASE</a>(crosscorrelate) {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;BOOST_AUTO_TEST_SUITE(crosscorrelate_test)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="test__crosscorrelate_8cc.html#a9a79c2e3674353925495a706a8faec9f">   38</a></span>&#160;<a class="code" href="test__crosscorrelate_8cc.html#a9a79c2e3674353925495a706a8faec9f">BOOST_AUTO_TEST_CASE</a>(crosscorrelate) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;</a> d;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;::array</a>* <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = d.<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#a9f7d49c17eac44bf7c721fa50f13f1b6">CreateArray</a>(<span class="stringliteral">&quot;first&quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>-&gt;resize(50);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>-&gt;size()); i++) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    (*x)[i] = std::sin(<span class="keywordtype">double</span>(i) * 0.5) + std::cos(<span class="keywordtype">double</span>(i) * 1.5);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;</a> d;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;::array</a>* <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = d.<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#a9f7d49c17eac44bf7c721fa50f13f1b6">CreateArray</a>(<span class="stringliteral">&quot;first&quot;</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>-&gt;resize(50);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>-&gt;size()); i++) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    (*x)[i] = std::sin(<span class="keywordtype">double</span>(i) * 0.5) + std::cos(<span class="keywordtype">double</span>(i) * 1.5);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;::selection</a> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>.push_back(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html">CrossCorrelate</a> cor;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  cor.<a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">AutoCorrelate</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  std::vector&lt;double&gt;&amp; corr = cor.<a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#aaa104ed3e6f4d2c1ba4c470e67e70560">getData</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  Eigen::Map&lt;Eigen::VectorXd&gt; m(corr.data(), corr.size());</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  Eigen::VectorXd corr_ref = Eigen::VectorXd::Zero(50);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  corr_ref &lt;&lt; 1, 0.467627, -0.228828, -0.0618146, 0.270531, -0.24973, -0.956717,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      -0.674499, 0.117233, 0.172174, -0.246548, 0.0477983, 0.84253, 0.842251,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      0.0484615, -0.245153, 0.170656, 0.11432, -0.672333, -0.951362, -0.250719,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      0.264426, -0.0608222, -0.22103, 0.466958, 0.989178, 0.466958, -0.22103,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      -0.0608222, 0.264426, -0.250719, -0.951362, -0.672333, 0.11432, 0.170656,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      -0.245153, 0.0484615, 0.842251, 0.84253, 0.0477983, -0.246548, 0.172174,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      0.117233, -0.674499, -0.956717, -0.24973, 0.270531, -0.0618146, -0.228828,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      0.467627;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">bool</span> equal_val = corr_ref.isApprox(m, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span> (!equal_val) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result value&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::cout &lt;&lt; m.transpose() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref value&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::cout &lt;&lt; corr_ref.transpose() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  BOOST_CHECK_EQUAL(equal_val, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;::selection</a> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>.push_back(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html">CrossCorrelate</a> cor;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  cor.<a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">AutoCorrelate</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  std::vector&lt;double&gt;&amp; corr = cor.<a class="code" href="classvotca_1_1tools_1_1CrossCorrelate.html#aaa104ed3e6f4d2c1ba4c470e67e70560">getData</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  Eigen::Map&lt;Eigen::VectorXd&gt; m(corr.data(), corr.size());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Eigen::VectorXd corr_ref = Eigen::VectorXd::Zero(50);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  corr_ref &lt;&lt; 1, 0.467627, -0.228828, -0.0618146, 0.270531, -0.24973, -0.956717,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      -0.674499, 0.117233, 0.172174, -0.246548, 0.0477983, 0.84253, 0.842251,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      0.0484615, -0.245153, 0.170656, 0.11432, -0.672333, -0.951362, -0.250719,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      0.264426, -0.0608222, -0.22103, 0.466958, 0.989178, 0.466958, -0.22103,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      -0.0608222, 0.264426, -0.250719, -0.951362, -0.672333, 0.11432, 0.170656,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      -0.245153, 0.0484615, 0.842251, 0.84253, 0.0477983, -0.246548, 0.172174,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      0.117233, -0.674499, -0.956717, -0.24973, 0.270531, -0.0618146, -0.228828,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      0.467627;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">bool</span> equal_val = corr_ref.isApprox(m, 1e-5);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">if</span> (!equal_val) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result value&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::cout &lt;&lt; m.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref value&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::cout &lt;&lt; corr_ref.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  BOOST_CHECK_EQUAL(equal_val, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html">votca::tools::CrossCorrelate</a></div><div class="ttdoc">class to calculate cross correlations and autocorrelations</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8h_source.html#l00036">crosscorrelate.h:36</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html">votca::tools::CrossCorrelate</a></div><div class="ttdoc">class to calculate cross correlations and autocorrelations</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8h_source.html#l00033">crosscorrelate.h:33</a></div></div>
 <div class="ttc" id="acrosscorrelate_8h_html"><div class="ttname"><a href="crosscorrelate_8h.html">crosscorrelate.h</a></div></div>
-<div class="ttc" id="atest__crosscorrelate_8cc_html_a9a79c2e3674353925495a706a8faec9f"><div class="ttname"><a href="test__crosscorrelate_8cc.html#a9a79c2e3674353925495a706a8faec9f">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(crosscorrelate)</div><div class="ttdef"><b>Definition:</b> <a href="test__crosscorrelate_8cc_source.html#l00038">test_crosscorrelate.cc:38</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html_aaa104ed3e6f4d2c1ba4c470e67e70560"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html#aaa104ed3e6f4d2c1ba4c470e67e70560">votca::tools::CrossCorrelate::getData</a></div><div class="ttdeci">std::vector&lt; double &gt; &amp; getData()</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8h_source.html#l00043">crosscorrelate.h:43</a></div></div>
+<div class="ttc" id="atest__crosscorrelate_8cc_html_a9a79c2e3674353925495a706a8faec9f"><div class="ttname"><a href="test__crosscorrelate_8cc.html#a9a79c2e3674353925495a706a8faec9f">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(crosscorrelate)</div><div class="ttdef"><b>Definition:</b> <a href="test__crosscorrelate_8cc_source.html#l00031">test_crosscorrelate.cc:31</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html_aaa104ed3e6f4d2c1ba4c470e67e70560"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html#aaa104ed3e6f4d2c1ba4c470e67e70560">votca::tools::CrossCorrelate::getData</a></div><div class="ttdeci">std::vector&lt; double &gt; &amp; getData()</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8h_source.html#l00040">crosscorrelate.h:40</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html">votca::tools::DataCollection&lt; double &gt;</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">votca::xtp::Cart::x</a></div><div class="ttdeci">@ x</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00035">aotransform.h:35</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00030">akimaspline.h:30</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html_acc795bfa536422388d19d14fb7c9f7cb"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">votca::tools::CrossCorrelate::AutoCorrelate</a></div><div class="ttdeci">void AutoCorrelate(DataCollection&lt; double &gt;::selection &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8cc_source.html#l00024">crosscorrelate.cc:24</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">votca::xtp::Cart::s</a></div><div class="ttdeci">@ s</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00034">aotransform.h:34</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html_a9f7d49c17eac44bf7c721fa50f13f1b6"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html#a9f7d49c17eac44bf7c721fa50f13f1b6">votca::tools::DataCollection::CreateArray</a></div><div class="ttdeci">array * CreateArray(std::string name)</div><div class="ttdoc">create a new array</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00158">datacollection.h:158</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">votca::xtp::Cart::x</a></div><div class="ttdeci">@ x</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00034">aotransform.h:34</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00027">akimaspline.h:27</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1CrossCorrelate_html_acc795bfa536422388d19d14fb7c9f7cb"><div class="ttname"><a href="classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb">votca::tools::CrossCorrelate::AutoCorrelate</a></div><div class="ttdeci">void AutoCorrelate(DataCollection&lt; double &gt;::selection &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="crosscorrelate_8cc_source.html#l00027">crosscorrelate.cc:27</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">votca::xtp::Cart::s</a></div><div class="ttdeci">@ s</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00033">aotransform.h:33</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html_a9f7d49c17eac44bf7c721fa50f13f1b6"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html#a9f7d49c17eac44bf7c721fa50f13f1b6">votca::tools::DataCollection::CreateArray</a></div><div class="ttdeci">array * CreateArray(std::string name)</div><div class="ttdoc">create a new array</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00155">datacollection.h:155</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
