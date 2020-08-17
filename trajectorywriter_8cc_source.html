@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.1</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="trajectorywriter_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -88,21 +88,21 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef HAVE_NO_CONFIG</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;votca_config.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;votca_csg_config.h&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dlpolytrajectorywriter_8h.html">modules/io/dlpolytrajectorywriter.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lammpsdumpwriter_8h.html">modules/io/lammpsdumpwriter.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pdbwriter_8h.html">votca/csg/pdbwriter.h</a>&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="trajectorywriter_8h.html">votca/csg/trajectorywriter.h</a>&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xyzwriter_8h.html">votca/csg/xyzwriter.h</a>&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pdbwriter_8h.html">votca/csg/pdbwriter.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="trajectorywriter_8h.html">votca/csg/trajectorywriter.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="xyzwriter_8h.html">votca/csg/xyzwriter.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Local private VOTCA includes</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dlpolytrajectorywriter_8h.html">modules/io/dlpolytrajectorywriter.h</a>&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifdef GMX_DOUBLE</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gmxtrajectorywriter_8h.html">modules/io/gmxtrajectorywriter.h</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dlpolytrajectorywriter_8h.html">modules/io/dlpolytrajectorywriter.h</a>&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="growriter_8h.html">modules/io/growriter.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="growriter_8h.html">modules/io/growriter.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lammpsdumpwriter_8h.html">modules/io/lammpsdumpwriter.h</a>&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>csg {</div>
@@ -124,23 +124,23 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}  <span class="comment">// namespace csg</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1GROWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1GROWriter.html">votca::csg::GROWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="growriter_8h_source.html#l00028">growriter.h:28</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1GROWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1GROWriter.html">votca::csg::GROWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="growriter_8h_source.html#l00034">growriter.h:34</a></div></div>
 <div class="ttc" id="apdbwriter_8h_html"><div class="ttname"><a href="pdbwriter_8h.html">pdbwriter.h</a></div></div>
 <div class="ttc" id="agrowriter_8h_html"><div class="ttname"><a href="growriter_8h.html">growriter.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1XYZWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZWriter.html">votca::csg::XYZWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="xyzwriter_8h_source.html#l00029">xyzwriter.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1XYZWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1XYZWriter.html">votca::csg::XYZWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="xyzwriter_8h_source.html#l00035">xyzwriter.h:35</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1TrajectoryWriter_html_adc43b9b2ade5dc0f0387e8af0ffc0dff"><div class="ttname"><a href="classvotca_1_1csg_1_1TrajectoryWriter.html#adc43b9b2ade5dc0f0387e8af0ffc0dff">votca::csg::TrajectoryWriter::RegisterPlugins</a></div><div class="ttdeci">static void RegisterPlugins(void)</div><div class="ttdef"><b>Definition:</b> <a href="trajectorywriter_8cc_source.html#l00040">trajectorywriter.cc:40</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1DLPOLYTrajectoryWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1DLPOLYTrajectoryWriter.html">votca::csg::DLPOLYTrajectoryWriter</a></div><div class="ttdoc">class for writing dlpoly trajectory and configuration files</div><div class="ttdef"><b>Definition:</b> <a href="dlpolytrajectorywriter_8h_source.html#l00035">dlpolytrajectorywriter.h:35</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1DLPOLYTrajectoryWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1DLPOLYTrajectoryWriter.html">votca::csg::DLPOLYTrajectoryWriter</a></div><div class="ttdoc">class for writing dlpoly trajectory and configuration files</div><div class="ttdef"><b>Definition:</b> <a href="dlpolytrajectorywriter_8h_source.html#l00039">dlpolytrajectorywriter.h:39</a></div></div>
 <div class="ttc" id="adlpolytrajectorywriter_8h_html"><div class="ttname"><a href="dlpolytrajectorywriter_8h.html">dlpolytrajectorywriter.h</a></div></div>
 <div class="ttc" id="atrajectorywriter_8h_html"><div class="ttname"><a href="trajectorywriter_8h.html">trajectorywriter.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html">votca::csg::GMXTrajectoryWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8h_source.html#l00032">gmxtrajectorywriter.h:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1GMXTrajectoryWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1GMXTrajectoryWriter.html">votca::csg::GMXTrajectoryWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="gmxtrajectorywriter_8h_source.html#l00036">gmxtrajectorywriter.h:36</a></div></div>
 <div class="ttc" id="agmxtrajectorywriter_8h_html"><div class="ttname"><a href="gmxtrajectorywriter_8h.html">gmxtrajectorywriter.h</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1csg_html_ad10337444223adef2933c42500153fde"><div class="ttname"><a href="namespacevotca_1_1csg.html#ad10337444223adef2933c42500153fde">votca::csg::TrjWriterFactory</a></div><div class="ttdeci">FileFormatFactory&lt; TrajectoryWriter &gt; &amp; TrjWriterFactory()</div><div class="ttdef"><b>Definition:</b> <a href="trajectorywriter_8h_source.html#l00044">trajectorywriter.h:44</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1PDBWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1PDBWriter.html">votca::csg::PDBWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="pdbwriter_8h_source.html#l00029">pdbwriter.h:29</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1csg_html_ad10337444223adef2933c42500153fde"><div class="ttname"><a href="namespacevotca_1_1csg.html#ad10337444223adef2933c42500153fde">votca::csg::TrjWriterFactory</a></div><div class="ttdeci">FileFormatFactory&lt; TrajectoryWriter &gt; &amp; TrjWriterFactory()</div><div class="ttdef"><b>Definition:</b> <a href="trajectorywriter_8h_source.html#l00047">trajectorywriter.h:47</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1PDBWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1PDBWriter.html">votca::csg::PDBWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="pdbwriter_8h_source.html#l00035">pdbwriter.h:35</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
 <div class="ttc" id="alammpsdumpwriter_8h_html"><div class="ttname"><a href="lammpsdumpwriter_8h.html">lammpsdumpwriter.h</a></div></div>
 <div class="ttc" id="axyzwriter_8h_html"><div class="ttname"><a href="xyzwriter_8h.html">xyzwriter.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1LAMMPSDumpWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1LAMMPSDumpWriter.html">votca::csg::LAMMPSDumpWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="lammpsdumpwriter_8h_source.html#l00028">lammpsdumpwriter.h:28</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1LAMMPSDumpWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1LAMMPSDumpWriter.html">votca::csg::LAMMPSDumpWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="lammpsdumpwriter_8h_source.html#l00034">lammpsdumpwriter.h:34</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

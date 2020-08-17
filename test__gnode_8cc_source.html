@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.1</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__gnode_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -88,117 +88,123 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="test__gnode_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   17</a></span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE gnode_test</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__gnode_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   19</a></span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="glink_8h.html">votca/xtp/glink.h</a>&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="gnode_8h.html">votca/xtp/gnode.h</a>&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;BOOST_AUTO_TEST_SUITE(gnode_test)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="test__gnode_8cc.html#a00128380de95ba706cadde1b80a50454">   33</a></span>&#160;<a class="code" href="test__gnode_8cc.html#a00128380de95ba706cadde1b80a50454">BOOST_AUTO_TEST_CASE</a>(chosen_id_test) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a> electron = <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">QMStateType::Electron</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  std::vector&lt;GNode&gt; dests;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 6; i++) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> seg(<span class="stringliteral">&quot;one&quot;</span>, i);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    dests.push_back(<a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>(seg, electron, <span class="keyword">true</span>));</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> seg(<span class="stringliteral">&quot;one&quot;</span>, 6);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a> g(seg, electron, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[0], Eigen::Vector3d::Zero(), 10);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[1], Eigen::Vector3d::Zero(), 20);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[2], Eigen::Vector3d::Zero(), 15);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[3], Eigen::Vector3d::Zero(), 18);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[4], Eigen::Vector3d::Zero(), 12);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[5], Eigen::Vector3d::Zero(), 25);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a299b16970941d9ba7a2b0169d26a32ca">InitEscapeRate</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#aca72b25dbd0ba119805e600d9046b958">MakeHuffTree</a>();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.55)-&gt;getDestination()-&gt;getId(),</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    0);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.85)-&gt;getDestination()-&gt;getId(),</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    1);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.25)-&gt;getDestination()-&gt;getId(),</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    2);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.15)-&gt;getDestination()-&gt;getId(),</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    3);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.35)-&gt;getDestination()-&gt;getId(),</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    4);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.65)-&gt;getDestination()-&gt;getId(),</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    5);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="test__gnode_8cc.html#afe9d5d6c4b95cf0fae4cfc11bdae66a0">   66</a></span>&#160;<a class="code" href="test__gnode_8cc.html#a00128380de95ba706cadde1b80a50454">BOOST_AUTO_TEST_CASE</a>(count_test) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a> electron = <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">QMStateType::Electron</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::vector&lt;GNode&gt; dests;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 11; i++) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> seg(<span class="stringliteral">&quot;one&quot;</span>, i);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    dests.push_back(<a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>(seg, electron, <span class="keyword">true</span>));</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> seg(<span class="stringliteral">&quot;one&quot;</span>, 12);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a> g(seg, electron, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[0], Eigen::Vector3d::Zero(), 15);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[1], Eigen::Vector3d::Zero(), 9);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[2], Eigen::Vector3d::Zero(), 11);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[3], Eigen::Vector3d::Zero(), 8);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[4], Eigen::Vector3d::Zero(), 12);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[5], Eigen::Vector3d::Zero(), 7);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[6], Eigen::Vector3d::Zero(), 13);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[7], Eigen::Vector3d::Zero(), 6);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[8], Eigen::Vector3d::Zero(), 14);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[9], Eigen::Vector3d::Zero(), 5);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[10], Eigen::Vector3d::Zero(), 100);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a299b16970941d9ba7a2b0169d26a32ca">InitEscapeRate</a>();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#aca72b25dbd0ba119805e600d9046b958">MakeHuffTree</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  std::vector&lt;Index&gt; count(11, 0);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">double</span> d = 0;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">while</span> (d &lt; 1) {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GLink.html">GLink</a>* L = g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(d);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> ind = L-&gt;<a class="code" href="classvotca_1_1xtp_1_1GLink.html#ade8b8b03cc3bfc4561679262a266a3ce">getDestination</a>()-&gt;<a class="code" href="classvotca_1_1xtp_1_1GNode.html#aab4dccd2557204b7071841e4af4883d5">getId</a>();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    count[ind]++;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    d += 0.000001;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  BOOST_CHECK_EQUAL(count[0], 75000);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  BOOST_CHECK_EQUAL(count[1], 45000);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  BOOST_CHECK_EQUAL(count[2], 55000);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  BOOST_CHECK_EQUAL(count[3], 40000);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  BOOST_CHECK_EQUAL(count[4], 60000);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  BOOST_CHECK_EQUAL(count[5], 35000);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  BOOST_CHECK_EQUAL(count[6], 65000);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  BOOST_CHECK_EQUAL(count[7], 30000);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  BOOST_CHECK_EQUAL(count[8], 70000);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  BOOST_CHECK_EQUAL(count[9], 25001);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  BOOST_CHECK_EQUAL(count[10], 499999);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__gnode_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   19</a></span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Third party includes</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="glink_8h.html">votca/xtp/glink.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gnode_8h.html">votca/xtp/gnode.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;BOOST_AUTO_TEST_SUITE(gnode_test)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="test__gnode_8cc.html#a00128380de95ba706cadde1b80a50454">   39</a></span>&#160;<a class="code" href="test__gnode_8cc.html#a00128380de95ba706cadde1b80a50454">BOOST_AUTO_TEST_CASE</a>(chosen_id_test) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a> electron = <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">QMStateType::Electron</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::vector&lt;GNode&gt; dests;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 6; i++) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> seg(<span class="stringliteral">&quot;one&quot;</span>, i);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    dests.push_back(<a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>(seg, electron, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> seg(<span class="stringliteral">&quot;one&quot;</span>, 6);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a> g(seg, electron, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[0], Eigen::Vector3d::Zero(), 10);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[1], Eigen::Vector3d::Zero(), 20);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[2], Eigen::Vector3d::Zero(), 15);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[3], Eigen::Vector3d::Zero(), 18);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[4], Eigen::Vector3d::Zero(), 12);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[5], Eigen::Vector3d::Zero(), 25);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a299b16970941d9ba7a2b0169d26a32ca">InitEscapeRate</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#aca72b25dbd0ba119805e600d9046b958">MakeHuffTree</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.55)-&gt;getDestination()-&gt;getId(),</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    0);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.85)-&gt;getDestination()-&gt;getId(),</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    1);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.25)-&gt;getDestination()-&gt;getId(),</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    2);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.15)-&gt;getDestination()-&gt;getId(),</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    3);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.35)-&gt;getDestination()-&gt;getId(),</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    4);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  BOOST_CHECK_EQUAL(g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(0.65)-&gt;getDestination()-&gt;getId(),</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    5);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="test__gnode_8cc.html#afe9d5d6c4b95cf0fae4cfc11bdae66a0">   72</a></span>&#160;<a class="code" href="test__gnode_8cc.html#a00128380de95ba706cadde1b80a50454">BOOST_AUTO_TEST_CASE</a>(count_test) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a> electron = <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">QMStateType::Electron</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  std::vector&lt;GNode&gt; dests;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 11; i++) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> seg(<span class="stringliteral">&quot;one&quot;</span>, i);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    dests.push_back(<a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>(seg, electron, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> seg(<span class="stringliteral">&quot;one&quot;</span>, 12);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a> g(seg, electron, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[0], Eigen::Vector3d::Zero(), 15);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[1], Eigen::Vector3d::Zero(), 9);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[2], Eigen::Vector3d::Zero(), 11);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[3], Eigen::Vector3d::Zero(), 8);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[4], Eigen::Vector3d::Zero(), 12);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[5], Eigen::Vector3d::Zero(), 7);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[6], Eigen::Vector3d::Zero(), 13);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[7], Eigen::Vector3d::Zero(), 6);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[8], Eigen::Vector3d::Zero(), 14);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[9], Eigen::Vector3d::Zero(), 5);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">AddEvent</a>(&amp;dests[10], Eigen::Vector3d::Zero(), 100);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a299b16970941d9ba7a2b0169d26a32ca">InitEscapeRate</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#aca72b25dbd0ba119805e600d9046b958">MakeHuffTree</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  std::vector&lt;Index&gt; count(11, 0);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">double</span> d = 0;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">while</span> (d &lt; 1) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GLink.html">GLink</a>* L = g.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(d);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> ind = L-&gt;<a class="code" href="classvotca_1_1xtp_1_1GLink.html#ade8b8b03cc3bfc4561679262a266a3ce">getDestination</a>()-&gt;<a class="code" href="classvotca_1_1xtp_1_1GNode.html#aab4dccd2557204b7071841e4af4883d5">getId</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    count[ind]++;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    d += 0.000001;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  BOOST_CHECK_EQUAL(count[0], 75000);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  BOOST_CHECK_EQUAL(count[1], 45000);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  BOOST_CHECK_EQUAL(count[2], 55000);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  BOOST_CHECK_EQUAL(count[3], 40000);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  BOOST_CHECK_EQUAL(count[4], 60000);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  BOOST_CHECK_EQUAL(count[5], 35000);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  BOOST_CHECK_EQUAL(count[6], 65000);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  BOOST_CHECK_EQUAL(count[7], 30000);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  BOOST_CHECK_EQUAL(count[8], 70000);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  BOOST_CHECK_EQUAL(count[9], 25001);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  BOOST_CHECK_EQUAL(count[10], 499999);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="atest__gnode_8cc_html_a00128380de95ba706cadde1b80a50454"><div class="ttname"><a href="test__gnode_8cc.html#a00128380de95ba706cadde1b80a50454">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(chosen_id_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__gnode_8cc_source.html#l00033">test_gnode.cc:33</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html">votca::xtp::QMStateType</a></div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00033">qmstate.h:33</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GLink_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GLink.html">votca::xtp::GLink</a></div><div class="ttdef"><b>Definition:</b> <a href="glink_8h_source.html#l00027">glink.h:27</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="atest__gnode_8cc_html_a00128380de95ba706cadde1b80a50454"><div class="ttname"><a href="test__gnode_8cc.html#a00128380de95ba706cadde1b80a50454">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(chosen_id_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__gnode_8cc_source.html#l00039">test_gnode.cc:39</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html">votca::xtp::QMStateType</a></div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00037">qmstate.h:37</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GLink_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GLink.html">votca::xtp::GLink</a></div><div class="ttdef"><b>Definition:</b> <a href="glink_8h_source.html#l00029">glink.h:29</a></div></div>
 <div class="ttc" id="agnode_8h_html"><div class="ttname"><a href="gnode_8h.html">gnode.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_a6a182b3c85717e83ae19b33f3a8e5366"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">votca::xtp::GNode::AddEvent</a></div><div class="ttdeci">void AddEvent(GNode *seg2, const Eigen::Vector3d &amp;dr, double rate)</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00029">gnode.cc:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_a299b16970941d9ba7a2b0169d26a32ca"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#a299b16970941d9ba7a2b0169d26a32ca">votca::xtp::GNode::InitEscapeRate</a></div><div class="ttdeci">void InitEscapeRate()</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00033">gnode.cc:33</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_ae5c96b90aa5208cb9b3d8ac1dff369bd"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">votca::xtp::GNode::findHoppingDestination</a></div><div class="ttdeci">GLink * findHoppingDestination(double p) const</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00040">gnode.cc:40</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GLink_html_ade8b8b03cc3bfc4561679262a266a3ce"><div class="ttname"><a href="classvotca_1_1xtp_1_1GLink.html#ade8b8b03cc3bfc4561679262a266a3ce">votca::xtp::GLink::getDestination</a></div><div class="ttdeci">GNode * getDestination() const</div><div class="ttdef"><b>Definition:</b> <a href="glink_8h_source.html#l00037">glink.h:37</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html_ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">votca::xtp::QMStateType::Electron</a></div><div class="ttdeci">@ Electron</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00036">qmstate.h:36</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Segment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Segment.html">votca::xtp::Segment</a></div><div class="ttdef"><b>Definition:</b> <a href="segment_8h_source.html#l00033">segment.h:33</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_aca72b25dbd0ba119805e600d9046b958"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#aca72b25dbd0ba119805e600d9046b958">votca::xtp::GNode::MakeHuffTree</a></div><div class="ttdeci">void MakeHuffTree()</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00044">gnode.cc:44</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00028">adiis.h:28</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_aab4dccd2557204b7071841e4af4883d5"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#aab4dccd2557204b7071841e4af4883d5">votca::xtp::GNode::getId</a></div><div class="ttdeci">Index getId() const</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8h_source.html#l00043">gnode.h:43</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html">votca::xtp::GNode</a></div><div class="ttdef"><b>Definition:</b> <a href="gnode_8h_source.html#l00030">gnode.h:30</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_a6a182b3c85717e83ae19b33f3a8e5366"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#a6a182b3c85717e83ae19b33f3a8e5366">votca::xtp::GNode::AddEvent</a></div><div class="ttdeci">void AddEvent(GNode *seg2, const Eigen::Vector3d &amp;dr, double rate)</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00033">gnode.cc:33</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_a299b16970941d9ba7a2b0169d26a32ca"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#a299b16970941d9ba7a2b0169d26a32ca">votca::xtp::GNode::InitEscapeRate</a></div><div class="ttdeci">void InitEscapeRate()</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00037">gnode.cc:37</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_ae5c96b90aa5208cb9b3d8ac1dff369bd"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">votca::xtp::GNode::findHoppingDestination</a></div><div class="ttdeci">GLink * findHoppingDestination(double p) const</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00044">gnode.cc:44</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GLink_html_ade8b8b03cc3bfc4561679262a266a3ce"><div class="ttname"><a href="classvotca_1_1xtp_1_1GLink.html#ade8b8b03cc3bfc4561679262a266a3ce">votca::xtp::GLink::getDestination</a></div><div class="ttdeci">GNode * getDestination() const</div><div class="ttdef"><b>Definition:</b> <a href="glink_8h_source.html#l00039">glink.h:39</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html_ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">votca::xtp::QMStateType::Electron</a></div><div class="ttdeci">@ Electron</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00040">qmstate.h:40</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Segment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Segment.html">votca::xtp::Segment</a></div><div class="ttdef"><b>Definition:</b> <a href="segment_8h_source.html#l00036">segment.h:36</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_aca72b25dbd0ba119805e600d9046b958"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#aca72b25dbd0ba119805e600d9046b958">votca::xtp::GNode::MakeHuffTree</a></div><div class="ttdeci">void MakeHuffTree()</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00048">gnode.cc:48</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_aab4dccd2557204b7071841e4af4883d5"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#aab4dccd2557204b7071841e4af4883d5">votca::xtp::GNode::getId</a></div><div class="ttdeci">Index getId() const</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8h_source.html#l00044">gnode.h:44</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html">votca::xtp::GNode</a></div><div class="ttdef"><b>Definition:</b> <a href="gnode_8h_source.html#l00031">gnode.h:31</a></div></div>
 <div class="ttc" id="aglink_8h_html"><div class="ttname"><a href="glink_8h.html">glink.h</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

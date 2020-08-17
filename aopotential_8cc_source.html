@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.1</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="aopotential_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2019 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -89,55 +89,56 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="aopotential_8h.html">votca/xtp/aopotential.h</a>&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1AOPotential.html#ae112a2d978a92f568f85f642d7622c91">   26</a></span>&#160;Eigen::Matrix&lt;T, Eigen::Dynamic, Eigen::Dynamic&gt; <a class="code" href="classvotca_1_1xtp_1_1AOPotential.html#ae112a2d978a92f568f85f642d7622c91">AOPotential&lt;T&gt;::Fill</a>(</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; aobasis)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keyword">typedef</span> Eigen::Matrix&lt;T, Eigen::Dynamic, Eigen::Dynamic&gt; MatrixXcdd;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  MatrixXcdd result =</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      MatrixXcdd::Zero(aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>());</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="comment">// AOMatrix is symmetric, restrict explicit calculation of lower triangular</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="comment">// matrix</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#pragma omp parallel for schedule(guided)</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> col = 0; col &lt; aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a6ade7246967fd4b754238b5aead59183">getNumofShells</a>(); col++) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>&amp; shell_col = aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">getShell</a>(col);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> col_start = shell_col.<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a96b5dcbdfd900691920b93a90252ef76">getStartIndex</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> row = col; row &lt; aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a6ade7246967fd4b754238b5aead59183">getNumofShells</a>(); row++) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>&amp; shell_row = aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">getShell</a>(row);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> row_start = shell_row.<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a96b5dcbdfd900691920b93a90252ef76">getStartIndex</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="comment">// figure out the submatrix</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      Eigen::Block&lt;MatrixXcdd&gt; block = result.block(</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1AOPotential.html#ae112a2d978a92f568f85f642d7622c91">   43</a></span>&#160;          row_start, col_start, shell_row.<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#aec039ef81525f03ec5cb5a327bf2a358">getNumFunc</a>(), shell_col.<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#aec039ef81525f03ec5cb5a327bf2a358">getNumFunc</a>());</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      <span class="comment">// Fill block</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      FillBlock(block, shell_row, shell_col);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Fill whole matrix by copying</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">return</span> result.template selfadjointView&lt;Eigen::Lower&gt;();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">template</span> <span class="keyword">class </span>AOPotential&lt;double&gt;;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span> <span class="keyword">class </span>AOPotential&lt;std::complex&lt;double&gt; &gt;;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="aopotential_8h.html">votca/xtp/aopotential.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1AOPotential.html#ae112a2d978a92f568f85f642d7622c91">   27</a></span>&#160;Eigen::Matrix&lt;T, Eigen::Dynamic, Eigen::Dynamic&gt; <a class="code" href="classvotca_1_1xtp_1_1AOPotential.html#ae112a2d978a92f568f85f642d7622c91">AOPotential&lt;T&gt;::Fill</a>(</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; aobasis)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">typedef</span> Eigen::Matrix&lt;T, Eigen::Dynamic, Eigen::Dynamic&gt; MatrixXcdd;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  MatrixXcdd result =</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      MatrixXcdd::Zero(aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>());</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="comment">// AOMatrix is symmetric, restrict explicit calculation of lower triangular</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// matrix</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#pragma omp parallel for schedule(guided)</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> col = 0; col &lt; aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a6ade7246967fd4b754238b5aead59183">getNumofShells</a>(); col++) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>&amp; shell_col = aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">getShell</a>(col);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> col_start = shell_col.<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a96b5dcbdfd900691920b93a90252ef76">getStartIndex</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> row = col; row &lt; aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a6ade7246967fd4b754238b5aead59183">getNumofShells</a>(); row++) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>&amp; shell_row = aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">getShell</a>(row);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> row_start = shell_row.<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#a96b5dcbdfd900691920b93a90252ef76">getStartIndex</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="comment">// figure out the submatrix</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      Eigen::Block&lt;MatrixXcdd&gt; block = result.block(</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1AOPotential.html#ae112a2d978a92f568f85f642d7622c91">   44</a></span>&#160;          row_start, col_start, shell_row.<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#aec039ef81525f03ec5cb5a327bf2a358">getNumFunc</a>(), shell_col.<a class="code" href="classvotca_1_1xtp_1_1AOShell.html#aec039ef81525f03ec5cb5a327bf2a358">getNumFunc</a>());</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="comment">// Fill block</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      FillBlock(block, shell_row, shell_col);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// Fill whole matrix by copying</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">return</span> result.template selfadjointView&lt;Eigen::Lower&gt;();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span> <span class="keyword">class </span>AOPotential&lt;double&gt;;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span> <span class="keyword">class </span>AOPotential&lt;std::complex&lt;double&gt; &gt;;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_aea90b511fa504112dcb92061d52eaea5"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">votca::xtp::AOBasis::getShell</a></div><div class="ttdeci">const AOShell &amp; getShell(Index idx) const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00050">aobasis.h:50</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOPotential_html_ae112a2d978a92f568f85f642d7622c91"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOPotential.html#ae112a2d978a92f568f85f642d7622c91">votca::xtp::AOPotential::Fill</a></div><div class="ttdeci">Eigen::Matrix&lt; T, Eigen::Dynamic, Eigen::Dynamic &gt; Fill(const AOBasis &amp;aobasis) const</div><div class="ttdef"><b>Definition:</b> <a href="aopotential_8cc_source.html#l00026">aopotential.cc:26</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a6ade7246967fd4b754238b5aead59183"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a6ade7246967fd4b754238b5aead59183">votca::xtp::AOBasis::getNumofShells</a></div><div class="ttdeci">Index getNumofShells() const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00054">aobasis.h:54</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html_a96b5dcbdfd900691920b93a90252ef76"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html#a96b5dcbdfd900691920b93a90252ef76">votca::xtp::AOShell::getStartIndex</a></div><div class="ttdeci">Index getStartIndex() const</div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00100">aoshell.h:100</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a11221e2cf441ae7dd0afd79e4588d1ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">votca::xtp::AOBasis::AOBasisSize</a></div><div class="ttdeci">Index AOBasisSize() const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00044">aobasis.h:44</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00037">aobasis.h:37</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_aea90b511fa504112dcb92061d52eaea5"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">votca::xtp::AOBasis::getShell</a></div><div class="ttdeci">const AOShell &amp; getShell(Index idx) const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00048">aobasis.h:48</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOPotential_html_ae112a2d978a92f568f85f642d7622c91"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOPotential.html#ae112a2d978a92f568f85f642d7622c91">votca::xtp::AOPotential::Fill</a></div><div class="ttdeci">Eigen::Matrix&lt; T, Eigen::Dynamic, Eigen::Dynamic &gt; Fill(const AOBasis &amp;aobasis) const</div><div class="ttdef"><b>Definition:</b> <a href="aopotential_8cc_source.html#l00027">aopotential.cc:27</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a6ade7246967fd4b754238b5aead59183"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a6ade7246967fd4b754238b5aead59183">votca::xtp::AOBasis::getNumofShells</a></div><div class="ttdeci">Index getNumofShells() const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00052">aobasis.h:52</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html_a96b5dcbdfd900691920b93a90252ef76"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html#a96b5dcbdfd900691920b93a90252ef76">votca::xtp::AOShell::getStartIndex</a></div><div class="ttdeci">Index getStartIndex() const</div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00104">aoshell.h:104</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a11221e2cf441ae7dd0afd79e4588d1ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">votca::xtp::AOBasis::AOBasisSize</a></div><div class="ttdeci">Index AOBasisSize() const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00042">aobasis.h:42</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00038">aobasis.h:38</a></div></div>
 <div class="ttc" id="aaopotential_8h_html"><div class="ttname"><a href="aopotential_8h.html">aopotential.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html">votca::xtp::AOShell</a></div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00073">aoshell.h:73</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html_aec039ef81525f03ec5cb5a327bf2a358"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html#aec039ef81525f03ec5cb5a327bf2a358">votca::xtp::AOShell::getNumFunc</a></div><div class="ttdeci">Index getNumFunc() const</div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00098">aoshell.h:98</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html">votca::xtp::AOShell</a></div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00077">aoshell.h:77</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html_aec039ef81525f03ec5cb5a327bf2a358"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html#aec039ef81525f03ec5cb5a327bf2a358">votca::xtp::AOShell::getNumFunc</a></div><div class="ttdeci">Index getNumFunc() const</div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00102">aoshell.h:102</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
