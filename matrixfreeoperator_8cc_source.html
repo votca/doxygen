@@ -103,12 +103,12 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#ac5b60747414ce330f4c33d247f26130f">   33</a></span>&#160;Eigen::VectorXd <a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#ac5b60747414ce330f4c33d247f26130f">MatrixFreeOperator::diagonal</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  Eigen::VectorXd D = Eigen::VectorXd::Zero(<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#a6b23fcf5b828284a9a7b7261646cfebd">_size</a>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17daf623e75af30e62bbd73d6df5b50bb7b5">D</a> = Eigen::VectorXd::Zero(<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#a6b23fcf5b828284a9a7b7261646cfebd">_size</a>);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#a5f2e24c451625438374fd15f4218e99f">useRow</a>()) {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#pragma omp parallel for schedule(guided)</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#a6b23fcf5b828284a9a7b7261646cfebd">_size</a>; i++) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      Eigen::RowVectorXd row_data = this-&gt;<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#ae96726dff0fc99afa09327dc4a5f984c">OperatorRow</a>(i);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      D(i) = row_data(i);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <a class="code" href="namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17daf623e75af30e62bbd73d6df5b50bb7b5">D</a>(i) = row_data(i);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
@@ -123,11 +123,11 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#pragma omp parallel for schedule(guided)</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; blocks; i++) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      Eigen::MatrixXd block = <a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#a65b4efe23e0514c8e0981bd2040ff849">OperatorBlock</a>(i, i);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      D.segment(i * blocksize, blocksize) += block.diagonal();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <a class="code" href="namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17daf623e75af30e62bbd73d6df5b50bb7b5">D</a>.segment(i * blocksize, blocksize) += block.diagonal();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">return</span> D;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17daf623e75af30e62bbd73d6df5b50bb7b5">D</a>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">// get the full matrix if we have to</span></div>
@@ -182,6 +182,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1MatrixFreeOperator_html_ac5b60747414ce330f4c33d247f26130f"><div class="ttname"><a href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#ac5b60747414ce330f4c33d247f26130f">votca::xtp::MatrixFreeOperator::diagonal</a></div><div class="ttdeci">Eigen::VectorXd diagonal() const</div><div class="ttdef"><b>Definition:</b> <a href="matrixfreeoperator_8cc_source.html#l00033">matrixfreeoperator.cc:33</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1MatrixFreeOperator_html_ad5126317f9df5151a65db2ea483ac2a7"><div class="ttname"><a href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#ad5126317f9df5151a65db2ea483ac2a7">votca::xtp::MatrixFreeOperator::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition:</b> <a href="matrixfreeoperator_8cc_source.html#l00092">matrixfreeoperator.cc:92</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1MatrixFreeOperator_html_ae96726dff0fc99afa09327dc4a5f984c"><div class="ttname"><a href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#ae96726dff0fc99afa09327dc4a5f984c">votca::xtp::MatrixFreeOperator::OperatorRow</a></div><div class="ttdeci">virtual Eigen::RowVectorXd OperatorRow(Index index) const</div><div class="ttdef"><b>Definition:</b> <a href="matrixfreeoperator_8cc_source.html#l00025">matrixfreeoperator.cc:25</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html_a7336351adc1e9d22c930eb40921bd17daf623e75af30e62bbd73d6df5b50bb7b5"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17daf623e75af30e62bbd73d6df5b50bb7b5">votca::xtp::L::D</a></div><div class="ttdeci">@ D</div></div>
 <div class="ttc" id="amatrixfreeoperator_8h_html"><div class="ttname"><a href="matrixfreeoperator_8h.html">matrixfreeoperator.h</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
