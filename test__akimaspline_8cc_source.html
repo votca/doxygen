@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.1</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__akimaspline_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -90,79 +90,71 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__akimaspline_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   19</a></span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE akimaspline_test</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="test__akimaspline_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   21</a></span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Standard includes</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="test__akimaspline_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   21</a></span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="akimaspline_8h.html">votca/tools/akimaspline.h</a>&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// Third party includes</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="akimaspline_8h.html">votca/tools/akimaspline.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;BOOST_AUTO_TEST_SUITE(akimaspline_test)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="test__akimaspline_8cc.html#a863c73025c2b9126679d40d3922690d1">   29</a></span>&#160;<a class="code" href="test__akimaspline_8cc.html#a863c73025c2b9126679d40d3922690d1">BOOST_AUTO_TEST_CASE</a>(interpolate_test) {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;BOOST_AUTO_TEST_SUITE(akimaspline_test)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="test__akimaspline_8cc.html#a863c73025c2b9126679d40d3922690d1">   35</a></span>&#160;<a class="code" href="test__akimaspline_8cc.html#a863c73025c2b9126679d40d3922690d1">BOOST_AUTO_TEST_CASE</a>(interpolate_test) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> = 80;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = Eigen::VectorXd::Zero(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a> = Eigen::VectorXd::Zero(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>; ++i) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>(i) = 0.25 * i;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(i) = std::sin(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>(i));</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html">AkimaSpline</a> cspline;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  cspline.<a class="code" href="classvotca_1_1tools_1_1Spline.html#acb6a23ee3fc81b8f27acf00c8ba72b4f">setBCInt</a>(0);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  cspline.<a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#aa265470e0aec626512c5ef82024d371a">Interpolate</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  Eigen::VectorXd rs = Eigen::VectorXd::Zero(10);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  rs &lt;&lt; 0.45, 0.47, 0.8, 0.75, 0.6, 0.4, 0.9, 0.55, 0, 0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  Eigen::VectorXd values_ref = Eigen::VectorXd::Zero(10);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  values_ref &lt;&lt; 0.434362, 0.452449, 0.717761, 0.681639, 0.564937, 0.388734,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      0.783279, 0.52316, 0, 0;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  Eigen::VectorXd derivatives_ref = Eigen::VectorXd::Zero(10);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  derivatives_ref &lt;&lt; 0.906562, 0.902216, 0.698382, 0.747323, 0.818045, 0.918909,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      0.615268, 0.854075, 1.02038, 1.02038;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  Eigen::VectorXd values = cspline.<a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#ac7fe6f10ace98518436a2f8253285c3a">Calculate</a>(rs);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  Eigen::VectorXd derivatives = cspline.<a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#a7caae8c6008096716906e99f8cca9040">CalculateDerivative</a>(rs);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">bool</span> equal_val = values_ref.isApprox(values, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">if</span> (!equal_val) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result value&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::cout &lt;&lt; values.transpose() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref value&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::cout &lt;&lt; values_ref.transpose() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  BOOST_CHECK_EQUAL(equal_val, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">bool</span> equal_derivative = derivatives_ref.isApprox(derivatives, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">if</span> (!equal_derivative) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result value&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::cout &lt;&lt; derivatives.transpose() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref value&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::cout &lt;&lt; derivatives_ref.transpose() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  BOOST_CHECK_EQUAL(equal_derivative, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">int</span> size = 80;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = Eigen::VectorXd::Zero(size);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a> = Eigen::VectorXd::Zero(size);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>(i) = 0.25 * i;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(i) = std::sin(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>(i));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html">AkimaSpline</a> cspline;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  cspline.<a class="code" href="classvotca_1_1tools_1_1Spline.html#acb6a23ee3fc81b8f27acf00c8ba72b4f">setBCInt</a>(0);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  cspline.<a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#aa265470e0aec626512c5ef82024d371a">Interpolate</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  Eigen::VectorXd rs = Eigen::VectorXd::Zero(10);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  rs &lt;&lt; 0.45, 0.47, 0.8, 0.75, 0.6, 0.4, 0.9, 0.55, 0, 0;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  Eigen::VectorXd values_ref = Eigen::VectorXd::Zero(10);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  values_ref &lt;&lt; 0.434362, 0.452449, 0.717761, 0.681639, 0.564937, 0.388734,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      0.783279, 0.52316, 0, 0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Eigen::VectorXd derivatives_ref = Eigen::VectorXd::Zero(10);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  derivatives_ref &lt;&lt; 0.906562, 0.902216, 0.698382, 0.747323, 0.818045, 0.918909,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      0.615268, 0.854075, 1.02038, 1.02038;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  Eigen::VectorXd values = cspline.<a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#ade9f1df21d7e13f883a4708a8b07f290">Calculate</a>(rs);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  Eigen::VectorXd derivatives = cspline.<a class="code" href="classvotca_1_1tools_1_1AkimaSpline.html#a684951b8e510a1cd245a4ae143d4e48f">CalculateDerivative</a>(rs);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">bool</span> equal_val = values_ref.isApprox(values, 1e-5);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (!equal_val) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result value&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::cout &lt;&lt; values.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref value&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::cout &lt;&lt; values_ref.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  BOOST_CHECK_EQUAL(equal_val, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">bool</span> equal_derivative = derivatives_ref.isApprox(derivatives, 1e-5);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span> (!equal_derivative) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result value&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::cout &lt;&lt; derivatives.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref value&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::cout &lt;&lt; derivatives_ref.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  BOOST_CHECK_EQUAL(equal_derivative, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1tools_1_1AkimaSpline_html_a7caae8c6008096716906e99f8cca9040"><div class="ttname"><a href="classvotca_1_1tools_1_1AkimaSpline.html#a7caae8c6008096716906e99f8cca9040">votca::tools::AkimaSpline::CalculateDerivative</a></div><div class="ttdeci">double CalculateDerivative(double r) override</div><div class="ttdoc">Calculate y value for a given x value on the derivative of the spline created by function Interpolate...</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00094">akimaspline.h:94</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
-<div class="ttc" id="anamespacekokkos__linalg__3d_html_a1cb29721f0bb1d12949939f8abb2d4d6"><div class="ttname"><a href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">kokkos_linalg_3d::size</a></div><div class="ttdeci">int size(const T &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="kokkos__linalg_8hpp_source.html#l00034">kokkos_linalg.hpp:34</a></div></div>
 <div class="ttc" id="aakimaspline_8h_html"><div class="ttname"><a href="akimaspline_8h.html">akimaspline.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1AkimaSpline_html_aa265470e0aec626512c5ef82024d371a"><div class="ttname"><a href="classvotca_1_1tools_1_1AkimaSpline.html#aa265470e0aec626512c5ef82024d371a">votca::tools::AkimaSpline::Interpolate</a></div><div class="ttdeci">void Interpolate(const Eigen::VectorXd &amp;x, const Eigen::VectorXd &amp;y) override</div><div class="ttdoc">Calculate interpolating spline for given (x,y) values. Points on resulting spline can be obtained via...</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8cc_source.html#l00030">akimaspline.cc:30</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1AkimaSpline_html"><div class="ttname"><a href="classvotca_1_1tools_1_1AkimaSpline.html">votca::tools::AkimaSpline</a></div><div class="ttdoc">An Akima Spline Class.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00044">akimaspline.h:44</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">votca::xtp::Cart::x</a></div><div class="ttdeci">@ x</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00035">aotransform.h:35</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00030">akimaspline.h:30</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">votca::xtp::Cart::y</a></div><div class="ttdeci">@ y</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00035">aotransform.h:35</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1AkimaSpline_html_ac7fe6f10ace98518436a2f8253285c3a"><div class="ttname"><a href="classvotca_1_1tools_1_1AkimaSpline.html#ac7fe6f10ace98518436a2f8253285c3a">votca::tools::AkimaSpline::Calculate</a></div><div class="ttdeci">double Calculate(double r) override</div><div class="ttdoc">Calculate spline function value for a given x value on the spline created by Interpolate() or Fit()</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00087">akimaspline.h:87</a></div></div>
-<div class="ttc" id="atest__akimaspline_8cc_html_a863c73025c2b9126679d40d3922690d1"><div class="ttname"><a href="test__akimaspline_8cc.html#a863c73025c2b9126679d40d3922690d1">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(interpolate_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__akimaspline_8cc_source.html#l00035">test_akimaspline.cc:35</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_acb6a23ee3fc81b8f27acf00c8ba72b4f"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#acb6a23ee3fc81b8f27acf00c8ba72b4f">votca::tools::Spline::setBCInt</a></div><div class="ttdeci">void setBCInt(Index bc)</div><div class="ttdoc">Set the boundary type of the spline.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8h_source.html#l00089">spline.h:89</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1AkimaSpline_html_aa265470e0aec626512c5ef82024d371a"><div class="ttname"><a href="classvotca_1_1tools_1_1AkimaSpline.html#aa265470e0aec626512c5ef82024d371a">votca::tools::AkimaSpline::Interpolate</a></div><div class="ttdeci">void Interpolate(const Eigen::VectorXd &amp;x, const Eigen::VectorXd &amp;y) override</div><div class="ttdoc">Calculate interpolating spline for given (x,y) values. Points on resulting spline can be obtained via...</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8cc_source.html#l00027">akimaspline.cc:27</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1AkimaSpline_html_ade9f1df21d7e13f883a4708a8b07f290"><div class="ttname"><a href="classvotca_1_1tools_1_1AkimaSpline.html#ade9f1df21d7e13f883a4708a8b07f290">votca::tools::AkimaSpline::Calculate</a></div><div class="ttdeci">double Calculate(double x) override</div><div class="ttdoc">Calculate spline function value for a given x value on the spline created by Interpolate() or Fit()</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00084">akimaspline.h:84</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1AkimaSpline_html"><div class="ttname"><a href="classvotca_1_1tools_1_1AkimaSpline.html">votca::tools::AkimaSpline</a></div><div class="ttdoc">An Akima Spline Class.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00041">akimaspline.h:41</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">votca::xtp::Cart::x</a></div><div class="ttdeci">@ x</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00034">aotransform.h:34</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00027">akimaspline.h:27</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">votca::xtp::Cart::y</a></div><div class="ttdeci">@ y</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00034">aotransform.h:34</a></div></div>
+<div class="ttc" id="atest__akimaspline_8cc_html_a863c73025c2b9126679d40d3922690d1"><div class="ttname"><a href="test__akimaspline_8cc.html#a863c73025c2b9126679d40d3922690d1">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(interpolate_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__akimaspline_8cc_source.html#l00029">test_akimaspline.cc:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1AkimaSpline_html_a684951b8e510a1cd245a4ae143d4e48f"><div class="ttname"><a href="classvotca_1_1tools_1_1AkimaSpline.html#a684951b8e510a1cd245a4ae143d4e48f">votca::tools::AkimaSpline::CalculateDerivative</a></div><div class="ttdeci">double CalculateDerivative(double x) override</div><div class="ttdoc">Calculate y value for a given x value on the derivative of the spline created by function Interpolate...</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00091">akimaspline.h:91</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_acb6a23ee3fc81b8f27acf00c8ba72b4f"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#acb6a23ee3fc81b8f27acf00c8ba72b4f">votca::tools::Spline::setBCInt</a></div><div class="ttdeci">void setBCInt(Index bc)</div><div class="ttdoc">Set the boundary type of the spline.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8h_source.html#l00088">spline.h:88</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

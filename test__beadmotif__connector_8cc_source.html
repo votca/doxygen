@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.1</span>
    </div>
   </td>
  </tr>
@@ -92,7 +92,7 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE beadmotifconnector_test</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="test__beadmotif__connector_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   21</a></span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;../../include/votca/csg/beadmotifconnector.h&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="beadmotifconnector_8h.html">votca/csg/beadmotifconnector.h</a>&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1csg.html">votca::csg</a>;</div>
@@ -110,7 +110,7 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_bead(1, 2);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">// Connects motifs</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_motif(4, 5);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a5831810a3bef5e77520c236aef68a3ce">AddMotifAndBeadEdge</a>(ed_motif, ed_bead);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a677af222db6d00b8c3f518f14270820c">AddMotifAndBeadEdge</a>(ed_motif, ed_bead);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="test__beadmotif__connector_8cc.html#af0fa7681ff07a05f28d3708b12d177f6">   44</a></span>&#160;<a class="code" href="test__beadmotif__connector_8cc.html#ab33cd3bdd87ee7832a90358a5b502411">BOOST_AUTO_TEST_CASE</a>(test_beadmotifconnector_getedges) {</div>
@@ -119,67 +119,42 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_bead(1, 2);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Connects motifs</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_motif(4, 5);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">   * Motif  4 --- 5</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">   * Bead   1 --- 2</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a5831810a3bef5e77520c236aef68a3ce">AddMotifAndBeadEdge</a>(ed_motif, ed_bead);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  vector&lt;Edge&gt; bead_edges = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a38a57e0229fa8bbbb8adc4e42924f6cd">getBeadEdges</a>(ed_motif);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  BOOST_CHECK_EQUAL(bead_edges.size(), 1);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  BOOST_CHECK_EQUAL(bead_edges.at(0), ed_bead);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a677af222db6d00b8c3f518f14270820c">AddMotifAndBeadEdge</a>(ed_motif, ed_bead);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  vector&lt;Edge&gt; bead_edges = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#ad4bf8383ab478d9a005c2a2b792b5426">getBeadEdges</a>(ed_motif);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  BOOST_CHECK_EQUAL(bead_edges.size(), 1);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  BOOST_CHECK_EQUAL(bead_edges.at(0), ed_bead);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> motif_edge = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a565f43cdbf453841519628de4592e963">getMotifEdge</a>(ed_bead);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  BOOST_CHECK_EQUAL(motif_edge, ed_motif);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_bead2(7, 8);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a677af222db6d00b8c3f518f14270820c">AddMotifAndBeadEdge</a>(ed_motif, ed_bead2);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> motif_edge = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a0a13e1cb84e2ad622f14ee95f2b5da44">getMotifEdge</a>(ed_bead);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  BOOST_CHECK_EQUAL(motif_edge, ed_motif);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  bead_edges = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#ad4bf8383ab478d9a005c2a2b792b5426">getBeadEdges</a>(ed_motif);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  BOOST_CHECK_EQUAL(bead_edges.size(), 2);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">   * Motif  4 --- 5</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">   * Bead   1 --- 2</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">   * Bead   7 --- 8</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_bead2(7, 8);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a5831810a3bef5e77520c236aef68a3ce">AddMotifAndBeadEdge</a>(ed_motif, ed_bead2);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  bead_edges = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a38a57e0229fa8bbbb8adc4e42924f6cd">getBeadEdges</a>(ed_motif);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  BOOST_CHECK_EQUAL(bead_edges.size(), 2);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">   * Motif  7 --- 4 --- 5</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">   * Bead         1 --- 2</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">   * Bead         7 --- 8</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">   * Bead   9 --- 11</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_motif2(4, 7);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_bead3(9, 11);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a5831810a3bef5e77520c236aef68a3ce">AddMotifAndBeadEdge</a>(ed_motif2, ed_bead3);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  unordered_set&lt;Edge&gt; motif_edges = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#ab7976ffffe72c9ea743cfc439e3e19d9">getMotifEdges</a>();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  BOOST_CHECK_EQUAL(motif_edges.size(), 2);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  vector&lt;Edge&gt; bead_edges2 = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a38a57e0229fa8bbbb8adc4e42924f6cd">getBeadEdges</a>(ed_motif);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  sort(bead_edges2.begin(), bead_edges2.end());</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  BOOST_CHECK_EQUAL(bead_edges2.size(), 2);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  BOOST_CHECK_EQUAL(bead_edges2.at(0), ed_bead);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  BOOST_CHECK_EQUAL(bead_edges2.at(1), ed_bead2);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_motif2(4, 7);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed_bead3(9, 11);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a677af222db6d00b8c3f518f14270820c">AddMotifAndBeadEdge</a>(ed_motif2, ed_bead3);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  unordered_set&lt;Edge&gt; motif_edges = bead_connector.<a class="code" href="classvotca_1_1csg_1_1BeadMotifConnector.html#a214584c4add8fa11fe0a9c926eced962">getMotifEdges</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  BOOST_CHECK_EQUAL(motif_edges.size(), 2);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html_a5831810a3bef5e77520c236aef68a3ce"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html#a5831810a3bef5e77520c236aef68a3ce">votca::csg::BeadMotifConnector::AddMotifAndBeadEdge</a></div><div class="ttdeci">void AddMotifAndBeadEdge(const tools::Edge &amp;motif_edge, const tools::Edge &amp;bead_edge)</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00029">beadmotifconnector.cc:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html_ab7976ffffe72c9ea743cfc439e3e19d9"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html#ab7976ffffe72c9ea743cfc439e3e19d9">votca::csg::BeadMotifConnector::getMotifEdges</a></div><div class="ttdeci">std::unordered_set&lt; tools::Edge &gt; getMotifEdges() const noexcept</div><div class="ttdoc">Returns all the motif edges.</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00059">beadmotifconnector.cc:59</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00042">edge.h:42</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00040">edge.h:40</a></div></div>
 <div class="ttc" id="atest__beadmotif__connector_8cc_html_ab33cd3bdd87ee7832a90358a5b502411"><div class="ttname"><a href="test__beadmotif__connector_8cc.html#ab33cd3bdd87ee7832a90358a5b502411">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(test_beadmotifconnector_constructor)</div><div class="ttdef"><b>Definition:</b> <a href="test__beadmotif__connector_8cc_source.html#l00031">test_beadmotif_connector.cc:31</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1csg_html"><div class="ttname"><a href="namespacevotca_1_1csg.html">votca::csg</a></div><div class="ttdef"><b>Definition:</b> <a href="basebead_8h_source.html#l00034">basebead.h:34</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html_a0a13e1cb84e2ad622f14ee95f2b5da44"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html#a0a13e1cb84e2ad622f14ee95f2b5da44">votca::csg::BeadMotifConnector::getMotifEdge</a></div><div class="ttdeci">tools::Edge getMotifEdge(const tools::Edge &amp;bead_edge) const</div><div class="ttdoc">Returns the motifs involved between two beads given by bead_edge.</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00053">beadmotifconnector.cc:53</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html_a38a57e0229fa8bbbb8adc4e42924f6cd"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html#a38a57e0229fa8bbbb8adc4e42924f6cd">votca::csg::BeadMotifConnector::getBeadEdges</a></div><div class="ttdeci">std::vector&lt; tools::Edge &gt; getBeadEdges(const tools::Edge &amp;motif_edge) const</div><div class="ttdoc">Returns the bead edges connecting the motifs specified by motif_edge.</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00034">beadmotifconnector.cc:34</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00030">akimaspline.h:30</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html">votca::csg::BeadMotifConnector</a></div><div class="ttdoc">Simple class for storing the connections between motifs and the underlying beads that are part of the...</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8h_source.html#l00084">beadmotifconnector.h:84</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1csg_html"><div class="ttname"><a href="namespacevotca_1_1csg.html">votca::csg</a></div><div class="ttdef"><b>Definition:</b> <a href="basebead_8h_source.html#l00032">basebead.h:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html_a214584c4add8fa11fe0a9c926eced962"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html#a214584c4add8fa11fe0a9c926eced962">votca::csg::BeadMotifConnector::getMotifEdges</a></div><div class="ttdeci">std::unordered_set&lt; TOOLS::Edge &gt; getMotifEdges()</div><div class="ttdoc">Returns all the motif edges.</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00055">beadmotifconnector.cc:55</a></div></div>
+<div class="ttc" id="abeadmotifconnector_8h_html"><div class="ttname"><a href="beadmotifconnector_8h.html">beadmotifconnector.h</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html_a677af222db6d00b8c3f518f14270820c"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html#a677af222db6d00b8c3f518f14270820c">votca::csg::BeadMotifConnector::AddMotifAndBeadEdge</a></div><div class="ttdeci">void AddMotifAndBeadEdge(TOOLS::Edge motif_edge, TOOLS::Edge bead_edge)</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00028">beadmotifconnector.cc:28</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00027">akimaspline.h:27</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html_a565f43cdbf453841519628de4592e963"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html#a565f43cdbf453841519628de4592e963">votca::csg::BeadMotifConnector::getMotifEdge</a></div><div class="ttdeci">TOOLS::Edge getMotifEdge(TOOLS::Edge bead_edge)</div><div class="ttdoc">Returns the motifs involved between two beads given by bead_edge.</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00051">beadmotifconnector.cc:51</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html_ad4bf8383ab478d9a005c2a2b792b5426"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html#ad4bf8383ab478d9a005c2a2b792b5426">votca::csg::BeadMotifConnector::getBeadEdges</a></div><div class="ttdeci">std::vector&lt; TOOLS::Edge &gt; getBeadEdges(TOOLS::Edge motif_edge)</div><div class="ttdoc">Returns the bead edges connecting the motifs specified by motif_edge.</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00032">beadmotifconnector.cc:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BeadMotifConnector_html"><div class="ttname"><a href="classvotca_1_1csg_1_1BeadMotifConnector.html">votca::csg::BeadMotifConnector</a></div><div class="ttdoc">Simple class for storing the connections between motifs and the underlying beads that are part of the...</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8h_source.html#l00062">beadmotifconnector.h:62</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
