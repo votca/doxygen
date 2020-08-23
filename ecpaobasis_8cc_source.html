@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.1</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="ecpaobasis_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2019 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -88,99 +88,104 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * limitations under the License.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ecpaobasis_8h.html">votca/xtp/ecpaobasis.h</a>&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ecpbasisset_8h.html">votca/xtp/ecpbasisset.h</a>&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="qmmolecule_8h.html">votca/xtp/qmmolecule.h</a>&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a547df01de22570c54ca78417783ad70f">   27</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1ECPAOShell.html">ECPAOShell</a>&amp; <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a547df01de22570c54ca78417783ad70f">ECPAOBasis::addShell</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPShell.html">ECPShell</a>&amp; shell, <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMAtom.html">QMAtom</a>&amp; atom,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                 <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> startIndex, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> Lmax) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">_aoshells</a>.push_back(<a class="code" href="classvotca_1_1xtp_1_1ECPAOShell.html">ECPAOShell</a>(shell, atom, startIndex, Lmax));</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">_aoshells</a>.back();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a5b95c2685553e865c215bf62e8191a3e">   33</a></span>&#160;std::vector&lt;std::string&gt; <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a5b95c2685553e865c215bf62e8191a3e">ECPAOBasis::Fill</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPBasisSet.html">ECPBasisSet</a>&amp; bs,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                          <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>&amp; atoms) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ade66e9575d91ee32ffa06c1bbf850db4">_AOBasisSize</a> = 0;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">_aoshells</a>.clear();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#afed91ef98a19be73003c711957c16d40">_shells_perAtom</a>.clear();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  std::vector&lt;std::vector&lt;Index&gt;&gt; shellindex_per_atom;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  std::vector&lt;std::string&gt; non_ecp_elements;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> index = 0;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1QMAtom.html">QMAtom</a>&amp; atom : atoms) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::string name = atom.getElement();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> element_exists = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::vector&lt;Index&gt; shellindex;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      bs.<a class="code" href="classvotca_1_1xtp_1_1ECPBasisSet.html#acce2a8173bc57fe2b3853bdaa6000616">getElement</a>(name);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    } <span class="keywordflow">catch</span> (std::runtime_error&amp; error) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      element_exists = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">if</span> (std::find(non_ecp_elements.begin(), non_ecp_elements.end(), name) !=</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;          non_ecp_elements.end()) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        non_ecp_elements.push_back(name);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (element_exists) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPElement.html">ECPElement</a>&amp; <a class="code" href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">element</a> = bs.<a class="code" href="classvotca_1_1xtp_1_1ECPBasisSet.html#acce2a8173bc57fe2b3853bdaa6000616">getElement</a>(name);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      atom._ecpcharge = <a class="code" href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">element</a>.getNcore();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> lmax = <a class="code" href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">element</a>.getLmax();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPShell.html">ECPShell</a>&amp; shell : <a class="code" href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">element</a>) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1ECPAOShell.html">ECPAOShell</a>&amp; aoshell = <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a547df01de22570c54ca78417783ad70f">addShell</a>(shell, atom, <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ade66e9575d91ee32ffa06c1bbf850db4">_AOBasisSize</a>, lmax);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        shellindex.push_back(index);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        index++;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ade66e9575d91ee32ffa06c1bbf850db4">_AOBasisSize</a> += <a class="code" href="namespacevotca_1_1xtp.html#a5a142f252e0d0081dc692d13191d8430">NumFuncShell</a>(shell.getType());</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPGaussianPrimitive.html">ECPGaussianPrimitive</a>&amp; gaussian : shell) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;          aoshell.<a class="code" href="classvotca_1_1xtp_1_1ECPAOShell.html#aa6b4afec4e8424806b6aa03bb4c46097">addGaussian</a>(gaussian);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    shellindex_per_atom.push_back(shellindex);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="comment">// have to do it via indeces because if _aoshells resizes pointers are</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// invalidated</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; atom_index : shellindex_per_atom) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::vector&lt;const ECPAOShell*&gt; temp;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> lindex : atom_index) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      temp.push_back(&amp;<a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">_aoshells</a>[lindex]);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#afed91ef98a19be73003c711957c16d40">_shells_perAtom</a>.push_back(temp);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">return</span> non_ecp_elements;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ecpaobasis_8h.html">votca/xtp/ecpaobasis.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ecpbasisset_8h.html">votca/xtp/ecpbasisset.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="qmmolecule_8h.html">votca/xtp/qmmolecule.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a2525f12578ef380da04501db62d45207">   31</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1ECPAOShell.html">ECPAOShell</a>&amp; <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a2525f12578ef380da04501db62d45207">ECPAOBasis::addShell</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPShell.html">ECPShell</a>&amp; shell, <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMAtom.html">QMAtom</a>&amp; atom,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                 <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> startIndex, <a class="code" href="namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17d">L</a> Lmax) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">_aoshells</a>.push_back(<a class="code" href="classvotca_1_1xtp_1_1ECPAOShell.html">ECPAOShell</a>(shell, atom, startIndex, Lmax));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">_aoshells</a>.back();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a5b95c2685553e865c215bf62e8191a3e">   37</a></span>&#160;std::vector&lt;std::string&gt; <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a5b95c2685553e865c215bf62e8191a3e">ECPAOBasis::Fill</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPBasisSet.html">ECPBasisSet</a>&amp; bs,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                          <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>&amp; atoms) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ade66e9575d91ee32ffa06c1bbf850db4">_AOBasisSize</a> = 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">_aoshells</a>.clear();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#afed91ef98a19be73003c711957c16d40">_shells_perAtom</a>.clear();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::vector&lt;std::vector&lt;Index&gt;&gt; shellindex_per_atom;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  std::vector&lt;std::string&gt; non_ecp_elements;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> index = 0;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1QMAtom.html">QMAtom</a>&amp; atom : atoms) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::string name = atom.getElement();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">bool</span> element_exists = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::vector&lt;Index&gt; shellindex;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      bs.<a class="code" href="classvotca_1_1xtp_1_1ECPBasisSet.html#acce2a8173bc57fe2b3853bdaa6000616">getElement</a>(name);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    } <span class="keywordflow">catch</span> (std::runtime_error&amp; error) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      element_exists = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordflow">if</span> (std::find(non_ecp_elements.begin(), non_ecp_elements.end(), name) !=</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;          non_ecp_elements.end()) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        non_ecp_elements.push_back(name);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (element_exists) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPElement.html">ECPElement</a>&amp; <a class="code" href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">element</a> = bs.<a class="code" href="classvotca_1_1xtp_1_1ECPBasisSet.html#acce2a8173bc57fe2b3853bdaa6000616">getElement</a>(name);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      atom._ecpcharge = <a class="code" href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">element</a>.getNcore();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <a class="code" href="namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17d">L</a> lmax = <a class="code" href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">element</a>.getLmax();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPShell.html">ECPShell</a>&amp; shell : <a class="code" href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">element</a>) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1ECPAOShell.html">ECPAOShell</a>&amp; aoshell = <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a2525f12578ef380da04501db62d45207">addShell</a>(shell, atom, <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ade66e9575d91ee32ffa06c1bbf850db4">_AOBasisSize</a>, lmax);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        shellindex.push_back(index);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        index++;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ade66e9575d91ee32ffa06c1bbf850db4">_AOBasisSize</a> += <a class="code" href="namespacevotca_1_1xtp.html#a0d0fa0d59f33812cc41bbca9d32744db">NumFuncShell</a>(shell.getL());</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1ECPGaussianPrimitive.html">ECPGaussianPrimitive</a>&amp; gaussian : shell) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          aoshell.<a class="code" href="classvotca_1_1xtp_1_1ECPAOShell.html#aa6b4afec4e8424806b6aa03bb4c46097">addGaussian</a>(gaussian);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    shellindex_per_atom.push_back(shellindex);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="comment">// have to do it via indeces because if _aoshells resizes pointers are</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// invalidated</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; atom_index : shellindex_per_atom) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::vector&lt;const ECPAOShell*&gt; temp;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> lindex : atom_index) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      temp.push_back(&amp;<a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">_aoshells</a>[lindex]);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#afed91ef98a19be73003c711957c16d40">_shells_perAtom</a>.push_back(temp);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">return</span> non_ecp_elements;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00030">qmmolecule.h:30</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOShell_html_aa6b4afec4e8424806b6aa03bb4c46097"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOShell.html#aa6b4afec4e8424806b6aa03bb4c46097">votca::xtp::ECPAOShell::addGaussian</a></div><div class="ttdeci">void addGaussian(const ECPGaussianPrimitive &amp;gaussian)</div><div class="ttdef"><b>Definition:</b> <a href="ecpaoshell_8h_source.html#l00092">ecpaoshell.h:92</a></div></div>
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html_a5a142f252e0d0081dc692d13191d8430"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a5a142f252e0d0081dc692d13191d8430">votca::xtp::NumFuncShell</a></div><div class="ttdeci">Index NumFuncShell(const std::string &amp;shell_type)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00129">basisset.cc:129</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPGaussianPrimitive_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPGaussianPrimitive.html">votca::xtp::ECPGaussianPrimitive</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00029">ecpbasisset.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOShell_html_aa6b4afec4e8424806b6aa03bb4c46097"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOShell.html#aa6b4afec4e8424806b6aa03bb4c46097">votca::xtp::ECPAOShell::addGaussian</a></div><div class="ttdeci">void addGaussian(const ECPGaussianPrimitive &amp;gaussian)</div><div class="ttdef"><b>Definition:</b> <a href="ecpaoshell_8h_source.html#l00094">ecpaoshell.h:94</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1csg_html_a003ea66dffb6d19e96ac90345ed027d2"><div class="ttname"><a href="namespacevotca_1_1csg.html#a003ea66dffb6d19e96ac90345ed027d2">votca::csg::element</a></div><div class="ttdeci">reduced_edge_to_edges_map::value_type element</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00027">beadmotifconnector.cc:27</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html_a0d0fa0d59f33812cc41bbca9d32744db"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a0d0fa0d59f33812cc41bbca9d32744db">votca::xtp::NumFuncShell</a></div><div class="ttdeci">Index NumFuncShell(L l)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00099">basisset.cc:99</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPGaussianPrimitive_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPGaussianPrimitive.html">votca::xtp::ECPGaussianPrimitive</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00030">ecpbasisset.h:30</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html_ade66e9575d91ee32ffa06c1bbf850db4"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html#ade66e9575d91ee32ffa06c1bbf850db4">votca::xtp::ECPAOBasis::_AOBasisSize</a></div><div class="ttdeci">Index _AOBasisSize</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8h_source.html#l00063">ecpaobasis.h:63</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOShell.html">votca::xtp::ECPAOShell</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpaoshell_8h_source.html#l00056">ecpaoshell.h:56</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html_a7336351adc1e9d22c930eb40921bd17d"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17d">votca::xtp::L</a></div><div class="ttdeci">L</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00037">basisset.h:37</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOShell.html">votca::xtp::ECPAOShell</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpaoshell_8h_source.html#l00060">ecpaoshell.h:60</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html_a2525f12578ef380da04501db62d45207"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html#a2525f12578ef380da04501db62d45207">votca::xtp::ECPAOBasis::addShell</a></div><div class="ttdeci">ECPAOShell &amp; addShell(const ECPShell &amp;shell, const QMAtom &amp;atom, Index startIndex, L Lmax)</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8cc_source.html#l00031">ecpaobasis.cc:31</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
 <div class="ttc" id="aqmmolecule_8h_html"><div class="ttname"><a href="qmmolecule_8h.html">qmmolecule.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPShell.html">votca::xtp::ECPShell</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00041">ecpbasisset.h:41</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPBasisSet_html_acce2a8173bc57fe2b3853bdaa6000616"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPBasisSet.html#acce2a8173bc57fe2b3853bdaa6000616">votca::xtp::ECPBasisSet::getElement</a></div><div class="ttdeci">const ECPElement &amp; getElement(std::string element_type) const</div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8cc_source.html#l00083">ecpbasisset.cc:83</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPElement_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPElement.html">votca::xtp::ECPElement</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00077">ecpbasisset.h:77</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMAtom_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMAtom.html">votca::xtp::QMAtom</a></div><div class="ttdoc">container for QM atoms</div><div class="ttdef"><b>Definition:</b> <a href="qmatom_8h_source.html#l00035">qmatom.h:35</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1csg_html_a5d8d52096cac1dd0a9fbfb9565a3efbc"><div class="ttname"><a href="namespacevotca_1_1csg.html#a5d8d52096cac1dd0a9fbfb9565a3efbc">votca::csg::element</a></div><div class="ttdeci">boost_bimap::value_type element</div><div class="ttdef"><b>Definition:</b> <a href="beadmotifconnector_8cc_source.html#l00026">beadmotifconnector.cc:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPBasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPBasisSet.html">votca::xtp::ECPBasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00115">ecpbasisset.h:115</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPShell.html">votca::xtp::ECPShell</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00042">ecpbasisset.h:42</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPBasisSet_html_acce2a8173bc57fe2b3853bdaa6000616"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPBasisSet.html#acce2a8173bc57fe2b3853bdaa6000616">votca::xtp::ECPBasisSet::getElement</a></div><div class="ttdeci">const ECPElement &amp; getElement(std::string element_type) const</div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8cc_source.html#l00093">ecpbasisset.cc:93</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPElement_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPElement.html">votca::xtp::ECPElement</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00076">ecpbasisset.h:76</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMAtom_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMAtom.html">votca::xtp::QMAtom</a></div><div class="ttdoc">container for QM atoms</div><div class="ttdef"><b>Definition:</b> <a href="qmatom_8h_source.html#l00038">qmatom.h:38</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPBasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPBasisSet.html">votca::xtp::ECPBasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00114">ecpbasisset.h:114</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html_afed91ef98a19be73003c711957c16d40"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html#afed91ef98a19be73003c711957c16d40">votca::xtp::ECPAOBasis::_shells_perAtom</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; const ECPAOShell * &gt; &gt; _shells_perAtom</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8h_source.html#l00062">ecpaobasis.h:62</a></div></div>
 <div class="ttc" id="aecpbasisset_8h_html"><div class="ttname"><a href="ecpbasisset_8h.html">ecpbasisset.h</a></div></div>
 <div class="ttc" id="aecpaobasis_8h_html"><div class="ttname"><a href="ecpaobasis_8h.html">ecpaobasis.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html_ad82da42e9cde0a6bdde7af4778240af2"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html#ad82da42e9cde0a6bdde7af4778240af2">votca::xtp::ECPAOBasis::_aoshells</a></div><div class="ttdeci">std::vector&lt; ECPAOShell &gt; _aoshells</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8h_source.html#l00060">ecpaobasis.h:60</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html_a547df01de22570c54ca78417783ad70f"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html#a547df01de22570c54ca78417783ad70f">votca::xtp::ECPAOBasis::addShell</a></div><div class="ttdeci">ECPAOShell &amp; addShell(const ECPShell &amp;shell, const QMAtom &amp;atom, Index startIndex, Index Lmax)</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8cc_source.html#l00027">ecpaobasis.cc:27</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html_a5b95c2685553e865c215bf62e8191a3e"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html#a5b95c2685553e865c215bf62e8191a3e">votca::xtp::ECPAOBasis::Fill</a></div><div class="ttdeci">std::vector&lt; std::string &gt; Fill(const ECPBasisSet &amp;bs, QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8cc_source.html#l00033">ecpaobasis.cc:33</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html_a5b95c2685553e865c215bf62e8191a3e"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html#a5b95c2685553e865c215bf62e8191a3e">votca::xtp::ECPAOBasis::Fill</a></div><div class="ttdeci">std::vector&lt; std::string &gt; Fill(const ECPBasisSet &amp;bs, QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8cc_source.html#l00037">ecpaobasis.cc:37</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

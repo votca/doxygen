@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.1</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="spline_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -87,87 +87,88 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="spline_8h.html">votca/tools/spline.h</a>&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>tools {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#af63e6453429ce0662c6638bded24cd05">   25</a></span>&#160;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="classvotca_1_1tools_1_1Spline.html#af63e6453429ce0662c6638bded24cd05">Spline::GenerateGrid</a>(<span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, <span class="keywordtype">double</span> h) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> vec_size = (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>)((max - min) / h + 1.00000001);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  _r.resize(vec_size);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">double</span> r_init;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordflow">for</span> (r_init = min, i = 0; i &lt; vec_size - 1; r_init += h) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    _r[i++] = r_init;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  _r[i] = max;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">return</span> _r.size();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#a30b59035f6872e7ca64075402dd9bd1c">   39</a></span>&#160;Eigen::VectorXd <a class="code" href="classvotca_1_1tools_1_1Spline.html#a861324f314e8fb87cebe1c1ba1e12bbc">Spline::Calculate</a>(<span class="keyword">const</span> Eigen::VectorXd &amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>.size());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>.size(); ++i) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(i) = Calculate(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>(i));</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#a5adf17afcc775eb885b865ee19baf877">   47</a></span>&#160;Eigen::VectorXd <a class="code" href="classvotca_1_1tools_1_1Spline.html#a4e575084c25b7d4d6715e2e4ad7ed260">Spline::CalculateDerivative</a>(<span class="keyword">const</span> Eigen::VectorXd &amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>.size());</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>.size(); ++i) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(i) = CalculateDerivative(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>(i));</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#a3a38faedc68e98f127e53ef3a9954c98">   55</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#a3a38faedc68e98f127e53ef3a9954c98">Spline::Print</a>(std::ostream &amp;out, <span class="keywordtype">double</span> interval) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = _r[0]; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> &lt; _r[_r.size() - 1]; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> += interval) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    out &lt;&lt; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; Calculate(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#ac0689568116aa6933d26064ade19141e">   61</a></span>&#160;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="classvotca_1_1tools_1_1Spline.html#ac0689568116aa6933d26064ade19141e">Spline::getInterval</a>(<span class="keywordtype">double</span> r) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">if</span> (r &lt; _r[0]) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span> (r &gt; _r[_r.size() - 2]) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> _r.size() - 2;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">for</span> (i = 0; i &lt; _r.size(); ++i) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span> (_r[i] &gt; r) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">return</span> i - 1;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#ae097bc9290753c80ae9f1c204a6e1930">   77</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#ae097bc9290753c80ae9f1c204a6e1930">Spline::getGridPoint</a>(<span class="keywordtype">int</span> i) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">if</span> (i &gt;= _r.size()) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">return</span> _r[i];</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}  <span class="comment">// namespace tools</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="spline_8h.html">votca/tools/spline.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#af63e6453429ce0662c6638bded24cd05">   26</a></span>&#160;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="classvotca_1_1tools_1_1Spline.html#af63e6453429ce0662c6638bded24cd05">Spline::GenerateGrid</a>(<span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, <span class="keywordtype">double</span> h) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> vec_size = (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>)((max - min) / h + 1.00000001);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  _r.resize(vec_size);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">double</span> r_init;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordflow">for</span> (r_init = min, i = 0; i &lt; vec_size - 1; r_init += h) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    _r[i++] = r_init;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  _r[i] = max;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">return</span> _r.size();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#a30b59035f6872e7ca64075402dd9bd1c">   40</a></span>&#160;Eigen::VectorXd <a class="code" href="classvotca_1_1tools_1_1Spline.html#a861324f314e8fb87cebe1c1ba1e12bbc">Spline::Calculate</a>(<span class="keyword">const</span> Eigen::VectorXd &amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>.size());</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>.size(); ++i) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(i) = Calculate(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>(i));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#a5adf17afcc775eb885b865ee19baf877">   48</a></span>&#160;Eigen::VectorXd <a class="code" href="classvotca_1_1tools_1_1Spline.html#a4e575084c25b7d4d6715e2e4ad7ed260">Spline::CalculateDerivative</a>(<span class="keyword">const</span> Eigen::VectorXd &amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  Eigen::VectorXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>.size());</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>.size(); ++i) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>(i) = CalculateDerivative(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>(i));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#a3a38faedc68e98f127e53ef3a9954c98">   56</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#a3a38faedc68e98f127e53ef3a9954c98">Spline::Print</a>(std::ostream &amp;out, <span class="keywordtype">double</span> interval) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">double</span> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = _r[0]; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> &lt; _r[_r.size() - 1]; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> += interval) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    out &lt;&lt; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; Calculate(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#ac0689568116aa6933d26064ade19141e">   62</a></span>&#160;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="classvotca_1_1tools_1_1Spline.html#ac0689568116aa6933d26064ade19141e">Spline::getInterval</a>(<span class="keywordtype">double</span> r) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">if</span> (r &lt; _r[0]) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">if</span> (r &gt; _r[_r.size() - 2]) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> _r.size() - 2;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">for</span> (i = 0; i &lt; _r.size(); ++i) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (_r[i] &gt; r) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">return</span> i - 1;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Spline.html#ae097bc9290753c80ae9f1c204a6e1930">   78</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1Spline.html#ae097bc9290753c80ae9f1c204a6e1930">Spline::getGridPoint</a>(<span class="keywordtype">int</span> i) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">if</span> (i &gt;= _r.size()) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">return</span> _r[i];</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}  <span class="comment">// namespace tools</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="aspline_8h_html"><div class="ttname"><a href="spline_8h.html">spline.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_a861324f314e8fb87cebe1c1ba1e12bbc"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#a861324f314e8fb87cebe1c1ba1e12bbc">votca::tools::Spline::Calculate</a></div><div class="ttdeci">virtual double Calculate(double x)=0</div><div class="ttdoc">Calculate spline function value for a given x value on the spline created by Interpolate() or Fit()</div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_af63e6453429ce0662c6638bded24cd05"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#af63e6453429ce0662c6638bded24cd05">votca::tools::Spline::GenerateGrid</a></div><div class="ttdeci">Index GenerateGrid(double min, double max, double h)</div><div class="ttdoc">Generate the grid for fitting from &quot;min&quot; to &quot;max&quot; in steps of &quot;h&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8cc_source.html#l00025">spline.cc:25</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_af63e6453429ce0662c6638bded24cd05"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#af63e6453429ce0662c6638bded24cd05">votca::tools::Spline::GenerateGrid</a></div><div class="ttdeci">Index GenerateGrid(double min, double max, double h)</div><div class="ttdoc">Generate the grid for fitting from &quot;min&quot; to &quot;max&quot; in steps of &quot;h&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8cc_source.html#l00026">spline.cc:26</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_a4e575084c25b7d4d6715e2e4ad7ed260"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#a4e575084c25b7d4d6715e2e4ad7ed260">votca::tools::Spline::CalculateDerivative</a></div><div class="ttdeci">virtual double CalculateDerivative(double x)=0</div><div class="ttdoc">Calculate y value for a given x value on the derivative of the spline created by function Interpolate...</div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_a3a38faedc68e98f127e53ef3a9954c98"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#a3a38faedc68e98f127e53ef3a9954c98">votca::tools::Spline::Print</a></div><div class="ttdeci">void Print(std::ostream &amp;out, double interval)</div><div class="ttdoc">Print spline values (using Calculate()) on output &quot;out&quot; on the entire grid in steps of &quot;interval&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8cc_source.html#l00055">spline.cc:55</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">votca::xtp::Cart::x</a></div><div class="ttdeci">@ x</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00034">aotransform.h:34</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">votca::xtp::Cart::y</a></div><div class="ttdeci">@ y</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00034">aotransform.h:34</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_ac0689568116aa6933d26064ade19141e"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#ac0689568116aa6933d26064ade19141e">votca::tools::Spline::getInterval</a></div><div class="ttdeci">Index getInterval(double r)</div><div class="ttdoc">Determine the index of the interval containing value r.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8cc_source.html#l00061">spline.cc:61</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_ae097bc9290753c80ae9f1c204a6e1930"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#ae097bc9290753c80ae9f1c204a6e1930">votca::tools::Spline::getGridPoint</a></div><div class="ttdeci">double getGridPoint(int i)</div><div class="ttdoc">Get the grid point of certain index.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8cc_source.html#l00077">spline.cc:77</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_a3a38faedc68e98f127e53ef3a9954c98"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#a3a38faedc68e98f127e53ef3a9954c98">votca::tools::Spline::Print</a></div><div class="ttdeci">void Print(std::ostream &amp;out, double interval)</div><div class="ttdoc">Print spline values (using Calculate()) on output &quot;out&quot; on the entire grid in steps of &quot;interval&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8cc_source.html#l00056">spline.cc:56</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">votca::xtp::Cart::x</a></div><div class="ttdeci">@ x</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00035">aotransform.h:35</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_1_1Cart_html_a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8"><div class="ttname"><a href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">votca::xtp::Cart::y</a></div><div class="ttdeci">@ y</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8h_source.html#l00035">aotransform.h:35</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_ac0689568116aa6933d26064ade19141e"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#ac0689568116aa6933d26064ade19141e">votca::tools::Spline::getInterval</a></div><div class="ttdeci">Index getInterval(double r)</div><div class="ttdoc">Determine the index of the interval containing value r.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8cc_source.html#l00062">spline.cc:62</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Spline_html_ae097bc9290753c80ae9f1c204a6e1930"><div class="ttname"><a href="classvotca_1_1tools_1_1Spline.html#ae097bc9290753c80ae9f1c204a6e1930">votca::tools::Spline::getGridPoint</a></div><div class="ttdeci">double getGridPoint(int i)</div><div class="ttdoc">Get the grid point of certain index.</div><div class="ttdef"><b>Definition:</b> <a href="spline_8cc_source.html#l00078">spline.cc:78</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
