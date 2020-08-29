@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__trustregion_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -88,55 +88,48 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="test__trustregion_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   17</a></span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE trustregion_test</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__trustregion_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   19</a></span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Standard includes</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__trustregion_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   19</a></span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="trustregion_8h.html">votca/xtp/trustregion.h</a>&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Third party includes</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="trustregion_8h.html">votca/xtp/trustregion.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;BOOST_AUTO_TEST_SUITE(trustregion_test)</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;BOOST_AUTO_TEST_SUITE(trustregion_test)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="test__trustregion_8cc.html#ab9ee24c2a8503e63c5898f563bac5b43">   35</a></span>&#160;<a class="code" href="test__trustregion_8cc.html#ab9ee24c2a8503e63c5898f563bac5b43">BOOST_AUTO_TEST_CASE</a>(subproblem_test) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  Eigen::VectorXd gradient = Eigen::VectorXd::Zero(5);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  gradient &lt;&lt; 5.92833, 9.88054, 9.88054, 9.88054, 9.88054;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Eigen::MatrixXd hessian = Eigen::MatrixXd::Zero(5, 5);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  hessian &lt;&lt; 1.0835, 0.139166, 0.139166, 0.139166, 0.139166, 0.139166, 1.23194,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      0.231943, 0.231943, 0.231943, 0.139166, 0.231943, 1.23194, 0.231943,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      0.231943, 0.139166, 0.231943, 0.231943, 1.23194, 0.231943, 0.139166,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      0.231943, 0.231943, 0.231943, 1.23194;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">double</span> radius = 0.1;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1TrustRegion.html">TrustRegion</a> trf;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Eigen::VectorXd newstep = trf.<a class="code" href="classvotca_1_1xtp_1_1TrustRegion.html#a16f6762fc98ce2f9bc3121e1d0e4160b">CalculateStep</a>(gradient, hessian, radius);</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="test__trustregion_8cc.html#ab9ee24c2a8503e63c5898f563bac5b43">   29</a></span>&#160;<a class="code" href="test__trustregion_8cc.html#ab9ee24c2a8503e63c5898f563bac5b43">BOOST_AUTO_TEST_CASE</a>(subproblem_test) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  Eigen::VectorXd gradient = Eigen::VectorXd::Zero(5);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  gradient &lt;&lt; 5.92833, 9.88054, 9.88054, 9.88054, 9.88054;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  Eigen::MatrixXd hessian = Eigen::MatrixXd::Zero(5, 5);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  hessian &lt;&lt; 1.0835, 0.139166, 0.139166, 0.139166, 0.139166, 0.139166, 1.23194,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      0.231943, 0.231943, 0.231943, 0.139166, 0.231943, 1.23194, 0.231943,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      0.231943, 0.139166, 0.231943, 0.231943, 1.23194, 0.231943, 0.139166,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      0.231943, 0.231943, 0.231943, 1.23194;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">double</span> radius = 0.1;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1TrustRegion.html">TrustRegion</a> trf;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Eigen::VectorXd newstep = trf.<a class="code" href="classvotca_1_1xtp_1_1TrustRegion.html#a16f6762fc98ce2f9bc3121e1d0e4160b">CalculateStep</a>(gradient, hessian, radius);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">bool</span> equal = std::abs(newstep.norm() - radius) &lt; 1e-9;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">if</span> (!equal) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;newstep_norm:&quot;</span> &lt;&lt; newstep.norm() &lt;&lt; <span class="stringliteral">&quot; trust_radius:&quot;</span> &lt;&lt; radius</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;              &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordtype">bool</span> equal = std::abs(newstep.norm() - radius) &lt; 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-9;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">if</span> (!equal) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;newstep_norm:&quot;</span> &lt;&lt; newstep.norm() &lt;&lt; <span class="stringliteral">&quot; trust_radius:&quot;</span> &lt;&lt; radius</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;              &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  BOOST_CHECK_EQUAL(equal, 1);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK_EQUAL(equal, 1);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1TrustRegion_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1TrustRegion.html">votca::xtp::TrustRegion</a></div><div class="ttdef"><b>Definition:</b> <a href="trustregion_8h_source.html#l00035">trustregion.h:35</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1TrustRegion_html_a16f6762fc98ce2f9bc3121e1d0e4160b"><div class="ttname"><a href="classvotca_1_1xtp_1_1TrustRegion.html#a16f6762fc98ce2f9bc3121e1d0e4160b">votca::xtp::TrustRegion::CalculateStep</a></div><div class="ttdeci">Eigen::VectorXd CalculateStep(const Eigen::VectorXd &amp;gradient, const Eigen::MatrixXd &amp;Hessian, double delta) const</div><div class="ttdef"><b>Definition:</b> <a href="trustregion_8cc_source.html#l00030">trustregion.cc:30</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1TrustRegion_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1TrustRegion.html">votca::xtp::TrustRegion</a></div><div class="ttdef"><b>Definition:</b> <a href="trustregion_8h_source.html#l00032">trustregion.h:32</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1TrustRegion_html_a16f6762fc98ce2f9bc3121e1d0e4160b"><div class="ttname"><a href="classvotca_1_1xtp_1_1TrustRegion.html#a16f6762fc98ce2f9bc3121e1d0e4160b">votca::xtp::TrustRegion::CalculateStep</a></div><div class="ttdeci">Eigen::VectorXd CalculateStep(const Eigen::VectorXd &amp;gradient, const Eigen::MatrixXd &amp;Hessian, double delta) const</div><div class="ttdef"><b>Definition:</b> <a href="trustregion_8cc_source.html#l00027">trustregion.cc:27</a></div></div>
 <div class="ttc" id="atrustregion_8h_html"><div class="ttname"><a href="trustregion_8h.html">trustregion.h</a></div></div>
-<div class="ttc" id="atest__trustregion_8cc_html_ab9ee24c2a8503e63c5898f563bac5b43"><div class="ttname"><a href="test__trustregion_8cc.html#ab9ee24c2a8503e63c5898f563bac5b43">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(subproblem_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__trustregion_8cc_source.html#l00035">test_trustregion.cc:35</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
+<div class="ttc" id="atest__trustregion_8cc_html_ab9ee24c2a8503e63c5898f563bac5b43"><div class="ttname"><a href="test__trustregion_8cc.html#ab9ee24c2a8503e63c5898f563bac5b43">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(subproblem_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__trustregion_8cc_source.html#l00029">test_trustregion.cc:29</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00028">adiis.h:28</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

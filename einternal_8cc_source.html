@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="einternal_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -87,147 +87,134 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="xtp_2include_2votca_2xtp_2topology_8h.html">votca/xtp/topology.h</a>&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// Local private VOTCA includes</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="einternal_8h.html">einternal.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="einternal_8h.html">einternal.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xtp_2include_2votca_2xtp_2topology_8h.html">votca/xtp/topology.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>xtp {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1EInternal.html#a63ca0a8be9d1253fa9dcd0697e775094">   27</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a63ca0a8be9d1253fa9dcd0697e775094">EInternal::Initialize</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> &amp;user_options) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> options =</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1Calculator.html#a138c93da6137e3fd136bac231bcedb11">LoadDefaultsAndUpdateWithUserOptions</a>(<span class="stringliteral">&quot;xtp&quot;</span>, user_options);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a5a0b43ecaad5cf90bfccf60e40083ddd">_energiesXML</a> = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.energiesXML&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1EInternal.html#a65b8e8cd618b586203dafd6f983d0702">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a65b8e8cd618b586203dafd6f983d0702">EInternal::ParseEnergies</a>() {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;\n... ... Site, reorg. energies from &quot;</span> &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a5a0b43ecaad5cf90bfccf60e40083ddd">_energiesXML</a> &lt;&lt; <span class="stringliteral">&quot;.\n&quot;</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> alloc;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  alloc.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(<a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a5a0b43ecaad5cf90bfccf60e40083ddd">_energiesXML</a>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::string key = <span class="stringliteral">&quot;topology.molecules.molecule&quot;</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::vector&lt;tools::Property *&gt; mols = alloc.<a class="code" href="classvotca_1_1tools_1_1Property.html#a6703f12c3a709e7cf18c33c4161c1ada">Select</a>(key);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> *molprop : mols) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    key = <span class="stringliteral">&quot;segments.segment&quot;</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::vector&lt;tools::Property *&gt; segs = molprop-&gt;Select(key);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> *segprop : segs) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      std::string segName = segprop-&gt;get(<span class="stringliteral">&quot;name&quot;</span>).as&lt;std::string&gt;();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordtype">bool</span> has_seg = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">QMStateCarrierStorage&lt;double&gt;</a> U_xX_nN;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">QMStateCarrierStorage&lt;double&gt;</a> U_nX_nN;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">QMStateCarrierStorage&lt;double&gt;</a> U_xN_xX;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">QMStateCarrierStorage&lt;bool&gt;</a> has_state;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="keywordtype">double</span> eV2hrt = <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a255353e91f927d7f2fbf0d95817ed4e2">tools::conv::ev2hrt</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      std::vector&lt;QMStateType&gt; types = {<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">QMStateType::Electron</a>,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                        <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a3a56862aa0951018fa19253c6beba87f">QMStateType::Hole</a>, <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac2ca29ef89597f341a74e08f205c4552">QMStateType::Singlet</a>,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                        <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a9d38a794b81a5e5fa8b32d8fc153b015">QMStateType::Triplet</a>};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a> type : types) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        std::string u_xX_nN = <span class="stringliteral">&quot;U_xX_nN_&quot;</span> + type.ToString();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        std::string u_nX_nN = <span class="stringliteral">&quot;U_nX_nN_&quot;</span> + type.ToString();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::string u_xN_xX = <span class="stringliteral">&quot;U_xN_xX_&quot;</span> + type.ToString();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (segprop-&gt;exists(u_xX_nN) &amp;&amp; segprop-&gt;exists(u_nX_nN) &amp;&amp;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            segprop-&gt;exists(u_xN_xX)) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;          U_xX_nN.<a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">setValue</a>(segprop-&gt;get(u_xX_nN).as&lt;<span class="keywordtype">double</span>&gt;() * eV2hrt, type);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;          U_nX_nN.<a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">setValue</a>(segprop-&gt;get(u_nX_nN).as&lt;<span class="keywordtype">double</span>&gt;() * eV2hrt, type);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          U_xN_xX.<a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">setValue</a>(segprop-&gt;get(u_xN_xX).as&lt;<span class="keywordtype">double</span>&gt;() * eV2hrt, type);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          has_state.<a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">setValue</a>(<span class="keyword">true</span>, type);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#aa2734c49f07a046dc867ddd6159e294f">_seg_has_state</a>[segName] = has_state;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a273a34de8fb0074486a86e78402a2440">_seg_U_xX_nN</a>[segName] = U_xX_nN;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#ae2dad3a70e55271996c60459c2a5c32f">_seg_U_nX_nN</a>[segName] = U_nX_nN;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#accfadaaadab8baee68aaf71a30b1d9bb">_seg_U_xN_xX</a>[segName] = U_xN_xX;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a8376b85f02c1ae2d3e09043ddcbc33fa">_has_seg</a>[segName] = has_seg;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1EInternal.html#a165ee0216419791de10052b24b9330aa">   85</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a165ee0216419791de10052b24b9330aa">EInternal::EvaluateFrame</a>(<a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> &amp;top) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a65b8e8cd618b586203dafd6f983d0702">ParseEnergies</a>();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> count = 0;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> &amp;seg : top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">Segments</a>()) {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::string segName = seg.getType();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a8376b85f02c1ae2d3e09043ddcbc33fa">_has_seg</a>.count(segName)) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      std::cout &lt;&lt; std::endl</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;... ... WARNING: No energy information for seg [&quot;</span> &lt;&lt; segName</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;]. Skipping... &quot;</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    ++count;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::vector&lt;QMStateType&gt; types = {<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">QMStateType::Electron</a>, <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a3a56862aa0951018fa19253c6beba87f">QMStateType::Hole</a>,</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                      <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac2ca29ef89597f341a74e08f205c4552">QMStateType::Singlet</a>,</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                      <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a9d38a794b81a5e5fa8b32d8fc153b015">QMStateType::Triplet</a>};</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a> type : types) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1xtp_1_1EInternal.html#aa2734c49f07a046dc867ddd6159e294f">_seg_has_state</a>[segName].getValue(type.Type())) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        seg.setU_xX_nN(<a class="code" href="classvotca_1_1xtp_1_1EInternal.html#a273a34de8fb0074486a86e78402a2440">_seg_U_xX_nN</a>[segName].getValue(type.Type()),</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                       type.Type());</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        seg.setU_nX_nN(<a class="code" href="classvotca_1_1xtp_1_1EInternal.html#ae2dad3a70e55271996c60459c2a5c32f">_seg_U_nX_nN</a>[segName].getValue(type.Type()),</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                       type.Type());</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        seg.setU_xN_xX(<a class="code" href="classvotca_1_1xtp_1_1EInternal.html#accfadaaadab8baee68aaf71a30b1d9bb">_seg_U_xN_xX</a>[segName].getValue(type.Type()),</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                       type.Type());</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  std::cout &lt;&lt; std::endl</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            &lt;&lt; <span class="stringliteral">&quot;... ... Read in site, reorg. energies for &quot;</span> &lt;&lt; count</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            &lt;&lt; <span class="stringliteral">&quot; segments. &quot;</span> &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1EInternal.html#a3152e0235d40ced61a43c9a4f4d7ded1">   27</a></span>&#160;<span class="keywordtype">void</span> EInternal::Initialize(<a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> &amp;options) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  std::string key = <span class="stringliteral">&quot;options.&quot;</span> + Identify();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  _energiesXML = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a090b41a316e52dd855cc7252c8e8d88f">ifExistsReturnElseThrowRuntimeError</a>&lt;std::string&gt;(</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      key + <span class="stringliteral">&quot;.energiesXML&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1EInternal.html#a65b8e8cd618b586203dafd6f983d0702">   34</a></span>&#160;<span class="keywordtype">void</span> EInternal::ParseEnergies() {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  std::cout &lt;&lt; std::endl</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            &lt;&lt; <span class="stringliteral">&quot;... ... Site, reorg. energies from &quot;</span> &lt;&lt; _energiesXML &lt;&lt; <span class="stringliteral">&quot;. &quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            &lt;&lt; std::flush;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> alloc;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  alloc.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(_energiesXML);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::string key = <span class="stringliteral">&quot;topology.molecules.molecule&quot;</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  std::vector&lt;tools::Property *&gt; mols = alloc.<a class="code" href="classvotca_1_1tools_1_1Property.html#a6703f12c3a709e7cf18c33c4161c1ada">Select</a>(key);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> *molprop : mols) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    key = <span class="stringliteral">&quot;segments.segment&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::vector&lt;tools::Property *&gt; segs = molprop-&gt;Select(key);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> *segprop : segs) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      std::string segName = segprop-&gt;get(<span class="stringliteral">&quot;name&quot;</span>).as&lt;std::string&gt;();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keywordtype">bool</span> has_seg = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">QMStateCarrierStorage&lt;double&gt;</a> U_xX_nN;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">QMStateCarrierStorage&lt;double&gt;</a> U_nX_nN;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">QMStateCarrierStorage&lt;double&gt;</a> U_xN_xX;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">QMStateCarrierStorage&lt;bool&gt;</a> has_state;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keywordtype">double</span> eV2hrt = <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a255353e91f927d7f2fbf0d95817ed4e2">tools::conv::ev2hrt</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      std::vector&lt;QMStateType&gt; types = {QMStateType::Electron,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                        QMStateType::Hole, QMStateType::Singlet,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                        QMStateType::Triplet};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a> type : types) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        std::string u_xX_nN = <span class="stringliteral">&quot;U_xX_nN_&quot;</span> + type.ToString();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::string u_nX_nN = <span class="stringliteral">&quot;U_nX_nN_&quot;</span> + type.ToString();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        std::string u_xN_xX = <span class="stringliteral">&quot;U_xN_xX_&quot;</span> + type.ToString();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> (segprop-&gt;exists(u_xX_nN) &amp;&amp; segprop-&gt;exists(u_nX_nN) &amp;&amp;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            segprop-&gt;exists(u_xN_xX)) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;          U_xX_nN.<a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">setValue</a>(segprop-&gt;get(u_xX_nN).as&lt;<span class="keywordtype">double</span>&gt;() * eV2hrt, type);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          U_nX_nN.<a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">setValue</a>(segprop-&gt;get(u_nX_nN).as&lt;<span class="keywordtype">double</span>&gt;() * eV2hrt, type);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          U_xN_xX.<a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">setValue</a>(segprop-&gt;get(u_xN_xX).as&lt;<span class="keywordtype">double</span>&gt;() * eV2hrt, type);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;          has_state.<a class="code" href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">setValue</a>(<span class="keyword">true</span>, type);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      _seg_has_state[segName] = has_state;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      _seg_U_xX_nN[segName] = U_xX_nN;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      _seg_U_nX_nN[segName] = U_nX_nN;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      _seg_U_xN_xX[segName] = U_xN_xX;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      _has_seg[segName] = has_seg;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1EInternal.html#a165ee0216419791de10052b24b9330aa">   86</a></span>&#160;<span class="keywordtype">bool</span> EInternal::EvaluateFrame(<a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> &amp;top) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  ParseEnergies();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> count = 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> &amp;seg : top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">Segments</a>()) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::string segName = seg.getType();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (!_has_seg.count(segName)) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      std::cout &lt;&lt; std::endl</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;... ... WARNING: No energy information for seg [&quot;</span> &lt;&lt; segName</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;]. Skipping... &quot;</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    ++count;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::vector&lt;QMStateType&gt; types = {QMStateType::Electron, QMStateType::Hole,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                      QMStateType::Singlet,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                      QMStateType::Triplet};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a> type : types) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="keywordflow">if</span> (_seg_has_state[segName].getValue(type.Type())) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        seg.setU_xX_nN(_seg_U_xX_nN[segName].getValue(type.Type()),</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                       type.Type());</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        seg.setU_nX_nN(_seg_U_nX_nN[segName].getValue(type.Type()),</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                       type.Type());</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        seg.setU_xN_xX(_seg_U_xN_xX[segName].getValue(type.Type()),</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                       type.Type());</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  std::cout &lt;&lt; std::endl</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            &lt;&lt; <span class="stringliteral">&quot;... ... Read in site, reorg. energies for &quot;</span> &lt;&lt; count</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            &lt;&lt; <span class="stringliteral">&quot; segments. &quot;</span> &lt;&lt; std::flush;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a67406d5b069305b305c24eb6bfcf17c9"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">votca::tools::Property::as</a></div><div class="ttdeci">T as() const</div><div class="ttdoc">return value as type</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00290">property.h:290</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a9ca57b0023f3a9facbf5ee5271d1675a"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">votca::xtp::Topology::Segments</a></div><div class="ttdeci">std::vector&lt; Segment &gt; &amp; Segments()</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00058">topology.h:58</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a9ca57b0023f3a9facbf5ee5271d1675a"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">votca::xtp::Topology::Segments</a></div><div class="ttdeci">std::vector&lt; Segment &gt; &amp; Segments()</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00055">topology.h:55</a></div></div>
 <div class="ttc" id="axtp_2include_2votca_2xtp_2topology_8h_html"><div class="ttname"><a href="xtp_2include_2votca_2xtp_2topology_8h.html">topology.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html">votca::xtp::QMStateType</a></div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00037">qmstate.h:37</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html">votca::xtp::QMStateType</a></div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00033">qmstate.h:33</a></div></div>
 <div class="ttc" id="aeinternal_8h_html"><div class="ttname"><a href="einternal_8h.html">einternal.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html_ac99cbd6d6ed98f669041f0840b09dfe7a3a56862aa0951018fa19253c6beba87f"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a3a56862aa0951018fa19253c6beba87f">votca::xtp::QMStateType::Hole</a></div><div class="ttdeci">@ Hole</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00041">qmstate.h:41</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html">votca::xtp::Topology</a></div><div class="ttdoc">Container for segments and box and atoms.</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00041">topology.h:41</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_af6eb6f6c54e6399059538cbfdc676a24"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">votca::tools::Property::LoadFromXML</a></div><div class="ttdeci">void LoadFromXML(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="property_8cc_source.html#l00158">property.cc:158</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_a273a34de8fb0074486a86e78402a2440"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#a273a34de8fb0074486a86e78402a2440">votca::xtp::EInternal::_seg_U_xX_nN</a></div><div class="ttdeci">std::map&lt; std::string, QMStateCarrierStorage&lt; double &gt; &gt; _seg_U_xX_nN</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8h_source.html#l00043">einternal.h:43</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a67e348deb9e8b70465765b5ee72a960c"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">votca::tools::Property::get</a></div><div class="ttdeci">Property &amp; get(const std::string &amp;key)</div><div class="ttdoc">get existing property</div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html_ac99cbd6d6ed98f669041f0840b09dfe7a9d38a794b81a5e5fa8b32d8fc153b015"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a9d38a794b81a5e5fa8b32d8fc153b015">votca::xtp::QMStateType::Triplet</a></div><div class="ttdeci">@ Triplet</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00043">qmstate.h:43</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_accfadaaadab8baee68aaf71a30b1d9bb"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#accfadaaadab8baee68aaf71a30b1d9bb">votca::xtp::EInternal::_seg_U_xN_xX</a></div><div class="ttdeci">std::map&lt; std::string, QMStateCarrierStorage&lt; double &gt; &gt; _seg_U_xN_xX</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8h_source.html#l00045">einternal.h:45</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a090b41a316e52dd855cc7252c8e8d88f"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a090b41a316e52dd855cc7252c8e8d88f">votca::tools::Property::ifExistsReturnElseThrowRuntimeError</a></div><div class="ttdeci">T ifExistsReturnElseThrowRuntimeError(const std::string &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00302">property.h:302</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html">votca::xtp::Topology</a></div><div class="ttdoc">Container for segments and box and atoms.</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00038">topology.h:38</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_af6eb6f6c54e6399059538cbfdc676a24"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">votca::tools::Property::LoadFromXML</a></div><div class="ttdeci">void LoadFromXML(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="property_8cc_source.html#l00156">property.cc:156</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a6703f12c3a709e7cf18c33c4161c1ada"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a6703f12c3a709e7cf18c33c4161c1ada">votca::tools::Property::Select</a></div><div class="ttdeci">std::vector&lt; Property * &gt; Select(const std::string &amp;filter)</div><div class="ttdoc">select property based on a filter</div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html_ac99cbd6d6ed98f669041f0840b09dfe7ac2ca29ef89597f341a74e08f205c4552"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac2ca29ef89597f341a74e08f205c4552">votca::xtp::QMStateType::Singlet</a></div><div class="ttdeci">@ Singlet</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00042">qmstate.h:42</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_a165ee0216419791de10052b24b9330aa"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#a165ee0216419791de10052b24b9330aa">votca::xtp::EInternal::EvaluateFrame</a></div><div class="ttdeci">bool EvaluateFrame(Topology &amp;top) override</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8cc_source.html#l00085">einternal.cc:85</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_ae2dad3a70e55271996c60459c2a5c32f"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#ae2dad3a70e55271996c60459c2a5c32f">votca::xtp::EInternal::_seg_U_nX_nN</a></div><div class="ttdeci">std::map&lt; std::string, QMStateCarrierStorage&lt; double &gt; &gt; _seg_U_nX_nN</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8h_source.html#l00044">einternal.h:44</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a></div><div class="ttdoc">class to manage program options with xml serialization functionality</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00055">property.h:55</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_a8376b85f02c1ae2d3e09043ddcbc33fa"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#a8376b85f02c1ae2d3e09043ddcbc33fa">votca::xtp::EInternal::_has_seg</a></div><div class="ttdeci">std::map&lt; std::string, bool &gt; _has_seg</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8h_source.html#l00049">einternal.h:49</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a255353e91f927d7f2fbf0d95817ed4e2"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a255353e91f927d7f2fbf0d95817ed4e2">votca::tools::conv::ev2hrt</a></div><div class="ttdeci">const double ev2hrt</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00054">constants.h:54</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a></div><div class="ttdoc">class to manage program options with xml serialization functionality</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00050">property.h:50</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a255353e91f927d7f2fbf0d95817ed4e2"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a255353e91f927d7f2fbf0d95817ed4e2">votca::tools::conv::ev2hrt</a></div><div class="ttdeci">const double ev2hrt</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00048">constants.h:48</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateCarrierStorage_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html">votca::xtp::QMStateCarrierStorage&lt; double &gt;</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateType_html_ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224">votca::xtp::QMStateType::Electron</a></div><div class="ttdeci">@ Electron</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00040">qmstate.h:40</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_a65b8e8cd618b586203dafd6f983d0702"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#a65b8e8cd618b586203dafd6f983d0702">votca::xtp::EInternal::ParseEnergies</a></div><div class="ttdeci">void ParseEnergies()</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8cc_source.html#l00035">einternal.cc:35</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_a5a0b43ecaad5cf90bfccf60e40083ddd"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#a5a0b43ecaad5cf90bfccf60e40083ddd">votca::xtp::EInternal::_energiesXML</a></div><div class="ttdeci">std::string _energiesXML</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8h_source.html#l00051">einternal.h:51</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_a63ca0a8be9d1253fa9dcd0697e775094"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#a63ca0a8be9d1253fa9dcd0697e775094">votca::xtp::EInternal::Initialize</a></div><div class="ttdeci">void Initialize(const tools::Property &amp;user_options) override</div><div class="ttdoc">Initializes a calculator from an XML file with options.</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8cc_source.html#l00027">einternal.cc:27</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1EInternal_html_aa2734c49f07a046dc867ddd6159e294f"><div class="ttname"><a href="classvotca_1_1xtp_1_1EInternal.html#aa2734c49f07a046dc867ddd6159e294f">votca::xtp::EInternal::_seg_has_state</a></div><div class="ttdeci">std::map&lt; std::string, QMStateCarrierStorage&lt; bool &gt; &gt; _seg_has_state</div><div class="ttdef"><b>Definition:</b> <a href="einternal_8h_source.html#l00047">einternal.h:47</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Segment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Segment.html">votca::xtp::Segment</a></div><div class="ttdef"><b>Definition:</b> <a href="segment_8h_source.html#l00036">segment.h:36</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Calculator_html_a138c93da6137e3fd136bac231bcedb11"><div class="ttname"><a href="classvotca_1_1tools_1_1Calculator.html#a138c93da6137e3fd136bac231bcedb11">votca::tools::Calculator::LoadDefaultsAndUpdateWithUserOptions</a></div><div class="ttdeci">Property LoadDefaultsAndUpdateWithUserOptions(const std::string package, const Property &amp;user_options)</div><div class="ttdoc">Load the default options and merge them with the user input.</div><div class="ttdef"><b>Definition:</b> <a href="calculator_8h_source.html#l00102">calculator.h:102</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateCarrierStorage_html_ab3466eb4b5509103aefebf47e193f02c"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">votca::xtp::QMStateCarrierStorage::setValue</a></div><div class="ttdeci">void setValue(T value, QMStateType t)</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00108">qmstate.h:108</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Segment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Segment.html">votca::xtp::Segment</a></div><div class="ttdef"><b>Definition:</b> <a href="segment_8h_source.html#l00033">segment.h:33</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMStateCarrierStorage_html_ab3466eb4b5509103aefebf47e193f02c"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMStateCarrierStorage.html#ab3466eb4b5509103aefebf47e193f02c">votca::xtp::QMStateCarrierStorage::setValue</a></div><div class="ttdeci">void setValue(T value, QMStateType t)</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00104">qmstate.h:104</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
