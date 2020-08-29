@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__grid_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -88,56 +88,62 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="test__grid_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   17</a></span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE grid_test</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__grid_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   19</a></span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="grid_8h.html">votca/xtp/grid.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__grid_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   19</a></span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;BOOST_AUTO_TEST_SUITE(grid_test)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// Third party includes</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="test__grid_8cc.html#ac2cb66c467fb1d309257be571c7600d8">   28</a></span>&#160;<a class="code" href="test__grid_8cc.html#ac2cb66c467fb1d309257be571c7600d8">BOOST_AUTO_TEST_CASE</a>(setupgrid_test) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> qm = <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>(<span class="stringliteral">&quot;bla&quot;</span>, 1);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  Eigen::Vector3d pos = Eigen::Vector3d::Zero();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  qm.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">push_back</a>(<a class="code" href="classvotca_1_1xtp_1_1QMAtom.html">QMAtom</a>(0, <span class="stringliteral">&quot;C&quot;</span>, pos));</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Grid.html">Grid</a> grid;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#a6389c21878a832549e0fb57cdb873ef4">setupCHELPGGrid</a>(qm);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">// BOOST_CHECK_EQUAL(grid.size(),2910);Thischeck is extremly sensitive to</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// numerical precision e.g. 1e-18 so it is not a good test</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  Eigen::Vector3d start(-5.1022601692, -1.1338355932, -0.56691779658);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Eigen::Vector3d end(5.10226, 1.13384, 0.566918);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">bool</span> start_check = start.isApprox(grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">getGridPositions</a>()[0], 0.00001);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">bool</span> end_check = end.isApprox(grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">getGridPositions</a>().back(), 0.00001);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">if</span> (!start_check) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::cout &lt;&lt; start &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::cout &lt;&lt; grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">getGridPositions</a>()[0] &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK_EQUAL(start_check, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">if</span> (!end_check) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::cout &lt;&lt; end &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::cout &lt;&lt; grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">getGridPositions</a>().back() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  BOOST_CHECK_EQUAL(end_check, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="grid_8h.html">votca/xtp/grid.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;BOOST_AUTO_TEST_SUITE(grid_test)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="test__grid_8cc.html#ac2cb66c467fb1d309257be571c7600d8">   34</a></span>&#160;<a class="code" href="test__grid_8cc.html#ac2cb66c467fb1d309257be571c7600d8">BOOST_AUTO_TEST_CASE</a>(setupgrid_test) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> qm = <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>(<span class="stringliteral">&quot;bla&quot;</span>, 1);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  Eigen::Vector3d pos = Eigen::Vector3d::Zero();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  qm.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">push_back</a>(<a class="code" href="classvotca_1_1xtp_1_1QMAtom.html">QMAtom</a>(0, <span class="stringliteral">&quot;C&quot;</span>, pos));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Grid.html">Grid</a> grid;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#a6389c21878a832549e0fb57cdb873ef4">setupCHELPGGrid</a>(qm);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">// BOOST_CHECK_EQUAL(grid.size(),2910);Thischeck is extremly sensitive to</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="comment">// numerical precision e.g. 1e-18 so it is not a good test</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  Eigen::Vector3d start(-5.1022601692, -1.1338355932, -0.56691779658);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  Eigen::Vector3d end(5.10226, 1.13384, 0.566918);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">bool</span> start_check = start.isApprox(grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">getGridPositions</a>()[0], 0.00001);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">bool</span> end_check = end.isApprox(grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">getGridPositions</a>().back(), 0.00001);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">if</span> (!start_check) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::cout &lt;&lt; start &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::cout &lt;&lt; grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">getGridPositions</a>()[0] &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  BOOST_CHECK_EQUAL(start_check, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">if</span> (!end_check) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::cout &lt;&lt; end &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::cout &lt;&lt; grid.<a class="code" href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">getGridPositions</a>().back() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  BOOST_CHECK_EQUAL(end_check, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00030">qmmolecule.h:30</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_a14b0d7c0a880facaaf9b8b105ede0ae8"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">votca::xtp::AtomContainer::push_back</a></div><div class="ttdeci">void push_back(const T &amp;atom)</div><div class="ttdef"><b>Definition:</b> <a href="atomcontainer_8h_source.html#l00057">atomcontainer.h:57</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_a14b0d7c0a880facaaf9b8b105ede0ae8"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">votca::xtp::AtomContainer::push_back</a></div><div class="ttdeci">void push_back(const T &amp;atom)</div><div class="ttdef"><b>Definition:</b> <a href="atomcontainer_8h_source.html#l00063">atomcontainer.h:63</a></div></div>
 <div class="ttc" id="agrid_8h_html"><div class="ttname"><a href="grid_8h.html">grid.h</a></div></div>
-<div class="ttc" id="atest__grid_8cc_html_ac2cb66c467fb1d309257be571c7600d8"><div class="ttname"><a href="test__grid_8cc.html#ac2cb66c467fb1d309257be571c7600d8">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(setupgrid_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__grid_8cc_source.html#l00028">test_grid.cc:28</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Grid_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Grid.html">votca::xtp::Grid</a></div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00039">grid.h:39</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMAtom_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMAtom.html">votca::xtp::QMAtom</a></div><div class="ttdoc">container for QM atoms</div><div class="ttdef"><b>Definition:</b> <a href="qmatom_8h_source.html#l00035">qmatom.h:35</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00028">adiis.h:28</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Grid_html_a6389c21878a832549e0fb57cdb873ef4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Grid.html#a6389c21878a832549e0fb57cdb873ef4">votca::xtp::Grid::setupCHELPGGrid</a></div><div class="ttdeci">void setupCHELPGGrid(const QMMolecule &amp;Atomlist)</div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00051">grid.h:51</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Grid_html_ae816c9aa622843f90f17f1683329c944"><div class="ttname"><a href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">votca::xtp::Grid::getGridPositions</a></div><div class="ttdeci">const std::vector&lt; Eigen::Vector3d &gt; &amp; getGridPositions() const</div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00041">grid.h:41</a></div></div>
+<div class="ttc" id="atest__grid_8cc_html_ac2cb66c467fb1d309257be571c7600d8"><div class="ttname"><a href="test__grid_8cc.html#ac2cb66c467fb1d309257be571c7600d8">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(setupgrid_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__grid_8cc_source.html#l00034">test_grid.cc:34</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Grid_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Grid.html">votca::xtp::Grid</a></div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00042">grid.h:42</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMAtom_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMAtom.html">votca::xtp::QMAtom</a></div><div class="ttdoc">container for QM atoms</div><div class="ttdef"><b>Definition:</b> <a href="qmatom_8h_source.html#l00038">qmatom.h:38</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Grid_html_a6389c21878a832549e0fb57cdb873ef4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Grid.html#a6389c21878a832549e0fb57cdb873ef4">votca::xtp::Grid::setupCHELPGGrid</a></div><div class="ttdeci">void setupCHELPGGrid(const QMMolecule &amp;Atomlist)</div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00054">grid.h:54</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Grid_html_ae816c9aa622843f90f17f1683329c944"><div class="ttname"><a href="classvotca_1_1xtp_1_1Grid.html#ae816c9aa622843f90f17f1683329c944">votca::xtp::Grid::getGridPositions</a></div><div class="ttdeci">const std::vector&lt; Eigen::Vector3d &gt; &amp; getGridPositions() const</div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00044">grid.h:44</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="graphdistvisitor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2019 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -89,40 +89,42 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef __VOTCA_TOOLS_GRAPH_DIST_VISITOR_H</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define __VOTCA_TOOLS_GRAPH_DIST_VISITOR_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef VOTCA_TOOLS_GRAPHDISTVISITOR_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define VOTCA_TOOLS_GRAPHDISTVISITOR_H</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="graph__bf__visitor_8h.html">votca/tools/graph_bf_visitor.h</a>&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span>tools {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">class </span>Graph;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">class </span>Edge;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">class </span>GraphNode;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">class </span>Graph_BF_Visitor;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1GraphDistVisitor.html">   52</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1GraphDistVisitor.html">GraphDistVisitor</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1tools_1_1Graph__BF__Visitor.html">Graph_BF_Visitor</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="graph__bf__visitor_8h.html">graph_bf_visitor.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">class </span>Graph;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">class </span>Edge;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">class </span>GraphNode;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">class </span>Graph_BF_Visitor;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1GraphDistVisitor.html#a1c00a99fd836b0fe1ccdb2cf20f6012d">   55</a></span>&#160;  <a class="code" href="classvotca_1_1tools_1_1GraphDistVisitor.html#a1c00a99fd836b0fe1ccdb2cf20f6012d">GraphDistVisitor</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1GraphDistVisitor.html#a4f004a7afaa26dc894a49583221baa8d">exploreNode</a>(std::pair&lt;Index, GraphNode&gt;&amp; p_gn, <a class="code" href="classvotca_1_1tools_1_1Graph.html">Graph</a>&amp; g,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                   <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed = <a class="code" href="namespacevotca_1_1tools.html#a780fd88987f03904071461de9df7f7f8">DUMMY_EDGE</a>) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}  <span class="comment">// namespace tools</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}  <span class="comment">// namespace votca</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif  // __VOTCA_TOOLS_GRAPH_DIST_VISITOR_H</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1GraphDistVisitor.html">   54</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1GraphDistVisitor.html">GraphDistVisitor</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1tools_1_1Graph__BF__Visitor.html">Graph_BF_Visitor</a> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1GraphDistVisitor.html#a1c00a99fd836b0fe1ccdb2cf20f6012d">   57</a></span>&#160;  <a class="code" href="classvotca_1_1tools_1_1GraphDistVisitor.html#a1c00a99fd836b0fe1ccdb2cf20f6012d">GraphDistVisitor</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1GraphDistVisitor.html#a4f004a7afaa26dc894a49583221baa8d">exploreNode</a>(std::pair&lt;Index, GraphNode&gt;&amp; p_gn, <a class="code" href="classvotca_1_1tools_1_1Graph.html">Graph</a>&amp; g,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                   <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> ed = <a class="code" href="namespacevotca_1_1tools.html#a780fd88987f03904071461de9df7f7f8">DUMMY_EDGE</a>) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}  <span class="comment">// namespace tools</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif  // VOTCA_TOOLS_GRAPHDISTVISITOR_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph.html">votca::tools::Graph</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00041">graph.h:41</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph.html">votca::tools::Graph</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00043">graph.h:43</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1GraphDistVisitor_html_a1c00a99fd836b0fe1ccdb2cf20f6012d"><div class="ttname"><a href="classvotca_1_1tools_1_1GraphDistVisitor.html#a1c00a99fd836b0fe1ccdb2cf20f6012d">votca::tools::GraphDistVisitor::GraphDistVisitor</a></div><div class="ttdeci">GraphDistVisitor()=default</div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00040">edge.h:40</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00042">edge.h:42</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1GraphDistVisitor_html_a4f004a7afaa26dc894a49583221baa8d"><div class="ttname"><a href="classvotca_1_1tools_1_1GraphDistVisitor.html#a4f004a7afaa26dc894a49583221baa8d">votca::tools::GraphDistVisitor::exploreNode</a></div><div class="ttdeci">void exploreNode(std::pair&lt; Index, GraphNode &gt; &amp;p_gn, Graph &amp;g, Edge ed=DUMMY_EDGE) override</div><div class="ttdef"><b>Definition:</b> <a href="graphdistvisitor_8cc_source.html#l00034">graphdistvisitor.cc:34</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1GraphDistVisitor_html"><div class="ttname"><a href="classvotca_1_1tools_1_1GraphDistVisitor.html">votca::tools::GraphDistVisitor</a></div><div class="ttdef"><b>Definition:</b> <a href="graphdistvisitor_8h_source.html#l00052">graphdistvisitor.h:52</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1GraphDistVisitor_html"><div class="ttname"><a href="classvotca_1_1tools_1_1GraphDistVisitor.html">votca::tools::GraphDistVisitor</a></div><div class="ttdef"><b>Definition:</b> <a href="graphdistvisitor_8h_source.html#l00054">graphdistvisitor.h:54</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Graph__BF__Visitor_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__BF__Visitor.html">votca::tools::Graph_BF_Visitor</a></div><div class="ttdef"><b>Definition:</b> <a href="graph__bf__visitor_8h_source.html#l00041">graph_bf_visitor.h:41</a></div></div>
 <div class="ttc" id="agraph__bf__visitor_8h_html"><div class="ttname"><a href="graph__bf__visitor_8h.html">graph_bf_visitor.h</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_html_a780fd88987f03904071461de9df7f7f8"><div class="ttname"><a href="namespacevotca_1_1tools.html#a780fd88987f03904071461de9df7f7f8">votca::tools::DUMMY_EDGE</a></div><div class="ttdeci">const Edge DUMMY_EDGE(std::numeric_limits&lt; Index &gt;::max(), std::numeric_limits&lt; Index &gt;::max())</div></div>

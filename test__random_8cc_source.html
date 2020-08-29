@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__random_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -90,66 +90,72 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__random_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   19</a></span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE random2_test</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="test__random_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   21</a></span>&#160;<span class="preprocessor">#include &lt;boost/test/floating_point_comparison.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="test__random_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   21</a></span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Standard includes</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="random_8h.html">votca/tools/random.h</a>&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Third party includes</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;boost/test/floating_point_comparison.hpp&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;BOOST_AUTO_TEST_SUITE(random2_test)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="test__random_8cc.html#a3471816d7e4b6d41e2bace1958f9a1e8">   32</a></span>&#160;<a class="code" href="test__random_8cc.html#a3471816d7e4b6d41e2bace1958f9a1e8">BOOST_AUTO_TEST_CASE</a>(random_int_test) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Random.html">Random</a> random;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> seed = 1;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  random.<a class="code" href="classvotca_1_1tools_1_1Random.html#ac81d8b2d92e0ac3d04a5c879496097d9">init</a>(seed);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  random.<a class="code" href="classvotca_1_1tools_1_1Random.html#a13d3f90c1b15a71a835cd9c06576baae">setMaxInt</a>(50);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  std::vector&lt;votca::Index&gt; results;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> number = 1e5;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  results.reserve(number);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; number; i++) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    results.push_back(random.<a class="code" href="classvotca_1_1tools_1_1Random.html#ac5a100918e55146c8ae35f755f0e979b">rand_uniform_int</a>());</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">// average should be close to 25</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">double</span> average = std::accumulate(results.begin(), results.end(), 0);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  average /= double(number);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  BOOST_CHECK_CLOSE(average, 25, 1.0);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="test__random_8cc.html#a3550fdd4991e30813c51b4144e004661">   51</a></span>&#160;<a class="code" href="test__random_8cc.html#a3471816d7e4b6d41e2bace1958f9a1e8">BOOST_AUTO_TEST_CASE</a>(random_double_test) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Random.html">Random</a> random;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> seed = 1;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  random.<a class="code" href="classvotca_1_1tools_1_1Random.html#ac81d8b2d92e0ac3d04a5c879496097d9">init</a>(seed);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  std::vector&lt;double&gt; results;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> number = 1e5;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  results.reserve(number);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; number; i++) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    results.push_back(random.<a class="code" href="classvotca_1_1tools_1_1Random.html#aa42fd7eaedb849dbb9dc5eea95bf5c10">rand_uniform</a>());</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">// average should be close to 0.5</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">double</span> average = std::accumulate(results.begin(), results.end(), 0.0);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  average /= double(number);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  BOOST_CHECK_CLOSE(average, 0.5, 1.0);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="random_8h.html">votca/tools/random.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;BOOST_AUTO_TEST_SUITE(random2_test)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="test__random_8cc.html#a3471816d7e4b6d41e2bace1958f9a1e8">   38</a></span>&#160;<a class="code" href="test__random_8cc.html#a3471816d7e4b6d41e2bace1958f9a1e8">BOOST_AUTO_TEST_CASE</a>(random_int_test) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Random.html">Random</a> random;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> seed = 1;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  random.<a class="code" href="classvotca_1_1tools_1_1Random.html#ac81d8b2d92e0ac3d04a5c879496097d9">init</a>(seed);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  random.<a class="code" href="classvotca_1_1tools_1_1Random.html#a13d3f90c1b15a71a835cd9c06576baae">setMaxInt</a>(50);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::vector&lt;votca::Index&gt; results;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> number = 1e5;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  results.reserve(number);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; number; i++) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    results.push_back(random.<a class="code" href="classvotca_1_1tools_1_1Random.html#ac5a100918e55146c8ae35f755f0e979b">rand_uniform_int</a>());</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// average should be close to 25</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">double</span> average = std::accumulate(results.begin(), results.end(), 0);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  average /= double(number);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  BOOST_CHECK_CLOSE(average, 25, 1.0);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="test__random_8cc.html#a3550fdd4991e30813c51b4144e004661">   57</a></span>&#160;<a class="code" href="test__random_8cc.html#a3471816d7e4b6d41e2bace1958f9a1e8">BOOST_AUTO_TEST_CASE</a>(random_double_test) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Random.html">Random</a> random;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> seed = 1;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  random.<a class="code" href="classvotca_1_1tools_1_1Random.html#ac81d8b2d92e0ac3d04a5c879496097d9">init</a>(seed);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  std::vector&lt;double&gt; results;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> number = 1e5;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  results.reserve(number);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; number; i++) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    results.push_back(random.<a class="code" href="classvotca_1_1tools_1_1Random.html#aa42fd7eaedb849dbb9dc5eea95bf5c10">rand_uniform</a>());</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// average should be close to 0.5</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">double</span> average = std::accumulate(results.begin(), results.end(), 0.0);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  average /= double(number);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  BOOST_CHECK_CLOSE(average, 0.5, 1.0);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html">votca::tools::Random</a></div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00026">random.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html_a13d3f90c1b15a71a835cd9c06576baae"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html#a13d3f90c1b15a71a835cd9c06576baae">votca::tools::Random::setMaxInt</a></div><div class="ttdeci">void setMaxInt(Index maxint)</div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00032">random.h:32</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html_ac5a100918e55146c8ae35f755f0e979b"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html#ac5a100918e55146c8ae35f755f0e979b">votca::tools::Random::rand_uniform_int</a></div><div class="ttdeci">Index rand_uniform_int()</div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00036">random.h:36</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html">votca::tools::Random</a></div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00030">random.h:30</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html_a13d3f90c1b15a71a835cd9c06576baae"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html#a13d3f90c1b15a71a835cd9c06576baae">votca::tools::Random::setMaxInt</a></div><div class="ttdeci">void setMaxInt(Index maxint)</div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00041">random.h:41</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html_ac5a100918e55146c8ae35f755f0e979b"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html#ac5a100918e55146c8ae35f755f0e979b">votca::tools::Random::rand_uniform_int</a></div><div class="ttdeci">Index rand_uniform_int()</div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00045">random.h:45</a></div></div>
 <div class="ttc" id="arandom_8h_html"><div class="ttname"><a href="random_8h.html">random.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html_ac81d8b2d92e0ac3d04a5c879496097d9"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html#ac81d8b2d92e0ac3d04a5c879496097d9">votca::tools::Random::init</a></div><div class="ttdeci">void init(Index seed)</div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00028">random.h:28</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00027">akimaspline.h:27</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html_aa42fd7eaedb849dbb9dc5eea95bf5c10"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html#aa42fd7eaedb849dbb9dc5eea95bf5c10">votca::tools::Random::rand_uniform</a></div><div class="ttdeci">double rand_uniform()</div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00030">random.h:30</a></div></div>
-<div class="ttc" id="atest__random_8cc_html_a3471816d7e4b6d41e2bace1958f9a1e8"><div class="ttname"><a href="test__random_8cc.html#a3471816d7e4b6d41e2bace1958f9a1e8">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(random_int_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__random_8cc_source.html#l00032">test_random.cc:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html_ac81d8b2d92e0ac3d04a5c879496097d9"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html#ac81d8b2d92e0ac3d04a5c879496097d9">votca::tools::Random::init</a></div><div class="ttdeci">void init(Index seed)</div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00032">random.h:32</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00030">akimaspline.h:30</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Random_html_aa42fd7eaedb849dbb9dc5eea95bf5c10"><div class="ttname"><a href="classvotca_1_1tools_1_1Random.html#aa42fd7eaedb849dbb9dc5eea95bf5c10">votca::tools::Random::rand_uniform</a></div><div class="ttdeci">double rand_uniform()</div><div class="ttdef"><b>Definition:</b> <a href="random_8h_source.html#l00039">random.h:39</a></div></div>
+<div class="ttc" id="atest__random_8cc_html_a3471816d7e4b6d41e2bace1958f9a1e8"><div class="ttname"><a href="test__random_8cc.html#a3471816d7e4b6d41e2bace1958f9a1e8">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(random_int_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__random_8cc_source.html#l00038">test_random.cc:38</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
