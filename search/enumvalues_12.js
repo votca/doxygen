@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s_9742',['s',['../classvotca_1_1xtp_1_1AOTransform.html#a0f0f53f4121c6af640aa1c8773d38278a745d06ded325ab665331b4f3ba6e75bc',1,'votca::xtp::AOTransform::s()'],['../namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903',1,'votca::xtp::Cart::s()'],['../namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17da5dbc98dcc983a70728bd082d1a47546e',1,'votca::xtp::S()']]],
+  ['s_9742',['s',['../classvotca_1_1xtp_1_1AOTransform.html#a0f0f53f4121c6af640aa1c8773d38278a745d06ded325ab665331b4f3ba6e75bc',1,'votca::xtp::AOTransform::s()'],['../namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17da5dbc98dcc983a70728bd082d1a47546e',1,'votca::xtp::S()'],['../namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903',1,'votca::xtp::Cart::s()']]],
   ['safe_9743',['SAFE',['../classvotca_1_1xtp_1_1DavidsonSolver.html#abd786a02625d5fb3a2030a510bc4f399a0221062d465ef762d58513dcb21598e8',1,'votca::xtp::DavidsonSolver']]],
   ['seconds_9744',['seconds',['../namespacevotca_1_1tools.html#a3db9e566728fce7d4132a1d849f0ef27aaec33998ea28f09699da74d05dfd32d2',1,'votca::tools']]],
   ['single_5fbead_9745',['single_bead',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010adee109dd3c2e62142b4c48853dc1f68b',1,'votca::csg::BeadMotif']]],
