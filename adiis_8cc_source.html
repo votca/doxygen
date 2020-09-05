@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="adiis_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2019 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -88,75 +88,80 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * limitations under the License.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="adiis_8h.html">votca/xtp/adiis.h</a>&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="adiis__costfunction_8h.html">votca/xtp/adiis_costfunction.h</a>&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="bfgs-trm_8h.html">votca/xtp/bfgs-trm.h</a>&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="logger_8h.html">votca/xtp/logger.h</a>&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1ADIIS.html#ab5c8d4d7aec9f641df07d20b769b3614">   28</a></span>&#160;Eigen::VectorXd <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#ab5c8d4d7aec9f641df07d20b769b3614">ADIIS::CalcCoeff</a>(<span class="keyword">const</span> std::vector&lt;Eigen::MatrixXd&gt;&amp; dmathist,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                 <span class="keyword">const</span> std::vector&lt;Eigen::MatrixXd&gt;&amp; mathist) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935">success</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> size = dmathist.size();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">const</span> Eigen::MatrixXd&amp; dmat = dmathist.back();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">const</span> Eigen::MatrixXd&amp; H = mathist.back();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  Eigen::VectorXd DiF = Eigen::VectorXd::Zero(size);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  Eigen::MatrixXd DiFj = Eigen::MatrixXd::Zero(size, size);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; size; i++) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    DiF(i) = ((dmathist[i]) - dmat).cwiseProduct(H).sum();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Third party includes</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="adiis_8h.html">votca/xtp/adiis.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="adiis__costfunction_8h.html">votca/xtp/adiis_costfunction.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bfgs-trm_8h.html">votca/xtp/bfgs-trm.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="logger_8h.html">votca/xtp/logger.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1ADIIS.html#ab5c8d4d7aec9f641df07d20b769b3614">   32</a></span>&#160;Eigen::VectorXd <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#ab5c8d4d7aec9f641df07d20b769b3614">ADIIS::CalcCoeff</a>(<span class="keyword">const</span> std::vector&lt;Eigen::MatrixXd&gt;&amp; dmathist,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                 <span class="keyword">const</span> std::vector&lt;Eigen::MatrixXd&gt;&amp; mathist) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935">success</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> = dmathist.size();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">const</span> Eigen::MatrixXd&amp; dmat = dmathist.back();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">const</span> Eigen::MatrixXd&amp; H = mathist.back();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Eigen::VectorXd DiF = Eigen::VectorXd::Zero(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Eigen::MatrixXd DiFj = Eigen::MatrixXd::Zero(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; size; i++) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; size; j++) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      DiFj(i, j) = ((dmathist[i]) - dmat).cwiseProduct((mathist[j]) - H).sum();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ADIIS__costfunction.html">ADIIS_costfunction</a> a_cost = <a class="code" href="classvotca_1_1xtp_1_1ADIIS__costfunction.html">ADIIS_costfunction</a>(DiF, DiFj);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html">BFGSTRM</a> optimizer = <a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html">BFGSTRM</a>(a_cost);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a887a05d92cdd9d5865a40fda1b65d77b">setLog</a>(&amp;log);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a758b7dbfd6626c294292f7cc6afde478">setNumofIterations</a>(1000);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a515354959586fde3f1845d1f90749320">setTrustRadius</a>(0.01);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">// Starting point: equal weights on all matrices</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  Eigen::VectorXd coeffs = Eigen::VectorXd::Constant(size, 1.0 / <span class="keywordtype">double</span>(size));</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a11b37d195ecaf15f81a6656277bd611a">Optimize</a>(coeffs);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935">success</a> = optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a3f5759bf7cab5d93a9cf5946bf733554">Success</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  coeffs = optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a14dbea09aea860948f22b0fe4b82a5be">getParameters</a>().cwiseAbs2();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">double</span> xnorm = coeffs.sum();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  coeffs /= xnorm;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">if</span> (std::abs(coeffs.tail(1).value()) &lt; 0.001) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935">success</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">return</span> coeffs;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>; i++) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    DiF(i) = ((dmathist[i]) - dmat).cwiseProduct(H).sum();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>; i++) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>; j++) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      DiFj(i, j) = ((dmathist[i]) - dmat).cwiseProduct((mathist[j]) - H).sum();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ADIIS__costfunction.html">ADIIS_costfunction</a> a_cost = <a class="code" href="classvotca_1_1xtp_1_1ADIIS__costfunction.html">ADIIS_costfunction</a>(DiF, DiFj);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html">BFGSTRM</a> optimizer = <a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html">BFGSTRM</a>(a_cost);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a887a05d92cdd9d5865a40fda1b65d77b">setLog</a>(&amp;log);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a758b7dbfd6626c294292f7cc6afde478">setNumofIterations</a>(1000);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a515354959586fde3f1845d1f90749320">setTrustRadius</a>(0.01);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// Starting point: equal weights on all matrices</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  Eigen::VectorXd coeffs = Eigen::VectorXd::Constant(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, 1.0 / <span class="keywordtype">double</span>(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a11b37d195ecaf15f81a6656277bd611a">Optimize</a>(coeffs);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935">success</a> = optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a3f5759bf7cab5d93a9cf5946bf733554">Success</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  coeffs = optimizer.<a class="code" href="classvotca_1_1xtp_1_1BFGSTRM.html#a14dbea09aea860948f22b0fe4b82a5be">getParameters</a>().cwiseAbs2();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">double</span> xnorm = coeffs.sum();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  coeffs /= xnorm;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">if</span> (std::abs(coeffs.tail(1).value()) &lt; 0.001) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935">success</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">return</span> coeffs;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a515354959586fde3f1845d1f90749320"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a515354959586fde3f1845d1f90749320">votca::xtp::BFGSTRM::setTrustRadius</a></div><div class="ttdeci">void setTrustRadius(double trust_radius)</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00041">bfgs-trm.h:41</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html">votca::xtp::BFGSTRM</a></div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00032">bfgs-trm.h:32</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a515354959586fde3f1845d1f90749320"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a515354959586fde3f1845d1f90749320">votca::xtp::BFGSTRM::setTrustRadius</a></div><div class="ttdeci">void setTrustRadius(double trust_radius)</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00044">bfgs-trm.h:44</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html">votca::xtp::BFGSTRM</a></div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00035">bfgs-trm.h:35</a></div></div>
 <div class="ttc" id="alogger_8h_html"><div class="ttname"><a href="logger_8h.html">logger.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a887a05d92cdd9d5865a40fda1b65d77b"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a887a05d92cdd9d5865a40fda1b65d77b">votca::xtp::BFGSTRM::setLog</a></div><div class="ttdeci">void setLog(Logger *pLog)</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00039">bfgs-trm.h:39</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ADIIS__costfunction_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ADIIS__costfunction.html">votca::xtp::ADIIS_costfunction</a></div><div class="ttdef"><b>Definition:</b> <a href="adiis__costfunction_8h_source.html#l00029">adiis_costfunction.h:29</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a14dbea09aea860948f22b0fe4b82a5be"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a14dbea09aea860948f22b0fe4b82a5be">votca::xtp::BFGSTRM::getParameters</a></div><div class="ttdeci">const Eigen::VectorXd getParameters() const</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00060">bfgs-trm.h:60</a></div></div>
+<div class="ttc" id="anamespacekokkos__linalg__3d_html_a1cb29721f0bb1d12949939f8abb2d4d6"><div class="ttname"><a href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">kokkos_linalg_3d::size</a></div><div class="ttdeci">int size(const T &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="kokkos__linalg_8hpp_source.html#l00034">kokkos_linalg.hpp:34</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a887a05d92cdd9d5865a40fda1b65d77b"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a887a05d92cdd9d5865a40fda1b65d77b">votca::xtp::BFGSTRM::setLog</a></div><div class="ttdeci">void setLog(Logger *pLog)</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00042">bfgs-trm.h:42</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ADIIS__costfunction_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ADIIS__costfunction.html">votca::xtp::ADIIS_costfunction</a></div><div class="ttdef"><b>Definition:</b> <a href="adiis__costfunction_8h_source.html#l00030">adiis_costfunction.h:30</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a14dbea09aea860948f22b0fe4b82a5be"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a14dbea09aea860948f22b0fe4b82a5be">votca::xtp::BFGSTRM::getParameters</a></div><div class="ttdeci">const Eigen::VectorXd getParameters() const</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00063">bfgs-trm.h:63</a></div></div>
 <div class="ttc" id="aadiis_8h_html"><div class="ttname"><a href="adiis_8h.html">adiis.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a11b37d195ecaf15f81a6656277bd611a"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a11b37d195ecaf15f81a6656277bd611a">votca::xtp::BFGSTRM::Optimize</a></div><div class="ttdeci">void Optimize(const Eigen::VectorXd &amp;initialparameters)</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8cc_source.html#l00028">bfgs-trm.cc:28</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a11b37d195ecaf15f81a6656277bd611a"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a11b37d195ecaf15f81a6656277bd611a">votca::xtp::BFGSTRM::Optimize</a></div><div class="ttdeci">void Optimize(const Eigen::VectorXd &amp;initialparameters)</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8cc_source.html#l00031">bfgs-trm.cc:31</a></div></div>
 <div class="ttc" id="aadiis__costfunction_8h_html"><div class="ttname"><a href="adiis__costfunction_8h.html">adiis_costfunction.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a758b7dbfd6626c294292f7cc6afde478"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a758b7dbfd6626c294292f7cc6afde478">votca::xtp::BFGSTRM::setNumofIterations</a></div><div class="ttdeci">void setNumofIterations(Index iterations)</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00049">bfgs-trm.h:49</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a758b7dbfd6626c294292f7cc6afde478"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a758b7dbfd6626c294292f7cc6afde478">votca::xtp::BFGSTRM::setNumofIterations</a></div><div class="ttdeci">void setNumofIterations(Index iterations)</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00052">bfgs-trm.h:52</a></div></div>
 <div class="ttc" id="abfgs-trm_8h_html"><div class="ttname"><a href="bfgs-trm_8h.html">bfgs-trm.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ADIIS_html_acf3c7bf530689d450f771339ffcc3935"><div class="ttname"><a href="classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935">votca::xtp::ADIIS::success</a></div><div class="ttdeci">bool success</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00038">adiis.h:38</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a3f5759bf7cab5d93a9cf5946bf733554"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a3f5759bf7cab5d93a9cf5946bf733554">votca::xtp::BFGSTRM::Success</a></div><div class="ttdeci">bool Success() const</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00053">bfgs-trm.h:53</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Logger_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Logger.html">votca::xtp::Logger</a></div><div class="ttdoc">Logger is used for thread-safe output of messages.</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00160">logger.h:160</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1ADIIS_html_ab5c8d4d7aec9f641df07d20b769b3614"><div class="ttname"><a href="classvotca_1_1xtp_1_1ADIIS.html#ab5c8d4d7aec9f641df07d20b769b3614">votca::xtp::ADIIS::CalcCoeff</a></div><div class="ttdeci">Eigen::VectorXd CalcCoeff(const std::vector&lt; Eigen::MatrixXd &gt; &amp;dmathist, const std::vector&lt; Eigen::MatrixXd &gt; &amp;mathist)</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8cc_source.html#l00028">adiis.cc:28</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ADIIS_html_acf3c7bf530689d450f771339ffcc3935"><div class="ttname"><a href="classvotca_1_1xtp_1_1ADIIS.html#acf3c7bf530689d450f771339ffcc3935">votca::xtp::ADIIS::success</a></div><div class="ttdeci">bool success</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00042">adiis.h:42</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BFGSTRM_html_a3f5759bf7cab5d93a9cf5946bf733554"><div class="ttname"><a href="classvotca_1_1xtp_1_1BFGSTRM.html#a3f5759bf7cab5d93a9cf5946bf733554">votca::xtp::BFGSTRM::Success</a></div><div class="ttdeci">bool Success() const</div><div class="ttdef"><b>Definition:</b> <a href="bfgs-trm_8h_source.html#l00056">bfgs-trm.h:56</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Logger_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Logger.html">votca::xtp::Logger</a></div><div class="ttdoc">Logger is used for thread-safe output of messages.</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00164">logger.h:164</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ADIIS_html_ab5c8d4d7aec9f641df07d20b769b3614"><div class="ttname"><a href="classvotca_1_1xtp_1_1ADIIS.html#ab5c8d4d7aec9f641df07d20b769b3614">votca::xtp::ADIIS::CalcCoeff</a></div><div class="ttdeci">Eigen::VectorXd CalcCoeff(const std::vector&lt; Eigen::MatrixXd &gt; &amp;dmathist, const std::vector&lt; Eigen::MatrixXd &gt; &amp;mathist)</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8cc_source.html#l00032">adiis.cc:32</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

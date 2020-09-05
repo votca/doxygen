@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="correlate_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * You may obtain a copy of the License at</span></div>
@@ -86,43 +86,46 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="correlate_8h.html">votca/tools/correlate.h</a>&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tools_2include_2votca_2tools_2eigen_8h.html">votca/tools/eigen.h</a>&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>tools {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Correlate.html#ad8709408ef332d04e63f45322f052557">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Correlate.html#ad8709408ef332d04e63f45322f052557">Correlate::CalcCorrelations</a>(<a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;::selection</a> &amp;data) {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> N = <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(data[0].size());</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">double</span> Nd = (double)N;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  Eigen::Map&lt;Eigen::ArrayXd&gt; m0(data[0].data(), N);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">double</span> xm = m0.sum();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  xm /= Nd;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">double</span> xsq = m0.abs2().sum();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> v = 1; v &lt; data.<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#ae5d03059803d0f589b81aff9f8bbad78">size</a>(); v++) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    Eigen::Map&lt;Eigen::ArrayXd&gt; m_v(data[v].data(), N);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">double</span> ym = m_v.sum();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">double</span> ysq = m_v.abs2().sum();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">double</span> p = (m_v * m0).sum();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    ym /= Nd;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">double</span> norm = std::sqrt((xsq - Nd * xm * xm) * (ysq - Nd * ym * ym));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    p = (p - Nd * xm * ym) / norm;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Correlate.html#a6cd4ea2366e817db3329cc0d13668e21">_corr</a>.push_back(p);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}  <span class="comment">// namespace tools</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="correlate_8h.html">votca/tools/correlate.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tools_2include_2votca_2tools_2eigen_8h.html">votca/tools/eigen.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Correlate.html#ad8709408ef332d04e63f45322f052557">   24</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Correlate.html#ad8709408ef332d04e63f45322f052557">Correlate::CalcCorrelations</a>(<a class="code" href="classvotca_1_1tools_1_1DataCollection.html">DataCollection&lt;double&gt;::selection</a> &amp;data) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> N = <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(data[0].<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>());</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">double</span> Nd = (double)N;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  Eigen::Map&lt;Eigen::ArrayXd&gt; m0(data[0].data(), N);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">double</span> xm = m0.sum();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  xm /= Nd;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">double</span> xsq = m0.abs2().sum();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> v = 1; v &lt; data.<a class="code" href="classvotca_1_1tools_1_1DataCollection.html#ae5d03059803d0f589b81aff9f8bbad78">size</a>(); v++) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    Eigen::Map&lt;Eigen::ArrayXd&gt; m_v(data[v].data(), N);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">double</span> ym = m_v.sum();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">double</span> ysq = m_v.abs2().sum();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">double</span> p = (m_v * m0).sum();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    ym /= Nd;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="namespacekokkos__linalg__3d.html#a1fcecf058c19a9fcf41395e9cbc7615b">norm</a> = std::sqrt((xsq - Nd * xm * xm) * (ysq - Nd * ym * ym));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    p = (p - Nd * xm * ym) / <a class="code" href="namespacekokkos__linalg__3d.html#a1fcecf058c19a9fcf41395e9cbc7615b">norm</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Correlate.html#a6cd4ea2366e817db3329cc0d13668e21">_corr</a>.push_back(p);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}  <span class="comment">// namespace tools</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Correlate_html_ad8709408ef332d04e63f45322f052557"><div class="ttname"><a href="classvotca_1_1tools_1_1Correlate.html#ad8709408ef332d04e63f45322f052557">votca::tools::Correlate::CalcCorrelations</a></div><div class="ttdeci">void CalcCorrelations(DataCollection&lt; double &gt;::selection &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="correlate_8cc_source.html#l00023">correlate.cc:23</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html">votca::tools::DataCollection</a></div><div class="ttdoc">This class handles a set of arrays which can be identified by name tags.</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00040">datacollection.h:40</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Correlate_html_ad8709408ef332d04e63f45322f052557"><div class="ttname"><a href="classvotca_1_1tools_1_1Correlate.html#ad8709408ef332d04e63f45322f052557">votca::tools::Correlate::CalcCorrelations</a></div><div class="ttdeci">void CalcCorrelations(DataCollection&lt; double &gt;::selection &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="correlate_8cc_source.html#l00024">correlate.cc:24</a></div></div>
+<div class="ttc" id="anamespacekokkos__linalg__3d_html_a1cb29721f0bb1d12949939f8abb2d4d6"><div class="ttname"><a href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">kokkos_linalg_3d::size</a></div><div class="ttdeci">int size(const T &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="kokkos__linalg_8hpp_source.html#l00034">kokkos_linalg.hpp:34</a></div></div>
+<div class="ttc" id="anamespacekokkos__linalg__3d_html_a1fcecf058c19a9fcf41395e9cbc7615b"><div class="ttname"><a href="namespacekokkos__linalg__3d.html#a1fcecf058c19a9fcf41395e9cbc7615b">kokkos_linalg_3d::norm</a></div><div class="ttdeci">Vector::value_type norm(const Vector &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="kokkos__linalg_8hpp_source.html#l00066">kokkos_linalg.hpp:66</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html">votca::tools::DataCollection</a></div><div class="ttdoc">This class handles a set of arrays which can be identified by name tags.</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00043">datacollection.h:43</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
 <div class="ttc" id="acorrelate_8h_html"><div class="ttname"><a href="correlate_8h.html">correlate.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html_ae5d03059803d0f589b81aff9f8bbad78"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html#ae5d03059803d0f589b81aff9f8bbad78">votca::tools::DataCollection::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00103">datacollection.h:103</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1DataCollection_html_ae5d03059803d0f589b81aff9f8bbad78"><div class="ttname"><a href="classvotca_1_1tools_1_1DataCollection.html#ae5d03059803d0f589b81aff9f8bbad78">votca::tools::DataCollection::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition:</b> <a href="datacollection_8h_source.html#l00106">datacollection.h:106</a></div></div>
 <div class="ttc" id="atools_2include_2votca_2tools_2eigen_8h_html"><div class="ttname"><a href="tools_2include_2votca_2tools_2eigen_8h.html">eigen.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Correlate_html_a6cd4ea2366e817db3329cc0d13668e21"><div class="ttname"><a href="classvotca_1_1tools_1_1Correlate.html#a6cd4ea2366e817db3329cc0d13668e21">votca::tools::Correlate::_corr</a></div><div class="ttdeci">std::vector&lt; double &gt; _corr</div><div class="ttdef"><b>Definition:</b> <a href="correlate_8h_source.html#l00047">correlate.h:47</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Correlate_html_a6cd4ea2366e817db3329cc0d13668e21"><div class="ttname"><a href="classvotca_1_1tools_1_1Correlate.html#a6cd4ea2366e817db3329cc0d13668e21">votca::tools::Correlate::_corr</a></div><div class="ttdeci">std::vector&lt; double &gt; _corr</div><div class="ttdef"><b>Definition:</b> <a href="correlate_8h_source.html#l00050">correlate.h:50</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
