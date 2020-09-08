@@ -298,53 +298,60 @@ $(function() {
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&lt;orca&gt;\n&quot;</span></div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&lt;method&gt;&lt;/method&gt;\n&quot;</span></div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&lt;scf&gt;GUESS PMODEL&lt;/scf&gt;\n&quot;</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&lt;/orca&gt;\n&quot;</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&lt;/package&gt;&quot;</span>;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  defaults.close();</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a> prop;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(<span class="stringliteral">&quot;user_input.xml&quot;</span>);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMPackageFactory.html#abc53251299a917b0880ddd97b68ccdc8">QMPackageFactory::RegisterAll</a>();</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  std::unique_ptr&lt;QMPackage&gt; orca =</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      std::unique_ptr&lt;QMPackage&gt;(<a class="code" href="namespacevotca_1_1xtp.html#ab8e4a768849e0692c93b0c165989ce7d">QMPackages</a>().Create(<span class="stringliteral">&quot;orca&quot;</span>));</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  orca-&gt;setLog(&amp;log);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  orca-&gt;setRunDir(<span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  orca-&gt;Initialize(prop);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orb;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  orb.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                             <span class="stringliteral">&quot;/orca/co.xyz&quot;</span>);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  orca-&gt;WriteInputFile(orb);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  std::string input_file = <span class="stringliteral">&quot;system.inp&quot;</span>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="namespacevotca_1_1tools_1_1filesystem.html#a3547af7f1819204ab22a9fb250d3d9c4">tools::filesystem::FileExists</a>(input_file)) {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Orca input file does not exists!&quot;</span>);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  std::ifstream file_input(input_file);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  std::stringstream buffer;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  buffer &lt;&lt; file_input.rdbuf();</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  std::string inp = buffer.str();</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="comment">// check basis section</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keyword">auto</span> index1 = inp.find(<span class="stringliteral">&quot;%basis&quot;</span>);</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="keyword">auto</span> index2 = inp.find(<span class="stringliteral">&quot;end&quot;</span>, index1);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  BOOST_CHECK_EQUAL(inp.substr(index1, index2 - index1),</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    <span class="stringliteral">&quot;%basis\nGTOName =\&quot;system.bas\&quot;;\n&quot;</span>);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  <span class="comment">// check basis section</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  index1 = inp.find(<span class="stringliteral">&quot;%scf&quot;</span>);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  index2 = inp.find(<span class="stringliteral">&quot;end&quot;</span>, index1);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  BOOST_CHECK_EQUAL(inp.substr(index1, index2 - index1),</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    <span class="stringliteral">&quot;%scf\nGUESS PMODEL\n&quot;</span>);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="comment">// Check method</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  index1 = inp.find(<span class="stringliteral">&quot;!&quot;</span>);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  BOOST_CHECK_EQUAL(inp.substr(index1), <span class="stringliteral">&quot;! DFT pbe0   \n&quot;</span>);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&lt;maxcore&gt;3000&lt;/maxcore&gt;\n&quot;</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&lt;/orca&gt;\n&quot;</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&lt;/package&gt;&quot;</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  defaults.close();</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a> prop;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(<span class="stringliteral">&quot;user_input.xml&quot;</span>);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMPackageFactory.html#abc53251299a917b0880ddd97b68ccdc8">QMPackageFactory::RegisterAll</a>();</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  std::unique_ptr&lt;QMPackage&gt; orca =</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      std::unique_ptr&lt;QMPackage&gt;(<a class="code" href="namespacevotca_1_1xtp.html#ab8e4a768849e0692c93b0c165989ce7d">QMPackages</a>().Create(<span class="stringliteral">&quot;orca&quot;</span>));</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  orca-&gt;setLog(&amp;log);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  orca-&gt;setRunDir(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  orca-&gt;Initialize(prop);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orb;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  orb.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                             <span class="stringliteral">&quot;/orca/co.xyz&quot;</span>);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  orca-&gt;WriteInputFile(orb);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  std::string input_file = <span class="stringliteral">&quot;system.inp&quot;</span>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="namespacevotca_1_1tools_1_1filesystem.html#a3547af7f1819204ab22a9fb250d3d9c4">tools::filesystem::FileExists</a>(input_file)) {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Orca input file does not exists!&quot;</span>);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  std::ifstream file_input(input_file);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  std::stringstream buffer;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  buffer &lt;&lt; file_input.rdbuf();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  std::string inp = buffer.str();</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="comment">// check basis section</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="keyword">auto</span> index1 = inp.find(<span class="stringliteral">&quot;%basis&quot;</span>);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keyword">auto</span> index2 = inp.find(<span class="stringliteral">&quot;end&quot;</span>, index1);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  BOOST_CHECK_EQUAL(inp.substr(index1, index2 - index1),</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                    <span class="stringliteral">&quot;%basis\nGTOName =\&quot;system.bas\&quot;;\n&quot;</span>);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="comment">// check scf section multiline</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  index1 = inp.find(<span class="stringliteral">&quot;%scf&quot;</span>);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  index2 = inp.find(<span class="stringliteral">&quot;end&quot;</span>, index1);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  BOOST_CHECK_EQUAL(inp.substr(index1, index2 - index1),</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                    <span class="stringliteral">&quot;%scf\nGUESS PMODEL\n&quot;</span>);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="comment">// Check method</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  index1 = inp.find(<span class="stringliteral">&quot;!&quot;</span>);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  BOOST_CHECK_EQUAL(inp.substr(index1), <span class="stringliteral">&quot;! DFT pbe0   \n&quot;</span>);</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <span class="comment">// Check singleline orca kewords</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  index1 = inp.find(<span class="stringliteral">&quot;%maxcore&quot;</span>);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  index2 = inp.find(<span class="stringliteral">&quot;\n&quot;</span>, index1);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;\ninp: &quot;</span> &lt;&lt; inp.substr(index1) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  BOOST_CHECK_EQUAL(inp.substr(index1, index2 - index1), <span class="stringliteral">&quot;%maxcore 3000&quot;</span>);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>

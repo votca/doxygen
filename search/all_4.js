@@ -82,7 +82,7 @@ var searchData=
   ['diis_2ecc_1601',['diis.cc',['../diis_8cc.html',1,'']]],
   ['diis_2eh_1602',['diis.h',['../diis_8h.html',1,'']]],
   ['diis_5fstart_1603',['diis_start',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#afefb9e0d04cdc8ee82ecdc79cf10901b',1,'votca::xtp::ConvergenceAcc::options']]],
-  ['dimension_1604',['dimension',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html#ab973ca47e6c0547fc12fd50b708a74f3',1,'votca::xtp::Symmetric_Matrix::dimension()'],['../classvotca_1_1xtp_1_1AOMatrix.html#aac488c2c0e83381a44431667621a7237',1,'votca::xtp::AOMatrix::Dimension()'],['../classvotca_1_1xtp_1_1AOMatrix3D.html#a8a02e57fca01a9a754f097cf35c55124',1,'votca::xtp::AOMatrix3D::Dimension()'],['../classvotca_1_1xtp_1_1AOPotential.html#a5b427bffd4201b9bd6e461ff6a4f91c9',1,'votca::xtp::AOPotential::Dimension()']]],
+  ['dimension_1604',['Dimension',['../classvotca_1_1xtp_1_1AOMatrix.html#aac488c2c0e83381a44431667621a7237',1,'votca::xtp::AOMatrix::Dimension()'],['../classvotca_1_1xtp_1_1AOMatrix3D.html#a8a02e57fca01a9a754f097cf35c55124',1,'votca::xtp::AOMatrix3D::Dimension()'],['../classvotca_1_1xtp_1_1AOPotential.html#a5b427bffd4201b9bd6e461ff6a4f91c9',1,'votca::xtp::AOPotential::Dimension()'],['../classvotca_1_1xtp_1_1Symmetric__Matrix.html#ab973ca47e6c0547fc12fd50b708a74f3',1,'votca::xtp::Symmetric_Matrix::dimension()']]],
   ['dip_5fref_2emm_1605',['dip_ref.mm',['../dip__ref_8mm.html',1,'']]],
   ['dip_5fref0_2emm_1606',['dip_ref0.mm',['../dip__ref0_8mm.html',1,'']]],
   ['dip_5fref1_2emm_1607',['dip_ref1.mm',['../dip__ref1_8mm.html',1,'']]],
