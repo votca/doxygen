@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="ppm_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2019 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -89,65 +89,60 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ppm_8h.html">votca/xtp/ppm.h</a>&quot;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ppm_8h.html">votca/xtp/ppm.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>xtp {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1PPM.html#a5df90bfbefbff4e461d758a49c3c8daf">   29</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1PPM.html#a5df90bfbefbff4e461d758a49c3c8daf">PPM::PPM_construct_parameters</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1RPA.html">RPA</a>&amp; rpa) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="comment">// Solve Eigensystem</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      rpa.<a class="code" href="classvotca_1_1xtp_1_1RPA.html#a7d1da38a92a8b89e7ac9fd638bfa2d0f">calculate_epsilon_r</a>(<a class="code" href="classvotca_1_1xtp_1_1PPM.html#ac6abe233a00b72b8a1696773a31d1176">screening_r</a>));</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PPM.html#af5b192fe77dc1149a9aaabfcb482f16d">_ppm_phi</a> = es.eigenvectors();</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1PPM.html#a5df90bfbefbff4e461d758a49c3c8daf">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1PPM.html#a5df90bfbefbff4e461d758a49c3c8daf">PPM::PPM_construct_parameters</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1RPA.html">RPA</a>&amp; rpa) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="comment">// Solve Eigensystem</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      rpa.<a class="code" href="classvotca_1_1xtp_1_1RPA.html#a7d1da38a92a8b89e7ac9fd638bfa2d0f">calculate_epsilon_r</a>(<a class="code" href="classvotca_1_1xtp_1_1PPM.html#ac6abe233a00b72b8a1696773a31d1176">screening_r</a>));</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PPM.html#af5b192fe77dc1149a9aaabfcb482f16d">_ppm_phi</a> = es.eigenvectors();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="comment">// store PPM weights from eigenvalues</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">_ppm_weight</a> = 1 - es.eigenvalues().array().inverse();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// store PPM weights from eigenvalues</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">_ppm_weight</a> = 1 - es.eigenvalues().array().inverse();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">// a) phi^t * epsilon(1) * phi e.g. transform epsilon(1) to the same space as</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// epsilon(0)</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Eigen::MatrixXd ortho =</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1PPM.html#af5b192fe77dc1149a9aaabfcb482f16d">_ppm_phi</a>.transpose() * rpa.<a class="code" href="classvotca_1_1xtp_1_1RPA.html#a179c0826076fa8f14987e3b19a7a3ead">calculate_epsilon_i</a>(<a class="code" href="classvotca_1_1xtp_1_1PPM.html#aa5510f656d97e69a8b71e5a95e450ad1">screening_i</a>) * <a class="code" href="classvotca_1_1xtp_1_1PPM.html#af5b192fe77dc1149a9aaabfcb482f16d">_ppm_phi</a>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  Eigen::MatrixXd epsilon_1_inv = ortho.inverse();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">// determine PPM frequencies</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PPM.html#ac6a47b225120a0a832d7a47382ae1050">_ppm_freq</a>.resize(es.eigenvalues().size());</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#pragma omp parallel for</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; es.eigenvalues().<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>(); i++) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">_ppm_weight</a>(i) &lt; 1.<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">_ppm_weight</a>(i) = 0.0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1PPM.html#ac6a47b225120a0a832d7a47382ae1050">_ppm_freq</a>(i) = 0.5;  <span class="comment">// Hartree</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keywordtype">double</span> nom = epsilon_1_inv(i, i) - 1.0;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keywordtype">double</span> frac =</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;          -1.0 * nom / (nom + <a class="code" href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">_ppm_weight</a>(i)) * <a class="code" href="classvotca_1_1xtp_1_1PPM.html#aa5510f656d97e69a8b71e5a95e450ad1">screening_i</a> * <a class="code" href="classvotca_1_1xtp_1_1PPM.html#aa5510f656d97e69a8b71e5a95e450ad1">screening_i</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1PPM.html#ac6a47b225120a0a832d7a47382ae1050">_ppm_freq</a>(i) = std::sqrt(std::abs(frac));</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// a) phi^t * epsilon(1) * phi e.g. transform epsilon(1) to the same space as</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">// epsilon(0)</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  Eigen::MatrixXd ortho =</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1PPM.html#af5b192fe77dc1149a9aaabfcb482f16d">_ppm_phi</a>.transpose() * rpa.<a class="code" href="classvotca_1_1xtp_1_1RPA.html#a179c0826076fa8f14987e3b19a7a3ead">calculate_epsilon_i</a>(<a class="code" href="classvotca_1_1xtp_1_1PPM.html#aa5510f656d97e69a8b71e5a95e450ad1">screening_i</a>) * <a class="code" href="classvotca_1_1xtp_1_1PPM.html#af5b192fe77dc1149a9aaabfcb482f16d">_ppm_phi</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Eigen::MatrixXd epsilon_1_inv = ortho.inverse();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">// determine PPM frequencies</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PPM.html#ac6a47b225120a0a832d7a47382ae1050">_ppm_freq</a>.resize(es.eigenvalues().size());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#pragma omp parallel for</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; es.eigenvalues().size(); i++) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">_ppm_weight</a>(i) &lt; 1.e-5) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">_ppm_weight</a>(i) = 0.0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1PPM.html#ac6a47b225120a0a832d7a47382ae1050">_ppm_freq</a>(i) = 0.5;  <span class="comment">// Hartree</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="keywordtype">double</span> nom = epsilon_1_inv(i, i) - 1.0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="keywordtype">double</span> frac =</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;          -1.0 * nom / (nom + <a class="code" href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">_ppm_weight</a>(i)) * <a class="code" href="classvotca_1_1xtp_1_1PPM.html#aa5510f656d97e69a8b71e5a95e450ad1">screening_i</a> * <a class="code" href="classvotca_1_1xtp_1_1PPM.html#aa5510f656d97e69a8b71e5a95e450ad1">screening_i</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <a class="code" href="classvotca_1_1xtp_1_1PPM.html#ac6a47b225120a0a832d7a47382ae1050">_ppm_freq</a>(i) = std::sqrt(std::abs(frac));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_ac6abe233a00b72b8a1696773a31d1176"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#ac6abe233a00b72b8a1696773a31d1176">votca::xtp::PPM::screening_r</a></div><div class="ttdeci">double screening_r</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00048">ppm.h:48</a></div></div>
-<div class="ttc" id="anamespacekokkos__linalg__3d_html_a1cb29721f0bb1d12949939f8abb2d4d6"><div class="ttname"><a href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">kokkos_linalg_3d::size</a></div><div class="ttdeci">int size(const T &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="kokkos__linalg_8hpp_source.html#l00034">kokkos_linalg.hpp:34</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_a53a75e8cd55d0e3e15946d2c16b266cd"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">votca::xtp::PPM::_ppm_weight</a></div><div class="ttdeci">Eigen::VectorXd _ppm_weight</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00054">ppm.h:54</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_af5b192fe77dc1149a9aaabfcb482f16d"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#af5b192fe77dc1149a9aaabfcb482f16d">votca::xtp::PPM::_ppm_phi</a></div><div class="ttdeci">Eigen::MatrixXd _ppm_phi</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00052">ppm.h:52</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_ac6a47b225120a0a832d7a47382ae1050"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#ac6a47b225120a0a832d7a47382ae1050">votca::xtp::PPM::_ppm_freq</a></div><div class="ttdeci">Eigen::VectorXd _ppm_freq</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00053">ppm.h:53</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1RPA_html_a179c0826076fa8f14987e3b19a7a3ead"><div class="ttname"><a href="classvotca_1_1xtp_1_1RPA.html#a179c0826076fa8f14987e3b19a7a3ead">votca::xtp::RPA::calculate_epsilon_i</a></div><div class="ttdeci">Eigen::MatrixXd calculate_epsilon_i(double frequency) const</div><div class="ttdef"><b>Definition:</b> <a href="rpa_8h_source.html#l00045">rpa.h:45</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_ac6abe233a00b72b8a1696773a31d1176"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#ac6abe233a00b72b8a1696773a31d1176">votca::xtp::PPM::screening_r</a></div><div class="ttdeci">double screening_r</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00046">ppm.h:46</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_a53a75e8cd55d0e3e15946d2c16b266cd"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#a53a75e8cd55d0e3e15946d2c16b266cd">votca::xtp::PPM::_ppm_weight</a></div><div class="ttdeci">Eigen::VectorXd _ppm_weight</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00052">ppm.h:52</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_af5b192fe77dc1149a9aaabfcb482f16d"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#af5b192fe77dc1149a9aaabfcb482f16d">votca::xtp::PPM::_ppm_phi</a></div><div class="ttdeci">Eigen::MatrixXd _ppm_phi</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00050">ppm.h:50</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_ac6a47b225120a0a832d7a47382ae1050"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#ac6a47b225120a0a832d7a47382ae1050">votca::xtp::PPM::_ppm_freq</a></div><div class="ttdeci">Eigen::VectorXd _ppm_freq</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00051">ppm.h:51</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1RPA_html_a179c0826076fa8f14987e3b19a7a3ead"><div class="ttname"><a href="classvotca_1_1xtp_1_1RPA.html#a179c0826076fa8f14987e3b19a7a3ead">votca::xtp::RPA::calculate_epsilon_i</a></div><div class="ttdeci">Eigen::MatrixXd calculate_epsilon_i(double frequency) const</div><div class="ttdef"><b>Definition:</b> <a href="rpa_8h_source.html#l00041">rpa.h:41</a></div></div>
 <div class="ttc" id="appm_8h_html"><div class="ttname"><a href="ppm_8h.html">ppm.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_a5df90bfbefbff4e461d758a49c3c8daf"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#a5df90bfbefbff4e461d758a49c3c8daf">votca::xtp::PPM::PPM_construct_parameters</a></div><div class="ttdeci">void PPM_construct_parameters(const RPA &amp;rpa)</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8cc_source.html#l00029">ppm.cc:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1RPA_html_a7d1da38a92a8b89e7ac9fd638bfa2d0f"><div class="ttname"><a href="classvotca_1_1xtp_1_1RPA.html#a7d1da38a92a8b89e7ac9fd638bfa2d0f">votca::xtp::RPA::calculate_epsilon_r</a></div><div class="ttdeci">Eigen::MatrixXd calculate_epsilon_r(double frequency) const</div><div class="ttdef"><b>Definition:</b> <a href="rpa_8h_source.html#l00049">rpa.h:49</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1RPA_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1RPA.html">votca::xtp::RPA</a></div><div class="ttdef"><b>Definition:</b> <a href="rpa_8h_source.html#l00035">rpa.h:35</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_aa5510f656d97e69a8b71e5a95e450ad1"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#aa5510f656d97e69a8b71e5a95e450ad1">votca::xtp::PPM::screening_i</a></div><div class="ttdeci">double screening_i</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00049">ppm.h:49</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_a5df90bfbefbff4e461d758a49c3c8daf"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#a5df90bfbefbff4e461d758a49c3c8daf">votca::xtp::PPM::PPM_construct_parameters</a></div><div class="ttdeci">void PPM_construct_parameters(const RPA &amp;rpa)</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8cc_source.html#l00026">ppm.cc:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1RPA_html_a7d1da38a92a8b89e7ac9fd638bfa2d0f"><div class="ttname"><a href="classvotca_1_1xtp_1_1RPA.html#a7d1da38a92a8b89e7ac9fd638bfa2d0f">votca::xtp::RPA::calculate_epsilon_r</a></div><div class="ttdeci">Eigen::MatrixXd calculate_epsilon_r(double frequency) const</div><div class="ttdef"><b>Definition:</b> <a href="rpa_8h_source.html#l00045">rpa.h:45</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1RPA_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1RPA.html">votca::xtp::RPA</a></div><div class="ttdef"><b>Definition:</b> <a href="rpa_8h_source.html#l00031">rpa.h:31</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PPM_html_aa5510f656d97e69a8b71e5a95e450ad1"><div class="ttname"><a href="classvotca_1_1xtp_1_1PPM.html#aa5510f656d97e69a8b71e5a95e450ad1">votca::xtp::PPM::screening_i</a></div><div class="ttdeci">double screening_i</div><div class="ttdef"><b>Definition:</b> <a href="ppm_8h_source.html#l00047">ppm.h:47</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
