@@ -145,49 +145,50 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  opt.qpmax = 16;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  opt.rpamin = 0;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  opt.rpamax = 16;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__base.html#aa7c9e734c52cc3f2c77feff0f355cb75">configure</a>(opt);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  Eigen::MatrixXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__base.html#af0063537902a53dd7539e3a25b176efa">CalcExchangeMatrix</a>();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  Eigen::MatrixXd x_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/sigma_exact/x_ref.mm&quot;</span>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">bool</span> check_x = x_ref.isApprox(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">if</span> (!check_x) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma X&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    cout &lt;&lt; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> &lt;&lt; endl;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma X ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    cout &lt;&lt; x_ref &lt;&lt; endl;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  BOOST_CHECK_EQUAL(check_x, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__Exact.html#acd3b571991a7b68f5be60134d0b2674d">PrepareScreening</a>();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  Eigen::MatrixXd c = sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__base.html#a5d3e2b45639d0cf4131f52d7c5bbc897">CalcCorrelationOffDiag</a>(mo_energy);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  c.diagonal() = sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__base.html#ac19fde832aee422e93da3ffc3bd0df06">CalcCorrelationDiag</a>(mo_energy);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  Eigen::MatrixXd c_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/sigma_exact/c_ref.mm&quot;</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordtype">bool</span> check_c_diag = c.diagonal().isApprox(c_ref.diagonal(), 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">if</span> (!check_c_diag) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma C&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    cout &lt;&lt; c.diagonal() &lt;&lt; endl;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma C ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    cout &lt;&lt; c_ref.diagonal() &lt;&lt; endl;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  BOOST_CHECK_EQUAL(check_c_diag, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordtype">bool</span> check_c = c.isApprox(c_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordflow">if</span> (!check_c) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma C&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    cout &lt;&lt; c &lt;&lt; endl;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma C ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    cout &lt;&lt; c_ref &lt;&lt; endl;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  BOOST_CHECK_EQUAL(check_c, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  opt.eta = 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-3;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__base.html#aa7c9e734c52cc3f2c77feff0f355cb75">configure</a>(opt);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Eigen::MatrixXd <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> = sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__base.html#af0063537902a53dd7539e3a25b176efa">CalcExchangeMatrix</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  Eigen::MatrixXd x_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/sigma_exact/x_ref.mm&quot;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">bool</span> check_x = x_ref.isApprox(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">if</span> (!check_x) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma X&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    cout &lt;&lt; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a> &lt;&lt; endl;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma X ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    cout &lt;&lt; x_ref &lt;&lt; endl;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  BOOST_CHECK_EQUAL(check_x, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__Exact.html#acd3b571991a7b68f5be60134d0b2674d">PrepareScreening</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  Eigen::MatrixXd c = sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__base.html#a5d3e2b45639d0cf4131f52d7c5bbc897">CalcCorrelationOffDiag</a>(mo_energy);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  c.diagonal() = sigma.<a class="code" href="classvotca_1_1xtp_1_1Sigma__base.html#ac19fde832aee422e93da3ffc3bd0df06">CalcCorrelationDiag</a>(mo_energy);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  Eigen::MatrixXd c_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/sigma_exact/c_ref.mm&quot;</span>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordtype">bool</span> check_c_diag = c.diagonal().isApprox(c_ref.diagonal(), 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span> (!check_c_diag) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma C&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    cout &lt;&lt; c.diagonal() &lt;&lt; endl;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma C ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    cout &lt;&lt; c_ref.diagonal() &lt;&lt; endl;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  BOOST_CHECK_EQUAL(check_c_diag, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">bool</span> check_c = c.isApprox(c_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordflow">if</span> (!check_c) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma C&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    cout &lt;&lt; c &lt;&lt; endl;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Sigma C ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    cout &lt;&lt; c_ref &lt;&lt; endl;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  BOOST_CHECK_EQUAL(check_c, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="athreecenter_8h_html"><div class="ttname"><a href="threecenter_8h.html">threecenter.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a08260b44bbc7302980c155b8b8434ae4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">votca::xtp::Orbitals::QMAtoms</a></div><div class="ttdeci">const QMMolecule &amp; QMAtoms() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00141">orbitals.h:141</a></div></div>
@@ -196,10 +197,10 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Sigma__base_html_ac19fde832aee422e93da3ffc3bd0df06"><div class="ttname"><a href="classvotca_1_1xtp_1_1Sigma__base.html#ac19fde832aee422e93da3ffc3bd0df06">votca::xtp::Sigma_base::CalcCorrelationDiag</a></div><div class="ttdeci">Eigen::VectorXd CalcCorrelationDiag(const Eigen::VectorXd &amp;frequencies) const</div><div class="ttdef"><b>Definition:</b> <a href="sigma__base_8cc_source.html#l00054">sigma_base.cc:54</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Sigma__Exact_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Sigma__Exact.html">votca::xtp::Sigma_Exact</a></div><div class="ttdef"><b>Definition:</b> <a href="sigma__exact_8h_source.html#l00033">sigma_exact.h:33</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html">votca::xtp::Orbitals</a></div><div class="ttdoc">container for molecular orbitals</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00045">orbitals.h:45</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Sigma__base_html_aa7c9e734c52cc3f2c77feff0f355cb75"><div class="ttname"><a href="classvotca_1_1xtp_1_1Sigma__base.html#aa7c9e734c52cc3f2c77feff0f355cb75">votca::xtp::Sigma_base::configure</a></div><div class="ttdeci">void configure(options opt)</div><div class="ttdef"><b>Definition:</b> <a href="sigma__base_8h_source.html#l00048">sigma_base.h:48</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Sigma__base_html_aa7c9e734c52cc3f2c77feff0f355cb75"><div class="ttname"><a href="classvotca_1_1xtp_1_1Sigma__base.html#aa7c9e734c52cc3f2c77feff0f355cb75">votca::xtp::Sigma_base::configure</a></div><div class="ttdeci">void configure(options opt)</div><div class="ttdef"><b>Definition:</b> <a href="sigma__base_8h_source.html#l00051">sigma_base.h:51</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Sigma__base_html_af0063537902a53dd7539e3a25b176efa"><div class="ttname"><a href="classvotca_1_1xtp_1_1Sigma__base.html#af0063537902a53dd7539e3a25b176efa">votca::xtp::Sigma_base::CalcExchangeMatrix</a></div><div class="ttdeci">Eigen::MatrixXd CalcExchangeMatrix() const</div><div class="ttdef"><b>Definition:</b> <a href="sigma__base_8cc_source.html#l00036">sigma_base.cc:36</a></div></div>
 <div class="ttc" id="aeigenio__matrixmarket_8h_html"><div class="ttname"><a href="eigenio__matrixmarket_8h.html">eigenio_matrixmarket.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1RPA_html_a54a456545772da5c32c452bd782e5b45"><div class="ttname"><a href="classvotca_1_1xtp_1_1RPA.html#a54a456545772da5c32c452bd782e5b45">votca::xtp::RPA::setRPAInputEnergies</a></div><div class="ttdeci">void setRPAInputEnergies(const Eigen::VectorXd &amp;rpaenergies)</div><div class="ttdef"><b>Definition:</b> <a href="rpa_8h_source.html#l00055">rpa.h:55</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1RPA_html_a54a456545772da5c32c452bd782e5b45"><div class="ttname"><a href="classvotca_1_1xtp_1_1RPA.html#a54a456545772da5c32c452bd782e5b45">votca::xtp::RPA::setRPAInputEnergies</a></div><div class="ttdeci">void setRPAInputEnergies(const Eigen::VectorXd &amp;rpaenergies)</div><div class="ttdef"><b>Definition:</b> <a href="rpa_8h_source.html#l00059">rpa.h:59</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Sigma__base_html_a5d3e2b45639d0cf4131f52d7c5bbc897"><div class="ttname"><a href="classvotca_1_1xtp_1_1Sigma__base.html#a5d3e2b45639d0cf4131f52d7c5bbc897">votca::xtp::Sigma_base::CalcCorrelationOffDiag</a></div><div class="ttdeci">Eigen::MatrixXd CalcCorrelationOffDiag(const Eigen::VectorXd &amp;frequencies) const</div><div class="ttdef"><b>Definition:</b> <a href="sigma__base_8cc_source.html#l00065">sigma_base.cc:65</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html_a1393697647490d3fd425f0950d222530"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">votca::xtp::QMMolecule::LoadFromFile</a></div><div class="ttdeci">void LoadFromFile(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8cc_source.html#l00045">qmmolecule.cc:45</a></div></div>
 <div class="ttc" id="aaobasis_8h_html"><div class="ttname"><a href="aobasis_8h.html">aobasis.h</a></div></div>
