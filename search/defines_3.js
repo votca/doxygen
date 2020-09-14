@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['huffmantree_5fh_9453',['HUFFMANTREE_H',['../huffmantree_8h.html#aa54176539a21c2e5076fe5cd528223c5',1,'huffmantree.h']]]
+  ['xtp_5flog_10131',['XTP_LOG',['../logger_8h.html#aa4d2d0975262097f01964c7dad86afcc',1,'logger.h']]]
 ];
