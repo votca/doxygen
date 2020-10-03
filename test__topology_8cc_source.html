@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__topology_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -88,68 +88,61 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="test__topology_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   16</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="test__topology_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   18</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE topology_test</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Third party includes</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;boost/test/floating_point_comparison.hpp&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// VOTCA includes</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="boundarycondition_8h.html">votca/csg/boundarycondition.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;boost/test/floating_point_comparison.hpp&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="boundarycondition_8h.html">votca/csg/boundarycondition.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="atom_8h.html">votca/xtp/atom.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="qmpair_8h.html">votca/xtp/qmpair.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="segment_8h.html">votca/xtp/segment.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xtp_2include_2votca_2xtp_2topology_8h.html">votca/xtp/topology.h</a>&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="atom_8h.html">votca/xtp/atom.h</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="qmpair_8h.html">votca/xtp/qmpair.h</a>&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="segment_8h.html">votca/xtp/segment.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="xtp_2include_2votca_2xtp_2topology_8h.html">votca/xtp/topology.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;BOOST_AUTO_TEST_SUITE(topology_test)</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1tools.html">votca::tools</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">   33</a></span>&#160;<a class="code" href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">BOOST_AUTO_TEST_CASE</a>(constructors_test) { <a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> top; }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="test__topology_8cc.html#a66ff33c8062117c7c5acdf4f5427f6a3">   35</a></span>&#160;<a class="code" href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">BOOST_AUTO_TEST_CASE</a>(box_test) {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;BOOST_AUTO_TEST_SUITE(topology_test)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">   39</a></span>&#160;<a class="code" href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">BOOST_AUTO_TEST_CASE</a>(constructors_test) { <a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> top; }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  Eigen::Matrix3d box = 2 * Eigen::Matrix3d::Identity();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> top;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a44c9d9a3cce8e43d0c59a83230facad2">setBox</a>(box);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="test__topology_8cc.html#a66ff33c8062117c7c5acdf4f5427f6a3">   41</a></span>&#160;<a class="code" href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">BOOST_AUTO_TEST_CASE</a>(box_test) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  Eigen::Matrix3d box = 2 * Eigen::Matrix3d::Identity();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> top;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a44c9d9a3cce8e43d0c59a83230facad2">setBox</a>(box);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">auto</span> vol = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa">BoxVolume</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  BOOST_CHECK_CLOSE(vol, 8, 0.0001);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">auto</span> box2 = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a5ad0fd35d27c256e5dc61e4b112300ea">getBox</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  BOOST_CHECK_EQUAL(box.isApprox(box2, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6), <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="test__topology_8cc.html#a6b8c8cc1d79c46c0621f435ec115640d">   54</a></span>&#160;<a class="code" href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">BOOST_AUTO_TEST_CASE</a>(simple_test) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> top;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#ac2103b6ba1abaadb285fb940e7bc4de4">setStep</a>(1);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  BOOST_CHECK_EQUAL(top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a29483234e8f6ea152b1ec77a8fb68140">getStep</a>(), 1);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a3cb0f337ee2f6bd26a93eada7cd70b59">setTime</a>(1.21);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  BOOST_CHECK_CLOSE(top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a0dac013e7f07616b03c2e408b5738ead">getTime</a>(), 1.21, 0.0001);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">auto</span> vol = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa">BoxVolume</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  BOOST_CHECK_CLOSE(vol, 8, 0.0001);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">auto</span> box2 = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a5ad0fd35d27c256e5dc61e4b112300ea">getBox</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  BOOST_CHECK_EQUAL(box.isApprox(box2, 1e-6), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="test__topology_8cc.html#a6b8c8cc1d79c46c0621f435ec115640d">   48</a></span>&#160;<a class="code" href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">BOOST_AUTO_TEST_CASE</a>(simple_test) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> top;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#ac2103b6ba1abaadb285fb940e7bc4de4">setStep</a>(1);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  BOOST_CHECK_EQUAL(top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a29483234e8f6ea152b1ec77a8fb68140">getStep</a>(), 1);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a3cb0f337ee2f6bd26a93eada7cd70b59">setTime</a>(1.21);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  BOOST_CHECK_CLOSE(top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a0dac013e7f07616b03c2e408b5738ead">getTime</a>(), 1.21, 0.0001);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a5ad0fd35d27c256e5dc61e4b112300ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a5ad0fd35d27c256e5dc61e4b112300ea">votca::xtp::Topology::getBox</a></div><div class="ttdeci">const Eigen::Matrix3d &amp; getBox() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00064">topology.h:64</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a5ad0fd35d27c256e5dc61e4b112300ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a5ad0fd35d27c256e5dc61e4b112300ea">votca::xtp::Topology::getBox</a></div><div class="ttdeci">const Eigen::Matrix3d &amp; getBox() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00061">topology.h:61</a></div></div>
 <div class="ttc" id="axtp_2include_2votca_2xtp_2topology_8h_html"><div class="ttname"><a href="xtp_2include_2votca_2xtp_2topology_8h.html">topology.h</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a44c9d9a3cce8e43d0c59a83230facad2"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a44c9d9a3cce8e43d0c59a83230facad2">votca::xtp::Topology::setBox</a></div><div class="ttdeci">void setBox(const Eigen::Matrix3d &amp;box, csg::BoundaryCondition::eBoxtype boxtype=csg::BoundaryCondition::typeAuto)</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2src_2libxtp_2topology_8cc_source.html#l00074">topology.cc:74</a></div></div>
-<div class="ttc" id="atest__topology_8cc_html_a6749c1bd1080dc7a5574a63bdf4d3c23"><div class="ttname"><a href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(constructors_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__topology_8cc_source.html#l00039">test_topology.cc:39</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html">votca::xtp::Topology</a></div><div class="ttdoc">Container for segments and box and atoms.</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00041">topology.h:41</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a44c9d9a3cce8e43d0c59a83230facad2"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a44c9d9a3cce8e43d0c59a83230facad2">votca::xtp::Topology::setBox</a></div><div class="ttdeci">void setBox(const Eigen::Matrix3d &amp;box, csg::BoundaryCondition::eBoxtype boxtype=csg::BoundaryCondition::typeAuto)</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2src_2libxtp_2topology_8cc_source.html#l00069">topology.cc:69</a></div></div>
+<div class="ttc" id="atest__topology_8cc_html_a6749c1bd1080dc7a5574a63bdf4d3c23"><div class="ttname"><a href="test__topology_8cc.html#a6749c1bd1080dc7a5574a63bdf4d3c23">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(constructors_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__topology_8cc_source.html#l00033">test_topology.cc:33</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html">votca::xtp::Topology</a></div><div class="ttdoc">Container for segments and box and atoms.</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00038">topology.h:38</a></div></div>
 <div class="ttc" id="aatom_8h_html"><div class="ttname"><a href="atom_8h.html">atom.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_abdcd9768e0054d57c7be6bb2691d1efa"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa">votca::xtp::Topology::BoxVolume</a></div><div class="ttdeci">double BoxVolume() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00065">topology.h:65</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_abdcd9768e0054d57c7be6bb2691d1efa"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa">votca::xtp::Topology::BoxVolume</a></div><div class="ttdeci">double BoxVolume() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00062">topology.h:62</a></div></div>
 <div class="ttc" id="aqmpair_8h_html"><div class="ttname"><a href="qmpair_8h.html">qmpair.h</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00030">akimaspline.h:30</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a3cb0f337ee2f6bd26a93eada7cd70b59"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a3cb0f337ee2f6bd26a93eada7cd70b59">votca::xtp::Topology::setTime</a></div><div class="ttdeci">void setTime(double time)</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00078">topology.h:78</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a29483234e8f6ea152b1ec77a8fb68140"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a29483234e8f6ea152b1ec77a8fb68140">votca::xtp::Topology::getStep</a></div><div class="ttdeci">Index getStep() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00075">topology.h:75</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00027">akimaspline.h:27</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a3cb0f337ee2f6bd26a93eada7cd70b59"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a3cb0f337ee2f6bd26a93eada7cd70b59">votca::xtp::Topology::setTime</a></div><div class="ttdeci">void setTime(double time)</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00075">topology.h:75</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a29483234e8f6ea152b1ec77a8fb68140"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a29483234e8f6ea152b1ec77a8fb68140">votca::xtp::Topology::getStep</a></div><div class="ttdeci">Index getStep() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00072">topology.h:72</a></div></div>
 <div class="ttc" id="aboundarycondition_8h_html"><div class="ttname"><a href="boundarycondition_8h.html">boundarycondition.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_ac2103b6ba1abaadb285fb940e7bc4de4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#ac2103b6ba1abaadb285fb940e7bc4de4">votca::xtp::Topology::setStep</a></div><div class="ttdeci">void setStep(Index step)</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00076">topology.h:76</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a0dac013e7f07616b03c2e408b5738ead"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a0dac013e7f07616b03c2e408b5738ead">votca::xtp::Topology::getTime</a></div><div class="ttdeci">double getTime() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00077">topology.h:77</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_ac2103b6ba1abaadb285fb940e7bc4de4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#ac2103b6ba1abaadb285fb940e7bc4de4">votca::xtp::Topology::setStep</a></div><div class="ttdeci">void setStep(Index step)</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00073">topology.h:73</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00028">adiis.h:28</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a0dac013e7f07616b03c2e408b5738ead"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a0dac013e7f07616b03c2e408b5738ead">votca::xtp::Topology::getTime</a></div><div class="ttdeci">double getTime() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00074">topology.h:74</a></div></div>
 <div class="ttc" id="asegment_8h_html"><div class="ttname"><a href="segment_8h.html">segment.h</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

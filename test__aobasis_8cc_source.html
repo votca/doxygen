@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__aobasis_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -85,106 +85,293 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * limitations under the License.</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="test__aobasis_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   17</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="test__aobasis_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   19</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE aobasis_test</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// Standard includes</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// Third party includes</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="aobasis_8h.html">votca/xtp/aobasis.h</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="aomatrix_8h.html">votca/xtp/aomatrix.h</a>&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="convergenceacc_8h.html">votca/xtp/convergenceacc.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="orbitals_8h.html">votca/xtp/orbitals.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;BOOST_AUTO_TEST_SUITE(aobasis_test)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="test__aobasis_8cc.html#aed1abccc1c7b70a2e505b38c20b15936">   38</a></span>&#160;<a class="code" href="test__aobasis_8cc.html#aed1abccc1c7b70a2e505b38c20b15936">BOOST_AUTO_TEST_CASE</a>(FillNormBasis_test) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitals;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                  <span class="stringliteral">&quot;/aobasis/Al.xyz&quot;</span>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> basis;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  basis.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aobasis/notnormalized.xml&quot;</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> aobasis;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(basis, orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>());</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>&amp; shell = aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">getShell</a>(0);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::vector&lt;double&gt; ref_results = {0.1831079647, 0.9155398233};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> check_norm = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">AOGaussianPrimitive</a>&amp; gaussian : shell) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keywordflow">if</span> (std::abs(ref_results[i] - gaussian.getContraction()) &gt; 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-7) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        check_norm = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      i++;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    i = 0;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (!check_norm) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">AOGaussianPrimitive</a>&amp; gaussian : shell) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Ref:&quot;</span> &lt;&lt; ref_results[i]</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                  &lt;&lt; <span class="stringliteral">&quot; result:&quot;</span> &lt;&lt; gaussian.getContraction() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        i++;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    BOOST_CHECK_EQUAL(check_norm, 1);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>&amp; shell = aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">getShell</a>(1);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::vector&lt;double&gt; ref_results = {0.179507068598, 0.89753534299};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span> check_norm = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">AOGaussianPrimitive</a>&amp; gaussian : shell) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">if</span> (std::abs(ref_results[i] - gaussian.getContraction()) &gt; 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-7) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        check_norm = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      i++;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    i = 0;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">if</span> (!check_norm) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">AOGaussianPrimitive</a>&amp; gaussian : shell) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Ref:&quot;</span> &lt;&lt; ref_results[i]</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                  &lt;&lt; <span class="stringliteral">&quot; result:&quot;</span> &lt;&lt; gaussian.getContraction() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        i++;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    BOOST_CHECK_EQUAL(check_norm, 1);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="test__aobasis_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   16</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="test__aobasis_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   18</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE aobasis_test</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="aobasis_8h.html">votca/xtp/aobasis.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="aomatrix_8h.html">votca/xtp/aomatrix.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="convergenceacc_8h.html">votca/xtp/convergenceacc.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="orbitals_8h.html">votca/xtp/orbitals.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;BOOST_AUTO_TEST_SUITE(aobasis_test)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="test__aobasis_8cc.html#aed1abccc1c7b70a2e505b38c20b15936">   31</a></span>&#160;<a class="code" href="test__aobasis_8cc.html#aed1abccc1c7b70a2e505b38c20b15936">BOOST_AUTO_TEST_CASE</a>(FillNormBasis_test) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  std::ofstream basisfile(<span class="stringliteral">&quot;notnormalized.xml&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;&lt;basis name=\&quot;def2-TZVP\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;  &lt;element name=\&quot;Al\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;shell scale=\&quot;1.0\&quot; type=\&quot;D\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;1.570000e+00\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;2.000000e-01\&quot; type=\&quot;D\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;3.330000e-01\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;1.000000e+00\&quot; type=\&quot;D\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;/shell&gt; &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;  &lt;/element&gt; &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;&lt;/basis&gt; &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  basisfile.close();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  std::ofstream xyzfile(<span class="stringliteral">&quot;Al.xyz&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; 1&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; Al&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; Al            .000000     .000000     .000000&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  xyzfile.close();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitals;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(<span class="stringliteral">&quot;Al.xyz&quot;</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> basis;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  basis.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(<span class="stringliteral">&quot;notnormalized.xml&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> aobasis;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(basis, orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>&amp; shell = aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">getShell</a>(0);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  std::vector&lt;double&gt; ref_results = {0.1831079647, 0.9155398233};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">bool</span> check_norm = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">AOGaussianPrimitive</a>&amp; gaussian : shell) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (std::abs(ref_results[i] - gaussian.getContraction()[2]) &gt; 1e-7) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      check_norm = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    i++;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  i = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">if</span> (!check_norm) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">AOGaussianPrimitive</a>&amp; gaussian : shell) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Ref:&quot;</span> &lt;&lt; ref_results[i]</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                &lt;&lt; <span class="stringliteral">&quot; result:&quot;</span> &lt;&lt; gaussian.getContraction()[2] &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      i++;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  BOOST_CHECK_EQUAL(check_norm, 1);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="test__aobasis_8cc.html#a3ee709fd3b82b19ab2455b0a1963d704">   85</a></span>&#160;<a class="code" href="test__aobasis_8cc.html#aed1abccc1c7b70a2e505b38c20b15936">BOOST_AUTO_TEST_CASE</a>(ReorderMos_test) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  std::ofstream xyzfile(<span class="stringliteral">&quot;molecule.xyz&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; 5&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; methane&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; C            .000000     .000000     .000000&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; H            .629118     .629118     .629118&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; H           -.629118    -.629118     .629118&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; H            .629118    -.629118    -.629118&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  xyzfile &lt;&lt; <span class="stringliteral">&quot; H           -.629118     .629118    -.629118&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  xyzfile.close();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  std::ofstream basisfile(<span class="stringliteral">&quot;3-21G.xml&quot;</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;&lt;basis name=\&quot;3-21G\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;  &lt;element name=\&quot;H\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;shell scale=\&quot;1.0\&quot; type=\&quot;S\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;5.447178e+00\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;1.562850e-01\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;8.245470e-01\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;9.046910e-01\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;/shell&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;shell scale=\&quot;1.0\&quot; type=\&quot;S\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;1.831920e-01\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;1.000000e+00\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;/shell&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;  &lt;/element&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;  &lt;element name=\&quot;C\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;shell scale=\&quot;1.0\&quot; type=\&quot;S\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;1.722560e+02\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;6.176690e-02\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;2.591090e+01\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;3.587940e-01\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;5.533350e+00\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;7.007130e-01\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;/shell&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;shell scale=\&quot;1.0\&quot; type=\&quot;SP\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;3.664980e+00\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;-3.958970e-01\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;2.364600e-01\&quot; type=\&quot;P\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;7.705450e-01\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;1.215840e+00\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;8.606190e-01\&quot; type=\&quot;P\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;/shell&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;shell scale=\&quot;1.0\&quot; type=\&quot;SP\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;1.958570e-01\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;1.000000e+00\&quot; type=\&quot;S\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;1.000000e+00\&quot; type=\&quot;P\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;/shell&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;shell scale=\&quot;1.0\&quot; type=\&quot;D\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;constant decay=\&quot;1.570000e+00\&quot;&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;        &lt;contractions factor=\&quot;2.000000e-01\&quot; type=\&quot;D\&quot;/&gt;&quot;</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;      &lt;/constant&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;    &lt;/shell&gt; &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;  &lt;/element&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  basisfile &lt;&lt; <span class="stringliteral">&quot;&lt;/basis&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  basisfile.close();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitals;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(<span class="stringliteral">&quot;molecule.xyz&quot;</span>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> basis;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  basis.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(<span class="stringliteral">&quot;3-21G.xml&quot;</span>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> aobasis;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(basis, orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>());</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>() =</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      Eigen::MatrixXd::Zero(aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>());</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>() &lt;&lt; 0.996559, -0.223082, -5.74064e-15,</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      1.70342e-15, 2.96852e-16, -3.57518e-16, -4.15482e-16, -1.07176e-17,</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      -0.0301914, 1.01049e-16, 1.89625e-16, -1.73748e-16, 2.38718e-16,</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      1.62375e-17, 0.102052, 9.62277e-16, -6.0957e-16, -1.06426e-15, 0.111923,</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      -1.5113e-15, -2.10033e-15, -4.58257e-15, 0.0445146, 0.88316, 2.08298e-14,</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;      -4.52658e-15, 1.11277e-15, 3.26653e-15, 1.00375e-14, 2.77629e-15,</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      0.866126, 5.6158e-15, -5.62939e-15, -7.52681e-16, 2.37035e-15,</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      -2.50255e-17, 0.938329, 1.04884e-14, -6.90948e-15, -1.21867e-14, 1.28767,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      -1.95522e-14, -2.43333e-14, -5.31215e-14, 1.17833e-16, -2.62332e-16,</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      0.231688, 0.60693, 0.827952, -0.216204, -0.0399226, 0.286201,</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      -3.69205e-15, 0.106469, -0.42034, 0.21456, -3.06369e-16, 3.43687e-16,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      -1.20522e-15, 0.00988083, -0.10169, -0.149274, 2.71906e-15, -0.0154314,</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      0.0340686, 0.0918581, 1.53082e-16, 2.78929e-14, -1.00703, 0.299218,</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      0.0624584, 0.0937755, 0.328402, 0.11665, -5.17067e-15, 0.440979,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      0.0102622, -0.198718, -3.59947e-16, 4.92066e-16, 1.59132e-17, 0.173706,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      -0.0356156, 0.0357605, -5.96263e-16, 0.0939227, -0.0213146, 0.0236835,</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      4.20694e-17, 6.11932e-16, 0.199382, 0.80601, -0.646639, -0.273334,</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      0.144247, -0.186362, -9.99121e-16, -0.168103, -0.239303, -0.385398,</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      1.34626e-15, 4.28838e-16, 1.93238e-17, -0.049494, -0.145299, 0.0957059,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      -5.74112e-16, -0.0278764, -0.0906737, 0.0289463, -0.0472716, 0.235837,</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      1.11456e-14, -6.49632e-15, -4.93927e-15, 2.93059e-16, -9.29852e-15,</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      -4.62943e-15, -0.599523, -1.21396e-14, 5.36322e-15, 2.68772e-15,</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      -5.69707e-15, 2.52476e-16, -1.8333, -3.11059e-14, 1.50032e-14,</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      2.96739e-14, -4.24316, 6.46996e-14, 8.35461e-14, 1.79304e-13,</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      -2.05526e-16, -1.86284e-15, -0.0360124, -0.0943383, -0.128693, 0.0723654,</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      0.0133625, -0.0957943, 1.59924e-14, -0.348785, 1.377, -0.702883,</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      2.73335e-16, 4.12143e-17, 9.70315e-15, -0.0748836, 0.770673, 1.1313,</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;      -1.56785e-14, 0.0762958, -0.168441, -0.454163, -4.61587e-16, -7.91469e-15,</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      0.156528, -0.046509, -0.00970823, -0.0313875, -0.109919, -0.0390437,</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      1.03899e-14, -1.44462, -0.0336184, 0.650987, 2.38336e-15, -3.75347e-15,</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      1.19166e-15, -1.31646, 0.269919, -0.271017, 1.65778e-16, -0.464371,</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      0.105383, -0.117096, -1.12124e-16, -1.56626e-15, -0.030991, -0.125282,</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      0.10051, 0.0914873, -0.0482808, 0.062377, 4.17567e-15, 0.550694, 0.783942,</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;      1.26254, -4.93981e-15, -2.05029e-15, -1.57029e-15, 0.375099, 1.10117,</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;      -0.725324, 1.34493e-15, 0.137826, 0.448307, -0.143116, 5.73096e-18,</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      1.02238e-16, -2.48464e-16, -1.10921e-16, -1.52385e-17, -2.91919e-16,</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      -4.23503e-16, 5.26081e-17, -1.95459e-16, -1.93453e-15, -5.85128e-16,</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      -3.01357e-15, -0.998193, 0.060094, 1.59178e-15, -4.71758e-16,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      -3.52931e-16, -7.53139e-16, 4.14142e-16, -1.88079e-15, -1.622e-16,</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      3.54387e-17, 1.23411e-17, 1.96963e-16, 0.00308147, 0.0124569, -0.00999387,</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      0.242938, -0.128206, 0.165638, -1.35965e-15, -0.139405, -0.198451,</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      -0.319605, 1.5009e-15, -1.26406e-16, 6.70813e-16, 0.20618, 0.605281,</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      -0.398688, -6.86196e-15, -0.133052, -0.432778, 0.138158, -2.40587e-17,</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      2.86328e-16, -0.0155638, 0.00462444, 0.0009653, -0.0833475, -0.291883,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      -0.103678, 3.92148e-15, 0.365698, 0.00851032, -0.164794, -6.99698e-16,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      -1.95342e-16, -2.30698e-16, -0.723617, 0.148366, -0.14897, 1.34703e-14,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      0.448285, -0.101733, 0.113039, -4.00384e-18, -2.56438e-17, 0.00358075,</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      0.00938016, 0.0127961, 0.192161, 0.0354831, -0.254375, -2.70117e-15,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      0.0882931, -0.348582, 0.177931, -8.4513e-16, 1.17851e-15, 5.49385e-15,</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      -0.0411612, 0.423615, 0.621838, 2.45073e-14, -0.0736529, 0.162606,</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      0.438431, 9.53106e-18, 7.87376e-17, 4.50653e-16, -1.1446e-16, 3.98938e-16,</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      3.51619e-16, -9.23785e-18, -8.69969e-16, -2.47306e-16, 1.14344e-15,</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      -1.91458e-15, -8.51659e-16, -0.060094, -0.998193, 4.38673e-16,</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      9.70656e-16, 3.30285e-16, 1.02556e-15, -1.00514e-16, 3.88181e-16,</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      1.69959e-18, -1.19517e-15, 0.00106227, 0.0237672, -0.001459, 0.00433715,</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;      0.000617507, 0.461796, -0.504929, -0.252611, -0.343823, 0.0850202,</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      -0.145542, -0.0828265, 1.94519e-15, 1.78636e-15, 0.600309, 0.0703459,</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      -0.148256, -0.00934183, -0.0554949, -0.271103, 0.417352, -0.773903,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      0.00928842, -0.0414346, -0.0288797, 0.0858503, 0.012223, 0.047698,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;      -0.0521531, -0.0260917, -0.0301047, 0.287304, -0.49182, -0.279891,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      3.08213e-16, 2.95652e-16, -0.0095153, 0.627532, -1.32254, -0.0833354,</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      1.24406, 0.484301, -0.745562, 1.38251, 0.00106227, 0.0237672, 0.0026328,</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      -0.00126226, 0.00357714, 0.0427602, 0.598097, -0.415299, -0.343823,</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      -0.0372958, -0.0428745, 0.179002, -3.86028e-16, 1.11668e-15, 0.600309,</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      -0.0599788, 0.0415619, -0.147278, -0.0554949, 0.43641, -0.782307,</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      -0.210113, 0.00928842, -0.0414346, 0.052114, -0.0249854, 0.0708065,</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      0.00441662, 0.0617762, -0.0428954, -0.0301047, -0.126031, -0.144883,</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      0.604892, 2.31849e-15, -4.33324e-15, -0.0095153, -0.535051, 0.37076,</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      -1.31382, 1.24406, -0.779607, 1.39752, 0.375349, 0.00106227, 0.0237672,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      0.00246913, -0.000253666, -0.00389357, 0.176084, 0.168299, 0.687525,</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      -0.343823, -0.160372, 0.0382744, -0.0899273, 9.65416e-17, -6.69665e-16,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      0.600309, -0.122276, -0.00419351, 0.109758, -0.0554949, 0.569725,</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      0.553977, 0.46382, 0.00928842, -0.0414346, 0.0488744, -0.00502111,</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      -0.0770701, 0.0181874, 0.0173832, 0.0710131, -0.0301047, -0.541935,</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;      0.129339, -0.303886, 4.5522e-15, -1.4397e-16, -0.0095153, -1.09078,</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      -0.0374089, 0.979111, 1.24406, -1.01776, -0.989631, -0.828573, 0.00106227,</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      0.0237672, -0.00364293, -0.00282122, -0.000301075, -0.680641, -0.261466,</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      -0.0196149, -0.343823, 0.112648, 0.150142, -0.00624844, 2.57639e-15,</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      -1.04514e-15, 0.600309, 0.111909, 0.110888, 0.0468622, -0.0554949,</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      -0.735032, -0.189022, 0.520197, 0.00928842, -0.0414346, -0.0721087,</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      -0.0558438, -0.00595952, -0.0703021, -0.0270063, -0.00202599, -0.0301047,</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      0.380663, 0.507365, -0.021115, -4.23727e-15, 3.19439e-15, -0.0095153,</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      0.998299, 0.989191, 0.418042, 1.24406, 1.31307, 0.337671, -0.929285;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  Eigen::MatrixXd ref = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>();</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a9afe75ad072d76e8e8adbc485c08d2b0">ReorderMOs</a>(orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>(), <span class="stringliteral">&quot;xtp&quot;</span>, <span class="stringliteral">&quot;gaussian&quot;</span>);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a9afe75ad072d76e8e8adbc485c08d2b0">ReorderMOs</a>(orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>(), <span class="stringliteral">&quot;gaussian&quot;</span>, <span class="stringliteral">&quot;xtp&quot;</span>);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keywordtype">bool</span> check_reorder_gaus = ref.isApprox(orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>(), 1e-7);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  <span class="keywordflow">if</span> (!check_reorder_gaus) {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    std::cout &lt;&lt; ref &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;reordered&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    std::cout &lt;&lt; orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  BOOST_CHECK_EQUAL(check_reorder_gaus, 1);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a9afe75ad072d76e8e8adbc485c08d2b0">ReorderMOs</a>(orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>(), <span class="stringliteral">&quot;xtp&quot;</span>, <span class="stringliteral">&quot;nwchem&quot;</span>);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a9afe75ad072d76e8e8adbc485c08d2b0">ReorderMOs</a>(orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>(), <span class="stringliteral">&quot;nwchem&quot;</span>, <span class="stringliteral">&quot;xtp&quot;</span>);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordtype">bool</span> check_reorder_nwchem = ref.isApprox(orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>(), 1e-7);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  BOOST_CHECK_EQUAL(check_reorder_nwchem, 1);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a08260b44bbc7302980c155b8b8434ae4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">votca::xtp::Orbitals::QMAtoms</a></div><div class="ttdeci">const QMMolecule &amp; QMAtoms() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00141">orbitals.h:141</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a3638e1261da1fff40c3608c01fac8307"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">votca::xtp::AOBasis::Fill</a></div><div class="ttdeci">void Fill(const BasisSet &amp;bs, const QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8cc_source.html#l00048">aobasis.cc:48</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a08260b44bbc7302980c155b8b8434ae4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">votca::xtp::Orbitals::QMAtoms</a></div><div class="ttdeci">const QMMolecule &amp; QMAtoms() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00138">orbitals.h:138</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a3638e1261da1fff40c3608c01fac8307"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">votca::xtp::AOBasis::Fill</a></div><div class="ttdeci">void Fill(const BasisSet &amp;bs, const QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8cc_source.html#l00370">aobasis.cc:370</a></div></div>
 <div class="ttc" id="aconvergenceacc_8h_html"><div class="ttname"><a href="convergenceacc_8h.html">convergenceacc.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_aea90b511fa504112dcb92061d52eaea5"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">votca::xtp::AOBasis::getShell</a></div><div class="ttdeci">const AOShell &amp; getShell(Index idx) const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00048">aobasis.h:48</a></div></div>
-<div class="ttc" id="atest__aobasis_8cc_html_aed1abccc1c7b70a2e505b38c20b15936"><div class="ttname"><a href="test__aobasis_8cc.html#aed1abccc1c7b70a2e505b38c20b15936">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(FillNormBasis_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__aobasis_8cc_source.html#l00038">test_aobasis.cc:38</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_aea90b511fa504112dcb92061d52eaea5"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#aea90b511fa504112dcb92061d52eaea5">votca::xtp::AOBasis::getShell</a></div><div class="ttdeci">const AOShell &amp; getShell(Index idx) const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00050">aobasis.h:50</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_a0247875ef0e5fb3bf24c8c6e3a7d2fdf"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">votca::tools::EigenSystem::eigenvectors</a></div><div class="ttdeci">const Eigen::MatrixXd &amp; eigenvectors() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00031">eigensystem.h:31</a></div></div>
+<div class="ttc" id="atest__aobasis_8cc_html_aed1abccc1c7b70a2e505b38c20b15936"><div class="ttname"><a href="test__aobasis_8cc.html#aed1abccc1c7b70a2e505b38c20b15936">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(FillNormBasis_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__aobasis_8cc_source.html#l00031">test_aobasis.cc:31</a></div></div>
 <div class="ttc" id="aaomatrix_8h_html"><div class="ttname"><a href="aomatrix_8h.html">aomatrix.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html">votca::xtp::Orbitals</a></div><div class="ttdoc">container for molecular orbitals</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00045">orbitals.h:45</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html_a1393697647490d3fd425f0950d222530"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">votca::xtp::QMMolecule::LoadFromFile</a></div><div class="ttdeci">void LoadFromFile(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8cc_source.html#l00045">qmmolecule.cc:45</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html">votca::xtp::Orbitals</a></div><div class="ttdoc">container for molecular orbitals</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00042">orbitals.h:42</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_afaf5bf86092c7749ba85a8b3b4295893"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">votca::xtp::Orbitals::MOs</a></div><div class="ttdeci">const tools::EigenSystem &amp; MOs() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00096">orbitals.h:96</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html_a1393697647490d3fd425f0950d222530"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">votca::xtp::QMMolecule::LoadFromFile</a></div><div class="ttdeci">void LoadFromFile(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8cc_source.html#l00042">qmmolecule.cc:42</a></div></div>
 <div class="ttc" id="aaobasis_8h_html"><div class="ttname"><a href="aobasis_8h.html">aobasis.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html_a1e8646dc8d3f6c07e67cac0eecd21e93"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">votca::xtp::BasisSet::Load</a></div><div class="ttdeci">void Load(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00148">basisset.cc:148</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html_a1e8646dc8d3f6c07e67cac0eecd21e93"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">votca::xtp::BasisSet::Load</a></div><div class="ttdeci">void Load(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00243">basisset.cc:243</a></div></div>
 <div class="ttc" id="aorbitals_8h_html"><div class="ttname"><a href="orbitals_8h.html">orbitals.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOGaussianPrimitive_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">votca::xtp::AOGaussianPrimitive</a></div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00041">aoshell.h:41</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html">votca::xtp::BasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00134">basisset.h:134</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00038">aobasis.h:38</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html">votca::xtp::AOShell</a></div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00077">aoshell.h:77</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a11221e2cf441ae7dd0afd79e4588d1ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">votca::xtp::AOBasis::AOBasisSize</a></div><div class="ttdeci">Index AOBasisSize() const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00044">aobasis.h:44</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOGaussianPrimitive_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">votca::xtp::AOGaussianPrimitive</a></div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00037">aoshell.h:37</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html">votca::xtp::BasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00132">basisset.h:132</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00037">aobasis.h:37</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html">votca::xtp::AOShell</a></div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00073">aoshell.h:73</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00028">adiis.h:28</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a9afe75ad072d76e8e8adbc485c08d2b0"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a9afe75ad072d76e8e8adbc485c08d2b0">votca::xtp::AOBasis::ReorderMOs</a></div><div class="ttdeci">void ReorderMOs(Eigen::MatrixXd &amp;v, const std::string &amp;start, const std::string &amp;target) const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8cc_source.html#l00033">aobasis.cc:33</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
