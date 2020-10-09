@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="graph__df__visitor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2019 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -89,46 +89,49 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef __VOTCA_TOOLS_GRAPH_DF_VISITOR_H</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define __VOTCA_TOOLS_GRAPH_DF_VISITOR_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef VOTCA_TOOLS_GRAPH_DF_VISITOR_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define VOTCA_TOOLS_GRAPH_DF_VISITOR_H</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="graphvisitor_8h.html">votca/tools/graphvisitor.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>tools {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">class </span>Graph;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">class </span>Edge;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">class </span>GraphNode;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html">Graph_DF_Visitor</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1tools_1_1GraphVisitor.html">GraphVisitor</a> {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#ada43833495be6ecb3ce72d545678c0f8">   42</a></span>&#160;  std::list&lt;Edge&gt; <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#ada43833495be6ecb3ce72d545678c0f8">edge_list_</a>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a1a9e0d80558014d9b368968b68591d4e">addEdges_</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Graph.html">Graph</a>&amp; g, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> vertex) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a9df7097363eac3d65dd1e78f39350907">getEdge_</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a6505aa0ed187b840e76309c775a7fcfa">   50</a></span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a6505aa0ed187b840e76309c775a7fcfa">Graph_DF_Visitor</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a0a79a1aefefe8635aac4d89a162b0476">queEmpty</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}  <span class="comment">// namespace tools</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}  <span class="comment">// namespace votca</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif  // __VOTCA_TOOLS_GRAPH_DF_VISITOR_H</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="graphvisitor_8h.html">graphvisitor.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span>tools {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span>Graph;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">class </span>Edge;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">class </span>GraphNode;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html">Graph_DF_Visitor</a> : <span class="keyword">public</span> <a class="code" href="classvotca_1_1tools_1_1GraphVisitor.html">GraphVisitor</a> {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#ada43833495be6ecb3ce72d545678c0f8">   45</a></span>&#160;  std::list&lt;Edge&gt; <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#ada43833495be6ecb3ce72d545678c0f8">edge_list_</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a1a9e0d80558014d9b368968b68591d4e">addEdges_</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Graph.html">Graph</a>&amp; g, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> vertex) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Edge.html">Edge</a> <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a9df7097363eac3d65dd1e78f39350907">getEdge_</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a6505aa0ed187b840e76309c775a7fcfa">   53</a></span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a6505aa0ed187b840e76309c775a7fcfa">Graph_DF_Visitor</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a0a79a1aefefe8635aac4d89a162b0476">queEmpty</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}  <span class="comment">// namespace tools</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif  // VOTCA_TOOLS_GRAPH_DF_VISITOR_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph.html">votca::tools::Graph</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00041">graph.h:41</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00040">edge.h:40</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_ada43833495be6ecb3ce72d545678c0f8"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#ada43833495be6ecb3ce72d545678c0f8">votca::tools::Graph_DF_Visitor::edge_list_</a></div><div class="ttdeci">std::list&lt; Edge &gt; edge_list_</div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8h_source.html#l00042">graph_df_visitor.h:42</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_a1a9e0d80558014d9b368968b68591d4e"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a1a9e0d80558014d9b368968b68591d4e">votca::tools::Graph_DF_Visitor::addEdges_</a></div><div class="ttdeci">void addEdges_(const Graph &amp;g, Index vertex) override</div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8cc_source.html#l00039">graph_df_visitor.cc:39</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1GraphVisitor_html"><div class="ttname"><a href="classvotca_1_1tools_1_1GraphVisitor.html">votca::tools::GraphVisitor</a></div><div class="ttdef"><b>Definition:</b> <a href="graphvisitor_8h_source.html#l00050">graphvisitor.h:50</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_a9df7097363eac3d65dd1e78f39350907"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a9df7097363eac3d65dd1e78f39350907">votca::tools::Graph_DF_Visitor::getEdge_</a></div><div class="ttdeci">Edge getEdge_() override</div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8cc_source.html#l00032">graph_df_visitor.cc:32</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph.html">votca::tools::Graph</a></div><div class="ttdef"><b>Definition:</b> <a href="graph_8h_source.html#l00043">graph.h:43</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Edge_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Edge.html">votca::tools::Edge</a></div><div class="ttdoc">Connects to vertices.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00042">edge.h:42</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_ada43833495be6ecb3ce72d545678c0f8"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#ada43833495be6ecb3ce72d545678c0f8">votca::tools::Graph_DF_Visitor::edge_list_</a></div><div class="ttdeci">std::list&lt; Edge &gt; edge_list_</div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8h_source.html#l00045">graph_df_visitor.h:45</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_a1a9e0d80558014d9b368968b68591d4e"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a1a9e0d80558014d9b368968b68591d4e">votca::tools::Graph_DF_Visitor::addEdges_</a></div><div class="ttdeci">void addEdges_(const Graph &amp;g, Index vertex) override</div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8cc_source.html#l00043">graph_df_visitor.cc:43</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1GraphVisitor_html"><div class="ttname"><a href="classvotca_1_1tools_1_1GraphVisitor.html">votca::tools::GraphVisitor</a></div><div class="ttdef"><b>Definition:</b> <a href="graphvisitor_8h_source.html#l00052">graphvisitor.h:52</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_a9df7097363eac3d65dd1e78f39350907"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a9df7097363eac3d65dd1e78f39350907">votca::tools::Graph_DF_Visitor::getEdge_</a></div><div class="ttdeci">Edge getEdge_() override</div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8cc_source.html#l00036">graph_df_visitor.cc:36</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_a6505aa0ed187b840e76309c775a7fcfa"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a6505aa0ed187b840e76309c775a7fcfa">votca::tools::Graph_DF_Visitor::Graph_DF_Visitor</a></div><div class="ttdeci">Graph_DF_Visitor()=default</div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_a0a79a1aefefe8635aac4d89a162b0476"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a0a79a1aefefe8635aac4d89a162b0476">votca::tools::Graph_DF_Visitor::queEmpty</a></div><div class="ttdeci">bool queEmpty() const override</div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8cc_source.html#l00030">graph_df_visitor.cc:30</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html_a0a79a1aefefe8635aac4d89a162b0476"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html#a0a79a1aefefe8635aac4d89a162b0476">votca::tools::Graph_DF_Visitor::queEmpty</a></div><div class="ttdeci">bool queEmpty() const override</div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8cc_source.html#l00034">graph_df_visitor.cc:34</a></div></div>
 <div class="ttc" id="agraphvisitor_8h_html"><div class="ttname"><a href="graphvisitor_8h.html">graphvisitor.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html">votca::tools::Graph_DF_Visitor</a></div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8h_source.html#l00040">graph_df_visitor.h:40</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Graph__DF__Visitor_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Graph__DF__Visitor.html">votca::tools::Graph_DF_Visitor</a></div><div class="ttdef"><b>Definition:</b> <a href="graph__df__visitor_8h_source.html#l00043">graph_df_visitor.h:43</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
