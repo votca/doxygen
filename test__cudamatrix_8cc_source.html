@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__cudamatrix_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -89,46 +89,51 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="test__cudamatrix_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   17</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="test__cudamatrix_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   18</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE CudaMatrix_test</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Standard includes</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cudapipeline_8h.html">votca/xtp/cudapipeline.h</a>&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xtp_2include_2votca_2xtp_2eigen_8h.html">votca/xtp/eigen.h</a>&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;BOOST_AUTO_TEST_SUITE(CudaMatrix_test)</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="test__cudamatrix_8cc.html#a189b34e1338fbe4d2e31a2eb701d6af2">   29</a></span>&#160;<a class="code" href="test__cudamatrix_8cc.html#a189b34e1338fbe4d2e31a2eb701d6af2">BOOST_AUTO_TEST_CASE</a>(create_cudamatrix) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">// Call the class to handle GPU resources</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html">CudaPipeline</a> cp;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="comment">// Call matrix multiplication GPU</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  Eigen::MatrixXd A = Eigen::MatrixXd::Zero(2, 2);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  Eigen::MatrixXd B = Eigen::MatrixXd::Zero(3, 2);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  Eigen::MatrixXd X = Eigen::MatrixXd::Zero(3, 2);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Third party includes</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cudapipeline_8h.html">votca/xtp/cudapipeline.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="xtp_2include_2votca_2xtp_2eigen_8h.html">votca/xtp/eigen.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;BOOST_AUTO_TEST_SUITE(CudaMatrix_test)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="test__cudamatrix_8cc.html#a189b34e1338fbe4d2e31a2eb701d6af2">   34</a></span>&#160;<a class="code" href="test__cudamatrix_8cc.html#a189b34e1338fbe4d2e31a2eb701d6af2">BOOST_AUTO_TEST_CASE</a>(create_cudamatrix) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">// Call the class to handle GPU resources</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html">CudaPipeline</a> cp;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="comment">// Define matrices</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  A &lt;&lt; 1., 2., 3., 4.;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  B &lt;&lt; 5., 6., 7., 8., 9., 10.;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  X &lt;&lt; 23., 34., 31., 46., 39., 58.;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="comment">// Call matrix multiplication GPU</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Eigen::MatrixXd A = Eigen::MatrixXd::Zero(2, 2);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Eigen::MatrixXd B = Eigen::MatrixXd::Zero(3, 2);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Eigen::MatrixXd X = Eigen::MatrixXd::Zero(3, 2);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// Copy matrix back and for to the GPU</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cumatrix{B, cp.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  Eigen::MatrixXd tmp = cumatrix;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  Eigen::MatrixXd result = tmp * A;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// Define matrices</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  A &lt;&lt; 1., 2., 3., 4.;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  B &lt;&lt; 5., 6., 7., 8., 9., 10.;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  X &lt;&lt; 23., 34., 31., 46., 39., 58.;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Expected results</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_TEST(X.isApprox(result));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Copy matrix back and for to the GPU</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cumatrix{B, cp.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  Eigen::MatrixXd tmp = cumatrix;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  Eigen::MatrixXd result = tmp * A;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// Expected results</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  BOOST_TEST(X.isApprox(result));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="atest__cudamatrix_8cc_html_a189b34e1338fbe4d2e31a2eb701d6af2"><div class="ttname"><a href="test__cudamatrix_8cc.html#a189b34e1338fbe4d2e31a2eb701d6af2">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(create_cudamatrix)</div><div class="ttdef"><b>Definition:</b> <a href="test__cudamatrix_8cc_source.html#l00029">test_cudamatrix.cc:29</a></div></div>
+<div class="ttc" id="atest__cudamatrix_8cc_html_a189b34e1338fbe4d2e31a2eb701d6af2"><div class="ttname"><a href="test__cudamatrix_8cc.html#a189b34e1338fbe4d2e31a2eb701d6af2">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(create_cudamatrix)</div><div class="ttdef"><b>Definition:</b> <a href="test__cudamatrix_8cc_source.html#l00034">test_cudamatrix.cc:34</a></div></div>
 <div class="ttc" id="axtp_2include_2votca_2xtp_2eigen_8h_html"><div class="ttname"><a href="xtp_2include_2votca_2xtp_2eigen_8h.html">eigen.h</a></div></div>
 <div class="ttc" id="acudapipeline_8h_html"><div class="ttname"><a href="cudapipeline_8h.html">cudapipeline.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html">votca::xtp::CudaPipeline</a></div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00045">cudapipeline.h:45</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html">votca::xtp::CudaMatrix</a></div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00045">cudamatrix.h:45</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_ad0b49dd4f237121b79b557fcbd8e0540"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">votca::xtp::CudaPipeline::get_stream</a></div><div class="ttdeci">const cudaStream_t &amp; get_stream() const</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00059">cudapipeline.h:59</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00028">adiis.h:28</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html">votca::xtp::CudaPipeline</a></div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00047">cudapipeline.h:47</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html">votca::xtp::CudaMatrix</a></div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00051">cudamatrix.h:51</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_ad0b49dd4f237121b79b557fcbd8e0540"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">votca::xtp::CudaPipeline::get_stream</a></div><div class="ttdeci">const cudaStream_t &amp; get_stream() const</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00061">cudapipeline.h:61</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
