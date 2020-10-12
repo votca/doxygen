@@ -119,89 +119,89 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Eigen::MatrixXd MOs = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/threecenter_gwbse/MOs.mm&quot;</span>);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html">TCMatrix_gwbse</a> tc{log};</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  tc.Initialize(aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), 0, 5, 0, 7);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  tc.Fill(aobasis, aobasis, MOs);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  Eigen::MatrixXd ref0b = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/threecenter_gwbse/ref0b.mm&quot;</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">bool</span> check0_before = ref0b.isApprox(tc[0], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (!check0_before) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc0&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    cout &lt;&lt; tc[0] &lt;&lt; endl;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc0_ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    cout &lt;&lt; ref0b &lt;&lt; endl;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  BOOST_CHECK_EQUAL(check0_before, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  Eigen::MatrixXd ref2b = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/threecenter_gwbse/ref2b.mm&quot;</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">bool</span> check2_before = ref2b.isApprox(tc[2], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">if</span> (!check2_before) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc2&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    cout &lt;&lt; tc[2] &lt;&lt; endl;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc2_ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    cout &lt;&lt; ref2b &lt;&lt; endl;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  BOOST_CHECK_EQUAL(check2_before, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  Eigen::MatrixXd ref4b = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/threecenter_gwbse/ref4b.mm&quot;</span>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">bool</span> check4_before = ref4b.isApprox(tc[4], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">if</span> (!check4_before) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc4&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    cout &lt;&lt; tc[4] &lt;&lt; endl;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc4_ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    cout &lt;&lt; ref4b &lt;&lt; endl;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  BOOST_CHECK_EQUAL(check4_before, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  Eigen::MatrixXd auxmatrix =</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      Eigen::MatrixXd::Identity(aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>());</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  tc.MultiplyRightWithAuxMatrix(auxmatrix);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">bool</span> check0_after = ref0b.isApprox(tc[0], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">if</span> (!check0_after) {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc0&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    cout &lt;&lt; tc[0] &lt;&lt; endl;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc0_ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    cout &lt;&lt; ref0b &lt;&lt; endl;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  BOOST_CHECK_EQUAL(check0_after, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">bool</span> check2_after = ref2b.isApprox(tc[2], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">if</span> (!check2_after) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc2&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    cout &lt;&lt; tc[2] &lt;&lt; endl;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc2_ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    cout &lt;&lt; ref2b &lt;&lt; endl;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  BOOST_CHECK_EQUAL(check2_after, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordtype">bool</span> check4_after = ref4b.isApprox(tc[4], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">if</span> (!check4_after) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc4&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    cout &lt;&lt; tc[4] &lt;&lt; endl;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc4_ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    cout &lt;&lt; ref4b &lt;&lt; endl;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  BOOST_CHECK_EQUAL(check4_after, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html">TCMatrix_gwbse</a> tc;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  tc.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a7a724c0f4f2e28100dc46c7e8a96936d">Initialize</a>(aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), 0, 5, 0, 7);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  tc.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#ac727d2aba8dba0ae3abcb7c43ba87be5">Fill</a>(aobasis, aobasis, MOs);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  Eigen::MatrixXd ref0b = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/threecenter_gwbse/ref0b.mm&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">bool</span> check0_before = ref0b.isApprox(tc[0], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">if</span> (!check0_before) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc0&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    cout &lt;&lt; tc[0] &lt;&lt; endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc0_ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    cout &lt;&lt; ref0b &lt;&lt; endl;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  BOOST_CHECK_EQUAL(check0_before, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  Eigen::MatrixXd ref2b = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/threecenter_gwbse/ref2b.mm&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">bool</span> check2_before = ref2b.isApprox(tc[2], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">if</span> (!check2_before) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc2&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    cout &lt;&lt; tc[2] &lt;&lt; endl;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc2_ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    cout &lt;&lt; ref2b &lt;&lt; endl;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  BOOST_CHECK_EQUAL(check2_before, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Eigen::MatrixXd ref4b = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/threecenter_gwbse/ref4b.mm&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">bool</span> check4_before = ref4b.isApprox(tc[4], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">if</span> (!check4_before) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc4&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    cout &lt;&lt; tc[4] &lt;&lt; endl;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc4_ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    cout &lt;&lt; ref4b &lt;&lt; endl;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  BOOST_CHECK_EQUAL(check4_before, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  Eigen::MatrixXd auxmatrix =</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      Eigen::MatrixXd::Identity(aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), aobasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  tc.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a7cafcb1a0a39a7ab1e75162886739f55">MultiplyRightWithAuxMatrix</a>(auxmatrix);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">bool</span> check0_after = ref0b.isApprox(tc[0], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordflow">if</span> (!check0_after) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc0&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    cout &lt;&lt; tc[0] &lt;&lt; endl;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc0_ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    cout &lt;&lt; ref0b &lt;&lt; endl;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  BOOST_CHECK_EQUAL(check0_after, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">bool</span> check2_after = ref2b.isApprox(tc[2], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">if</span> (!check2_after) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc2&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    cout &lt;&lt; tc[2] &lt;&lt; endl;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc2_ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    cout &lt;&lt; ref2b &lt;&lt; endl;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  BOOST_CHECK_EQUAL(check2_after, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">bool</span> check4_after = ref4b.isApprox(tc[4], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">if</span> (!check4_after) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc4&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    cout &lt;&lt; tc[4] &lt;&lt; endl;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;tc4_ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    cout &lt;&lt; ref4b &lt;&lt; endl;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  BOOST_CHECK_EQUAL(check4_after, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
 <div class="ttc" id="athreecenter_8h_html"><div class="ttname"><a href="threecenter_8h.html">threecenter.h</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a3638e1261da1fff40c3608c01fac8307"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">votca::xtp::AOBasis::Fill</a></div><div class="ttdeci">void Fill(const BasisSet &amp;bs, const QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8cc_source.html#l00048">aobasis.cc:48</a></div></div>
 <div class="ttc" id="atokenizer_8h_html"><div class="ttname"><a href="tokenizer_8h.html">tokenizer.h</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1TCMatrix__gwbse_html_ac727d2aba8dba0ae3abcb7c43ba87be5"><div class="ttname"><a href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#ac727d2aba8dba0ae3abcb7c43ba87be5">votca::xtp::TCMatrix_gwbse::Fill</a></div><div class="ttdeci">void Fill(const AOBasis &amp;gwbasis, const AOBasis &amp;dftbasis, const Eigen::MatrixXd &amp;dft_orbitals)</div><div class="ttdef"><b>Definition:</b> <a href="threecenter__gwbse_8cc_source.html#l00064">threecenter_gwbse.cc:64</a></div></div>
 <div class="ttc" id="aeigenio__matrixmarket_8h_html"><div class="ttname"><a href="eigenio__matrixmarket_8h.html">eigenio_matrixmarket.h</a></div></div>
 <div class="ttc" id="atest__threecenter__gwbse_8cc_html_a28998b620023edfb556e8913eb88cf6a"><div class="ttname"><a href="test__threecenter__gwbse_8cc.html#a28998b620023edfb556e8913eb88cf6a">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(threecenter_gwbse)</div><div class="ttdef"><b>Definition:</b> <a href="test__threecenter__gwbse_8cc_source.html#l00036">test_threecenter_gwbse.cc:36</a></div></div>
 <div class="ttc" id="aqmmolecule_8h_html"><div class="ttname"><a href="qmmolecule_8h.html">qmmolecule.h</a></div></div>
@@ -209,13 +209,14 @@ $(function() {
 <div class="ttc" id="aaobasis_8h_html"><div class="ttname"><a href="aobasis_8h.html">aobasis.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html_a1e8646dc8d3f6c07e67cac0eecd21e93"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">votca::xtp::BasisSet::Load</a></div><div class="ttdeci">void Load(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00148">basisset.cc:148</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a11221e2cf441ae7dd0afd79e4588d1ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">votca::xtp::AOBasis::AOBasisSize</a></div><div class="ttdeci">Index AOBasisSize() const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00042">aobasis.h:42</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1TCMatrix__gwbse_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html">votca::xtp::TCMatrix_gwbse</a></div><div class="ttdef"><b>Definition:</b> <a href="threecenter_8h_source.html#l00082">threecenter.h:82</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1TCMatrix__gwbse_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html">votca::xtp::TCMatrix_gwbse</a></div><div class="ttdef"><b>Definition:</b> <a href="threecenter_8h_source.html#l00074">threecenter.h:74</a></div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html">votca::xtp::BasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00134">basisset.h:134</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1TCMatrix__gwbse_html_a7a724c0f4f2e28100dc46c7e8a96936d"><div class="ttname"><a href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a7a724c0f4f2e28100dc46c7e8a96936d">votca::xtp::TCMatrix_gwbse::Initialize</a></div><div class="ttdeci">void Initialize(Index basissize, Index mmin, Index mmax, Index nmin, Index nmax)</div><div class="ttdef"><b>Definition:</b> <a href="threecenter__gwbse_8cc_source.html#l00028">threecenter_gwbse.cc:28</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00038">aobasis.h:38</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_1_1EigenIO__MatrixMarket_html_a418e26a64229ee49f7228e548740a4bc"><div class="ttname"><a href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a></div><div class="ttdeci">Eigen::MatrixXd ReadMatrix(const std::string &amp;filename)</div><div class="ttdef"><b>Definition:</b> <a href="eigenio__matrixmarket_8cc_source.html#l00063">eigenio_matrixmarket.cc:63</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Logger_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Logger.html">votca::xtp::Logger</a></div><div class="ttdoc">Logger is used for thread-safe output of messages.</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00164">logger.h:164</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1TCMatrix__gwbse_html_a7cafcb1a0a39a7ab1e75162886739f55"><div class="ttname"><a href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a7cafcb1a0a39a7ab1e75162886739f55">votca::xtp::TCMatrix_gwbse::MultiplyRightWithAuxMatrix</a></div><div class="ttdeci">void MultiplyRightWithAuxMatrix(const Eigen::MatrixXd &amp;matrix)</div><div class="ttdef"><b>Definition:</b> <a href="threecenter__gwbse_8cc_source.html#l00049">threecenter_gwbse.cc:49</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
