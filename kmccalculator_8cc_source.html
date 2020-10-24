@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="kmccalculator_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -87,328 +87,322 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;locale&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// Third party includes</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// VOTCA includes</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="constants_8h.html">votca/tools/constants.h</a>&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gnode_8h.html">votca/xtp/gnode.h</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="kmccalculator_8h.html">votca/xtp/kmccalculator.h</a>&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="logger_8h.html">votca/xtp/logger.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="qmstate_8h.html">votca/xtp/qmstate.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rate__engine_8h.html">votca/xtp/rate_engine.h</a>&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="xtp_2include_2votca_2xtp_2topology_8h.html">votca/xtp/topology.h</a>&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="constants_8h.html">votca/tools/constants.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="gnode_8h.html">votca/xtp/gnode.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="kmccalculator_8h.html">votca/xtp/kmccalculator.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xtp_2include_2votca_2xtp_2topology_8h.html">votca/xtp/topology.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="qmstate_8h.html">votca/xtp/qmstate.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="rate__engine_8h.html">votca/xtp/rate_engine.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a53473a77f7747c57868d78a4e131aa1a">   33</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::ParseCommonOptions(<a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>&amp; options) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  std::string key = <span class="stringliteral">&quot;options.&quot;</span> + Identify();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  _seed = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a090b41a316e52dd855cc7252c8e8d88f">ifExistsReturnElseThrowRuntimeError</a>&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>&gt;(key + <span class="stringliteral">&quot;.seed&quot;</span>);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#aa85887b41d006cb9f97602fdd03c24d5">   40</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::ParseCommonOptions(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>&amp; options) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  _seed = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.seed&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>&gt;();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  _numberofcarriers = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.numberofcarriers&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>&gt;();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  _injection_name = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.injectionpattern&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  _maxrealtime = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.maxrealtime&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;<span class="keywordtype">double</span>&gt;();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  _trajectoryfile = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.trajectoryfile&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  _temperature = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.temperature&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;<span class="keywordtype">double</span>&gt;();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  _temperature *= (<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">tools::conv::kB</a> * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a255353e91f927d7f2fbf0d95817ed4e2">tools::conv::ev2hrt</a>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  _occfile = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.occfile&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  _ratefile = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.ratefile&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  _numberofcarriers = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a090b41a316e52dd855cc7252c8e8d88f">ifExistsReturnElseThrowRuntimeError</a>&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>&gt;(</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      key + <span class="stringliteral">&quot;.numberofcarriers&quot;</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  _injection_name = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a090b41a316e52dd855cc7252c8e8d88f">ifExistsReturnElseThrowRuntimeError</a>&lt;std::string&gt;(</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      key + <span class="stringliteral">&quot;.injectionpattern&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  _maxrealtime = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a8d38e8e2d6a7981cd7840a60027f75bc">ifExistsReturnElseReturnDefault</a>&lt;<span class="keywordtype">double</span>&gt;(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      key + <span class="stringliteral">&quot;.maxrealtime&quot;</span>, 1E10);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  _trajectoryfile = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a8d38e8e2d6a7981cd7840a60027f75bc">ifExistsReturnElseReturnDefault</a>&lt;std::string&gt;(</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      key + <span class="stringliteral">&quot;.trajectoryfile&quot;</span>, _trajectoryfile);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  _temperature = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a8d38e8e2d6a7981cd7840a60027f75bc">ifExistsReturnElseReturnDefault</a>&lt;<span class="keywordtype">double</span>&gt;(</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      key + <span class="stringliteral">&quot;.temperature&quot;</span>, 300);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  _temperature *= (<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">tools::conv::kB</a> * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a255353e91f927d7f2fbf0d95817ed4e2">tools::conv::ev2hrt</a>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  _occfile = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a8d38e8e2d6a7981cd7840a60027f75bc">ifExistsReturnElseReturnDefault</a>&lt;std::string&gt;(</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      key + <span class="stringliteral">&quot;.occfile&quot;</span>, _occfile);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  _ratefile = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a8d38e8e2d6a7981cd7840a60027f75bc">ifExistsReturnElseReturnDefault</a>&lt;std::string&gt;(</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      key + <span class="stringliteral">&quot;.ratefile&quot;</span>, _ratefile);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  _injectionmethod = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.injectionmethod&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  _injectionmethod = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a8d38e8e2d6a7981cd7840a60027f75bc">ifExistsReturnElseReturnDefault</a>&lt;std::string&gt;(</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      key + <span class="stringliteral">&quot;.injectionmethod&quot;</span>, <span class="stringliteral">&quot;random&quot;</span>);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a1951438d0e248ef35204fb2e99114a54">   56</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::LoadGraph(<a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a>&amp; top) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  std::vector&lt;Segment&gt;&amp; segs = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">Segments</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">if</span> (segs.size() &lt; 1) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Your state file contains no segments!&quot;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  _nodes.reserve(segs.size());</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; seg : segs) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">bool</span> injectable = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(_injection_name, seg.getType())) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      injectable = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    _nodes.push_back(<a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>(seg, _carriertype, injectable));</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">if</span> (_injectionmethod != <span class="stringliteral">&quot;random&quot;</span>) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;WARNING in kmcmultiple: Unknown injection method. It will be set &quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="stringliteral">&quot;to random injection.&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         &lt;&lt; endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    _injectionmethod = <span class="stringliteral">&quot;random&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a1951438d0e248ef35204fb2e99114a54">   64</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::LoadGraph(<a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a>&amp; top) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::vector&lt;Segment&gt;&amp; segs = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">Segments</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">if</span> (segs.size() &lt; 1) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Your state file contains no segments!&quot;</span>);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMNBList.html">QMNBList</a>&amp; nblist = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a28e353e9e07f24caa0be734b5327aeb8">NBList</a>();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">if</span> (nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#aa1cb4036c9b416f97ff91ed8cbbd573b">size</a>() &lt; 1) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;neighborlist contains no pairs!&quot;</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">if</span> (_temperature &lt;= 0) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="stringliteral">&quot;Your Temperature is negative or zero, please specify the temperature &quot;</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="stringliteral">&quot;in Kelvin.&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Rate__Engine.html">Rate_Engine</a> rate_engine(_temperature, _field);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log) &lt;&lt; <span class="stringliteral">&quot;\nCalculating initial rates.&quot;</span> &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log) &lt;&lt; rate_engine &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;    carriertype: &quot;</span> &lt;&lt; _carriertype.ToLongString() &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMPair.html">QMPair</a>* pair : nblist) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html">Rate_Engine::PairRates</a> rates = rate_engine.<a class="code" href="classvotca_1_1xtp_1_1Rate__Engine.html#a690de92e8ed3082f7138860e1f2494cf">Rate</a>(*pair, _carriertype);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    _nodes[pair-&gt;Seg1()-&gt;getId()].AddEventfromQmPair(*pair, _nodes,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                     rates.<a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a97c135eee2d98879ce39fbf0223a87ea">rate12</a>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    _nodes[pair-&gt;Seg2()-&gt;getId()].AddEventfromQmPair(*pair, _nodes,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                     rates.<a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a3abec891925f30e04a78939cb7b6f727">rate21</a>);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  _RandomVariable.setMaxInt(<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(_nodes.size()));</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log) &lt;&lt; <span class="stringliteral">&quot;    Rates for &quot;</span> &lt;&lt; _nodes.size()</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                            &lt;&lt; <span class="stringliteral">&quot; sites are computed.&quot;</span> &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  WriteRatestoFile(_ratefile, nblist);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> events = 0;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> max = std::numeric_limits&lt;Index&gt;::min();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> min = std::numeric_limits&lt;Index&gt;::max();</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">double</span> minlength = std::numeric_limits&lt;double&gt;::max();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">double</span> maxlength = 0;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; node : _nodes) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> = <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(node.Events().size());</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; event : node.Events()) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="keywordflow">if</span> (event.isDecayEvent()) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="keywordtype">double</span> dist = <span class="keyword">event</span>.getDeltaR().norm();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="keywordflow">if</span> (dist &gt; maxlength) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        maxlength = dist;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (dist &lt; minlength) {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        minlength = dist;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    events += <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> == 0) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::info, _log)</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;Node &quot;</span> &lt;&lt; node.getId() &lt;&lt; <span class="stringliteral">&quot; has 0 jumps&quot;</span> &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> &lt; min) {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      min = <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> &gt; max) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      max = <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  _nodes.reserve(segs.size());</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; seg : segs) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">bool</span> injectable = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(_injection_name, seg.getType())) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      injectable = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    _nodes.push_back(<a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>(seg, _carriertype, injectable));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMNBList.html">QMNBList</a>&amp; nblist = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a28e353e9e07f24caa0be734b5327aeb8">NBList</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (nblist.<a class="code" href="classvotca_1_1csg_1_1PairList.html#aa1cb4036c9b416f97ff91ed8cbbd573b">size</a>() &lt; 1) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;neighborlist contains no pairs!&quot;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Rate__Engine.html">Rate_Engine</a> rate_engine(_temperature, _field);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;Calculating initial rates.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  cout &lt;&lt; rate_engine &lt;&lt; endl;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;    carriertype: &quot;</span> &lt;&lt; _carriertype.ToLongString() &lt;&lt; endl;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMPair.html">QMPair</a>* pair : nblist) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html">Rate_Engine::PairRates</a> rates = rate_engine.<a class="code" href="classvotca_1_1xtp_1_1Rate__Engine.html#a690de92e8ed3082f7138860e1f2494cf">Rate</a>(*pair, _carriertype);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    _nodes[pair-&gt;Seg1()-&gt;getId()].AddEventfromQmPair(*pair, _nodes,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                     rates.<a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a97c135eee2d98879ce39fbf0223a87ea">rate12</a>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    _nodes[pair-&gt;Seg2()-&gt;getId()].AddEventfromQmPair(*pair, _nodes,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                                     rates.<a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a3abec891925f30e04a78939cb7b6f727">rate21</a>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  _RandomVariable.setMaxInt(<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(_nodes.size()));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;    Rates for &quot;</span> &lt;&lt; _nodes.size() &lt;&lt; <span class="stringliteral">&quot; sites are computed.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  WriteRatestoFile(_ratefile, nblist);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> events = 0;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> max = std::numeric_limits&lt;Index&gt;::min();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> min = std::numeric_limits&lt;Index&gt;::max();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">double</span> minlength = std::numeric_limits&lt;double&gt;::max();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">double</span> maxlength = 0;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; node : _nodes) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> size = <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(node.Events().size());</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; event : node.Events()) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordflow">if</span> (event.isDecayEvent()) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="keywordtype">double</span> dist = <span class="keyword">event</span>.getDeltaR().norm();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <span class="keywordflow">if</span> (dist &gt; maxlength) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        maxlength = dist;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (dist &lt; minlength) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        minlength = dist;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    events += size;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">if</span> (size == 0) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Node &quot;</span> &lt;&lt; node.getId() &lt;&lt; <span class="stringliteral">&quot; has 0 jumps&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (size &lt; min) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      min = size;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (size &gt; max) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      max = size;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  }</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">double</span> avg = double(events) / double(_nodes.size());</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordtype">double</span> deviation = 0.0;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; node : _nodes) {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> = double(node.Events().size());</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    deviation += (<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> - avg) * (<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> - avg);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">double</span> size = double(node.Events().size());</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    deviation += (size - avg) * (size - avg);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  }</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  deviation = std::sqrt(deviation / <span class="keywordtype">double</span>(_nodes.size()));</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log)</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;Nblist has &quot;</span> &lt;&lt; nblist.size() &lt;&lt; <span class="stringliteral">&quot; pairs. Nodes contain &quot;</span> &lt;&lt; events</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; jump events\n&quot;</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;with avg=&quot;</span> &lt;&lt; avg &lt;&lt; <span class="stringliteral">&quot; std=&quot;</span> &lt;&lt; deviation &lt;&lt; <span class="stringliteral">&quot; max=&quot;</span> &lt;&lt; max</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; min=&quot;</span> &lt;&lt; min &lt;&lt; <span class="stringliteral">&quot; jumps per site\n&quot;</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;Minimum jumpdistance =&quot;</span> &lt;&lt; minlength * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">tools::conv::bohr2nm</a></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; nm Maximum distance =&quot;</span> &lt;&lt; maxlength * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">tools::conv::bohr2nm</a> &lt;&lt; <span class="stringliteral">&quot; nm\n&quot;</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">double</span> conv = std::pow(<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">tools::conv::bohr2nm</a>, 3);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log)</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;spatial carrier density: &quot;</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      &lt;&lt; double(_numberofcarriers) / (top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa">BoxVolume</a>() * conv) &lt;&lt; <span class="stringliteral">&quot; nm^-3&quot;</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; node : _nodes) {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    node.InitEscapeRate();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    node.MakeHuffTree();</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a0ebf4e755170eec5c8c306804adec383">  159</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::ResetForbiddenlist(</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    std::vector&lt;GNode*&gt;&amp; forbiddenlist)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  forbiddenlist.clear();</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a6a0334c317d9151e3a2d0231149807b6">  165</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::AddtoForbiddenlist(</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node, std::vector&lt;GNode*&gt;&amp; forbiddenlist)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  forbiddenlist.push_back(&amp;node);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#af1fd0b961972b2935330d6008eec4fdb">  171</a></span>&#160;<span class="keywordtype">bool</span> KMCCalculator::CheckForbidden(</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node, <span class="keyword">const</span> std::vector&lt;GNode*&gt;&amp; forbiddenlist)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordtype">bool</span> forbidden = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>* fnode : forbiddenlist) {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">if</span> (&amp;node == fnode) {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      forbidden = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keywordflow">return</span> forbidden;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#ab7248dbe09a56e080cf94a11cb639b21">  183</a></span>&#160;<span class="keywordtype">bool</span> KMCCalculator::CheckSurrounded(</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node, <span class="keyword">const</span> std::vector&lt;GNode*&gt;&amp; forbiddendests)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="keywordtype">bool</span> surrounded = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; event : node.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a0f750791cc1caa6d43b172e9d04ff827">Events</a>()) {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">bool</span> thisevent_possible = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>* fnode : forbiddendests) {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keywordflow">if</span> (event.getDestination() == fnode) {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        thisevent_possible = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">if</span> (thisevent_possible == <span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      surrounded = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">return</span> surrounded;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;Nblist has &quot;</span> &lt;&lt; nblist.size() &lt;&lt; <span class="stringliteral">&quot; pairs. Nodes contain &quot;</span> &lt;&lt; events</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;       &lt;&lt; <span class="stringliteral">&quot; jump events&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;with avg=&quot;</span> &lt;&lt; avg &lt;&lt; <span class="stringliteral">&quot; std=&quot;</span> &lt;&lt; deviation &lt;&lt; <span class="stringliteral">&quot; max=&quot;</span> &lt;&lt; max</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;       &lt;&lt; <span class="stringliteral">&quot; min=&quot;</span> &lt;&lt; min &lt;&lt; <span class="stringliteral">&quot; jumps per site&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;Minimum jumpdistance =&quot;</span> &lt;&lt; minlength * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">tools::conv::bohr2nm</a></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;       &lt;&lt; <span class="stringliteral">&quot; nm Maximum distance =&quot;</span> &lt;&lt; maxlength * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">tools::conv::bohr2nm</a> &lt;&lt; <span class="stringliteral">&quot; nm&quot;</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;       &lt;&lt; endl;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordtype">double</span> conv = std::pow(<a class="code" href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">tools::conv::bohr2nm</a>, 3);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;spatial carrier density: &quot;</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;       &lt;&lt; double(_numberofcarriers) / (top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa">BoxVolume</a>() * conv) &lt;&lt; <span class="stringliteral">&quot; nm^-3&quot;</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;       &lt;&lt; endl;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; node : _nodes) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    node.InitEscapeRate();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    node.MakeHuffTree();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a0ebf4e755170eec5c8c306804adec383">  157</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::ResetForbiddenlist(</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    std::vector&lt;GNode*&gt;&amp; forbiddenlist)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  forbiddenlist.clear();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a6a0334c317d9151e3a2d0231149807b6">  163</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::AddtoForbiddenlist(</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node, std::vector&lt;GNode*&gt;&amp; forbiddenlist)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  forbiddenlist.push_back(&amp;node);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#af1fd0b961972b2935330d6008eec4fdb">  169</a></span>&#160;<span class="keywordtype">bool</span> KMCCalculator::CheckForbidden(</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node, <span class="keyword">const</span> std::vector&lt;GNode*&gt;&amp; forbiddenlist)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keywordtype">bool</span> forbidden = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>* fnode : forbiddenlist) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">if</span> (&amp;node == fnode) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      forbidden = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordflow">return</span> forbidden;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#ab7248dbe09a56e080cf94a11cb639b21">  181</a></span>&#160;<span class="keywordtype">bool</span> KMCCalculator::CheckSurrounded(</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node, <span class="keyword">const</span> std::vector&lt;GNode*&gt;&amp; forbiddendests)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordtype">bool</span> surrounded = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; event : node.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#a0f750791cc1caa6d43b172e9d04ff827">Events</a>()) {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordtype">bool</span> thisevent_possible = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>* fnode : forbiddendests) {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="keywordflow">if</span> (event.getDestination() == fnode) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        thisevent_possible = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">if</span> (thisevent_possible == <span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      surrounded = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordflow">return</span> surrounded;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a8e3ae8728f30214fdaefe3c91e2e9dd9">  200</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::RandomlyCreateCharges() {</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a8e3ae8728f30214fdaefe3c91e2e9dd9">  202</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::RandomlyCreateCharges() {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log) &lt;&lt; <span class="stringliteral">&quot;looking for injectable nodes...&quot;</span> &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _numberofcarriers; i++) {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html">Chargecarrier</a> newCharge(i);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    RandomlyAssignCarriertoSite(newCharge);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log)</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;starting position for charge &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;: segment &quot;</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        &lt;&lt; newCharge.<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a2525c8f8c9671f37b9a39e26b19d7809">getCurrentNodeId</a>() &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    _carriers.push_back(newCharge);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a84e3d89c853e0f193f8c845626e8d644">  217</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::RandomlyAssignCarriertoSite(<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html">Chargecarrier</a>&amp; <a class="code" href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">Charge</a>) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> nodeId_guess = -1;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    nodeId_guess = _RandomVariable.rand_uniform_int();</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  } <span class="keywordflow">while</span> (_nodes[nodeId_guess].isOccupied() ||</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;           _nodes[nodeId_guess].isInjectable() ==</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;               <span class="keyword">false</span>);  <span class="comment">// maybe already occupied? or maybe not injectable?</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">Charge</a>.hasNode()) {</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">Charge</a>.ReleaseNode();</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">Charge</a>.settoNote(&amp;_nodes[nodeId_guess]);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;looking for injectable nodes...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _numberofcarriers; i++) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html">Chargecarrier</a> newCharge(i);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    RandomlyAssignCarriertoSite(newCharge);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;starting position for charge &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;: segment &quot;</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;         &lt;&lt; newCharge.<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a2525c8f8c9671f37b9a39e26b19d7809">getCurrentNodeId</a>() &lt;&lt; endl;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    _carriers.push_back(newCharge);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a84e3d89c853e0f193f8c845626e8d644">  214</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::RandomlyAssignCarriertoSite(<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html">Chargecarrier</a>&amp; <a class="code" href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">Charge</a>) {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> nodeId_guess = -1;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    nodeId_guess = _RandomVariable.rand_uniform_int();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  } <span class="keywordflow">while</span> (_nodes[nodeId_guess].isOccupied() ||</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;           _nodes[nodeId_guess].isInjectable() ==</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;               <span class="keyword">false</span>);  <span class="comment">// maybe already occupied? or maybe not injectable?</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">Charge</a>.hasNode()) {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">Charge</a>.ReleaseNode();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">Charge</a>.settoNote(&amp;_nodes[nodeId_guess]);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;}</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
-<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a3c8bd5d6c5cb4fde0658d5c2758d4b8d">  232</a></span>&#160;<span class="keywordtype">double</span> KMCCalculator::Promotetime(<span class="keywordtype">double</span> cumulated_rate) {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keywordtype">double</span> dt = 0;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keywordtype">double</span> rand_u = 1 - _RandomVariable.rand_uniform();</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  dt = -1 / cumulated_rate * std::log(rand_u);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keywordflow">return</span> dt;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a554b94f352e10a924f39b80e8ed7f80c">  239</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GLink.html">GLink</a>&amp; KMCCalculator::ChooseHoppingDest(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node) {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keywordtype">double</span> u = 1 - _RandomVariable.rand_uniform();</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <span class="keywordflow">return</span> *(node.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(u));</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a50a8701fb9ae4d88aaf76d99888e7fe7">  244</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html">Chargecarrier</a>* KMCCalculator::ChooseAffectedCarrier(<span class="keywordtype">double</span> cumulated_rate) {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <span class="keywordflow">if</span> (_carriers.size() == 1) {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">return</span> &amp;_carriers[0];</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  }</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html">Chargecarrier</a>* carrier = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="keywordtype">double</span> u = 1 - _RandomVariable.rand_uniform();</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _numberofcarriers; i++) {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    u -= _carriers[i].<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a9b02f7d4d4fb1058412da578f2909ff4">getCurrentEscapeRate</a>() / cumulated_rate;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">if</span> (u &lt;= 0 || i == _numberofcarriers - 1) {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      carrier = &amp;_carriers[i];</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  }</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <span class="keywordflow">return</span> carrier;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
-<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a3c7bb76ef24cb881ba3a0cc2b76178b4">  259</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::WriteRatestoFile(std::string filename,</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMNBList.html">QMNBList</a>&amp; nblist) {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log)</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;\nRates are written to &quot;</span> &lt;&lt; filename &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  fstream ratefs;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  ratefs.open(filename, fstream::out);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  ratefs &lt;&lt; <span class="stringliteral">&quot;#PairID,SiteID1,SiteID2, ,rate12[1/s],rate21[1/s] at &quot;</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;         &lt;&lt; _temperature * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> / <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">tools::conv::kB</a></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;         &lt;&lt; <span class="stringliteral">&quot;K for carrier:&quot;</span> &lt;&lt; _carriertype.ToString() &lt;&lt; endl;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Rate__Engine.html">Rate_Engine</a> rate_engine(_temperature, _field);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMPair.html">QMPair</a>* pair : nblist) {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html">Rate_Engine::PairRates</a> rates = rate_engine.<a class="code" href="classvotca_1_1xtp_1_1Rate__Engine.html#a690de92e8ed3082f7138860e1f2494cf">Rate</a>(*pair, _carriertype);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    ratefs &lt;&lt; pair-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; pair-&gt;Seg1()-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;           &lt;&lt; pair-&gt;Seg2()-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; rates.<a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a97c135eee2d98879ce39fbf0223a87ea">rate12</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;           &lt;&lt; rates.<a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a3abec891925f30e04a78939cb7b6f727">rate21</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  ratefs &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  ratefs.close();</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#ae9ab0ca06db1c24facdca998826319c5">  280</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::WriteOccupationtoFile(<span class="keywordtype">double</span> simtime,</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                                          std::string filename) {</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, _log)</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;\nOccupations are written to &quot;</span> &lt;&lt; filename &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  fstream probs;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  probs.open(filename, fstream::out);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  probs &lt;&lt; <span class="stringliteral">&quot;#SiteID, Occupation prob at &quot;</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        &lt;&lt; _temperature * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> / <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">tools::conv::kB</a></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;K for carrier:&quot;</span> &lt;&lt; _carriertype.ToString() &lt;&lt; endl;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node : _nodes) {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordtype">double</span> occupationprobability = node.OccupationTime() / simtime;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    probs &lt;&lt; node.getId() &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; occupationprobability &lt;&lt; endl;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  }</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  probs.close();</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;}</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a3c8bd5d6c5cb4fde0658d5c2758d4b8d">  229</a></span>&#160;<span class="keywordtype">double</span> KMCCalculator::Promotetime(<span class="keywordtype">double</span> cumulated_rate) {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordtype">double</span> dt = 0;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  <span class="keywordtype">double</span> rand_u = 1 - _RandomVariable.rand_uniform();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  dt = -1 / cumulated_rate * std::log(rand_u);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keywordflow">return</span> dt;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a554b94f352e10a924f39b80e8ed7f80c">  236</a></span>&#160;<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GLink.html">GLink</a>&amp; KMCCalculator::ChooseHoppingDest(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordtype">double</span> u = 1 - _RandomVariable.rand_uniform();</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordflow">return</span> *(node.<a class="code" href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">findHoppingDestination</a>(u));</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a50a8701fb9ae4d88aaf76d99888e7fe7">  241</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html">Chargecarrier</a>* KMCCalculator::ChooseAffectedCarrier(<span class="keywordtype">double</span> cumulated_rate) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <span class="keywordflow">if</span> (_carriers.size() == 1) {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">return</span> &amp;_carriers[0];</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html">Chargecarrier</a>* carrier = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <span class="keywordtype">double</span> u = 1 - _RandomVariable.rand_uniform();</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _numberofcarriers; i++) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    u -= _carriers[i].<a class="code" href="classvotca_1_1xtp_1_1Chargecarrier.html#a9b02f7d4d4fb1058412da578f2909ff4">getCurrentEscapeRate</a>() / cumulated_rate;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">if</span> (u &lt;= 0 || i == _numberofcarriers - 1) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      carrier = &amp;_carriers[i];</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="keywordflow">return</span> carrier;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a8c9ca6d7ec0b4d00908f99bad9107921">  256</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::WriteRatestoFile(std::string filename,</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMNBList.html">QMNBList</a>&amp; nblist)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;Rates are written to &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  fstream ratefs;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  ratefs.open(filename, fstream::out);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  ratefs &lt;&lt; <span class="stringliteral">&quot;#PairID,SiteID1,SiteID2, ,rate12[1/s],rate21[1/s] at &quot;</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;         &lt;&lt; _temperature * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> / <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">tools::conv::kB</a></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;         &lt;&lt; <span class="stringliteral">&quot;K for carrier:&quot;</span> &lt;&lt; _carriertype.ToString() &lt;&lt; endl;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Rate__Engine.html">Rate_Engine</a> rate_engine(_temperature, _field);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMPair.html">QMPair</a>* pair : nblist) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html">Rate_Engine::PairRates</a> rates = rate_engine.<a class="code" href="classvotca_1_1xtp_1_1Rate__Engine.html#a690de92e8ed3082f7138860e1f2494cf">Rate</a>(*pair, _carriertype);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    ratefs &lt;&lt; pair-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; pair-&gt;Seg1()-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;           &lt;&lt; pair-&gt;Seg2()-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; rates.<a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a97c135eee2d98879ce39fbf0223a87ea">rate12</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;           &lt;&lt; rates.<a class="code" href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a3abec891925f30e04a78939cb7b6f727">rate21</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  ratefs &lt;&lt; std::flush;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  ratefs.close();</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1KMCCalculator.html#a9bcbdf32ed808ddc9d72b05434dfcd66">  277</a></span>&#160;<span class="keywordtype">void</span> KMCCalculator::WriteOccupationtoFile(<span class="keywordtype">double</span> simtime,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                          std::string filename)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;Occupations are written to &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  fstream probs;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  probs.open(filename, fstream::out);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  probs &lt;&lt; <span class="stringliteral">&quot;#SiteID, Occupation prob at &quot;</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        &lt;&lt; _temperature * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">tools::conv::hrt2ev</a> / <a class="code" href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">tools::conv::kB</a></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;K for carrier:&quot;</span> &lt;&lt; _carriertype.ToString() &lt;&lt; endl;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GNode.html">GNode</a>&amp; node : _nodes) {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordtype">double</span> occupationprobability = node.OccupationTime() / simtime;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    probs &lt;&lt; node.getId() &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; occupationprobability &lt;&lt; endl;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  probs.close();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a67406d5b069305b305c24eb6bfcf17c9"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">votca::tools::Property::as</a></div><div class="ttdeci">T as() const</div><div class="ttdoc">return value as type</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00290">property.h:290</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a9ca57b0023f3a9facbf5ee5271d1675a"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">votca::xtp::Topology::Segments</a></div><div class="ttdeci">std::vector&lt; Segment &gt; &amp; Segments()</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00058">topology.h:58</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a9ca57b0023f3a9facbf5ee5271d1675a"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">votca::xtp::Topology::Segments</a></div><div class="ttdeci">std::vector&lt; Segment &gt; &amp; Segments()</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00055">topology.h:55</a></div></div>
 <div class="ttc" id="arate__engine_8h_html"><div class="ttname"><a href="rate__engine_8h.html">rate_engine.h</a></div></div>
 <div class="ttc" id="aqmstate_8h_html"><div class="ttname"><a href="qmstate_8h.html">qmstate.h</a></div></div>
 <div class="ttc" id="axtp_2include_2votca_2xtp_2topology_8h_html"><div class="ttname"><a href="xtp_2include_2votca_2xtp_2topology_8h.html">topology.h</a></div></div>
-<div class="ttc" id="alogger_8h_html"><div class="ttname"><a href="logger_8h.html">logger.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Rate__Engine_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Rate__Engine.html">votca::xtp::Rate_Engine</a></div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8h_source.html#l00032">rate_engine.h:32</a></div></div>
-<div class="ttc" id="anamespacekokkos__linalg__3d_html_a1cb29721f0bb1d12949939f8abb2d4d6"><div class="ttname"><a href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">kokkos_linalg_3d::size</a></div><div class="ttdeci">int size(const T &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="kokkos__linalg_8hpp_source.html#l00034">kokkos_linalg.hpp:34</a></div></div>
-<div class="ttc" id="alogger_8h_html_aa4d2d0975262097f01964c7dad86afcc"><div class="ttname"><a href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a></div><div class="ttdeci">#define XTP_LOG(level, log)</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00040">logger.h:40</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html">votca::xtp::Topology</a></div><div class="ttdoc">Container for segments and box and atoms.</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00041">topology.h:41</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GLink_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GLink.html">votca::xtp::GLink</a></div><div class="ttdef"><b>Definition:</b> <a href="glink_8h_source.html#l00029">glink.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Rate__Engine_html_a690de92e8ed3082f7138860e1f2494cf"><div class="ttname"><a href="classvotca_1_1xtp_1_1Rate__Engine.html#a690de92e8ed3082f7138860e1f2494cf">votca::xtp::Rate_Engine::Rate</a></div><div class="ttdeci">PairRates Rate(const QMPair &amp;pair, QMStateType carriertype) const</div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8cc_source.html#l00039">rate_engine.cc:39</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Rate__Engine_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Rate__Engine.html">votca::xtp::Rate_Engine</a></div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8h_source.html#l00030">rate_engine.h:30</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a8d38e8e2d6a7981cd7840a60027f75bc"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a8d38e8e2d6a7981cd7840a60027f75bc">votca::tools::Property::ifExistsReturnElseReturnDefault</a></div><div class="ttdeci">T ifExistsReturnElseReturnDefault(const std::string &amp;key, T defaultvalue) const</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00290">property.h:290</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a090b41a316e52dd855cc7252c8e8d88f"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a090b41a316e52dd855cc7252c8e8d88f">votca::tools::Property::ifExistsReturnElseThrowRuntimeError</a></div><div class="ttdeci">T ifExistsReturnElseThrowRuntimeError(const std::string &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00302">property.h:302</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html">votca::xtp::Topology</a></div><div class="ttdoc">Container for segments and box and atoms.</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00038">topology.h:38</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GLink_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GLink.html">votca::xtp::GLink</a></div><div class="ttdef"><b>Definition:</b> <a href="glink_8h_source.html#l00027">glink.h:27</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Rate__Engine_html_a690de92e8ed3082f7138860e1f2494cf"><div class="ttname"><a href="classvotca_1_1xtp_1_1Rate__Engine.html#a690de92e8ed3082f7138860e1f2494cf">votca::xtp::Rate_Engine::Rate</a></div><div class="ttdeci">PairRates Rate(const QMPair &amp;pair, QMStateType carriertype) const</div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8cc_source.html#l00038">rate_engine.cc:38</a></div></div>
 <div class="ttc" id="agnode_8h_html"><div class="ttname"><a href="gnode_8h.html">gnode.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_abdcd9768e0054d57c7be6bb2691d1efa"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa">votca::xtp::Topology::BoxVolume</a></div><div class="ttdeci">double BoxVolume() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00065">topology.h:65</a></div></div>
-<div class="ttc" id="astructvotca_1_1xtp_1_1Rate__Engine_1_1PairRates_html_a3abec891925f30e04a78939cb7b6f727"><div class="ttname"><a href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a3abec891925f30e04a78939cb7b6f727">votca::xtp::Rate_Engine::PairRates::rate21</a></div><div class="ttdeci">double rate21</div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8h_source.html#l00037">rate_engine.h:37</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMNBList_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMNBList.html">votca::xtp::QMNBList</a></div><div class="ttdef"><b>Definition:</b> <a href="qmnblist_8h_source.html#l00035">qmnblist.h:35</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Chargecarrier_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Chargecarrier.html">votca::xtp::Chargecarrier</a></div><div class="ttdef"><b>Definition:</b> <a href="chargecarrier_8h_source.html#l00030">chargecarrier.h:30</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234"><div class="ttname"><a href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">votca::tools::Charge</a></div><div class="ttdeci">@ Charge</div><div class="ttdef"><b>Definition:</b> <a href="structureparameters_8h_source.html#l00039">structureparameters.h:39</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a6f231ae1bc59867ca0e1c76a9fd1f179"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">votca::tools::conv::hrt2ev</a></div><div class="ttdeci">const double hrt2ev</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00053">constants.h:53</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a67e348deb9e8b70465765b5ee72a960c"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">votca::tools::Property::get</a></div><div class="ttdeci">Property &amp; get(const std::string &amp;key)</div><div class="ttdoc">get existing property</div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1PairList_html_aa1cb4036c9b416f97ff91ed8cbbd573b"><div class="ttname"><a href="classvotca_1_1csg_1_1PairList.html#aa1cb4036c9b416f97ff91ed8cbbd573b">votca::csg::PairList::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition:</b> <a href="pairlist_8h_source.html#l00053">pairlist.h:53</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_a4c0a7b29f3f1be8653fcf07df14bae22"><div class="ttname"><a href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">votca::tools::wildcmp</a></div><div class="ttdeci">int wildcmp(const char *wild, const char *string)</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8cc_source.html#l00028">tokenizer.cc:28</a></div></div>
-<div class="ttc" id="astructvotca_1_1xtp_1_1Rate__Engine_1_1PairRates_html_a97c135eee2d98879ce39fbf0223a87ea"><div class="ttname"><a href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a97c135eee2d98879ce39fbf0223a87ea">votca::xtp::Rate_Engine::PairRates::rate12</a></div><div class="ttdeci">double rate12</div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8h_source.html#l00036">rate_engine.h:36</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a></div><div class="ttdoc">class to manage program options with xml serialization functionality</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00055">property.h:55</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_ae5c96b90aa5208cb9b3d8ac1dff369bd"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">votca::xtp::GNode::findHoppingDestination</a></div><div class="ttdeci">GLink * findHoppingDestination(double p) const</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00044">gnode.cc:44</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Chargecarrier_html_a9b02f7d4d4fb1058412da578f2909ff4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Chargecarrier.html#a9b02f7d4d4fb1058412da578f2909ff4">votca::xtp::Chargecarrier::getCurrentEscapeRate</a></div><div class="ttdeci">double getCurrentEscapeRate() const</div><div class="ttdef"><b>Definition:</b> <a href="chargecarrier_8h_source.html#l00052">chargecarrier.h:52</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a255353e91f927d7f2fbf0d95817ed4e2"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a255353e91f927d7f2fbf0d95817ed4e2">votca::tools::conv::ev2hrt</a></div><div class="ttdeci">const double ev2hrt</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00054">constants.h:54</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_abdcd9768e0054d57c7be6bb2691d1efa"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa">votca::xtp::Topology::BoxVolume</a></div><div class="ttdeci">double BoxVolume() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00062">topology.h:62</a></div></div>
+<div class="ttc" id="astructvotca_1_1xtp_1_1Rate__Engine_1_1PairRates_html_a3abec891925f30e04a78939cb7b6f727"><div class="ttname"><a href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a3abec891925f30e04a78939cb7b6f727">votca::xtp::Rate_Engine::PairRates::rate21</a></div><div class="ttdeci">double rate21</div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8h_source.html#l00035">rate_engine.h:35</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMNBList_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMNBList.html">votca::xtp::QMNBList</a></div><div class="ttdef"><b>Definition:</b> <a href="qmnblist_8h_source.html#l00032">qmnblist.h:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Chargecarrier_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Chargecarrier.html">votca::xtp::Chargecarrier</a></div><div class="ttdef"><b>Definition:</b> <a href="chargecarrier_8h_source.html#l00029">chargecarrier.h:29</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html_a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234"><div class="ttname"><a href="namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a45f3f907bbc618fa2be84024b4ca6234">votca::tools::Charge</a></div><div class="ttdeci">@ Charge</div><div class="ttdef"><b>Definition:</b> <a href="structureparameters_8h_source.html#l00036">structureparameters.h:36</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a6f231ae1bc59867ca0e1c76a9fd1f179"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179">votca::tools::conv::hrt2ev</a></div><div class="ttdeci">const double hrt2ev</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00047">constants.h:47</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1PairList_html_aa1cb4036c9b416f97ff91ed8cbbd573b"><div class="ttname"><a href="classvotca_1_1csg_1_1PairList.html#aa1cb4036c9b416f97ff91ed8cbbd573b">votca::csg::PairList::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition:</b> <a href="pairlist_8h_source.html#l00050">pairlist.h:50</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html_a4c0a7b29f3f1be8653fcf07df14bae22"><div class="ttname"><a href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">votca::tools::wildcmp</a></div><div class="ttdeci">int wildcmp(const char *wild, const char *string)</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8cc_source.html#l00027">tokenizer.cc:27</a></div></div>
+<div class="ttc" id="astructvotca_1_1xtp_1_1Rate__Engine_1_1PairRates_html_a97c135eee2d98879ce39fbf0223a87ea"><div class="ttname"><a href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html#a97c135eee2d98879ce39fbf0223a87ea">votca::xtp::Rate_Engine::PairRates::rate12</a></div><div class="ttdeci">double rate12</div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8h_source.html#l00034">rate_engine.h:34</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Property_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a></div><div class="ttdoc">class to manage program options with xml serialization functionality</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00050">property.h:50</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_ae5c96b90aa5208cb9b3d8ac1dff369bd"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#ae5c96b90aa5208cb9b3d8ac1dff369bd">votca::xtp::GNode::findHoppingDestination</a></div><div class="ttdeci">GLink * findHoppingDestination(double p) const</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8cc_source.html#l00040">gnode.cc:40</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Chargecarrier_html_a9b02f7d4d4fb1058412da578f2909ff4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Chargecarrier.html#a9b02f7d4d4fb1058412da578f2909ff4">votca::xtp::Chargecarrier::getCurrentEscapeRate</a></div><div class="ttdeci">double getCurrentEscapeRate() const</div><div class="ttdef"><b>Definition:</b> <a href="chargecarrier_8h_source.html#l00051">chargecarrier.h:51</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a255353e91f927d7f2fbf0d95817ed4e2"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a255353e91f927d7f2fbf0d95817ed4e2">votca::tools::conv::ev2hrt</a></div><div class="ttdeci">const double ev2hrt</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00048">constants.h:48</a></div></div>
 <div class="ttc" id="akmccalculator_8h_html"><div class="ttname"><a href="kmccalculator_8h.html">kmccalculator.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_a0f750791cc1caa6d43b172e9d04ff827"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#a0f750791cc1caa6d43b172e9d04ff827">votca::xtp::GNode::Events</a></div><div class="ttdeci">const std::vector&lt; GLink &gt; &amp; Events() const</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8h_source.html#l00047">gnode.h:47</a></div></div>
-<div class="ttc" id="astructvotca_1_1xtp_1_1Rate__Engine_1_1PairRates_html"><div class="ttname"><a href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html">votca::xtp::Rate_Engine::PairRates</a></div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8h_source.html#l00035">rate_engine.h:35</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a2acd226ee6cfa28078a508b2cf2dffdf"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">votca::tools::conv::kB</a></div><div class="ttdeci">const double kB</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00040">constants.h:40</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html_a0f750791cc1caa6d43b172e9d04ff827"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html#a0f750791cc1caa6d43b172e9d04ff827">votca::xtp::GNode::Events</a></div><div class="ttdeci">const std::vector&lt; GLink &gt; &amp; Events() const</div><div class="ttdef"><b>Definition:</b> <a href="gnode_8h_source.html#l00046">gnode.h:46</a></div></div>
+<div class="ttc" id="astructvotca_1_1xtp_1_1Rate__Engine_1_1PairRates_html"><div class="ttname"><a href="structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html">votca::xtp::Rate_Engine::PairRates</a></div><div class="ttdef"><b>Definition:</b> <a href="rate__engine_8h_source.html#l00033">rate_engine.h:33</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a2acd226ee6cfa28078a508b2cf2dffdf"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf">votca::tools::conv::kB</a></div><div class="ttdeci">const double kB</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00034">constants.h:34</a></div></div>
 <div class="ttc" id="aconstants_8h_html"><div class="ttname"><a href="constants_8h.html">constants.h</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMPair_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMPair.html">votca::xtp::QMPair</a></div><div class="ttdef"><b>Definition:</b> <a href="qmpair_8h_source.html#l00037">qmpair.h:37</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Chargecarrier_html_a2525c8f8c9671f37b9a39e26b19d7809"><div class="ttname"><a href="classvotca_1_1xtp_1_1Chargecarrier.html#a2525c8f8c9671f37b9a39e26b19d7809">votca::xtp::Chargecarrier::getCurrentNodeId</a></div><div class="ttdeci">Index getCurrentNodeId() const</div><div class="ttdef"><b>Definition:</b> <a href="chargecarrier_8h_source.html#l00049">chargecarrier.h:49</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Segment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Segment.html">votca::xtp::Segment</a></div><div class="ttdef"><b>Definition:</b> <a href="segment_8h_source.html#l00036">segment.h:36</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a28e353e9e07f24caa0be734b5327aeb8"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a28e353e9e07f24caa0be734b5327aeb8">votca::xtp::Topology::NBList</a></div><div class="ttdeci">QMNBList &amp; NBList()</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00070">topology.h:70</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a5334903bb42aab258dbf002d3cef9967"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">votca::tools::conv::bohr2nm</a></div><div class="ttdeci">const double bohr2nm</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00046">constants.h:46</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html">votca::xtp::GNode</a></div><div class="ttdef"><b>Definition:</b> <a href="gnode_8h_source.html#l00031">gnode.h:31</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMPair_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMPair.html">votca::xtp::QMPair</a></div><div class="ttdef"><b>Definition:</b> <a href="qmpair_8h_source.html#l00035">qmpair.h:35</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Chargecarrier_html_a2525c8f8c9671f37b9a39e26b19d7809"><div class="ttname"><a href="classvotca_1_1xtp_1_1Chargecarrier.html#a2525c8f8c9671f37b9a39e26b19d7809">votca::xtp::Chargecarrier::getCurrentNodeId</a></div><div class="ttdeci">Index getCurrentNodeId() const</div><div class="ttdef"><b>Definition:</b> <a href="chargecarrier_8h_source.html#l00048">chargecarrier.h:48</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Segment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Segment.html">votca::xtp::Segment</a></div><div class="ttdef"><b>Definition:</b> <a href="segment_8h_source.html#l00033">segment.h:33</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html_a28e353e9e07f24caa0be734b5327aeb8"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html#a28e353e9e07f24caa0be734b5327aeb8">votca::xtp::Topology::NBList</a></div><div class="ttdeci">QMNBList &amp; NBList()</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00067">topology.h:67</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_1_1conv_html_a5334903bb42aab258dbf002d3cef9967"><div class="ttname"><a href="namespacevotca_1_1tools_1_1conv.html#a5334903bb42aab258dbf002d3cef9967">votca::tools::conv::bohr2nm</a></div><div class="ttdeci">const double bohr2nm</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00040">constants.h:40</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GNode_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GNode.html">votca::xtp::GNode</a></div><div class="ttdef"><b>Definition:</b> <a href="gnode_8h_source.html#l00030">gnode.h:30</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
