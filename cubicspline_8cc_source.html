@@ -121,28 +121,28 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  _f = <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  Eigen::VectorXd temp = Eigen::VectorXd::Zero(N);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  Eigen::MatrixXd A = Eigen::MatrixXd::Zero(N, N);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Eigen::MatrixXd::Zero(N, N);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; N - 2; ++i) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    temp(i + 1) =</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        -(A_prime_l(i) * _f(i) + (B_prime_l(i) - A_prime_r(i)) * _f(i + 1) -</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;          B_prime_r(i) * _f(i + 2));</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    A(i + 1, i) = C_prime_l(i);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    A(i + 1, i + 1) = D_prime_l(i) - C_prime_r(i);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    A(i + 1, i + 2) = -D_prime_r(i);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classA.html">A</a>(i + 1, i) = C_prime_l(i);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classA.html">A</a>(i + 1, i + 1) = D_prime_l(i) - C_prime_r(i);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classA.html">A</a>(i + 1, i + 2) = -D_prime_r(i);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">switch</span> (_boundaries) {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">case</span> splineNormal:</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      A(0, 0) = 1;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      A(N - 1, N - 1) = 1;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <a class="code" href="classA.html">A</a>(0, 0) = 1;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <a class="code" href="classA.html">A</a>(N - 1, N - 1) = 1;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">case</span> splinePeriodic:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      A(0, 0) = 1;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      A(0, N - 1) = -1;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      A(N - 1, 0) = 1;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      A(N - 1, N - 1) = -1;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <a class="code" href="classA.html">A</a>(0, 0) = 1;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <a class="code" href="classA.html">A</a>(0, N - 1) = -1;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <a class="code" href="classA.html">A</a>(N - 1, 0) = 1;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <a class="code" href="classA.html">A</a>(N - 1, N - 1) = -1;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">case</span> splineDerivativeZero:</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(</div>
@@ -151,7 +151,7 @@ $(function() {
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  Eigen::HouseholderQR&lt;Eigen::MatrixXd&gt; QR(A);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  Eigen::HouseholderQR&lt;Eigen::MatrixXd&gt; QR(<a class="code" href="classA.html">A</a>);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  _f2 = QR.solve(temp);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
@@ -171,16 +171,16 @@ $(function() {
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="comment">// and b[i]=0 for i&gt;=N (for smoothing condition)</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">// A[i,j] contains the data fitting + the spline smoothing conditions</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  Eigen::MatrixXd A = Eigen::MatrixXd::Zero(N, 2 * ngrid);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  Eigen::MatrixXd B = Eigen::MatrixXd::Zero(</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Eigen::MatrixXd::Zero(N, 2 * ngrid);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  Eigen::MatrixXd <a class="code" href="classB.html">B</a> = Eigen::MatrixXd::Zero(</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      ngrid, 2 * ngrid);  <span class="comment">// Matrix with smoothing conditions</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="comment">// Construct smoothing matrix</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  AddBCToFitMatrix(B, 0);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  AddBCToFitMatrix(<a class="code" href="classB.html">B</a>, 0);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="comment">// construct the matrix to fit the points and the vector b</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  AddToFitMatrix(A, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>, 0);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  AddToFitMatrix(<a class="code" href="classA.html">A</a>, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>, 0);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="comment">// now do a constrained qr solve</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  Eigen::VectorXd sol = <a class="code" href="namespacevotca_1_1tools.html#a0bd06b3e2ccc1d89f0cd1b0075e1ba87">linalg_constrained_qrsolve</a>(A, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>, B);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  Eigen::VectorXd sol = <a class="code" href="namespacevotca_1_1tools.html#a0bd06b3e2ccc1d89f0cd1b0075e1ba87">linalg_constrained_qrsolve</a>(<a class="code" href="classA.html">A</a>, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>, <a class="code" href="classB.html">B</a>);</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="comment">// check vector &quot;sol&quot; for nan&#39;s</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 2 * ngrid; i++) {</div>
@@ -197,7 +197,7 @@ $(function() {
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
 <div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1CubicSpline.html#aa6dc96265428ee4f6da2b61792185748">  126</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1tools_1_1CubicSpline.html#a861324f314e8fb87cebe1c1ba1e12bbc">CubicSpline::Calculate</a>(<span class="keywordtype">double</span> r) {</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> interval = getInterval(r);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">return</span> A(r) * _f[interval] + B(r) * _f[interval + 1] + C(r) * _f2[interval] +</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classA.html">A</a>(r) * _f[interval] + <a class="code" href="classB.html">B</a>(r) * _f[interval + 1] + C(r) * _f2[interval] +</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;         D(r) * _f2[interval + 1];</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
@@ -306,12 +306,14 @@ $(function() {
 <div class="ttc" id="acubicspline_8h_html"><div class="ttname"><a href="cubicspline_8h.html">cubicspline.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1CubicSpline_html_a3609cbbb9c8097ce8536aba175271ed4"><div class="ttname"><a href="classvotca_1_1tools_1_1CubicSpline.html#a3609cbbb9c8097ce8536aba175271ed4">votca::tools::CubicSpline::C</a></div><div class="ttdeci">double C(double r)</div><div class="ttdef"><b>Definition:</b> <a href="cubicspline_8cc_source.html#l00156">cubicspline.cc:156</a></div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
+<div class="ttc" id="aclassA_html"><div class="ttname"><a href="classA.html">A</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00048">test_objectfactory.cc:48</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1CubicSpline_html_a04d3788ceffa94d010bbaf89b5dc0f61"><div class="ttname"><a href="classvotca_1_1tools_1_1CubicSpline.html#a04d3788ceffa94d010bbaf89b5dc0f61">votca::tools::CubicSpline::Cprime</a></div><div class="ttdeci">double Cprime(double r)</div><div class="ttdef"><b>Definition:</b> <a href="cubicspline_8cc_source.html#l00165">cubicspline.cc:165</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1CubicSpline_html_a69c70f545c5309f37aafce67f9d79ff1"><div class="ttname"><a href="classvotca_1_1tools_1_1CubicSpline.html#a69c70f545c5309f37aafce67f9d79ff1">votca::tools::CubicSpline::B_prime_r</a></div><div class="ttdeci">double B_prime_r(Index i)</div><div class="ttdef"><b>Definition:</b> <a href="cubicspline_8cc_source.html#l00203">cubicspline.cc:203</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1CubicSpline_html_a04dfca22e3f53aead40efc3d6bd9603f"><div class="ttname"><a href="classvotca_1_1tools_1_1CubicSpline.html#a04dfca22e3f53aead40efc3d6bd9603f">votca::tools::CubicSpline::Interpolate</a></div><div class="ttdeci">void Interpolate(const Eigen::VectorXd &amp;x, const Eigen::VectorXd &amp;y) override</div><div class="ttdoc">Calculate interpolating spline for given (x,y) values. Points on resulting spline can be obtained via...</div><div class="ttdef"><b>Definition:</b> <a href="cubicspline_8cc_source.html#l00031">cubicspline.cc:31</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1CubicSpline_html_a5b74d5461b01458a55d0aef7c96e4abb"><div class="ttname"><a href="classvotca_1_1tools_1_1CubicSpline.html#a5b74d5461b01458a55d0aef7c96e4abb">votca::tools::CubicSpline::D_prime_l</a></div><div class="ttdeci">double D_prime_l(Index i)</div><div class="ttdef"><b>Definition:</b> <a href="cubicspline_8cc_source.html#l00195">cubicspline.cc:195</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_html_a0bd06b3e2ccc1d89f0cd1b0075e1ba87"><div class="ttname"><a href="namespacevotca_1_1tools.html#a0bd06b3e2ccc1d89f0cd1b0075e1ba87">votca::tools::linalg_constrained_qrsolve</a></div><div class="ttdeci">Eigen::VectorXd linalg_constrained_qrsolve(const Eigen::MatrixXd &amp;A, const Eigen::VectorXd &amp;b, const Eigen::MatrixXd &amp;constr)</div><div class="ttdoc">solves A*x=b under the constraint B*x = 0</div><div class="ttdef"><b>Definition:</b> <a href="linalg_8cc_source.html#l00028">linalg.cc:28</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1CubicSpline_html_ac9cedebb48a4142393c3bd8cf3ae9529"><div class="ttname"><a href="classvotca_1_1tools_1_1CubicSpline.html#ac9cedebb48a4142393c3bd8cf3ae9529">votca::tools::CubicSpline::Bprime</a></div><div class="ttdeci">double Bprime(double r)</div><div class="ttdef"><b>Definition:</b> <a href="cubicspline_8cc_source.html#l00152">cubicspline.cc:152</a></div></div>
+<div class="ttc" id="aclassB_html"><div class="ttname"><a href="classB.html">B</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00053">test_objectfactory.cc:53</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1CubicSpline_html_af35413cf2861b419817ec3d74fd30048"><div class="ttname"><a href="classvotca_1_1tools_1_1CubicSpline.html#af35413cf2861b419817ec3d74fd30048">votca::tools::CubicSpline::C_prime_r</a></div><div class="ttdeci">double C_prime_r(Index i)</div><div class="ttdef"><b>Definition:</b> <a href="cubicspline_8cc_source.html#l00205">cubicspline.cc:205</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

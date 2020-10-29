@@ -108,8 +108,8 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html">CudaPipeline</a> cuda_pip;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="comment">// Call matrix multiplication GPU</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Eigen::MatrixXd A = Eigen::MatrixXd::Zero(2, 2);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Eigen::MatrixXd B = Eigen::MatrixXd::Zero(3, 2);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Eigen::MatrixXd::Zero(2, 2);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Eigen::MatrixXd <a class="code" href="classB.html">B</a> = Eigen::MatrixXd::Zero(3, 2);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Eigen::MatrixXd C = Eigen::MatrixXd::Zero(3, 2);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  Eigen::MatrixXd D = Eigen::MatrixXd::Zero(3, 2);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  Eigen::MatrixXd X = Eigen::MatrixXd::Zero(3, 2);</div>
@@ -117,17 +117,17 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  Eigen::MatrixXd Z = Eigen::MatrixXd::Zero(3, 2);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">// Define matrices</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  A &lt;&lt; 1., 2., 3., 4.;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  B &lt;&lt; 5., 6., 7., 8., 9., 10.;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classA.html">A</a> &lt;&lt; 1., 2., 3., 4.;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classB.html">B</a> &lt;&lt; 5., 6., 7., 8., 9., 10.;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  C &lt;&lt; 9., 10., 11., 12., 13., 14.;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  D &lt;&lt; 13., 14., 15., 16., 17., 18.;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  X &lt;&lt; 23., 34., 31., 46., 39., 58.;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  Y &lt;&lt; 39., 58., 47., 70., 55., 82.;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  Z &lt;&lt; 55., 82., 63., 94., 71., 106.;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  std::vector&lt;Eigen::MatrixXd&gt; tensor{B, C, D};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  std::vector&lt;Eigen::MatrixXd&gt; tensor{<a class="code" href="classB.html">B</a>, C, D};</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  std::vector&lt;Eigen::MatrixXd&gt; results(3, Eigen::MatrixXd::Zero(3, 2));</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_A{A, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_A{<a class="code" href="classA.html">A</a>, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_B{3, 2, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_C{3, 2, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
@@ -143,12 +143,12 @@ $(function() {
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="test__cudapipeline_8cc.html#a3930ebda2ce1c70517e96ddf0ee830e7">   73</a></span>&#160;<a class="code" href="test__cudapipeline_8cc.html#afb7b0d44309afc98563290faad21312d">BOOST_AUTO_TEST_CASE</a>(wrong_shape_cublas) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  Eigen::MatrixXd A = Eigen::MatrixXd::Random(2, 2);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  Eigen::MatrixXd B = Eigen::MatrixXd::Random(5, 5);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Eigen::MatrixXd::Random(2, 2);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  Eigen::MatrixXd <a class="code" href="classB.html">B</a> = Eigen::MatrixXd::Random(5, 5);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html">CudaPipeline</a> cuda_pip;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_A{A, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_B{B, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_A{<a class="code" href="classA.html">A</a>, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_B{<a class="code" href="classB.html">B</a>, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> cuma_C{2, 5, cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">get_stream</a>()};</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  BOOST_REQUIRE_THROW(cuda_pip.<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a7fd40b6b016029412a764d527b6a4ddb">gemm</a>(cuma_A, cuma_B, cuma_C),</div>
@@ -163,9 +163,11 @@ $(function() {
 <div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html">votca::xtp::CudaPipeline</a></div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00047">cudapipeline.h:47</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html">votca::xtp::CudaMatrix</a></div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00051">cudamatrix.h:51</a></div></div>
+<div class="ttc" id="aclassA_html"><div class="ttname"><a href="classA.html">A</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00048">test_objectfactory.cc:48</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_ad0b49dd4f237121b79b557fcbd8e0540"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#ad0b49dd4f237121b79b557fcbd8e0540">votca::xtp::CudaPipeline::get_stream</a></div><div class="ttdeci">const cudaStream_t &amp; get_stream() const</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00061">cudapipeline.h:61</a></div></div>
 <div class="ttc" id="atest__cudapipeline_8cc_html_afb7b0d44309afc98563290faad21312d"><div class="ttname"><a href="test__cudapipeline_8cc.html#afb7b0d44309afc98563290faad21312d">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(right_matrix_multiplication)</div><div class="ttdef"><b>Definition:</b> <a href="test__cudapipeline_8cc_source.html#l00034">test_cudapipeline.cc:34</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
+<div class="ttc" id="aclassB_html"><div class="ttname"><a href="classB.html">B</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00053">test_objectfactory.cc:53</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

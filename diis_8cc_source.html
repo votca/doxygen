@@ -127,17 +127,17 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">const</span> <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> = <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(<a class="code" href="classvotca_1_1xtp_1_1DIIS.html#af561220ef12bd018f7e67b8aa039cc6f">_errormatrixhist</a>.size());</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// C2-DIIS</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  Eigen::MatrixXd B = Eigen::MatrixXd::Zero(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  Eigen::MatrixXd <a class="code" href="classB.html">B</a> = Eigen::MatrixXd::Zero(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; B.rows(); i++) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; <a class="code" href="classB.html">B</a>.rows(); i++) {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt;= i; j++) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      B(i, j) = <a class="code" href="classvotca_1_1xtp_1_1DIIS.html#a0d1b34cd51cca1bbb9d9f8eb9dd17e70">_Diis_Bs</a>[i][j];</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <a class="code" href="classB.html">B</a>(i, j) = <a class="code" href="classvotca_1_1xtp_1_1DIIS.html#a0d1b34cd51cca1bbb9d9f8eb9dd17e70">_Diis_Bs</a>[i][j];</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keywordflow">if</span> (i != j) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        B(j, i) = B(i, j);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="classB.html">B</a>(j, i) = <a class="code" href="classB.html">B</a>(i, j);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      }</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(B);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(<a class="code" href="classB.html">B</a>);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  Eigen::MatrixXd eigenvectors = Eigen::MatrixXd::Zero(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; es.eigenvectors().cols(); i++) {</div>
@@ -147,7 +147,7 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// Choose solution by picking out solution with smallest absolute error</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  Eigen::VectorXd errors =</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      (eigenvectors.transpose() * B * eigenvectors).diagonal().cwiseAbs();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      (eigenvectors.transpose() * <a class="code" href="classB.html">B</a> * eigenvectors).diagonal().cwiseAbs();</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">double</span> MaxWeight = 10.0;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> mincoeff = 0;</div>
@@ -185,6 +185,7 @@ $(function() {
 <div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1DIIS_html_ab33608705810d6a8d5e89044cc61c0f6"><div class="ttname"><a href="classvotca_1_1xtp_1_1DIIS.html#ab33608705810d6a8d5e89044cc61c0f6">votca::xtp::DIIS::Update</a></div><div class="ttdeci">void Update(Index maxerrorindex, const Eigen::MatrixXd &amp;errormatrix)</div><div class="ttdef"><b>Definition:</b> <a href="diis_8cc_source.html#l00029">diis.cc:29</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1DIIS_html_af561220ef12bd018f7e67b8aa039cc6f"><div class="ttname"><a href="classvotca_1_1xtp_1_1DIIS.html#af561220ef12bd018f7e67b8aa039cc6f">votca::xtp::DIIS::_errormatrixhist</a></div><div class="ttdeci">std::vector&lt; Eigen::MatrixXd &gt; _errormatrixhist</div><div class="ttdef"><b>Definition:</b> <a href="diis_8h_source.html#l00046">diis.h:46</a></div></div>
+<div class="ttc" id="aclassB_html"><div class="ttname"><a href="classB.html">B</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00053">test_objectfactory.cc:53</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

@@ -133,11 +133,11 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> = 100;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigen = 10;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">double</span> eps = 0.01;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  Eigen::MatrixXd A = <a class="code" href="test__davidson_8cc.html#a8f32ef33a9f233ad751a90ceb4b29be3">init_matrix</a>(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, eps);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = <a class="code" href="test__davidson_8cc.html#a8f32ef33a9f233ad751a90ceb4b29be3">init_matrix</a>(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, eps);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html">DavidsonSolver</a> DS(log);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(A, neigen);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(A);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(<a class="code" href="classA.html">A</a>, neigen);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(<a class="code" href="classA.html">A</a>);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">auto</span> lambda = DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a4c7dfaaec3004acb6f787140582148ac">eigenvalues</a>();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">auto</span> lambda_ref = es.eigenvalues().head(neigen);</div>
@@ -157,11 +157,11 @@ $(function() {
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> = 400;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigen = 10;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">double</span> eps = 0.01;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  Eigen::MatrixXd A = <a class="code" href="test__davidson_8cc.html#a8f32ef33a9f233ad751a90ceb4b29be3">init_matrix</a>(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, eps);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = <a class="code" href="test__davidson_8cc.html#a8f32ef33a9f233ad751a90ceb4b29be3">init_matrix</a>(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, eps);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html">DavidsonSolver</a> DS(log);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(A, neigen);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(A);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(<a class="code" href="classA.html">A</a>, neigen);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(<a class="code" href="classA.html">A</a>);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keyword">auto</span> lambda = DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a4c7dfaaec3004acb6f787140582148ac">eigenvalues</a>();</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">auto</span> lambda_ref = es.eigenvalues().head(neigen);</div>
@@ -181,13 +181,13 @@ $(function() {
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a> = 100;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> neigen = 10;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">double</span> eps = 0.01;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  Eigen::MatrixXd A = <a class="code" href="test__davidson_8cc.html#a8f32ef33a9f233ad751a90ceb4b29be3">init_matrix</a>(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, eps);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = <a class="code" href="test__davidson_8cc.html#a8f32ef33a9f233ad751a90ceb4b29be3">init_matrix</a>(<a class="code" href="namespacekokkos__linalg__3d.html#a1cb29721f0bb1d12949939f8abb2d4d6">size</a>, eps);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html">DavidsonSolver</a> DS(log);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a66353039e7b1e43c4a6eb0baf9b8327b">set_iter_max</a>(1);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(A, neigen);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(A);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(<a class="code" href="classA.html">A</a>, neigen);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(<a class="code" href="classA.html">A</a>);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keyword">auto</span> lambda = DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a4c7dfaaec3004acb6f787140582148ac">eigenvalues</a>();</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keyword">auto</span> lambda_ref = es.eigenvalues().head(neigen);</div>
@@ -233,8 +233,8 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a808ef25006a7b405e8d638779e838b98">set_size_update</a>(<span class="stringliteral">&quot;safe&quot;</span>);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(Aop, neigen);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  Eigen::MatrixXd A = Aop.<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa4b46a9d85399e77264c02f97c8a8a83">get_full_matrix</a>();</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(A);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Aop.<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa4b46a9d85399e77264c02f97c8a8a83">get_full_matrix</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(<a class="code" href="classA.html">A</a>);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keyword">auto</span> lambda = DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a4c7dfaaec3004acb6f787140582148ac">eigenvalues</a>();</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keyword">auto</span> lambda_ref = es.eigenvalues().head(neigen);</div>
@@ -264,8 +264,8 @@ $(function() {
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a808ef25006a7b405e8d638779e838b98">set_size_update</a>(<span class="stringliteral">&quot;safe&quot;</span>);</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(Aop, neigen);</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  std::cout &lt;&lt; log &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  Eigen::MatrixXd A = Aop.<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa4b46a9d85399e77264c02f97c8a8a83">get_full_matrix</a>();</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(A);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Aop.<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa4b46a9d85399e77264c02f97c8a8a83">get_full_matrix</a>();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(<a class="code" href="classA.html">A</a>);</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keyword">auto</span> lambda = DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a4c7dfaaec3004acb6f787140582148ac">eigenvalues</a>();</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keyword">auto</span> lambda_ref = es.eigenvalues().head(neigen);</div>
@@ -328,8 +328,8 @@ $(function() {
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a890af14cb1f2a17cf118e8af6553d3ea">set_tolerance</a>(<span class="stringliteral">&quot;normal&quot;</span>);</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a808ef25006a7b405e8d638779e838b98">set_size_update</a>(<span class="stringliteral">&quot;safe&quot;</span>);</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  Eigen::MatrixXd A = Aop.<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa4b46a9d85399e77264c02f97c8a8a83">get_full_matrix</a>();</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(A);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Aop.<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa4b46a9d85399e77264c02f97c8a8a83">get_full_matrix</a>();</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(<a class="code" href="classA.html">A</a>);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(Aop, neigen);</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  <span class="keyword">auto</span> lambda = DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a4c7dfaaec3004acb6f787140582148ac">eigenvalues</a>();</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="keyword">auto</span> lambda_ref = es.eigenvalues().head(neigen);</div>
@@ -358,8 +358,8 @@ $(function() {
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a890af14cb1f2a17cf118e8af6553d3ea">set_tolerance</a>(<span class="stringliteral">&quot;normal&quot;</span>);</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a808ef25006a7b405e8d638779e838b98">set_size_update</a>(<span class="stringliteral">&quot;safe&quot;</span>);</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  Eigen::MatrixXd A = Aop.<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa4b46a9d85399e77264c02f97c8a8a83">get_full_matrix</a>();</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(A);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Aop.<a class="code" href="classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa4b46a9d85399e77264c02f97c8a8a83">get_full_matrix</a>();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es(<a class="code" href="classA.html">A</a>);</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf">solve</a>(Aop, neigen);</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  <span class="keyword">auto</span> lambda = DS.<a class="code" href="classvotca_1_1xtp_1_1DavidsonSolver.html#a4c7dfaaec3004acb6f787140582148ac">eigenvalues</a>();</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  <span class="keyword">auto</span> lambda_ref = es.eigenvalues().head(neigen);</div>
@@ -575,6 +575,7 @@ $(function() {
 <div class="ttc" id="adavidsonsolver_8h_html"><div class="ttname"><a href="davidsonsolver_8h.html">davidsonsolver.h</a></div></div>
 <div class="ttc" id="aclassBlockOperator_html_aeffcff1a611f4f2fdf1ebc895d90e9ed"><div class="ttname"><a href="classBlockOperator.html#aeffcff1a611f4f2fdf1ebc895d90e9ed">BlockOperator::BlockOperator</a></div><div class="ttdeci">BlockOperator()=default</div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1DavidsonSolver_html_a4c7dfaaec3004acb6f787140582148ac"><div class="ttname"><a href="classvotca_1_1xtp_1_1DavidsonSolver.html#a4c7dfaaec3004acb6f787140582148ac">votca::xtp::DavidsonSolver::eigenvalues</a></div><div class="ttdeci">Eigen::VectorXd eigenvalues() const</div><div class="ttdef"><b>Definition:</b> <a href="davidsonsolver_8h_source.html#l00059">davidsonsolver.h:59</a></div></div>
+<div class="ttc" id="aclassA_html"><div class="ttname"><a href="classA.html">A</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00048">test_objectfactory.cc:48</a></div></div>
 <div class="ttc" id="aclassHermitianBlockOperator_html_a2bff557a58078e7901ef126d38457743"><div class="ttname"><a href="classHermitianBlockOperator.html#a2bff557a58078e7901ef126d38457743">HermitianBlockOperator::OperatorRow</a></div><div class="ttdeci">Eigen::RowVectorXd OperatorRow(Index index) const override</div><div class="ttdef"><b>Definition:</b> <a href="test__davidson_8cc_source.html#l00354">test_davidson.cc:354</a></div></div>
 <div class="ttc" id="aclassBlockOperator_html"><div class="ttname"><a href="classBlockOperator.html">BlockOperator</a></div><div class="ttdef"><b>Definition:</b> <a href="test__davidson_8cc_source.html#l00211">test_davidson.cc:211</a></div></div>
 <div class="ttc" id="aclassBlockOperator_html_aee6583c8302c60a4011b654fa0fca920"><div class="ttname"><a href="classBlockOperator.html#aee6583c8302c60a4011b654fa0fca920">BlockOperator::useRow</a></div><div class="ttdeci">bool useRow() const override</div><div class="ttdef"><b>Definition:</b> <a href="test__davidson_8cc_source.html#l00216">test_davidson.cc:216</a></div></div>

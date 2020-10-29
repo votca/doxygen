@@ -133,7 +133,7 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    Eigen::VectorXd DeltaN = OutMixed - InMixed;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Building Linear System for Coefficients</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    Eigen::MatrixXd A = Eigen::MatrixXd::Zero(used_history, used_history);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Eigen::MatrixXd::Zero(used_history, used_history);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    Eigen::VectorXd c = Eigen::VectorXd::Zero(used_history);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> m = 1; m &lt; iteration; m++) {</div>
@@ -142,14 +142,14 @@ $(function() {
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                     .<a class="code" href="namespacekokkos__linalg__3d.html#ab3941ac214385e6dfed20f4d365dddc5">dot</a>(DeltaN);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 1; j &lt; iteration; j++) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        A(m - 1, j - 1) =</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classA.html">A</a>(m - 1, j - 1) =</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            (DeltaN - <a class="code" href="classvotca_1_1xtp_1_1Anderson.html#afff21a15c857a13c72fb4df60850dbc8">_output</a>[used_history - m] + <a class="code" href="classvotca_1_1xtp_1_1Anderson.html#a5a65ac8ae9c30af357a34eddf471a019">_input</a>[used_history - m])</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                .<a class="code" href="namespacekokkos__linalg__3d.html#ab3941ac214385e6dfed20f4d365dddc5">dot</a>((DeltaN - <a class="code" href="classvotca_1_1xtp_1_1Anderson.html#afff21a15c857a13c72fb4df60850dbc8">_output</a>[used_history - j] +</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                      <a class="code" href="classvotca_1_1xtp_1_1Anderson.html#a5a65ac8ae9c30af357a34eddf471a019">_input</a>[used_history - j]));</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      }</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// Solving the System to obtain coefficients</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    Eigen::VectorXd coefficients = A.fullPivHouseholderQr().solve(c);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    Eigen::VectorXd coefficients = <a class="code" href="classA.html">A</a>.fullPivHouseholderQr().solve(c);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// Mixing the Potentials</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> n = 1; n &lt; iteration; n++) {</div>
@@ -177,6 +177,7 @@ $(function() {
 <div class="ttc" id="anamespacekokkos__linalg__3d_html_ab3941ac214385e6dfed20f4d365dddc5"><div class="ttname"><a href="namespacekokkos__linalg__3d.html#ab3941ac214385e6dfed20f4d365dddc5">kokkos_linalg_3d::dot</a></div><div class="ttdeci">Vector1::value_type dot(const Vector1 &amp;x, const Vector2 &amp;y)</div><div class="ttdef"><b>Definition:</b> <a href="kokkos__linalg_8hpp_source.html#l00056">kokkos_linalg.hpp:56</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Anderson_html_a2b2763645b39a813df563ecebfe33476"><div class="ttname"><a href="classvotca_1_1xtp_1_1Anderson.html#a2b2763645b39a813df563ecebfe33476">votca::xtp::Anderson::UpdateOutput</a></div><div class="ttdeci">void UpdateOutput(const Eigen::VectorXd &amp;newOutput)</div><div class="ttdef"><b>Definition:</b> <a href="anderson__mixing_8cc_source.html#l00034">anderson_mixing.cc:34</a></div></div>
 <div class="ttc" id="aanderson__mixing_8h_html"><div class="ttname"><a href="anderson__mixing_8h.html">anderson_mixing.h</a></div></div>
+<div class="ttc" id="aclassA_html"><div class="ttname"><a href="classA.html">A</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00048">test_objectfactory.cc:48</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Anderson_html_a38f01cb8c10a199216e93e3779eb56c7"><div class="ttname"><a href="classvotca_1_1xtp_1_1Anderson.html#a38f01cb8c10a199216e93e3779eb56c7">votca::xtp::Anderson::_order</a></div><div class="ttdeci">Index _order</div><div class="ttdef"><b>Definition:</b> <a href="anderson__mixing_8h_source.html#l00059">anderson_mixing.h:59</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Anderson_html_abd2fe6d449ea49445ad050fa028a2fb9"><div class="ttname"><a href="classvotca_1_1xtp_1_1Anderson.html#abd2fe6d449ea49445ad050fa028a2fb9">votca::xtp::Anderson::Configure</a></div><div class="ttdeci">void Configure(const Index order, const double alpha)</div><div class="ttdef"><b>Definition:</b> <a href="anderson__mixing_8cc_source.html#l00029">anderson_mixing.cc:29</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Anderson_html_a5a65ac8ae9c30af357a34eddf471a019"><div class="ttname"><a href="classvotca_1_1xtp_1_1Anderson.html#a5a65ac8ae9c30af357a34eddf471a019">votca::xtp::Anderson::_input</a></div><div class="ttdeci">std::vector&lt; Eigen::VectorXd &gt; _input</div><div class="ttdef"><b>Definition:</b> <a href="anderson__mixing_8h_source.html#l00055">anderson_mixing.h:55</a></div></div>
