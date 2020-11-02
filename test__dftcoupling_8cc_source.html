@@ -94,7 +94,7 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dftcoupling_8h.html">votca/xtp/dftcoupling.h</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;libint2/initialize.h&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
@@ -123,7 +123,7 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="test__dftcoupling_8cc.html#a61f30c6d097a8aca48ada0fe91f83390">   53</a></span>&#160;<a class="code" href="test__dftcoupling_8cc.html#a61f30c6d097a8aca48ada0fe91f83390">BOOST_AUTO_TEST_CASE</a>(coupling) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  libint2::initialize();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  std::ofstream opt(<span class="stringliteral">&quot;dftcoupling.xml&quot;</span>);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;           &lt;dftcoupling_options&gt;&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;            &lt;degeneracy&gt;0.0&lt;/degeneracy&gt;&quot;</span> &lt;&lt; std::endl;</div>
@@ -522,9 +522,11 @@ $(function() {
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keywordtype">double</span> j = h-&gt;getAttribute&lt;<span class="keywordtype">double</span>&gt;(<span class="stringliteral">&quot;j&quot;</span>);</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    BOOST_CHECK_CLOSE(j, electron_ref[levA][levB], 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  }</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;}</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;}</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="anamespaceEigen_html"><div class="ttname"><a href="namespaceEigen.html">Eigen</a></div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00193">csg_density.cc:193</a></div></div>

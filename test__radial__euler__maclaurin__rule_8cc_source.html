@@ -98,14 +98,14 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="orbitals_8h.html">votca/xtp/orbitals.h</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="radial__euler__maclaurin__rule_8h.html">votca/xtp/radial_euler_maclaurin_rule.h</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;libint2/initialize.h&gt;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;BOOST_AUTO_TEST_SUITE(radial_euler_maclaurin_test)</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="test__radial__euler__maclaurin__rule_8cc.html#ac5a3e5220c6f58bc21e10251d5267799">   35</a></span>&#160;<a class="code" href="test__radial__euler__maclaurin__rule_8cc.html#ac5a3e5220c6f58bc21e10251d5267799">BOOST_AUTO_TEST_CASE</a>(setup_test) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  libint2::initialize();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitals;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                  <span class="stringliteral">&quot;/radial_euler_maclaurin_rule/molecule.xyz&quot;</span>);</div>
@@ -175,13 +175,15 @@ $(function() {
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">bool</span> Hweight = H_weight_ref.isApprox(Hgrid.weight, 0.001);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  BOOST_CHECK_EQUAL(Hradius, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  BOOST_CHECK_EQUAL(Hweight, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="atest__radial__euler__maclaurin__rule_8cc_html_ac5a3e5220c6f58bc21e10251d5267799"><div class="ttname"><a href="test__radial__euler__maclaurin__rule_8cc.html#ac5a3e5220c6f58bc21e10251d5267799">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(setup_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__radial__euler__maclaurin__rule_8cc_source.html#l00035">test_radial_euler_maclaurin_rule.cc:35</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a08260b44bbc7302980c155b8b8434ae4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">votca::xtp::Orbitals::QMAtoms</a></div><div class="ttdeci">const QMMolecule &amp; QMAtoms() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00141">orbitals.h:141</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a3638e1261da1fff40c3608c01fac8307"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">votca::xtp::AOBasis::Fill</a></div><div class="ttdeci">void Fill(const BasisSet &amp;bs, const QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8cc_source.html#l00048">aobasis.cc:48</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a3638e1261da1fff40c3608c01fac8307"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">votca::xtp::AOBasis::Fill</a></div><div class="ttdeci">void Fill(const BasisSet &amp;bs, const QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8cc_source.html#l00087">aobasis.cc:87</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html">votca::xtp::Orbitals</a></div><div class="ttdoc">container for molecular orbitals</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00045">orbitals.h:45</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html_a1393697647490d3fd425f0950d222530"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">votca::xtp::QMMolecule::LoadFromFile</a></div><div class="ttdeci">void LoadFromFile(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8cc_source.html#l00045">qmmolecule.cc:45</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html_a1e8646dc8d3f6c07e67cac0eecd21e93"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">votca::xtp::BasisSet::Load</a></div><div class="ttdeci">void Load(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00149">basisset.cc:149</a></div></div>
@@ -189,7 +191,7 @@ $(function() {
 <div class="ttc" id="aorbitals_8h_html"><div class="ttname"><a href="orbitals_8h.html">orbitals.h</a></div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html">votca::xtp::BasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00134">basisset.h:134</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00038">aobasis.h:38</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00040">aobasis.h:40</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
 <div class="ttc" id="aradial__euler__maclaurin__rule_8h_html"><div class="ttname"><a href="radial__euler__maclaurin__rule_8h.html">radial_euler_maclaurin_rule.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1EulerMaclaurinGrid_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1EulerMaclaurinGrid.html">votca::xtp::EulerMaclaurinGrid</a></div><div class="ttdef"><b>Definition:</b> <a href="radial__euler__maclaurin__rule_8h_source.html#l00035">radial_euler_maclaurin_rule.h:35</a></div></div>

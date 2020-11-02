@@ -99,74 +99,78 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="filterfactory_8h.html">votca/xtp/filterfactory.h</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// VOTCA includes</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="eigenio__matrixmarket_8h.html">votca/tools/eigenio_matrixmarket.h</a>&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;libint2/initialize.h&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="eigenio__matrixmarket_8h.html">votca/tools/eigenio_matrixmarket.h</a>&gt;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;BOOST_AUTO_TEST_SUITE(deltaQ_filter_test)</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="test__localisation__filter_8cc.html#a055e98424265391f10b2ac5d4c981fce">   36</a></span>&#160;<a class="code" href="test__localisation__filter_8cc.html#a055e98424265391f10b2ac5d4c981fce">BOOST_AUTO_TEST_CASE</a>(coeffs_test) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1FilterFactory.html#a4aa7c5a9f34db98fe2080de656ab1725">FilterFactory::RegisterAll</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  std::unique_ptr&lt;StateFilter_base&gt; local_f =</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      std::unique_ptr&lt;StateFilter_base&gt;(<a class="code" href="namespacevotca_1_1xtp.html#a95f7a26e0027e35ec46656edc063d3ba">Filter</a>().Create(<span class="stringliteral">&quot;localisation&quot;</span>));</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  std::ofstream opt(<span class="stringliteral">&quot;localisation.xml&quot;</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;&lt;root&gt;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;        &lt;threshold&gt;0.5&lt;/threshold&gt;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;       &lt;fragment&gt;0 1&lt;/fragment&gt;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;&lt;/root&gt;&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  opt.close();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a> prop;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(<span class="stringliteral">&quot;localisation.xml&quot;</span>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  local_f-&gt;Initialize(prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;root&quot;</span>));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> <a class="code" href="classA.html">A</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classA.html">A</a>.setDFTbasisName(std::string(XTP_TEST_DATA_FOLDER) +</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    <span class="stringliteral">&quot;/localisation_filter/3-21G.xml&quot;</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classA.html">A</a>.QMAtoms().LoadFromFile(std::string(XTP_TEST_DATA_FOLDER) +</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                           <span class="stringliteral">&quot;/localisation_filter/molecule.xyz&quot;</span>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="classA.html">A</a>.setBasisSetSize(17);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="classA.html">A</a>.setNumberOfAlphaElectrons(5);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classA.html">A</a>.setNumberOfOccupiedLevels(5);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classA.html">A</a>.MOs().eigenvalues() = Eigen::VectorXd::Zero(17);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="classA.html">A</a>.MOs().eigenvalues() &lt;&lt; -19.8117, -6.22408, -6.14094, -6.14094, -6.14094,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      -3.72889, -3.72889, -3.72889, -3.64731, -3.09048, -3.09048, -3.09048,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      -2.63214, -2.08206, -2.08206, -2.08206, -2.03268;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="classA.html">A</a>.MOs().eigenvectors() = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/localisation_filter/MOs_A.mm&quot;</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classA.html">A</a>.setBSEindices(0, 16);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="classA.html">A</a>.setTDAApprox(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classA.html">A</a>.setGWindices(0, 16);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  Eigen::MatrixXd spsi_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/localisation_filter/spsi_ref.mm&quot;</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classA.html">A</a>.BSESinglets().eigenvectors() = spsi_ref;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  libint2::initialize();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1FilterFactory.html#a4aa7c5a9f34db98fe2080de656ab1725">FilterFactory::RegisterAll</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  std::unique_ptr&lt;StateFilter_base&gt; local_f =</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      std::unique_ptr&lt;StateFilter_base&gt;(<a class="code" href="namespacevotca_1_1xtp.html#a95f7a26e0027e35ec46656edc063d3ba">Filter</a>().Create(<span class="stringliteral">&quot;localisation&quot;</span>));</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::ofstream opt(<span class="stringliteral">&quot;localisation.xml&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;&lt;root&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;        &lt;threshold&gt;0.5&lt;/threshold&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;       &lt;fragment&gt;0 1&lt;/fragment&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  opt &lt;&lt; <span class="stringliteral">&quot;&lt;/root&gt;&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  opt.close();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a> prop;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(<span class="stringliteral">&quot;localisation.xml&quot;</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  local_f-&gt;Initialize(prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;root&quot;</span>));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> <a class="code" href="classA.html">A</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classA.html">A</a>.setDFTbasisName(std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    <span class="stringliteral">&quot;/localisation_filter/3-21G.xml&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="classA.html">A</a>.QMAtoms().LoadFromFile(std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                           <span class="stringliteral">&quot;/localisation_filter/molecule.xyz&quot;</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classA.html">A</a>.setBasisSetSize(17);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classA.html">A</a>.setNumberOfAlphaElectrons(5);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="classA.html">A</a>.setNumberOfOccupiedLevels(5);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="classA.html">A</a>.MOs().eigenvalues() = Eigen::VectorXd::Zero(17);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classA.html">A</a>.MOs().eigenvalues() &lt;&lt; -19.8117, -6.22408, -6.14094, -6.14094, -6.14094,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      -3.72889, -3.72889, -3.72889, -3.64731, -3.09048, -3.09048, -3.09048,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      -2.63214, -2.08206, -2.08206, -2.08206, -2.03268;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classA.html">A</a>.MOs().eigenvectors() = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/localisation_filter/MOs_A.mm&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classA.html">A</a>.setBSEindices(0, 16);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classA.html">A</a>.setTDAApprox(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classA.html">A</a>.setGWindices(0, 16);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  Eigen::MatrixXd spsi_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/localisation_filter/spsi_ref.mm&quot;</span>);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="comment">// reference energy</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  Eigen::VectorXd se_ref = Eigen::VectorXd::Zero(3);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  se_ref &lt;&lt; 0.107455, 0.107455, 0.107455;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <a class="code" href="classA.html">A</a>.BSESinglets().eigenvalues() = se_ref;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="classA.html">A</a>.BSESinglets().eigenvectors() = spsi_ref;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment">// reference energy</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  Eigen::VectorXd se_ref = Eigen::VectorXd::Zero(3);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  se_ref &lt;&lt; 0.107455, 0.107455, 0.107455;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  BOOST_CHECK_EQUAL(local_f-&gt;NeedsInitialState(), <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="classA.html">A</a>.BSESinglets().eigenvalues() = se_ref;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::vector&lt;votca::Index&gt; ref = {2};</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  std::vector&lt;votca::Index&gt; results =</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      local_f-&gt;CalcIndeces(<a class="code" href="classA.html">A</a>, <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac2ca29ef89597f341a74e08f205c4552">QMStateType::Singlet</a>);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  BOOST_CHECK_EQUAL(results.size(), ref.size());</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  BOOST_CHECK_EQUAL(local_f-&gt;NeedsInitialState(), <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  std::vector&lt;votca::Index&gt; ref = {2};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  std::vector&lt;votca::Index&gt; results =</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      local_f-&gt;CalcIndeces(<a class="code" href="classA.html">A</a>, <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac2ca29ef89597f341a74e08f205c4552">QMStateType::Singlet</a>);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a>(ref.size()); i++) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    BOOST_CHECK_EQUAL(ref[i], results[i]);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  BOOST_REQUIRE_THROW(local_f-&gt;CalcIndeces(<a class="code" href="classA.html">A</a>, <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a3f229c61861798e442a17b3f0889d4b5">QMStateType::Gstate</a>),</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                      std::runtime_error);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  BOOST_CHECK_EQUAL(results.size(), ref.size());</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a>(ref.size()); i++) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    BOOST_CHECK_EQUAL(ref[i], results[i]);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  BOOST_REQUIRE_THROW(local_f-&gt;CalcIndeces(<a class="code" href="classA.html">A</a>, <a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a3f229c61861798e442a17b3f0889d4b5">QMStateType::Gstate</a>),</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                      std::runtime_error);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="atest__localisation__filter_8cc_html_a055e98424265391f10b2ac5d4c981fce"><div class="ttname"><a href="test__localisation__filter_8cc.html#a055e98424265391f10b2ac5d4c981fce">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(coeffs_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__localisation__filter_8cc_source.html#l00036">test_localisation_filter.cc:36</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html">votca::xtp::Orbitals</a></div><div class="ttdoc">container for molecular orbitals</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00045">orbitals.h:45</a></div></div>

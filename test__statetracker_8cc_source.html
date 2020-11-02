@@ -100,12 +100,12 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="statetracker_8h.html">votca/xtp/statetracker.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;libint2/initialize.h&gt;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;BOOST_AUTO_TEST_SUITE(statetracker_test)</div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="test__statetracker_8cc.html#a78866a6446602c7bcd14183763d86280">   35</a></span>&#160;<a class="code" href="test__statetracker_8cc.html#a78866a6446602c7bcd14183763d86280">BOOST_AUTO_TEST_CASE</a>(osc) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  libint2::initialize();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orb;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  orb.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                             <span class="stringliteral">&quot;/statetracker/molecule.xyz&quot;</span>);</div>
@@ -147,32 +147,33 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    BOOST_CHECK_EQUAL(newstate.<a class="code" href="classvotca_1_1xtp_1_1QMState.html#a27edfce89be5cd71aa17447790a0ee19">Type</a>().<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html#a879d4a4c90b3043dd05e7c6882d6371d">ToString</a>(), <span class="stringliteral">&quot;s&quot;</span>);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    BOOST_CHECK_EQUAL(newstate.<a class="code" href="classvotca_1_1xtp_1_1QMState.html#a70412e35addab60844009b9a589db477">StateIdx</a>(), 1);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="test__statetracker_8cc.html#a6dfc290a3881f71599299dc8ee4b1e74">   80</a></span>&#160;<a class="code" href="test__statetracker_8cc.html#a78866a6446602c7bcd14183763d86280">BOOST_AUTO_TEST_CASE</a>(readwrite_hdf5) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a> prop;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                   <span class="stringliteral">&quot;/statetracker/statetracker2.xml&quot;</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1StateTracker.html">StateTracker</a> tracker;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMState.html">QMState</a> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>(<span class="stringliteral">&quot;s1&quot;</span>);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  tracker.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#a7a244ff5fee7b3142de5284bd8285420">setInitialState</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  tracker.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#a167c851176086773c9859c8625272286">Initialize</a>(prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;statetracker&quot;</span>));</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html">CheckpointFile</a> f(<span class="stringliteral">&quot;statetracker_test.hdf5&quot;</span>);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1CheckpointWriter.html">CheckpointWriter</a> w = f.<a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html#ad319fa7f695339c87749e4e4c5e10fbc">getWriter</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    tracker.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#a9044016a90e275f749d7bbcd4795f0bb">WriteToCpt</a>(w);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1StateTracker.html">StateTracker</a> tracker2;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html">CheckpointFile</a> f(<span class="stringliteral">&quot;statetracker_test.hdf5&quot;</span>);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CheckpointReader.html">CheckpointReader</a> r = f.<a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html#a50ed07f6719ba2381fc510251dc3089c">getReader</a>();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  tracker2.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#a7c96f08780a04f1e28646dd6c8a14459">ReadFromCpt</a>(r);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  BOOST_CHECK_EQUAL(tracker.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#aef0d86a4e6ed3ca933c47b70234a9d08">InitialState</a>().<a class="code" href="classvotca_1_1xtp_1_1QMState.html#a538bcb5ebbb52080e9da42ba19e96580">ToString</a>(),</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    tracker2.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#aef0d86a4e6ed3ca933c47b70234a9d08">InitialState</a>().<a class="code" href="classvotca_1_1xtp_1_1QMState.html#a538bcb5ebbb52080e9da42ba19e96580">ToString</a>());</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="test__statetracker_8cc.html#a6dfc290a3881f71599299dc8ee4b1e74">   81</a></span>&#160;<a class="code" href="test__statetracker_8cc.html#a78866a6446602c7bcd14183763d86280">BOOST_AUTO_TEST_CASE</a>(readwrite_hdf5) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a> prop;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                   <span class="stringliteral">&quot;/statetracker/statetracker2.xml&quot;</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1StateTracker.html">StateTracker</a> tracker;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMState.html">QMState</a> <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>(<span class="stringliteral">&quot;s1&quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  tracker.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#a7a244ff5fee7b3142de5284bd8285420">setInitialState</a>(<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  tracker.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#a167c851176086773c9859c8625272286">Initialize</a>(prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;statetracker&quot;</span>));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html">CheckpointFile</a> f(<span class="stringliteral">&quot;statetracker_test.hdf5&quot;</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1CheckpointWriter.html">CheckpointWriter</a> w = f.<a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html#ad319fa7f695339c87749e4e4c5e10fbc">getWriter</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    tracker.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#a9044016a90e275f749d7bbcd4795f0bb">WriteToCpt</a>(w);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1StateTracker.html">StateTracker</a> tracker2;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html">CheckpointFile</a> f(<span class="stringliteral">&quot;statetracker_test.hdf5&quot;</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CheckpointReader.html">CheckpointReader</a> r = f.<a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html#a50ed07f6719ba2381fc510251dc3089c">getReader</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  tracker2.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#a7c96f08780a04f1e28646dd6c8a14459">ReadFromCpt</a>(r);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  BOOST_CHECK_EQUAL(tracker.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#aef0d86a4e6ed3ca933c47b70234a9d08">InitialState</a>().<a class="code" href="classvotca_1_1xtp_1_1QMState.html#a538bcb5ebbb52080e9da42ba19e96580">ToString</a>(),</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    tracker2.<a class="code" href="classvotca_1_1xtp_1_1StateTracker.html#aef0d86a4e6ed3ca933c47b70234a9d08">InitialState</a>().<a class="code" href="classvotca_1_1xtp_1_1QMState.html#a538bcb5ebbb52080e9da42ba19e96580">ToString</a>());</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassvotca_1_1xtp_1_1CheckpointReader_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CheckpointReader.html">votca::xtp::CheckpointReader</a></div><div class="ttdef"><b>Definition:</b> <a href="checkpointreader_8h_source.html#l00041">checkpointreader.h:41</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1StateTracker_html_a1a5239bbf8b5061c270b639862595124"><div class="ttname"><a href="classvotca_1_1xtp_1_1StateTracker.html#a1a5239bbf8b5061c270b639862595124">votca::xtp::StateTracker::setLogger</a></div><div class="ttdeci">void setLogger(Logger *log)</div><div class="ttdef"><b>Definition:</b> <a href="statetracker_8h_source.html#l00046">statetracker.h:46</a></div></div>
