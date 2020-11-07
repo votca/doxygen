@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['readme_10390',['README',['../md_csg_src_tools_references_spce_3mols_README.html',1,'']]],
-  ['readme_10391',['README',['../md_csg_src_tools_references_spce_sources_README.html',1,'']]]
+  ['changelog_9565',['CHANGELOG',['../md_csg_CHANGELOG.html',1,'']]],
+  ['changelog_9566',['CHANGELOG',['../md_tools_CHANGELOG.html',1,'']]],
+  ['changelog_9567',['CHANGELOG',['../md_xtp_CHANGELOG.html',1,'']]],
+  ['contributor_20covenant_20code_20of_20conduct_9568',['Contributor Covenant Code of Conduct',['../md_xtp_CODE_OF_CONDUCT.html',1,'']]]
 ];
