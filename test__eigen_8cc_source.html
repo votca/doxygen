@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="test__eigen_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -88,102 +88,161 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="test__eigen_8cc.html#ab340a5e76af466a5f20ec5500d30a80b">   16</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MAIN</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="test__eigen_8cc.html#a6b2a3852db8bb19ab6909bac01859985">   18</a></span>&#160;<span class="preprocessor">#define BOOST_TEST_MODULE eigen_test</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="xtp_2include_2votca_2xtp_2eigen_8h.html">votca/xtp/eigen.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;BOOST_AUTO_TEST_SUITE(eigen_test)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">   27</a></span>&#160;<a class="code" href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">BOOST_AUTO_TEST_CASE</a>(symmetric_test) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Third party includes</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/test/unit_test.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="xtp_2include_2votca_2xtp_2eigen_8h.html">votca/xtp/eigen.h</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  Eigen::MatrixXd notsym = Eigen::MatrixXd::Random(6, 6);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca.html">votca</a>;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  Eigen::MatrixXd sym = notsym + notsym.transpose();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;BOOST_AUTO_TEST_SUITE(eigen_test)</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">bool</span> symmetry = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; sym.rows(); ++i) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> j = 0; j &lt;= i; ++j) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <span class="keywordflow">if</span> (std::abs(sym(i, j) - sym(j, i)) &gt; 1e-9) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        symmetry = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  BOOST_CHECK_EQUAL(symmetry, 1);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="test__eigen_8cc.html#a749370e02d2df20fbb3ab21ecde5ee5e">   46</a></span>&#160;<a class="code" href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">BOOST_AUTO_TEST_CASE</a>(inverse_test) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Eigen::MatrixXd m = Eigen::MatrixXd::Zero(17, 17);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  m &lt;&lt; -0.0107438, 0.177662, -0.000893645, -0.000893645, -0.000893645, 0.345174,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      -0.000591276, -0.000591276, -0.000591276, 0.136613, 0.110948, 0.140527,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      0.115047, 0.140527, 0.115047, 0.140527, 0.115047, 2.183e-15, 1.39936e-14,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      -0.2034, 0.00238481, 0.201015, -7.8295e-14, -0.174952, 0.00205127,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      0.172901, -5.75953e-13, -7.55155e-13, -0.234829, -0.324284, 0.232076,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      0.320482, 0.00275331, 0.00380215, 1.92294e-15, 5.30409e-14, -0.114679,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      0.233489, -0.11881, -1.08691e-13, -0.0986399, 0.200833, -0.102193,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      1.10298e-12, 1.56415e-12, -0.132399, -0.182835, -0.137168, -0.189421,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      0.269568, 0.372256, 9.81255e-05, -0.00180964, -0.165679, -0.165679,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      -0.165679, -0.00572861, -0.144589, -0.144589, -0.144589, -0.283887,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      -0.391777, 0.0942211, 0.13068, 0.0942211, 0.13068, 0.0942211, 0.13068,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      0.0257368, -0.0923997, 0.00531379, 0.00531379, 0.00531379, -2.45842,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      0.0248521, 0.0248521, 0.0248521, -0.0235266, 0.870391, -0.021766,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      0.938627, -0.021766, 0.938627, -0.021766, 0.938627, -6.05072e-15,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      -3.50553e-14, 0.0320188, -0.217226, 0.185207, 2.84606e-13, 0.164774,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      -1.11788, 0.953107, -3.43579e-13, -7.51681e-12, -0.0107087, -0.224765,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      -0.0619426, -1.30011, 0.0726513, 1.52488, -1.85212e-14, 3.71612e-14,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      0.232345, -0.0884434, -0.143902, 1.65531e-12, 1.19569, -0.455144,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      -0.740541, -5.57708e-13, -1.28855e-11, -0.0777079, -1.63101, 0.0481279,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      1.01016, 0.0295799, 0.620853, -0.00067642, 0.0030588, 0.164587, 0.164587,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      0.164587, 0.0706733, 0.85369, 0.85369, 0.85369, -0.0833538, -1.77428,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      0.0291688, 0.555286, 0.0291688, 0.555286, 0.0291688, 0.555286,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      2.67521e-15, 1.49908e-14, -0.499711, 0.0302687, 0.469443, -8.25069e-14,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      0.794429, -0.0481205, -0.746308, -1.68595e-12, 3.88068e-13, -0.631236,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      0.170551, 0.593, -0.16022, 0.0382355, -0.0103307, -2.92301e-15,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      -4.20358e-14, 0.253557, -0.559541, 0.305984, 2.74225e-14, -0.403099,</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      0.889545, -0.486446, -4.63627e-12, 1.28551e-12, 0.320293, -0.0865389,</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      0.386519, -0.104432, -0.706813, 0.190971, 0.000103179, -0.000739357,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      -0.399322, -0.399322, -0.399322, -0.00417793, 0.631921, 0.631921,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      0.631921, -0.743087, 0.196419, 0.252682, -0.0664109, 0.252682, -0.0664109,</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      0.252682, -0.0664109, 0.00149008, -0.210613, 0.0151116, 0.0151116,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      0.0151116, -0.131439, -0.0188722, -0.0188722, -0.0188722, 0.641757,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      -0.258506, 0.662618, -0.303913, 0.662618, -0.303913, 0.662618, -0.303913,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      -1.01256e-14, 8.31141e-14, 0.154221, -0.726494, 0.572273, 3.21687e-13,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      -0.180079, 0.848303, -0.668224, -6.90137e-12, 1.08126e-11, -0.16221,</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      0.269927, -0.601918, 1.00163, 0.764127, -1.27156, -1.4385e-14,</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      4.61332e-14, 0.749843, -0.241362, -0.508481, 3.69788e-13, -0.875567,</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      0.281831, 0.593736, -1.00864e-11, 1.59982e-11, -0.788686, 1.31242,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      0.534821, -0.889976, 0.253865, -0.422448, 8.45112e-05, -0.00427837,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      -0.539015, -0.539015, -0.539015, -0.00364986, 0.62842, 0.62842, 0.62842,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      0.873707, -1.42717, -0.270316, 0.466699, -0.270316, 0.466699, -0.270316,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      0.466699, 0.220745, 1.96298, 0.000217492, 0.000217492, 0.000217492,</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      -3.94464, -0.000657288, -0.000657288, -0.000657288, 0.170958, 0.775841,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      0.170979, 0.77469, 0.170979, 0.77469, 0.170979, 0.77469, -1.00858,</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      0.364513, 2.52534e-06, 2.52534e-06, 2.52534e-06, -0.192712, -5.74555e-07,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      -5.74555e-07, -5.74555e-07, -0.0243332, 0.0351697, -0.0243273, 0.0351687,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      -0.0243273, 0.0351687, -0.0243273, 0.0351687;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  Eigen::FullPivLU&lt;Eigen::MatrixXd&gt; dec(m);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">bool</span> check_inv =</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      (m * dec.inverse()).isApprox(Eigen::MatrixXd::Identity(17, 17), 0.01);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span> (!check_inv) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::cout &lt;&lt; dec.isInvertible() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; dec.rank() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; dec.rcond()</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;              &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::cout &lt;&lt; m * dec.solve(Eigen::MatrixXd::Identity(17, 17)) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  BOOST_CHECK_EQUAL(check_inv, 1);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">   33</a></span>&#160;<a class="code" href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">BOOST_AUTO_TEST_CASE</a>(symmetric_test) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  Eigen::MatrixXd notsym = Eigen::MatrixXd::Random(6, 6);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  Eigen::MatrixXd sym = notsym + notsym.transpose();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">bool</span> symmetry = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; sym.rows(); ++i) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> j = 0; j &lt;= i; ++j) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keywordflow">if</span> (std::abs(sym(i, j) - sym(j, i)) &gt; 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-9) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        symmetry = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  BOOST_CHECK_EQUAL(symmetry, 1);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="test__eigen_8cc.html#a749370e02d2df20fbb3ab21ecde5ee5e">   52</a></span>&#160;<a class="code" href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">BOOST_AUTO_TEST_CASE</a>(inverse_test) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  Eigen::MatrixXd m = Eigen::MatrixXd::Zero(17, 17);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  m &lt;&lt; -0.0107438, 0.177662, -0.000893645, -0.000893645, -0.000893645, 0.345174,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      -0.000591276, -0.000591276, -0.000591276, 0.136613, 0.110948, 0.140527,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      0.115047, 0.140527, 0.115047, 0.140527, 0.115047, 2.183e-15, 1.39936e-14,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      -0.2034, 0.00238481, 0.201015, -7.8295e-14, -0.174952, 0.00205127,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      0.172901, -5.75953e-13, -7.55155e-13, -0.234829, -0.324284, 0.232076,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      0.320482, 0.00275331, 0.00380215, 1.92294e-15, 5.30409e-14, -0.114679,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      0.233489, -0.11881, -1.08691e-13, -0.0986399, 0.200833, -0.102193,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      1.10298e-12, 1.56415e-12, -0.132399, -0.182835, -0.137168, -0.189421,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      0.269568, 0.372256, 9.81255e-05, -0.00180964, -0.165679, -0.165679,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      -0.165679, -0.00572861, -0.144589, -0.144589, -0.144589, -0.283887,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      -0.391777, 0.0942211, 0.13068, 0.0942211, 0.13068, 0.0942211, 0.13068,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      0.0257368, -0.0923997, 0.00531379, 0.00531379, 0.00531379, -2.45842,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      0.0248521, 0.0248521, 0.0248521, -0.0235266, 0.870391, -0.021766,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      0.938627, -0.021766, 0.938627, -0.021766, 0.938627, -6.05072e-15,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      -3.50553e-14, 0.0320188, -0.217226, 0.185207, 2.84606e-13, 0.164774,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      -1.11788, 0.953107, -3.43579e-13, -7.51681e-12, -0.0107087, -0.224765,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      -0.0619426, -1.30011, 0.0726513, 1.52488, -1.85212e-14, 3.71612e-14,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      0.232345, -0.0884434, -0.143902, 1.65531e-12, 1.19569, -0.455144,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      -0.740541, -5.57708e-13, -1.28855e-11, -0.0777079, -1.63101, 0.0481279,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      1.01016, 0.0295799, 0.620853, -0.00067642, 0.0030588, 0.164587, 0.164587,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      0.164587, 0.0706733, 0.85369, 0.85369, 0.85369, -0.0833538, -1.77428,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      0.0291688, 0.555286, 0.0291688, 0.555286, 0.0291688, 0.555286,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      2.67521e-15, 1.49908e-14, -0.499711, 0.0302687, 0.469443, -8.25069e-14,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      0.794429, -0.0481205, -0.746308, -1.68595e-12, 3.88068e-13, -0.631236,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      0.170551, 0.593, -0.16022, 0.0382355, -0.0103307, -2.92301e-15,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      -4.20358e-14, 0.253557, -0.559541, 0.305984, 2.74225e-14, -0.403099,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      0.889545, -0.486446, -4.63627e-12, 1.28551e-12, 0.320293, -0.0865389,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      0.386519, -0.104432, -0.706813, 0.190971, 0.000103179, -0.000739357,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      -0.399322, -0.399322, -0.399322, -0.00417793, 0.631921, 0.631921,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      0.631921, -0.743087, 0.196419, 0.252682, -0.0664109, 0.252682, -0.0664109,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      0.252682, -0.0664109, 0.00149008, -0.210613, 0.0151116, 0.0151116,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      0.0151116, -0.131439, -0.0188722, -0.0188722, -0.0188722, 0.641757,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      -0.258506, 0.662618, -0.303913, 0.662618, -0.303913, 0.662618, -0.303913,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      -1.01256e-14, 8.31141e-14, 0.154221, -0.726494, 0.572273, 3.21687e-13,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      -0.180079, 0.848303, -0.668224, -6.90137e-12, 1.08126e-11, -0.16221,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      0.269927, -0.601918, 1.00163, 0.764127, -1.27156, -1.4385e-14,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      4.61332e-14, 0.749843, -0.241362, -0.508481, 3.69788e-13, -0.875567,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      0.281831, 0.593736, -1.00864e-11, 1.59982e-11, -0.788686, 1.31242,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      0.534821, -0.889976, 0.253865, -0.422448, 8.45112e-05, -0.00427837,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      -0.539015, -0.539015, -0.539015, -0.00364986, 0.62842, 0.62842, 0.62842,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      0.873707, -1.42717, -0.270316, 0.466699, -0.270316, 0.466699, -0.270316,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      0.466699, 0.220745, 1.96298, 0.000217492, 0.000217492, 0.000217492,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      -3.94464, -0.000657288, -0.000657288, -0.000657288, 0.170958, 0.775841,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      0.170979, 0.77469, 0.170979, 0.77469, 0.170979, 0.77469, -1.00858,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      0.364513, 2.52534e-06, 2.52534e-06, 2.52534e-06, -0.192712, -5.74555e-07,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      -5.74555e-07, -5.74555e-07, -0.0243332, 0.0351697, -0.0243273, 0.0351687,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      -0.0243273, 0.0351687, -0.0243273, 0.0351687;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  Eigen::FullPivLU&lt;Eigen::MatrixXd&gt; dec(m);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">bool</span> check_inv =</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      (m * dec.inverse()).isApprox(Eigen::MatrixXd::Identity(17, 17), 0.01);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">if</span> (!check_inv) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::cout &lt;&lt; dec.isInvertible() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; dec.rank() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; dec.rcond()</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;              &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::cout &lt;&lt; m * dec.solve(Eigen::MatrixXd::Identity(17, 17)) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  BOOST_CHECK_EQUAL(check_inv, 1);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="test__eigen_8cc.html#a52b3633948e5fcb7cd9fc292330b0240">  115</a></span>&#160;<a class="code" href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">BOOST_AUTO_TEST_CASE</a>(PCG_test) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  Eigen::MatrixXd <a class="code" href="classA.html">A</a> = Eigen::MatrixXd::Zero(3, 3);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="classA.html">A</a> &lt;&lt; 1, 3, -2, 3, 5, 6, 2, 4, 3;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  Eigen::MatrixXd A_sym = <a class="code" href="classA.html">A</a> * <a class="code" href="classA.html">A</a>.transpose();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  Eigen::VectorXd x_ref = Eigen::VectorXd::Zero(3);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  x_ref &lt;&lt; -15, 8, 2;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  Eigen::VectorXd b = A_sym * x_ref;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  Eigen::LLT&lt;Eigen::MatrixXd&gt; lltOfA(A_sym);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  Eigen::VectorXd x_chol = lltOfA.solve(b);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">bool</span> check_chol = x_chol.isApprox(x_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-7);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  BOOST_CHECK_EQUAL(check_chol, 1);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">if</span> (!check_chol) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    std::cout &lt;&lt; x_chol.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    std::cout &lt;&lt; x_ref.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  Eigen::ConjugateGradient&lt;Eigen::MatrixXd, Eigen::Lower | Eigen::Upper,</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                           Eigen::DiagonalPreconditioner&lt;double&gt;&gt;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      cg1;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  cg1.compute(A_sym);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  Eigen::VectorXd x_cg1 = cg1.solve(b);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordtype">bool</span> check_cg1 = x_cg1.isApprox(x_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-7);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  BOOST_CHECK_EQUAL(check_cg1, 1);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordflow">if</span> (!check_cg1) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    std::cout &lt;&lt; x_cg1.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    std::cout &lt;&lt; x_ref.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  Eigen::ConjugateGradient&lt;Eigen::MatrixXd, Eigen::Lower | Eigen::Upper,</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                           Eigen::DiagonalPreconditioner&lt;double&gt;&gt;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      cg2;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  cg2.compute(A_sym);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  Eigen::VectorXd x_cg2 = cg2.solveWithGuess(b, x_ref);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">bool</span> check_cg2 = x_cg2.isApprox(x_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-7);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  BOOST_CHECK_EQUAL(check_cg2, 1);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">if</span> (!check_cg2) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    std::cout &lt;&lt; x_cg2.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    std::cout &lt;&lt; x_ref.transpose() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
 <div class="ttc" id="axtp_2include_2votca_2xtp_2eigen_8h_html"><div class="ttname"><a href="xtp_2include_2votca_2xtp_2eigen_8h.html">eigen.h</a></div></div>
-<div class="ttc" id="atest__eigen_8cc_html_a933b9cc14073742c53d2cf6a9b01bbe5"><div class="ttname"><a href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(symmetric_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__eigen_8cc_source.html#l00027">test_eigen.cc:27</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="atest__eigen_8cc_html_a933b9cc14073742c53d2cf6a9b01bbe5"><div class="ttname"><a href="test__eigen_8cc.html#a933b9cc14073742c53d2cf6a9b01bbe5">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(symmetric_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__eigen_8cc_source.html#l00033">test_eigen.cc:33</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
+<div class="ttc" id="aclassA_html"><div class="ttname"><a href="classA.html">A</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00048">test_objectfactory.cc:48</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
