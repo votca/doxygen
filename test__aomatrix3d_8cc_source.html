@@ -103,7 +103,7 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;BOOST_AUTO_TEST_SUITE(aomatrix3d_test)</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="test__aomatrix3d_8cc.html#a1e0cd5cc7c480b076734ff9c21611520">   34</a></span>&#160;<a class="code" href="test__aomatrix3d_8cc.html#a1e0cd5cc7c480b076734ff9c21611520">BOOST_AUTO_TEST_CASE</a>(aomatrices3d_test) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="test__aomatrix3d_8cc.html#ad5a2210a2bd4d8bfd05d916a92ebb4f2">   34</a></span>&#160;<a class="code" href="test__aomatrix3d_8cc.html#ad5a2210a2bd4d8bfd05d916a92ebb4f2">BOOST_AUTO_TEST_CASE</a>(aomatrices_dipole_test) {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  libint2::initialize();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitals;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
@@ -115,61 +115,86 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AODipole.html">AODipole</a> dip;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#aea0e297102a02c92c6d2b626efbad29e">Fill</a>(aobasis);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  std::array&lt;Eigen::MatrixXd, 3&gt; dip_ref;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    dip_ref[i] = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/dip_ref&quot;</span> +</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        std::to_string(i) + <span class="stringliteral">&quot;.mm&quot;</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">bool</span> check_dip = dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i].isApprox(dip_ref[i], 0.0001);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    BOOST_CHECK_EQUAL(check_dip, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (!check_dip) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      cout &lt;&lt; dip_ref[i] &lt;&lt; endl;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      cout &lt;&lt; dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i] &lt;&lt; endl;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  libint2::finalize();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="test__aomatrix3d_8cc.html#a3830d947e9145eba651fa053aeac98e1">   66</a></span>&#160;<a class="code" href="test__aomatrix3d_8cc.html#a1e0cd5cc7c480b076734ff9c21611520">BOOST_AUTO_TEST_CASE</a>(large_l_test) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  libint2::initialize();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> mol(<span class="stringliteral">&quot;C&quot;</span>, 0);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  mol.<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/C2.xyz&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  std::array&lt;Eigen::MatrixXd, 3&gt; dip_ref;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    dip_ref[i] = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/dip_ref&quot;</span> +</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::to_string(i) + <span class="stringliteral">&quot;.mm&quot;</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span> check_dip = dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i].isApprox(dip_ref[i], 0.0001);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    BOOST_CHECK_EQUAL(check_dip, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (!check_dip) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      cout &lt;&lt; dip_ref[i] &lt;&lt; endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      cout &lt;&lt; dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i] &lt;&lt; endl;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">// Now the same computation with a non zero center</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  Eigen::Vector3d center;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  center &lt;&lt; 1.71, 2.34, 3.54;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a40668742fd6156242bfd06e60c71cd88">setCenter</a>(center);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#aea0e297102a02c92c6d2b626efbad29e">Fill</a>(aobasis);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> basisset;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  basisset.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/G.xml&quot;</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> dftbasis;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  dftbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(basisset, mol);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AODipole.html">AODipole</a> dip;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#aea0e297102a02c92c6d2b626efbad29e">Fill</a>(dftbasis);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  std::array&lt;Eigen::MatrixXd, 3&gt; dip_ref;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    dip_ref[i] = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/dip_ref_large_&quot;</span> +</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        std::to_string(i) + <span class="stringliteral">&quot;.mm&quot;</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    dip_ref[i] = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/dip_ref&quot;</span> +</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        std::to_string(i) + <span class="stringliteral">&quot;_nonzero.mm&quot;</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">bool</span> check_nonzero_center = dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i].isApprox(dip_ref[i], 0.0001);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    BOOST_CHECK_EQUAL(check_nonzero_center, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span> (!check_nonzero_center) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      cout &lt;&lt; dip_ref[i] &lt;&lt; endl;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      cout &lt;&lt; dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i] &lt;&lt; endl;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">bool</span> check_dip = dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i].isApprox(dip_ref[i], 0.0001);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    BOOST_CHECK_EQUAL(check_dip, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (!check_dip) {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      cout &lt;&lt; dip_ref[i] &lt;&lt; endl;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      cout &lt;&lt; dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i] &lt;&lt; endl;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  libint2::finalize();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="test__aomatrix3d_8cc.html#a3830d947e9145eba651fa053aeac98e1">   91</a></span>&#160;<a class="code" href="test__aomatrix3d_8cc.html#ad5a2210a2bd4d8bfd05d916a92ebb4f2">BOOST_AUTO_TEST_CASE</a>(large_l_test) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  libint2::initialize();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> mol(<span class="stringliteral">&quot;C&quot;</span>, 0);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  mol.<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/C2.xyz&quot;</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> basisset;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  basisset.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/G.xml&quot;</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> dftbasis;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  dftbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(basisset, mol);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AODipole.html">AODipole</a> dip;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#aea0e297102a02c92c6d2b626efbad29e">Fill</a>(dftbasis);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  std::array&lt;Eigen::MatrixXd, 3&gt; dip_ref;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    dip_ref[i] = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aomatrix3d/dip_ref_large_&quot;</span> +</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        std::to_string(i) + <span class="stringliteral">&quot;.mm&quot;</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; dip_ref.size(); i++) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">bool</span> check_dip = dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i].isApprox(dip_ref[i], 0.0001);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    BOOST_CHECK_EQUAL(check_dip, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> (!check_dip) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      cout &lt;&lt; dip_ref[i] &lt;&lt; endl;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; i &lt;&lt; endl;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      cout &lt;&lt; dip.<a class="code" href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">Matrix</a>()[i] &lt;&lt; endl;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
@@ -183,13 +208,14 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html_a1e8646dc8d3f6c07e67cac0eecd21e93"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">votca::xtp::BasisSet::Load</a></div><div class="ttdeci">void Load(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00149">basisset.cc:149</a></div></div>
 <div class="ttc" id="aorbitals_8h_html"><div class="ttname"><a href="orbitals_8h.html">orbitals.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AODipole_html_aea0e297102a02c92c6d2b626efbad29e"><div class="ttname"><a href="classvotca_1_1xtp_1_1AODipole.html#aea0e297102a02c92c6d2b626efbad29e">votca::xtp::AODipole::Fill</a></div><div class="ttdeci">void Fill(const AOBasis &amp;aobasis) final</div><div class="ttdef"><b>Definition:</b> <a href="aomatrix_8cc_source.html#l00258">aomatrix.cc:258</a></div></div>
-<div class="ttc" id="atest__aomatrix3d_8cc_html_a1e0cd5cc7c480b076734ff9c21611520"><div class="ttname"><a href="test__aomatrix3d_8cc.html#a1e0cd5cc7c480b076734ff9c21611520">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(aomatrices3d_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__aomatrix3d_8cc_source.html#l00034">test_aomatrix3d.cc:34</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AODipole_html_a57a8c9d1f7a0b485b34516f6c38ee69c"><div class="ttname"><a href="classvotca_1_1xtp_1_1AODipole.html#a57a8c9d1f7a0b485b34516f6c38ee69c">votca::xtp::AODipole::Matrix</a></div><div class="ttdeci">const std::array&lt; Eigen::MatrixXd, 3 &gt; &amp; Matrix() const</div><div class="ttdef"><b>Definition:</b> <a href="aomatrix_8h_source.html#l00094">aomatrix.h:94</a></div></div>
+<div class="ttc" id="atest__aomatrix3d_8cc_html_ad5a2210a2bd4d8bfd05d916a92ebb4f2"><div class="ttname"><a href="test__aomatrix3d_8cc.html#ad5a2210a2bd4d8bfd05d916a92ebb4f2">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(aomatrices_dipole_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__aomatrix3d_8cc_source.html#l00034">test_aomatrix3d.cc:34</a></div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html">votca::xtp::BasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00134">basisset.h:134</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00040">aobasis.h:40</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_1_1EigenIO__MatrixMarket_html_a418e26a64229ee49f7228e548740a4bc"><div class="ttname"><a href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a></div><div class="ttdeci">Eigen::MatrixXd ReadMatrix(const std::string &amp;filename)</div><div class="ttdef"><b>Definition:</b> <a href="eigenio__matrixmarket_8cc_source.html#l00063">eigenio_matrixmarket.cc:63</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AODipole_html_a40668742fd6156242bfd06e60c71cd88"><div class="ttname"><a href="classvotca_1_1xtp_1_1AODipole.html#a40668742fd6156242bfd06e60c71cd88">votca::xtp::AODipole::setCenter</a></div><div class="ttdeci">void setCenter(const Eigen::Vector3d &amp;r)</div><div class="ttdef"><b>Definition:</b> <a href="aomatrix_8h_source.html#l00096">aomatrix.h:96</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
