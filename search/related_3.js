@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ecpaobasis_9393',['ECPAOBasis',['../classvotca_1_1xtp_1_1QMAtom.html#a7ed03b56d27971cf246954b3d9cc377e',1,'votca::xtp::QMAtom']]],
-  ['extractors_9394',['Extractors',['../classvotca_1_1xtp_1_1ExtractorFactory.html#ab87eb9743b07088b6eabf634b94a9144',1,'votca::xtp::ExtractorFactory']]]
+  ['filter_10194',['Filter',['../classvotca_1_1xtp_1_1FilterFactory.html#ab4a43555817ba372428d76e48e35cbdf',1,'votca::xtp::FilterFactory']]]
 ];

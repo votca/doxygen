@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">1.6.2</span>
+   &#160;<span id="projectnumber">2021-dev</span>
    </div>
   </td>
  </tr>
@@ -73,16 +73,17 @@ $(function() {
 <div class="title">test_lammpsdatareader.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;boost/test/unit_test.hpp&gt;</code><br />
+<div class="textblock"><code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;boost/test/unit_test.hpp&gt;</code><br />
+<code>#include &quot;<a class="el" href="bead_8h_source.html">../../include/votca/csg/bead.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="orthorhombicbox_8h_source.html">../../include/votca/csg/orthorhombicbox.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="topologyreader_8h_source.html">../../include/votca/csg/topologyreader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trajectoryreader_8h_source.html">../../include/votca/csg/trajectoryreader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="trajectorywriter_8h_source.html">../../include/votca/csg/trajectorywriter.h</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &lt;<a class="el" href="bead_8h_source.html">votca/csg/bead.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="orthorhombicbox_8h_source.html">votca/csg/orthorhombicbox.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="topologyreader_8h_source.html">votca/csg/topologyreader.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="trajectoryreader_8h_source.html">votca/csg/trajectoryreader.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="trajectorywriter_8h_source.html">votca/csg/trajectorywriter.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="elements_8h_source.html">votca/tools/elements.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="types_8h_source.html">votca/tools/types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -90,56 +91,56 @@ Include dependency graph for test_lammpsdatareader.cc:</div>
 <div class="dyncontent">
 <div class="center"><img src="test__lammpsdatareader_8cc__incl.png" border="0" usemap="#acsg_2src_2tests_2test__lammpsdatareader_8cc" alt=""/></div>
 <map name="csg_2src_2tests_2test__lammpsdatareader_8cc" id="acsg_2src_2tests_2test__lammpsdatareader_8cc">
-<area shape="rect" title=" " alt="" coords="985,5,1139,47"/>
-<area shape="rect" title=" " alt="" coords="5,95,164,121"/>
-<area shape="rect" title=" " alt="" coords="290,475,349,502"/>
-<area shape="rect" title=" " alt="" coords="3685,95,3743,121"/>
-<area shape="rect" title=" " alt="" coords="522,393,589,420"/>
-<area shape="rect" title=" " alt="" coords="3133,557,3188,584"/>
-<area shape="rect" href="bead_8h.html" title=" " alt="" coords="1540,319,1661,345"/>
-<area shape="rect" href="types_8h.html" title=" " alt="" coords="647,475,779,502"/>
-<area shape="rect" href="orthorhombicbox_8h.html" title=" " alt="" coords="598,244,787,271"/>
-<area shape="rect" href="topologyreader_8h.html" title=" " alt="" coords="2954,95,3133,121"/>
-<area shape="rect" href="trajectoryreader_8h.html" title=" " alt="" coords="2427,95,2611,121"/>
-<area shape="rect" href="trajectorywriter_8h.html" title=" " alt="" coords="1181,95,1361,121"/>
-<area shape="rect" href="elements_8h.html" title=" " alt="" coords="807,319,960,345"/>
-<area shape="rect" title=" " alt="" coords="2741,475,2810,502"/>
-<area shape="rect" title=" " alt="" coords="1970,557,2037,584"/>
-<area shape="rect" href="property_8h.html" title=" " alt="" coords="1623,393,1770,420"/>
-<area shape="rect" href="basebead_8h.html" title=" " alt="" coords="2139,393,2228,420"/>
-<area shape="rect" href="tools_2include_2votca_2tools_2eigen_8h.html" title=" " alt="" coords="927,557,991,584"/>
-<area shape="rect" href="lexical__cast_8h.html" title=" " alt="" coords="1793,475,1894,502"/>
-<area shape="rect" title=" " alt="" coords="1129,557,1208,584"/>
-<area shape="rect" href="tokenizer_8h.html" title=" " alt="" coords="2279,475,2363,502"/>
-<area shape="rect" title=" " alt="" coords="1339,468,1486,509"/>
-<area shape="rect" title=" " alt="" coords="1511,475,1629,502"/>
-<area shape="rect" title=" " alt="" coords="854,475,926,502"/>
-<area shape="rect" title=" " alt="" coords="1073,475,1112,502"/>
-<area shape="rect" title=" " alt="" coords="951,475,997,502"/>
-<area shape="rect" title=" " alt="" coords="1654,475,1718,502"/>
-<area shape="rect" title=" " alt="" coords="794,632,967,659"/>
-<area shape="rect" title=" " alt="" coords="992,632,1084,659"/>
-<area shape="rect" title=" " alt="" coords="2920,557,2977,584"/>
-<area shape="rect" title=" " alt="" coords="2595,475,2665,502"/>
-<area shape="rect" href="moleculeitem_8h.html" title=" " alt="" coords="1918,475,2089,502"/>
-<area shape="rect" href="topologyitem_8h.html" title=" " alt="" coords="3088,475,3255,502"/>
-<area shape="rect" href="identity_8h.html" title=" " alt="" coords="2113,475,2254,502"/>
-<area shape="rect" href="name_8h.html" title=" " alt="" coords="2387,475,2519,502"/>
-<area shape="rect" href="boundarycondition_8h.html" title=" " alt="" coords="643,319,782,345"/>
-<area shape="rect" href="fileformatfactory_8h.html" title=" " alt="" coords="3299,169,3425,196"/>
-<area shape="rect" href="csg_2include_2votca_2csg_2topology_8h.html" title=" " alt="" coords="1469,169,1551,196"/>
-<area shape="rect" href="filesystem_8h.html" title=" " alt="" coords="3299,319,3457,345"/>
-<area shape="rect" href="objectfactory_8h.html" title=" " alt="" coords="1171,393,1345,420"/>
-<area shape="rect" title=" " alt="" coords="3011,244,3121,271"/>
-<area shape="rect" href="beadtype_8h.html" title=" " alt="" coords="3139,393,3225,420"/>
-<area shape="rect" href="exclusionlist_8h.html" title=" " alt="" coords="1293,244,1396,271"/>
-<area shape="rect" href="molecule_8h.html" title=" " alt="" coords="2754,244,2839,271"/>
-<area shape="rect" href="openbox_8h.html" title=" " alt="" coords="1136,244,1217,271"/>
-<area shape="rect" href="residue_8h.html" title=" " alt="" coords="3250,393,3325,420"/>
-<area shape="rect" href="triclinicbox_8h.html" title=" " alt="" coords="1017,244,1112,271"/>
-<area shape="rect" href="interaction_8h.html" title=" " alt="" coords="1573,244,1666,271"/>
-<area shape="rect" href="constants_8h.html" title=" " alt="" coords="290,393,447,420"/>
-<area shape="rect" title=" " alt="" coords="373,468,521,509"/>
+<area shape="rect" title=" " alt="" coords="1351,5,1505,47"/>
+<area shape="rect" title=" " alt="" coords="373,519,443,546"/>
+<area shape="rect" title=" " alt="" coords="107,102,266,129"/>
+<area shape="rect" href="bead_8h.html" title=" " alt="" coords="1365,348,1488,389"/>
+<area shape="rect" title=" " alt="" coords="2169,609,2223,635"/>
+<area shape="rect" href="types_8h.html" title=" " alt="" coords="610,609,675,635"/>
+<area shape="rect" title=" " alt="" coords="700,609,759,635"/>
+<area shape="rect" href="orthorhombicbox_8h.html" title=" " alt="" coords="342,259,501,300"/>
+<area shape="rect" href="topologyreader_8h.html" title=" " alt="" coords="2201,95,2348,136"/>
+<area shape="rect" href="trajectoryreader_8h.html" title=" " alt="" coords="2373,95,2526,136"/>
+<area shape="rect" href="trajectorywriter_8h.html" title=" " alt="" coords="2551,95,2700,136"/>
+<area shape="rect" title=" " alt="" coords="2844,184,2911,211"/>
+<area shape="rect" title=" " alt="" coords="2725,102,2782,129"/>
+<area shape="rect" href="elements_8h.html" title=" " alt="" coords="2055,437,2209,464"/>
+<area shape="rect" title=" " alt="" coords="251,609,317,635"/>
+<area shape="rect" href="property_8h.html" title=" " alt="" coords="1403,437,1549,464"/>
+<area shape="rect" href="basebead_8h.html" title=" " alt="" coords="645,437,734,464"/>
+<area shape="rect" title=" " alt="" coords="1446,519,1506,546"/>
+<area shape="rect" title=" " alt="" coords="2335,519,2407,546"/>
+<area shape="rect" title=" " alt="" coords="2049,519,2087,546"/>
+<area shape="rect" title=" " alt="" coords="2111,519,2158,546"/>
+<area shape="rect" title=" " alt="" coords="1085,609,1163,635"/>
+<area shape="rect" title=" " alt="" coords="1531,512,1677,553"/>
+<area shape="rect" title=" " alt="" coords="1702,519,1821,546"/>
+<area shape="rect" href="tools_2include_2votca_2tools_2eigen_8h.html" title=" " alt="" coords="776,691,840,717"/>
+<area shape="rect" href="lexical__cast_8h.html" title=" " alt="" coords="1212,519,1313,546"/>
+<area shape="rect" href="tokenizer_8h.html" title=" " alt="" coords="1338,519,1422,546"/>
+<area shape="rect" title=" " alt="" coords="437,773,579,799"/>
+<area shape="rect" title=" " alt="" coords="603,773,695,799"/>
+<area shape="rect" title=" " alt="" coords="719,765,897,807"/>
+<area shape="rect" title=" " alt="" coords="921,773,1079,799"/>
+<area shape="rect" title=" " alt="" coords="1103,765,1281,807"/>
+<area shape="rect" title=" " alt="" coords="1187,609,1338,635"/>
+<area shape="rect" title=" " alt="" coords="2269,609,2326,635"/>
+<area shape="rect" title=" " alt="" coords="1362,609,1497,635"/>
+<area shape="rect" href="constants_8h.html" title=" " alt="" coords="777,519,935,546"/>
+<area shape="rect" href="name_8h.html" title=" " alt="" coords="519,519,651,546"/>
+<area shape="rect" title=" " alt="" coords="783,601,931,643"/>
+<area shape="rect" href="boundarycondition_8h.html" title=" " alt="" coords="392,355,531,382"/>
+<area shape="rect" href="fileformatfactory_8h.html" title=" " alt="" coords="2462,184,2589,211"/>
+<area shape="rect" href="csg_2include_2votca_2csg_2topology_8h.html" title=" " alt="" coords="1555,184,1637,211"/>
+<area shape="rect" href="filesystem_8h.html" title=" " alt="" coords="2458,355,2617,382"/>
+<area shape="rect" href="objectfactory_8h.html" title=" " alt="" coords="1087,437,1262,464"/>
+<area shape="rect" title=" " alt="" coords="1634,266,1745,293"/>
+<area shape="rect" href="exclusionlist_8h.html" title=" " alt="" coords="1930,266,2033,293"/>
+<area shape="rect" href="molecule_8h.html" title=" " alt="" coords="1820,266,1905,293"/>
+<area shape="rect" href="openbox_8h.html" title=" " alt="" coords="577,266,658,293"/>
+<area shape="rect" href="residue_8h.html" title=" " alt="" coords="2207,355,2281,382"/>
+<area shape="rect" href="triclinicbox_8h.html" title=" " alt="" coords="682,266,777,293"/>
+<area shape="rect" href="interaction_8h.html" title=" " alt="" coords="1465,266,1559,293"/>
 </map>
 </div>
 </div>
@@ -154,12 +155,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a049ab7201384dd9c2e154544ef1becdc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__lammpsdatareader_8cc.html#a049ab7201384dd9c2e154544ef1becdc">fexists_</a> (const string filename)</td></tr>
-<tr class="separator:a049ab7201384dd9c2e154544ef1becdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b98ce3227ed3f00d2f86fab1255573b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__lammpsdatareader_8cc.html#a6b98ce3227ed3f00d2f86fab1255573b">printTestFile1_</a> (const string filename)</td></tr>
-<tr class="separator:a6b98ce3227ed3f00d2f86fab1255573b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8b1b2362c1e3da5253da2b06d48ed9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__lammpsdatareader_8cc.html#ad8b1b2362c1e3da5253da2b06d48ed9f">printTestFile2_</a> (const string filename)</td></tr>
-<tr class="separator:ad8b1b2362c1e3da5253da2b06d48ed9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6df7dcfe2816c6ae4e91afa4208de02f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__lammpsdatareader_8cc.html#a6df7dcfe2816c6ae4e91afa4208de02f">BOOST_AUTO_TEST_CASE</a> (test_topologyreader)</td></tr>
 <tr class="memdesc:a6df7dcfe2816c6ae4e91afa4208de02f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the topology reader.  <a href="test__lammpsdatareader_8cc.html#a6df7dcfe2816c6ae4e91afa4208de02f">More...</a><br /></td></tr>
 <tr class="separator:a6df7dcfe2816c6ae4e91afa4208de02f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,7 +175,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00018">18</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00019">19</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
 
 </div>
 </div>
@@ -196,7 +191,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00020">20</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00021">21</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
 
 </div>
 </div>
@@ -220,7 +215,7 @@ Functions</h2></td></tr>
 <p>Test the topology reader. </p>
 <p>This test is designed to test the topology reader this is done by creating a small lammps data file. The file is then read in with the topology reader and the values in the top object are then examined to ensure they represent the values from the file. </p>
 
-<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00055">55</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00050">50</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
 
 </div>
 </div>
@@ -241,69 +236,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Test the trajectory reader. </p>
-<p>This test is designed to test the trajectory reader this is done by creating a small lammps data file. A topology object is created and it is filled by first reading information from a single data file using the topology reader. A trajectory reader is then used to read a second data file. This leads to updating the positions of the atoms </p>
+<p>This test is designed to test the trajectory reader this is done by creating a small lammps data file. <a class="el" href="classA.html">A</a> topology object is created and it is filled by first reading information from a single data file using the topology reader. <a class="el" href="classA.html">A</a> trajectory reader is then used to read a second data file. This leads to updating the positions of the atoms </p>
 
-<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00104">104</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
-
-</div>
-</div>
-<a id="a049ab7201384dd9c2e154544ef1becdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a049ab7201384dd9c2e154544ef1becdc">&#9670;&nbsp;</a></span>fexists_()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool fexists_ </td>
-          <td>(</td>
-          <td class="paramtype">const string&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00166">166</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
-
-</div>
-</div>
-<a id="a6b98ce3227ed3f00d2f86fab1255573b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b98ce3227ed3f00d2f86fab1255573b">&#9670;&nbsp;</a></span>printTestFile1_()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printTestFile1_ </td>
-          <td>(</td>
-          <td class="paramtype">const string&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00171">171</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
-
-</div>
-</div>
-<a id="ad8b1b2362c1e3da5253da2b06d48ed9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8b1b2362c1e3da5253da2b06d48ed9f">&#9670;&nbsp;</a></span>printTestFile2_()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void printTestFile2_ </td>
-          <td>(</td>
-          <td class="paramtype">const string&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l01118">1118</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="test__lammpsdatareader_8cc_source.html#l00097">97</a> of file <a class="el" href="test__lammpsdatareader_8cc_source.html">test_lammpsdatareader.cc</a>.</p>
 
 </div>
 </div>

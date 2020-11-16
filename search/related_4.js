@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filter_9395',['Filter',['../classvotca_1_1xtp_1_1FilterFactory.html#ab4a43555817ba372428d76e48e35cbdf',1,'votca::xtp::FilterFactory']]]
+  ['jobcalculators_10195',['JobCalculators',['../classvotca_1_1xtp_1_1JobCalculatorfactory.html#a7d3e70e3b8c95cee4894144b27a6b99a',1,'votca::xtp::JobCalculatorfactory']]]
 ];
