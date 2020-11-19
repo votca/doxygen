@@ -16,7 +16,7 @@ var searchData=
   ['addbeadmap_6315',['AddBeadMap',['../classvotca_1_1csg_1_1Map.html#a96728f32992aec22a20452d126a7e22a',1,'votca::csg::Map']]],
   ['addbondedinteraction_6316',['AddBondedInteraction',['../classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19',1,'votca::csg::Topology']]],
   ['addcol_6317',['addCol',['../classvotca_1_1xtp_1_1CptTable.html#a95c26af480845b8482e72912f804f82c',1,'votca::xtp::CptTable::addCol(const U &amp;, const std::string &amp;name, const size_t &amp;offset)'],['../classvotca_1_1xtp_1_1CptTable.html#a8a7c4ca61bf688d51f19c0d071fe8cee',1,'votca::xtp::CptTable::addCol(const std::string &amp;, const std::string &amp;name, const size_t &amp;offset)'],['../classvotca_1_1xtp_1_1CptTable.html#a322899daf5c03f96da54d457a2aa3063',1,'votca::xtp::CptTable::addCol(const char *, const std::string &amp;name, const size_t &amp;offset)']]],
-  ['addcontainer_6318',['AddContainer',['../classvotca_1_1xtp_1_1AtomContainer.html#afe140280f1aa668ff6f42f78dc547aab',1,'votca::xtp::AtomContainer']]],
+  ['addcontainer_6318',['AddContainer',['../classvotca_1_1xtp_1_1QMMolecule.html#a4be28a40c780138b7c482d36af90e302',1,'votca::xtp::QMMolecule']]],
   ['adddecayevent_6319',['AddDecayEvent',['../classvotca_1_1xtp_1_1GNode.html#ab34a167e1f00fd7ec0a2bc56eebe4564',1,'votca::xtp::GNode']]],
   ['addecpchargetomolecule_6320',['AddECPChargeToMolecule',['../classvotca_1_1xtp_1_1ECPAOBasis.html#aa8add621d8c70a50f5fe9e2241741bff',1,'votca::xtp::ECPAOBasis']]],
   ['addedge_6321',['addEdge',['../classvotca_1_1tools_1_1EdgeContainer.html#a251299815028380a643fbc2f7235ca16',1,'votca::tools::EdgeContainer']]],
@@ -94,7 +94,7 @@ var searchData=
   ['atomicguess_6393',['AtomicGuess',['../classvotca_1_1xtp_1_1DFTEngine.html#a64f27a8072a65458620fd164bf35a090',1,'votca::xtp::DFTEngine']]],
   ['attach_5fmatrix_6394',['attach_matrix',['../classHermitianBlockOperator.html#a63c3595b3c09cb6946c99132cd68c7a1',1,'HermitianBlockOperator']]],
   ['autocorrelate_6395',['AutoCorrelate',['../classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb',1,'votca::tools::CrossCorrelate']]],
-  ['autodetectboxtype_6396',['AutoDetectBoxType',['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()'],['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()']]],
+  ['autodetectboxtype_6396',['autoDetectBoxType',['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()'],['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()']]],
   ['auxsize_6397',['auxsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a1e3665caf22aded3f0e2c4cb038022bf',1,'votca::xtp::TCMatrix_gwbse']]],
   ['available_5ftable_6398',['available_table',['../classvotca_1_1xtp_1_1LebedevGrid.html#a2f7fe3a7dd9f692540eb35eb1f23fd54',1,'votca::xtp::LebedevGrid']]],
   ['axa_6399',['AxA',['../classvotca_1_1xtp_1_1AxA.html#a748d2be00938e375bdb08a5e691d587a',1,'votca::xtp::AxA']]]

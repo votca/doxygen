@@ -666,169 +666,170 @@ $(function() {
 <div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Molecule Coordinates [A] &quot;</span> &lt;&lt; flush;</div>
 <div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1xtp_1_1QMAtom.html">QMAtom</a>&amp; atom : _orbitals.QMAtoms()) {</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    std::string output =</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        (boost::format(<span class="stringliteral">&quot;  %1$s&quot;</span></div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;                       <span class="stringliteral">&quot;   %2$+1.4f %3$+1.4f %4$+1.4f&quot;</span>) %</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;         atom.getElement() % (atom.getPos().x() * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#ad925aaa34bb89398c09f2460a9bd9ca4">tools::conv::bohr2ang</a>) %</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;         (atom.getPos().y() * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#ad925aaa34bb89398c09f2460a9bd9ca4">tools::conv::bohr2ang</a>) %</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;         (atom.getPos().z() * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#ad925aaa34bb89398c09f2460a9bd9ca4">tools::conv::bohr2ang</a>))</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            .str();</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160; </div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog) &lt;&lt; output &lt;&lt; flush;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;  }</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160; </div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;  std::string dft_package = _orbitals.getQMpackage();</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; DFT data was created by &quot;</span> &lt;&lt; dft_package &lt;&lt; flush;</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160; </div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> dftbs;</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;  dftbs.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(_dftbasis_name);</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160; </div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Loaded DFT Basis Set &quot;</span> &lt;&lt; _dftbasis_name &lt;&lt; flush;</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160; </div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;  <span class="comment">// fill DFT AO basis by going through all atoms</span></div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> dftbasis;</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  dftbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(dftbs, _orbitals.QMAtoms());</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Filled DFT Basis of size &quot;</span></div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;                              &lt;&lt; dftbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>() &lt;&lt; flush;</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160; </div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;  <span class="comment">// load auxiliary basis set (element-wise information) from xml file</span></div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> auxbs;</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;  auxbs.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(_auxbasis_name);</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Loaded Auxbasis Set &quot;</span> &lt;&lt; _auxbasis_name &lt;&lt; flush;</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160; </div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  <span class="comment">// fill auxiliary AO basis by going through all atoms</span></div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> auxbasis;</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;  auxbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(auxbs, _orbitals.QMAtoms());</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;  _orbitals.setAuxbasisName(_auxbasis_name);</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Filled Auxbasis of size &quot;</span></div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                              &lt;&lt; auxbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>() &lt;&lt; flush;</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160; </div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;  <span class="keywordflow">if</span> ((_do_bse_singlets || _do_bse_triplets) &amp;&amp; _fragments.size() &gt; 0) {</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; frag : _fragments) {</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Fragment &quot;</span> &lt;&lt; frag.getId()</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;                                  &lt;&lt; <span class="stringliteral">&quot; size:&quot;</span> &lt;&lt; frag.size() &lt;&lt; flush;</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    }</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;  }</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160; </div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  <span class="keywordflow">if</span> (!_do_gw &amp;&amp; !_orbitals.hasQPdiag()) {</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;        <span class="stringliteral">&quot;You want no GW calculation but the orb file has no QPcoefficients for &quot;</span></div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        <span class="stringliteral">&quot;BSE&quot;</span>);</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  }</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html">TCMatrix_gwbse</a> Mmn;</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  <span class="comment">// rpamin here, because RPA needs till rpamin</span></div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> max_3c = std::max(_bseopt.cmax, _gwopt.qpmax);</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  Mmn.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a7a724c0f4f2e28100dc46c7e8a96936d">Initialize</a>(auxbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), _gwopt.rpamin, max_3c, _gwopt.rpamin,</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                 _gwopt.rpamax);</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>()</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; Calculating Mmn_beta (3-center-repulsion x orbitals)  &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;  Mmn.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a018fa3660424ff3cd9a08fe295149f36">Fill</a>(auxbasis, dftbasis, _orbitals.MOs().eigenvectors());</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::info, *_pLog)</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Removed &quot;</span> &lt;&lt; Mmn.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix.html#ad1d8cf79f622e7fb5682fd09db9cb814">Removedfunctions</a>()</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; functions from Aux Coulomb matrix to avoid near linear dependencies&quot;</span></div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;      &lt;&lt; flush;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Calculated Mmn_beta (3-center-repulsion x orbitals)  &quot;</span></div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;      &lt;&lt; flush;</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160; </div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;  Eigen::MatrixXd Hqp;</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  <span class="keywordflow">if</span> (_do_gw) {</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    Eigen::MatrixXd vxc = CalculateVXC(dftbasis);</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GW.html">GW</a> gw = <a class="code" href="classvotca_1_1xtp_1_1GW.html">GW</a>(*_pLog, Mmn, vxc, _orbitals.MOs().eigenvalues());</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#a5fed8f9695d105d41d68ea763d9feacb">configure</a>(_gwopt);</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#af655815b7ee998c9d5456536e72244af">CalculateGWPerturbation</a>();</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    <span class="keywordflow">if</span> (!_sigma_plot_states.empty()) {</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;      gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#a07d67a555606654a9c8e22474a7d99a4">PlotSigma</a>(_sigma_plot_filename, _sigma_plot_steps, _sigma_plot_spacing,</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;                   _sigma_plot_states);</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    }</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160; </div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="comment">// store perturbative QP energy data in orbitals object (DFT, S_x,S_c, V_xc,</span></div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="comment">// E_qp)</span></div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    _orbitals.QPpertEnergies() = gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#ab602df0adefa4f6a37cad0ad0861e9eb">getGWAResults</a>();</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    _orbitals.RPAInputEnergies() = gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#ab884c50f5056e274b6d2426aa76e8f1d">RPAInputEnergies</a>();</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160; </div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::info, *_pLog)</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Calculating offdiagonal part of Sigma  &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#aaa91d1a8b7e512d2397330144a431aed">CalculateHQP</a>();</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Calculated offdiagonal part of Sigma  &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160; </div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    Hqp = gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#a690ffdc513cc8fc725f747e17f7f541d">getHQP</a>();</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160; </div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es =</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#a1754a77d1fa43b608840c4a0c395dd4c">DiagonalizeQPHamiltonian</a>();</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    <span class="keywordflow">if</span> (es.info() == Eigen::ComputationInfo::Success) {</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;          &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Diagonalized QP Hamiltonian  &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    }</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160; </div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    _orbitals.QPdiag().eigenvectors() = es.eigenvectors();</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    _orbitals.QPdiag().eigenvalues() = es.eigenvalues();</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    <span class="keywordflow">if</span> (_orbitals.getGWAmax() != _gwopt.qpmax ||</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;        _orbitals.getGWAmin() != _gwopt.qpmin ||</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;        _orbitals.getRPAmax() != _gwopt.rpamax ||</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;        _orbitals.getRPAmin() != _gwopt.rpamin) {</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;          <span class="stringliteral">&quot;The ranges for GW and RPA do not agree with the ranges from the &quot;</span></div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;          <span class="stringliteral">&quot;.orb file, rerun your GW calculation&quot;</span>);</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    }</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="keyword">const</span> Eigen::MatrixXd&amp; qpcoeff = _orbitals.QPdiag().eigenvectors();</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160; </div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    Hqp = qpcoeff * _orbitals.QPdiag().eigenvalues().asDiagonal() *</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;          qpcoeff.transpose();</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;  }</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160; </div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  <span class="comment">// proceed only if BSE requested</span></div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;  <span class="keywordflow">if</span> (_do_bse_singlets || _do_bse_triplets) {</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160; </div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1BSE.html">BSE</a> bse = <a class="code" href="classvotca_1_1xtp_1_1BSE.html">BSE</a>(*_pLog, Mmn);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a877ebabf37ced6602c08554f6200c15a">configure</a>(_bseopt, _orbitals.RPAInputEnergies(), Hqp);</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160; </div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    <span class="comment">// store the direct contribution to the static BSE results</span></div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    Eigen::VectorXd Hd_static_contrib_triplet;</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    Eigen::VectorXd Hd_static_contrib_singlet;</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160; </div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    <span class="keywordflow">if</span> (_do_bse_triplets) {</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;      bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#ae1be11d189c7951a1754b2a4b72acf0a">Solve_triplets</a>(_orbitals);</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;          &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Solved BSE for triplets &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;      bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a8459fa0e9b4d7d98626f6d0534137f14">Analyze_triplets</a>(_fragments, _orbitals);</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    }</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160; </div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    <span class="keywordflow">if</span> (_do_bse_singlets) {</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;      bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a0d7117c55f51ca2f6911748a411e3b9c">Solve_singlets</a>(_orbitals);</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;          &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Solved BSE for singlets &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;      bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a4c706d9e9c8b15dca9a6bd0f5405167e">Analyze_singlets</a>(_fragments, _orbitals);</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    }</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160; </div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;    <span class="comment">// do perturbative dynamical screening in BSE</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    <span class="keywordflow">if</span> (_do_dynamical_screening_bse) {</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160; </div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;      <span class="keywordflow">if</span> (_do_bse_triplets) {</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;        bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a82951cb6cc8672e35d8adf9c62ab3221">Perturbative_DynamicalScreening</a>(<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a>(QMStateType::Triplet),</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                                            _orbitals);</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;      }</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160; </div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;      <span class="keywordflow">if</span> (_do_bse_singlets) {</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;        bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a82951cb6cc8672e35d8adf9c62ab3221">Perturbative_DynamicalScreening</a>(<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a>(QMStateType::Singlet),</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                                            _orbitals);</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;      }</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;    }</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;  }</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; GWBSE calculation finished &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;}</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160; </div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    std::string output = (boost::format(<span class="stringliteral">&quot;%5d&quot;</span></div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                                        <span class="stringliteral">&quot;%5s&quot;</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;                                        <span class="stringliteral">&quot;   %1.4f %1.4f %1.4f&quot;</span>) %</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;                          atom.getId() % atom.getElement() %</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;                          (atom.getPos().x() * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#ad925aaa34bb89398c09f2460a9bd9ca4">tools::conv::bohr2ang</a>) %</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;                          (atom.getPos().y() * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#ad925aaa34bb89398c09f2460a9bd9ca4">tools::conv::bohr2ang</a>) %</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;                          (atom.getPos().z() * <a class="code" href="namespacevotca_1_1tools_1_1conv.html#ad925aaa34bb89398c09f2460a9bd9ca4">tools::conv::bohr2ang</a>))</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                             .str();</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; </div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog) &lt;&lt; output &lt;&lt; flush;</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;  }</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;  std::string dft_package = _orbitals.getQMpackage();</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; DFT data was created by &quot;</span> &lt;&lt; dft_package &lt;&lt; flush;</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160; </div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> dftbs;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;  dftbs.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(_dftbasis_name);</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160; </div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Loaded DFT Basis Set &quot;</span> &lt;&lt; _dftbasis_name &lt;&lt; flush;</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160; </div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;  <span class="comment">// fill DFT AO basis by going through all atoms</span></div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> dftbasis;</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;  dftbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(dftbs, _orbitals.QMAtoms());</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Filled DFT Basis of size &quot;</span></div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                              &lt;&lt; dftbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>() &lt;&lt; flush;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;  <span class="comment">// load auxiliary basis set (element-wise information) from xml file</span></div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> auxbs;</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  auxbs.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(_auxbasis_name);</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Loaded Auxbasis Set &quot;</span> &lt;&lt; _auxbasis_name &lt;&lt; flush;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160; </div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  <span class="comment">// fill auxiliary AO basis by going through all atoms</span></div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> auxbasis;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;  auxbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(auxbs, _orbitals.QMAtoms());</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  _orbitals.setAuxbasisName(_auxbasis_name);</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Filled Auxbasis of size &quot;</span></div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;                              &lt;&lt; auxbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>() &lt;&lt; flush;</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160; </div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  <span class="keywordflow">if</span> ((_do_bse_singlets || _do_bse_triplets) &amp;&amp; _fragments.size() &gt; 0) {</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; frag : _fragments) {</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog) &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Fragment &quot;</span> &lt;&lt; frag.getId()</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                                  &lt;&lt; <span class="stringliteral">&quot; size:&quot;</span> &lt;&lt; frag.size() &lt;&lt; flush;</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    }</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  }</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160; </div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  <span class="keywordflow">if</span> (!_do_gw &amp;&amp; !_orbitals.hasQPdiag()) {</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        <span class="stringliteral">&quot;You want no GW calculation but the orb file has no QPcoefficients for &quot;</span></div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        <span class="stringliteral">&quot;BSE&quot;</span>);</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  }</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html">TCMatrix_gwbse</a> Mmn;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  <span class="comment">// rpamin here, because RPA needs till rpamin</span></div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> max_3c = std::max(_bseopt.cmax, _gwopt.qpmax);</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;  Mmn.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a7a724c0f4f2e28100dc46c7e8a96936d">Initialize</a>(auxbasis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>(), _gwopt.rpamin, max_3c, _gwopt.rpamin,</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;                 _gwopt.rpamax);</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>()</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; Calculating Mmn_beta (3-center-repulsion x orbitals)  &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  Mmn.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a018fa3660424ff3cd9a08fe295149f36">Fill</a>(auxbasis, dftbasis, _orbitals.MOs().eigenvectors());</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::info, *_pLog)</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Removed &quot;</span> &lt;&lt; Mmn.<a class="code" href="classvotca_1_1xtp_1_1TCMatrix.html#ad1d8cf79f622e7fb5682fd09db9cb814">Removedfunctions</a>()</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;      &lt;&lt; <span class="stringliteral">&quot; functions from Aux Coulomb matrix to avoid near linear dependencies&quot;</span></div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;      &lt;&lt; flush;</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Calculated Mmn_beta (3-center-repulsion x orbitals)  &quot;</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;      &lt;&lt; flush;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160; </div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  Eigen::MatrixXd Hqp;</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;  <span class="keywordflow">if</span> (_do_gw) {</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    Eigen::MatrixXd vxc = CalculateVXC(dftbasis);</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1GW.html">GW</a> gw = <a class="code" href="classvotca_1_1xtp_1_1GW.html">GW</a>(*_pLog, Mmn, vxc, _orbitals.MOs().eigenvalues());</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#a5fed8f9695d105d41d68ea763d9feacb">configure</a>(_gwopt);</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#af655815b7ee998c9d5456536e72244af">CalculateGWPerturbation</a>();</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160; </div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    <span class="keywordflow">if</span> (!_sigma_plot_states.empty()) {</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;      gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#a07d67a555606654a9c8e22474a7d99a4">PlotSigma</a>(_sigma_plot_filename, _sigma_plot_steps, _sigma_plot_spacing,</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;                   _sigma_plot_states);</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    }</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160; </div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="comment">// store perturbative QP energy data in orbitals object (DFT, S_x,S_c, V_xc,</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    <span class="comment">// E_qp)</span></div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    _orbitals.QPpertEnergies() = gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#ab602df0adefa4f6a37cad0ad0861e9eb">getGWAResults</a>();</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    _orbitals.RPAInputEnergies() = gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#ab884c50f5056e274b6d2426aa76e8f1d">RPAInputEnergies</a>();</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160; </div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::info, *_pLog)</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Calculating offdiagonal part of Sigma  &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#aaa91d1a8b7e512d2397330144a431aed">CalculateHQP</a>();</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Calculated offdiagonal part of Sigma  &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160; </div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    Hqp = gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#a690ffdc513cc8fc725f747e17f7f541d">getHQP</a>();</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    Eigen::SelfAdjointEigenSolver&lt;Eigen::MatrixXd&gt; es =</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;        gw.<a class="code" href="classvotca_1_1xtp_1_1GW.html#a1754a77d1fa43b608840c4a0c395dd4c">DiagonalizeQPHamiltonian</a>();</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    <span class="keywordflow">if</span> (es.info() == Eigen::ComputationInfo::Success) {</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;          &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Diagonalized QP Hamiltonian  &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    }</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160; </div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    _orbitals.QPdiag().eigenvectors() = es.eigenvectors();</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    _orbitals.QPdiag().eigenvalues() = es.eigenvalues();</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    <span class="keywordflow">if</span> (_orbitals.getGWAmax() != _gwopt.qpmax ||</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;        _orbitals.getGWAmin() != _gwopt.qpmin ||</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;        _orbitals.getRPAmax() != _gwopt.rpamax ||</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;        _orbitals.getRPAmin() != _gwopt.rpamin) {</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;          <span class="stringliteral">&quot;The ranges for GW and RPA do not agree with the ranges from the &quot;</span></div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;          <span class="stringliteral">&quot;.orb file, rerun your GW calculation&quot;</span>);</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    }</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <span class="keyword">const</span> Eigen::MatrixXd&amp; qpcoeff = _orbitals.QPdiag().eigenvectors();</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160; </div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    Hqp = qpcoeff * _orbitals.QPdiag().eigenvalues().asDiagonal() *</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;          qpcoeff.transpose();</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;  }</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160; </div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;  <span class="comment">// proceed only if BSE requested</span></div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;  <span class="keywordflow">if</span> (_do_bse_singlets || _do_bse_triplets) {</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160; </div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1BSE.html">BSE</a> bse = <a class="code" href="classvotca_1_1xtp_1_1BSE.html">BSE</a>(*_pLog, Mmn);</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a877ebabf37ced6602c08554f6200c15a">configure</a>(_bseopt, _orbitals.RPAInputEnergies(), Hqp);</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160; </div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    <span class="comment">// store the direct contribution to the static BSE results</span></div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    Eigen::VectorXd Hd_static_contrib_triplet;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    Eigen::VectorXd Hd_static_contrib_singlet;</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160; </div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    <span class="keywordflow">if</span> (_do_bse_triplets) {</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;      bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#ae1be11d189c7951a1754b2a4b72acf0a">Solve_triplets</a>(_orbitals);</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;          &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Solved BSE for triplets &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;      bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a8459fa0e9b4d7d98626f6d0534137f14">Analyze_triplets</a>(_fragments, _orbitals);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    }</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160; </div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;    <span class="keywordflow">if</span> (_do_bse_singlets) {</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;      bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a0d7117c55f51ca2f6911748a411e3b9c">Solve_singlets</a>(_orbitals);</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;          &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Solved BSE for singlets &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;      bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a4c706d9e9c8b15dca9a6bd0f5405167e">Analyze_singlets</a>(_fragments, _orbitals);</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    }</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160; </div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    <span class="comment">// do perturbative dynamical screening in BSE</span></div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;    <span class="keywordflow">if</span> (_do_dynamical_screening_bse) {</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160; </div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;      <span class="keywordflow">if</span> (_do_bse_triplets) {</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;        bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a82951cb6cc8672e35d8adf9c62ab3221">Perturbative_DynamicalScreening</a>(<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a>(QMStateType::Triplet),</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                                            _orbitals);</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;      }</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160; </div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;      <span class="keywordflow">if</span> (_do_bse_singlets) {</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        bse.<a class="code" href="classvotca_1_1xtp_1_1BSE.html#a82951cb6cc8672e35d8adf9c62ab3221">Perturbative_DynamicalScreening</a>(<a class="code" href="classvotca_1_1xtp_1_1QMStateType.html">QMStateType</a>(QMStateType::Singlet),</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                                            _orbitals);</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;      }</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    }</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;  }</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(Log::error, *_pLog)</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;      &lt;&lt; <a class="code" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; GWBSE calculation finished &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;}</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160; </div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Mat__p__Energy_html_a19ceda431b4112fc223817d5c78fa39d"><div class="ttname"><a href="classvotca_1_1xtp_1_1Mat__p__Energy.html#a19ceda431b4112fc223817d5c78fa39d">votca::xtp::Mat_p_Energy::matrix</a></div><div class="ttdeci">Eigen::MatrixXd &amp; matrix()</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2eigen_8h_source.html#l00080">eigen.h:80</a></div></div>

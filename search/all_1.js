@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_877',['A',['../classA.html',1,'A'],['../classvotca_1_1tools_1_1LinSpline.html#aa7b629597c199fd8e9099349887bb355',1,'votca::tools::LinSpline::a()'],['../structCGForceMatching_1_1SplineInfo.html#acb610d0db7f099f0274a7e2e553cc3d0',1,'CGForceMatching::SplineInfo::a()'],['../classvotca_1_1tools_1_1CubicSpline.html#a7cf9d2bb98c99d7736f96b65fbfadd7c',1,'votca::tools::CubicSpline::A()']]],
+  ['a_877',['A',['../classA.html',1,'A'],['../classvotca_1_1tools_1_1CubicSpline.html#a7cf9d2bb98c99d7736f96b65fbfadd7c',1,'votca::tools::CubicSpline::A()'],['../classvotca_1_1tools_1_1LinSpline.html#aa7b629597c199fd8e9099349887bb355',1,'votca::tools::LinSpline::a()'],['../structCGForceMatching_1_1SplineInfo.html#acb610d0db7f099f0274a7e2e553cc3d0',1,'CGForceMatching::SplineInfo::a()']]],
   ['a_5fmos_2emm_878',['A_MOs.mm',['../bsecoupling_2A__MOs_8mm.html',1,'(Global Namespace)'],['../cubefile__writer_2A__MOs_8mm.html',1,'(Global Namespace)']]],
   ['a_5fprime_5fl_879',['A_prime_l',['../classvotca_1_1tools_1_1CubicSpline.html#af924a7e71d472df6a621e8ce8aac0d56',1,'votca::tools::CubicSpline']]],
   ['a_5fprime_5fr_880',['A_prime_r',['../classvotca_1_1tools_1_1CubicSpline.html#ab70ee3234eb180795e2293903cef4f8a',1,'votca::tools::CubicSpline']]],
@@ -19,7 +19,7 @@ var searchData=
   ['addbeadmap_893',['AddBeadMap',['../classvotca_1_1csg_1_1Map.html#a96728f32992aec22a20452d126a7e22a',1,'votca::csg::Map']]],
   ['addbondedinteraction_894',['AddBondedInteraction',['../classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19',1,'votca::csg::Topology']]],
   ['addcol_895',['addCol',['../classvotca_1_1xtp_1_1CptTable.html#a95c26af480845b8482e72912f804f82c',1,'votca::xtp::CptTable::addCol(const U &amp;, const std::string &amp;name, const size_t &amp;offset)'],['../classvotca_1_1xtp_1_1CptTable.html#a8a7c4ca61bf688d51f19c0d071fe8cee',1,'votca::xtp::CptTable::addCol(const std::string &amp;, const std::string &amp;name, const size_t &amp;offset)'],['../classvotca_1_1xtp_1_1CptTable.html#a322899daf5c03f96da54d457a2aa3063',1,'votca::xtp::CptTable::addCol(const char *, const std::string &amp;name, const size_t &amp;offset)']]],
-  ['addcontainer_896',['AddContainer',['../classvotca_1_1xtp_1_1AtomContainer.html#afe140280f1aa668ff6f42f78dc547aab',1,'votca::xtp::AtomContainer']]],
+  ['addcontainer_896',['AddContainer',['../classvotca_1_1xtp_1_1QMMolecule.html#a4be28a40c780138b7c482d36af90e302',1,'votca::xtp::QMMolecule']]],
   ['adddecayevent_897',['AddDecayEvent',['../classvotca_1_1xtp_1_1GNode.html#ab34a167e1f00fd7ec0a2bc56eebe4564',1,'votca::xtp::GNode']]],
   ['addecpchargetomolecule_898',['AddECPChargeToMolecule',['../classvotca_1_1xtp_1_1ECPAOBasis.html#aa8add621d8c70a50f5fe9e2241741bff',1,'votca::xtp::ECPAOBasis']]],
   ['addedge_899',['addEdge',['../classvotca_1_1tools_1_1EdgeContainer.html#a251299815028380a643fbc2f7235ca16',1,'votca::tools::EdgeContainer']]],
@@ -172,7 +172,7 @@ var searchData=
   ['attributeiterator_1046',['AttributeIterator',['../classvotca_1_1tools_1_1Property.html#aeb596e3566ee67fd655d7182c9edbc31',1,'votca::tools::Property']]],
   ['authors_1047',['authors',['../structvotca_1_1tools_1_1globals_1_1man.html#ab81470c57f33f937e5fa91110a0fee41',1,'votca::tools::globals::man']]],
   ['autocorrelate_1048',['AutoCorrelate',['../classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb',1,'votca::tools::CrossCorrelate']]],
-  ['autodetectboxtype_1049',['AutoDetectBoxType',['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()'],['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()']]],
+  ['autodetectboxtype_1049',['autoDetectBoxType',['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()'],['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()']]],
   ['auxsize_1050',['auxsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a1e3665caf22aded3f0e2c4cb038022bf',1,'votca::xtp::TCMatrix_gwbse']]],
   ['av_1051',['AV',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#ae7b060aed5f37ec5902315811bffb552',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
   ['available_1052',['AVAILABLE',['../classvotca_1_1xtp_1_1Job.html#a6d513fce9236d7fc7e0fd97dff92d7bfa6f9a8d5568d7a5d089bc9314b16d460b',1,'votca::xtp::Job']]],
