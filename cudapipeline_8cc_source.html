@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="cudapipeline_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2019 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -89,56 +89,53 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cudapipeline_8h.html">votca/xtp/cudapipeline.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>xtp {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1CudaPipeline.html#a487c0e3f8b2065860887d82d9604115d">   26</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a487c0e3f8b2065860887d82d9604115d">CudaPipeline::~CudaPipeline</a>() {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="comment">// destroy handle</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  cublasDestroy(<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a15b8869779204fc0cdbfff595cda5bbd">_handle</a>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">// destroy stream</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  cudaStreamDestroy(<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ab0a3368112b5230a7dc0d9b6a82fc585">_stream</a>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * Call the gemm function from cublas, resulting in the multiplication of the</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * two matrices</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1CudaPipeline.html#a7fd40b6b016029412a764d527b6a4ddb">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a7fd40b6b016029412a764d527b6a4ddb">CudaPipeline::gemm</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> &amp;<a class="code" href="classA.html">A</a>, <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> &amp;<a class="code" href="classB.html">B</a>,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> &amp;C)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">// Scalar constanst for calling blas</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">double</span> alpha = 1.;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">double</span> beta = 0.;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">double</span> *palpha = &amp;alpha;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">double</span> *pbeta = &amp;beta;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">if</span> ((<a class="code" href="classA.html">A</a>.cols() != <a class="code" href="classB.html">B</a>.rows())) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Shape mismatch in Cublas gemm&quot;</span>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  cublasSetStream(<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a15b8869779204fc0cdbfff595cda5bbd">_handle</a>, <a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ab0a3368112b5230a7dc0d9b6a82fc585">_stream</a>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  cublasDgemm(<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a15b8869779204fc0cdbfff595cda5bbd">_handle</a>, CUBLAS_OP_N, CUBLAS_OP_N, <span class="keywordtype">int</span>(<a class="code" href="classA.html">A</a>.rows()), <span class="keywordtype">int</span>(<a class="code" href="classB.html">B</a>.cols()),</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;              <span class="keywordtype">int</span>(<a class="code" href="classA.html">A</a>.cols()), palpha, <a class="code" href="classA.html">A</a>.data(), <span class="keywordtype">int</span>(<a class="code" href="classA.html">A</a>.rows()), <a class="code" href="classB.html">B</a>.data(),</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;              <span class="keywordtype">int</span>(<a class="code" href="classB.html">B</a>.rows()), pbeta, C.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#aa22e0f1c113864915fac00e78136a6b0">data</a>(), <span class="keywordtype">int</span>(C.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a44a71f745765742da9d0cfb331294317">rows</a>()));</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cudapipeline_8h.html">votca/xtp/cudapipeline.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>xtp {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1CudaPipeline.html#a487c0e3f8b2065860887d82d9604115d">   25</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a487c0e3f8b2065860887d82d9604115d">CudaPipeline::~CudaPipeline</a>() {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// destroy handle</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  cublasDestroy(<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a15b8869779204fc0cdbfff595cda5bbd">_handle</a>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="comment">// destroy stream</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  cudaStreamDestroy(<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#ab0a3368112b5230a7dc0d9b6a82fc585">_stream</a>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * Call the gemm function from cublas, resulting in the multiplication of the</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * two matrices</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1CudaPipeline.html#a7fd40b6b016029412a764d527b6a4ddb">   37</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a7fd40b6b016029412a764d527b6a4ddb">CudaPipeline::gemm</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> &amp;A, <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> &amp;B,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        <a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html">CudaMatrix</a> &amp;C)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// Scalar constanst for calling blas</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">double</span> alpha = 1.;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">double</span> beta = 0.;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">double</span> *palpha = &amp;alpha;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">double</span> *pbeta = &amp;beta;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span> ((A.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a320d294b84a2e0a17aac233c026ffb04">cols</a>() != B.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a44a71f745765742da9d0cfb331294317">rows</a>())) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Shape mismatch in Cublas gemm&quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  cublasDgemm(<a class="code" href="classvotca_1_1xtp_1_1CudaPipeline.html#a15b8869779204fc0cdbfff595cda5bbd">_handle</a>, CUBLAS_OP_N, CUBLAS_OP_N, <span class="keywordtype">int</span>(A.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a44a71f745765742da9d0cfb331294317">rows</a>()), <span class="keywordtype">int</span>(B.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a320d294b84a2e0a17aac233c026ffb04">cols</a>()),</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;              <span class="keywordtype">int</span>(A.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a320d294b84a2e0a17aac233c026ffb04">cols</a>()), palpha, A.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#aa22e0f1c113864915fac00e78136a6b0">data</a>(), <span class="keywordtype">int</span>(A.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a44a71f745765742da9d0cfb331294317">rows</a>()), B.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#aa22e0f1c113864915fac00e78136a6b0">data</a>(),</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;              <span class="keywordtype">int</span>(B.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a44a71f745765742da9d0cfb331294317">rows</a>()), pbeta, C.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#aa22e0f1c113864915fac00e78136a6b0">data</a>(), <span class="keywordtype">int</span>(C.<a class="code" href="classvotca_1_1xtp_1_1CudaMatrix.html#a44a71f745765742da9d0cfb331294317">rows</a>()));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_a7fd40b6b016029412a764d527b6a4ddb"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#a7fd40b6b016029412a764d527b6a4ddb">votca::xtp::CudaPipeline::gemm</a></div><div class="ttdeci">void gemm(const CudaMatrix &amp;A, const CudaMatrix &amp;B, CudaMatrix &amp;C) const</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8cc_source.html#l00038">cudapipeline.cc:38</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_ab0a3368112b5230a7dc0d9b6a82fc585"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#ab0a3368112b5230a7dc0d9b6a82fc585">votca::xtp::CudaPipeline::_stream</a></div><div class="ttdeci">cudaStream_t _stream</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00068">cudapipeline.h:68</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_a7fd40b6b016029412a764d527b6a4ddb"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#a7fd40b6b016029412a764d527b6a4ddb">votca::xtp::CudaPipeline::gemm</a></div><div class="ttdeci">void gemm(const CudaMatrix &amp;A, const CudaMatrix &amp;B, CudaMatrix &amp;C) const</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8cc_source.html#l00037">cudapipeline.cc:37</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_ab0a3368112b5230a7dc0d9b6a82fc585"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#ab0a3368112b5230a7dc0d9b6a82fc585">votca::xtp::CudaPipeline::_stream</a></div><div class="ttdeci">cudaStream_t _stream</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00066">cudapipeline.h:66</a></div></div>
 <div class="ttc" id="acudapipeline_8h_html"><div class="ttname"><a href="cudapipeline_8h.html">cudapipeline.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_a15b8869779204fc0cdbfff595cda5bbd"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#a15b8869779204fc0cdbfff595cda5bbd">votca::xtp::CudaPipeline::_handle</a></div><div class="ttdeci">cublasHandle_t _handle</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00065">cudapipeline.h:61</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_a487c0e3f8b2065860887d82d9604115d"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#a487c0e3f8b2065860887d82d9604115d">votca::xtp::CudaPipeline::~CudaPipeline</a></div><div class="ttdeci">~CudaPipeline()</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8cc_source.html#l00026">cudapipeline.cc:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html_aa22e0f1c113864915fac00e78136a6b0"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html#aa22e0f1c113864915fac00e78136a6b0">votca::xtp::CudaMatrix::data</a></div><div class="ttdeci">double * data() const</div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00056">cudamatrix.h:56</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html">votca::xtp::CudaMatrix</a></div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00051">cudamatrix.h:51</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html_a44a71f745765742da9d0cfb331294317"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html#a44a71f745765742da9d0cfb331294317">votca::xtp::CudaMatrix::rows</a></div><div class="ttdeci">Index rows() const</div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00054">cudamatrix.h:54</a></div></div>
-<div class="ttc" id="aclassA_html"><div class="ttname"><a href="classA.html">A</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00048">test_objectfactory.cc:48</a></div></div>
-<div class="ttc" id="aclassB_html"><div class="ttname"><a href="classB.html">B</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00053">test_objectfactory.cc:53</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_a15b8869779204fc0cdbfff595cda5bbd"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#a15b8869779204fc0cdbfff595cda5bbd">votca::xtp::CudaPipeline::_handle</a></div><div class="ttdeci">cublasHandle_t _handle</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8h_source.html#l00063">cudapipeline.h:59</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaPipeline_html_a487c0e3f8b2065860887d82d9604115d"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaPipeline.html#a487c0e3f8b2065860887d82d9604115d">votca::xtp::CudaPipeline::~CudaPipeline</a></div><div class="ttdeci">~CudaPipeline()</div><div class="ttdef"><b>Definition:</b> <a href="cudapipeline_8cc_source.html#l00025">cudapipeline.cc:25</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html_aa22e0f1c113864915fac00e78136a6b0"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html#aa22e0f1c113864915fac00e78136a6b0">votca::xtp::CudaMatrix::data</a></div><div class="ttdeci">double * data() const</div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00050">cudamatrix.h:50</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html">votca::xtp::CudaMatrix</a></div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00045">cudamatrix.h:45</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html_a44a71f745765742da9d0cfb331294317"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html#a44a71f745765742da9d0cfb331294317">votca::xtp::CudaMatrix::rows</a></div><div class="ttdeci">Index rows() const</div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00048">cudamatrix.h:48</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1CudaMatrix_html_a320d294b84a2e0a17aac233c026ffb04"><div class="ttname"><a href="classvotca_1_1xtp_1_1CudaMatrix.html#a320d294b84a2e0a17aac233c026ffb04">votca::xtp::CudaMatrix::cols</a></div><div class="ttdeci">Index cols() const</div><div class="ttdef"><b>Definition:</b> <a href="cudamatrix_8h_source.html#l00049">cudamatrix.h:49</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
