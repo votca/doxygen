@@ -1,17 +1,18 @@
 var searchData=
 [
-  ['radial_5fgrid_4963',['radial_grid',['../structvotca_1_1xtp_1_1GridContainers_1_1radial__grid.html',1,'votca::xtp::GridContainers']]],
-  ['random_4964',['Random',['../classvotca_1_1tools_1_1Random.html',1,'votca::tools']]],
-  ['rangeparser_4965',['RangeParser',['../classvotca_1_1tools_1_1RangeParser.html',1,'votca::tools']]],
-  ['rate_5fengine_4966',['Rate_Engine',['../classvotca_1_1xtp_1_1Rate__Engine.html',1,'votca::xtp']]],
-  ['rdfcalculator_4967',['RDFCalculator',['../classvotca_1_1csg_1_1RDFCalculator.html',1,'votca::csg']]],
-  ['rdfworker_4968',['RDFWorker',['../classRDFWorker.html',1,'']]],
-  ['reducededge_4969',['ReducedEdge',['../classvotca_1_1tools_1_1ReducedEdge.html',1,'votca::tools']]],
-  ['reducedgraph_4970',['ReducedGraph',['../classvotca_1_1tools_1_1ReducedGraph.html',1,'votca::tools']]],
-  ['region_4971',['Region',['../classvotca_1_1xtp_1_1Region.html',1,'votca::xtp']]],
-  ['regular_5fgrid_4972',['Regular_Grid',['../classvotca_1_1xtp_1_1Regular__Grid.html',1,'votca::xtp']]],
-  ['residue_4973',['Residue',['../classvotca_1_1csg_1_1Residue.html',1,'votca::csg']]],
-  ['ritzeigenpair_4974',['RitzEigenPair',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html',1,'votca::xtp::DavidsonSolver']]],
-  ['rpa_4975',['RPA',['../classvotca_1_1xtp_1_1RPA.html',1,'votca::xtp']]],
-  ['rpa_5feigensolution_4976',['rpa_eigensolution',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html',1,'votca::xtp::RPA']]]
+  ['radial_5fgrid_5369',['radial_grid',['../structvotca_1_1xtp_1_1GridContainers_1_1radial__grid.html',1,'votca::xtp::GridContainers']]],
+  ['random_5370',['Random',['../classvotca_1_1tools_1_1Random.html',1,'votca::tools']]],
+  ['rangeparser_5371',['RangeParser',['../classvotca_1_1tools_1_1RangeParser.html',1,'votca::tools']]],
+  ['rate_5fengine_5372',['Rate_Engine',['../classvotca_1_1xtp_1_1Rate__Engine.html',1,'votca::xtp']]],
+  ['rdfcalculator_5373',['RDFCalculator',['../classvotca_1_1csg_1_1RDFCalculator.html',1,'votca::csg']]],
+  ['rdfworker_5374',['RDFWorker',['../classRDFWorker.html',1,'']]],
+  ['reducededge_5375',['ReducedEdge',['../classvotca_1_1tools_1_1ReducedEdge.html',1,'votca::tools']]],
+  ['reducedgraph_5376',['ReducedGraph',['../classvotca_1_1tools_1_1ReducedGraph.html',1,'votca::tools']]],
+  ['region_5377',['Region',['../classvotca_1_1xtp_1_1Region.html',1,'votca::xtp']]],
+  ['regular_5fgrid_5378',['Regular_Grid',['../classvotca_1_1xtp_1_1Regular__Grid.html',1,'votca::xtp']]],
+  ['residue_5379',['Residue',['../classvotca_1_1csg_1_1Residue.html',1,'votca::csg']]],
+  ['ritzeigenpair_5380',['RitzEigenPair',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html',1,'votca::xtp::DavidsonSolver']]],
+  ['rpa_5381',['RPA',['../classvotca_1_1xtp_1_1RPA.html',1,'votca::xtp']]],
+  ['rpa_5feigensolution_5382',['rpa_eigensolution',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html',1,'votca::xtp::RPA']]],
+  ['rspace_5383',['RSpace',['../classRSpace.html',1,'']]]
 ];
