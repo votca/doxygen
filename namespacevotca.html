@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -96,29 +96,30 @@ Typedefs</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides a means for comparing floating point numbers. </p>
+<p>Calculates three electron overlap integrals for GW and DFT.</p>
 <p>Small wrapper for a segment id and the corresponding QMState or filename.</p>
 <p>base class to derive regions from</p>
 <p>defines a qm region and runs dft and gwbse calculations</p>
 <p>Container to define fragments of QMmolecules, containing atomindices, no pointers to atoms, it also handles the parsing of strings etc.. Values should have own destructor.</p>
 <p>Takes a list of atoms, and the corresponding density matrix and puts out a table of wavefunction partial charges.</p>
 <p>defines a polar region and of interacting electrostatic and induction segments</p>
-<p>Supports operations on Matrices using OPENMP and CUDA. It works in two steps a) set the variables for contraction b) write the normal OPENMP for-loop but use the multiplyright on the individual matrix.</p>
 <p>Takes a list of atoms, and the corresponding density and overlap matrices and puts out a table of partial charges.</p>
 <p>Class to set up the topology, e.g division of molecules into different regions for a specific job.</p>
 <p>Parser to read strings containing indexes in the format "1 2:7 8" and returning a sorted expanded std::vector&lt;Index&gt; with only unique entries It can also do the opposite.</p>
 <p>Small container for convergence checking, stores current and last value and gives the diff, or just the current value in the first iteration.</p>
 <p>Takes a list of atoms, and creates CHELPG grid.</p>
+<p>Calculates four center electron overlap integrals for DFT.</p>
 <p>Takes a list of atoms, and the corresponding density matrix and puts out a table of partial charges.</p>
 <p>Small container for the individual energy terms in a polar region.</p>
 <p>Writes an orbital file to a .cube file.</p>
 <p>Small container to keep occupation of BSE states for each atom.</p>
 <p>Basic Container for QMAtoms,PolarSites and Atoms.</p>
 <p>base class for all analysis tools</p>
-<p><a class="el" href="classA.html">A</a> graph visitor class for creating graph visitor objects.</p>
-<p><a class="el" href="classA.html">A</a> graph visitor determines the graph topology.</p>
+<p>A graph visitor class for creating graph visitor objects.</p>
+<p>A graph visitor determines the graph topology.</p>
 <p>This file is a compilation of graph related algorithms.</p>
-<p><a class="el" href="classA.html">A</a> breadth first (DF) graph visitor.</p>
-<p><a class="el" href="classA.html">A</a> breadth first (BF) graph visitor.</p>
+<p>A breadth first (DF) graph visitor.</p>
+<p>A breadth first (BF) graph visitor.</p>
 <p>Implements relative method - do not use for comparing with zero use this most of the time, tolerance needs to be meaningful in your context</p>
 <p>Function taken from <a href="https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison">https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison</a> user ShitalShal</p>
 <p>This graph visitor will explore the vertices closest to the starting node first and proceed outwards.</p>
@@ -137,7 +138,7 @@ Typedefs</h2></td></tr>
 </ol>
 <p>This is the base class for all analysis tool. </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>do option functions!!! </dd></dl>
 <p>How energies are evaluated depends critically on the id of the region. a) Lower ids means being evaluated later. So expensive regions should have low ids, as they can then already incorporate partially converged results from higher id regions b) The energy of a region, includes all interactions with regions of higher ids. i.e. E(region0)=E0+E01+E02, whereas E(region1)=E1+E12 and not E10 The reason is that DFT codes only return E0+ all interaction energies and not the individual terms, this has to be changed once we want to have multiple QM regions.</p>
-<p>PATHWAYS TO <a class="el" href="classA.html">A</a> NEW THREADED CALCULATOR ... 1 Define 'JobContainer' (needs to define iterator), 'pJob' ( = *iterator) ... 2 Derive new calculator as ': public ParallelXJobCalc&lt;JobContainer,pJob&gt;' ... 3 Specialize XJOBS_FROM_TABLE&lt; JobContainer, pJob&gt; in xjob.cc ... 4 Register new calculator (see end of <a class="el" href="parallelxjobcalc_8cc.html">parallelxjobcalc.cc</a>) REQUIRED MEMBERS FOR pJob pJob::JobResult (struct)</p>
+<p>PATHWAYS TO A NEW THREADED CALCULATOR ... 1 Define 'JobContainer' (needs to define iterator), 'pJob' ( = *iterator) ... 2 Derive new calculator as ': public ParallelXJobCalc&lt;JobContainer,pJob&gt;' ... 3 Specialize XJOBS_FROM_TABLE&lt; JobContainer, pJob&gt; in xjob.cc ... 4 Register new calculator (see end of <a class="el" href="parallelxjobcalc_8cc.html">parallelxjobcalc.cc</a>) REQUIRED MEMBERS FOR pJob pJob::JobResult (struct)</p>
 <p>For an earlier history see ctp repo commit 77795ea591b29e664153f9404c8655ba28dc14e9</p>
 <p>For earlier commit history see ctp commit 77795ea591b29e664153f9404c8655ba28dc14e9 </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
@@ -153,7 +154,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00026">26</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00024">24</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
 
 </div>
 </div>

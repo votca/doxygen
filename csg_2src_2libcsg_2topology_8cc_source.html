@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">votca
-   &#160;<span id="projectnumber">2021-dev</span>
+   &#160;<span id="projectnumber">1.6.2</span>
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="csg_2src_2libcsg_2topology_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 2009-2019 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -87,391 +87,401 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Standard includes</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;boost/lexical_cast.hpp&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;regex&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// Third party includes</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/lexical_cast.hpp&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// VOTCA includes</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="boundarycondition_8h.html">votca/csg/boundarycondition.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="interaction_8h.html">votca/csg/interaction.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="molecule_8h.html">votca/csg/molecule.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="openbox_8h.html">votca/csg/openbox.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="csg_2include_2votca_2csg_2topology_8h.html">votca/csg/topology.h</a>&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="rangeparser_8h.html">votca/tools/rangeparser.h</a>&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="boundarycondition_8h.html">votca/csg/boundarycondition.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="interaction_8h.html">votca/csg/interaction.h</a>&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="molecule_8h.html">votca/csg/molecule.h</a>&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="openbox_8h.html">votca/csg/openbox.h</a>&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="csg_2include_2votca_2csg_2topology_8h.html">votca/csg/topology.h</a>&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span>csg {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="namespacevotca_1_1csg.html#a6eec58d962462196ffee6649f238189e">   42</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacevotca_1_1csg.html#a6eec58d962462196ffee6649f238189e">is_digits</a>(<span class="keyword">const</span> std::string &amp;str) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">return</span> str.find_first_not_of(<span class="stringliteral">&quot;0123456789&quot;</span>) == std::string::npos;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ab0d322ca2a7b474cd20a6d194f6171d3">   46</a></span>&#160;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ab0d322ca2a7b474cd20a6d194f6171d3">Topology::~Topology</a>() {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Cleanup();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">if</span> (_bc) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">delete</span> (_bc);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  _bc = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">Topology::Cleanup</a>() {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// cleanup beads</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span> (BeadContainer::iterator i = _beads.begin(); i &lt; _beads.end(); ++i) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keyword">delete</span> *i;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    _beads.clear();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// cleanup molecules</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (MoleculeContainer::iterator i = _molecules.begin();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;         i &lt; _molecules.end(); ++i) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keyword">delete</span> *i;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    _molecules.clear();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="comment">// cleanup residues</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">for</span> (ResidueContainer::iterator i = _residues.begin(); i &lt; _residues.end();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;         ++i) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="keyword">delete</span> (*i);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    _residues.clear();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="comment">// cleanup interactions</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">for</span> (InteractionContainer::iterator i = _interactions.begin();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;         i &lt; _interactions.end(); ++i) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keyword">delete</span> (*i);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    _interactions.clear();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="comment">// cleanup _bc object</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordflow">if</span> (_bc) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">delete</span> (_bc);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  _bc = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1OpenBox.html">OpenBox</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacevotca.html">votca</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>csg {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="namespacevotca_1_1csg.html#a6eec58d962462196ffee6649f238189e">   35</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacevotca_1_1csg.html#a6eec58d962462196ffee6649f238189e">is_digits</a>(<span class="keyword">const</span> std::string &amp;str) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">return</span> str.find_first_not_of(<span class="stringliteral">&quot;0123456789&quot;</span>) == std::string::npos;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ab0d322ca2a7b474cd20a6d194f6171d3">   39</a></span>&#160;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ab0d322ca2a7b474cd20a6d194f6171d3">Topology::~Topology</a>() {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Cleanup();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">if</span> (_bc) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">delete</span> (_bc);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  _bc = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">   47</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">Topology::Cleanup</a>() {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// cleanup beads</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">for</span> (BeadContainer::iterator i = _beads.begin(); i &lt; _beads.end(); ++i) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keyword">delete</span> *i;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    _beads.clear();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// cleanup molecules</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span> (MoleculeContainer::iterator i = _molecules.begin();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         i &lt; _molecules.end(); ++i) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="keyword">delete</span> *i;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    _molecules.clear();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">// cleanup residues</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">for</span> (ResidueContainer::iterator i = _residues.begin(); i &lt; _residues.end();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;         ++i) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keyword">delete</span> (*i);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    _residues.clear();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="comment">// cleanup interactions</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">for</span> (InteractionContainer::iterator i = _interactions.begin();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;         i &lt; _interactions.end(); ++i) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keyword">delete</span> (*i);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    _interactions.clear();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// cleanup _bc object</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (_bc) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">delete</span> (_bc);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  _bc = <span class="keyword">new</span> <a class="code" href="classvotca_1_1csg_1_1OpenBox.html">OpenBox</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a1c0c5e857dc1a11bff53e086af47bef4">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a1c0c5e857dc1a11bff53e086af47bef4">Topology::CreateMoleculesByRange</a>(<span class="keywordtype">string</span> name, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> first, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> nbeads,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> nmolecules) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mol = CreateMolecule(name);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> beadcount = 0;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> res_offset = 0;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a1c0c5e857dc1a11bff53e086af47bef4">   95</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a1c0c5e857dc1a11bff53e086af47bef4">Topology::CreateMoleculesByRange</a>(<span class="keywordtype">string</span> name, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> first, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> nbeads,</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> nmolecules) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mol = CreateMolecule(name);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> beadcount = 0;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> res_offset = 0;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_bead : _beads) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// xml numbering starts with 1</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">if</span> (--first &gt; 0) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">// This is not 100% correct, but let&#39;s assume for now that the resnr do</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// increase</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (beadcount == 0) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      res_offset = _bead-&gt;getResnr();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    stringstream bname;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    bname &lt;&lt; _bead-&gt;getResnr() - res_offset + 1 &lt;&lt; <span class="stringliteral">&quot;:&quot;</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;          &lt;&lt; getResidue(_bead-&gt;getResnr())-&gt;getName() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;          &lt;&lt; _bead-&gt;getName();</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">AddBead</a>(_bead, bname.str());</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> (++beadcount == nbeads) {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordflow">if</span> (--nmolecules &lt;= 0) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      mol = CreateMolecule(name);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      beadcount = 0;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_bead : _beads) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// xml numbering starts with 1</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (--first &gt; 0) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// This is not 100% correct, but let&#39;s assume for now that the resnr do</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// increase</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (beadcount == 0) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      res_offset = _bead-&gt;getResnr();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    stringstream bname;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    bname &lt;&lt; _bead-&gt;getResnr() - res_offset + 1 &lt;&lt; <span class="stringliteral">&quot;:&quot;</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;          &lt;&lt; getResidue(_bead-&gt;getResnr())-&gt;getName() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;          &lt;&lt; _bead-&gt;getName();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    mol-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">AddBead</a>(_bead, bname.str());</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span> (++beadcount == nbeads) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordflow">if</span> (--nmolecules &lt;= 0) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      mol = CreateMolecule(name);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      beadcount = 0;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a750d431ff915f6acda358b3fb0644e15">  120</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a750d431ff915f6acda358b3fb0644e15">Topology::CreateMoleculesByResidue</a>() {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="comment">// first create a molecule for each residue</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_residue : _residues) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    CreateMolecule(_residue-&gt;getName());</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  }</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a750d431ff915f6acda358b3fb0644e15">  127</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a750d431ff915f6acda358b3fb0644e15">Topology::CreateMoleculesByResidue</a>() {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="comment">// first create a molecule for each residue</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_residue : _residues) {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    CreateMolecule(_residue-&gt;getName());</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="comment">// add the beads to the corresponding molecules based on their resid</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_bead : _beads) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    MoleculeByIndex(_bead-&gt;getResnr())</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        -&gt;AddBead(_bead, <span class="keywordtype">string</span>(<span class="stringliteral">&quot;1:TRI:&quot;</span>) + _bead-&gt;getName());</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  }</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="comment">// add the beads to the corresponding molecules based on their resid</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_bead : _beads) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    MoleculeByIndex(_bead-&gt;getResnr())</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        -&gt;AddBead(_bead, <span class="keywordtype">string</span>(<span class="stringliteral">&quot;1:TRI:&quot;</span>) + _bead-&gt;getName());</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a084030095036322414eaf4a61119a8e0">  137</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a084030095036322414eaf4a61119a8e0">Topology::CreateOneBigMolecule</a>(<span class="keywordtype">string</span> name) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mi = CreateMolecule(name);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a084030095036322414eaf4a61119a8e0">  144</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a084030095036322414eaf4a61119a8e0">Topology::CreateOneBigMolecule</a>(<span class="keywordtype">string</span> name) {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mi = CreateMolecule(name);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_bead : _beads) {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    stringstream n(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    n &lt;&lt; _bead-&gt;getResnr() + 1 &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; _residues[_bead-&gt;getResnr()]-&gt;getName()</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; _bead-&gt;getName();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">AddBead</a>(_bead, n.str());</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a4cead67c1b03ee1df58e03975e52685a">  155</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a4cead67c1b03ee1df58e03975e52685a">Topology::Add</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *top) {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> res0 = ResidueCount();</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> bi : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3">_beads</a>) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">string</span> type = bi-&gt;getType();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    CreateBead(bi-&gt;getSymmetry(), bi-&gt;getName(), type, bi-&gt;getResnr() + res0,</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;               bi-&gt;getMass(), bi-&gt;getQ());</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_residue : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a3f07306074e5e74f1a0301bf8e1339f3">_residues</a>) {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    CreateResidue(_residue-&gt;getName());</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="comment">// \todo beadnames in molecules!!</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_molecule : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ab9299163907718c2465c082e6f31328f">_molecules</a>) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mi = CreateMolecule(_molecule-&gt;getName());</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a8c8ed966ac9283da27adbd9920b56099">BeadCount</a>(); i++) {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">AddBead</a>(mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#ad861d25b17c6a3419da7a774cdeb8606">getBead</a>(i), <span class="stringliteral">&quot;invalid&quot;</span>);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ace770c2a6179660d7552b09f6bc741d3">  178</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#ace770c2a6179660d7552b09f6bc741d3">Topology::CopyTopologyData</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *top) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_bead : _beads) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    stringstream n(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    n &lt;&lt; _bead-&gt;getResnr() + 1 &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; _residues[_bead-&gt;getResnr()]-&gt;getName()</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; _bead-&gt;getName();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">AddBead</a>(_bead, n.str());</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a4cead67c1b03ee1df58e03975e52685a">  148</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a4cead67c1b03ee1df58e03975e52685a">Topology::Add</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *top) {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> res0 = ResidueCount();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> bi : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3">_beads</a>) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">string</span> type = bi-&gt;getType();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    CreateBead(bi-&gt;getSymmetry(), bi-&gt;getName(), type, bi-&gt;getResnr() + res0,</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;               bi-&gt;getMass(), bi-&gt;getQ());</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_residue : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a3f07306074e5e74f1a0301bf8e1339f3">_residues</a>) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    CreateResidue(_residue-&gt;getName());</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="comment">// \todo beadnames in molecules!!</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_molecule : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ab9299163907718c2465c082e6f31328f">_molecules</a>) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mi = CreateMolecule(_molecule-&gt;getName());</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a8c8ed966ac9283da27adbd9920b56099">BeadCount</a>(); i++) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">AddBead</a>(mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#ad861d25b17c6a3419da7a774cdeb8606">getBead</a>(i), <span class="stringliteral">&quot;invalid&quot;</span>);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ace770c2a6179660d7552b09f6bc741d3">  171</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#ace770c2a6179660d7552b09f6bc741d3">Topology::CopyTopologyData</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *top) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  _bc-&gt;setBox(top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a34e10c4b79e77e13506dee6218b03562">getBox</a>());</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  _time = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a75c51d1634121d36e7d4b0837fc43f3b">_time</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  _step = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a92183bfd2fb65b1c55ab91150c867d17">_step</a>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="comment">// cleanup old data</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  Cleanup();</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  _bc-&gt;setBox(top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a34e10c4b79e77e13506dee6218b03562">getBox</a>());</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  _time = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a75c51d1634121d36e7d4b0837fc43f3b">_time</a>;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  _step = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a92183bfd2fb65b1c55ab91150c867d17">_step</a>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="comment">// cleanup old data</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  Cleanup();</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="comment">// copy all residues</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_residue : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a3f07306074e5e74f1a0301bf8e1339f3">_residues</a>) {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    CreateResidue(_residue-&gt;getName());</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="comment">// copy all residues</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_residue : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a3f07306074e5e74f1a0301bf8e1339f3">_residues</a>) {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    CreateResidue(_residue-&gt;getName());</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="comment">// create all beads</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> bi : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3">_beads</a>) {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">string</span> type = bi-&gt;getType();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    CreateBead(bi-&gt;getSymmetry(), bi-&gt;getName(), type, bi-&gt;getResnr(),</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;               bi-&gt;getMass(), bi-&gt;getQ());</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  }</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="comment">// create all beads</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> bi : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3">_beads</a>) {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">string</span> type = bi-&gt;getType();</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    CreateBead(bi-&gt;getSymmetry(), bi-&gt;getName(), type, bi-&gt;getResnr(),</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;               bi-&gt;getMass(), bi-&gt;getQ());</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="comment">// copy all molecules</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_molecule : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ab9299163907718c2465c082e6f31328f">_molecules</a>) {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mi = CreateMolecule(_molecule-&gt;getName());</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _molecule-&gt;BeadCount(); i++) {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> beadid = _molecule-&gt;getBead(i)-&gt;getId();</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">AddBead</a>(_beads[beadid], _molecule-&gt;getBeadName(i));</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  }</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a28dc46ae2c4032d6273d5733bacd0c83">  209</a></span>&#160;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a28dc46ae2c4032d6273d5733bacd0c83">Topology::getBeadTypeId</a>(<span class="keywordtype">string</span> type)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  assert(beadtypes_.count(type));</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keywordflow">return</span> beadtypes_.at(type);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a26c3e2f058c2b2406a046f69d2e58565">  214</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a26c3e2f058c2b2406a046f69d2e58565">Topology::RenameMolecules</a>(<span class="keywordtype">string</span> range, <span class="keywordtype">string</span> name) {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1RangeParser.html">tools::RangeParser</a> rp;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  rp.<a class="code" href="classvotca_1_1tools_1_1RangeParser.html#a66e06617ee7815de11d720148bd00640">Parse</a>(range);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i : rp) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">if</span> (i &gt; <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(_molecules.size())) {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <span class="keywordflow">throw</span> runtime_error(</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;          <span class="keywordtype">string</span>(<span class="stringliteral">&quot;RenameMolecules: num molecules smaller than&quot;</span>));</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    getMolecule(i - 1)-&gt;setName(name);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a3d70394762d42cb792780e80d1e67b10">  226</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a3d70394762d42cb792780e80d1e67b10">Topology::RenameBeadType</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">string</span> newname) {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead : _beads) {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordtype">string</span> type = bead-&gt;getType();</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(name, type)) {</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      bead-&gt;setType(newname);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a978e04d19632302cae22a6e288bae0c1">  236</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a978e04d19632302cae22a6e288bae0c1">Topology::SetBeadTypeMass</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">double</span> value) {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead : _beads) {</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">string</span> type = bead-&gt;getType();</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(name, type)) {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      bead-&gt;setMass(value);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#abea9660bc463159c95fa4c5e443c3bf8">  245</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#abea9660bc463159c95fa4c5e443c3bf8">Topology::CheckMoleculeNaming</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  map&lt;string, Index&gt; nbeads;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mol : _molecules) {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    map&lt;string, Index&gt;::iterator entry = nbeads.find(mol-&gt;getName());</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">if</span> (entry != nbeads.end()) {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="keywordflow">if</span> (entry-&gt;second != mol-&gt;BeadCount()) {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">throw</span> runtime_error(</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="stringliteral">&quot;There are molecules which have the same name but different number &quot;</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="stringliteral">&quot;of bead &quot;</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="stringliteral">&quot;please check the section manual topology handling in the votca &quot;</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="stringliteral">&quot;manual&quot;</span>);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    nbeads[mol-&gt;getName()] = mol-&gt;BeadCount();</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19">  264</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19">Topology::AddBondedInteraction</a>(<a class="code" href="classvotca_1_1csg_1_1Interaction.html">Interaction</a> *ic) {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  map&lt;string, Index&gt;::iterator iter;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  iter = _interaction_groups.find(ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#aed2a13a5bcbe13388ba5e51562b12e06">getGroup</a>());</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordflow">if</span> (iter != _interaction_groups.end()) {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a96a76681238afa838dae0858cea7c9fe">setGroupId</a>((*iter).second);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = _interaction_groups.size();</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    _interaction_groups[ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#aed2a13a5bcbe13388ba5e51562b12e06">getGroup</a>()] = i;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a96a76681238afa838dae0858cea7c9fe">setGroupId</a>(i);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  _interactions.push_back(ic);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  _interactions_by_group[ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#aed2a13a5bcbe13388ba5e51562b12e06">getGroup</a>()].push_back(ic);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;}</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a33856038013109a5969b44f1576db34c">  278</a></span>&#160;std::list&lt;Interaction *&gt; <a class="code" href="classvotca_1_1csg_1_1Topology.html#a33856038013109a5969b44f1576db34c">Topology::InteractionsInGroup</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;group) {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  map&lt;string, list&lt;Interaction *&gt;&gt;::iterator iter =</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      _interactions_by_group.find(group);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <span class="keywordflow">if</span> (iter == _interactions_by_group.end()) {</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keywordflow">return</span> list&lt;Interaction *&gt;();</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  }</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="keywordflow">return</span> iter-&gt;second;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a52015fd0aff8a3d7485cad96d1eee318">  287</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a52015fd0aff8a3d7485cad96d1eee318">Topology::BeadTypeExist</a>(<span class="keywordtype">string</span> type)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="keywordflow">return</span> beadtypes_.count(type);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
-<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a9026c2e4bc8dc4a0c9204d0a13f63c1d">  291</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a9026c2e4bc8dc4a0c9204d0a13f63c1d">Topology::RegisterBeadType</a>(<span class="keywordtype">string</span> type) {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  unordered_set&lt;Index&gt; ids;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  <span class="keywordflow">for</span> (pair&lt;const string, Index&gt; type_and_id : beadtypes_) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    ids.insert(type_and_id.second);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <span class="keywordtype">id</span> = 0;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="comment">// If the type is also a number use it as the id as well provided it is not</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="comment">// already taken</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1csg.html#a6eec58d962462196ffee6649f238189e">is_digits</a>(type)) {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordtype">id</span> = boost::lexical_cast&lt;Index&gt;(type);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    assert(!ids.count(<span class="keywordtype">id</span>) &amp;&amp;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;           <span class="stringliteral">&quot;The type passed in is a number and has already&quot;</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;           <span class="stringliteral">&quot; been registered. It is likely that you are passing in numbers as &quot;</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;           <span class="stringliteral">&quot;bead types as well as strings, choose one or the other do not mix &quot;</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;           <span class="stringliteral">&quot;between using numbers and strings &quot;</span>);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  <span class="keywordflow">while</span> (ids.count(<span class="keywordtype">id</span>)) {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    ++id;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  }</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  beadtypes_[type] = id;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;}</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ac5566d423814639703321303e645e340">  315</a></span>&#160;Eigen::Vector3d <a class="code" href="classvotca_1_1csg_1_1Topology.html#ac5566d423814639703321303e645e340">Topology::BCShortestConnection</a>(</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keyword">const</span> Eigen::Vector3d &amp;r_i, <span class="keyword">const</span> Eigen::Vector3d &amp;r_j)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <span class="keywordflow">return</span> _bc-&gt;BCShortestConnection(r_i, r_j);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;}</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="comment">// copy all molecules</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_molecule : top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#ab9299163907718c2465c082e6f31328f">_molecules</a>) {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mi = CreateMolecule(_molecule-&gt;getName());</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _molecule-&gt;BeadCount(); i++) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> beadid = _molecule-&gt;getBead(i)-&gt;getId();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      mi-&gt;<a class="code" href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">AddBead</a>(_beads[beadid], _molecule-&gt;getBeadName(i));</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a28dc46ae2c4032d6273d5733bacd0c83">  202</a></span>&#160;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a28dc46ae2c4032d6273d5733bacd0c83">Topology::getBeadTypeId</a>(<span class="keywordtype">string</span> type)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  assert(beadtypes_.count(type));</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keywordflow">return</span> beadtypes_.at(type);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a26c3e2f058c2b2406a046f69d2e58565">  207</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a26c3e2f058c2b2406a046f69d2e58565">Topology::RenameMolecules</a>(<span class="keywordtype">string</span> range, <span class="keywordtype">string</span> name) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1RangeParser.html">tools::RangeParser</a> rp;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  rp.<a class="code" href="classvotca_1_1tools_1_1RangeParser.html#a5699728a3bcef562e666b2b11c1704fc">Parse</a>(range);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i : rp) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">if</span> (i &gt; <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(_molecules.size())) {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      <span class="keywordflow">throw</span> runtime_error(</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;          <span class="keywordtype">string</span>(<span class="stringliteral">&quot;RenameMolecules: num molecules smaller than&quot;</span>));</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    getMolecule(i - 1)-&gt;setName(name);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a3d70394762d42cb792780e80d1e67b10">  219</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a3d70394762d42cb792780e80d1e67b10">Topology::RenameBeadType</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">string</span> newname) {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead : _beads) {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">string</span> type = bead-&gt;getType();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(name, type)) {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      bead-&gt;setType(newname);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a978e04d19632302cae22a6e288bae0c1">  229</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a978e04d19632302cae22a6e288bae0c1">Topology::SetBeadTypeMass</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">double</span> value) {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead : _beads) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">string</span> type = bead-&gt;getType();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(name, type)) {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      bead-&gt;setMass(value);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#abea9660bc463159c95fa4c5e443c3bf8">  238</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#abea9660bc463159c95fa4c5e443c3bf8">Topology::CheckMoleculeNaming</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  map&lt;string, Index&gt; nbeads;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="classvotca_1_1csg_1_1Molecule.html">Molecule</a> *mol : _molecules) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    map&lt;string, Index&gt;::iterator entry = nbeads.find(mol-&gt;getName());</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">if</span> (entry != nbeads.end()) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      <span class="keywordflow">if</span> (entry-&gt;second != mol-&gt;BeadCount()) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keywordflow">throw</span> runtime_error(</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <span class="stringliteral">&quot;There are molecules which have the same name but different number &quot;</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="stringliteral">&quot;of bead &quot;</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="stringliteral">&quot;please check the section manual topology handling in the votca &quot;</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="stringliteral">&quot;manual&quot;</span>);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    nbeads[mol-&gt;getName()] = mol-&gt;BeadCount();</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19">  257</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19">Topology::AddBondedInteraction</a>(<a class="code" href="classvotca_1_1csg_1_1Interaction.html">Interaction</a> *ic) {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  map&lt;string, Index&gt;::iterator iter;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  iter = _interaction_groups.find(ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#aed2a13a5bcbe13388ba5e51562b12e06">getGroup</a>());</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="keywordflow">if</span> (iter != _interaction_groups.end()) {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a96a76681238afa838dae0858cea7c9fe">setGroupId</a>((*iter).second);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = _interaction_groups.size();</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    _interaction_groups[ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#aed2a13a5bcbe13388ba5e51562b12e06">getGroup</a>()] = i;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#a96a76681238afa838dae0858cea7c9fe">setGroupId</a>(i);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  _interactions.push_back(ic);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  _interactions_by_group[ic-&gt;<a class="code" href="classvotca_1_1csg_1_1Interaction.html#aed2a13a5bcbe13388ba5e51562b12e06">getGroup</a>()].push_back(ic);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a33856038013109a5969b44f1576db34c">  271</a></span>&#160;std::list&lt;Interaction *&gt; <a class="code" href="classvotca_1_1csg_1_1Topology.html#a33856038013109a5969b44f1576db34c">Topology::InteractionsInGroup</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;group) {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  map&lt;string, list&lt;Interaction *&gt;&gt;::iterator iter =</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      _interactions_by_group.find(group);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordflow">if</span> (iter == _interactions_by_group.end()) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">return</span> list&lt;Interaction *&gt;();</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  <span class="keywordflow">return</span> iter-&gt;second;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a52015fd0aff8a3d7485cad96d1eee318">  280</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a52015fd0aff8a3d7485cad96d1eee318">Topology::BeadTypeExist</a>(<span class="keywordtype">string</span> type)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <span class="keywordflow">return</span> beadtypes_.count(type);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ae37455b40807878d8d88d5b559784ce5">  284</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#ae37455b40807878d8d88d5b559784ce5">Topology::RegisterBeadType</a>(<span class="keywordtype">string</span> type) {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  unordered_set&lt;Index&gt; ids;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="keywordflow">for</span> (pair&lt;const string, Index&gt; type_and_id : beadtypes_) {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    ids.insert(type_and_id.second);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <span class="keywordtype">id</span> = 0;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  <span class="comment">// If the type is also a number use it as the id as well provided it is not</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  <span class="comment">// already taken</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1csg.html#a6eec58d962462196ffee6649f238189e">is_digits</a>(type)) {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordtype">id</span> = boost::lexical_cast&lt;Index&gt;(type);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    assert(!ids.count(<span class="keywordtype">id</span>) &amp;&amp;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;           <span class="stringliteral">&quot;The type passed in is a number and has already&quot;</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;           <span class="stringliteral">&quot; been registered. It is likely that you are passing in numbers as &quot;</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;           <span class="stringliteral">&quot;bead types as well as strings, choose one or the other do not mix &quot;</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;           <span class="stringliteral">&quot;between using numbers and strings &quot;</span>);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">while</span> (ids.count(<span class="keywordtype">id</span>)) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    ++id;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  beadtypes_[type] = id;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;}</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a6a1cdb35c8f8b501fab282dabd52703d">  308</a></span>&#160;Eigen::Vector3d <a class="code" href="classvotca_1_1csg_1_1Topology.html#a6a1cdb35c8f8b501fab282dabd52703d">Topology::BCShortestConnection</a>(</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">const</span> Eigen::Vector3d &amp;r_i, <span class="keyword">const</span> Eigen::Vector3d &amp;r_j)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="keywordflow">return</span> _bc-&gt;BCShortestConnection(r_i, r_j);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ac0a6ad878d6fa4082aeaf004e8437f64">  313</a></span>&#160;Eigen::Vector3d <a class="code" href="classvotca_1_1csg_1_1Topology.html#ac0a6ad878d6fa4082aeaf004e8437f64">Topology::getDist</a>(<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> bead1, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> bead2)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordflow">return</span> BCShortestConnection(getBead(bead1)-&gt;getPos(),</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                              getBead(bead2)-&gt;getPos());</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;}</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ad60dd15aee4a9db0233eec1d7546b50d">  318</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#ad60dd15aee4a9db0233eec1d7546b50d">Topology::BoxVolume</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _bc-&gt;BoxVolume(); }</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ac0a6ad878d6fa4082aeaf004e8437f64">  320</a></span>&#160;Eigen::Vector3d <a class="code" href="classvotca_1_1csg_1_1Topology.html#ac0a6ad878d6fa4082aeaf004e8437f64">Topology::getDist</a>(<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> bead1, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> bead2)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordflow">return</span> BCShortestConnection(getBead(bead1)-&gt;getPos(),</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                              getBead(bead2)-&gt;getPos());</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;}</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#ad60dd15aee4a9db0233eec1d7546b50d">  325</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#ad60dd15aee4a9db0233eec1d7546b50d">Topology::BoxVolume</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _bc-&gt;BoxVolume(); }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a422931fd6d2c0fcf559dc6ee1c3ee4f6">  327</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a422931fd6d2c0fcf559dc6ee1c3ee4f6">Topology::RebuildExclusions</a>() { _exclusions.CreateExclusions(<span class="keyword">this</span>); }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
-<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154">  329</a></span>&#160;<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11c">BoundaryCondition::eBoxtype</a> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154">Topology::autoDetectBoxType</a>(</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keyword">const</span> Eigen::Matrix3d &amp;box)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="comment">// set the box type to OpenBox in case &quot;box&quot; is the zero matrix,</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <span class="comment">// to OrthorhombicBox in case &quot;box&quot; is a diagonal matrix,</span></div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="comment">// or to TriclinicBox otherwise</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keywordflow">if</span> (box.isApproxToConstant(0)) {</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((box - Eigen::Matrix3d(box.diagonal().asDiagonal()))</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                 .isApproxToConstant(0)) {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7">BoundaryCondition::typeOrthorhombic</a>;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538">BoundaryCondition::typeTriclinic</a>;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  }</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;}</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00345"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a6803012d1bfcb52c02e0e55c56f7704a">  345</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a6803012d1bfcb52c02e0e55c56f7704a">Topology::ShortestBoxSize</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keywordflow">return</span> _bc-&gt;getShortestBoxDimension();</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;}</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a422931fd6d2c0fcf559dc6ee1c3ee4f6">  320</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a422931fd6d2c0fcf559dc6ee1c3ee4f6">Topology::RebuildExclusions</a>() { _exclusions.CreateExclusions(<span class="keyword">this</span>); }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154">  322</a></span>&#160;<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11c">BoundaryCondition::eBoxtype</a> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154">Topology::autoDetectBoxType</a>(</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keyword">const</span> Eigen::Matrix3d &amp;box)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="comment">// set the box type to OpenBox in case &quot;box&quot; is the zero matrix,</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="comment">// to OrthorhombicBox in case &quot;box&quot; is a diagonal matrix,</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="comment">// or to TriclinicBox otherwise</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordflow">if</span> (box.isApproxToConstant(0)) {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((box - Eigen::Matrix3d(box.diagonal().asDiagonal()))</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                 .isApproxToConstant(0)) {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7">BoundaryCondition::typeOrthorhombic</a>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538">BoundaryCondition::typeTriclinic</a>;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">BoundaryCondition::typeOpen</a>;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;}</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Topology.html#a6803012d1bfcb52c02e0e55c56f7704a">  338</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classvotca_1_1csg_1_1Topology.html#a6803012d1bfcb52c02e0e55c56f7704a">Topology::ShortestBoxSize</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  Eigen::Vector3d box_a = getBox().col(0);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  Eigen::Vector3d box_b = getBox().col(1);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  Eigen::Vector3d box_c = getBox().col(2);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  <span class="comment">// create plane normals</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  Eigen::Vector3d norm_a = box_b.cross(box_c);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  Eigen::Vector3d norm_b = box_c.cross(box_a);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  Eigen::Vector3d norm_c = box_a.cross(box_b);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  norm_a.normalize();</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  norm_b.normalize();</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  norm_c.normalize();</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  <span class="keywordtype">double</span> la = box_a.dot(norm_a);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  <span class="keywordtype">double</span> lb = box_b.dot(norm_b);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  <span class="keywordtype">double</span> lc = box_c.dot(norm_c);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <span class="keywordflow">return</span> std::min(la, std::min(lb, lc));</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;}</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a6803012d1bfcb52c02e0e55c56f7704a"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a6803012d1bfcb52c02e0e55c56f7704a">votca::csg::Topology::ShortestBoxSize</a></div><div class="ttdeci">double ShortestBoxSize() const</div><div class="ttdoc">return the shortest box size</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00345">topology.cc:345</a></div></div>
+<div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00026">akimaspline.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a6803012d1bfcb52c02e0e55c56f7704a"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a6803012d1bfcb52c02e0e55c56f7704a">votca::csg::Topology::ShortestBoxSize</a></div><div class="ttdeci">double ShortestBoxSize() const</div><div class="ttdoc">return the shortest box size</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00338">topology.cc:338</a></div></div>
 <div class="ttc" id="aopenbox_8h_html"><div class="ttname"><a href="openbox_8h.html">openbox.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a111bc764b92ff1c5d529524b79d47154"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154">votca::csg::Topology::autoDetectBoxType</a></div><div class="ttdeci">BoundaryCondition::eBoxtype autoDetectBoxType(const Eigen::Matrix3d &amp;box) const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00329">topology.cc:329</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a750d431ff915f6acda358b3fb0644e15"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a750d431ff915f6acda358b3fb0644e15">votca::csg::Topology::CreateMoleculesByResidue</a></div><div class="ttdeci">void CreateMoleculesByResidue()</div><div class="ttdoc">Create molecules based on the residue.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00127">topology.cc:127</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html">votca::csg::Topology</a></div><div class="ttdoc">topology of the whole system</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00059">topology.h:59</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ad60dd15aee4a9db0233eec1d7546b50d"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ad60dd15aee4a9db0233eec1d7546b50d">votca::csg::Topology::BoxVolume</a></div><div class="ttdeci">double BoxVolume() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00325">topology.cc:325</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a1c0c5e857dc1a11bff53e086af47bef4"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a1c0c5e857dc1a11bff53e086af47bef4">votca::csg::Topology::CreateMoleculesByRange</a></div><div class="ttdeci">void CreateMoleculesByRange(std::string name, Index first, Index nbeads, Index nmolecules)</div><div class="ttdoc">create molecules based on blocks of atoms</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00095">topology.cc:95</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a9026c2e4bc8dc4a0c9204d0a13f63c1d"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a9026c2e4bc8dc4a0c9204d0a13f63c1d">votca::csg::Topology::RegisterBeadType</a></div><div class="ttdeci">void RegisterBeadType(std::string type)</div><div class="ttdoc">Register the bead type with the topology object.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00291">topology.cc:291</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html_ad861d25b17c6a3419da7a774cdeb8606"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html#ad861d25b17c6a3419da7a774cdeb8606">votca::csg::Molecule::getBead</a></div><div class="ttdeci">Bead * getBead(Index bead)</div><div class="ttdoc">get the id of a bead in the molecule</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8h_source.html#l00059">molecule.h:59</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a111bc764b92ff1c5d529524b79d47154"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154">votca::csg::Topology::autoDetectBoxType</a></div><div class="ttdeci">BoundaryCondition::eBoxtype autoDetectBoxType(const Eigen::Matrix3d &amp;box) const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00322">topology.cc:322</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a750d431ff915f6acda358b3fb0644e15"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a750d431ff915f6acda358b3fb0644e15">votca::csg::Topology::CreateMoleculesByResidue</a></div><div class="ttdeci">void CreateMoleculesByResidue()</div><div class="ttdoc">Create molecules based on the residue.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00120">topology.cc:120</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html">votca::csg::Topology</a></div><div class="ttdoc">topology of the whole system</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00055">topology.h:55</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ad60dd15aee4a9db0233eec1d7546b50d"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ad60dd15aee4a9db0233eec1d7546b50d">votca::csg::Topology::BoxVolume</a></div><div class="ttdeci">double BoxVolume() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00318">topology.cc:318</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a1c0c5e857dc1a11bff53e086af47bef4"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a1c0c5e857dc1a11bff53e086af47bef4">votca::csg::Topology::CreateMoleculesByRange</a></div><div class="ttdeci">void CreateMoleculesByRange(std::string name, Index first, Index nbeads, Index nmolecules)</div><div class="ttdoc">create molecules based on blocks of atoms</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00088">topology.cc:88</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html_ad861d25b17c6a3419da7a774cdeb8606"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html#ad861d25b17c6a3419da7a774cdeb8606">votca::csg::Molecule::getBead</a></div><div class="ttdeci">Bead * getBead(Index bead)</div><div class="ttdoc">get the id of a bead in the molecule</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8h_source.html#l00056">molecule.h:56</a></div></div>
 <div class="ttc" id="arangeparser_8h_html"><div class="ttname"><a href="rangeparser_8h.html">rangeparser.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ac0a6ad878d6fa4082aeaf004e8437f64"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ac0a6ad878d6fa4082aeaf004e8437f64">votca::csg::Topology::getDist</a></div><div class="ttdeci">Eigen::Vector3d getDist(Index bead1, Index bead2) const</div><div class="ttdoc">pbc correct distance of two beads</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00320">topology.cc:320</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html_a8c8ed966ac9283da27adbd9920b56099"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html#a8c8ed966ac9283da27adbd9920b56099">votca::csg::Molecule::BeadCount</a></div><div class="ttdeci">Index BeadCount() const</div><div class="ttdoc">get the number of beads in the molecule</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8h_source.html#l00064">molecule.h:64</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ac5566d423814639703321303e645e340"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ac5566d423814639703321303e645e340">votca::csg::Topology::BCShortestConnection</a></div><div class="ttdeci">Eigen::Vector3d BCShortestConnection(const Eigen::Vector3d &amp;r_i, const Eigen::Vector3d &amp;r_j) const</div><div class="ttdoc">calculate shortest vector connecting two points</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00315">topology.cc:315</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a084030095036322414eaf4a61119a8e0"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a084030095036322414eaf4a61119a8e0">votca::csg::Topology::CreateOneBigMolecule</a></div><div class="ttdeci">void CreateOneBigMolecule(std::string name)</div><div class="ttdoc">put the whole topology in one molecule</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00144">topology.cc:144</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a52015fd0aff8a3d7485cad96d1eee318"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a52015fd0aff8a3d7485cad96d1eee318">votca::csg::Topology::BeadTypeExist</a></div><div class="ttdeci">bool BeadTypeExist(std::string type) const</div><div class="ttdoc">Determine if a bead type exists.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00287">topology.cc:287</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a33856038013109a5969b44f1576db34c"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a33856038013109a5969b44f1576db34c">votca::csg::Topology::InteractionsInGroup</a></div><div class="ttdeci">std::list&lt; Interaction * &gt; InteractionsInGroup(const std::string &amp;group)</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00278">topology.cc:278</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ace770c2a6179660d7552b09f6bc741d3"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ace770c2a6179660d7552b09f6bc741d3">votca::csg::Topology::CopyTopologyData</a></div><div class="ttdeci">void CopyTopologyData(Topology *top)</div><div class="ttdoc">copy topology data of different topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00178">topology.cc:178</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a4cead67c1b03ee1df58e03975e52685a"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a4cead67c1b03ee1df58e03975e52685a">votca::csg::Topology::Add</a></div><div class="ttdeci">void Add(Topology *top)</div><div class="ttdoc">adds all the beads+molecules+residues from other topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00155">topology.cc:155</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ab9299163907718c2465c082e6f31328f"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ab9299163907718c2465c082e6f31328f">votca::csg::Topology::_molecules</a></div><div class="ttdeci">MoleculeContainer _molecules</div><div class="ttdoc">molecules in the topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00417">topology.h:417</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ab0d322ca2a7b474cd20a6d194f6171d3"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ab0d322ca2a7b474cd20a6d194f6171d3">votca::csg::Topology::~Topology</a></div><div class="ttdeci">~Topology()</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00046">topology.cc:46</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ac0a6ad878d6fa4082aeaf004e8437f64"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ac0a6ad878d6fa4082aeaf004e8437f64">votca::csg::Topology::getDist</a></div><div class="ttdeci">Eigen::Vector3d getDist(Index bead1, Index bead2) const</div><div class="ttdoc">pbc correct distance of two beads</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00313">topology.cc:313</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html_a8c8ed966ac9283da27adbd9920b56099"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html#a8c8ed966ac9283da27adbd9920b56099">votca::csg::Molecule::BeadCount</a></div><div class="ttdeci">Index BeadCount() const</div><div class="ttdoc">get the number of beads in the molecule</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8h_source.html#l00061">molecule.h:61</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a084030095036322414eaf4a61119a8e0"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a084030095036322414eaf4a61119a8e0">votca::csg::Topology::CreateOneBigMolecule</a></div><div class="ttdeci">void CreateOneBigMolecule(std::string name)</div><div class="ttdoc">put the whole topology in one molecule</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00137">topology.cc:137</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a52015fd0aff8a3d7485cad96d1eee318"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a52015fd0aff8a3d7485cad96d1eee318">votca::csg::Topology::BeadTypeExist</a></div><div class="ttdeci">bool BeadTypeExist(std::string type) const</div><div class="ttdoc">Determine if a bead type exists.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00280">topology.cc:280</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a33856038013109a5969b44f1576db34c"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a33856038013109a5969b44f1576db34c">votca::csg::Topology::InteractionsInGroup</a></div><div class="ttdeci">std::list&lt; Interaction * &gt; InteractionsInGroup(const std::string &amp;group)</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00271">topology.cc:271</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ace770c2a6179660d7552b09f6bc741d3"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ace770c2a6179660d7552b09f6bc741d3">votca::csg::Topology::CopyTopologyData</a></div><div class="ttdeci">void CopyTopologyData(Topology *top)</div><div class="ttdoc">copy topology data of different topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00171">topology.cc:171</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a4cead67c1b03ee1df58e03975e52685a"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a4cead67c1b03ee1df58e03975e52685a">votca::csg::Topology::Add</a></div><div class="ttdeci">void Add(Topology *top)</div><div class="ttdoc">adds all the beads+molecules+residues from other topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00148">topology.cc:148</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ab9299163907718c2465c082e6f31328f"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ab9299163907718c2465c082e6f31328f">votca::csg::Topology::_molecules</a></div><div class="ttdeci">MoleculeContainer _molecules</div><div class="ttdoc">molecules in the topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00402">topology.h:402</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ab0d322ca2a7b474cd20a6d194f6171d3"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ab0d322ca2a7b474cd20a6d194f6171d3">votca::csg::Topology::~Topology</a></div><div class="ttdeci">virtual ~Topology()</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00039">topology.cc:39</a></div></div>
 <div class="ttc" id="ainteraction_8h_html"><div class="ttname"><a href="interaction_8h.html">interaction.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a7d8a392c40e4e7b0005a4de505ac3c19"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19">votca::csg::Topology::AddBondedInteraction</a></div><div class="ttdeci">void AddBondedInteraction(Interaction *ic)</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00264">topology.cc:264</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BoundaryCondition_html_a51b6372db30b8292b9d6cf51716af11c"><div class="ttname"><a href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11c">votca::csg::BoundaryCondition::eBoxtype</a></div><div class="ttdeci">eBoxtype</div><div class="ttdef"><b>Definition:</b> <a href="boundarycondition_8h_source.html#l00089">boundarycondition.h:89</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a422931fd6d2c0fcf559dc6ee1c3ee4f6"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a422931fd6d2c0fcf559dc6ee1c3ee4f6">votca::csg::Topology::RebuildExclusions</a></div><div class="ttdeci">void RebuildExclusions()</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00327">topology.cc:327</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1OpenBox_html"><div class="ttname"><a href="classvotca_1_1csg_1_1OpenBox.html">votca::csg::OpenBox</a></div><div class="ttdef"><b>Definition:</b> <a href="openbox_8h_source.html#l00027">openbox.h:27</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html">votca::csg::Bead</a></div><div class="ttdoc">information about a bead</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00050">bead.h:50</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Interaction_html_a96a76681238afa838dae0858cea7c9fe"><div class="ttname"><a href="classvotca_1_1csg_1_1Interaction.html#a96a76681238afa838dae0858cea7c9fe">votca::csg::Interaction::setGroupId</a></div><div class="ttdeci">void setGroupId(Index id)</div><div class="ttdef"><b>Definition:</b> <a href="interaction_8h_source.html#l00065">interaction.h:65</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_a4c0a7b29f3f1be8653fcf07df14bae22"><div class="ttname"><a href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">votca::tools::wildcmp</a></div><div class="ttdeci">int wildcmp(const char *wild, const char *string)</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8cc_source.html#l00028">tokenizer.cc:28</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a34e10c4b79e77e13506dee6218b03562"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a34e10c4b79e77e13506dee6218b03562">votca::csg::Topology::getBox</a></div><div class="ttdeci">const Eigen::Matrix3d &amp; getBox() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00297">topology.h:297</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Interaction_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Interaction.html">votca::csg::Interaction</a></div><div class="ttdoc">base class for all interactions</div><div class="ttdef"><b>Definition:</b> <a href="interaction_8h_source.html#l00040">interaction.h:40</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BoundaryCondition_html_a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538"><div class="ttname"><a href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538">votca::csg::BoundaryCondition::typeTriclinic</a></div><div class="ttdeci">@ typeTriclinic</div><div class="ttdef"><b>Definition:</b> <a href="boundarycondition_8h_source.html#l00089">boundarycondition.h:89</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a3d70394762d42cb792780e80d1e67b10"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a3d70394762d42cb792780e80d1e67b10">votca::csg::Topology::RenameBeadType</a></div><div class="ttdeci">void RenameBeadType(std::string name, std::string newname)</div><div class="ttdoc">rename all the bead types</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00226">topology.cc:226</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html_a0fe3eded1a958c53d859ee6053276369"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">votca::csg::Molecule::AddBead</a></div><div class="ttdeci">void AddBead(Bead *bead, const std::string &amp;name)</div><div class="ttdoc">Add a bead to the molecule.</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8cc_source.html#l00029">molecule.cc:29</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a26c3e2f058c2b2406a046f69d2e58565"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a26c3e2f058c2b2406a046f69d2e58565">votca::csg::Topology::RenameMolecules</a></div><div class="ttdeci">void RenameMolecules(std::string range, std::string name)</div><div class="ttdoc">rename all the molecules in range</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00214">topology.cc:214</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a9aab78fb952d3b3ca81c383fc66a86b3"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3">votca::csg::Topology::_beads</a></div><div class="ttdeci">BeadContainer _beads</div><div class="ttdoc">beads in the topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00414">topology.h:414</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BoundaryCondition_html_a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d"><div class="ttname"><a href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">votca::csg::BoundaryCondition::typeOpen</a></div><div class="ttdeci">@ typeOpen</div><div class="ttdef"><b>Definition:</b> <a href="boundarycondition_8h_source.html#l00089">boundarycondition.h:89</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1csg_html_a6eec58d962462196ffee6649f238189e"><div class="ttname"><a href="namespacevotca_1_1csg.html#a6eec58d962462196ffee6649f238189e">votca::csg::is_digits</a></div><div class="ttdeci">bool is_digits(const std::string &amp;str)</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00042">topology.cc:42</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a7d8a392c40e4e7b0005a4de505ac3c19"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19">votca::csg::Topology::AddBondedInteraction</a></div><div class="ttdeci">void AddBondedInteraction(Interaction *ic)</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00257">topology.cc:257</a></div></div>
+<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00024">types.h:24</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BoundaryCondition_html_a51b6372db30b8292b9d6cf51716af11c"><div class="ttname"><a href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11c">votca::csg::BoundaryCondition::eBoxtype</a></div><div class="ttdeci">eBoxtype</div><div class="ttdef"><b>Definition:</b> <a href="boundarycondition_8h_source.html#l00056">boundarycondition.h:56</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a422931fd6d2c0fcf559dc6ee1c3ee4f6"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a422931fd6d2c0fcf559dc6ee1c3ee4f6">votca::csg::Topology::RebuildExclusions</a></div><div class="ttdeci">void RebuildExclusions()</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00320">topology.cc:320</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1OpenBox_html"><div class="ttname"><a href="classvotca_1_1csg_1_1OpenBox.html">votca::csg::OpenBox</a></div><div class="ttdef"><b>Definition:</b> <a href="openbox_8h_source.html#l00026">openbox.h:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html">votca::csg::Bead</a></div><div class="ttdoc">information about a bead</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00046">bead.h:46</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Interaction_html_a96a76681238afa838dae0858cea7c9fe"><div class="ttname"><a href="classvotca_1_1csg_1_1Interaction.html#a96a76681238afa838dae0858cea7c9fe">votca::csg::Interaction::setGroupId</a></div><div class="ttdeci">void setGroupId(Index id)</div><div class="ttdef"><b>Definition:</b> <a href="interaction_8h_source.html#l00061">interaction.h:61</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html_a4c0a7b29f3f1be8653fcf07df14bae22"><div class="ttname"><a href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">votca::tools::wildcmp</a></div><div class="ttdeci">int wildcmp(const char *wild, const char *string)</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8cc_source.html#l00027">tokenizer.cc:27</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a34e10c4b79e77e13506dee6218b03562"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a34e10c4b79e77e13506dee6218b03562">votca::csg::Topology::getBox</a></div><div class="ttdeci">const Eigen::Matrix3d &amp; getBox() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00290">topology.h:290</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Interaction_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Interaction.html">votca::csg::Interaction</a></div><div class="ttdoc">base class for all interactions</div><div class="ttdef"><b>Definition:</b> <a href="interaction_8h_source.html#l00036">interaction.h:36</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BoundaryCondition_html_a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538"><div class="ttname"><a href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca2514edc4c11253ee973af14ec3435538">votca::csg::BoundaryCondition::typeTriclinic</a></div><div class="ttdeci">@ typeTriclinic</div><div class="ttdef"><b>Definition:</b> <a href="boundarycondition_8h_source.html#l00056">boundarycondition.h:56</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a3d70394762d42cb792780e80d1e67b10"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a3d70394762d42cb792780e80d1e67b10">votca::csg::Topology::RenameBeadType</a></div><div class="ttdeci">void RenameBeadType(std::string name, std::string newname)</div><div class="ttdoc">rename all the bead types</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00219">topology.cc:219</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html_a0fe3eded1a958c53d859ee6053276369"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369">votca::csg::Molecule::AddBead</a></div><div class="ttdeci">void AddBead(Bead *bead, const std::string &amp;name)</div><div class="ttdoc">Add a bead to the molecule.</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8cc_source.html#l00026">molecule.cc:26</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a26c3e2f058c2b2406a046f69d2e58565"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a26c3e2f058c2b2406a046f69d2e58565">votca::csg::Topology::RenameMolecules</a></div><div class="ttdeci">void RenameMolecules(std::string range, std::string name)</div><div class="ttdoc">rename all the molecules in range</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00207">topology.cc:207</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a9aab78fb952d3b3ca81c383fc66a86b3"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a9aab78fb952d3b3ca81c383fc66a86b3">votca::csg::Topology::_beads</a></div><div class="ttdeci">BeadContainer _beads</div><div class="ttdoc">beads in the topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00399">topology.h:399</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BoundaryCondition_html_a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d"><div class="ttname"><a href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11ca395991240f006cdffa286a1318bf095d">votca::csg::BoundaryCondition::typeOpen</a></div><div class="ttdeci">@ typeOpen</div><div class="ttdef"><b>Definition:</b> <a href="boundarycondition_8h_source.html#l00056">boundarycondition.h:56</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1csg_html_a6eec58d962462196ffee6649f238189e"><div class="ttname"><a href="namespacevotca_1_1csg.html#a6eec58d962462196ffee6649f238189e">votca::csg::is_digits</a></div><div class="ttdeci">bool is_digits(const std::string &amp;str)</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00035">topology.cc:35</a></div></div>
 <div class="ttc" id="aboundarycondition_8h_html"><div class="ttname"><a href="boundarycondition_8h.html">boundarycondition.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a17c7d87557a60eb03b17a013321b1f5b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">votca::csg::Topology::Cleanup</a></div><div class="ttdeci">void Cleanup()</div><div class="ttdoc">Cleans up all the stored data.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00054">topology.cc:54</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a28dc46ae2c4032d6273d5733bacd0c83"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a28dc46ae2c4032d6273d5733bacd0c83">votca::csg::Topology::getBeadTypeId</a></div><div class="ttdeci">Index getBeadTypeId(std::string type) const</div><div class="ttdoc">Given a bead type this method returns the id associated with the type.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00209">topology.cc:209</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a17c7d87557a60eb03b17a013321b1f5b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">votca::csg::Topology::Cleanup</a></div><div class="ttdeci">virtual void Cleanup()</div><div class="ttdoc">Cleans up all the stored data.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00047">topology.cc:47</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a28dc46ae2c4032d6273d5733bacd0c83"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a28dc46ae2c4032d6273d5733bacd0c83">votca::csg::Topology::getBeadTypeId</a></div><div class="ttdeci">Index getBeadTypeId(std::string type) const</div><div class="ttdoc">Given a bead type this method returns the id associated with the type.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00202">topology.cc:202</a></div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00096">edge.h:96</a></div></div>
 <div class="ttc" id="amolecule_8h_html"><div class="ttname"><a href="molecule_8h.html">molecule.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a3f07306074e5e74f1a0301bf8e1339f3"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a3f07306074e5e74f1a0301bf8e1339f3">votca::csg::Topology::_residues</a></div><div class="ttdeci">ResidueContainer _residues</div><div class="ttdoc">residues in the topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00420">topology.h:420</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_abea9660bc463159c95fa4c5e443c3bf8"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#abea9660bc463159c95fa4c5e443c3bf8">votca::csg::Topology::CheckMoleculeNaming</a></div><div class="ttdeci">void CheckMoleculeNaming(void)</div><div class="ttdoc">checks weather molecules with the same name really contain the same number of beads</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00245">topology.cc:245</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a978e04d19632302cae22a6e288bae0c1"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a978e04d19632302cae22a6e288bae0c1">votca::csg::Topology::SetBeadTypeMass</a></div><div class="ttdeci">void SetBeadTypeMass(std::string name, double value)</div><div class="ttdoc">set the mass of all the beads of a certain type</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00236">topology.cc:236</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a75c51d1634121d36e7d4b0837fc43f3b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a75c51d1634121d36e7d4b0837fc43f3b">votca::csg::Topology::_time</a></div><div class="ttdeci">double _time</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00431">topology.h:431</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Interaction_html_aed2a13a5bcbe13388ba5e51562b12e06"><div class="ttname"><a href="classvotca_1_1csg_1_1Interaction.html#aed2a13a5bcbe13388ba5e51562b12e06">votca::csg::Interaction::getGroup</a></div><div class="ttdeci">const std::string &amp; getGroup() const</div><div class="ttdef"><b>Definition:</b> <a href="interaction_8h_source.html#l00053">interaction.h:53</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html">votca::csg::Molecule</a></div><div class="ttdoc">information about molecules</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8h_source.html#l00045">molecule.h:45</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a3f07306074e5e74f1a0301bf8e1339f3"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a3f07306074e5e74f1a0301bf8e1339f3">votca::csg::Topology::_residues</a></div><div class="ttdeci">ResidueContainer _residues</div><div class="ttdoc">residues in the topology</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00405">topology.h:405</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_abea9660bc463159c95fa4c5e443c3bf8"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#abea9660bc463159c95fa4c5e443c3bf8">votca::csg::Topology::CheckMoleculeNaming</a></div><div class="ttdeci">void CheckMoleculeNaming(void)</div><div class="ttdoc">checks weather molecules with the same name really contain the same number of beads</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00238">topology.cc:238</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a978e04d19632302cae22a6e288bae0c1"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a978e04d19632302cae22a6e288bae0c1">votca::csg::Topology::SetBeadTypeMass</a></div><div class="ttdeci">void SetBeadTypeMass(std::string name, double value)</div><div class="ttdoc">set the mass of all the beads of a certain type</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00229">topology.cc:229</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a75c51d1634121d36e7d4b0837fc43f3b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a75c51d1634121d36e7d4b0837fc43f3b">votca::csg::Topology::_time</a></div><div class="ttdeci">double _time</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00416">topology.h:416</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Interaction_html_aed2a13a5bcbe13388ba5e51562b12e06"><div class="ttname"><a href="classvotca_1_1csg_1_1Interaction.html#aed2a13a5bcbe13388ba5e51562b12e06">votca::csg::Interaction::getGroup</a></div><div class="ttdeci">const std::string &amp; getGroup() const</div><div class="ttdef"><b>Definition:</b> <a href="interaction_8h_source.html#l00049">interaction.h:49</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html">votca::csg::Molecule</a></div><div class="ttdoc">information about molecules</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8h_source.html#l00042">molecule.h:42</a></div></div>
 <div class="ttc" id="acsg_2include_2votca_2csg_2topology_8h_html"><div class="ttname"><a href="csg_2include_2votca_2csg_2topology_8h.html">topology.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1RangeParser_html"><div class="ttname"><a href="classvotca_1_1tools_1_1RangeParser.html">votca::tools::RangeParser</a></div><div class="ttdoc">RangeParser.</div><div class="ttdef"><b>Definition:</b> <a href="rangeparser_8h_source.html#l00037">rangeparser.h:37</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a92183bfd2fb65b1c55ab91150c867d17"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a92183bfd2fb65b1c55ab91150c867d17">votca::csg::Topology::_step</a></div><div class="ttdeci">Index _step</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00432">topology.h:432</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1RangeParser_html_a66e06617ee7815de11d720148bd00640"><div class="ttname"><a href="classvotca_1_1tools_1_1RangeParser.html#a66e06617ee7815de11d720148bd00640">votca::tools::RangeParser::Parse</a></div><div class="ttdeci">void Parse(std::string str)</div><div class="ttdef"><b>Definition:</b> <a href="rangeparser_8cc_source.html#l00034">rangeparser.cc:34</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1BoundaryCondition_html_a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7"><div class="ttname"><a href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7">votca::csg::BoundaryCondition::typeOrthorhombic</a></div><div class="ttdeci">@ typeOrthorhombic</div><div class="ttdef"><b>Definition:</b> <a href="boundarycondition_8h_source.html#l00089">boundarycondition.h:89</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1RangeParser_html"><div class="ttname"><a href="classvotca_1_1tools_1_1RangeParser.html">votca::tools::RangeParser</a></div><div class="ttdoc">RangeParser.</div><div class="ttdef"><b>Definition:</b> <a href="rangeparser_8h_source.html#l00034">rangeparser.h:34</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a92183bfd2fb65b1c55ab91150c867d17"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a92183bfd2fb65b1c55ab91150c867d17">votca::csg::Topology::_step</a></div><div class="ttdeci">Index _step</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00417">topology.h:417</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ae37455b40807878d8d88d5b559784ce5"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ae37455b40807878d8d88d5b559784ce5">votca::csg::Topology::RegisterBeadType</a></div><div class="ttdeci">void RegisterBeadType(std::string name)</div><div class="ttdoc">Register the bead type with the topology object.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00284">topology.cc:284</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a6a1cdb35c8f8b501fab282dabd52703d"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a6a1cdb35c8f8b501fab282dabd52703d">votca::csg::Topology::BCShortestConnection</a></div><div class="ttdeci">Eigen::Vector3d BCShortestConnection(const Eigen::Vector3d &amp;r1, const Eigen::Vector3d &amp;r2) const</div><div class="ttdoc">calculate shortest vector connecting two points</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00308">topology.cc:308</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1RangeParser_html_a5699728a3bcef562e666b2b11c1704fc"><div class="ttname"><a href="classvotca_1_1tools_1_1RangeParser.html#a5699728a3bcef562e666b2b11c1704fc">votca::tools::RangeParser::Parse</a></div><div class="ttdeci">void Parse(std::string range)</div><div class="ttdef"><b>Definition:</b> <a href="rangeparser_8cc_source.html#l00031">rangeparser.cc:31</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1BoundaryCondition_html_a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7"><div class="ttname"><a href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caa39302d4d63ce53d46dbe4122c61e3a7">votca::csg::BoundaryCondition::typeOrthorhombic</a></div><div class="ttdeci">@ typeOrthorhombic</div><div class="ttdef"><b>Definition:</b> <a href="boundarycondition_8h_source.html#l00056">boundarycondition.h:56</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
