@@ -102,7 +102,7 @@ Typedefs</h2></td></tr>
 <p>Container to define fragments of QMmolecules, containing atomindices, no pointers to atoms, it also handles the parsing of strings etc.. Values should have own destructor.</p>
 <p>Takes a list of atoms, and the corresponding density matrix and puts out a table of wavefunction partial charges.</p>
 <p>defines a polar region and of interacting electrostatic and induction segments</p>
-<p>Supports operations on Matrices using OPENMP and CUDA. It works in two steps a) set the variables for contraction b) write the normal OPENMP for-loop but use the multiplyright on the individual matrix.</p>
+<p>Supports operations on Matrices using OPENMP and CUDA.</p>
 <p>Takes a list of atoms, and the corresponding density and overlap matrices and puts out a table of partial charges.</p>
 <p>Class to set up the topology, e.g division of molecules into different regions for a specific job.</p>
 <p>Parser to read strings containing indexes in the format "1 2:7 8" and returning a sorted expanded std::vector&lt;Index&gt; with only unique entries It can also do the opposite.</p>
@@ -137,6 +137,7 @@ Typedefs</h2></td></tr>
 </ol>
 <p>This is the base class for all analysis tool. </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>do option functions!!! </dd></dl>
 <p>How energies are evaluated depends critically on the id of the region. a) Lower ids means being evaluated later. So expensive regions should have low ids, as they can then already incorporate partially converged results from higher id regions b) The energy of a region, includes all interactions with regions of higher ids. i.e. E(region0)=E0+E01+E02, whereas E(region1)=E1+E12 and not E10 The reason is that DFT codes only return E0+ all interaction energies and not the individual terms, this has to be changed once we want to have multiple QM regions.</p>
+<p>Each operation works with 2-3 steps 1) Allocate temporary matrices and move fixed data to the gpu before the openmp region is created 2) Inside the openmp region, move the loop data to the GPU and perform calculation there 3) For reduction operations, transfer the GPU data back to the CPU after the loop is finished Each GPU is served by one CPU thread, the other CPU threads perform the normal CPU based operations If no GPU is present all CPUs simply do CPU work. If this class is created inside an OPENMP region, it still ensures, that over that OPENMP region not more threads access the GPUs then GPUs are present. Otherwise it will work purely in serial. So this class does NOT work with nested OPENMP</p>
 <p>PATHWAYS TO <a class="el" href="classA.html">A</a> NEW THREADED CALCULATOR ... 1 Define 'JobContainer' (needs to define iterator), 'pJob' ( = *iterator) ... 2 Derive new calculator as ': public ParallelXJobCalc&lt;JobContainer,pJob&gt;' ... 3 Specialize XJOBS_FROM_TABLE&lt; JobContainer, pJob&gt; in xjob.cc ... 4 Register new calculator (see end of <a class="el" href="parallelxjobcalc_8cc.html">parallelxjobcalc.cc</a>) REQUIRED MEMBERS FOR pJob pJob::JobResult (struct)</p>
 <p>For an earlier history see ctp repo commit 77795ea591b29e664153f9404c8655ba28dc14e9</p>
 <p>For earlier commit history see ctp commit 77795ea591b29e664153f9404c8655ba28dc14e9 </p>
