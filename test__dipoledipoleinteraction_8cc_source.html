@@ -156,18 +156,18 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">// building matrix via matrix vector product</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  Eigen::MatrixXd <a class="code" href="namespacekokkos__linalg__3d.html#aa6d02a238e9e054387beb91903a7d978">gemv</a> = Eigen::MatrixXd::Zero(6, 6);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  Eigen::MatrixXd gemv = Eigen::MatrixXd::Zero(6, 6);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  Eigen::MatrixXd ident = Eigen::MatrixXd::Identity(6, 6);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 6; i++) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="namespacekokkos__linalg__3d.html#aa6d02a238e9e054387beb91903a7d978">gemv</a>.col(i) = dipdip * ident.col(i);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    gemv.col(i) = dipdip * ident.col(i);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">bool</span> gemv_check = <a class="code" href="namespacekokkos__linalg__3d.html#aa6d02a238e9e054387beb91903a7d978">gemv</a>.isApprox(ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">bool</span> gemv_check = gemv.isApprox(ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  BOOST_CHECK_EQUAL(gemv_check, 1);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">if</span> (!gemv_check) {</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::cout &lt;&lt; ref &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;gemv&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::cout &lt;&lt; <a class="code" href="namespacekokkos__linalg__3d.html#aa6d02a238e9e054387beb91903a7d978">gemv</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::cout &lt;&lt; gemv &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">// building matrix via iterator product</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  Eigen::MatrixXd iterator = Eigen::MatrixXd::Zero(6, 6);</div>
@@ -182,7 +182,7 @@ $(function() {
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    std::cout &lt;&lt; ref &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;iterator&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::cout &lt;&lt; <a class="code" href="namespacekokkos__linalg__3d.html#aa6d02a238e9e054387beb91903a7d978">gemv</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::cout &lt;&lt; gemv &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  }</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
@@ -197,7 +197,6 @@ $(function() {
 <div class="ttc" id="atest__dipoledipoleinteraction_8cc_html_adf845731d00c29a2e0ec71b42551341d"><div class="ttname"><a href="test__dipoledipoleinteraction_8cc.html#adf845731d00c29a2e0ec71b42551341d">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(dipoledipoleinteraction_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__dipoledipoleinteraction_8cc_source.html#l00035">test_dipoledipoleinteraction.cc:35</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html">votca::xtp::DipoleDipoleInteraction::InnerIterator</a></div><div class="ttdef"><b>Definition:</b> <a href="dipoledipoleinteraction_8h_source.html#l00071">dipoledipoleinteraction.h:71</a></div></div>
 <div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="anamespacekokkos__linalg__3d_html_aa6d02a238e9e054387beb91903a7d978"><div class="ttname"><a href="namespacekokkos__linalg__3d.html#aa6d02a238e9e054387beb91903a7d978">kokkos_linalg_3d::gemv</a></div><div class="ttdeci">std::array&lt; typename Matrix::value_type, 3 &gt; gemv(const Matrix &amp;A, const Vector &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="kokkos__linalg_8hpp_source.html#l00071">kokkos_linalg.hpp:71</a></div></div>
 <div class="ttc" id="adipoledipoleinteraction_8h_html"><div class="ttname"><a href="dipoledipoleinteraction_8h.html">dipoledipoleinteraction.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1eeInteractor_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1eeInteractor.html">votca::xtp::eeInteractor</a></div><div class="ttdoc">Mediates interaction between polar and static sites.</div><div class="ttdef"><b>Definition:</b> <a href="eeinteractor_8h_source.html#l00039">eeinteractor.h:39</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1ClassicalSegment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ClassicalSegment.html">votca::xtp::ClassicalSegment&lt; PolarSite &gt;</a></div></div>
