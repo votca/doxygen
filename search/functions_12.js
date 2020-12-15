@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r_7701',['R',['../classvotca_1_1xtp_1_1QMPair.html#ab4cf8e15d2b4d9f62caf881bc8dcf3f4',1,'votca::xtp::QMPair::R()'],['../classvotca_1_1csg_1_1BeadPair.html#a29e6de0622ba909722b0c380833e3083',1,'votca::csg::BeadPair::r()']]],
+  ['r_7701',['r',['../classvotca_1_1csg_1_1BeadPair.html#a29e6de0622ba909722b0c380833e3083',1,'votca::csg::BeadPair::r()'],['../classvotca_1_1xtp_1_1QMPair.html#ab4cf8e15d2b4d9f62caf881bc8dcf3f4',1,'votca::xtp::QMPair::R()']]],
   ['r12_7702',['r12',['../classvotca_1_1csg_1_1BeadTriple.html#a9b44c5ee0f7e7b843ac53caf704f88be',1,'votca::csg::BeadTriple']]],
   ['r13_7703',['r13',['../classvotca_1_1csg_1_1BeadTriple.html#abbe9cfd5402fa3fa514a50039bb9b42c',1,'votca::csg::BeadTriple']]],
   ['r23_7704',['r23',['../classvotca_1_1csg_1_1BeadTriple.html#ac4e2791ffe43d60a887bbf9e70ca5d94',1,'votca::csg::BeadTriple']]],

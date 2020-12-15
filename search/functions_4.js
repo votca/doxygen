@@ -42,7 +42,7 @@ var searchData=
   ['dipoledipoleinteraction_6648',['DipoleDipoleInteraction',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a0d37cc485d736366a6a73d98d550c985',1,'votca::xtp::DipoleDipoleInteraction']]],
   ['disablepreface_6649',['DisablePreface',['../classvotca_1_1xtp_1_1LogBuffer.html#a680163008ee20393a38bd2a121ca469c',1,'votca::xtp::LogBuffer::DisablePreface()'],['../classvotca_1_1xtp_1_1Logger.html#ad52281ec02c6ced2b1187e0dc14ba47a',1,'votca::xtp::Logger::DisablePreface()']]],
   ['displayoptions_6650',['DisplayOptions',['../classvotca_1_1tools_1_1Calculator.html#a905efc9d69e58df9232d8d8a9d7b3107',1,'votca::tools::Calculator']]],
-  ['dist_6651',['Dist',['../classvotca_1_1xtp_1_1QMPair.html#af531f93611fa3e8919484a9e3448bfcd',1,'votca::xtp::QMPair::Dist()'],['../classvotca_1_1csg_1_1BeadPair.html#abba98687fdf9a65edbcd39b229426577',1,'votca::csg::BeadPair::dist()']]],
+  ['dist_6651',['dist',['../classvotca_1_1csg_1_1BeadPair.html#abba98687fdf9a65edbcd39b229426577',1,'votca::csg::BeadPair::dist()'],['../classvotca_1_1xtp_1_1QMPair.html#af531f93611fa3e8919484a9e3448bfcd',1,'votca::xtp::QMPair::Dist()']]],
   ['dist12_6652',['dist12',['../classvotca_1_1csg_1_1BeadTriple.html#a1a0dd3803b22a115f34294402a5cead5',1,'votca::csg::BeadTriple']]],
   ['dist13_6653',['dist13',['../classvotca_1_1csg_1_1BeadTriple.html#a897a903452319ab4d0db1fd3595add50',1,'votca::csg::BeadTriple']]],
   ['dist23_6654',['dist23',['../classvotca_1_1csg_1_1BeadTriple.html#ae17e06a8025e23caa467fcdbbdf7fe2d',1,'votca::csg::BeadTriple']]],

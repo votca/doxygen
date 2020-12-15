@@ -125,7 +125,7 @@ var searchData=
   ['setprogobserver_7938',['setProgObserver',['../classvotca_1_1xtp_1_1JobCalculator.html#a581a94a202e334c9a482f81006bb0458',1,'votca::xtp::JobCalculator']]],
   ['setq_7939',['setQ',['../classvotca_1_1csg_1_1Bead.html#a9ee97f5f561bbec8469e6d73f3ff22f4',1,'votca::csg::Bead']]],
   ['setqmenergy_7940',['setQMEnergy',['../classvotca_1_1xtp_1_1Orbitals.html#abb691f5c43813c1f9dc030666260799d',1,'votca::xtp::Orbitals']]],
-  ['setqmpackage_7941',['setQMPackage',['../classvotca_1_1xtp_1_1GWBSEEngine.html#ad5d814fed85c51fb9d74b0d5bf1987a8',1,'votca::xtp::GWBSEEngine::setQMPackage()'],['../classvotca_1_1xtp_1_1Orbitals.html#ac4654d1482a53641c427bdb85f9aef77',1,'votca::xtp::Orbitals::setQMpackage()']]],
+  ['setqmpackage_7941',['setQMpackage',['../classvotca_1_1xtp_1_1Orbitals.html#ac4654d1482a53641c427bdb85f9aef77',1,'votca::xtp::Orbitals::setQMpackage()'],['../classvotca_1_1xtp_1_1GWBSEEngine.html#ad5d814fed85c51fb9d74b0d5bf1987a8',1,'votca::xtp::GWBSEEngine::setQMPackage()']]],
   ['setredirectlogger_7942',['setRedirectLogger',['../classvotca_1_1xtp_1_1GWBSEEngine.html#abc52e55f340e33cc469a079d20d81af6',1,'votca::xtp::GWBSEEngine']]],
   ['setregionconstraint_7943',['setRegionConstraint',['../classvotca_1_1xtp_1_1Espfit.html#a369f2598abaf88608035a5929dfde064',1,'votca::xtp::Espfit']]],
   ['setreportlevel_7944',['setReportLevel',['../classvotca_1_1xtp_1_1Logger.html#a247f737e608135f6ba98b510549b5d61',1,'votca::xtp::Logger']]],
@@ -257,7 +257,7 @@ var searchData=
   ['surfaceratio_8070',['SurfaceRatio',['../classvotca_1_1csg_1_1IMCNBSearchHandler.html#ace07b2e8112d6541cdd7c47836791edc',1,'votca::csg::IMCNBSearchHandler']]],
   ['symm_5fmatrix_8071',['symm_matrix',['../test__davidson_8cc.html#a696e369fc43d8f2d98b6cf8a6ca58bfc',1,'test_davidson.cc']]],
   ['symmetric_5fmatrix_8072',['Symmetric_Matrix',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html#a1b4d148cbfc7e5a232d576056b77a869',1,'votca::xtp::Symmetric_Matrix::Symmetric_Matrix(Index dim)'],['../classvotca_1_1xtp_1_1Symmetric__Matrix.html#add8564bdd7e569b811705a6c7a4cee53',1,'votca::xtp::Symmetric_Matrix::Symmetric_Matrix(const Eigen::MatrixXd &amp;full)']]],
-  ['sync_8073',['sync',['../classvotca_1_1xtp_1_1LogBuffer.html#a6999c199b8eb92ce59578015326b5ecd',1,'votca::xtp::LogBuffer']]],
+  ['sync_8073',['sync',['../classvotca_1_1xtp_1_1LogBuffer.html#a1fdf39ecdbed0c647188d05391bc1aad',1,'votca::xtp::LogBuffer']]],
   ['synchronizethreads_8074',['SynchronizeThreads',['../classvotca_1_1csg_1_1CsgApplication.html#a44eb180a44e5b9660e6b58bdaaed9d37',1,'votca::csg::CsgApplication::SynchronizeThreads()'],['../classOrientCorrApp.html#a1c52fbb12fdc57c1c9d52f6c6e4544f7',1,'OrientCorrApp::SynchronizeThreads()'],['../classCsgStatApp.html#acd9a8acff8105bdedddc094d4c03cbc4',1,'CsgStatApp::SynchronizeThreads()'],['../classCsgREupdate.html#a24fd12247d436fe5ae53ab89e9a878cf',1,'CsgREupdate::SynchronizeThreads()'],['../classCsgStatApp.html#acd9a8acff8105bdedddc094d4c03cbc4',1,'CsgStatApp::SynchronizeThreads()']]],
   ['syncwithprogfile_8075',['SyncWithProgFile',['../classvotca_1_1xtp_1_1ProgObserver.html#ad20b8ac6e4edcfd48ec9575247e28228',1,'votca::xtp::ProgObserver']]]
 ];

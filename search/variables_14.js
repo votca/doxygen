@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t_9618',['T',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()'],['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()']]],
+  ['t_9618',['t',['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()'],['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()']]],
   ['tex_9619',['TEX',['../namespacevotca_1_1tools.html#ad71d84b1ff136d282308f7dec24626be',1,'votca::tools']]],
   ['theta_9620',['theta',['../structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html#a2ac92b952d8f407dc51e62b1c153abe0',1,'votca::xtp::GridContainers::spherical_grid']]],
   ['threadid_5fparent_5f_9621',['threadID_parent_',['../classvotca_1_1xtp_1_1OpenMP__CUDA.html#aa0aab5f6e2c984cc079d0c7df1d5608f',1,'votca::xtp::OpenMP_CUDA']]],
