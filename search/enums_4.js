@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['g_9764',['G',['../classvotca_1_1xtp_1_1AOTransform.html#ad8efe3bb0884091c12af448c522865be',1,'votca::xtp::AOTransform']]]
+  ['helptype_9744',['HelpType',['../classvotca_1_1tools_1_1Application.html#a1e2a9df29823218c2163a49202ed7873',1,'votca::tools::Application']]]
 ];

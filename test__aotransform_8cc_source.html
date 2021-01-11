@@ -105,158 +105,108 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;BOOST_AUTO_TEST_SUITE(aotransform_test)</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="test__aotransform_8cc.html#a089d028a6265eb85c2aef6fb547d44a4">   36</a></span>&#160;<a class="code" href="test__aotransform_8cc.html#a089d028a6265eb85c2aef6fb547d44a4">BOOST_AUTO_TEST_CASE</a>(transform_test) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  libint2::initialize();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMAtom.html">QMAtom</a> a(0, <span class="stringliteral">&quot;C&quot;</span>, Eigen::Vector3d::Zero());</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> mol(<span class="stringliteral">&quot;zero&quot;</span>, 0);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  mol.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">push_back</a>(a);</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="test__aotransform_8cc.html#a47b21225d860b13814c2d6674e52390f">   36</a></span>&#160;<a class="code" href="test__aotransform_8cc.html#a47b21225d860b13814c2d6674e52390f">BOOST_AUTO_TEST_CASE</a>(xintegrate) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  BOOST_REQUIRE_THROW(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(0, 0.1), std::runtime_error);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  BOOST_REQUIRE_THROW(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(1, -0.1);, std::runtime_error);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BasisSet.html">BasisSet</a> bs;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  bs.<a class="code" href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">Load</a>(std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aotransform/all.xml&quot;</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> basis;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  basis.<a class="code" href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">Fill</a>(bs, mol);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  std::array&lt;Eigen::MatrixXd, 5&gt; ref;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; ref.size(); i++) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    ref[i] = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/aotransform/ref_&quot;</span> +</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::to_string(i) + <span class="stringliteral">&quot;.mm&quot;</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> ref_index = 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOShell.html">AOShell</a>&amp; shell : basis) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">AOGaussianPrimitive</a>&amp; gauss : shell) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      Eigen::MatrixXd transform = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a160a4df92cc31ed8dcc32830c8cf7e70">AOTransform::getTrafo</a>(gauss);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keywordtype">bool</span> check_transform = ref[ref_index].isApprox(transform, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      BOOST_CHECK_EQUAL(check_transform, 1);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">if</span> (!check_transform) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;ref &quot;</span> &lt;&lt; <a class="code" href="namespacevotca_1_1xtp.html#a2d7b621f3b377ed42210e39a40918f03">xtp::EnumToString</a>(shell.getL()) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::cout &lt;&lt; ref[ref_index] &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        std::cout &lt;&lt; transform &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      ref_index++;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  libint2::finalize();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="test__aotransform_8cc.html#a47b21225d860b13814c2d6674e52390f">   73</a></span>&#160;<a class="code" href="test__aotransform_8cc.html#a089d028a6265eb85c2aef6fb547d44a4">BOOST_AUTO_TEST_CASE</a>(xintegrate) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  BOOST_REQUIRE_THROW(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(0, 0.1), std::runtime_error);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  BOOST_REQUIRE_THROW(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(1, -0.1);, std::runtime_error);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Eigen::VectorXd res1 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(1, 0.1);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  Eigen::VectorXd res1_ref = Eigen::VectorXd::Zero(1);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  res1_ref &lt;&lt; 0.967643;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">bool</span> check_res1 = res1.isApprox(res1_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  BOOST_CHECK_EQUAL(check_res1, 1);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">if</span> (!check_res1) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  Eigen::VectorXd res1 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(1, 0.1);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  Eigen::VectorXd res1_ref = Eigen::VectorXd::Zero(1);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  res1_ref &lt;&lt; 0.967643;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">bool</span> check_res1 = res1.isApprox(res1_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  BOOST_CHECK_EQUAL(check_res1, 1);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">if</span> (!check_res1) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::cout &lt;&lt; res1_ref &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::cout &lt;&lt; res1 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  Eigen::VectorXd res2 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(5, 0.1);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  Eigen::VectorXd res2_ref = Eigen::VectorXd::Zero(5);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  res2_ref &lt;&lt; 0.967643, 0.314029, 0.186255, 0.132188, 0.102394;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">bool</span> check_res2 = res2.isApprox(res2_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  BOOST_CHECK_EQUAL(check_res2, 1);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (!check_res1) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::cout &lt;&lt; res2_ref &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::cout &lt;&lt; res2 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  Eigen::VectorXd res3 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(1, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-12);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  Eigen::VectorXd res3_ref = Eigen::VectorXd::Zero(1);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  res3_ref[0] = 1.0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">bool</span> check_res3 = res3.isApprox(res3_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  BOOST_CHECK_EQUAL(check_res3, 1);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">if</span> (!check_res3) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::cout &lt;&lt; res3_ref &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::cout &lt;&lt; res3 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  Eigen::VectorXd res4 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(5, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-12);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Eigen::VectorXd res4_ref = Eigen::VectorXd::Zero(5);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  res4_ref &lt;&lt; 1, 0.333333, 0.2, 0.142857, 0.111111;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">bool</span> check_res4 = res4.isApprox(res4_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  BOOST_CHECK_EQUAL(check_res4, 1);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">if</span> (!check_res4) {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::cout &lt;&lt; res1_ref &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::cout &lt;&lt; res4_ref &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::cout &lt;&lt; res1 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::cout &lt;&lt; res4 &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  Eigen::VectorXd res2 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(5, 0.1);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  Eigen::VectorXd res2_ref = Eigen::VectorXd::Zero(5);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  res2_ref &lt;&lt; 0.967643, 0.314029, 0.186255, 0.132188, 0.102394;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">bool</span> check_res2 = res2.isApprox(res2_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  BOOST_CHECK_EQUAL(check_res2, 1);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">if</span> (!check_res1) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  Eigen::VectorXd res5 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(1, 15);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  Eigen::VectorXd res5_ref = Eigen::VectorXd::Zero(1);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  res5_ref &lt;&lt; 0.228823;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">bool</span> check_res5 = res5.isApprox(res5_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  BOOST_CHECK_EQUAL(check_res5, 1);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">if</span> (!check_res5) {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::cout &lt;&lt; res2_ref &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::cout &lt;&lt; res5_ref &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::cout &lt;&lt; res2 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::cout &lt;&lt; res5 &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  Eigen::VectorXd res3 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(1, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-12);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  Eigen::VectorXd res3_ref = Eigen::VectorXd::Zero(1);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  res3_ref[0] = 1.0;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">bool</span> check_res3 = res3.isApprox(res3_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  BOOST_CHECK_EQUAL(check_res3, 1);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">if</span> (!check_res3) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  Eigen::VectorXd res6 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(5, 15);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  Eigen::VectorXd res6_ref = Eigen::VectorXd::Zero(5);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  res6_ref &lt;&lt; 0.228823, 0.00762742, 0.000762731, 0.000127112, 2.96492e-05;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">bool</span> check_res6 = res6.isApprox(res6_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  BOOST_CHECK_EQUAL(check_res6, 1);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">if</span> (!check_res6) {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::cout &lt;&lt; res3_ref &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::cout &lt;&lt; res6_ref &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::cout &lt;&lt; res3 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::cout &lt;&lt; res6 &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  Eigen::VectorXd res4 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(5, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-12);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  Eigen::VectorXd res4_ref = Eigen::VectorXd::Zero(5);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  res4_ref &lt;&lt; 1, 0.333333, 0.2, 0.142857, 0.111111;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="test__aotransform_8cc.html#a62f958c00367160dad6f0bccf86e4f6d">  116</a></span>&#160;<a class="code" href="test__aotransform_8cc.html#a47b21225d860b13814c2d6674e52390f">BOOST_AUTO_TEST_CASE</a>(blocksize) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(0), 1);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">bool</span> check_res4 = res4.isApprox(res4_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  BOOST_CHECK_EQUAL(check_res4, 1);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordflow">if</span> (!check_res4) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    std::cout &lt;&lt; res4_ref &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    std::cout &lt;&lt; res4 &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  Eigen::VectorXd res5 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(1, 15);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  Eigen::VectorXd res5_ref = Eigen::VectorXd::Zero(1);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  res5_ref &lt;&lt; 0.228823;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordtype">bool</span> check_res5 = res5.isApprox(res5_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  BOOST_CHECK_EQUAL(check_res5, 1);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordflow">if</span> (!check_res5) {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    std::cout &lt;&lt; res5_ref &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    std::cout &lt;&lt; res5 &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  Eigen::VectorXd res6 = <a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">AOTransform::XIntegrate</a>(5, 15);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  Eigen::VectorXd res6_ref = Eigen::VectorXd::Zero(5);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  res6_ref &lt;&lt; 0.228823, 0.00762742, 0.000762731, 0.000127112, 2.96492e-05;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordtype">bool</span> check_res6 = res6.isApprox(res6_ref, 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-5);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  BOOST_CHECK_EQUAL(check_res6, 1);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordflow">if</span> (!check_res6) {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ref&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    std::cout &lt;&lt; res6_ref &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;result&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    std::cout &lt;&lt; res6 &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="test__aotransform_8cc.html#a62f958c00367160dad6f0bccf86e4f6d">  153</a></span>&#160;<a class="code" href="test__aotransform_8cc.html#a089d028a6265eb85c2aef6fb547d44a4">BOOST_AUTO_TEST_CASE</a>(blocksize) {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(0), 1);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(0), 1);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(1), 4);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(2), 10);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(3), 20);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(0), 1);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(1), 4);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(2), 10);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  BOOST_CHECK_EQUAL(<a class="code" href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">AOTransform::getBlockSize</a>(3), 20);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="abasisset_8h_html"><div class="ttname"><a href="basisset_8h.html">basisset.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOTransform_html_a160a4df92cc31ed8dcc32830c8cf7e70"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOTransform.html#a160a4df92cc31ed8dcc32830c8cf7e70">votca::xtp::AOTransform::getTrafo</a></div><div class="ttdeci">static Eigen::MatrixXd getTrafo(const AOGaussianPrimitive &amp;gaussian)</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8cc_source.html#l00304">aotransform.cc:304</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a3638e1261da1fff40c3608c01fac8307"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">votca::xtp::AOBasis::Fill</a></div><div class="ttdeci">void Fill(const BasisSet &amp;bs, const QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8cc_source.html#l00087">aobasis.cc:87</a></div></div>
 <div class="ttc" id="aaotransform_8h_html"><div class="ttname"><a href="aotransform_8h.html">aotransform.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_a14b0d7c0a880facaaf9b8b105ede0ae8"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">votca::xtp::AtomContainer::push_back</a></div><div class="ttdeci">void push_back(const T &amp;atom)</div><div class="ttdef"><b>Definition:</b> <a href="atomcontainer_8h_source.html#l00063">atomcontainer.h:63</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOTransform_html_aaafd945bd3914efc7627b2c8bd172bdb"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">votca::xtp::AOTransform::getBlockSize</a></div><div class="ttdeci">static Index getBlockSize(Index lmax)</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8cc_source.html#l00359">aotransform.cc:359</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html_a2d7b621f3b377ed42210e39a40918f03"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a2d7b621f3b377ed42210e39a40918f03">votca::xtp::EnumToString</a></div><div class="ttdeci">std::string EnumToString(L l)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00060">basisset.cc:60</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOTransform_html_aaafd945bd3914efc7627b2c8bd172bdb"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOTransform.html#aaafd945bd3914efc7627b2c8bd172bdb">votca::xtp::AOTransform::getBlockSize</a></div><div class="ttdeci">static Index getBlockSize(Index lmax)</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8cc_source.html#l00158">aotransform.cc:158</a></div></div>
+<div class="ttc" id="atest__aotransform_8cc_html_a47b21225d860b13814c2d6674e52390f"><div class="ttname"><a href="test__aotransform_8cc.html#a47b21225d860b13814c2d6674e52390f">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(xintegrate)</div><div class="ttdef"><b>Definition:</b> <a href="test__aotransform_8cc_source.html#l00036">test_aotransform.cc:36</a></div></div>
 <div class="ttc" id="aeigenio__matrixmarket_8h_html"><div class="ttname"><a href="eigenio__matrixmarket_8h.html">eigenio_matrixmarket.h</a></div></div>
-<div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
-<div class="ttc" id="atest__aotransform_8cc_html_a089d028a6265eb85c2aef6fb547d44a4"><div class="ttname"><a href="test__aotransform_8cc.html#a089d028a6265eb85c2aef6fb547d44a4">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(transform_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__aotransform_8cc_source.html#l00036">test_aotransform.cc:36</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html_a1e8646dc8d3f6c07e67cac0eecd21e93"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">votca::xtp::BasisSet::Load</a></div><div class="ttdeci">void Load(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00149">basisset.cc:149</a></div></div>
 <div class="ttc" id="aorbitals_8h_html"><div class="ttname"><a href="orbitals_8h.html">orbitals.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1QMAtom_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMAtom.html">votca::xtp::QMAtom</a></div><div class="ttdoc">container for QM atoms</div><div class="ttdef"><b>Definition:</b> <a href="qmatom_8h_source.html#l00038">qmatom.h:38</a></div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOGaussianPrimitive_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">votca::xtp::AOGaussianPrimitive</a></div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00043">aoshell.h:43</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html">votca::xtp::BasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00134">basisset.h:134</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00040">aobasis.h:40</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOShell_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOShell.html">votca::xtp::AOShell</a></div><div class="ttdef"><b>Definition:</b> <a href="aoshell_8h_source.html#l00095">aoshell.h:95</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_1_1EigenIO__MatrixMarket_html_a418e26a64229ee49f7228e548740a4bc"><div class="ttname"><a href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a></div><div class="ttdeci">Eigen::MatrixXd ReadMatrix(const std::string &amp;filename)</div><div class="ttdef"><b>Definition:</b> <a href="eigenio__matrixmarket_8cc_source.html#l00063">eigenio_matrixmarket.cc:63</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AOTransform_html_a171e35b5d33d2ea2edf07f0d8addf464"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">votca::xtp::AOTransform::XIntegrate</a></div><div class="ttdeci">static Eigen::VectorXd XIntegrate(Index size, double U)</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8cc_source.html#l00311">aotransform.cc:311</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AOTransform_html_a171e35b5d33d2ea2edf07f0d8addf464"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464">votca::xtp::AOTransform::XIntegrate</a></div><div class="ttdeci">static Eigen::VectorXd XIntegrate(Index size, double U)</div><div class="ttdef"><b>Definition:</b> <a href="aotransform_8cc_source.html#l00109">aotransform.cc:109</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

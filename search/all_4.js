@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['d_1533',['D',['../classvotca_1_1xtp_1_1AOTransform.html#a6b03b306f79d8eead5b6b4fb0dada4e0',1,'votca::xtp::AOTransform::D()'],['../classvotca_1_1tools_1_1CubicSpline.html#a44fef5f793cf79095a90d51e31395a26',1,'votca::tools::CubicSpline::D()'],['../namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17daf623e75af30e62bbd73d6df5b50bb7b5',1,'votca::xtp::D()']]],
+  ['d_1533',['D',['../classvotca_1_1tools_1_1CubicSpline.html#a44fef5f793cf79095a90d51e31395a26',1,'votca::tools::CubicSpline::D()'],['../namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17daf623e75af30e62bbd73d6df5b50bb7b5',1,'votca::xtp::D()']]],
   ['d_5fprime_5fl_1534',['D_prime_l',['../classvotca_1_1tools_1_1CubicSpline.html#a5b74d5461b01458a55d0aef7c96e4abb',1,'votca::tools::CubicSpline']]],
   ['d_5fprime_5fr_1535',['D_prime_r',['../classvotca_1_1tools_1_1CubicSpline.html#a5f9406f702f4e68b2f0316868ded38dd',1,'votca::tools::CubicSpline']]],
   ['d_5fx_5find_1536',['d_x_ind',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a6b3fbc15f61f5b9ddd6c95eef19f2bf9',1,'votca::xtp::PolarSite::data']]],

@@ -245,9 +245,7 @@ var menudata={children:[
 {text:"t",url:"functions_eval.html#index_t"},
 {text:"u",url:"functions_eval.html#index_u"},
 {text:"w",url:"functions_eval.html#index_w"},
-{text:"x",url:"functions_eval.html#index_x"},
-{text:"y",url:"functions_eval.html#index_y"},
-{text:"z",url:"functions_eval.html#index_z"}]},
+{text:"x",url:"functions_eval.html#index_x"}]},
 {text:"Related Functions",url:"functions_rela.html",children:[
 {text:"b",url:"functions_rela.html#index_b"},
 {text:"c",url:"functions_rela.html#index_c"},
