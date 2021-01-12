@@ -187,19 +187,22 @@ $(function() {
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      atomname = atomname.substr(0, 4);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a06e504dd6fc2132645b86dbaff79add1">_out</a> &lt;&lt; atomfrmt % (<a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a639209d5cbb12575e1945a75536f530b">getId</a>(atom) % 100000)  <span class="comment">// atom serial number</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                % atomname % resname % <span class="stringliteral">&quot; &quot;</span>     <span class="comment">// chain identifier 1 char</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                % <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a91892d623e102e8f345e1254cc2d173c">getResId</a>(container, atom)    <span class="comment">// residue sequence number</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                % r.x() % r.y() % r.z();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">// we skip the charge</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a24327564d5cb56290332db7aa10acdc8">writeSymmetry</a>(atom);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a06e504dd6fc2132645b86dbaff79add1">_out</a> &lt;&lt; std::flush;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}  <span class="comment">// namespace votca</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif  // VOTCA_CSG_PDBWRITER_H</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a06e504dd6fc2132645b86dbaff79add1">_out</a> &lt;&lt; atomfrmt % (<a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a639209d5cbb12575e1945a75536f530b">getId</a>(atom) % 100000)  <span class="comment">// atom serial number, wrapped</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                               <span class="comment">// due to pdb limitations</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                % atomname % resname % <span class="stringliteral">&quot; &quot;</span>     <span class="comment">// chain identifier 1 char</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                % (<a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a91892d623e102e8f345e1254cc2d173c">getResId</a>(container, atom) % 10000)  <span class="comment">// residue sequence</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                                       <span class="comment">// number, wrapped due to</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                                       <span class="comment">// pdb limitations</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                % r.x() % r.y() % r.z();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// we skip the charge</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a24327564d5cb56290332db7aa10acdc8">writeSymmetry</a>(atom);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a06e504dd6fc2132645b86dbaff79add1">_out</a> &lt;&lt; std::flush;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif  // VOTCA_CSG_PDBWRITER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html">votca::csg::Topology</a></div><div class="ttdoc">topology of the whole system</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00059">topology.h:59</a></div></div>

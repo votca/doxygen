@@ -232,201 +232,205 @@ $(function() {
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  Eigen::Vector3d vel = Eigen::Vector3d::Zero();</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead_max_dist = _matrix.at(0)._in;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">double</span> max_bead_dist =</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a88b9c980e665b9725c80ac81845d8010">BCShortestConnection</a>(r0, bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>()).norm();</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    _out-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a92068d6d1f902f1b1f357d7f2eff14b1">AddParentBead</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>());</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    M += bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#ae9c488a586a195f3f4d32f8d3caad66d">getMass</a>();</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#add53881a014803ab8794cb18de5f5c7b">HasPos</a>()) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      Eigen::Vector3d r = bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a88b9c980e665b9725c80ac81845d8010">BCShortestConnection</a>(r0, bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>());</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="keywordflow">if</span> (r.norm() &gt; max_bead_dist) {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        max_bead_dist = r.norm();</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        bead_max_dist = bead;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      cg += iter._weight * (r + r0);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      bPos = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordflow">if</span> (bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#aec39e4838f4c8e487ea82f850c14953e">getBoxType</a>() != BoundaryCondition::eBoxtype::typeOpen) {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordtype">double</span> max_dist = 0.5 * bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a58e14eb10d395450e708bf8332c1fe07">getShortestBoxDimension</a>();</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">if</span> (max_bead_dist &gt; max_dist) {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      cout &lt;&lt; r0 &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;          <span class="stringliteral">&quot;coarse-grained bead is bigger than half the box \n &quot;</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;          <span class="stringliteral">&quot;(atoms &quot;</span> +</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;          name0 + <span class="stringliteral">&quot; (id &quot;</span> + boost::lexical_cast&lt;string&gt;(id0 + 1) + <span class="stringliteral">&quot;)&quot;</span> + <span class="stringliteral">&quot;, &quot;</span> +</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;          bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>() + <span class="stringliteral">&quot; (id &quot;</span> +</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;          boost::lexical_cast&lt;string&gt;(bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>() + 1) + <span class="stringliteral">&quot;)&quot;</span> +</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;          +<span class="stringliteral">&quot; , molecule &quot;</span> +</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;          boost::lexical_cast&lt;string&gt;(bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a8ab85d12d729a1135f12ecbfc6f6f10a">getMoleculeId</a>() + 1) +</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;          <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aeff5cc36627772258fffc87d48a0e8af">HasVel</a>()) {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      vel += iter._weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      bVel = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    }</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ae9165977b5752fc0caff38b89676022d">HasF</a>()) {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;      f += iter._force_weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a210486ed3918387b21d52bb82b866ab5">getF</a>();</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;      bF = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    }</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  _out-&gt;setMass(M);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keywordflow">if</span> (bPos) {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    _out-&gt;setPos(cg);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <span class="keywordflow">if</span> (bVel) {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    _out-&gt;setVel(vel);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keywordflow">if</span> (bF) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    _out-&gt;setF(f);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;}</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Map__Ellipsoid.html#a341bb4fb80aeae00183c9c679719876f">  223</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Map__Ellipsoid.html#a341bb4fb80aeae00183c9c679719876f">Map_Ellipsoid::Apply</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html">BoundaryCondition</a> &amp;bc) {</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  assert(_matrix.size() &gt; 0 &amp;&amp; <span class="stringliteral">&quot;Cannot map to ellipsoid there are no beads&quot;</span>);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">double</span> max_bead_dist = 0;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordflow">if</span> (bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#add53881a014803ab8794cb18de5f5c7b">HasPos</a>()) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    max_bead_dist = bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a88b9c980e665b9725c80ac81845d8010">BCShortestConnection</a>(r0, bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>()).norm();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    _out-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a92068d6d1f902f1b1f357d7f2eff14b1">AddParentBead</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>());</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    M += bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#ae9c488a586a195f3f4d32f8d3caad66d">getMass</a>();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#add53881a014803ab8794cb18de5f5c7b">HasPos</a>()) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      Eigen::Vector3d r = bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a88b9c980e665b9725c80ac81845d8010">BCShortestConnection</a>(r0, bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>());</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      <span class="keywordflow">if</span> (r.norm() &gt; max_bead_dist) {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        max_bead_dist = r.norm();</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        bead_max_dist = bead;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;      cg += iter._weight * (r + r0);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      bPos = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="keywordflow">if</span> (bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#aec39e4838f4c8e487ea82f850c14953e">getBoxType</a>() != BoundaryCondition::eBoxtype::typeOpen) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordtype">double</span> max_dist = 0.5 * bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a58e14eb10d395450e708bf8332c1fe07">getShortestBoxDimension</a>();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">if</span> (max_bead_dist &gt; max_dist) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      cout &lt;&lt; r0 &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>() &lt;&lt; endl;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;          <span class="stringliteral">&quot;coarse-grained bead is bigger than half the box \n &quot;</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;          <span class="stringliteral">&quot;(atoms &quot;</span> +</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;          name0 + <span class="stringliteral">&quot; (id &quot;</span> + boost::lexical_cast&lt;string&gt;(id0 + 1) + <span class="stringliteral">&quot;)&quot;</span> + <span class="stringliteral">&quot;, &quot;</span> +</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;          bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>() + <span class="stringliteral">&quot; (id &quot;</span> +</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;          boost::lexical_cast&lt;string&gt;(bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>() + 1) + <span class="stringliteral">&quot;)&quot;</span> +</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;          +<span class="stringliteral">&quot; , molecule &quot;</span> +</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;          boost::lexical_cast&lt;string&gt;(bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a8ab85d12d729a1135f12ecbfc6f6f10a">getMoleculeId</a>() + 1) +</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;          <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aeff5cc36627772258fffc87d48a0e8af">HasVel</a>()) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      vel += iter._weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      bVel = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ae9165977b5752fc0caff38b89676022d">HasF</a>()) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      f += iter._force_weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a210486ed3918387b21d52bb82b866ab5">getF</a>();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      bF = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  _out-&gt;setMass(M);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <span class="keywordflow">if</span> (bPos) {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    _out-&gt;setPos(cg);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keywordflow">if</span> (bVel) {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    _out-&gt;setVel(vel);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="keywordflow">if</span> (bF) {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    _out-&gt;setF(f);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1Map__Ellipsoid.html#a341bb4fb80aeae00183c9c679719876f">  225</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1Map__Ellipsoid.html#a341bb4fb80aeae00183c9c679719876f">Map_Ellipsoid::Apply</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html">BoundaryCondition</a> &amp;bc) {</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <span class="keywordtype">bool</span> bPos, bVel, bF;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  bPos = bVel = bF = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="comment">// the following is needed for pbc treatment</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  Eigen::Vector3d r0 = Eigen::Vector3d::Zero();</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="keywordtype">string</span> name0;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> id0 = 0;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keywordflow">if</span> (_matrix.size() &gt; 0) {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">if</span> (_matrix.front()._in-&gt;HasPos()) {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      r0 = _matrix.front()._in-&gt;getPos();</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      name0 = _matrix.front()._in-&gt;getName();</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      id0 = _matrix.front()._in-&gt;getId();</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  Eigen::Vector3d cg = Eigen::Vector3d::Zero();</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  Eigen::Vector3d c = Eigen::Vector3d::Zero();</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  Eigen::Vector3d f = Eigen::Vector3d::Zero();</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  Eigen::Vector3d vel = Eigen::Vector3d::Zero();</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> n;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  n = 0;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  _out-&gt;ClearParentBeads();</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead_max_dist = _matrix.at(0)._in;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="keywordtype">double</span> max_bead_dist =</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a88b9c980e665b9725c80ac81845d8010">BCShortestConnection</a>(r0, bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>()).norm();</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    _out-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a92068d6d1f902f1b1f357d7f2eff14b1">AddParentBead</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>());</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#add53881a014803ab8794cb18de5f5c7b">HasPos</a>()) {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      Eigen::Vector3d r = bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a88b9c980e665b9725c80ac81845d8010">BCShortestConnection</a>(r0, bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>());</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      <span class="keywordflow">if</span> (r.norm() &gt; max_bead_dist) {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        max_bead_dist = r.norm();</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        bead_max_dist = bead;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      cg += iter._weight * (r + r0);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      bPos = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">if</span> (bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#aec39e4838f4c8e487ea82f850c14953e">getBoxType</a>() != BoundaryCondition::eBoxtype::typeOpen) {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordtype">double</span> max_dist = 0.5 * bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a58e14eb10d395450e708bf8332c1fe07">getShortestBoxDimension</a>();</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">if</span> (max_bead_dist &gt; max_dist) {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      cout &lt;&lt; r0 &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;          <span class="stringliteral">&quot;coarse-grained bead is bigger than half the box \n &quot;</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;          <span class="stringliteral">&quot;(atoms &quot;</span> +</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;          name0 + <span class="stringliteral">&quot; (id &quot;</span> + boost::lexical_cast&lt;string&gt;(id0 + 1) + <span class="stringliteral">&quot;)&quot;</span> + <span class="stringliteral">&quot;, &quot;</span> +</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;          bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>() + <span class="stringliteral">&quot; (id &quot;</span> +</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;          boost::lexical_cast&lt;string&gt;(bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>() + 1) + <span class="stringliteral">&quot;)&quot;</span> +</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;          +<span class="stringliteral">&quot; , molecule &quot;</span> +</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          boost::lexical_cast&lt;string&gt;(bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a8ab85d12d729a1135f12ecbfc6f6f10a">getMoleculeId</a>() + 1) +</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;          <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    }</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  }</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aeff5cc36627772258fffc87d48a0e8af">HasVel</a>() == <span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;      vel += iter._weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;      bVel = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ae9165977b5752fc0caff38b89676022d">HasF</a>()) {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;      <span class="comment">// f += (*iter)._weight * _in-&gt;getBeadF((*iter)._in);</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      f += iter._force_weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a210486ed3918387b21d52bb82b866ab5">getF</a>();</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;      bF = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">if</span> (iter._weight &gt; 0 &amp;&amp; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#add53881a014803ab8794cb18de5f5c7b">HasPos</a>()) {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      c += bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>();</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      n++;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    }</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  }</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  <span class="keywordflow">if</span> (bPos) {</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    _out-&gt;setPos(cg);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  assert(_matrix.size() &gt; 0 &amp;&amp; <span class="stringliteral">&quot;Cannot map to ellipsoid there are no beads&quot;</span>);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keywordtype">bool</span> bPos, bVel, bF;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  bPos = bVel = bF = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="comment">// the following is needed for pbc treatment</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  Eigen::Vector3d r0 = Eigen::Vector3d::Zero();</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keywordtype">string</span> name0;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> id0 = 0;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keywordflow">if</span> (_matrix.size() &gt; 0) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">if</span> (_matrix.front()._in-&gt;HasPos()) {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      r0 = _matrix.front()._in-&gt;getPos();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      name0 = _matrix.front()._in-&gt;getName();</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      id0 = _matrix.front()._in-&gt;getId();</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  Eigen::Vector3d cg = Eigen::Vector3d::Zero();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  Eigen::Vector3d c = Eigen::Vector3d::Zero();</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  Eigen::Vector3d f = Eigen::Vector3d::Zero();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  Eigen::Vector3d vel = Eigen::Vector3d::Zero();</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> n;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  n = 0;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  _out-&gt;ClearParentBeads();</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead_max_dist = _matrix.at(0)._in;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keywordtype">double</span> max_bead_dist = 0;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="keywordflow">if</span> (bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#add53881a014803ab8794cb18de5f5c7b">HasPos</a>()) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    max_bead_dist = bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a88b9c980e665b9725c80ac81845d8010">BCShortestConnection</a>(r0, bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>()).norm();</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    _out-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a92068d6d1f902f1b1f357d7f2eff14b1">AddParentBead</a>(bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>());</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#add53881a014803ab8794cb18de5f5c7b">HasPos</a>()) {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      Eigen::Vector3d r = bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a88b9c980e665b9725c80ac81845d8010">BCShortestConnection</a>(r0, bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>());</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <span class="keywordflow">if</span> (r.norm() &gt; max_bead_dist) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        max_bead_dist = r.norm();</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        bead_max_dist = bead;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      cg += iter._weight * (r + r0);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      bPos = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordflow">if</span> (bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#aec39e4838f4c8e487ea82f850c14953e">getBoxType</a>() != BoundaryCondition::eBoxtype::typeOpen) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordtype">double</span> max_dist = 0.5 * bc.<a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a58e14eb10d395450e708bf8332c1fe07">getShortestBoxDimension</a>();</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">if</span> (max_bead_dist &gt; max_dist) {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      cout &lt;&lt; r0 &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>() &lt;&lt; endl;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;          <span class="stringliteral">&quot;coarse-grained bead is bigger than half the box \n &quot;</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;          <span class="stringliteral">&quot;(atoms &quot;</span> +</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          name0 + <span class="stringliteral">&quot; (id &quot;</span> + boost::lexical_cast&lt;string&gt;(id0 + 1) + <span class="stringliteral">&quot;)&quot;</span> + <span class="stringliteral">&quot;, &quot;</span> +</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;          bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>() + <span class="stringliteral">&quot; (id &quot;</span> +</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;          boost::lexical_cast&lt;string&gt;(bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>() + 1) + <span class="stringliteral">&quot;)&quot;</span> +</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;          +<span class="stringliteral">&quot; , molecule &quot;</span> +</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;          boost::lexical_cast&lt;string&gt;(bead_max_dist-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a8ab85d12d729a1135f12ecbfc6f6f10a">getMoleculeId</a>() + 1) +</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;          <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#aeff5cc36627772258fffc87d48a0e8af">HasVel</a>() == <span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      vel += iter._weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;      bVel = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">if</span> (bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ae9165977b5752fc0caff38b89676022d">HasF</a>()) {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;      <span class="comment">// f += (*iter)._weight * _in-&gt;getBeadF((*iter)._in);</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      f += iter._force_weight * bead-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a210486ed3918387b21d52bb82b866ab5">getF</a>();</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      bF = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">if</span> (iter._weight &gt; 0 &amp;&amp; bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#add53881a014803ab8794cb18de5f5c7b">HasPos</a>()) {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      c += bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>();</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      n++;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  <span class="keywordflow">if</span> (bVel) {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    _out-&gt;setVel(vel);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  }</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">if</span> (bF) {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    _out-&gt;setF(f);</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  }</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">if</span> (!_matrix[0]._in-&gt;HasPos()) {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    _out-&gt;setU(Eigen::Vector3d::UnitX());</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    _out-&gt;setV(Eigen::Vector3d::UnitY());</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    _out-&gt;setW(Eigen::Vector3d::UnitZ());</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  Eigen::Matrix3d m = Eigen::Matrix3d::Zero();</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="comment">// calculate the tensor of gyration</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  c = c / (double)n;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">if</span> (iter._weight == 0) {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    Eigen::Vector3d v = bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>() - c;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="comment">// v = vec(1, 0.5, 0) * 0.*(drand48()-0.5)</span></div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">//    + vec(0.5, -1, 0) * (drand48()-0.5)</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">//    + vec(0, 0, 1) * (drand48()-0.5);</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">// Normalize the tensor with 1/number_of_atoms_per_bead</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    m += v * v.transpose() / (double)_matrix.size();</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="keywordflow">if</span> (bPos) {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    _out-&gt;setPos(cg);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  <span class="keywordflow">if</span> (bVel) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    _out-&gt;setVel(vel);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">if</span> (bF) {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    _out-&gt;setF(f);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <span class="keywordflow">if</span> (!_matrix[0]._in-&gt;HasPos()) {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    _out-&gt;setU(Eigen::Vector3d::UnitX());</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    _out-&gt;setV(Eigen::Vector3d::UnitY());</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    _out-&gt;setW(Eigen::Vector3d::UnitZ());</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  Eigen::Matrix3d m = Eigen::Matrix3d::Zero();</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="comment">// calculate the tensor of gyration</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  c = c / (double)n;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;iter : _matrix) {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">if</span> (iter._weight == 0) {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *bead = iter._in;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    Eigen::Vector3d v = bead-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>() - c;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">// v = vec(1, 0.5, 0) * 0.*(drand48()-0.5)</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="comment">//    + vec(0.5, -1, 0) * (drand48()-0.5)</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="comment">//    + vec(0, 0, 1) * (drand48()-0.5);</span></div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::Matrix3d&gt; eig;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  eig.computeDirect(m);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  Eigen::Vector3d u = eig.eigenvectors().col(0);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  Eigen::Vector3d v = _matrix[1]._in-&gt;getPos() - _matrix[0]._in-&gt;getPos();</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  v.normalize();</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="comment">// Normalize the tensor with 1/number_of_atoms_per_bead</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    m += v * v.transpose() / (double)_matrix.size();</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  Eigen::SelfAdjointEigenSolver&lt;Eigen::Matrix3d&gt; eig;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  eig.computeDirect(m);</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  _out-&gt;setV(v);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  Eigen::Vector3d w = _matrix[2]._in-&gt;getPos() - _matrix[0]._in-&gt;getPos();</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  w.normalize();</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  <span class="keywordflow">if</span> (v.cross(w).dot(u) &lt; 0) {</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    u = -u;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  _out-&gt;setU(u);</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  <span class="comment">// write out w</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  w = u.cross(v);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  w.normalize();</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  _out-&gt;setW(w);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;}</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  Eigen::Vector3d u = eig.eigenvectors().col(0);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  Eigen::Vector3d v = _matrix[1]._in-&gt;getPos() - _matrix[0]._in-&gt;getPos();</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  v.normalize();</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  _out-&gt;setV(v);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  Eigen::Vector3d w = _matrix[2]._in-&gt;getPos() - _matrix[0]._in-&gt;getPos();</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  w.normalize();</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <span class="keywordflow">if</span> (v.cross(w).dot(u) &lt; 0) {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    u = -u;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  _out-&gt;setU(u);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  <span class="comment">// write out w</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  w = u.cross(v);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  w.normalize();</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  _out-&gt;setW(w);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html_afa6d5750bf61472ecc55ffac4f710c27"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27">votca::tools::Tokenizer::ConvertToVector</a></div><div class="ttdeci">void ConvertToVector(std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">store all words in a vector with type conversion.</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00098">tokenizer.h:98</a></div></div>
@@ -454,7 +458,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1tools_1_1Property_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a></div><div class="ttdoc">class to manage program options with xml serialization functionality</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00055">property.h:55</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html_a12c032382e623c0e66605407dac9d9d1"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html#a12c032382e623c0e66605407dac9d9d1">votca::csg::Molecule::getBeadByName</a></div><div class="ttdeci">Index getBeadByName(const std::string &amp;name)</div><div class="ttdoc">find a bead by it's name</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8cc_source.html#l00037">molecule.cc:37</a></div></div>
 <div class="ttc" id="amap_8h_html"><div class="ttname"><a href="map_8h.html">map.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1csg_1_1Map__Ellipsoid_html_a341bb4fb80aeae00183c9c679719876f"><div class="ttname"><a href="classvotca_1_1csg_1_1Map__Ellipsoid.html#a341bb4fb80aeae00183c9c679719876f">votca::csg::Map_Ellipsoid::Apply</a></div><div class="ttdeci">void Apply(const BoundaryCondition &amp;) override</div><div class="ttdef"><b>Definition:</b> <a href="map_8cc_source.html#l00223">map.cc:223</a></div></div>
+<div class="ttc" id="aclassvotca_1_1csg_1_1Map__Ellipsoid_html_a341bb4fb80aeae00183c9c679719876f"><div class="ttname"><a href="classvotca_1_1csg_1_1Map__Ellipsoid.html#a341bb4fb80aeae00183c9c679719876f">votca::csg::Map_Ellipsoid::Apply</a></div><div class="ttdeci">void Apply(const BoundaryCondition &amp;) override</div><div class="ttdef"><b>Definition:</b> <a href="map_8cc_source.html#l00225">map.cc:225</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1BaseBead_html_a8ab85d12d729a1135f12ecbfc6f6f10a"><div class="ttname"><a href="classvotca_1_1csg_1_1BaseBead.html#a8ab85d12d729a1135f12ecbfc6f6f10a">votca::csg::BaseBead::getMoleculeId</a></div><div class="ttdeci">Index getMoleculeId() const noexcept</div><div class="ttdoc">Get the id of the molecule the bead is a part of, if the molecule id has not been set return topology...</div><div class="ttdef"><b>Definition:</b> <a href="basebead_8h_source.html#l00078">basebead.h:78</a></div></div>
 <div class="ttc" id="abead_8h_html"><div class="ttname"><a href="bead_8h.html">bead.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html_aeff5cc36627772258fffc87d48a0e8af"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html#aeff5cc36627772258fffc87d48a0e8af">votca::csg::Bead::HasVel</a></div><div class="ttdeci">bool HasVel()</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00232">bead.h:232</a></div></div>
