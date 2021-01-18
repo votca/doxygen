@@ -19,7 +19,7 @@ var searchData=
   ['addbead_894',['AddBead',['../classvotca_1_1csg_1_1BeadStructure.html#a4f91a693d1931990fe2d3d36ad9eb5f8',1,'votca::csg::BeadStructure::AddBead()'],['../classvotca_1_1csg_1_1Molecule.html#a0fe3eded1a958c53d859ee6053276369',1,'votca::csg::Molecule::AddBead()']]],
   ['addbeadmap_895',['AddBeadMap',['../classvotca_1_1csg_1_1Map.html#a96728f32992aec22a20452d126a7e22a',1,'votca::csg::Map']]],
   ['addbondedinteraction_896',['AddBondedInteraction',['../classvotca_1_1csg_1_1Topology.html#a7d8a392c40e4e7b0005a4de505ac3c19',1,'votca::csg::Topology']]],
-  ['addcol_897',['addCol',['../classvotca_1_1xtp_1_1CptTable.html#a95c26af480845b8482e72912f804f82c',1,'votca::xtp::CptTable::addCol(const U &amp;, const std::string &amp;name, const size_t &amp;offset)'],['../classvotca_1_1xtp_1_1CptTable.html#a8a7c4ca61bf688d51f19c0d071fe8cee',1,'votca::xtp::CptTable::addCol(const std::string &amp;, const std::string &amp;name, const size_t &amp;offset)'],['../classvotca_1_1xtp_1_1CptTable.html#a322899daf5c03f96da54d457a2aa3063',1,'votca::xtp::CptTable::addCol(const char *, const std::string &amp;name, const size_t &amp;offset)']]],
+  ['addcol_897',['addCol',['../classvotca_1_1xtp_1_1CptTable.html#aeffa712fc6995dba17bc939c6a3a9800',1,'votca::xtp::CptTable']]],
   ['addcontainer_898',['AddContainer',['../classvotca_1_1xtp_1_1QMMolecule.html#a4be28a40c780138b7c482d36af90e302',1,'votca::xtp::QMMolecule']]],
   ['adddecayevent_899',['AddDecayEvent',['../classvotca_1_1xtp_1_1GNode.html#ab34a167e1f00fd7ec0a2bc56eebe4564',1,'votca::xtp::GNode']]],
   ['addecpchargetomolecule_900',['AddECPChargeToMolecule',['../classvotca_1_1xtp_1_1ECPAOBasis.html#aa8add621d8c70a50f5fe9e2241741bff',1,'votca::xtp::ECPAOBasis']]],
