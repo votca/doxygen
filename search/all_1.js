@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_880',['A',['../classA.html',1,'A'],['../classvotca_1_1tools_1_1CubicSpline.html#a7cf9d2bb98c99d7736f96b65fbfadd7c',1,'votca::tools::CubicSpline::A()'],['../classvotca_1_1tools_1_1LinSpline.html#aa7b629597c199fd8e9099349887bb355',1,'votca::tools::LinSpline::a()'],['../structCGForceMatching_1_1SplineInfo.html#acb610d0db7f099f0274a7e2e553cc3d0',1,'CGForceMatching::SplineInfo::a()']]],
+  ['a_880',['A',['../classA.html',1,'A'],['../classvotca_1_1tools_1_1LinSpline.html#aa7b629597c199fd8e9099349887bb355',1,'votca::tools::LinSpline::a()'],['../structCGForceMatching_1_1SplineInfo.html#acb610d0db7f099f0274a7e2e553cc3d0',1,'CGForceMatching::SplineInfo::a()'],['../classvotca_1_1tools_1_1CubicSpline.html#a7cf9d2bb98c99d7736f96b65fbfadd7c',1,'votca::tools::CubicSpline::A()']]],
   ['a_5fmos_2emm_881',['A_MOs.mm',['../bsecoupling_2A__MOs_8mm.html',1,'(Global Namespace)'],['../cubefile__writer_2A__MOs_8mm.html',1,'(Global Namespace)']]],
   ['a_5fprime_5fl_882',['A_prime_l',['../classvotca_1_1tools_1_1CubicSpline.html#af924a7e71d472df6a621e8ce8aac0d56',1,'votca::tools::CubicSpline']]],
   ['a_5fprime_5fr_883',['A_prime_r',['../classvotca_1_1tools_1_1CubicSpline.html#ab70ee3234eb180795e2293903cef4f8a',1,'votca::tools::CubicSpline']]],
@@ -170,15 +170,14 @@ var searchData=
   ['attach_5fmatrix_1047',['attach_matrix',['../classHermitianBlockOperator.html#a63c3595b3c09cb6946c99132cd68c7a1',1,'HermitianBlockOperator']]],
   ['attograms_1048',['attograms',['../namespacevotca_1_1tools.html#af92b139599662d5a02e259ed067e2022a9d0976cb974e2381d6df0d38ce319f92',1,'votca::tools']]],
   ['attributeiterator_1049',['AttributeIterator',['../classvotca_1_1tools_1_1Property.html#aeb596e3566ee67fd655d7182c9edbc31',1,'votca::tools::Property']]],
-  ['authors_1050',['authors',['../structvotca_1_1tools_1_1globals_1_1man.html#ab81470c57f33f937e5fa91110a0fee41',1,'votca::tools::globals::man']]],
-  ['autocorrelate_1051',['AutoCorrelate',['../classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb',1,'votca::tools::CrossCorrelate']]],
-  ['autodetectboxtype_1052',['AutoDetectBoxType',['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()'],['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()']]],
-  ['auxsize_1053',['auxsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a1e3665caf22aded3f0e2c4cb038022bf',1,'votca::xtp::TCMatrix_gwbse']]],
-  ['av_1054',['AV',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#ae7b060aed5f37ec5902315811bffb552',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
-  ['available_1055',['AVAILABLE',['../classvotca_1_1xtp_1_1Job.html#a6d513fce9236d7fc7e0fd97dff92d7bfa6f9a8d5568d7a5d089bc9314b16d460b',1,'votca::xtp::Job']]],
-  ['available_5ftable_1056',['available_table',['../classvotca_1_1xtp_1_1LebedevGrid.html#a2f7fe3a7dd9f692540eb35eb1f23fd54',1,'votca::xtp::LebedevGrid']]],
-  ['average_1057',['Average',['../classvotca_1_1tools_1_1Average.html',1,'votca::tools']]],
-  ['average_2eh_1058',['average.h',['../average_8h.html',1,'']]],
-  ['average_3c_20double_20_3e_1059',['Average&lt; double &gt;',['../classvotca_1_1tools_1_1Average.html',1,'votca::tools']]],
-  ['axa_1060',['AxA',['../classvotca_1_1xtp_1_1AxA.html',1,'votca::xtp::AxA'],['../classvotca_1_1xtp_1_1AxA.html#a748d2be00938e375bdb08a5e691d587a',1,'votca::xtp::AxA::AxA()']]]
+  ['autocorrelate_1050',['AutoCorrelate',['../classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb',1,'votca::tools::CrossCorrelate']]],
+  ['autodetectboxtype_1051',['AutoDetectBoxType',['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology::AutoDetectBoxType()'],['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology::autoDetectBoxType()']]],
+  ['auxsize_1052',['auxsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a1e3665caf22aded3f0e2c4cb038022bf',1,'votca::xtp::TCMatrix_gwbse']]],
+  ['av_1053',['AV',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#ae7b060aed5f37ec5902315811bffb552',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
+  ['available_1054',['AVAILABLE',['../classvotca_1_1xtp_1_1Job.html#a6d513fce9236d7fc7e0fd97dff92d7bfa6f9a8d5568d7a5d089bc9314b16d460b',1,'votca::xtp::Job']]],
+  ['available_5ftable_1055',['available_table',['../classvotca_1_1xtp_1_1LebedevGrid.html#a2f7fe3a7dd9f692540eb35eb1f23fd54',1,'votca::xtp::LebedevGrid']]],
+  ['average_1056',['Average',['../classvotca_1_1tools_1_1Average.html',1,'votca::tools']]],
+  ['average_2eh_1057',['average.h',['../average_8h.html',1,'']]],
+  ['average_3c_20double_20_3e_1058',['Average&lt; double &gt;',['../classvotca_1_1tools_1_1Average.html',1,'votca::tools']]],
+  ['axa_1059',['AxA',['../classvotca_1_1xtp_1_1AxA.html',1,'votca::xtp::AxA'],['../classvotca_1_1xtp_1_1AxA.html#a748d2be00938e375bdb08a5e691d587a',1,'votca::xtp::AxA::AxA()']]]
 ];
