@@ -160,48 +160,50 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="comment">// 2. Write object to gaussian checkpoint file (.fchk)</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1GaussianWriter.html">GaussianWriter</a> writer(log);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  writer.<a class="code" href="classvotca_1_1xtp_1_1GaussianWriter.html#a7fc98db20c4c3bdc6948324673660834">WriteFile</a>(<span class="stringliteral">&quot;methane&quot;</span>, orbitals);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="comment">// 3.1 Check everything except density matrix</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> linesToSkip = 2;  <span class="comment">// basisset names will be different due to test folder</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  std::pair&lt;std::string, std::vector&lt;double&gt;&gt; testFile =</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <a class="code" href="test__gaussianwriter_8cc.html#ac651e731d56e6263a55b2b01fcde0ce9">readFchkFile</a>(<span class="stringliteral">&quot;methane.fchk&quot;</span>, linesToSkip);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  std::pair&lt;std::string, std::vector&lt;double&gt;&gt; refFile = <a class="code" href="test__gaussianwriter_8cc.html#ac651e731d56e6263a55b2b01fcde0ce9">readFchkFile</a>(</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/gaussianwriter/fchkRefMethane.fchk&quot;</span>,</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      linesToSkip);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">bool</span> filesAreEqual = testFile.first == refFile.first;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">if</span> (!filesAreEqual) {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;GENERATED FILE: &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::cout &lt;&lt; testFile.first &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;REFERENCE FILE: &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::cout &lt;&lt; refFile.first &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  BOOST_CHECK(filesAreEqual);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="comment">// 3.2 Check Density Matrix</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">bool</span> densityMatrixIsEqual = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; static_cast&lt;Index&gt;(testFile.second.size()); ++i) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    densityMatrixIsEqual =</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        densityMatrixIsEqual &amp;&amp;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        (std::abs(testFile.second[i] - refFile.second[i]) &lt; 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-10);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">if</span> (!densityMatrixIsEqual) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;GENERATED FILE vs REFERENCE: &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; static_cast&lt;Index&gt;(testFile.second.size()); ++i) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      std::cout &lt;&lt; testFile.second[i] &lt;&lt; <span class="stringliteral">&quot;   &quot;</span> &lt;&lt; refFile.second[i]</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  BOOST_CHECK(densityMatrixIsEqual);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  libint2::finalize();</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">bool</span> diff2gs = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  writer.<a class="code" href="classvotca_1_1xtp_1_1GaussianWriter.html#ad0f970ac314619ab3cebec6bd5bede77">WriteFile</a>(<span class="stringliteral">&quot;methane&quot;</span>, orbitals, <a class="code" href="classvotca_1_1xtp_1_1QMState.html">QMState</a>(<span class="stringliteral">&quot;n&quot;</span>), diff2gs);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="comment">// 3.1 Check everything except density matrix</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> linesToSkip = 2;  <span class="comment">// basisset names will be different due to test folder</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  std::pair&lt;std::string, std::vector&lt;double&gt;&gt; testFile =</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <a class="code" href="test__gaussianwriter_8cc.html#ac651e731d56e6263a55b2b01fcde0ce9">readFchkFile</a>(<span class="stringliteral">&quot;methane.fchk&quot;</span>, linesToSkip);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  std::pair&lt;std::string, std::vector&lt;double&gt;&gt; refFile = <a class="code" href="test__gaussianwriter_8cc.html#ac651e731d56e6263a55b2b01fcde0ce9">readFchkFile</a>(</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/gaussianwriter/fchkRefMethane.fchk&quot;</span>,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      linesToSkip);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">bool</span> filesAreEqual = testFile.first == refFile.first;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">if</span> (!filesAreEqual) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;GENERATED FILE: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::cout &lt;&lt; testFile.first &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;REFERENCE FILE: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::cout &lt;&lt; refFile.first &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  BOOST_CHECK(filesAreEqual);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="comment">// 3.2 Check Density Matrix</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">bool</span> densityMatrixIsEqual = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; static_cast&lt;Index&gt;(testFile.second.size()); ++i) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    densityMatrixIsEqual =</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        densityMatrixIsEqual &amp;&amp;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        (std::abs(testFile.second[i] - refFile.second[i]) &lt; 1<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-10);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">if</span> (!densityMatrixIsEqual) {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;GENERATED FILE vs REFERENCE: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; static_cast&lt;Index&gt;(testFile.second.size()); ++i) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      std::cout &lt;&lt; testFile.second[i] &lt;&lt; <span class="stringliteral">&quot;   &quot;</span> &lt;&lt; refFile.second[i]</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  BOOST_CHECK(densityMatrixIsEqual);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  libint2::finalize();</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="afilesystem_8h_html"><div class="ttname"><a href="filesystem_8h.html">filesystem.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a08260b44bbc7302980c155b8b8434ae4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">votca::xtp::Orbitals::QMAtoms</a></div><div class="ttdeci">const QMMolecule &amp; QMAtoms() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00141">orbitals.h:141</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1QMState_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMState.html">votca::xtp::QMState</a></div><div class="ttdoc">Identifier for QMstates. Strings like S1 are converted into enum +zero indexed int.</div><div class="ttdef"><b>Definition:</b> <a href="qmstate_8h_source.html#l00131">qmstate.h:131</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_html_ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f"><div class="ttname"><a href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">votca::tools::e</a></div><div class="ttdeci">@ e</div><div class="ttdef"><b>Definition:</b> <a href="unitconverter_8h_source.html#l00059">unitconverter.h:59</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_html_a7a36b45421bfaa5a38fe45a90f87c3d0"><div class="ttname"><a href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">votca::tools::getline</a></div><div class="ttdeci">std::istream &amp; getline(std::istream &amp;is, std::string &amp;str)</div><div class="ttdoc">Wrapper for a getline function.</div><div class="ttdef"><b>Definition:</b> <a href="getline_8h_source.html#l00035">getline.h:35</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_a0247875ef0e5fb3bf24c8c6e3a7d2fdf"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">votca::tools::EigenSystem::eigenvectors</a></div><div class="ttdeci">const Eigen::MatrixXd &amp; eigenvectors() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00033">eigensystem.h:33</a></div></div>
@@ -210,7 +212,6 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html">votca::xtp::Orbitals</a></div><div class="ttdoc">container for molecular orbitals</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00045">orbitals.h:45</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1GaussianWriter_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GaussianWriter.html">votca::xtp::GaussianWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="gaussianwriter_8h_source.html#l00033">gaussianwriter.h:33</a></div></div>
 <div class="ttc" id="aeigenio__matrixmarket_8h_html"><div class="ttname"><a href="eigenio__matrixmarket_8h.html">eigenio_matrixmarket.h</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GaussianWriter_html_a7fc98db20c4c3bdc6948324673660834"><div class="ttname"><a href="classvotca_1_1xtp_1_1GaussianWriter.html#a7fc98db20c4c3bdc6948324673660834">votca::xtp::GaussianWriter::WriteFile</a></div><div class="ttdeci">void WriteFile(const std::string &amp;basename, const Orbitals &amp;orbitals, const QMState state=QMState(QMStateType::statetype::Gstate, 0, false)) const</div><div class="ttdef"><b>Definition:</b> <a href="gaussianwriter_8cc_source.html#l00094">gaussianwriter.cc:94</a></div></div>
 <div class="ttc" id="anamespacevotca_html_ad2c9da4f7634ac9c89e02a192345f276"><div class="ttname"><a href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition:</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a95689defd7f07269a08c4cccb614a194"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a95689defd7f07269a08c4cccb614a194">votca::xtp::Orbitals::setDFTbasisName</a></div><div class="ttdeci">void setDFTbasisName(const std::string basis)</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00161">orbitals.h:161</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_ac920a75ff26a610c525cb0f5bf66ae33"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#ac920a75ff26a610c525cb0f5bf66ae33">votca::tools::EigenSystem::eigenvalues</a></div><div class="ttdeci">const Eigen::VectorXd &amp; eigenvalues() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00030">eigensystem.h:30</a></div></div>
@@ -225,6 +226,7 @@ $(function() {
 <div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a6f459f45583890e0f8c203888977cfce"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a6f459f45583890e0f8c203888977cfce">votca::xtp::Orbitals::setNumberOfAlphaElectrons</a></div><div class="ttdeci">void setNumberOfAlphaElectrons(Index electrons)</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00078">orbitals.h:78</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Logger_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Logger.html">votca::xtp::Logger</a></div><div class="ttdoc">Logger is used for thread-safe output of messages.</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00164">logger.h:164</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GaussianWriter_html_ad0f970ac314619ab3cebec6bd5bede77"><div class="ttname"><a href="classvotca_1_1xtp_1_1GaussianWriter.html#ad0f970ac314619ab3cebec6bd5bede77">votca::xtp::GaussianWriter::WriteFile</a></div><div class="ttdeci">void WriteFile(const std::string &amp;basename, const Orbitals &amp;orbitals, const QMState state=QMState(QMStateType::statetype::Gstate, 0, false), bool diff2gs=false) const</div><div class="ttdef"><b>Definition:</b> <a href="gaussianwriter_8cc_source.html#l00102">gaussianwriter.cc:102</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
