@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b_1062',['B',['../classB.html',1,'B'],['../classvotca_1_1tools_1_1CubicSpline.html#afea019d210a91cb49d514992f1cfd5b3',1,'votca::tools::CubicSpline::B()'],['../classvotca_1_1tools_1_1LinSpline.html#a7aa278fca77c6cbf1cf44deea34211a3',1,'votca::tools::LinSpline::b()']]],
+  ['b_1062',['B',['../classB.html',1,'B'],['../classvotca_1_1tools_1_1LinSpline.html#a7aa278fca77c6cbf1cf44deea34211a3',1,'votca::tools::LinSpline::b()'],['../classvotca_1_1tools_1_1CubicSpline.html#afea019d210a91cb49d514992f1cfd5b3',1,'votca::tools::CubicSpline::B()']]],
   ['b_5fprime_5fl_1063',['B_prime_l',['../classvotca_1_1tools_1_1CubicSpline.html#a9b06074ca8c1d9336d3b63051d5be004',1,'votca::tools::CubicSpline']]],
   ['b_5fprime_5fr_1064',['B_prime_r',['../classvotca_1_1tools_1_1CubicSpline.html#a69c70f545c5309f37aafce67f9d79ff1',1,'votca::tools::CubicSpline']]],
   ['back_1065',['back',['../classvotca_1_1csg_1_1PairList.html#ad26be352dd054ed323dc46c42bf63818',1,'votca::csg::PairList::back()'],['../classvotca_1_1csg_1_1TripleList.html#ae33f5c57726fb2f3853932ad753292ae',1,'votca::csg::TripleList::back()'],['../classvotca_1_1xtp_1_1ECPAOBasis.html#a9fce88243f4478faf6973756d4f87345',1,'votca::xtp::ECPAOBasis::back()'],['../classvotca_1_1xtp_1_1hist.html#a8fec620c82752aa2a702bdfa870f24e0',1,'votca::xtp::hist::back()']]],
