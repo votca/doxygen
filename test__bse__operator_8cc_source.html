@@ -104,7 +104,7 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacevotca_1_1xtp.html">votca::xtp</a>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;BOOST_AUTO_TEST_SUITE(bse_test)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;BOOST_AUTO_TEST_SUITE(bse_operator_test)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="test__bse__operator_8cc.html#a50b57d700a1bf85f7e4c80ad91c9979b">   37</a></span>&#160;<a class="code" href="test__bse__operator_8cc.html#a50b57d700a1bf85f7e4c80ad91c9979b">BOOST_AUTO_TEST_CASE</a>(bse_operator) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  libint2::initialize();</div>
@@ -158,56 +158,75 @@ $(function() {
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a940ca87fa9c14c993af1dae642d1b070">setBSEindices</a>(0, 16);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html">HqpOperator</a> Hqp_op(epsilon_inv, Mmn, Hqp);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  Hqp_op.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">configure</a>(opt);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  Eigen::MatrixXd hqp_mat = Hqp_op.get_full_matrix();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  Eigen::MatrixXd hqp_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/bse_operator/hqp_ref.mm&quot;</span>);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">bool</span> check_hqp = hqp_mat.isApprox(hqp_ref, 0.001);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  BOOST_CHECK_EQUAL(check_hqp, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html">HxOperator</a> Hx(epsilon_inv, Mmn, Hqp);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  Hx.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">configure</a>(opt);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  Eigen::MatrixXd hx_mat = Hx.get_full_matrix();</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  Eigen::MatrixXd hx_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/bse_operator/hx_ref.mm&quot;</span>);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">bool</span> check_hx = hx_mat.isApprox(hx_ref, 0.001);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  BOOST_CHECK_EQUAL(check_hx, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html">HdOperator</a> Hd(epsilon_inv, Mmn, Hqp);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  Hd.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">configure</a>(opt);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  Eigen::MatrixXd hd_mat = Hd.get_full_matrix();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  Eigen::MatrixXd hd_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/bse_operator/hd_ref.mm&quot;</span>);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">bool</span> check_hd = hd_mat.isApprox(hd_ref, 0.001);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordflow">if</span> (!check_hd) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hd ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    cout &lt;&lt; hd_ref &lt;&lt; endl;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hd result&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    cout &lt;&lt; hd_mat &lt;&lt; endl;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  BOOST_CHECK_EQUAL(check_hd, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keyword">const</span> Eigen::MatrixXd identity =</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      Eigen::MatrixXd::Identity(Hqp_op.rows(), Hqp_op.cols());</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  Eigen::MatrixXd hqp_mat = Hqp_op * identity;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  Eigen::MatrixXd hqp_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/bse_operator/hqp_ref.mm&quot;</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">bool</span> check_hqp = hqp_mat.isApprox(hqp_ref, 0.001);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  BOOST_CHECK_EQUAL(check_hqp, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">bool</span> check_hqpdiag = hqp_mat.diagonal().isApprox(Hqp_op.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#ac6eaf241969d437164ddc94855a619f5">diagonal</a>(), 0.001);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  BOOST_CHECK_EQUAL(check_hqpdiag, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html">HxOperator</a> Hx(epsilon_inv, Mmn, Hqp);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  Hx.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">configure</a>(opt);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  Eigen::MatrixXd hx_mat = Hx * identity;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  Eigen::MatrixXd hx_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/bse_operator/hx_ref.mm&quot;</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">bool</span> check_hx = hx_mat.isApprox(hx_ref, 0.001);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  BOOST_CHECK_EQUAL(check_hx, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">if</span> (!check_hx) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hx ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    cout &lt;&lt; hx_ref &lt;&lt; endl;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hx result&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    cout &lt;&lt; hx_mat &lt;&lt; endl;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">bool</span> check_hxdiag = hx_mat.diagonal().isApprox(Hx.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#ac6eaf241969d437164ddc94855a619f5">diagonal</a>(), 0.001);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  BOOST_CHECK_EQUAL(check_hxdiag, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html">HdOperator</a> Hd(epsilon_inv, Mmn, Hqp);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  Hd.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">configure</a>(opt);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  Eigen::MatrixXd hd_mat = Hd * identity;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html">Hd2Operator</a> Hd2(epsilon_inv, Mmn, Hqp);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  Hd2.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">configure</a>(opt);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  Eigen::MatrixXd hd2_mat = Hd2.get_full_matrix();</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  Eigen::MatrixXd hd2_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/bse_operator/hd2_ref.mm&quot;</span>);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordtype">bool</span> check_hd2 = hd2_mat.isApprox(hd2_ref, 0.001);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">if</span> (!check_hd2) {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hd2 ref&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    cout &lt;&lt; hd2_ref &lt;&lt; endl;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hd2 result&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    cout &lt;&lt; hd2_mat &lt;&lt; endl;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  BOOST_CHECK_EQUAL(check_hd2, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  libint2::finalize();</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  Eigen::MatrixXd hd_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/bse_operator/hd_ref.mm&quot;</span>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordtype">bool</span> check_hd = hd_mat.isApprox(hd_ref, 0.001);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">if</span> (!check_hd) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hd ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    cout &lt;&lt; hd_ref &lt;&lt; endl;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hd result&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    cout &lt;&lt; hd_mat &lt;&lt; endl;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  BOOST_CHECK_EQUAL(check_hd, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordtype">bool</span> check_hddiag = hd_mat.diagonal().isApprox(Hd.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#ac6eaf241969d437164ddc94855a619f5">diagonal</a>(), 0.001);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  BOOST_CHECK_EQUAL(check_hddiag, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html">Hd2Operator</a> Hd2(epsilon_inv, Mmn, Hqp);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  Hd2.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">configure</a>(opt);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  Eigen::MatrixXd hd2_mat = Hd2 * identity;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  Eigen::MatrixXd hd2_ref = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/bse_operator/hd2_ref.mm&quot;</span>);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordtype">bool</span> check_hd2 = hd2_mat.isApprox(hd2_ref, 0.001);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordflow">if</span> (!check_hd2) {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hd2 ref&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    cout &lt;&lt; hd2_ref &lt;&lt; endl;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;hd2 result&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    cout &lt;&lt; hd2_mat &lt;&lt; endl;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  BOOST_CHECK_EQUAL(check_hd2, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keywordtype">bool</span> check_hd2diag = hd2_mat.diagonal().isApprox(Hd2.<a class="code" href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#ac6eaf241969d437164ddc94855a619f5">diagonal</a>(), 0.001);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  BOOST_CHECK_EQUAL(check_hd2diag, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a08260b44bbc7302980c155b8b8434ae4"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">votca::xtp::Orbitals::QMAtoms</a></div><div class="ttdeci">const QMMolecule &amp; QMAtoms() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00141">orbitals.h:141</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a3638e1261da1fff40c3608c01fac8307"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a3638e1261da1fff40c3608c01fac8307">votca::xtp::AOBasis::Fill</a></div><div class="ttdeci">void Fill(const BasisSet &amp;bs, const QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8cc_source.html#l00088">aobasis.cc:88</a></div></div>
@@ -240,9 +259,10 @@ $(function() {
 <div class="ttc" id="abse__operator_8h_html"><div class="ttname"><a href="bse__operator_8h.html">bse_operator.h</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1tools_1_1EigenIO__MatrixMarket_html_a418e26a64229ee49f7228e548740a4bc"><div class="ttname"><a href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a></div><div class="ttdeci">Eigen::MatrixXd ReadMatrix(const std::string &amp;filename)</div><div class="ttdef"><b>Definition:</b> <a href="eigenio__matrixmarket_8cc_source.html#l00063">eigenio_matrixmarket.cc:63</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition:</b> <a href="adiis_8h_source.html#l00032">adiis.h:32</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1BSE__OPERATOR_html_a7b0664cc6f352ca0eda4b11771dfe01c"><div class="ttname"><a href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">votca::xtp::BSE_OPERATOR::configure</a></div><div class="ttdeci">void configure(BSEOperator_Options opt)</div><div class="ttdef"><b>Definition:</b> <a href="bse__operator_8cc_source.html#l00028">bse_operator.cc:28</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BSE__OPERATOR_html_a7b0664cc6f352ca0eda4b11771dfe01c"><div class="ttname"><a href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#a7b0664cc6f352ca0eda4b11771dfe01c">votca::xtp::BSE_OPERATOR::configure</a></div><div class="ttdeci">void configure(BSEOperator_Options opt)</div><div class="ttdef"><b>Definition:</b> <a href="bse__operator_8cc_source.html#l00029">bse_operator.cc:29</a></div></div>
 <div class="ttc" id="astructvotca_1_1xtp_1_1BSEOperator__Options_html_ac036af98a2f95a6c58d518c2316a49ba"><div class="ttname"><a href="structvotca_1_1xtp_1_1BSEOperator__Options.html#ac036af98a2f95a6c58d518c2316a49ba">votca::xtp::BSEOperator_Options::rpamin</a></div><div class="ttdeci">Index rpamin</div><div class="ttdef"><b>Definition:</b> <a href="bse__operator_8h_source.html#l00034">bse_operator.h:34</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Logger_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Logger.html">votca::xtp::Logger</a></div><div class="ttdoc">Logger is used for thread-safe output of messages.</div><div class="ttdef"><b>Definition:</b> <a href="logger_8h_source.html#l00164">logger.h:164</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1BSE__OPERATOR_html_ac6eaf241969d437164ddc94855a619f5"><div class="ttname"><a href="classvotca_1_1xtp_1_1BSE__OPERATOR.html#ac6eaf241969d437164ddc94855a619f5">votca::xtp::BSE_OPERATOR::diagonal</a></div><div class="ttdeci">Eigen::VectorXd diagonal() const</div><div class="ttdef"><b>Definition:</b> <a href="bse__operator_8cc_source.html#l00123">bse_operator.cc:123</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1TCMatrix__gwbse_html_a7cafcb1a0a39a7ab1e75162886739f55"><div class="ttname"><a href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a7cafcb1a0a39a7ab1e75162886739f55">votca::xtp::TCMatrix_gwbse::MultiplyRightWithAuxMatrix</a></div><div class="ttdeci">void MultiplyRightWithAuxMatrix(const Eigen::MatrixXd &amp;matrix)</div><div class="ttdef"><b>Definition:</b> <a href="threecenter_8cc_source.html#l00137">threecenter.cc:137</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BSE__OPERATOR_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1BSE__OPERATOR.html">votca::xtp::BSE_OPERATOR</a></div><div class="ttdef"><b>Definition:</b> <a href="bse__operator_8h_source.html#l00041">bse_operator.h:41</a></div></div>
 <!-- start footer part -->
