@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="jobtopology_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2020 The VOTCA Development Team</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *            Copyright 2009-2021 The VOTCA Development Team</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -324,7 +324,7 @@ $(function() {
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        processed_segments[seg_id.Id()] = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      }</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    explicitly_named_segs_per_region.push_back(<span class="keywordtype">int</span>(seg_ids.size()));</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    explicitly_named_segs_per_region.push_back(<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(seg_ids.size()));</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">if</span> (region_def-&gt;exists(<span class="stringliteral">&quot;cutoff&quot;</span>)) {</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      <span class="keywordtype">double</span> cutoff = <a class="code" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">tools::conv::nm2bohr</a> *</div>
@@ -352,76 +352,77 @@ $(function() {
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;          <span class="keywordflow">if</span> (only_explicit) {</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> no_of_segs = explicitly_named_segs_per_region[id];</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keywordflow">if</span> (no_of_segs == 0) {</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;              <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Region with id &#39;&quot;</span> + std::to_string(<span class="keywordtype">id</span>) +</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                       <span class="stringliteral">&quot;&#39; does not have&quot;</span>);</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            center.resize(no_of_segs, <a class="code" href="classvotca_1_1xtp_1_1SegId.html">SegId</a>(0, <span class="stringliteral">&quot;n&quot;</span>));</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="comment">// need the second argument because resize can also increase</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="comment">// capacity of vector and then needs a constructor,</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="comment">// here we shrink, so should not happen</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;          }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Region with id &#39;&quot;</span> + std::to_string(<span class="keywordtype">id</span>) +</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                   <span class="stringliteral">&quot;&#39; used for cutoff does not exist&quot;</span>);</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;      }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      <span class="keywordflow">if</span> (center.empty()) {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="stringliteral">&quot;Region needs either a segment or another region to which to apply &quot;</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="stringliteral">&quot;the cutoff&quot;</span>);</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      }</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1SegId.html">SegId</a>&amp; segid : center) {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; center_seg = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#ab373f32754a10415dc3e60b6fbd29825">getSegment</a>(segid.Id());</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; otherseg : top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">Segments</a>()) {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;          <span class="keywordflow">if</span> (center_seg.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a633bea5c0337c9c75bf0f2d2d8c21c79">getId</a>() == otherseg.getId() ||</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;              processed_segments[otherseg.getId()]) {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;          }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;          <span class="keywordflow">if</span> (top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a3c703a141b50800310b3290aa348bfec">PbShortestConnect</a>(center_seg.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a1b322deee14bd4ce970cd2a4dc52ef76">getPos</a>(), otherseg.getPos())</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                  .norm() &lt; cutoff) {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            seg_ids.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">push_back</a>(<a class="code" href="classvotca_1_1xtp_1_1SegId.html">SegId</a>(otherseg.getId(), seg_geometry));</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            processed_segments[otherseg.getId()] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;          }</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      }</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    segids_per_region.push_back(seg_ids);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  <span class="keywordflow">return</span> segids_per_region;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1JobTopology.html#a430ee817cb28900c0f8aae16463d0355">  321</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#a430ee817cb28900c0f8aae16463d0355">JobTopology::CheckEnumerationOfRegions</a>(</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keyword">const</span> std::vector&lt;tools::Property*&gt;&amp; regions_def)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  std::vector&lt;Index&gt; reg_ids;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* region_def : regions_def) {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    reg_ids.push_back(</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        region_def-&gt;ifExistsReturnElseThrowRuntimeError&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>&gt;(<span class="stringliteral">&quot;id&quot;</span>));</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  std::vector&lt;Index&gt; v(reg_ids.size());</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  std::iota(v.begin(), v.end(), 0);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="keywordflow">if</span> (!std::is_permutation(reg_ids.begin(), reg_ids.end(), v.begin())) {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="stringliteral">&quot;Region id definitions are not clear. You must start at id 0 and then &quot;</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="stringliteral">&quot;ascending order. i.e. 0 1 2 3.&quot;</span>);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  }</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;}</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
-<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1JobTopology.html#adbe838feed7d416ef4a6a85c1f544716">  338</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#adbe838feed7d416ef4a6a85c1f544716">JobTopology::WriteToHdf5</a>(std::string filename)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html">CheckpointFile</a> cpf(filename, <a class="code" href="namespacevotca_1_1xtp.html#ac8a3228f3752676abb9e23158681ec50a3466fab4975481651940ed328aa990e4">CheckpointAccessLevel::CREATE</a>);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CheckpointWriter.html">CheckpointWriter</a> a = cpf.<a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html#ad319fa7f695339c87749e4e4c5e10fbc">getWriter</a>();</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  a(<a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#a75f39518fca94f510eee8d97257f3d7e">_job</a>.<a class="code" href="classvotca_1_1xtp_1_1Job.html#adaf814dbc79bc5bacff2749dcefe35d8">getId</a>(), <span class="stringliteral">&quot;jobid&quot;</span>);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  a(<a class="code" href="namespacevotca_1_1xtp.html#a3b11bfd421bce407b7040b254e5ced05">XtpVersionStr</a>(), <span class="stringliteral">&quot;XTPVersion&quot;</span>);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  a(<a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#a6732052c97f3b269e0804ba73347d39a">jobtopology_version</a>(), <span class="stringliteral">&quot;version&quot;</span>);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; region : <a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#a5300133f5695ea9a45511ff88c7ac785">_regions</a>) {</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1CheckpointWriter.html">CheckpointWriter</a> w =</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        cpf.<a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html#ad319fa7f695339c87749e4e4c5e10fbc">getWriter</a>(<span class="stringliteral">&quot;region_&quot;</span> + std::to_string(region-&gt;getId()));</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    region-&gt;WriteToCpt(w);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  }</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;              <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                  <span class="stringliteral">&quot;Region with id &#39;&quot;</span> + std::to_string(<span class="keywordtype">id</span>) +</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                  <span class="stringliteral">&quot;&#39; does not have explicitly named segments&quot;</span>);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            center.resize(no_of_segs, <a class="code" href="classvotca_1_1xtp_1_1SegId.html">SegId</a>(0, <span class="stringliteral">&quot;n&quot;</span>));</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="comment">// need the second argument because resize can also increase</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="comment">// capacity of vector and then needs a constructor,</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="comment">// here we shrink, so should not happen</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;          }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Region with id &#39;&quot;</span> + std::to_string(<span class="keywordtype">id</span>) +</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                   <span class="stringliteral">&quot;&#39; used for cutoff does not exist&quot;</span>);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;      <span class="keywordflow">if</span> (center.empty()) {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="stringliteral">&quot;Region needs either a segment or another region to which to apply &quot;</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="stringliteral">&quot;the cutoff&quot;</span>);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1SegId.html">SegId</a>&amp; segid : center) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; center_seg = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#ab373f32754a10415dc3e60b6fbd29825">getSegment</a>(segid.Id());</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; otherseg : top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a9ca57b0023f3a9facbf5ee5271d1675a">Segments</a>()) {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;          <span class="keywordflow">if</span> (center_seg.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a633bea5c0337c9c75bf0f2d2d8c21c79">getId</a>() == otherseg.getId() ||</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;              processed_segments[otherseg.getId()]) {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;          }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;          <span class="keywordflow">if</span> (top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a3c703a141b50800310b3290aa348bfec">PbShortestConnect</a>(center_seg.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a1b322deee14bd4ce970cd2a4dc52ef76">getPos</a>(), otherseg.getPos())</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                  .norm() &lt; cutoff) {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            seg_ids.<a class="code" href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">push_back</a>(<a class="code" href="classvotca_1_1xtp_1_1SegId.html">SegId</a>(otherseg.getId(), seg_geometry));</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            processed_segments[otherseg.getId()] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;          }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;      }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    }</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    segids_per_region.push_back(seg_ids);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <span class="keywordflow">return</span> segids_per_region;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;}</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1JobTopology.html#a430ee817cb28900c0f8aae16463d0355">  322</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#a430ee817cb28900c0f8aae16463d0355">JobTopology::CheckEnumerationOfRegions</a>(</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keyword">const</span> std::vector&lt;tools::Property*&gt;&amp; regions_def)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  std::vector&lt;Index&gt; reg_ids;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* region_def : regions_def) {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    reg_ids.push_back(</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        region_def-&gt;ifExistsReturnElseThrowRuntimeError&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>&gt;(<span class="stringliteral">&quot;id&quot;</span>));</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  std::vector&lt;Index&gt; v(reg_ids.size());</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  std::iota(v.begin(), v.end(), 0);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <span class="keywordflow">if</span> (!std::is_permutation(reg_ids.begin(), reg_ids.end(), v.begin())) {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="stringliteral">&quot;Region id definitions are not clear. You must start at id 0 and then &quot;</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="stringliteral">&quot;ascending order. i.e. 0 1 2 3.&quot;</span>);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1JobTopology.html#adbe838feed7d416ef4a6a85c1f544716">  339</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#adbe838feed7d416ef4a6a85c1f544716">JobTopology::WriteToHdf5</a>(std::string filename)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html">CheckpointFile</a> cpf(filename, <a class="code" href="namespacevotca_1_1xtp.html#ac8a3228f3752676abb9e23158681ec50a3466fab4975481651940ed328aa990e4">CheckpointAccessLevel::CREATE</a>);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1CheckpointWriter.html">CheckpointWriter</a> a = cpf.<a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html#ad319fa7f695339c87749e4e4c5e10fbc">getWriter</a>();</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  a(<a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#a75f39518fca94f510eee8d97257f3d7e">_job</a>.<a class="code" href="classvotca_1_1xtp_1_1Job.html#adaf814dbc79bc5bacff2749dcefe35d8">getId</a>(), <span class="stringliteral">&quot;jobid&quot;</span>);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  a(<a class="code" href="namespacevotca_1_1xtp.html#a3b11bfd421bce407b7040b254e5ced05">XtpVersionStr</a>(), <span class="stringliteral">&quot;XTPVersion&quot;</span>);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  a(<a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#a6732052c97f3b269e0804ba73347d39a">jobtopology_version</a>(), <span class="stringliteral">&quot;version&quot;</span>);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; region : <a class="code" href="classvotca_1_1xtp_1_1JobTopology.html#a5300133f5695ea9a45511ff88c7ac785">_regions</a>) {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1CheckpointWriter.html">CheckpointWriter</a> w =</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        cpf.<a class="code" href="classvotca_1_1xtp_1_1CheckpointFile.html#ad319fa7f695339c87749e4e4c5e10fbc">getWriter</a>(<span class="stringliteral">&quot;region_&quot;</span> + std::to_string(region-&gt;getId()));</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    region-&gt;WriteToCpt(w);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}  <span class="comment">// namespace votca</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Property_html_a91f796dbecc9491af83d9846846d420e"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html#a91f796dbecc9491af83d9846846d420e">votca::tools::Property::value</a></div><div class="ttdeci">std::string &amp; value()</div><div class="ttdoc">reference to value of property</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00133">property.h:133</a></div></div>
@@ -464,7 +465,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1tools_1_1Property_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a></div><div class="ttdoc">class to manage program options with xml serialization functionality</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00055">property.h:55</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_a091842152e1feeb15917381385cccc7e"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#a091842152e1feeb15917381385cccc7e">votca::xtp::JobTopology::ShiftPBC</a></div><div class="ttdeci">void ShiftPBC(const Topology &amp;top, const Eigen::Vector3d &amp;center, T &amp;mol) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00135">jobtopology.cc:135</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1CheckpointFile_html_ad319fa7f695339c87749e4e4c5e10fbc"><div class="ttname"><a href="classvotca_1_1xtp_1_1CheckpointFile.html#ad319fa7f695339c87749e4e4c5e10fbc">votca::xtp::CheckpointFile::getWriter</a></div><div class="ttdeci">CheckpointWriter getWriter()</div><div class="ttdef"><b>Definition:</b> <a href="checkpoint_8cc_source.html#l00121">checkpoint.cc:121</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_adbe838feed7d416ef4a6a85c1f544716"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#adbe838feed7d416ef4a6a85c1f544716">votca::xtp::JobTopology::WriteToHdf5</a></div><div class="ttdeci">void WriteToHdf5(std::string filename) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00338">jobtopology.cc:338</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_adbe838feed7d416ef4a6a85c1f544716"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#adbe838feed7d416ef4a6a85c1f544716">votca::xtp::JobTopology::WriteToHdf5</a></div><div class="ttdeci">void WriteToHdf5(std::string filename) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00339">jobtopology.cc:339</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html_a3b11bfd421bce407b7040b254e5ced05"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a3b11bfd421bce407b7040b254e5ced05">votca::xtp::XtpVersionStr</a></div><div class="ttdeci">const std::string &amp; XtpVersionStr()</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2src_2libxtp_2version_8cc_source.html#l00045">version.cc:45</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_aade04609f17def9d82f76401ec9c774f"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#aade04609f17def9d82f76401ec9c774f">votca::xtp::JobTopology::ModifyOptionsByJobFile</a></div><div class="ttdeci">void ModifyOptionsByJobFile(std::vector&lt; tools::Property * &gt; &amp;regions_def) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00043">jobtopology.cc:43</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1PDBWriter_html_a5da59bd7f89d06310ff7c7adf92cdba6"><div class="ttname"><a href="classvotca_1_1csg_1_1PDBWriter.html#a5da59bd7f89d06310ff7c7adf92cdba6">votca::csg::PDBWriter::WriteHeader</a></div><div class="ttdeci">void WriteHeader(std::string header)</div><div class="ttdef"><b>Definition:</b> <a href="pdbwriter_8cc_source.html#l00041">pdbwriter.cc:41</a></div></div>
@@ -474,7 +475,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_a8fd90c3a40b7f9e2357ac6d31fde7e7f"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#a8fd90c3a40b7f9e2357ac6d31fde7e7f">votca::xtp::JobTopology::PartitionRegions</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; SegId &gt; &gt; PartitionRegions(const std::vector&lt; tools::Property * &gt; &amp;regions_def, const Topology &amp;top) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00225">jobtopology.cc:225</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1PDBWriter_html"><div class="ttname"><a href="classvotca_1_1csg_1_1PDBWriter.html">votca::csg::PDBWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="pdbwriter_8h_source.html#l00035">pdbwriter.h:35</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1SegmentMapper_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1SegmentMapper.html">votca::xtp::SegmentMapper</a></div><div class="ttdef"><b>Definition:</b> <a href="segmentmapper_8h_source.html#l00039">segmentmapper.h:39</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_a430ee817cb28900c0f8aae16463d0355"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#a430ee817cb28900c0f8aae16463d0355">votca::xtp::JobTopology::CheckEnumerationOfRegions</a></div><div class="ttdeci">void CheckEnumerationOfRegions(const std::vector&lt; tools::Property * &gt; &amp;regions_def) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00321">jobtopology.cc:321</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_a430ee817cb28900c0f8aae16463d0355"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#a430ee817cb28900c0f8aae16463d0355">votca::xtp::JobTopology::CheckEnumerationOfRegions</a></div><div class="ttdeci">void CheckEnumerationOfRegions(const std::vector&lt; tools::Property * &gt; &amp;regions_def) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00322">jobtopology.cc:322</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_a1d06e5ac75312a337c9772714fea6fd3"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#a1d06e5ac75312a337c9772714fea6fd3">votca::xtp::JobTopology::FindReplacePathsInOptions</a></div><div class="ttdeci">std::vector&lt; std::string &gt; FindReplacePathsInOptions(const tools::Property &amp;options, std::string tag) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00102">jobtopology.cc:102</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_a170173e0633a6dc794e39c80ab443891"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#a170173e0633a6dc794e39c80ab443891">votca::xtp::JobTopology::UpdateFromJobfile</a></div><div class="ttdeci">void UpdateFromJobfile(tools::Property &amp;options, const tools::Property &amp;job_opt, const std::vector&lt; std::string &gt; &amp;paths) const</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8cc_source.html#l00122">jobtopology.cc:122</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1JobTopology_html_a75f39518fca94f510eee8d97257f3d7e"><div class="ttname"><a href="classvotca_1_1xtp_1_1JobTopology.html#a75f39518fca94f510eee8d97257f3d7e">votca::xtp::JobTopology::_job</a></div><div class="ttdeci">Job &amp; _job</div><div class="ttdef"><b>Definition:</b> <a href="jobtopology_8h_source.html#l00105">jobtopology.h:105</a></div></div>

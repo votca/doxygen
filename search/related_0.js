@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['basebead_10143',['BaseBead',['../classvotca_1_1csg_1_1MoleculeItem.html#ac25b4ffa98e35b536d4ec3193ca0d6f4',1,'votca::csg::MoleculeItem']]]
+  ['aoshell_10112',['AOShell',['../classvotca_1_1xtp_1_1AOGaussianPrimitive.html#a4052a7b2959aa674099c7de695531ca6',1,'votca::xtp::AOGaussianPrimitive']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filter_10147',['Filter',['../classvotca_1_1xtp_1_1FilterFactory.html#ab4a43555817ba372428d76e48e35cbdf',1,'votca::xtp::FilterFactory']]]
+  ['ecpaobasis_10116',['ECPAOBasis',['../classvotca_1_1xtp_1_1QMAtom.html#a7ed03b56d27971cf246954b3d9cc377e',1,'votca::xtp::QMAtom']]]
 ];
