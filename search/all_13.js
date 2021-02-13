@@ -249,7 +249,7 @@ var searchData=
   ['size_5fupdate_3920',['size_update',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#a061c9d19257cf9f435d16d62b23f2e2b',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
   ['skipimpropers_5f_3921',['SkipImpropers_',['../classvotca_1_1csg_1_1LAMMPSDataReader.html#afc892f2878c9507b886f663fd648eec6',1,'votca::csg::LAMMPSDataReader']]],
   ['smalldenom_3922',['smalldenom',['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741af85d9dd78d4c83fb4fa4bd3c2a6fff9c',1,'votca::xtp::NewtonRapson']]],
-  ['smallesteigenvalue_3923',['smallestEigenvalue',['../classvotca_1_1xtp_1_1AOOverlap.html#ad41ecf35a33ebcb707c6d92b9a419755',1,'votca::xtp::AOOverlap::smallestEigenvalue()'],['../classvotca_1_1xtp_1_1AOOverlap.html#a5c2495b9932855aef28f6641209967f3',1,'votca::xtp::AOOverlap::SmallestEigenValue() const']]],
+  ['smallesteigenvalue_3923',['SmallestEigenValue',['../classvotca_1_1xtp_1_1AOOverlap.html#a5c2495b9932855aef28f6641209967f3',1,'votca::xtp::AOOverlap::SmallestEigenValue() const'],['../classvotca_1_1xtp_1_1AOOverlap.html#ad41ecf35a33ebcb707c6d92b9a419755',1,'votca::xtp::AOOverlap::smallestEigenvalue()']]],
   ['sminusahalf_3924',['Sminusahalf',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a62051c4a95b316eb100ba34b92aabeec',1,'votca::xtp::ConvergenceAcc']]],
   ['smooth_3925',['Smooth',['../classvotca_1_1tools_1_1Table.html#ad89c3a53ec6c63a92fb2a117a61ed8d1',1,'votca::tools::Table']]],
   ['smooth_5f_3926',['Smooth_',['../classvotca_1_1csg_1_1TabulatedPotential.html#aefe4d5353783ee700bbdd23ff139e28e',1,'votca::csg::TabulatedPotential']]],

@@ -98,7 +98,7 @@ var searchData=
   ['hqp_5frow_2558',['Hqp_row',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html#a4a4b26c77c3b4a4efe43a1e54ef43d89',1,'votca::xtp::BSE_OPERATOR']]],
   ['hqpoperator_2559',['HqpOperator',['../namespacevotca_1_1xtp.html#a4527afbfe852069c52477d63b21a5dac',1,'votca::xtp']]],
   ['hrt2ev_2560',['hrt2ev',['../namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179',1,'votca::tools::conv']]],
-  ['htree_2561',['htree',['../classvotca_1_1xtp_1_1huffmanTree.html#aaaae09d9afa515eec70e6a83a039bcfd',1,'votca::xtp::huffmanTree::htree()'],['../classvotca_1_1xtp_1_1GNode.html#ab0f90866a099997644e4167c223133b3',1,'votca::xtp::GNode::hTree()']]],
+  ['htree_2561',['hTree',['../classvotca_1_1xtp_1_1GNode.html#ab0f90866a099997644e4167c223133b3',1,'votca::xtp::GNode::hTree()'],['../classvotca_1_1xtp_1_1huffmanTree.html#aaaae09d9afa515eec70e6a83a039bcfd',1,'votca::xtp::huffmanTree::htree()']]],
   ['huffmannode_2562',['huffmanNode',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html',1,'votca::xtp::huffmanTree']]],
   ['huffmantree_2563',['huffmanTree',['../classvotca_1_1xtp_1_1huffmanTree.html',1,'votca::xtp']]],
   ['huffmantree_2eh_2564',['huffmantree.h',['../huffmantree_8h.html',1,'']]],
