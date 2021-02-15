@@ -525,7 +525,7 @@ var searchData=
   ['_5fmutexvar_8922',['_mutexVar',['../classvotca_1_1tools_1_1Mutex.html#adeaa93d4fb666e699ced166aebbda205',1,'votca::tools::Mutex']]],
   ['_5fmv_8923',['_mv',['../classvotca_1_1csg_1_1NematicOrder.html#a2b744256f2051d4a56f354dace82dedc',1,'votca::csg::NematicOrder']]],
   ['_5fmw_8924',['_mw',['../classvotca_1_1csg_1_1NematicOrder.html#a3ae6ae7f67fdb535895065217e35e04b',1,'votca::csg::NematicOrder']]],
-  ['_5fmyworkers_8925',['_myWorkers',['../classvotca_1_1csg_1_1CsgApplication.html#a9aff9fa969e1c9756c05ed53856efd48',1,'votca::csg::CsgApplication']]],
+  ['_5fmyworkers_8925',['_myWorkers',['../classvotca_1_1csg_1_1CsgApplication.html#aff2b08b1ba177ce1e00ce73e68623f1f',1,'votca::csg::CsgApplication']]],
   ['_5fn_8926',['_n',['../classvotca_1_1tools_1_1Average.html#a06e4353bb23bdc1140aba88570b2df9f',1,'votca::tools::Average::_n()'],['../structvotca_1_1tools_1_1Histogram_1_1options__t.html#af4312b133b2c5a2fcc2415b929102f53',1,'votca::tools::Histogram::options_t::_n()'],['../classCGOrderParam.html#a3def7bdd13448ce2dff888c57ecbd79a',1,'CGOrderParam::_n()']]],
   ['_5fn_5favg_8927',['_N_avg',['../classCsgFluctuations.html#a68b1ac69764fbff210df6a8522b4dcbf',1,'CsgFluctuations']]],
   ['_5fn_5fpt_8928',['_n_pt',['../classvotca_1_1xtp_1_1Spectrum.html#adba251fecaf1585ffb8cdc495537f672',1,'votca::xtp::Spectrum']]],

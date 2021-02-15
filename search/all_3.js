@@ -294,7 +294,7 @@ var searchData=
   ['createmolecule_1478',['CreateMolecule',['../classvotca_1_1csg_1_1CGMoleculeDef.html#a88b02319a7b3671482e4d5bac6ab1a6f',1,'votca::csg::CGMoleculeDef::CreateMolecule()'],['../classvotca_1_1csg_1_1Topology.html#aa283322eda268291c6da3eb2744306aa',1,'votca::csg::Topology::CreateMolecule()']]],
   ['createmoleculesbyrange_1479',['CreateMoleculesByRange',['../classvotca_1_1csg_1_1Topology.html#a1c0c5e857dc1a11bff53e086af47bef4',1,'votca::csg::Topology']]],
   ['createmoleculesbyresidue_1480',['CreateMoleculesByResidue',['../classvotca_1_1csg_1_1Topology.html#a750d431ff915f6acda358b3fb0644e15',1,'votca::csg::Topology']]],
-  ['createnbsearch_1481',['CreateNBSearch',['../classOrientCorrApp.html#afec05ebac00b88cae536c0b28c24213e',1,'OrientCorrApp']]],
+  ['createnbsearch_1481',['CreateNBSearch',['../classOrientCorrApp.html#a718551d10fad392aa0f1230668bd043a',1,'OrientCorrApp']]],
   ['createonebigmolecule_1482',['CreateOneBigMolecule',['../classvotca_1_1csg_1_1Topology.html#a084030095036322414eaf4a61119a8e0',1,'votca::csg::Topology']]],
   ['createregions_1483',['CreateRegions',['../classvotca_1_1xtp_1_1JobTopology.html#a86e9ef730b33db93791e841d873a9cff',1,'votca::xtp::JobTopology']]],
   ['createresidue_1484',['CreateResidue',['../classvotca_1_1csg_1_1Topology.html#a164c12f953bd963106f05c00d588885c',1,'votca::csg::Topology::CreateResidue(std::string name)'],['../classvotca_1_1csg_1_1Topology.html#ad911a06c33ed2657d115aafa17612f0f',1,'votca::csg::Topology::CreateResidue(std::string name, Index id)']]],
