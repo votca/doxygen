@@ -196,24 +196,25 @@ $(function() {
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    EIGEN_ONLY_USED_FOR_DEBUG(alpha);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> half = op.rows() / 2;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    Map&lt;const MatrixXd&gt; m_reshaped(m.data(), m.rows() / 2, m.cols() * 2);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    MatrixXd temp = op._A * m_reshaped;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    Map&lt;const MatrixXd&gt; temp_unshaped(temp.data(), m.rows(), m.cols());</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    dst.topRows(half) = temp_unshaped.topRows(half);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    dst.bottomRows(half) = -temp_unshaped.bottomRows(half);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    temp = op._B * m_reshaped;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// create a second map because temp may have moved so temp_reshaped may</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">// point to invalid memory</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    Map&lt;const MatrixXd&gt; temp_unshaped2(temp.data(), m.rows(), m.cols());</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    dst.topRows(half) += temp_unshaped2.bottomRows(half);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    dst.bottomRows(half) -= temp_unshaped2.topRows(half);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;};</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}  <span class="comment">// namespace internal</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}  <span class="comment">// namespace Eigen</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">#endif  // VOTCA_XTP_BSEOPERATOR_BTDA_H</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">const</span> Map&lt;const MatrixXd&gt; m_reshaped(m.data(), m.rows() / 2, m.cols() * 2);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <span class="keyword">const</span> MatrixXd temp = op._A * m_reshaped;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      <span class="keyword">const</span> Map&lt;const MatrixXd&gt; temp_unshaped(temp.data(), m.rows(), m.cols());</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      dst.topRows(half) = temp_unshaped.topRows(half);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      dst.bottomRows(half) = -temp_unshaped.bottomRows(half);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keyword">const</span> MatrixXd temp = op._B * m_reshaped;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      <span class="keyword">const</span> Map&lt;const MatrixXd&gt; temp_unshaped(temp.data(), m.rows(), m.cols());</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      dst.topRows(half) += temp_unshaped.bottomRows(half);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      dst.bottomRows(half) -= temp_unshaped.topRows(half);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;};</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}  <span class="comment">// namespace internal</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}  <span class="comment">// namespace Eigen</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#endif  // VOTCA_XTP_BSEOPERATOR_BTDA_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="anamespaceEigen_html"><div class="ttname"><a href="namespaceEigen.html">Eigen</a></div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00196">csg_density.cc:196</a></div></div>

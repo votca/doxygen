@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t_4047',['T',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()'],['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()']]],
+  ['t_4047',['t',['../classvotca_1_1tools_1_1AkimaSpline.html#a1289dc29402a247d1a8294a537f1ed12',1,'votca::tools::AkimaSpline::t()'],['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af08ed81d6f5e6d2dc8e34aad360f1553',1,'votca::xtp::DavidsonSolver::ProjectedSpace::T()']]],
   ['table_4048',['Table',['../classvotca_1_1tools_1_1Table.html',1,'votca::tools']]],
   ['table_2ecc_4049',['table.cc',['../table_8cc.html',1,'']]],
   ['table_2eh_4050',['table.h',['../table_8h.html',1,'']]],

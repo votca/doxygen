@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['timeunit_9803',['TimeUnit',['../namespacevotca_1_1tools.html#a3db9e566728fce7d4132a1d849f0ef27',1,'votca::tools']]],
-  ['type_9804',['Type',['../classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268',1,'votca::tools::PropertyIOManipulator']]]
+  ['update_9805',['UPDATE',['../classvotca_1_1xtp_1_1DavidsonSolver.html#abd786a02625d5fb3a2030a510bc4f399',1,'votca::xtp::DavidsonSolver']]]
 ];

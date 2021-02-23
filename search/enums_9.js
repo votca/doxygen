@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ortho_9798',['ORTHO',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a0a3e287730181532d2d1d9d758c0a18c',1,'votca::xtp::DavidsonSolver']]]
+  ['pairtype_9799',['PairType',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7',1,'votca::xtp::QMPair']]]
 ];

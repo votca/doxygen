@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['qr_9903',['QR',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a0a3e287730181532d2d1d9d758c0a18ca69ce868308ba9be0ad513cd8d94deff2',1,'votca::xtp::DavidsonSolver']]]
+  ['read_9902',['READ',['../namespacevotca_1_1xtp.html#ac8a3228f3752676abb9e23158681ec50a3466fab4975481651940ed328aa990e4',1,'votca::xtp']]],
+  ['residueid_9903',['ResidueId',['../namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a93419c7f12996d1b7dce01bdc2e292dc',1,'votca::tools']]],
+  ['residuetype_9904',['ResidueType',['../namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a43b480804294891e853ca9e049b5d465',1,'votca::tools']]]
 ];

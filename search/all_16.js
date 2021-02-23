@@ -24,7 +24,7 @@ var searchData=
   ['vaverage_2eh_4365',['vaverage.h',['../vaverage_8h.html',1,'']]],
   ['vc2index_4366',['vc2index',['../classvotca_1_1xtp_1_1vc2index.html',1,'votca::xtp::vc2index'],['../classvotca_1_1xtp_1_1vc2index.html#a7fe55e9285d9a9a0f8e67e15cbe5f511',1,'votca::xtp::vc2index::vc2index()']]],
   ['vc2index_2eh_4367',['vc2index.h',['../vc2index_8h.html',1,'']]],
-  ['vec_5f_4368',['vec_',['../classvotca_1_1xtp_1_1OpenMP__CUDA.html#ae154dbc25197581d40cb203c0acae1fe',1,'votca::xtp::OpenMP_CUDA']]],
+  ['vec_5f_4368',['vec_',['../classvotca_1_1xtp_1_1OpenMP__CUDA.html#ae87b734e91ce9ee1ffa5b09afc30e423',1,'votca::xtp::OpenMP_CUDA']]],
   ['vec_5fcomponents_5f_4369',['vec_components_',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#a9b635e92c8fd4319a0a23c0bdde1d77b',1,'votca::csg::H5MDTrajectoryReader']]],
   ['vec_5fpos_4370',['vec_pos',['../structPotentialInfo.html#a3c57c10cc98d7fb0b506bf658a828af4',1,'PotentialInfo']]],
   ['vector2qmatoms_4371',['Vector2QMAtoms',['../classvotca_1_1xtp_1_1Energy__costfunction.html#a0babd103fe9b2f07a9587f6a99c0d49d',1,'votca::xtp::Energy_costfunction']]],
