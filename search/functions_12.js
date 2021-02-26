@@ -106,7 +106,7 @@ var searchData=
   ['reshape_7834',['reshape',['../classvotca_1_1xtp_1_1CudaMatrix.html#a2def1cd8853ea1dafe607efda9d332f2',1,'votca::xtp::CudaMatrix']]],
   ['residue_7835',['Residue',['../classvotca_1_1csg_1_1Residue.html#a29afc0d27d2e7e86c3be3f3d90f6ed3b',1,'votca::csg::Residue']]],
   ['residuecount_7836',['ResidueCount',['../classvotca_1_1csg_1_1Topology.html#a4d5e570d0547c9748b122d92555446b4',1,'votca::csg::Topology']]],
-  ['residues_7837',['residues',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a7bbc138074489eeb8bc3ae06ec5e0b90',1,'votca::xtp::DavidsonSolver::residues()'],['../classvotca_1_1csg_1_1Topology.html#a0170fbccf8838eac2f00c5bf7becd922',1,'votca::csg::Topology::Residues()'],['../classvotca_1_1csg_1_1Topology.html#acc5d80244e800f22f0d17e7a55a96962',1,'votca::csg::Topology::Residues() const']]],
+  ['residues_7837',['Residues',['../classvotca_1_1csg_1_1Topology.html#a0170fbccf8838eac2f00c5bf7becd922',1,'votca::csg::Topology::Residues()'],['../classvotca_1_1csg_1_1Topology.html#acc5d80244e800f22f0d17e7a55a96962',1,'votca::csg::Topology::Residues() const'],['../classvotca_1_1xtp_1_1DavidsonSolver.html#a7bbc138074489eeb8bc3ae06ec5e0b90',1,'votca::xtp::DavidsonSolver::residues()']]],
   ['resize_7838',['resize',['../classvotca_1_1tools_1_1Table.html#ab4801775533302deab075a0b59a92e63',1,'votca::tools::Table']]],
   ['restart_7839',['restart',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a1d6c0bb1607cc046ab40edc774ac562d',1,'votca::xtp::DavidsonSolver']]],
   ['reupdatelamda_7840',['REUpdateLamda',['../classCsgREupdate.html#ace5af5765f6ff0b99f8d1c66931289c6',1,'CsgREupdate']]],

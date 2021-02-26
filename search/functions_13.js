@@ -122,7 +122,7 @@ var searchData=
   ['setprogobserver_7969',['setProgObserver',['../classvotca_1_1xtp_1_1JobCalculator.html#a581a94a202e334c9a482f81006bb0458',1,'votca::xtp::JobCalculator']]],
   ['setq_7970',['setQ',['../classvotca_1_1csg_1_1Bead.html#a9ee97f5f561bbec8469e6d73f3ff22f4',1,'votca::csg::Bead']]],
   ['setqmenergy_7971',['setQMEnergy',['../classvotca_1_1xtp_1_1Orbitals.html#abb691f5c43813c1f9dc030666260799d',1,'votca::xtp::Orbitals']]],
-  ['setqmpackage_7972',['setQMPackage',['../classvotca_1_1xtp_1_1GWBSEEngine.html#ad5d814fed85c51fb9d74b0d5bf1987a8',1,'votca::xtp::GWBSEEngine::setQMPackage()'],['../classvotca_1_1xtp_1_1Orbitals.html#ac4654d1482a53641c427bdb85f9aef77',1,'votca::xtp::Orbitals::setQMpackage()']]],
+  ['setqmpackage_7972',['setQMpackage',['../classvotca_1_1xtp_1_1Orbitals.html#ac4654d1482a53641c427bdb85f9aef77',1,'votca::xtp::Orbitals::setQMpackage()'],['../classvotca_1_1xtp_1_1GWBSEEngine.html#ad5d814fed85c51fb9d74b0d5bf1987a8',1,'votca::xtp::GWBSEEngine::setQMPackage()']]],
   ['setredirectlogger_7973',['setRedirectLogger',['../classvotca_1_1xtp_1_1GWBSEEngine.html#abc52e55f340e33cc469a079d20d81af6',1,'votca::xtp::GWBSEEngine']]],
   ['setregionconstraint_7974',['setRegionConstraint',['../classvotca_1_1xtp_1_1Espfit.html#a369f2598abaf88608035a5929dfde064',1,'votca::xtp::Espfit']]],
   ['setreportlevel_7975',['setReportLevel',['../classvotca_1_1xtp_1_1Logger.html#a247f737e608135f6ba98b510549b5d61',1,'votca::xtp::Logger']]],
