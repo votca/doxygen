@@ -277,68 +277,67 @@ $(function() {
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordflow">while</span> (in.good()) {</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    in.get(c);</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;]&#39;</span>) {  <span class="comment">// found end of vector</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">votca::tools::Tokenizer</a> tok(str, <span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      std::vector&lt;double&gt; d;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27">ConvertToVector</a>(d);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      <span class="keywordflow">if</span> (d.size() != 3) {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;error, invalid number of entries in vector&quot;</span>);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      v.x() = d[0];</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      v.y() = d[1];</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      v.z() = d[2];</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      <span class="keywordflow">return</span> in;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    }</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    str += c;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      <span class="stringliteral">&quot;did not find closing bracket in string to vec conversion&quot;</span>);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  <span class="keywordflow">return</span> in;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}  <span class="comment">// namespace Eigen</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="classCsgDensityApp.html#aa5d7f878011ed164c29fe9575ff96951">  228</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classCsgDensityApp.html#aa5d7f878011ed164c29fe9575ff96951">CsgDensityApp::EndEvaluate</a>() {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keywordflow">if</span> (_block_length == 0) {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    WriteDensity(_frames);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;}</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">// add our user program options</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="classCsgDensityApp.html#a06de090abffe6ccf21d4904d43428f57">  235</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classCsgDensityApp.html#a06de090abffe6ccf21d4904d43428f57">CsgDensityApp::Initialize</a>() {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  CsgApplication::Initialize();</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="comment">// add program option to pick molecule</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  AddProgramOptions(<span class="stringliteral">&quot;Specific options:&quot;</span>)(</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      <span class="stringliteral">&quot;type&quot;</span>,</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      boost::program_options::value&lt;string&gt;(&amp;_dens_type)-&gt;default_value(<span class="stringliteral">&quot;mass&quot;</span>),</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      <span class="stringliteral">&quot;density type: mass or number&quot;</span>)(</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <span class="stringliteral">&quot;axis&quot;</span>,</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      boost::program_options::value&lt;string&gt;(&amp;_axisname)-&gt;default_value(<span class="stringliteral">&quot;r&quot;</span>),</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      <span class="stringliteral">&quot;[x|y|z|r] density axis (r=spherical)&quot;</span>)(</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      <span class="stringliteral">&quot;step&quot;</span>,</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      boost::program_options::value&lt;double&gt;(&amp;_step)-&gt;default_value(0.01),</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;      <span class="stringliteral">&quot;spacing of density&quot;</span>)(<span class="stringliteral">&quot;block-length&quot;</span>,</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                            boost::program_options::value&lt;votca::Index&gt;(),</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                            <span class="stringliteral">&quot;  write blocks of this length, the averages are &quot;</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                            <span class="stringliteral">&quot;cleared after every write&quot;</span>)(</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="stringliteral">&quot;out&quot;</span>, boost::program_options::value&lt;string&gt;(&amp;_out), <span class="stringliteral">&quot;Output file&quot;</span>)(</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      <span class="stringliteral">&quot;rmax&quot;</span>, boost::program_options::value&lt;double&gt;(),</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <span class="stringliteral">&quot;rmax (default for [r] =min of all box vectors/2, else l )&quot;</span>)(</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      <span class="stringliteral">&quot;scale&quot;</span>,</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      boost::program_options::value&lt;double&gt;(&amp;_scale)-&gt;default_value(1.0),</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;      <span class="stringliteral">&quot;scale factor for the density&quot;</span>)(</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      <span class="stringliteral">&quot;molname&quot;</span>,</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      boost::program_options::value&lt;string&gt;(&amp;_molname)-&gt;default_value(<span class="stringliteral">&quot;*&quot;</span>),</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      <span class="stringliteral">&quot;molname&quot;</span>)(</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <span class="stringliteral">&quot;filter&quot;</span>,</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      boost::program_options::value&lt;string&gt;(&amp;_filter)-&gt;default_value(<span class="stringliteral">&quot;*&quot;</span>),</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      <span class="stringliteral">&quot;filter bead names&quot;</span>)(</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <span class="stringliteral">&quot;ref&quot;</span>, boost::program_options::value&lt;Eigen::Vector3d&gt;(&amp;_ref),</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      <span class="stringliteral">&quot;reference zero point&quot;</span>);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      std::vector&lt;double&gt; d =</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;          <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">votca::tools::Tokenizer</a>(str, <span class="stringliteral">&quot;,&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">ToVector</a>&lt;<span class="keywordtype">double</span>&gt;();</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      <span class="keywordflow">if</span> (d.size() != 3) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;error, invalid number of entries in vector&quot;</span>);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      v.x() = d[0];</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      v.y() = d[1];</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      v.z() = d[2];</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <span class="keywordflow">return</span> in;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    str += c;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      <span class="stringliteral">&quot;did not find closing bracket in string to vec conversion&quot;</span>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  <span class="keywordflow">return</span> in;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}  <span class="comment">// namespace Eigen</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="classCsgDensityApp.html#aa5d7f878011ed164c29fe9575ff96951">  227</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classCsgDensityApp.html#aa5d7f878011ed164c29fe9575ff96951">CsgDensityApp::EndEvaluate</a>() {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keywordflow">if</span> (_block_length == 0) {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    WriteDensity(_frames);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">// add our user program options</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="classCsgDensityApp.html#a06de090abffe6ccf21d4904d43428f57">  234</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classCsgDensityApp.html#a06de090abffe6ccf21d4904d43428f57">CsgDensityApp::Initialize</a>() {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  CsgApplication::Initialize();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="comment">// add program option to pick molecule</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  AddProgramOptions(<span class="stringliteral">&quot;Specific options:&quot;</span>)(</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      <span class="stringliteral">&quot;type&quot;</span>,</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      boost::program_options::value&lt;string&gt;(&amp;_dens_type)-&gt;default_value(<span class="stringliteral">&quot;mass&quot;</span>),</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      <span class="stringliteral">&quot;density type: mass or number&quot;</span>)(</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      <span class="stringliteral">&quot;axis&quot;</span>,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      boost::program_options::value&lt;string&gt;(&amp;_axisname)-&gt;default_value(<span class="stringliteral">&quot;r&quot;</span>),</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      <span class="stringliteral">&quot;[x|y|z|r] density axis (r=spherical)&quot;</span>)(</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      <span class="stringliteral">&quot;step&quot;</span>,</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      boost::program_options::value&lt;double&gt;(&amp;_step)-&gt;default_value(0.01),</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      <span class="stringliteral">&quot;spacing of density&quot;</span>)(<span class="stringliteral">&quot;block-length&quot;</span>,</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                            boost::program_options::value&lt;votca::Index&gt;(),</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                            <span class="stringliteral">&quot;  write blocks of this length, the averages are &quot;</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                            <span class="stringliteral">&quot;cleared after every write&quot;</span>)(</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      <span class="stringliteral">&quot;out&quot;</span>, boost::program_options::value&lt;string&gt;(&amp;_out), <span class="stringliteral">&quot;Output file&quot;</span>)(</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="stringliteral">&quot;rmax&quot;</span>, boost::program_options::value&lt;double&gt;(),</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      <span class="stringliteral">&quot;rmax (default for [r] =min of all box vectors/2, else l )&quot;</span>)(</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <span class="stringliteral">&quot;scale&quot;</span>,</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      boost::program_options::value&lt;double&gt;(&amp;_scale)-&gt;default_value(1.0),</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      <span class="stringliteral">&quot;scale factor for the density&quot;</span>)(</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;      <span class="stringliteral">&quot;molname&quot;</span>,</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      boost::program_options::value&lt;string&gt;(&amp;_molname)-&gt;default_value(<span class="stringliteral">&quot;*&quot;</span>),</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      <span class="stringliteral">&quot;molname&quot;</span>)(</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      <span class="stringliteral">&quot;filter&quot;</span>,</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      boost::program_options::value&lt;string&gt;(&amp;_filter)-&gt;default_value(<span class="stringliteral">&quot;*&quot;</span>),</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      <span class="stringliteral">&quot;filter bead names&quot;</span>)(</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      <span class="stringliteral">&quot;ref&quot;</span>, boost::program_options::value&lt;Eigen::Vector3d&gt;(&amp;_ref),</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <span class="stringliteral">&quot;reference zero point&quot;</span>);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
 <div class="ttc" id="aclassCsgDensityApp_html"><div class="ttname"><a href="classCsgDensityApp.html">CsgDensityApp</a></div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00029">csg_density.cc:29</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_a03db2dc141876edf0340691373965885"><div class="ttname"><a href="classCsgDensityApp.html#a03db2dc141876edf0340691373965885">CsgDensityApp::_dens_type</a></div><div class="ttdeci">string _dens_type</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00059">csg_density.cc:59</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_a042157f7581ebf07d0285af3c2bdea2a"><div class="ttname"><a href="classCsgDensityApp.html#a042157f7581ebf07d0285af3c2bdea2a">CsgDensityApp::_rmax</a></div><div class="ttdeci">double _rmax</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00060">csg_density.cc:60</a></div></div>
-<div class="ttc" id="aclassCsgDensityApp_html_a06de090abffe6ccf21d4904d43428f57"><div class="ttname"><a href="classCsgDensityApp.html#a06de090abffe6ccf21d4904d43428f57">CsgDensityApp::Initialize</a></div><div class="ttdeci">void Initialize() override</div><div class="ttdoc">Initialize application data.</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00235">csg_density.cc:235</a></div></div>
+<div class="ttc" id="aclassCsgDensityApp_html_a06de090abffe6ccf21d4904d43428f57"><div class="ttname"><a href="classCsgDensityApp.html#a06de090abffe6ccf21d4904d43428f57">CsgDensityApp::Initialize</a></div><div class="ttdeci">void Initialize() override</div><div class="ttdoc">Initialize application data.</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00234">csg_density.cc:234</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_a08966f6b9b779399bcbe23d0242a8d5b"><div class="ttname"><a href="classCsgDensityApp.html#a08966f6b9b779399bcbe23d0242a8d5b">CsgDensityApp::_area</a></div><div class="ttdeci">double _area</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00071">csg_density.cc:71</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_a11202b0b3c4c0d53a0f46d30d3220931"><div class="ttname"><a href="classCsgDensityApp.html#a11202b0b3c4c0d53a0f46d30d3220931">CsgDensityApp::EvalConfiguration</a></div><div class="ttdeci">void EvalConfiguration(Topology *top, Topology *top_ref) override</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00139">csg_density.cc:139</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_a1924be38485d7f15d2a20bf6e9a7a8e0"><div class="ttname"><a href="classCsgDensityApp.html#a1924be38485d7f15d2a20bf6e9a7a8e0">CsgDensityApp::HelpText</a></div><div class="ttdeci">void HelpText(ostream &amp;out) override</div><div class="ttdoc">help text of application without version information</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00031">csg_density.cc:31</a></div></div>
@@ -355,7 +354,7 @@ $(function() {
 <div class="ttc" id="aclassCsgDensityApp_html_a9af315bf6de831d6d64c9bf1c0745abd"><div class="ttname"><a href="classCsgDensityApp.html#a9af315bf6de831d6d64c9bf1c0745abd">CsgDensityApp::DoMappingDefault</a></div><div class="ttdeci">bool DoMappingDefault(void) override</div><div class="ttdoc">if DoMapping is true, will by default require mapping or not</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00042">csg_density.cc:42</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_aa06acd9ae0d05673883a96c66c00e0ea"><div class="ttname"><a href="classCsgDensityApp.html#aa06acd9ae0d05673883a96c66c00e0ea">CsgDensityApp::_molname</a></div><div class="ttdeci">string _molname</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00070">csg_density.cc:70</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_aa5b3945df42f5520a222eabf68b1a8a0"><div class="ttname"><a href="classCsgDensityApp.html#aa5b3945df42f5520a222eabf68b1a8a0">CsgDensityApp::_nbin</a></div><div class="ttdeci">votca::Index _nbin</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00061">csg_density.cc:61</a></div></div>
-<div class="ttc" id="aclassCsgDensityApp_html_aa5d7f878011ed164c29fe9575ff96951"><div class="ttname"><a href="classCsgDensityApp.html#aa5d7f878011ed164c29fe9575ff96951">CsgDensityApp::EndEvaluate</a></div><div class="ttdeci">void EndEvaluate() override</div><div class="ttdoc">called after the last frame</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00228">csg_density.cc:228</a></div></div>
+<div class="ttc" id="aclassCsgDensityApp_html_aa5d7f878011ed164c29fe9575ff96951"><div class="ttname"><a href="classCsgDensityApp.html#aa5d7f878011ed164c29fe9575ff96951">CsgDensityApp::EndEvaluate</a></div><div class="ttdeci">void EndEvaluate() override</div><div class="ttdoc">called after the last frame</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00227">csg_density.cc:227</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_aa5d8696143adb062cef340c1758dc16d"><div class="ttname"><a href="classCsgDensityApp.html#aa5d8696143adb062cef340c1758dc16d">CsgDensityApp::_axisname</a></div><div class="ttdeci">string _axisname</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00069">csg_density.cc:69</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_aa94fd0564dc624d4e7802b38329aa938"><div class="ttname"><a href="classCsgDensityApp.html#aa94fd0564dc624d4e7802b38329aa938">CsgDensityApp::DoMapping</a></div><div class="ttdeci">bool DoMapping() override</div><div class="ttdoc">overload and return true to enable mapping command line options</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00041">csg_density.cc:41</a></div></div>
 <div class="ttc" id="aclassCsgDensityApp_html_ab65b8f38df611d7ff605109b09fa4b99"><div class="ttname"><a href="classCsgDensityApp.html#ab65b8f38df611d7ff605109b09fa4b99">CsgDensityApp::_block_length</a></div><div class="ttdeci">votca::Index _block_length</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00066">csg_density.cc:66</a></div></div>
@@ -374,7 +373,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1tools_1_1Application_html_a0bb87eabaf46ec27e9443b3fc4b84880"><div class="ttname"><a href="classvotca_1_1tools_1_1Application.html#a0bb87eabaf46ec27e9443b3fc4b84880">votca::tools::Application::Exec</a></div><div class="ttdeci">int Exec(int argc, char **argv)</div><div class="ttdoc">executes the program</div><div class="ttdef"><b>Definition:</b> <a href="application_8cc_source.html#l00061">application.cc:61</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1HistogramNew_html"><div class="ttname"><a href="classvotca_1_1tools_1_1HistogramNew.html">votca::tools::HistogramNew</a></div><div class="ttdoc">class to generate histograms</div><div class="ttdef"><b>Definition:</b> <a href="histogramnew_8h_source.html#l00077">histogramnew.h:77</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html">votca::tools::Tokenizer</a></div><div class="ttdoc">break string into words</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00069">tokenizer.h:69</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html_afa6d5750bf61472ecc55ffac4f710c27"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27">votca::tools::Tokenizer::ConvertToVector</a></div><div class="ttdeci">void ConvertToVector(std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">store all words in a vector with type conversion.</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00134">tokenizer.h:134</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html_a344236c051d493ac32ddf310fbad24fe"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">votca::tools::Tokenizer::ToVector</a></div><div class="ttdeci">void ToVector(std::vector&lt; std::string &gt; &amp;v)</div><div class="ttdoc">store all words in a vector of strings.</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00107">tokenizer.h:107</a></div></div>
 <div class="ttc" id="aconstants_8h_html"><div class="ttname"><a href="constants_8h.html">constants.h</a></div></div>
 <div class="ttc" id="acsg__density_8cc_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="csg__density_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="csg__density_8cc_source.html#l00075">csg_density.cc:75</a></div></div>
 <div class="ttc" id="acsgapplication_8h_html"><div class="ttname"><a href="csgapplication_8h.html">csgapplication.h</a></div></div>

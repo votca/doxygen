@@ -226,40 +226,38 @@ $(function() {
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="stringliteral">&quot;unexpected end of file in poly file, when boxline&quot;</span>);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok(tmp, <span class="stringliteral">&quot; &quot;</span>);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  vector&lt;double&gt; fields;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  Eigen::Matrix3d box;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordflow">if</span> (fields.size() == 3) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    box = Eigen::Matrix3d::Zero();</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 3; i++) {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      box(i, i) = fields[i];</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fields.size() == 9) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    box(0, 0) = fields[0];</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    box(1, 1) = fields[1];</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    box(2, 2) = fields[2];</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    box(1, 0) = fields[3];</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    box(2, 0) = fields[4];</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    box(0, 1) = fields[5];</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    box(2, 1) = fields[6];</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    box(0, 2) = fields[7];</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    box(1, 2) = fields[8];</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error while reading box (last) line&quot;</span>);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a12161f1c5d52f233bd513fbb22538506">setBox</a>(box);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keywordflow">if</span> (_topology) {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;WARNING: topology created from .gro file, masses and charges are &quot;</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="stringliteral">&quot;wrong!\n&quot;</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keywordflow">return</span> !_fl.eof();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  vector&lt;double&gt; fields = <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a>(tmp, <span class="stringliteral">&quot; &quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">ToVector</a>&lt;<span class="keywordtype">double</span>&gt;();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  Eigen::Matrix3d box;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordflow">if</span> (fields.size() == 3) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    box = Eigen::Matrix3d::Zero();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 3; i++) {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      box(i, i) = fields[i];</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fields.size() == 9) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    box(0, 0) = fields[0];</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    box(1, 1) = fields[1];</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    box(2, 2) = fields[2];</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    box(1, 0) = fields[3];</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    box(2, 0) = fields[4];</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    box(0, 1) = fields[5];</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    box(2, 1) = fields[6];</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    box(0, 2) = fields[7];</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    box(1, 2) = fields[8];</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error while reading box (last) line&quot;</span>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a12161f1c5d52f233bd513fbb22538506">setBox</a>(box);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordflow">if</span> (_topology) {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;WARNING: topology created from .gro file, masses and charges are &quot;</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="stringliteral">&quot;wrong!\n&quot;</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keywordflow">return</span> !_fl.eof();</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1BaseBead_html_a853d164d266df510eacd660d7d6d565f"><div class="ttname"><a href="classvotca_1_1csg_1_1BaseBead.html#a853d164d266df510eacd660d7d6d565f">votca::csg::BaseBead::setPos</a></div><div class="ttdeci">virtual void setPos(const Eigen::Vector3d &amp;bead_position)</div><div class="ttdef"><b>Definition:</b> <a href="basebead_8h_source.html#l00161">basebead.h:161</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html">votca::csg::Bead</a></div><div class="ttdoc">information about a bead</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00050">bead.h:50</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html_a7deb70ed69ec6342e92d8dc55ff5629d"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html#a7deb70ed69ec6342e92d8dc55ff5629d">votca::csg::Bead::setVel</a></div><div class="ttdeci">void setVel(const Eigen::Vector3d &amp;r)</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00315">bead.h:315</a></div></div>
@@ -280,7 +278,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a834c715f33e214e02b30c022d4c3df6b"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">votca::csg::Topology::BeadCount</a></div><div class="ttdeci">Index BeadCount() const</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00166">topology.h:166</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_a9026c2e4bc8dc4a0c9204d0a13f63c1d"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#a9026c2e4bc8dc4a0c9204d0a13f63c1d">votca::csg::Topology::RegisterBeadType</a></div><div class="ttdeci">void RegisterBeadType(std::string type)</div><div class="ttdoc">Register the bead type with the topology object.</div><div class="ttdef"><b>Definition:</b> <a href="csg_2src_2libcsg_2topology_8cc_source.html#l00267">topology.cc:267</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html">votca::tools::Tokenizer</a></div><div class="ttdoc">break string into words</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00069">tokenizer.h:69</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html_afa6d5750bf61472ecc55ffac4f710c27"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27">votca::tools::Tokenizer::ConvertToVector</a></div><div class="ttdeci">void ConvertToVector(std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">store all words in a vector with type conversion.</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00134">tokenizer.h:134</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html_a344236c051d493ac32ddf310fbad24fe"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">votca::tools::Tokenizer::ToVector</a></div><div class="ttdeci">void ToVector(std::vector&lt; std::string &gt; &amp;v)</div><div class="ttdoc">store all words in a vector of strings.</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00107">tokenizer.h:107</a></div></div>
 <div class="ttc" id="agetline_8h_html"><div class="ttname"><a href="getline_8h.html">getline.h</a></div></div>
 <div class="ttc" id="agroreader_8h_html"><div class="ttname"><a href="groreader_8h.html">groreader.h</a></div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Define a hasher so we can use it as a key in an unordered_map.</div><div class="ttdef"><b>Definition:</b> <a href="edge_8h_source.html#l00098">edge.h:98</a></div></div>

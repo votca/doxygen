@@ -198,16 +198,16 @@ $(function() {
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    vector&lt;string&gt; fields = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">ToVector</a>();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    vector&lt;Index&gt; fields = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">ToVector</a>&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>&gt;();</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (fields.size() &lt; 3) {</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: too few directive switches (&lt;3) in &#39;&quot;</span> +</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                               _fname + <span class="stringliteral">&quot;&#39; header (check its 2-nd line)&quot;</span>);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    mavecs = boost::lexical_cast&lt;Index&gt;(fields[0]);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    mpbct = boost::lexical_cast&lt;Index&gt;(fields[1]);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    matoms = boost::lexical_cast&lt;Index&gt;(fields[2]);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    mavecs = fields[0];</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    mpbct = fields[1];</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    matoms = fields[2];</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    hasVs = (mavecs &gt; 0);  <span class="comment">// 1 or 2 =&gt; in DL_POLY frame velocity vector follows</span></div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                           <span class="comment">// coords for each atom/bead</span></div>
@@ -378,95 +378,93 @@ $(function() {
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      }</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      vector&lt;double&gt; fields;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      <span class="comment">// Angs -&gt; nm</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;      box.col(i) = scale * Eigen::Vector3d(fields[0], fields[1], fields[2]);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a12161f1c5d52f233bd513fbb22538506">setBox</a>(box, pbc_type);</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; natoms; i++) {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// atom header line</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;             &lt;&lt; endl;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keywordflow">if</span> (_fl.eof()) {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in dlpoly file &#39;&quot;</span> +</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                                   _fname + <span class="stringliteral">&quot;&#39;, when reading atom/bead # &quot;</span> +</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                                   boost::lexical_cast&lt;string&gt;(i + 1));</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        }</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        vector&lt;string&gt; fields = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">ToVector</a>();</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <span class="keywordtype">id</span> = boost::lexical_cast&lt;Index&gt;(fields[1]);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keywordflow">if</span> (i + 1 != <span class="keywordtype">id</span>) {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;              <span class="stringliteral">&quot;Error: unexpected atom/bead index in dlpoly file &#39;&quot;</span> + _fname +</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;              <span class="stringliteral">&quot;&#39; : expected &quot;</span> + boost::lexical_cast&lt;string&gt;(i + 1) +</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;              <span class="stringliteral">&quot; but got &quot;</span> + boost::lexical_cast&lt;string&gt;(<span class="keywordtype">id</span>));</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        }</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;      }</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *b = conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a06e921316249844c4da02613d40ae1bd">getBead</a>(i);</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      Eigen::Matrix3d atom_vecs = Eigen::Matrix3d::Zero();</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; std::min(navecs, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(2)) + 1; j++) {</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// read atom positions</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;             &lt;&lt; endl;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keywordflow">if</span> (_fl.eof()) {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;              <span class="stringliteral">&quot;Error: unexpected EOF in dlpoly file &#39;&quot;</span> + _fname +</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;              <span class="stringliteral">&quot;&#39;, when reading atom/bead vector # &quot;</span> +</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;              boost::lexical_cast&lt;string&gt;(j) + <span class="stringliteral">&quot; of atom &quot;</span> +</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;              boost::lexical_cast&lt;string&gt;(i + 1));</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        }</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        vector&lt;double&gt; fields;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27">ConvertToVector</a>&lt;<span class="keywordtype">double</span>&gt;(fields);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <span class="comment">// Angs -&gt; nm</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        atom_vecs.col(j) =</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            scale * Eigen::Vector3d(fields[0], fields[1], fields[2]);</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      }</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      b-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a853d164d266df510eacd660d7d6d565f">setPos</a>(atom_vecs.col(0));</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Crds from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(0)</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;           &lt;&lt; endl;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;      <span class="keywordflow">if</span> (navecs &gt; 0) {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a7deb70ed69ec6342e92d8dc55ff5629d">setVel</a>(atom_vecs.col(1));</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Vels from dlpoly file &#39;&quot;</span> &lt;&lt; _fname</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;             &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(1) &lt;&lt; endl;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="keywordflow">if</span> (navecs &gt; 1) {</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;          b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a5a0664cc49bf0d9c089cddaf0cd8419c">setF</a>(atom_vecs.col(2));</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;          cout &lt;&lt; <span class="stringliteral">&quot;Frcs from dlpoly file &#39;&quot;</span> &lt;&lt; _fname</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;               &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(2) &lt;&lt; endl;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;      }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="keywordflow">return</span> !_fl.eof();</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      vector&lt;double&gt; fields = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">ToVector</a>&lt;<span class="keywordtype">double</span>&gt;();</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      <span class="comment">// Angs -&gt; nm</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      box.col(i) = scale * Eigen::Vector3d(fields[0], fields[1], fields[2]);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a12161f1c5d52f233bd513fbb22538506">setBox</a>(box, pbc_type);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; natoms; i++) {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// atom header line</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;             &lt;&lt; endl;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keywordflow">if</span> (_fl.eof()) {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in dlpoly file &#39;&quot;</span> +</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                                   _fname + <span class="stringliteral">&quot;&#39;, when reading atom/bead # &quot;</span> +</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                                   boost::lexical_cast&lt;string&gt;(i + 1));</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        vector&lt;string&gt; fields = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">ToVector</a>();</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <span class="keywordtype">id</span> = boost::lexical_cast&lt;Index&gt;(fields[1]);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">if</span> (i + 1 != <span class="keywordtype">id</span>) {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;              <span class="stringliteral">&quot;Error: unexpected atom/bead index in dlpoly file &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;              <span class="stringliteral">&quot;&#39; : expected &quot;</span> + boost::lexical_cast&lt;string&gt;(i + 1) +</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;              <span class="stringliteral">&quot; but got &quot;</span> + boost::lexical_cast&lt;string&gt;(<span class="keywordtype">id</span>));</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;      }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *b = conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a06e921316249844c4da02613d40ae1bd">getBead</a>(i);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      Eigen::Matrix3d atom_vecs = Eigen::Matrix3d::Zero();</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; std::min(navecs, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(2)) + 1; j++) {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// read atom positions</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;             &lt;&lt; endl;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">if</span> (_fl.eof()) {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;              <span class="stringliteral">&quot;Error: unexpected EOF in dlpoly file &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;              <span class="stringliteral">&quot;&#39;, when reading atom/bead vector # &quot;</span> +</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;              boost::lexical_cast&lt;string&gt;(j) + <span class="stringliteral">&quot; of atom &quot;</span> +</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;              boost::lexical_cast&lt;string&gt;(i + 1));</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok(line, <span class="stringliteral">&quot; \t&quot;</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        vector&lt;double&gt; fields = tok.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">ToVector</a>&lt;<span class="keywordtype">double</span>&gt;();</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="comment">// Angs -&gt; nm</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        atom_vecs.col(j) =</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            scale * Eigen::Vector3d(fields[0], fields[1], fields[2]);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;      }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      b-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a853d164d266df510eacd660d7d6d565f">setPos</a>(atom_vecs.col(0));</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Crds from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(0)</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;           &lt;&lt; endl;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;      <span class="keywordflow">if</span> (navecs &gt; 0) {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a7deb70ed69ec6342e92d8dc55ff5629d">setVel</a>(atom_vecs.col(1));</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Vels from dlpoly file &#39;&quot;</span> &lt;&lt; _fname</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;             &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(1) &lt;&lt; endl;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">if</span> (navecs &gt; 1) {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;          b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a5a0664cc49bf0d9c089cddaf0cd8419c">setF</a>(atom_vecs.col(2));</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;          cout &lt;&lt; <span class="stringliteral">&quot;Frcs from dlpoly file &#39;&quot;</span> &lt;&lt; _fname</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;               &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(2) &lt;&lt; endl;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;      }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  }</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  <span class="keywordflow">return</span> !_fl.eof();</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;}</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aboundarycondition_8h_html"><div class="ttname"><a href="boundarycondition_8h.html">boundarycondition.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1BaseBead_html_a853d164d266df510eacd660d7d6d565f"><div class="ttname"><a href="classvotca_1_1csg_1_1BaseBead.html#a853d164d266df510eacd660d7d6d565f">votca::csg::BaseBead::setPos</a></div><div class="ttdeci">virtual void setPos(const Eigen::Vector3d &amp;bead_position)</div><div class="ttdef"><b>Definition:</b> <a href="basebead_8h_source.html#l00161">basebead.h:161</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html">votca::csg::Bead</a></div><div class="ttdoc">information about a bead</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00050">bead.h:50</a></div></div>
@@ -495,7 +493,6 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1csg_1_1Topology_html_ad34d09ad6ffcbd875458696418fcc7b5"><div class="ttname"><a href="classvotca_1_1csg_1_1Topology.html#ad34d09ad6ffcbd875458696418fcc7b5">votca::csg::Topology::setStep</a></div><div class="ttdeci">void setStep(Index s)</div><div class="ttdef"><b>Definition:</b> <a href="csg_2include_2votca_2csg_2topology_8h_source.html#l00344">topology.h:344</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html">votca::tools::Tokenizer</a></div><div class="ttdoc">break string into words</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00069">tokenizer.h:69</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html_a344236c051d493ac32ddf310fbad24fe"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html#a344236c051d493ac32ddf310fbad24fe">votca::tools::Tokenizer::ToVector</a></div><div class="ttdeci">void ToVector(std::vector&lt; std::string &gt; &amp;v)</div><div class="ttdoc">store all words in a vector of strings.</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00107">tokenizer.h:107</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html_afa6d5750bf61472ecc55ffac4f710c27"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html#afa6d5750bf61472ecc55ffac4f710c27">votca::tools::Tokenizer::ConvertToVector</a></div><div class="ttdeci">void ConvertToVector(std::vector&lt; T &gt; &amp;v)</div><div class="ttdoc">store all words in a vector with type conversion.</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00134">tokenizer.h:134</a></div></div>
 <div class="ttc" id="aconstants_8h_html"><div class="ttname"><a href="constants_8h.html">constants.h</a></div></div>
 <div class="ttc" id="acsg_2include_2votca_2csg_2topology_8h_html"><div class="ttname"><a href="csg_2include_2votca_2csg_2topology_8h.html">topology.h</a></div></div>
 <div class="ttc" id="adlpolytrajectoryreader_8h_html"><div class="ttname"><a href="dlpolytrajectoryreader_8h.html">dlpolytrajectoryreader.h</a></div></div>
