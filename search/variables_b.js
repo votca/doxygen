@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['kb_9645',['kB',['../namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf',1,'votca::tools::conv']]],
-  ['kcal2kj_9646',['kcal2kj',['../namespacevotca_1_1tools_1_1conv.html#a39ff797da0c58c07ce20d2c40bf82dd5',1,'votca::tools::conv']]],
-  ['kj2kcal_9647',['kj2kcal',['../namespacevotca_1_1tools_1_1conv.html#a7ba9187b430e04d92f2ac37000677e6a',1,'votca::tools::conv']]]
+  ['kb_9644',['kB',['../namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf',1,'votca::tools::conv']]],
+  ['kcal2kj_9645',['kcal2kj',['../namespacevotca_1_1tools_1_1conv.html#a39ff797da0c58c07ce20d2c40bf82dd5',1,'votca::tools::conv']]],
+  ['kj2kcal_9646',['kj2kcal',['../namespacevotca_1_1tools_1_1conv.html#a7ba9187b430e04d92f2ac37000677e6a',1,'votca::tools::conv']]]
 ];
