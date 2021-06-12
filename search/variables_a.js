@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['jab_9635',['JAB',['../classvotca_1_1xtp_1_1DFTcoupling.html#aedc4453216484f8360f0096e1d072890',1,'votca::xtp::DFTcoupling']]],
-  ['jab_5fsinglet_9636',['JAB_singlet',['../classvotca_1_1xtp_1_1BSECoupling.html#aae070c4cf8699ef7c3011ccb514aedd3',1,'votca::xtp::BSECoupling']]],
-  ['jab_5ftriplet_9637',['JAB_triplet',['../classvotca_1_1xtp_1_1BSECoupling.html#a8375b9e3d5d103b7ccdcdaec0e62a4e7',1,'votca::xtp::BSECoupling']]],
-  ['jeff2e_9638',['jeff2e',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#a3ce754f998ed67f8aaca80e4c1ceff99',1,'votca::xtp::QMPair::data']]],
-  ['jeff2h_9639',['jeff2h',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#a36ff07cba5332d8388897756242203c0',1,'votca::xtp::QMPair::data']]],
-  ['jeff2s_9640',['jeff2s',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#abff5bcc04b25d0a69a22a21df0237083',1,'votca::xtp::QMPair::data']]],
-  ['jeff2t_9641',['jeff2t',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#ac34a57f126614e18509bbd24a823a94b',1,'votca::xtp::QMPair::data']]],
-  ['junctions_5f_9642',['junctions_',['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_()'],['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_()']]],
-  ['junctionsuptodate_5f_9643',['junctionsUpToDate_',['../classvotca_1_1csg_1_1BeadMotif.html#a78c4cc3f943a69f98ad714c71c16421f',1,'votca::csg::BeadMotif']]]
+  ['k_5f_9181',['k_',['../classvotca_1_1xtp_1_1AOPlanewave.html#ac00ce101d85af7c1a304ef2da369ceea',1,'votca::xtp::AOPlanewave']]],
+  ['kb_9182',['kB',['../namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf',1,'votca::tools::conv']]],
+  ['kcal2kj_9183',['kcal2kj',['../namespacevotca_1_1tools_1_1conv.html#a39ff797da0c58c07ce20d2c40bf82dd5',1,'votca::tools::conv']]],
+  ['kdielmxinv_5fzero_5f_9184',['kDielMxInv_zero_',['../classvotca_1_1xtp_1_1Sigma__CDA.html#afa07ee61a15647ffd36b0c69ff82aca1',1,'votca::xtp::Sigma_CDA']]],
+  ['keyword_5foptions_5f_9185',['keyword_options_',['../classvotca_1_1xtp_1_1Settings.html#a80bee35857fe9d2134d355c3339c70d4',1,'votca::xtp::Settings']]],
+  ['kj2kcal_9186',['kj2kcal',['../namespacevotca_1_1tools_1_1conv.html#a7ba9187b430e04d92f2ac37000677e6a',1,'votca::tools::conv']]]
 ];

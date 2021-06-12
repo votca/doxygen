@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['y_9919',['y',['../structvotca_1_1xtp_1_1AOGaussianPrimitive_1_1data.html#a8097d96cc93d7166bbf0c254a79baad8',1,'votca::xtp::AOGaussianPrimitive::data::y()'],['../structvotca_1_1xtp_1_1Atom_1_1data.html#abcf8272c771aa890f1028330a5402f3a',1,'votca::xtp::Atom::data::y()'],['../structvotca_1_1xtp_1_1QMAtom_1_1data.html#a9e4c86a181cb9da857ace80b77352eb3',1,'votca::xtp::QMAtom::data::y()'],['../structvotca_1_1xtp_1_1PotentialIO_1_1data.html#a8fbb72d67597970454d69581d7d0b13e',1,'votca::xtp::PotentialIO::data::y()']]],
-  ['yellow_9920',['Yellow',['../namespacevotca_1_1tools_1_1Colors.html#acd00b281daca3c97d0cead7bbf6a4a75',1,'votca::tools::Colors']]]
+  ['z_9897',['z',['../structvotca_1_1xtp_1_1AOGaussianPrimitive_1_1data.html#a38a29fcb58d05c1d099cfb82de428877',1,'votca::xtp::AOGaussianPrimitive::data::z()'],['../structvotca_1_1xtp_1_1Atom_1_1data.html#a019f8678478d2fe1678cf856e7e9821e',1,'votca::xtp::Atom::data::z()'],['../structvotca_1_1xtp_1_1QMAtom_1_1data.html#a1c3ebe88c5a09c9138a813547b46f6c6',1,'votca::xtp::QMAtom::data::z()'],['../structvotca_1_1xtp_1_1PotentialIO_1_1data.html#abc417ef7d7518b314bf3589d62ce736d',1,'votca::xtp::PotentialIO::data::z()']]]
 ];

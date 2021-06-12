@@ -104,8 +104,8 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">auto</span> result = SetupAmplitudeContainer();</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#pragma omp parallel for schedule(guided)</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _grid.getBoxesSize(); ++i) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GridBox.html">GridBox</a>&amp; box = _grid[i];</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; grid_.getBoxesSize(); ++i) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1GridBox.html">GridBox</a>&amp; box = grid_[i];</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> (!box.<a class="code" href="classvotca_1_1xtp_1_1GridBox.html#acaa7320024ae09e3b9081bd6d26797a5">Matrixsize</a>()) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
@@ -125,9 +125,9 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;std::vector&lt;std::vector&lt;double&gt; &gt;</div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1AmplitudeIntegration.html#a73d3e4a1adbb11334c18bd0541cada84">   54</a></span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1AmplitudeIntegration.html#a73d3e4a1adbb11334c18bd0541cada84">AmplitudeIntegration&lt;Grid&gt;::SetupAmplitudeContainer</a>() {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  std::vector&lt;std::vector&lt;double&gt; &gt; amplitudes =</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      std::vector&lt;std::vector&lt;double&gt; &gt;(_grid.getBoxesSize());</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _grid.getBoxesSize(); i++) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    amplitudes[i] = std::vector&lt;double&gt;(_grid[i].size(), 0.0);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      std::vector&lt;std::vector&lt;double&gt; &gt;(grid_.getBoxesSize());</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; grid_.getBoxesSize(); i++) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    amplitudes[i] = std::vector&lt;double&gt;(grid_[i].size(), 0.0);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">return</span> amplitudes;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>

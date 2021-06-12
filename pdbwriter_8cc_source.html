@@ -104,31 +104,31 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBWriter.html#ac20c5660ba39dec21381661dab7602d0">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#ac20c5660ba39dec21381661dab7602d0">PDBWriter::Open</a>(<span class="keywordtype">string</span> file, <span class="keywordtype">bool</span> bAppend) {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">if</span> (bAppend) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    _out.open(file, std::ios_base::app);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    out_.open(file, std::ios_base::app);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    _out.open(file);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    out_.open(file);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBWriter.html#a5da59bd7f89d06310ff7c7adf92cdba6">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a5da59bd7f89d06310ff7c7adf92cdba6">PDBWriter::WriteHeader</a>(std::string header) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">if</span> (header.size() &lt; 10 || header.substr(0, 10) != <span class="stringliteral">&quot;HEADER    &quot;</span>) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    _out &lt;&lt; <span class="stringliteral">&quot;HEADER    &quot;</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    out_ &lt;&lt; <span class="stringliteral">&quot;HEADER    &quot;</span>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  _out &lt;&lt; header;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  out_ &lt;&lt; header;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span> (header.back() != <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    _out &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    out_ &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBWriter.html#a8babd5bb2d12a9f4f6b8072d7f6d99c3">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a8babd5bb2d12a9f4f6b8072d7f6d99c3">PDBWriter::Close</a>() { _out.close(); }</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBWriter.html#a8babd5bb2d12a9f4f6b8072d7f6d99c3">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a8babd5bb2d12a9f4f6b8072d7f6d99c3">PDBWriter::Close</a>() { out_.close(); }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBWriter.html#a9a167b507c5e6f669b26682b2c0e156e">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a9a167b507c5e6f669b26682b2c0e156e">PDBWriter::Write</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *conf) {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  _out &lt;&lt; boost::format(<span class="stringliteral">&quot;MODEL     %1$4d\n&quot;</span>) % (conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a88263b2615bae8b697c5ec449951daa2">getStep</a>() + 1)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  out_ &lt;&lt; boost::format(<span class="stringliteral">&quot;MODEL     %1$4d\n&quot;</span>) % (conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a88263b2615bae8b697c5ec449951daa2">getStep</a>() + 1)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;       &lt;&lt; std::flush;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  ;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  WriteContainer&lt;Topology&gt;(*conf);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  _out &lt;&lt; <span class="stringliteral">&quot;ENDMDL&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  out_ &lt;&lt; <span class="stringliteral">&quot;ENDMDL&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBWriter.html#a885c335d9cdbc43298bab4b310853300">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a885c335d9cdbc43298bab4b310853300">PDBWriter::WriteBox</a>(<span class="keyword">const</span> Eigen::Matrix3d &amp;box) {</div>
@@ -142,7 +142,7 @@ $(function() {
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      180 / <a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">tools::conv::Pi</a> * std::acos(box.col(0).dot(box.col(2)) / (a * c));</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">double</span> gamma =</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      180 / <a class="code" href="namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648">tools::conv::Pi</a> * std::acos(box.col(0).dot(box.col(1)) / (a * b));</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  _out &lt;&lt; boxfrmt % a % b % c % alpha % beta % gamma;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  out_ &lt;&lt; boxfrmt % a % b % c % alpha % beta % gamma;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBWriter.html#a5b810ce83e87cd1d1e8cb8892465979c">   76</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBWriter.html#a24327564d5cb56290332db7aa10acdc8">PDBWriter::writeSymmetry</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> &amp;bead) {</div>
@@ -152,7 +152,7 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="stringliteral">&quot;HETATM%1$5d %2$4s %3$3s %4$1s%5$4d    %6$8.3f%7$8.3f%8$8.3f\n&quot;</span>);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    Eigen::Vector3d ru = 0.1 * bead.<a class="code" href="classvotca_1_1csg_1_1Bead.html#a1d940d04506543dbe212d409be6dabd7">getU</a>() + r;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    _out &lt;&lt; beadfrmt % (bead.<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>() + 1) % 100000  <span class="comment">// atom serial number</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    out_ &lt;&lt; beadfrmt % (bead.<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>() + 1) % 100000  <span class="comment">// atom serial number</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                % bead.<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>()                    <span class="comment">// atom name</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                % <span class="stringliteral">&quot;REU&quot;</span>                             <span class="comment">// residue name</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                % <span class="stringliteral">&quot; &quot;</span>                               <span class="comment">// chain identifier 1 char</span></div>
@@ -161,7 +161,7 @@ $(function() {
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (bead.<a class="code" href="classvotca_1_1csg_1_1Bead.html#ad364a631ae58c7d845fbb167cfadd361">getSymmetry</a>() &gt; 2) {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      Eigen::Vector3d rv = 0.1 * bead.<a class="code" href="classvotca_1_1csg_1_1Bead.html#a93b273279c3c22dd468e5d01de6209b6">getV</a>() + r;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      _out &lt;&lt; beadfrmt % (bead.<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>() + 1) % 100000  <span class="comment">// atom serial number</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      out_ &lt;&lt; beadfrmt % (bead.<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#aee2de986abeb95df09dc8ce4df86f72c">getId</a>() + 1) % 100000  <span class="comment">// atom serial number</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                  % bead.<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>()                    <span class="comment">// atom name</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                  % <span class="stringliteral">&quot;REV&quot;</span>                             <span class="comment">// residue name</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                  % <span class="stringliteral">&quot; &quot;</span>                               <span class="comment">// chain identifier 1 char</span></div>

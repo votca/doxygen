@@ -119,7 +119,7 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">if</span> (options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.use_states&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;<span class="keywordtype">bool</span>&gt;()) {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::string parse_string = options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;.states&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    _statemap = FillParseMaps(parse_string);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    statemap_ = FillParseMaps(parse_string);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
@@ -190,12 +190,12 @@ $(function() {
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                            &lt;&lt; <span class="stringliteral">&quot; [&quot;</span> &lt;&lt; ID_A &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; ID_B &lt;&lt; <span class="stringliteral">&quot;]&quot;</span> &lt;&lt; std::flush;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1SegmentMapper.html">StaticMapper</a> map(pLog);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  map.<a class="code" href="classvotca_1_1xtp_1_1SegmentMapper.html#a2617581b1ff4ebd670151e48b487cf8b">LoadMappingFile</a>(_mapfile);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  map.<a class="code" href="classvotca_1_1xtp_1_1SegmentMapper.html#a2617581b1ff4ebd670151e48b487cf8b">LoadMappingFile</a>(mapfile_);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ClassicalSegment.html">StaticSegment</a> seg1 = map.<a class="code" href="classvotca_1_1xtp_1_1SegmentMapper.html#adeebbd93b6b1cace96b00d0f0852a2c6">map</a>(*(pair-&gt;<a class="code" href="classvotca_1_1xtp_1_1QMPair.html#a7c0420aead86d535180d487e0c9efb00">Seg1</a>()), mps_fileA);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ClassicalSegment.html">StaticSegment</a> seg2 = map.<a class="code" href="classvotca_1_1xtp_1_1SegmentMapper.html#adeebbd93b6b1cace96b00d0f0852a2c6">map</a>(pair-&gt;<a class="code" href="classvotca_1_1xtp_1_1QMPair.html#a7279691b8b2c63c391755551fce38642">Seg2PbCopy</a>(), mps_fileB);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1eeInteractor.html">eeInteractor</a> actor;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">double</span> JAB = actor.<a class="code" href="classvotca_1_1xtp_1_1eeInteractor.html#af3f37c11b34f39721ba81433914415b2">CalcStaticEnergy</a>(seg1, seg2);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  _cutoff = 0;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  cutoff_ = 0;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> job_summary;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a>&amp; job_output = job_summary.<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">add</a>(<span class="stringliteral">&quot;output&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a>&amp; pair_summary = job_output.<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">add</a>(<span class="stringliteral">&quot;pair&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
@@ -217,12 +217,12 @@ $(function() {
 <div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1IEXCITON.html#a668e29e2ac19ff749948a0381756331d">  145</a></span>&#160;<a class="code" href="classvotca_1_1xtp_1_1QMState.html">QMState</a> IEXCITON::GetElementFromMap(<span class="keyword">const</span> std::string&amp; elementname)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMState.html">QMState</a> state;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    state = _statemap.at(elementname);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    state = statemap_.at(elementname);</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  } <span class="keywordflow">catch</span> (std::out_of_range&amp;) {</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    std::string errormessage =</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="stringliteral">&quot;Map does not have segment of type: &quot;</span> + elementname;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    errormessage += <span class="stringliteral">&quot;\n segments in map are:&quot;</span>;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a> : _statemap) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a> : statemap_) {</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      errormessage += <span class="stringliteral">&quot;\n\t&quot;</span> + <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>.first;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(errormessage);</div>
@@ -232,11 +232,11 @@ $(function() {
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1IEXCITON.html#ac3ad6ca43c267bbc940089196a541728">  161</a></span>&#160;<span class="keywordtype">void</span> IEXCITON::WriteJobFile(<span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1Topology.html">Topology</a>&amp; top) {</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;\n... ... Writing job file &quot;</span> &lt;&lt; _jobfile &lt;&lt; std::flush;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;\n... ... Writing job file &quot;</span> &lt;&lt; jobfile_ &lt;&lt; std::flush;</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  std::ofstream ofs;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  ofs.open(_jobfile, std::ofstream::out);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  ofs.open(jobfile_, std::ofstream::out);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">if</span> (!ofs.is_open()) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;\nERROR: bad file handle: &quot;</span> + _jobfile);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;\nERROR: bad file handle: &quot;</span> + jobfile_);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  }</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keyword">const</span> <a class="code" href="classvotca_1_1xtp_1_1QMNBList.html">QMNBList</a>&amp; nblist = top.<a class="code" href="classvotca_1_1xtp_1_1Topology.html#a28e353e9e07f24caa0be734b5327aeb8">NBList</a>();</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> jobCount = 0;</div>
@@ -303,7 +303,7 @@ $(function() {
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  log.<a class="code" href="classvotca_1_1xtp_1_1Logger.html#a247f737e608135f6ba98b510549b5d61">setReportLevel</a>(Log::current_level);</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="comment">// load the QC results in a vector indexed by the pair ID</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  xml.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(_jobfile);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  xml.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(jobfile_);</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  std::vector&lt;Property*&gt; jobProps = xml.<a class="code" href="classvotca_1_1tools_1_1Property.html#a6703f12c3a709e7cf18c33c4161c1ada">Select</a>(<span class="stringliteral">&quot;jobs.job&quot;</span>);</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  records.resize(number_of_pairs + 1);</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>

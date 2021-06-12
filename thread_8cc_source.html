@@ -113,7 +113,7 @@ $(function() {
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Thread.html#aafa9f0e88b071925d4de88ecacbcc008">   42</a></span>&#160;<span class="keywordtype">void</span> Thread::Start() {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  pthread_attr_init(&amp;_attr);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  pthread_attr_init(&amp;attr_);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">   * according to the POSIX standard, threads are created in the joinable state</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">   * by default</span></div>
@@ -124,11 +124,11 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">   * pthread_join(thread)</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">   *</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  pthread_attr_setdetachstate(&amp;_attr, PTHREAD_CREATE_JOINABLE);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  _finished = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  pthread_attr_setdetachstate(&amp;attr_, PTHREAD_CREATE_JOINABLE);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  finished_ = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> rc =</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      pthread_create(&amp;_thread, &amp;_attr, <a class="code" href="namespacevotca_1_1tools.html#a7048aeed22cd67aa2edfd5bad119a554">runwrapper</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span> *<span class="keyword">&gt;</span>(<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      pthread_create(&amp;thread_, &amp;attr_, <a class="code" href="namespacevotca_1_1tools.html#a7048aeed22cd67aa2edfd5bad119a554">runwrapper</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span> *<span class="keyword">&gt;</span>(<span class="keyword">this</span>));</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">if</span> (rc) {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;ERROR; return code from pthread_create() is &quot;</span> +</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                             boost::lexical_cast&lt;std::string&gt;(rc));</div>
@@ -137,16 +137,16 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Thread.html#a6c14b96c30a9a3fb1f51246c6e891576">   66</a></span>&#160;<span class="keywordtype">void</span> Thread::WaitDone() {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">void</span> *status;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> rc = pthread_join(_thread, &amp;status);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> rc = pthread_join(thread_, &amp;status);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">if</span> (rc) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;ERROR; return code from pthread_join() is &quot;</span> +</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                             boost::lexical_cast&lt;std::string&gt;(rc));</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  _finished = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  pthread_attr_destroy(&amp;_attr);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  finished_ = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  pthread_attr_destroy(&amp;attr_);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Thread.html#ae655b703749854cc117e50cf847107d9">   77</a></span>&#160;<span class="keywordtype">bool</span> Thread::IsFinished()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _finished; }</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Thread.html#ae655b703749854cc117e50cf847107d9">   77</a></span>&#160;<span class="keywordtype">bool</span> Thread::IsFinished()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> finished_; }</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}  <span class="comment">// namespace tools</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Thread_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Thread.html">votca::tools::Thread</a></div><div class="ttdoc">Framework for threaded execution.</div><div class="ttdef"><b>Definition:</b> <a href="thread_8h_source.html#l00035">thread.h:35</a></div></div>

@@ -100,18 +100,18 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROWriter.html#afe4c351b8b1be6773570f4c2e39ed3d1">   30</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GROWriter.html#afe4c351b8b1be6773570f4c2e39ed3d1">GROWriter::Open</a>(<span class="keywordtype">string</span> file, <span class="keywordtype">bool</span> bAppend) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  _out = fopen(file.c_str(), bAppend ? <span class="stringliteral">&quot;at&quot;</span> : <span class="stringliteral">&quot;wt&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  out_ = fopen(file.c_str(), bAppend ? <span class="stringliteral">&quot;at&quot;</span> : <span class="stringliteral">&quot;wt&quot;</span>);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROWriter.html#adb0879166a816a160b54e9d09823f667">   34</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GROWriter.html#adb0879166a816a160b54e9d09823f667">GROWriter::Close</a>() { fclose(_out); }</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROWriter.html#adb0879166a816a160b54e9d09823f667">   34</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GROWriter.html#adb0879166a816a160b54e9d09823f667">GROWriter::Close</a>() { fclose(out_); }</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROWriter.html#ab55c2e3e51a8009f9cf5979a6765cf7b">   36</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GROWriter.html#ab55c2e3e51a8009f9cf5979a6765cf7b">GROWriter::Write</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *conf) {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">char</span> format[100];</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i, l, vpr;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> *top = conf;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  fprintf(_out, <span class="stringliteral">&quot;%s\n&quot;</span>, <span class="stringliteral">&quot;what a nice title&quot;</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  fprintf(_out, <span class="stringliteral">&quot;%5ld\n&quot;</span>, top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  fprintf(out_, <span class="stringliteral">&quot;%s\n&quot;</span>, <span class="stringliteral">&quot;what a nice title&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  fprintf(out_, <span class="stringliteral">&quot;%5ld\n&quot;</span>, top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>());</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">bool</span> v = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">HasVel</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> pr = 3;  <span class="comment">// precision of writeout, given by the spec</span></div>
@@ -134,16 +134,16 @@ $(function() {
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">string</span> resname = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a20af0aff4404533268461e270364f87e">getResidue</a>(resnr).<a class="code" href="classvotca_1_1csg_1_1Residue.html#ad4a1f4ece995428e5c3600683a84cda6">getName</a>();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">string</span> atomname = top-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a06e921316249844c4da02613d40ae1bd">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>();</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    fprintf(_out, <span class="stringliteral">&quot;%5ld%-5.5s%5.5s%5ld&quot;</span>, (resnr + 1) % 100000, resname.c_str(),</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    fprintf(out_, <span class="stringliteral">&quot;%5ld%-5.5s%5.5s%5ld&quot;</span>, (resnr + 1) % 100000, resname.c_str(),</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            atomname.c_str(), (i + 1) % 100000);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">/* next fprintf uses built format string */</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    Eigen::Vector3d r = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a06e921316249844c4da02613d40ae1bd">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>();</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span> (v) {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      Eigen::Vector3d vv = conf-&gt;<a class="code" href="classvotca_1_1csg_1_1Topology.html#a06e921316249844c4da02613d40ae1bd">getBead</a>(i)-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      fprintf(_out, format, r.x(), r.y(), r.z(), vv.x(), vv.y(), vv.z());</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      fprintf(out_, format, r.x(), r.y(), r.z(), vv.x(), vv.y(), vv.z());</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      fprintf(_out, format, r.x(), r.y(), r.z());</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      fprintf(out_, format, r.x(), r.y(), r.z());</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
@@ -163,13 +163,13 @@ $(function() {
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf&quot;</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>,</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    fprintf(_out, format, box(0, 0), box(1, 1), box(2, 2), box(1, 0), box(2, 0),</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    fprintf(out_, format, box(0, 0), box(1, 1), box(2, 2), box(1, 0), box(2, 0),</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            box(0, 1), box(2, 1), box(0, 2), box(1, 2));</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    sprintf(format, <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>, l, pr, l, pr, l, pr);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    fprintf(_out, format, box(0, 0), box(1, 1), box(2, 2));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    fprintf(out_, format, box(0, 0), box(1, 1), box(2, 2));</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  fflush(_out);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  fflush(out_);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}  <span class="comment">// namespace csg</span></div>

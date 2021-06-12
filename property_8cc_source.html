@@ -128,11 +128,11 @@ $(function() {
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">if</span> (*n == <span class="stringliteral">&quot;&quot;</span>) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    p = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    iter = _map.find(*n);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (iter == _map.end()) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    iter = map_.find(*n);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (iter == map_.end()) {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;property not found: &quot;</span> + key);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    p = &amp;_properties[iter-&gt;second.back()];</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    p = &amp;properties_[iter-&gt;second.back()];</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  ++n;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">try</span> {</div>
@@ -158,19 +158,19 @@ $(function() {
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">   88</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> &amp;<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">Property::add</a>(<span class="keyword">const</span> std::string &amp;key, <span class="keyword">const</span> std::string &amp;value) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  std::string path = _path;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  std::string path = path_;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">if</span> (path != <span class="stringliteral">&quot;&quot;</span>) {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    path = path + <span class="stringliteral">&quot;.&quot;</span>;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  _properties.push_back(<a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a>(key, value, path + _name));</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  _map[key].push_back(<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(_properties.size()) - 1);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">return</span> _properties.back();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  properties_.push_back(<a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a>(key, value, path + name_));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  map_[key].push_back(<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(properties_.size()) - 1);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">return</span> properties_.back();</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Property.html#a6d38a05d7977bb0522f51efb1569ad2f">   98</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1tools_1_1Property.html#a6d38a05d7977bb0522f51efb1569ad2f">Property::hasAttribute</a>(<span class="keyword">const</span> std::string &amp;attribute)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  std::map&lt;std::string, std::string&gt;::const_iterator it;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  it = _attributes.find(attribute);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span> (it == _attributes.end()) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  it = attributes_.find(attribute);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span> (it == attributes_.end()) {</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -198,15 +198,15 @@ $(function() {
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Property.html#a3a3982169415b0ffed5199aef945668d">  127</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">Property::add</a>(<span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> &amp;other) {</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  _properties.push_back(other);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  _map[other.<a class="code" href="classvotca_1_1tools_1_1Property.html#a120776844057bda9f1b5ad503c47e103">name</a>()].push_back((_properties.size()) - 1);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  properties_.push_back(other);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  map_[other.<a class="code" href="classvotca_1_1tools_1_1Property.html#a120776844057bda9f1b5ad503c47e103">name</a>()].push_back((properties_.size()) - 1);</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  std::string path = _path;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  std::string path = path_;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordflow">if</span> (path != <span class="stringliteral">&quot;&quot;</span>) {</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    path += <span class="stringliteral">&quot;.&quot;</span>;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  }</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  path += _name;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#aa20cfb6ee689b98a59f9fa0202c4a487">FixPath</a>(_properties.back(), path);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  path += name_;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#aa20cfb6ee689b98a59f9fa0202c4a487">FixPath</a>(properties_.back(), path);</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
 <div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Property.html#aa06c7ee012032a79ea08703febd65027">  140</a></span>&#160;<a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> &amp;<a class="code" href="classvotca_1_1tools_1_1Property.html#aa06c7ee012032a79ea08703febd65027">Property::getOradd</a>(<span class="keyword">const</span> std::string &amp;key) {</div>
@@ -227,7 +227,7 @@ $(function() {
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;n : tok) {</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    std::vector&lt;const Property *&gt; childs;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> Property *p : selection) {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> Property &amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a> : p-&gt;_properties) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> Property &amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a> : p-&gt;properties_) {</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(n, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>.name())) {</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;          childs.push_back(&amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
@@ -248,7 +248,7 @@ $(function() {
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;n : tok) {</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    std::vector&lt;Property *&gt; childs;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">for</span> (Property *p : selection) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <span class="keywordflow">for</span> (Property &amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a> : p-&gt;_properties) {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <span class="keywordflow">for</span> (Property &amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a> : p-&gt;properties_) {</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">wildcmp</a>(n, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>.name())) {</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;          childs.push_back(&amp;<a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903">s</a>);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
@@ -261,15 +261,15 @@ $(function() {
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
 <div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Property.html#a7a2012e70fd646a9ab7be038a19cf555">  190</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Property.html#a7a2012e70fd646a9ab7be038a19cf555">Property::deleteChild</a>(<a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> *child) {</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="comment">// only works for std::vector</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  ptrdiff_t index_of_child = std::distance(_properties.data(), child);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  assert(&amp;_properties[index_of_child] == child &amp;&amp;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  ptrdiff_t index_of_child = std::distance(properties_.data(), child);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  assert(&amp;properties_[index_of_child] == child &amp;&amp;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;         <span class="stringliteral">&quot;You changed the containertype for property, fix deleteChild&quot;</span>);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> &amp;prop = _properties[index_of_child];</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  std::vector&lt;Index&gt; &amp;indices = _map.at(prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a120776844057bda9f1b5ad503c47e103">name</a>());</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> &amp;prop = properties_[index_of_child];</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  std::vector&lt;Index&gt; &amp;indices = map_.at(prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a120776844057bda9f1b5ad503c47e103">name</a>());</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="comment">// erase index from map, if only one element in indeces remove the tag</span></div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">if</span> (indices.size() == 1) {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    _map.erase(prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a120776844057bda9f1b5ad503c47e103">name</a>());</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    map_.erase(prop.<a class="code" href="classvotca_1_1tools_1_1Property.html#a120776844057bda9f1b5ad503c47e103">name</a>());</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    indices.erase(std::remove(indices.begin(), indices.end(), index_of_child),</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                  indices.end());</div>
@@ -278,14 +278,14 @@ $(function() {
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="comment">// if child is not the last element we have to do two things, a) switch the</span></div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="comment">// child with the last element and b) update the index of the former last</span></div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <span class="comment">// element</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keywordflow">if</span> (child != &amp;_properties.back()) {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> old_index = _properties.<a class="code" href="classvotca_1_1tools_1_1Property.html#a7d3507b20017fc660fe468e7b69d258e">size</a>() - 1;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    std::vector&lt;Index&gt; &amp;indices_last = _map.at(_properties.back().name());</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keywordflow">if</span> (child != &amp;properties_.back()) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> old_index = properties_.<a class="code" href="classvotca_1_1tools_1_1Property.html#a7d3507b20017fc660fe468e7b69d258e">size</a>() - 1;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    std::vector&lt;Index&gt; &amp;indices_last = map_.at(properties_.back().name());</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keyword">auto</span> place = std::find(indices_last.begin(), indices_last.end(), old_index);</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    *place = index_of_child;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    std::swap(_properties[index_of_child], _properties.back());</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    std::swap(properties_[index_of_child], properties_.back());</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  _properties.pop_back();</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  properties_.pop_back();</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>

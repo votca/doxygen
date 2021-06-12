@@ -104,21 +104,21 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;BOOST_AUTO_TEST_SUITE(adiis_test)</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="test__adiis_8cc.html#a055e98424265391f10b2ac5d4c981fce">   34</a></span>&#160;<a class="code" href="test__adiis_8cc.html#a055e98424265391f10b2ac5d4c981fce">BOOST_AUTO_TEST_CASE</a>(coeffs_test) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  std::vector&lt;Eigen::MatrixXd&gt; _dmatHist;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  std::vector&lt;Eigen::MatrixXd&gt; _mathist;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  std::vector&lt;Eigen::MatrixXd&gt; dmatHist_;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  std::vector&lt;Eigen::MatrixXd&gt; mathist_;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1ADIIS.html">ADIIS</a> adiis;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> i = 0; i &lt; 3; i++) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    _dmatHist.push_back(<a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    dmatHist_.push_back(<a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/adiis/dmatHist_&quot;</span> +</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        std::to_string(i) + <span class="stringliteral">&quot;.mm&quot;</span>));</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    _mathist.push_back(<a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    mathist_.push_back(<a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/adiis/mathist_&quot;</span> +</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        std::to_string(i) + <span class="stringliteral">&quot;.mm&quot;</span>));</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  Eigen::VectorXd Coeffs = adiis.<a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#ab5c8d4d7aec9f641df07d20b769b3614">CalcCoeff</a>(_dmatHist, _mathist);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  Eigen::VectorXd Coeffs = adiis.<a class="code" href="classvotca_1_1xtp_1_1ADIIS.html#ab5c8d4d7aec9f641df07d20b769b3614">CalcCoeff</a>(dmatHist_, mathist_);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  Eigen::VectorXd Ref = Eigen::VectorXd::Zero(3);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  Ref &lt;&lt; 4.45639501e-17, 1.76102089e-18, 1;</div>

@@ -127,12 +127,12 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (boost::filesystem::extension(filepath) == <span class="stringliteral">&quot;.dlpc&quot;</span>) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    _isConfig = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    isConfig_ = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    inp_name = <span class="stringliteral">&quot;CONFIG&quot;</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (boost::filesystem::extension(filepath) == <span class="stringliteral">&quot;.dlph&quot;</span>) {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    _isConfig = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    isConfig_ = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on opening dlpoly file &#39;&quot;</span> + file +</div>
@@ -141,28 +141,28 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">if</span> (boost::filesystem::basename(filepath).size() == 0) {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (filepath.parent_path().string().size() == 0) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      _fname = inp_name;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      fname_ = inp_name;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      _fname = filepath.parent_path().string() + <span class="stringliteral">&quot;/&quot;</span> + inp_name;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      fname_ = filepath.parent_path().string() + <span class="stringliteral">&quot;/&quot;</span> + inp_name;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    _fname = file;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    fname_ = file;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  _fl.open(_fname);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (!_fl.is_open()) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on opening dlpoly file &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  fl_.open(fname_);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (!fl_.is_open()) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on opening dlpoly file &#39;&quot;</span> + fname_ +</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                 <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html#a638c451045f79bbd1e95ceb7b9f6b0c7">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html#a638c451045f79bbd1e95ceb7b9f6b0c7">DLPOLYTrajectoryReader::Close</a>() { _fl.close(); }</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html#a638c451045f79bbd1e95ceb7b9f6b0c7">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html#a638c451045f79bbd1e95ceb7b9f6b0c7">DLPOLYTrajectoryReader::Close</a>() { fl_.close(); }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html#aac5d05554d3474a87d0833d540ff6d22">   90</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html#aac5d05554d3474a87d0833d540ff6d22">DLPOLYTrajectoryReader::FirstFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> &amp;conf) {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  _first_frame = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  first_frame_ = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">bool</span> res = NextFrame(conf);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  _first_frame = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  first_frame_ = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">return</span> res;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
@@ -181,19 +181,19 @@ $(function() {
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11c">BoundaryCondition::eBoxtype</a> pbc_type = <a class="code" href="classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11caef5c17e32f562f73749a1a78e414a4e1">BoundaryCondition::typeAuto</a>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">if</span> (_first_frame) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">if</span> (first_frame_) {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// title</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, line);  <span class="comment">// title</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;         &lt;&lt; <span class="stringliteral">&quot;&#39; - header&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// 2nd header line</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, line);  <span class="comment">// 2nd header line</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;         &lt;&lt; <span class="stringliteral">&quot;&#39; - directives line&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
@@ -202,7 +202,7 @@ $(function() {
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (fields.size() &lt; 3) {</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: too few directive switches (&lt;3) in &#39;&quot;</span> +</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                               _fname + <span class="stringliteral">&quot;&#39; header (check its 2-nd line)&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                               fname_ + <span class="stringliteral">&quot;&#39; header (check its 2-nd line)&quot;</span>);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    mavecs = fields[0];</div>
@@ -216,7 +216,7 @@ $(function() {
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> (hasVs != conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">HasVel</a>() || hasFs != conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#acbb59a7d58342850089adc219c5b9c6e">HasForce</a>()) {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;WARNING: N of atom vectors (keytrj) in &#39;&quot;</span> &lt;&lt; _fname</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;WARNING: N of atom vectors (keytrj) in &#39;&quot;</span> &lt;&lt; fname_</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&#39; header differs from that read with topology&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -225,13 +225,13 @@ $(function() {
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a7ca941ebfe0da2a41aee583f46df644b">SetHasForce</a>(hasFs);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : keytrj - &quot;</span> &lt;&lt; mavecs</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : keytrj - &quot;</span> &lt;&lt; mavecs</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;         &lt;&lt; <span class="stringliteral">&quot;, hasV - &quot;</span> &lt;&lt; conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a2663c5cd9c0fa90753c5099414188d9b">HasVel</a>() &lt;&lt; <span class="stringliteral">&quot;, hasF - &quot;</span> &lt;&lt; conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#acbb59a7d58342850089adc219c5b9c6e">HasForce</a>()</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;         &lt;&lt; endl;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">if</span> (matoms != conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>()) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Number of atoms/beads in &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Number of atoms/beads in &#39;&quot;</span> + fname_ +</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                               <span class="stringliteral">&quot;&#39; header differs from that read with topology&quot;</span>);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
@@ -244,36 +244,36 @@ $(function() {
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : pbc_type (imcon) - &#39;&quot;</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : pbc_type (imcon) - &#39;&quot;</span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;         &lt;&lt; pbc_type &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">if</span> (pbc_type != conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a0c81bce52083e7412bf2d376aed852ee">getBoxType</a>())</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;WARNING: PBC type in dlpoly file &#39;&quot;</span> &lt;&lt; _fname</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;WARNING: PBC type in dlpoly file &#39;&quot;</span> &lt;&lt; fname_</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&#39; header differs from that read with topology&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">// throw std::runtime_error(&quot;Error: Boundary conditions in &#39;&quot;+_fname+&quot;&#39;</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">// throw std::runtime_error(&quot;Error: Boundary conditions in &#39;&quot;+ fname_+&quot;&#39;</span></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">// header differs from that read with topology&quot;);</span></div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (_isConfig) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (isConfig_) {</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  }</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="comment">// read normal frame</span></div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="keywordflow">if</span> (!_isConfig) {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// timestep line - only present in HISTORY, and</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="keywordflow">if</span> (!isConfig_) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, line);  <span class="comment">// timestep line - only present in HISTORY, and</span></div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                <span class="comment">// not in CONFIG</span></div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;         &lt;&lt; endl;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  }</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">if</span> (!_fl.eof()) {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">if</span> (!fl_.eof()) {</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> nstep;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> natoms;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> navecs;</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">if</span> (_isConfig) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">if</span> (isConfig_) {</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      <span class="comment">// use the above read specs from the header, and skip the data missing in</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;      <span class="comment">// CONFIG</span></div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
@@ -309,29 +309,29 @@ $(function() {
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                            <span class="comment">// column in &#39;timestep&#39; line</span></div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : natoms = &quot;</span> &lt;&lt; natoms</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : natoms = &quot;</span> &lt;&lt; natoms</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;, levcfg = &quot;</span> &lt;&lt; fields[3];</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;, dt = &quot;</span> &lt;&lt; fields[5] &lt;&lt; <span class="stringliteral">&quot;, time = &quot;</span> &lt;&lt; stime &lt;&lt; endl;</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      <span class="keywordflow">if</span> (natoms != conf.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>()) {</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="stringliteral">&quot;Error: N of atoms/beads in &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="stringliteral">&quot;Error: N of atoms/beads in &#39;&quot;</span> + fname_ +</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="stringliteral">&quot;&#39; header differs from that found in topology&quot;</span>);</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      }</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      <span class="keywordflow">if</span> (natoms != matoms) {</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="stringliteral">&quot;Error: N of atoms/beads in &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="stringliteral">&quot;Error: N of atoms/beads in &#39;&quot;</span> + fname_ +</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="stringliteral">&quot;&#39; header differs from that found in the frame&quot;</span>);</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      }</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      <span class="keywordflow">if</span> (navecs != mavecs) {</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="stringliteral">&quot;Error: N of atom vectors (keytrj) in &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="stringliteral">&quot;Error: N of atom vectors (keytrj) in &#39;&quot;</span> + fname_ +</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="stringliteral">&quot;&#39; header differs from that found in the frame&quot;</span>);</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      }</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <span class="keywordflow">if</span> (npbct != mpbct) {</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="stringliteral">&quot;Error: boundary conditions (imcon) in &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="stringliteral">&quot;Error: boundary conditions (imcon) in &#39;&quot;</span> + fname_ +</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="stringliteral">&quot;&#39; header differs from that found in the frame&quot;</span>);</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      }</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
@@ -364,16 +364,16 @@ $(function() {
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    Eigen::Matrix3d box = Eigen::Matrix3d::Zero();</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; 3; i++) {  <span class="comment">// read 3 box/cell lines</span></div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;      <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;      <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, line);</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;&#39; - box vector # &quot;</span> &lt;&lt; i + 1 &lt;&lt; endl;</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      <span class="keywordflow">if</span> (_fl.eof()) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      <span class="keywordflow">if</span> (fl_.eof()) {</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in dlpoly file &#39;&quot;</span> +</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                 _fname + <span class="stringliteral">&quot;&#39;, when reading box vector&quot;</span> +</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                 fname_ + <span class="stringliteral">&quot;&#39;, when reading box vector&quot;</span> +</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                                 boost::lexical_cast&lt;string&gt;(i));</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      }</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
@@ -388,16 +388,16 @@ $(function() {
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; natoms; i++) {</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// atom header line</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, line);  <span class="comment">// atom header line</span></div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;             &lt;&lt; endl;</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keywordflow">if</span> (_fl.eof()) {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keywordflow">if</span> (fl_.eof()) {</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: unexpected EOF in dlpoly file &#39;&quot;</span> +</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                                   _fname + <span class="stringliteral">&quot;&#39;, when reading atom/bead # &quot;</span> +</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                                   fname_ + <span class="stringliteral">&quot;&#39;, when reading atom/bead # &quot;</span> +</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                                   boost::lexical_cast&lt;string&gt;(i + 1));</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        }</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
@@ -406,7 +406,7 @@ $(function() {
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <span class="keywordtype">id</span> = boost::lexical_cast&lt;Index&gt;(fields[1]);</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">if</span> (i + 1 != <span class="keywordtype">id</span>) {</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;              <span class="stringliteral">&quot;Error: unexpected atom/bead index in dlpoly file &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;              <span class="stringliteral">&quot;Error: unexpected atom/bead index in dlpoly file &#39;&quot;</span> + fname_ +</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;              <span class="stringliteral">&quot;&#39; : expected &quot;</span> + boost::lexical_cast&lt;string&gt;(i + 1) +</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;              <span class="stringliteral">&quot; but got &quot;</span> + boost::lexical_cast&lt;string&gt;(<span class="keywordtype">id</span>));</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        }</div>
@@ -416,16 +416,16 @@ $(function() {
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      Eigen::Matrix3d atom_vecs = Eigen::Matrix3d::Zero();</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; std::min(navecs, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(2)) + 1; j++) {</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);  <span class="comment">// read atom positions</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, line);  <span class="comment">// read atom positions</span></div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Read from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : &#39;&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;&#39;&quot;</span></div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;             &lt;&lt; endl;</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">if</span> (_fl.eof()) {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">if</span> (fl_.eof()) {</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;          <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;              <span class="stringliteral">&quot;Error: unexpected EOF in dlpoly file &#39;&quot;</span> + _fname +</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;              <span class="stringliteral">&quot;Error: unexpected EOF in dlpoly file &#39;&quot;</span> + fname_ +</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;              <span class="stringliteral">&quot;&#39;, when reading atom/bead vector # &quot;</span> +</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;              boost::lexical_cast&lt;string&gt;(j) + <span class="stringliteral">&quot; of atom &quot;</span> +</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;              boost::lexical_cast&lt;string&gt;(i + 1));</div>
@@ -440,19 +440,19 @@ $(function() {
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      b-&gt;<a class="code" href="classvotca_1_1csg_1_1BaseBead.html#a853d164d266df510eacd660d7d6d565f">setPos</a>(atom_vecs.col(0));</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Crds from dlpoly file &#39;&quot;</span> &lt;&lt; _fname &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(0)</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      cout &lt;&lt; <span class="stringliteral">&quot;Crds from dlpoly file &#39;&quot;</span> &lt;&lt; fname_ &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(0)</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;           &lt;&lt; endl;</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;      <span class="keywordflow">if</span> (navecs &gt; 0) {</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a7deb70ed69ec6342e92d8dc55ff5629d">setVel</a>(atom_vecs.col(1));</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Vels from dlpoly file &#39;&quot;</span> &lt;&lt; _fname</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Vels from dlpoly file &#39;&quot;</span> &lt;&lt; fname_</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;             &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(1) &lt;&lt; endl;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">if</span> (navecs &gt; 1) {</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;          b-&gt;<a class="code" href="classvotca_1_1csg_1_1Bead.html#a5a0664cc49bf0d9c089cddaf0cd8419c">setF</a>(atom_vecs.col(2));</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;          cout &lt;&lt; <span class="stringliteral">&quot;Frcs from dlpoly file &#39;&quot;</span> &lt;&lt; _fname</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;          cout &lt;&lt; <span class="stringliteral">&quot;Frcs from dlpoly file &#39;&quot;</span> &lt;&lt; fname_</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;               &lt;&lt; <span class="stringliteral">&quot;&#39; : &quot;</span> &lt;&lt; atom_vecs.col(2) &lt;&lt; endl;</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        }</div>
@@ -460,7 +460,7 @@ $(function() {
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    }</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  }</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  <span class="keywordflow">return</span> !_fl.eof();</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  <span class="keywordflow">return</span> !fl_.eof();</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;}</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}  <span class="comment">// namespace csg</span></div>

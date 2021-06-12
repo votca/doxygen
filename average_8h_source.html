@@ -111,23 +111,23 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#ad5fe30d0c790d71d31a76f63f6a0aa5b">   39</a></span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="classvotca_1_1tools_1_1Average.html#ad5fe30d0c790d71d31a76f63f6a0aa5b">getN</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#a06e4353bb23bdc1140aba88570b2df9f">   42</a></span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="classvotca_1_1tools_1_1Average.html#a06e4353bb23bdc1140aba88570b2df9f">_n</a> = 0;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#a90167e23e6812add42f1ff91753dc0e1">   43</a></span>&#160;  T <a class="code" href="classvotca_1_1tools_1_1Average.html#a90167e23e6812add42f1ff91753dc0e1">_av</a> = 0;  <span class="comment">// average</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#a332f12f52551e9c7a5e3a8428824f80c">   44</a></span>&#160;  T <a class="code" href="classvotca_1_1tools_1_1Average.html#a332f12f52551e9c7a5e3a8428824f80c">_m2</a> = 0;  <span class="comment">// second moment</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#a27b272b0fc5638110ddea70b6aee8404">   42</a></span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="classvotca_1_1tools_1_1Average.html#a27b272b0fc5638110ddea70b6aee8404">n_</a> = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#ac66dbc157344acf3dd463732a92743d2">   43</a></span>&#160;  T <a class="code" href="classvotca_1_1tools_1_1Average.html#ac66dbc157344acf3dd463732a92743d2">av_</a> = 0;  <span class="comment">// average</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#af5febbfa6476c86202a444416f30ed3d">   44</a></span>&#160;  T <a class="code" href="classvotca_1_1tools_1_1Average.html#af5febbfa6476c86202a444416f30ed3d">m2_</a> = 0;  <span class="comment">// second moment</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#a87083a26b55b004153341af716ae8091">   48</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Average.html#a87083a26b55b004153341af716ae8091">Average&lt;T&gt;::Process</a>(<span class="keyword">const</span> T &amp;value) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  _av = _av * (double)_n / (<span class="keywordtype">double</span>)(_n + 1) + value / (<span class="keywordtype">double</span>)(_n + 1);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  _n++;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  _m2 += value * value;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  av_ = av_ * (double)n_ / (<span class="keywordtype">double</span>)(n_ + 1) + value / (<span class="keywordtype">double</span>)(n_ + 1);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  n_++;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  m2_ += value * value;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#a7145e550898a3e9bd12409d41fa0fbda">   55</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classvotca_1_1tools_1_1Average.html#a7145e550898a3e9bd12409d41fa0fbda">Average&lt;T&gt;::Clear</a>() {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  _av = 0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  _n = 0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  _m2 = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  av_ = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  n_ = 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  m2_ = 0;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
@@ -141,31 +141,31 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#ad6567e79042b13f55c38a5a6c7b2b0a3">   71</a></span>&#160;T <a class="code" href="classvotca_1_1tools_1_1Average.html#ad6567e79042b13f55c38a5a6c7b2b0a3">Average&lt;T&gt;::CalcDev</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">return</span> std::sqrt((_m2 - _n * _av * _av) / (_n - 1));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">return</span> std::sqrt((m2_ - n_ * av_ * av_) / (n_ - 1));</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#acff0011cb5c9a781966b8271f9cf6459">   76</a></span>&#160;T <a class="code" href="classvotca_1_1tools_1_1Average.html#acff0011cb5c9a781966b8271f9cf6459">Average&lt;T&gt;::CalcSig2</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">double</span> dev = 0.0;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  dev = _m2 / _n - _av * _av;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  dev = m2_ / n_ - av_ * av_;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">return</span> dev;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#ac2d45d1182e4cb64528ef722ef0b8e6a">   83</a></span>&#160;<span class="keyword">const</span> T &amp;<a class="code" href="classvotca_1_1tools_1_1Average.html#ac2d45d1182e4cb64528ef722ef0b8e6a">Average&lt;T&gt;::getAvg</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> _av;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> av_;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#abc2d534681b6ecf6b24a4328eac91a80">   88</a></span>&#160;<span class="keyword">const</span> T <a class="code" href="classvotca_1_1tools_1_1Average.html#abc2d534681b6ecf6b24a4328eac91a80">Average&lt;T&gt;::getM2</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">double</span> m2 = 0.0;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  m2 = _m2 / _n;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  m2 = m2_ / n_;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">return</span> m2;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classvotca_1_1tools_1_1Average.html#ad5fe30d0c790d71d31a76f63f6a0aa5b">   95</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="classvotca_1_1tools_1_1Average.html#ad5fe30d0c790d71d31a76f63f6a0aa5b">Average&lt;T&gt;::getN</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span> _n;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span> n_;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}  <span class="comment">// namespace tools</span></div>
@@ -173,17 +173,17 @@ $(function() {
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// VOTCA_TOOLS_AVERAGE_H</span></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html">votca::tools::Average</a></div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00028">average.h:28</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_a06e4353bb23bdc1140aba88570b2df9f"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#a06e4353bb23bdc1140aba88570b2df9f">votca::tools::Average::_n</a></div><div class="ttdeci">size_t _n</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00042">average.h:42</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_a332f12f52551e9c7a5e3a8428824f80c"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#a332f12f52551e9c7a5e3a8428824f80c">votca::tools::Average::_m2</a></div><div class="ttdeci">T _m2</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00044">average.h:44</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_a27b272b0fc5638110ddea70b6aee8404"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#a27b272b0fc5638110ddea70b6aee8404">votca::tools::Average::n_</a></div><div class="ttdeci">size_t n_</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00042">average.h:42</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_a7145e550898a3e9bd12409d41fa0fbda"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#a7145e550898a3e9bd12409d41fa0fbda">votca::tools::Average::Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00055">average.h:55</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_a87083a26b55b004153341af716ae8091"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#a87083a26b55b004153341af716ae8091">votca::tools::Average::Process</a></div><div class="ttdeci">void Process(const T &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00048">average.h:48</a></div></div>
-<div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_a90167e23e6812add42f1ff91753dc0e1"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#a90167e23e6812add42f1ff91753dc0e1">votca::tools::Average::_av</a></div><div class="ttdeci">T _av</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00043">average.h:43</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_a94b93cf862bcfdbda03928ae9a69e4c0"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#a94b93cf862bcfdbda03928ae9a69e4c0">votca::tools::Average::ProcessRange</a></div><div class="ttdeci">void ProcessRange(const iterator_type &amp;begin, const iterator_type &amp;end)</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00063">average.h:63</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_abc2d534681b6ecf6b24a4328eac91a80"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#abc2d534681b6ecf6b24a4328eac91a80">votca::tools::Average::getM2</a></div><div class="ttdeci">const T getM2() const</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00088">average.h:88</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_ac2d45d1182e4cb64528ef722ef0b8e6a"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#ac2d45d1182e4cb64528ef722ef0b8e6a">votca::tools::Average::getAvg</a></div><div class="ttdeci">const T &amp; getAvg() const</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00083">average.h:83</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_ac66dbc157344acf3dd463732a92743d2"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#ac66dbc157344acf3dd463732a92743d2">votca::tools::Average::av_</a></div><div class="ttdeci">T av_</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00043">average.h:43</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_acff0011cb5c9a781966b8271f9cf6459"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#acff0011cb5c9a781966b8271f9cf6459">votca::tools::Average::CalcSig2</a></div><div class="ttdeci">T CalcSig2() const</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00076">average.h:76</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_ad5fe30d0c790d71d31a76f63f6a0aa5b"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#ad5fe30d0c790d71d31a76f63f6a0aa5b">votca::tools::Average::getN</a></div><div class="ttdeci">size_t getN() const</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00095">average.h:95</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_ad6567e79042b13f55c38a5a6c7b2b0a3"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#ad6567e79042b13f55c38a5a6c7b2b0a3">votca::tools::Average::CalcDev</a></div><div class="ttdeci">T CalcDev() const</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00071">average.h:71</a></div></div>
+<div class="ttc" id="aclassvotca_1_1tools_1_1Average_html_af5febbfa6476c86202a444416f30ed3d"><div class="ttname"><a href="classvotca_1_1tools_1_1Average.html#af5febbfa6476c86202a444416f30ed3d">votca::tools::Average::m2_</a></div><div class="ttdeci">T m2_</div><div class="ttdef"><b>Definition:</b> <a href="average_8h_source.html#l00044">average.h:44</a></div></div>
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

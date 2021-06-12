@@ -109,34 +109,34 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBReader.html#abe4e13743f8577ed76a90fb4b12602df">   39</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1PDBReader.html#abe4e13743f8577ed76a90fb4b12602df">PDBReader::ReadTopology</a>(<span class="keywordtype">string</span> file, <a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> &amp;top) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  _topology = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  topology_ = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">Cleanup</a>();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  _fl.open(file);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">if</span> (!_fl.is_open()) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  fl_.open(file);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">if</span> (!fl_.is_open()) {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open topology file: &quot;</span> + file);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  }</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  NextFrame(top);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  _fl.close();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  fl_.close();</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBReader.html#a1c1d3b683b36263e9aa65ed6ef7f41f6">   54</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1PDBReader.html#a1c1d3b683b36263e9aa65ed6ef7f41f6">PDBReader::Open</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;file) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  _fl.open(file);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">if</span> (!_fl.is_open()) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  fl_.open(file);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">if</span> (!fl_.is_open()) {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open trajectory file: &quot;</span> + file);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBReader.html#a24e558463e3351650bcc4fb2a971a24f">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBReader.html#a24e558463e3351650bcc4fb2a971a24f">PDBReader::Close</a>() { _fl.close(); }</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBReader.html#a24e558463e3351650bcc4fb2a971a24f">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1PDBReader.html#a24e558463e3351650bcc4fb2a971a24f">PDBReader::Close</a>() { fl_.close(); }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PDBReader.html#aaaab789eddde9338ca6693715f7e692d">   66</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1PDBReader.html#aaaab789eddde9338ca6693715f7e692d">PDBReader::FirstFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> &amp;top) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  _topology = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  topology_ = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">return</span> NextFrame(top);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
@@ -173,7 +173,7 @@ $(function() {
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  vector&lt;Bead *&gt; bead_vec;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="comment">// Read in information from .pdb file</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"></span>  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> bead_count = 0;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">while</span> (<a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line)) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">while</span> (<a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, line)) {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(<span class="stringliteral">&quot;CRYST1*&quot;</span>, line)) {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="keywordtype">string</span> a, b, c, alpha, beta, gamma;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="keywordflow">try</span> {</div>
@@ -214,7 +214,7 @@ $(function() {
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a12161f1c5d52f233bd513fbb22538506">setBox</a>(box);</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// Only read the CONECT keyword if the topology is set too true</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">if</span> (_topology &amp;&amp; <a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(<span class="stringliteral">&quot;CONECT*&quot;</span>, line)) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">if</span> (topology_ &amp;&amp; <a class="code" href="namespacevotca_1_1tools.html#a4c0a7b29f3f1be8653fcf07df14bae22">tools::wildcmp</a>(<span class="stringliteral">&quot;CONECT*&quot;</span>, line)) {</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      vector&lt;string&gt; bonded_atms;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      <span class="keywordtype">string</span> atm1;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <span class="comment">// Keep track of the number of bonds</span></div>
@@ -332,7 +332,7 @@ $(function() {
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;      <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *b;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      <span class="comment">// Only read the CONECT keyword if the topology is set too true</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <span class="keywordflow">if</span> (_topology) {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <span class="keywordflow">if</span> (topology_) {</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> resnr;</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;          resnr = boost::lexical_cast&lt;Index&gt;(resNum);</div>
@@ -416,12 +416,12 @@ $(function() {
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      bead_vec.push_back(b);</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">if</span> ((line == <span class="stringliteral">&quot;ENDMDL&quot;</span>) || (line == <span class="stringliteral">&quot;END&quot;</span>) || (_fl.eof())) {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">if</span> ((line == <span class="stringliteral">&quot;ENDMDL&quot;</span>) || (line == <span class="stringliteral">&quot;END&quot;</span>) || (fl_.eof())) {</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;      <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    }</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  }</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  <span class="keywordflow">if</span> (!_topology &amp;&amp; (bead_count &gt; 0) &amp;&amp; bead_count != top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>()) {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  <span class="keywordflow">if</span> (!topology_ &amp;&amp; (bead_count &gt; 0) &amp;&amp; bead_count != top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>()) {</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <span class="stringliteral">&quot;number of beads in topology and trajectory differ&quot;</span>);</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  }</div>
@@ -430,7 +430,7 @@ $(function() {
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  <span class="comment">// Extra processing is done if the file is a topology file, in which case the</span></div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  <span class="comment">// atoms must be sorted into molecules and the bond interactions recorded</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  <span class="keywordflow">if</span> (_topology) {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  <span class="keywordflow">if</span> (topology_) {</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="comment">// Now we need to add the bond pairs</span></div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="comment">// WARNING We are assuming the atom ids are contiguous with no gaps</span></div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
@@ -589,7 +589,7 @@ $(function() {
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a422931fd6d2c0fcf559dc6ee1c3ee4f6">RebuildExclusions</a>();</div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;  }</div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;  <span class="keywordflow">return</span> !_fl.eof();</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;  <span class="keywordflow">return</span> !fl_.eof();</div>
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;}</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;}  <span class="comment">// namespace csg</span></div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;}  <span class="comment">// namespace votca</span></div>

@@ -101,10 +101,10 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1PotentialFunction.html#a822f5cd541a4506d4c13ed9afed1f205">   29</a></span>&#160;PotentialFunction::PotentialFunction(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;name, <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> nlam, <span class="keywordtype">double</span> min,</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                     <span class="keywordtype">double</span> max) {</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  _name = name;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  _lam = Eigen::VectorXd::Zero(nlam);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  _min = min;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  _cut_off = max;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  name_ = name;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  lam_ = Eigen::VectorXd::Zero(nlam);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  min_ = min;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  cut_off_ = max;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> PotentialFunction::setParam(<span class="keywordtype">string</span> filename) {</div>
@@ -112,17 +112,17 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Table.html">Table</a> param;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  param.<a class="code" href="classvotca_1_1tools_1_1Table.html#a89f608836b0e4a68a653c8f36cec0b6a">Load</a>(filename);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">if</span> (param.<a class="code" href="classvotca_1_1tools_1_1Table.html#a121d700ed7b3f75d350d6a9e9f002c19">size</a>() != _lam.size()) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">if</span> (param.<a class="code" href="classvotca_1_1tools_1_1Table.html#a121d700ed7b3f75d350d6a9e9f002c19">size</a>() != lam_.size()) {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;In potential &quot;</span> + _name +</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;In potential &quot;</span> + name_ +</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                             <span class="stringliteral">&quot;: parameters size mismatch!\n&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                             <span class="stringliteral">&quot;Check input parameter file \&quot;&quot;</span> +</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                             filename + <span class="stringliteral">&quot;\&quot; \nThere should be &quot;</span> +</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                             boost::lexical_cast&lt;string&gt;(_lam.size()) +</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                             boost::lexical_cast&lt;string&gt;(lam_.size()) +</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                             <span class="stringliteral">&quot; parameters&quot;</span>);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _lam.size(); i++) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      _lam(i) = param.<a class="code" href="classvotca_1_1tools_1_1Table.html#ad53f7679796e5975c7906bfb5f24e9ca">y</a>(i);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; lam_.size(); i++) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      lam_(i) = param.<a class="code" href="classvotca_1_1tools_1_1Table.html#ad53f7679796e5975c7906bfb5f24e9ca">y</a>(i);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
@@ -131,28 +131,28 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Table.html">Table</a> param;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  param.<a class="code" href="classvotca_1_1tools_1_1Table.html#a47894413bcdea56e3f9249edaad5844e">SetHasYErr</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  param.<a class="code" href="classvotca_1_1tools_1_1Table.html#ab4801775533302deab075a0b59a92e63">resize</a>(_lam.size());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  param.<a class="code" href="classvotca_1_1tools_1_1Table.html#ab4801775533302deab075a0b59a92e63">resize</a>(lam_.size());</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; _lam.size(); i++) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    param.<a class="code" href="classvotca_1_1tools_1_1Table.html#a5ac33721b43906342d3fa7d8a89776c1">set</a>(i, <span class="keywordtype">double</span>(i), _lam(i), <span class="charliteral">&#39;i&#39;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; lam_.size(); i++) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    param.<a class="code" href="classvotca_1_1tools_1_1Table.html#a5ac33721b43906342d3fa7d8a89776c1">set</a>(i, <span class="keywordtype">double</span>(i), lam_(i), <span class="charliteral">&#39;i&#39;</span>);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  param.<a class="code" href="classvotca_1_1tools_1_1Table.html#ad0e6ad7c62b19e785c9ebd7bb5669711">Save</a>(filename);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> PotentialFunction::SavePotTab(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename, <span class="keywordtype">double</span> step) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> ngrid = (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>)((_cut_off - _min) / step + 1.00000001);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> ngrid = (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>)((cut_off_ - min_) / step + 1.00000001);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Table.html">Table</a> pot_tab;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a47894413bcdea56e3f9249edaad5844e">SetHasYErr</a>(<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#ab4801775533302deab075a0b59a92e63">resize</a>(ngrid);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">double</span> r_init;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">for</span> (r_init = _min, i = 0; i &lt; ngrid - 1; r_init += step) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">for</span> (r_init = min_, i = 0; i &lt; ngrid - 1; r_init += step) {</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a5ac33721b43906342d3fa7d8a89776c1">set</a>(i++, r_init, CalculateF(r_init), <span class="charliteral">&#39;i&#39;</span>);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a5ac33721b43906342d3fa7d8a89776c1">set</a>(i, _cut_off, CalculateF(_cut_off), <span class="charliteral">&#39;i&#39;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#a5ac33721b43906342d3fa7d8a89776c1">set</a>(i, cut_off_, CalculateF(cut_off_), <span class="charliteral">&#39;i&#39;</span>);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  pot_tab.<a class="code" href="classvotca_1_1tools_1_1Table.html#ad0e6ad7c62b19e785c9ebd7bb5669711">Save</a>(filename);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>

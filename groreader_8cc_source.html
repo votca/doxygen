@@ -107,53 +107,53 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROReader.html#a87125547d806f9c1de6dd464e0375d46">   37</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1GROReader.html#a87125547d806f9c1de6dd464e0375d46">GROReader::ReadTopology</a>(<span class="keywordtype">string</span> file, <a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> &amp;top) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  _topology = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  topology_ = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">Cleanup</a>();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  _fl.open(file);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">if</span> (!_fl.is_open()) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  fl_.open(file);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">if</span> (!fl_.is_open()) {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open topology file: &quot;</span> + file);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  NextFrame(top);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  _fl.close();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  fl_.close();</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROReader.html#ac96676e00aac43c5cc69ddb115c507f5">   53</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1GROReader.html#ac96676e00aac43c5cc69ddb115c507f5">GROReader::Open</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;file) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  _fl.open(file);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (!_fl.is_open()) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  fl_.open(file);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (!fl_.is_open()) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open trajectory file: &quot;</span> + file);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  }</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROReader.html#a11024642ec24c8f7ef2e01b112116011">   61</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GROReader.html#a11024642ec24c8f7ef2e01b112116011">GROReader::Close</a>() { _fl.close(); }</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROReader.html#a11024642ec24c8f7ef2e01b112116011">   61</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1GROReader.html#a11024642ec24c8f7ef2e01b112116011">GROReader::Close</a>() { fl_.close(); }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROReader.html#ac1483730b83948a10a3185d2de054253">   63</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1GROReader.html#ac1483730b83948a10a3185d2de054253">GROReader::FirstFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> &amp;top) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  _topology = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  topology_ = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  NextFrame(top);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1GROReader.html#aa59777480221f2fdd8208942980c08a7">   69</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1GROReader.html#aa59777480221f2fdd8208942980c08a7">GROReader::NextFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> &amp;top) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">string</span> tmp;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, tmp);  <span class="comment">// title</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">if</span> (_fl.eof()) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> !_fl.eof();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, tmp);  <span class="comment">// title</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">if</span> (fl_.eof()) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> !fl_.eof();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, tmp);  <span class="comment">// number atoms</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, tmp);  <span class="comment">// number atoms</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> natoms = std::stoi(tmp);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (!_topology &amp;&amp; natoms != top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>()) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (!topology_ &amp;&amp; natoms != top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>()) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="stringliteral">&quot;number of beads in topology and trajectory differ&quot;</span>);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; natoms; i++) {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">string</span> line;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, line);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, line);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">string</span> resNum, resName, atName, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75caa24341a8b541fa43b84450de1e2c8451">x</a>, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca542e2a62b7d02deb20de4075a9108fd8">y</a>, <a class="code" href="namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca3225da0ebc46d47531cc82a6a6c2f07d">z</a>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      resNum = string(line, 0, 5);   <span class="comment">// %5i</span></div>
@@ -183,7 +183,7 @@ $(function() {
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classvotca_1_1csg_1_1Bead.html">Bead</a> *b;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (_topology) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (topology_) {</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> resnr = boost::lexical_cast&lt;Index&gt;(resNum);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keywordflow">if</span> (resnr &lt; 1) {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Misformated gro file, resnr has to be &gt; 0&quot;</span>);</div>
@@ -221,8 +221,8 @@ $(function() {
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  }</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(_fl, tmp);  <span class="comment">// read box line</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">if</span> (_fl.eof()) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(fl_, tmp);  <span class="comment">// read box line</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">if</span> (fl_.eof()) {</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="stringliteral">&quot;unexpected end of file in poly file, when boxline&quot;</span>);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  }</div>
@@ -248,12 +248,12 @@ $(function() {
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  }</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a12161f1c5d52f233bd513fbb22538506">setBox</a>(box);</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordflow">if</span> (_topology) {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordflow">if</span> (topology_) {</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;WARNING: topology created from .gro file, masses and charges are &quot;</span></div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="stringliteral">&quot;wrong!\n&quot;</span>;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  }</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keywordflow">return</span> !_fl.eof();</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keywordflow">return</span> !fl_.eof();</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}  <span class="comment">// namespace csg</span></div>

@@ -106,9 +106,9 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1XYZReader.html#a909646e7a0b15f6a5abbc47e76d00b61">   35</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1XYZReader.html#a909646e7a0b15f6a5abbc47e76d00b61">XYZReader::ReadTopology</a>(<span class="keywordtype">string</span> file, <a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> &amp;top) {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  top.<a class="code" href="classvotca_1_1csg_1_1Topology.html#a17c7d87557a60eb03b17a013321b1f5b">Cleanup</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  _file = file;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  _fl.open(file);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (!_fl.is_open()) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  file_ = file;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  fl_.open(file);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (!fl_.is_open()) {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open topology file: &quot;</span> + file);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
@@ -116,22 +116,22 @@ $(function() {
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  ReadFrame&lt;true, Topology&gt;(top);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  _fl.close();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  fl_.close();</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1XYZReader.html#a83d69942ee10356a68f46b2c602b9f61">   52</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1XYZReader.html#a83d69942ee10356a68f46b2c602b9f61">XYZReader::Open</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;file) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  _file = file;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  _fl.open(file);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (!_fl.is_open()) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  file_ = file;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  fl_.open(file);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (!fl_.is_open()) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">throw</span> std::ios_base::failure(<span class="stringliteral">&quot;Error on open trajectory file: &quot;</span> + file);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  _line = 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  line_ = 0;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1XYZReader.html#aeadf9e82d8b4ea9e4d99f558b717eee5">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1XYZReader.html#aeadf9e82d8b4ea9e4d99f558b717eee5">XYZReader::Close</a>() { _fl.close(); }</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1XYZReader.html#aeadf9e82d8b4ea9e4d99f558b717eee5">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classvotca_1_1csg_1_1XYZReader.html#aeadf9e82d8b4ea9e4d99f558b717eee5">XYZReader::Close</a>() { fl_.close(); }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classvotca_1_1csg_1_1XYZReader.html#a8967f973e33d83e6b2129e93c244cb54">   64</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1csg_1_1XYZReader.html#a8967f973e33d83e6b2129e93c244cb54">XYZReader::FirstFrame</a>(<a class="code" href="classvotca_1_1csg_1_1Topology.html">Topology</a> &amp;top) { <span class="keywordflow">return</span> NextFrame(top); }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
