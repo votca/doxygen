@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['b_8638',['B',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af6f5dead42bdfd50316cd0d0223b1f9a',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
-  ['b_8639',['b',['../classvotca_1_1tools_1_1LinSpline.html#a7aa278fca77c6cbf1cf44deea34211a3',1,'votca::tools::LinSpline']]],
+  ['b_8638',['b',['../classvotca_1_1tools_1_1LinSpline.html#a7aa278fca77c6cbf1cf44deea34211a3',1,'votca::tools::LinSpline']]],
+  ['b_8639',['B',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af6f5dead42bdfd50316cd0d0223b1f9a',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
   ['b_5f_8640',['B_',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#a6e9873d3e8cf560eea97101b49b3965e',1,'votca::xtp::HamiltonianOperator']]],
   ['b_5f_8641',['b_',['../classCGForceMatching.html#a1db2a80a8039d5b3bf36d10a631217f2',1,'CGForceMatching']]],
   ['b_5fconstr_5f_8642',['B_constr_',['../classCGForceMatching.html#a410dfd280899d674cb4f146ff2571255',1,'CGForceMatching']]],
