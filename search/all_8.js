@@ -196,7 +196,7 @@ var searchData=
   ['isoccupied_2304',['isOccupied',['../classvotca_1_1xtp_1_1GNode.html#aea59d42154959f7c337ca01a2f2a0993',1,'votca::xtp::GNode']]],
   ['isonlastlevel_2305',['isOnLastLevel',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#aa0a56507d447edeab85ef8b2696679dc',1,'votca::xtp::huffmanTree::huffmanNode']]],
   ['ispqpstate_2306',['isPQPState',['../classvotca_1_1xtp_1_1QMStateType.html#a31c4856f68f540aef4abb5e70084a9c5',1,'votca::xtp::QMStateType']]],
-  ['isregistered_2307',['IsRegistered',['../classvotca_1_1tools_1_1ObjectFactory.html#ab108ad30779a16fe3394c3966239f8fc',1,'votca::tools::ObjectFactory']]],
+  ['isregistered_2307',['IsRegistered',['../classvotca_1_1tools_1_1ObjectFactory.html#a6473d19f37aa79ec9e01c3d75d94abd5',1,'votca::tools::ObjectFactory']]],
   ['isrowmajor_2308',['IsRowMajor',['../classvotca_1_1xtp_1_1MatrixFreeOperator.html#aa15c1007c51fe7a203488a51d2098ed4a64c8b7e5e8fbfb2ed0bf44350772a05b',1,'votca::xtp::MatrixFreeOperator::IsRowMajor()'],['../classvotca_1_1xtp_1_1HamiltonianOperator.html#a0eed0c0eed0ca64b782ecd58479150b4a26d7a8fc7e83cdfdd1436effa2b7ef3c',1,'votca::xtp::HamiltonianOperator::IsRowMajor()'],['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a5963ed0f52267f1a90849d1b7dd198f1ac40bea28824728d32792bd2b3686b4a7',1,'votca::xtp::DipoleDipoleInteraction::IsRowMajor()']]],
   ['issingle_5f_2309',['isSingle_',['../classvotca_1_1csg_1_1BeadMotif.html#a213450d81ed329d90d8f6b395c89ac8a',1,'votca::csg::BeadMotif']]],
   ['issingleparticlestate_2310',['isSingleParticleState',['../classvotca_1_1xtp_1_1QMStateType.html#a82802979cf12d7daddda9038e945b29a',1,'votca::xtp::QMStateType']]],
