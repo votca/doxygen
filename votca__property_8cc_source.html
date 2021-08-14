@@ -122,71 +122,70 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    level = 1;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    AddProgramOptions()(<span class="stringliteral">&quot;file&quot;</span>, po::value&lt;string&gt;(), <span class="stringliteral">&quot;xml file to parse&quot;</span>)(</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="stringliteral">&quot;format&quot;</span>, po::value&lt;string&gt;(),</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="stringliteral">&quot;output format [XML TXT]&quot;</span>)(<span class="stringliteral">&quot;level&quot;</span>, po::value&lt;votca::Index&gt;(),</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                   <span class="stringliteral">&quot;output from this level &quot;</span>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  };</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#ace5e3da3edc814b20e0482b0cd45d1ca">   58</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classVotcaProperty.html#ace5e3da3edc814b20e0482b0cd45d1ca">EvaluateOptions</a>() {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    CheckRequired(<span class="stringliteral">&quot;file&quot;</span>, <span class="stringliteral">&quot;Missing XML file&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  };</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#a7f34bad8c48b61a57598aa7b6ef5329c">   63</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classVotcaProperty.html#a7f34bad8c48b61a57598aa7b6ef5329c">Run</a>() {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    file = OptionsMap()[<span class="stringliteral">&quot;file&quot;</span>].as&lt;<span class="keywordtype">string</span>&gt;();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (OptionsMap().count(<span class="stringliteral">&quot;format&quot;</span>)) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      format = OptionsMap()[<span class="stringliteral">&quot;format&quot;</span>].as&lt;<span class="keywordtype">string</span>&gt;();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span> (OptionsMap().count(<span class="stringliteral">&quot;level&quot;</span>)) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      level = OptionsMap()[<span class="stringliteral">&quot;level&quot;</span>].as&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a>&gt;();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> p;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      map&lt;string, PropertyIOManipulator*&gt; mformat_;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      mformat_[<span class="stringliteral">&quot;XML&quot;</span>] = &amp;<a class="code" href="namespacevotca_1_1tools.html#a9d8be4dc638961289dffe9e02253351f">XML</a>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      mformat_[<span class="stringliteral">&quot;TXT&quot;</span>] = &amp;<a class="code" href="namespacevotca_1_1tools.html#a46ae41e1fd7e17c6463c653d827fea0e">TXT</a>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      mformat_[<span class="stringliteral">&quot;HLP&quot;</span>] = &amp;<a class="code" href="namespacevotca_1_1tools.html#af7d59b326e7b495bc01c55e6fa354fb6">HLP</a>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      p.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(file);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keywordflow">if</span> (mformat_.find(format) != mformat_.end()) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html">PropertyIOManipulator</a>* piom = mformat_.find(format)-&gt;second;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        piom-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a57cac964ea469059a96bffaf3afd5c1d">setLevel</a>(level);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        piom-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a511b011d69000b0f94992f4d07313c0e">setIndentation</a>(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        piom-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a0326a57ab46f995e03d8217f38eb5944">setColorScheme</a>&lt;<a class="code" href="classvotca_1_1tools_1_1csRGB.html">csRGB</a>&gt;();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        cout &lt;&lt; *piom &lt;&lt; p;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;format &quot;</span> &lt;&lt; format &lt;&lt; <span class="stringliteral">&quot; not supported \n&quot;</span>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; error) {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      cerr &lt;&lt; <span class="stringliteral">&quot;an error occurred:\n&quot;</span> &lt;&lt; error.what() &lt;&lt; endl;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  };</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#a6bc37bfe9e409cbbffe545041c8374ca">   99</a></span>&#160;  <span class="keywordtype">string</span> <a class="code" href="classVotcaProperty.html#a6bc37bfe9e409cbbffe545041c8374ca">file</a>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#a32ebcc4dff25c24e5010a088ccb456be">  100</a></span>&#160;  <span class="keywordtype">string</span> <a class="code" href="classVotcaProperty.html#a32ebcc4dff25c24e5010a088ccb456be">format</a>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#aa96297d88cf4722925a7ec36d963f293">  101</a></span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> <a class="code" href="classVotcaProperty.html#aa96297d88cf4722925a7ec36d963f293">level</a>;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="votca__property_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">  104</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="votca__property_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <a class="code" href="classVotcaProperty.html">VotcaProperty</a> vp;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">return</span> vp.<a class="code" href="classvotca_1_1tools_1_1Application.html#a0bb87eabaf46ec27e9443b3fc4b84880">Exec</a>(argc, argv);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="stringliteral">&quot;format&quot;</span>, po::value&lt;string&gt;(), <span class="stringliteral">&quot;output format [XML TXT]&quot;</span>)(</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="stringliteral">&quot;level&quot;</span>, po::value&lt;votca::Index&gt;(), <span class="stringliteral">&quot;output from this level &quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  };</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#ace5e3da3edc814b20e0482b0cd45d1ca">   57</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classVotcaProperty.html#ace5e3da3edc814b20e0482b0cd45d1ca">EvaluateOptions</a>() {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    CheckRequired(<span class="stringliteral">&quot;file&quot;</span>, <span class="stringliteral">&quot;Missing XML file&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  };</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#a7f34bad8c48b61a57598aa7b6ef5329c">   62</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classVotcaProperty.html#a7f34bad8c48b61a57598aa7b6ef5329c">Run</a>() {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    file = OptionsMap()[<span class="stringliteral">&quot;file&quot;</span>].as&lt;<span class="keywordtype">string</span>&gt;();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (OptionsMap().count(<span class="stringliteral">&quot;format&quot;</span>)) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      format = OptionsMap()[<span class="stringliteral">&quot;format&quot;</span>].as&lt;<span class="keywordtype">string</span>&gt;();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (OptionsMap().count(<span class="stringliteral">&quot;level&quot;</span>)) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      level = OptionsMap()[<span class="stringliteral">&quot;level&quot;</span>].as&lt;<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a>&gt;();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <a class="code" href="classvotca_1_1tools_1_1Property.html">Property</a> p;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      map&lt;string, PropertyIOManipulator*&gt; mformat_;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      mformat_[<span class="stringliteral">&quot;XML&quot;</span>] = &amp;<a class="code" href="namespacevotca_1_1tools.html#a9d8be4dc638961289dffe9e02253351f">XML</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      mformat_[<span class="stringliteral">&quot;TXT&quot;</span>] = &amp;<a class="code" href="namespacevotca_1_1tools.html#a46ae41e1fd7e17c6463c653d827fea0e">TXT</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      mformat_[<span class="stringliteral">&quot;HLP&quot;</span>] = &amp;<a class="code" href="namespacevotca_1_1tools.html#af7d59b326e7b495bc01c55e6fa354fb6">HLP</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      p.<a class="code" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(file);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordflow">if</span> (mformat_.find(format) != mformat_.end()) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html">PropertyIOManipulator</a>* piom = mformat_.find(format)-&gt;second;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        piom-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a57cac964ea469059a96bffaf3afd5c1d">setLevel</a>(level);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        piom-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a511b011d69000b0f94992f4d07313c0e">setIndentation</a>(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        piom-&gt;<a class="code" href="classvotca_1_1tools_1_1PropertyIOManipulator.html#a0326a57ab46f995e03d8217f38eb5944">setColorScheme</a>&lt;<a class="code" href="classvotca_1_1tools_1_1csRGB.html">csRGB</a>&gt;();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        cout &lt;&lt; *piom &lt;&lt; p;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;format &quot;</span> &lt;&lt; format &lt;&lt; <span class="stringliteral">&quot; not supported \n&quot;</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; error) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      cerr &lt;&lt; <span class="stringliteral">&quot;an error occurred:\n&quot;</span> &lt;&lt; error.what() &lt;&lt; endl;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  };</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#a6bc37bfe9e409cbbffe545041c8374ca">   98</a></span>&#160;  <span class="keywordtype">string</span> <a class="code" href="classVotcaProperty.html#a6bc37bfe9e409cbbffe545041c8374ca">file</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#a32ebcc4dff25c24e5010a088ccb456be">   99</a></span>&#160;  <span class="keywordtype">string</span> <a class="code" href="classVotcaProperty.html#a32ebcc4dff25c24e5010a088ccb456be">format</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classVotcaProperty.html#aa96297d88cf4722925a7ec36d963f293">  100</a></span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">votca::Index</a> <a class="code" href="classVotcaProperty.html#aa96297d88cf4722925a7ec36d963f293">level</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="votca__property_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">  103</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="votca__property_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="classVotcaProperty.html">VotcaProperty</a> vp;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordflow">return</span> vp.<a class="code" href="classvotca_1_1tools_1_1Application.html#a0bb87eabaf46ec27e9443b3fc4b84880">Exec</a>(argc, argv);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
 <div class="ttc" id="aapplication_8h_html"><div class="ttname"><a href="application_8h.html">application.h</a></div></div>
 <div class="ttc" id="aclassVotcaProperty_html"><div class="ttname"><a href="classVotcaProperty.html">VotcaProperty</a></div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00037">votca_property.cc:37</a></div></div>
-<div class="ttc" id="aclassVotcaProperty_html_a32ebcc4dff25c24e5010a088ccb456be"><div class="ttname"><a href="classVotcaProperty.html#a32ebcc4dff25c24e5010a088ccb456be">VotcaProperty::format</a></div><div class="ttdeci">string format</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00100">votca_property.cc:100</a></div></div>
+<div class="ttc" id="aclassVotcaProperty_html_a32ebcc4dff25c24e5010a088ccb456be"><div class="ttname"><a href="classVotcaProperty.html#a32ebcc4dff25c24e5010a088ccb456be">VotcaProperty::format</a></div><div class="ttdeci">string format</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00099">votca_property.cc:99</a></div></div>
 <div class="ttc" id="aclassVotcaProperty_html_a37f147746a71c6f371ede256979423bf"><div class="ttname"><a href="classVotcaProperty.html#a37f147746a71c6f371ede256979423bf">VotcaProperty::VotcaProperty</a></div><div class="ttdeci">VotcaProperty()=default</div></div>
 <div class="ttc" id="aclassVotcaProperty_html_a67c717280ed2ba29029673b29d0f6ffa"><div class="ttname"><a href="classVotcaProperty.html#a67c717280ed2ba29029673b29d0f6ffa">VotcaProperty::~VotcaProperty</a></div><div class="ttdeci">~VotcaProperty()=default</div></div>
-<div class="ttc" id="aclassVotcaProperty_html_a6bc37bfe9e409cbbffe545041c8374ca"><div class="ttname"><a href="classVotcaProperty.html#a6bc37bfe9e409cbbffe545041c8374ca">VotcaProperty::file</a></div><div class="ttdeci">string file</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00099">votca_property.cc:96</a></div></div>
-<div class="ttc" id="aclassVotcaProperty_html_a7f34bad8c48b61a57598aa7b6ef5329c"><div class="ttname"><a href="classVotcaProperty.html#a7f34bad8c48b61a57598aa7b6ef5329c">VotcaProperty::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdoc">Main body of application.</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00063">votca_property.cc:63</a></div></div>
+<div class="ttc" id="aclassVotcaProperty_html_a6bc37bfe9e409cbbffe545041c8374ca"><div class="ttname"><a href="classVotcaProperty.html#a6bc37bfe9e409cbbffe545041c8374ca">VotcaProperty::file</a></div><div class="ttdeci">string file</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00098">votca_property.cc:95</a></div></div>
+<div class="ttc" id="aclassVotcaProperty_html_a7f34bad8c48b61a57598aa7b6ef5329c"><div class="ttname"><a href="classVotcaProperty.html#a7f34bad8c48b61a57598aa7b6ef5329c">VotcaProperty::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdoc">Main body of application.</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00062">votca_property.cc:62</a></div></div>
 <div class="ttc" id="aclassVotcaProperty_html_a92292e6d62472d0b8ebbc16388824df7"><div class="ttname"><a href="classVotcaProperty.html#a92292e6d62472d0b8ebbc16388824df7">VotcaProperty::HelpText</a></div><div class="ttdeci">void HelpText(ostream &amp;out)</div><div class="ttdoc">help text of application without version information</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00045">votca_property.cc:45</a></div></div>
-<div class="ttc" id="aclassVotcaProperty_html_aa96297d88cf4722925a7ec36d963f293"><div class="ttname"><a href="classVotcaProperty.html#aa96297d88cf4722925a7ec36d963f293">VotcaProperty::level</a></div><div class="ttdeci">votca::Index level</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00101">votca_property.cc:101</a></div></div>
-<div class="ttc" id="aclassVotcaProperty_html_ace5e3da3edc814b20e0482b0cd45d1ca"><div class="ttname"><a href="classVotcaProperty.html#ace5e3da3edc814b20e0482b0cd45d1ca">VotcaProperty::EvaluateOptions</a></div><div class="ttdeci">bool EvaluateOptions()</div><div class="ttdoc">Process command line options.</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00058">votca_property.cc:58</a></div></div>
+<div class="ttc" id="aclassVotcaProperty_html_aa96297d88cf4722925a7ec36d963f293"><div class="ttname"><a href="classVotcaProperty.html#aa96297d88cf4722925a7ec36d963f293">VotcaProperty::level</a></div><div class="ttdeci">votca::Index level</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00100">votca_property.cc:100</a></div></div>
+<div class="ttc" id="aclassVotcaProperty_html_ace5e3da3edc814b20e0482b0cd45d1ca"><div class="ttname"><a href="classVotcaProperty.html#ace5e3da3edc814b20e0482b0cd45d1ca">VotcaProperty::EvaluateOptions</a></div><div class="ttdeci">bool EvaluateOptions()</div><div class="ttdoc">Process command line options.</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00057">votca_property.cc:57</a></div></div>
 <div class="ttc" id="aclassVotcaProperty_html_ad7c1e725b7940fdae4124c2e3ae8e23e"><div class="ttname"><a href="classVotcaProperty.html#ad7c1e725b7940fdae4124c2e3ae8e23e">VotcaProperty::ProgramName</a></div><div class="ttdeci">string ProgramName()</div><div class="ttdoc">program name</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00043">votca_property.cc:43</a></div></div>
 <div class="ttc" id="aclassVotcaProperty_html_afc760f9ab55e355ed767abd447abef53"><div class="ttname"><a href="classVotcaProperty.html#afc760f9ab55e355ed767abd447abef53">VotcaProperty::Initialize</a></div><div class="ttdeci">void Initialize()</div><div class="ttdoc">Initialize application data.</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00047">votca_property.cc:47</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Application_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Application.html">votca::tools::Application</a></div><div class="ttdef"><b>Definition:</b> <a href="application_8h_source.html#l00030">application.h:30</a></div></div>
@@ -208,7 +207,7 @@ $(function() {
 <div class="ttc" id="aproperty_8h_html"><div class="ttname"><a href="property_8h.html">property.h</a></div></div>
 <div class="ttc" id="apropertyiomanipulator_8h_html"><div class="ttname"><a href="propertyiomanipulator_8h.html">propertyiomanipulator.h</a></div></div>
 <div class="ttc" id="atools_2include_2votca_2tools_2version_8h_html"><div class="ttname"><a href="tools_2include_2votca_2tools_2version_8h.html">version.h</a></div></div>
-<div class="ttc" id="avotca__property_8cc_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="votca__property_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00104">votca_property.cc:104</a></div></div>
+<div class="ttc" id="avotca__property_8cc_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="votca__property_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="votca__property_8cc_source.html#l00103">votca_property.cc:103</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
