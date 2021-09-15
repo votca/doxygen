@@ -113,8 +113,8 @@ $(function() {
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">if</span> (N &gt; 1 || rankB &gt; 0) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> fac2 = std::pow(fac1, 2);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// Dipole-Charge Interaction</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (N &gt; 1) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.segment(1, 3) =</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> constexpr (N &gt; 1) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.template segment&lt;3&gt;(1) =</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;          fac2 * a * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#ac7b70141d6768780c38fed0bd0f89d1c">getCharge</a>();  <span class="comment">// T_1alpha,00 (alpha=x,y,z)</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// Charge-Dipole Interaction</span></div>
@@ -130,7 +130,7 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;          -3 * a * (a.transpose() * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393">Q</a>().segment&lt;3&gt;(1));</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      result += siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393">Q</a>().segment&lt;3&gt;(1);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      result *= fac3;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.segment(1, 3) += result;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.template segment&lt;3&gt;(1) += result;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="comment">// T_1alpha,1beta // (alpha,beta=x,y,z)</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
@@ -146,8 +146,8 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        Qq(3) = 0.5 * (r.<a class="code" href="classvotca_1_1xtp_1_1AxA.html#aa16565b47e1f01e19d6d41d714489561">xx</a>() - r.<a class="code" href="classvotca_1_1xtp_1_1AxA.html#acee1373e0659f46e7b0b1fc027f9eb34">yy</a>());  <span class="comment">// T22c,00</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        Qq(4) = r.<a class="code" href="classvotca_1_1xtp_1_1AxA.html#ac2d27ab97b2f57cc19679bc6d265d75a">xy</a>();                   <span class="comment">// T22s,00</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        Qq.tail&lt;4&gt;() *= sqr3;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (N &gt; 4) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;          <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.segment(4, 5) = fac3 * Qq.transpose() * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#ac7b70141d6768780c38fed0bd0f89d1c">getCharge</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> constexpr (N &gt; 4) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;          <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.template segment&lt;5&gt;(4) = fac3 * Qq.transpose() * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#ac7b70141d6768780c38fed0bd0f89d1c">getCharge</a>();</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (rankB &gt; 1) {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;          <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>(0) += fac3 * Qq * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393">Q</a>().segment&lt;5&gt;(4);</div>
@@ -181,11 +181,11 @@ $(function() {
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        dQ.rightCols&lt;4&gt;() *= sqr3;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (N &gt; 4) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;          <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.segment(4, 5) += dQ.transpose() * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393">Q</a>().segment&lt;3&gt;(1);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> constexpr (N &gt; 4) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;          <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.template segment&lt;5&gt;(4) += dQ.transpose() * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393">Q</a>().segment&lt;3&gt;(1);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">if</span> (rankB &gt; 1) {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.segment(1, 3) -= dQ * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393">Q</a>().segment&lt;5&gt;(4);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.template segment&lt;3&gt;(1) -= dQ * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393">Q</a>().segment&lt;5&gt;(4);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
@@ -217,7 +217,7 @@ $(function() {
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            5 * (7 * r.<a class="code" href="classvotca_1_1xtp_1_1AxA.html#aa16565b47e1f01e19d6d41d714489561">xx</a>() * r.<a class="code" href="classvotca_1_1xtp_1_1AxA.html#acee1373e0659f46e7b0b1fc027f9eb34">yy</a>() - (r.<a class="code" href="classvotca_1_1xtp_1_1AxA.html#aa16565b47e1f01e19d6d41d714489561">xx</a>() + r.<a class="code" href="classvotca_1_1xtp_1_1AxA.html#acee1373e0659f46e7b0b1fc027f9eb34">yy</a>())) + 1;  <span class="comment">// T22s,22s</span></div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">double</span> fac5 = std::pow(fac1, 5);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.segment(4, 5) +=</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <a class="code" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.template segment&lt;5&gt;(4) +=</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            fac5 * QQ.selfadjointView&lt;Eigen::Lower&gt;() * siteB.<a class="code" href="classvotca_1_1xtp_1_1StaticSite.html#aa2e19830c057692780c1006177638393">Q</a>().segment&lt;5&gt;(4);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      }</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
