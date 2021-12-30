@@ -84,7 +84,7 @@ var searchData=
   ['determineedgesofbrancheswithsingleconnectiontojunction_5f_915',['determineEdgesOfBranchesWithSingleConnectionToJunction_',['../namespacevotca_1_1csg.html#a00c0b495d0001a6a0c06a51bcf5dc1f4',1,'votca::csg']]],
   ['determineindex_916',['DetermineIndex',['../classvotca_1_1xtp_1_1QMState.html#affbf8dce1745a424bccf2ca4b1737683',1,'votca::xtp::QMState']]],
   ['determinemotifconnections_5f_917',['determineMotifConnections_',['../classvotca_1_1csg_1_1MotifDeconstructor__.html#aab78ab0f0ead56a580d0becb884c1c24',1,'votca::csg::MotifDeconstructor_']]],
-  ['determinerangeofstates_918',['DetermineRangeOfStates',['../classvotca_1_1xtp_1_1DFTcoupling.html#ae554fc9cefa2b4378462c1b6c686b8db',1,'votca::xtp::DFTcoupling']]],
+  ['determinerangeofstates_918',['DetermineRangeOfStates',['../classvotca_1_1xtp_1_1DFTcoupling.html#a7edc5bbde238edcd9ff5f53eee24e815',1,'votca::xtp::DFTcoupling']]],
   ['determinetype_919',['DetermineType',['../classvotca_1_1xtp_1_1QMState.html#af5fb12d6299e989500b7d767ae8ea007',1,'votca::xtp::QMState']]],
   ['deviceid_5f_920',['deviceID_',['../classvotca_1_1xtp_1_1CudaPipeline.html#a8462612c62dfdb53c7f24febe5a526d7',1,'votca::xtp::CudaPipeline']]],
   ['df_5fdrho_921',['df_drho',['../structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#aab85c582bd5002cc818cbd69a7cce868',1,'votca::xtp::Vxc_Potential::XC_entry']]],

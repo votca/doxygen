@@ -306,7 +306,7 @@ var searchData=
   ['getsize_7331',['getSize',['../classvotca_1_1xtp_1_1ECPShell.html#a825e8b061fbbab6c21be5ef96da5d646',1,'votca::xtp::ECPShell::getSize()'],['../classvotca_1_1xtp_1_1Shell.html#a57828a89d95ca836cffee543332c255b',1,'votca::xtp::Shell::getSize()'],['../classvotca_1_1xtp_1_1AOShell.html#a534bed65fd8d014da7532ebb3f3dd048',1,'votca::xtp::AOShell::getSize()'],['../classvotca_1_1csg_1_1XYZWriter.html#aec61b874793fc04ee9cdfddc49daf029',1,'votca::csg::XYZWriter::getSize()']]],
   ['getsizeupdate_7332',['getSizeUpdate',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a07eb2b8e5abb86b006c8011b56b30c33',1,'votca::xtp::DavidsonSolver']]],
   ['getslope_7333',['getSlope',['../classvotca_1_1tools_1_1AkimaSpline.html#a4cba123439f8b28f9e7b72a4493b3af3',1,'votca::tools::AkimaSpline']]],
-  ['getsmoothiterations_7334',['getSmoothIterations',['../classvotca_1_1csg_1_1TabulatedPotential.html#aa06746929d300f5697ebc074b9580e20',1,'votca::csg::TabulatedPotential']]],
+  ['getsmoothiterations_7334',['getSmoothIterations',['../classvotca_1_1csg_1_1TabulatedPotential.html#a069b1bd7e4783c4a13702ebd6e179a37',1,'votca::csg::TabulatedPotential']]],
   ['getsqrtinveigendamp_7335',['getSqrtInvEigenDamp',['../classvotca_1_1xtp_1_1PolarSite.html#a1e8bd7e8f950dfb391bfbd2e04818c9b',1,'votca::xtp::PolarSite']]],
   ['getstartindex_7336',['getStartIndex',['../classvotca_1_1xtp_1_1AOShell.html#a96b5dcbdfd900691920b93a90252ef76',1,'votca::xtp::AOShell']]],
   ['getstartingpoint_7337',['getStartingPoint',['../classvotca_1_1xtp_1_1Regular__Grid.html#a0b027c733d61ecac3a8acf582e0f8fe1',1,'votca::xtp::Regular_Grid']]],
