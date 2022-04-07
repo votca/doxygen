@@ -107,7 +107,7 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;BOOST_AUTO_TEST_SUITE(pmlocalization_test)</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="test__pmlocalization_8cc.html#ab1c96a787ab2fd92b6d8c2c5364cf9ab">   38</a></span>&#160;<a class="code" href="test__pmlocalization_8cc.html#ab1c96a787ab2fd92b6d8c2c5364cf9ab">BOOST_AUTO_TEST_CASE</a>(localizedorbitals_test) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="test__pmlocalization_8cc.html#a08ca42038ac803fa5cb3048f3d35f166">   38</a></span>&#160;<a class="code" href="test__pmlocalization_8cc.html#a08ca42038ac803fa5cb3048f3d35f166">BOOST_AUTO_TEST_CASE</a>(jacobisweeps_test) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  libint2::initialize();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitals;</div>
@@ -131,30 +131,79 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> options;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">add</a>(<span class="stringliteral">&quot;max_iterations&quot;</span>, <span class="stringliteral">&quot;1000&quot;</span>);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">add</a>(<span class="stringliteral">&quot;convergence_limit&quot;</span>, <span class="stringliteral">&quot;1e-12&quot;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PMLocalization.html">PMLocalization</a> pml(log, options);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  pml.<a class="code" href="classvotca_1_1xtp_1_1PMLocalization.html#a4cf908e43d412f79c10a5f273ecbbc00">computePML</a>(orbitals);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  Eigen::MatrixXd LMOs = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afe411349eb3c8bf793f0982552333284">getLMOs</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  Eigen::VectorXd LMOs_energies = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a0954cf8a5735462ce9bc1bae4b8b3d99">getLMOs_energies</a>();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Eigen::VectorXd test_LMOs_energies =</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#abc20f8a3063d82be60686271bc6421a5">votca::tools::EigenIO_MatrixMarket::ReadVector</a>(</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;          std::string(XTP_TEST_DATA_FOLDER) +</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          <span class="stringliteral">&quot;/pmlocalization/ch3oh_energies.mm&quot;</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  Eigen::MatrixXd test_LMOs = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/pmlocalization/ch3oh.mm&quot;</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">bool</span> checkLMOs = LMOs.isApprox(test_LMOs, 2<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">bool</span> checkLMOs_energies = LMOs_energies.isApprox(test_LMOs_energies, 2<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  BOOST_CHECK_EQUAL(checkLMOs, 1);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  BOOST_CHECK_EQUAL(checkLMOs_energies, 1);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  libint2::finalize();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">add</a>(<span class="stringliteral">&quot;method&quot;</span>, <span class="stringliteral">&quot;jacobi-sweeps&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PMLocalization.html">PMLocalization</a> pml(log, options);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  pml.<a class="code" href="classvotca_1_1xtp_1_1PMLocalization.html#a4cf908e43d412f79c10a5f273ecbbc00">computePML</a>(orbitals);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  Eigen::MatrixXd LMOs = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afe411349eb3c8bf793f0982552333284">getLMOs</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Eigen::VectorXd LMOs_energies = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a0954cf8a5735462ce9bc1bae4b8b3d99">getLMOs_energies</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  Eigen::VectorXd test_LMOs_energies =</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#abc20f8a3063d82be60686271bc6421a5">votca::tools::EigenIO_MatrixMarket::ReadVector</a>(</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          <span class="stringliteral">&quot;/pmlocalization/ch3oh_energies.mm&quot;</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  Eigen::MatrixXd test_LMOs = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/pmlocalization/ch3oh.mm&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">bool</span> checkLMOs = LMOs.isApprox(test_LMOs, 2<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">bool</span> checkLMOs_energies = LMOs_energies.isApprox(test_LMOs_energies, 2<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  BOOST_CHECK_EQUAL(checkLMOs, 1);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  BOOST_CHECK_EQUAL(checkLMOs_energies, 1);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="test__pmlocalization_8cc.html#a9ca8fa8e4c339cfbf682e7536b0a0d69">   86</a></span>&#160;<a class="code" href="test__pmlocalization_8cc.html#a08ca42038ac803fa5cb3048f3d35f166">BOOST_AUTO_TEST_CASE</a>(unitaryoptimizer_test) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  libint2::initialize();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitals;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>().<a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">LoadFromFile</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                  <span class="stringliteral">&quot;/pmlocalization/ch3oh.xyz&quot;</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa2dcab363f170efe3bc1c66828eb6694">setNumberOfOccupiedLevels</a>(9);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a6f459f45583890e0f8c203888977cfce">setNumberOfAlphaElectrons</a>(9);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#adcab9d59437f5a1cfca97c18596b9fad">SetupDftBasis</a>(std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                         <span class="stringliteral">&quot;/pmlocalization/def2-tzvp.xml&quot;</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">eigenvectors</a>() =</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;          std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;          <span class="stringliteral">&quot;/pmlocalization/orbitalsMOs_ref.mm&quot;</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">MOs</a>().<a class="code" href="classvotca_1_1tools_1_1EigenSystem.html#ac920a75ff26a610c525cb0f5bf66ae33">eigenvalues</a>() = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#abc20f8a3063d82be60686271bc6421a5">votca::tools::EigenIO_MatrixMarket::ReadVector</a>(</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="stringliteral">&quot;/pmlocalization/ch3oh_energies_ref.mm&quot;</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> log;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> options;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">add</a>(<span class="stringliteral">&quot;max_iterations&quot;</span>, <span class="stringliteral">&quot;1000&quot;</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">add</a>(<span class="stringliteral">&quot;convergence_limit&quot;</span>, <span class="stringliteral">&quot;1e-12&quot;</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  options.<a class="code" href="classvotca_1_1tools_1_1Property.html#a07ae32aece3e2ab2328e70398a659c54">add</a>(<span class="stringliteral">&quot;method&quot;</span>, <span class="stringliteral">&quot;unitary-optimizer&quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1PMLocalization.html">PMLocalization</a> pml(log, options);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  pml.<a class="code" href="classvotca_1_1xtp_1_1PMLocalization.html#a4cf908e43d412f79c10a5f273ecbbc00">computePML</a>(orbitals);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  Eigen::MatrixXd LMOs = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#afe411349eb3c8bf793f0982552333284">getLMOs</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  Eigen::VectorXd LMOs_energies = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a0954cf8a5735462ce9bc1bae4b8b3d99">getLMOs_energies</a>();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  Eigen::VectorXd test_LMOs_energies =</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#abc20f8a3063d82be60686271bc6421a5">votca::tools::EigenIO_MatrixMarket::ReadVector</a>(</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;          std::string(XTP_TEST_DATA_FOLDER) +</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;          <span class="stringliteral">&quot;/pmlocalization/ch3oh_energies_UO.mm&quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  Eigen::MatrixXd test_LMOs = <a class="code" href="namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc">votca::tools::EigenIO_MatrixMarket::ReadMatrix</a>(</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      std::string(XTP_TEST_DATA_FOLDER) + <span class="stringliteral">&quot;/pmlocalization/ch3oh_UO.mm&quot;</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">bool</span> checkLMOs = LMOs.isApprox(test_LMOs, 2<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordtype">bool</span> checkLMOs_energies = LMOs_energies.isApprox(test_LMOs_energies, 2<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-6);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  BOOST_CHECK_EQUAL(checkLMOs, 1);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  BOOST_CHECK_EQUAL(checkLMOs_energies, 1);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  libint2::finalize();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;BOOST_AUTO_TEST_SUITE_END()</div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_a0247875ef0e5fb3bf24c8c6e3a7d2fdf"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#a0247875ef0e5fb3bf24c8c6e3a7d2fdf">votca::tools::EigenSystem::eigenvectors</a></div><div class="ttdeci">const Eigen::MatrixXd &amp; eigenvectors() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00033">eigensystem.h:33</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_ac920a75ff26a610c525cb0f5bf66ae33"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#ac920a75ff26a610c525cb0f5bf66ae33">votca::tools::EigenSystem::eigenvalues</a></div><div class="ttdeci">const Eigen::VectorXd &amp; eigenvalues() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00030">eigensystem.h:30</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Property_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Property.html">votca::tools::Property</a></div><div class="ttdoc">class to manage program options with xml serialization functionality</div><div class="ttdef"><b>Definition:</b> <a href="property_8h_source.html#l00057">property.h:57</a></div></div>
@@ -169,7 +218,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_afaf5bf86092c7749ba85a8b3b4295893"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#afaf5bf86092c7749ba85a8b3b4295893">votca::xtp::Orbitals::MOs</a></div><div class="ttdeci">const tools::EigenSystem &amp; MOs() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00102">orbitals.h:102</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_afe411349eb3c8bf793f0982552333284"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#afe411349eb3c8bf793f0982552333284">votca::xtp::Orbitals::getLMOs</a></div><div class="ttdeci">const Eigen::MatrixXd &amp; getLMOs() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00373">orbitals.h:373</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html">votca::xtp::PMLocalization</a></div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8h_source.html#l00030">pmlocalization.h:30</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a4cf908e43d412f79c10a5f273ecbbc00"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a4cf908e43d412f79c10a5f273ecbbc00">votca::xtp::PMLocalization::computePML</a></div><div class="ttdeci">void computePML(Orbitals &amp;orbitals)</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00031">pmlocalization.cc:31</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a4cf908e43d412f79c10a5f273ecbbc00"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a4cf908e43d412f79c10a5f273ecbbc00">votca::xtp::PMLocalization::computePML</a></div><div class="ttdeci">void computePML(Orbitals &amp;orbitals)</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00030">pmlocalization.cc:30</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html_a1393697647490d3fd425f0950d222530"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530">votca::xtp::QMMolecule::LoadFromFile</a></div><div class="ttdeci">void LoadFromFile(std::string filename)</div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8cc_source.html#l00045">qmmolecule.cc:45</a></div></div>
 <div class="ttc" id="aeigenio__matrixmarket_8h_html"><div class="ttname"><a href="eigenio__matrixmarket_8h.html">eigenio_matrixmarket.h</a></div></div>
 <div class="ttc" id="afilesystem_8h_html"><div class="ttname"><a href="filesystem_8h.html">filesystem.h</a></div></div>
@@ -182,7 +231,7 @@ $(function() {
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="akimaspline_8h_source.html#l00029">akimaspline.h:29</a></div></div>
 <div class="ttc" id="aorbitals_8h_html"><div class="ttname"><a href="orbitals_8h.html">orbitals.h</a></div></div>
 <div class="ttc" id="apmlocalization_8h_html"><div class="ttname"><a href="pmlocalization_8h.html">pmlocalization.h</a></div></div>
-<div class="ttc" id="atest__pmlocalization_8cc_html_ab1c96a787ab2fd92b6d8c2c5364cf9ab"><div class="ttname"><a href="test__pmlocalization_8cc.html#ab1c96a787ab2fd92b6d8c2c5364cf9ab">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(localizedorbitals_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__pmlocalization_8cc_source.html#l00038">test_pmlocalization.cc:38</a></div></div>
+<div class="ttc" id="atest__pmlocalization_8cc_html_a08ca42038ac803fa5cb3048f3d35f166"><div class="ttname"><a href="test__pmlocalization_8cc.html#a08ca42038ac803fa5cb3048f3d35f166">BOOST_AUTO_TEST_CASE</a></div><div class="ttdeci">BOOST_AUTO_TEST_CASE(jacobisweeps_test)</div><div class="ttdef"><b>Definition:</b> <a href="test__pmlocalization_8cc_source.html#l00038">test_pmlocalization.cc:38</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
