@@ -566,140 +566,140 @@ $(function() {
 <div class="line"><a name="l00505"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#ab9f531ed67be65b9a92ac2dc73055ac8">  505</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Orca.html#ab9f531ed67be65b9a92ac2dc73055ac8">Orca::ParseLogFile</a>(<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a>&amp; orbitals) {</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;  <span class="keywordtype">bool</span> found_success = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ac4654d1482a53641c427bdb85f9aef77">setQMpackage</a>(getPackageName());</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;  <span class="keywordflow">if</span> (options_.exists(<span class="stringliteral">&quot;ecp&quot;</span>)) {</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa21cdb66a5a9f0fe7eac3e7e9f03673b">setECPName</a>(options_.get(<span class="stringliteral">&quot;ecp&quot;</span>).as&lt;std::string&gt;());</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;  }</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa27f1c03b4d1e0fd69100f557529a3ea">setXCGrid</a>(<span class="stringliteral">&quot;xfine&quot;</span>);  <span class="comment">// TODO find a better approximation for the</span></div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                                <span class="comment">// orca grid.</span></div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#affd7a6bfff4470a28ee84db619729dc8">setXCFunctionalName</a>(options_.get(<span class="stringliteral">&quot;functional&quot;</span>).as&lt;std::string&gt;());</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Parsing &quot;</span> &lt;&lt; log_file_name_ &lt;&lt; flush;</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;  std::string log_file_name_full = run_dir_ + <span class="stringliteral">&quot;/&quot;</span> + log_file_name_;</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;  <span class="comment">// check if LOG file is complete</span></div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;  <span class="keywordflow">if</span> (!CheckLogFile()) {</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;  }</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;  std::map&lt;Index, double&gt; energies;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;  std::map&lt;Index, double&gt; occupancy;</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; </div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;  std::string line;</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> levels = 0;</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> number_of_electrons = 0;</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;  std::vector&lt;std::string&gt; results;</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;  std::ifstream input_file(log_file_name_full);</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;  <span class="keywordflow">if</span> (input_file.fail()) {</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;File &quot;</span> &lt;&lt; log_file_name_full &lt;&lt; <span class="stringliteral">&quot; not found &quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;Reading Coordinates and occupationnumbers and energies from &quot;</span></div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        &lt;&lt; log_file_name_full &lt;&lt; flush;</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;  }</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;  <span class="comment">// Coordinates of the final configuration depending on whether it is an</span></div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;  <span class="comment">// optimization or not</span></div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160; </div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>&amp; mol = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>();</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;  <span class="keywordflow">while</span> (input_file) {</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(input_file, line);</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    boost::trim(line);</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160; </div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    GetCoordinates(mol, line, input_file);</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    std::string::size_type energy_pos = line.find(<span class="stringliteral">&quot;FINAL SINGLE&quot;</span>);</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    <span class="keywordflow">if</span> (energy_pos != std::string::npos) {</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;      results = <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a>(line, <span class="stringliteral">&quot; &quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#ad4dc3f2a601d2d0978fb043eed32e16e">ToVector</a>();</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;      std::string energy = results[4];</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;      boost::trim(energy);</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;      orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#abb691f5c43813c1f9dc030666260799d">setQMEnergy</a>(boost::lexical_cast&lt;double&gt;(energy));</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_) &lt;&lt; (boost::format(<span class="stringliteral">&quot;QM energy[Hrt]: %4.6f &quot;</span>) %</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                                      orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a1e49d7abbe9d82622c501bc20b1e6a3c">getDFTTotalEnergy</a>())</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                                         .str()</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                                  &lt;&lt; flush;</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    }</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160; </div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    std::string::size_type HFX_pos = line.find(<span class="stringliteral">&quot;Fraction HF Exchange ScalHFX&quot;</span>);</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160; </div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    <span class="keywordflow">if</span> (HFX_pos != std::string::npos) {</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;      results = <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a>(line, <span class="stringliteral">&quot; &quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#ad4dc3f2a601d2d0978fb043eed32e16e">ToVector</a>();</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;      <span class="keywordtype">double</span> ScaHFX = boost::lexical_cast&lt;double&gt;(results.back());</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160; </div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;      orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a049fa201a781ffe61e8d9ee12e023b13">setScaHFX</a>(ScaHFX);</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;DFT with &quot;</span> &lt;&lt; ScaHFX &lt;&lt; <span class="stringliteral">&quot; of HF exchange!&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    }</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160; </div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    std::string::size_type dim_pos = line.find(<span class="stringliteral">&quot;Basis Dimension&quot;</span>);</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="keywordflow">if</span> (dim_pos != std::string::npos) {</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;      results = <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a>(line, <span class="stringliteral">&quot; &quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#ad4dc3f2a601d2d0978fb043eed32e16e">ToVector</a>();</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;      std::string dim =</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;          results[4];  <span class="comment">// The 4th element of results vector is the Basis Dim</span></div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;      boost::trim(dim);</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;      levels = boost::lexical_cast&lt;Index&gt;(dim);</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43ae938605b173b1443dfdfe4f753eb2337">Log::info</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Basis Dimension: &quot;</span> &lt;&lt; levels &lt;&lt; flush;</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43ae938605b173b1443dfdfe4f753eb2337">Log::info</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Energy levels: &quot;</span> &lt;&lt; levels &lt;&lt; flush;</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    }</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa27f1c03b4d1e0fd69100f557529a3ea">setXCGrid</a>(<span class="stringliteral">&quot;xfine&quot;</span>);  <span class="comment">// TODO find a better approximation for the</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                                <span class="comment">// orca grid.</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#affd7a6bfff4470a28ee84db619729dc8">setXCFunctionalName</a>(options_.get(<span class="stringliteral">&quot;functional&quot;</span>).as&lt;std::string&gt;());</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Parsing &quot;</span> &lt;&lt; log_file_name_ &lt;&lt; flush;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;  std::string log_file_name_full = run_dir_ + <span class="stringliteral">&quot;/&quot;</span> + log_file_name_;</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;  <span class="comment">// check if LOG file is complete</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;  <span class="keywordflow">if</span> (!CheckLogFile()) {</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;  }</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;  std::map&lt;Index, double&gt; energies;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;  std::map&lt;Index, double&gt; occupancy;</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;  std::string line;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> levels = 0;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;  <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> number_of_electrons = 0;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;  std::vector&lt;std::string&gt; results;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;  std::ifstream input_file(log_file_name_full);</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160; </div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;  <span class="keywordflow">if</span> (input_file.fail()) {</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;File &quot;</span> &lt;&lt; log_file_name_full &lt;&lt; <span class="stringliteral">&quot; not found &quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        &lt;&lt; <span class="stringliteral">&quot;Reading Coordinates and occupationnumbers and energies from &quot;</span></div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        &lt;&lt; log_file_name_full &lt;&lt; flush;</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;  }</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;  <span class="comment">// Coordinates of the final configuration depending on whether it is an</span></div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  <span class="comment">// optimization or not</span></div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160; </div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;  <a class="code" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>&amp; mol = orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>();</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;  <span class="keywordflow">while</span> (input_file) {</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(input_file, line);</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;    boost::trim(line);</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160; </div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    GetCoordinates(mol, line, input_file);</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    std::string::size_type energy_pos = line.find(<span class="stringliteral">&quot;FINAL SINGLE&quot;</span>);</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <span class="keywordflow">if</span> (energy_pos != std::string::npos) {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;      results = <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a>(line, <span class="stringliteral">&quot; &quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#ad4dc3f2a601d2d0978fb043eed32e16e">ToVector</a>();</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;      std::string energy = results[4];</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;      boost::trim(energy);</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;      orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#abb691f5c43813c1f9dc030666260799d">setQMEnergy</a>(boost::lexical_cast&lt;double&gt;(energy));</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_) &lt;&lt; (boost::format(<span class="stringliteral">&quot;QM energy[Hrt]: %4.6f &quot;</span>) %</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                                      orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a1e49d7abbe9d82622c501bc20b1e6a3c">getDFTTotalEnergy</a>())</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                                         .str()</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                                  &lt;&lt; flush;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    }</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; </div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    std::string::size_type HFX_pos = line.find(<span class="stringliteral">&quot;Fraction HF Exchange ScalHFX&quot;</span>);</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    <span class="keywordflow">if</span> (HFX_pos != std::string::npos) {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;      results = <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a>(line, <span class="stringliteral">&quot; &quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#ad4dc3f2a601d2d0978fb043eed32e16e">ToVector</a>();</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;      <span class="keywordtype">double</span> ScaHFX = boost::lexical_cast&lt;double&gt;(results.back());</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;      orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a049fa201a781ffe61e8d9ee12e023b13">setScaHFX</a>(ScaHFX);</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;DFT with &quot;</span> &lt;&lt; ScaHFX &lt;&lt; <span class="stringliteral">&quot; of HF exchange!&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    }</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160; </div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    std::string::size_type dim_pos = line.find(<span class="stringliteral">&quot;Basis Dimension&quot;</span>);</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    <span class="keywordflow">if</span> (dim_pos != std::string::npos) {</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;      results = <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a>(line, <span class="stringliteral">&quot; &quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#ad4dc3f2a601d2d0978fb043eed32e16e">ToVector</a>();</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;      std::string dim =</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;          results[4];  <span class="comment">// The 4th element of results vector is the Basis Dim</span></div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;      boost::trim(dim);</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;      levels = boost::lexical_cast&lt;Index&gt;(dim);</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43ae938605b173b1443dfdfe4f753eb2337">Log::info</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Basis Dimension: &quot;</span> &lt;&lt; levels &lt;&lt; flush;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;      <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43ae938605b173b1443dfdfe4f753eb2337">Log::info</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Energy levels: &quot;</span> &lt;&lt; levels &lt;&lt; flush;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160; </div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    std::string::size_type OE_pos = line.find(<span class="stringliteral">&quot;ORBITAL ENERGIES&quot;</span>);</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    <span class="keywordflow">if</span> (OE_pos != std::string::npos) {</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    std::string::size_type OE_pos = line.find(<span class="stringliteral">&quot;ORBITAL ENERGIES&quot;</span>);</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    <span class="keywordflow">if</span> (OE_pos != std::string::npos) {</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160; </div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;      number_of_electrons = 0;</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;      <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(input_file, line);</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;      <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(input_file, line);</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;      <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(input_file, line);</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;      <span class="keywordflow">if</span> (line.find(<span class="stringliteral">&quot;E(Eh)&quot;</span>) == std::string::npos) {</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;            &lt;&lt; <span class="stringliteral">&quot;Warning: Orbital Energies not found in log file&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;      }</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; levels; i++) {</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        results = GetLineAndSplit(input_file, <span class="stringliteral">&quot; &quot;</span>);</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        std::string no = results[0];</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        boost::trim(no);</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> levelnumber = boost::lexical_cast&lt;Index&gt;(no);</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        <span class="keywordflow">if</span> (levelnumber != i) {</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;          <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Have a look at the orbital energies &quot;</span></div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;                                         <span class="stringliteral">&quot;something weird is going on&quot;</span></div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                                      &lt;&lt; flush;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        }</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        std::string oc = results[1];</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        boost::trim(oc);</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <span class="keywordtype">double</span> occ = boost::lexical_cast&lt;double&gt;(oc);</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;        <span class="comment">// We only count alpha electrons, each orbital must be empty or doubly</span></div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        <span class="comment">// occupied</span></div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;        <span class="keywordflow">if</span> (occ == 2 || occ == 1) {</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;          number_of_electrons++;</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;          occupancy[i] = occ;</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;          <span class="keywordflow">if</span> (occ == 1) {</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;Watch out! No distinction between alpha and beta &quot;</span></div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                   <span class="stringliteral">&quot;electrons. Check if occ = 1 is suitable for your &quot;</span></div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                   <span class="stringliteral">&quot;calculation &quot;</span></div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                &lt;&lt; flush;</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;          }</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (occ == 0) {</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;          occupancy[i] = occ;</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;          <span class="keywordflow">throw</span> runtime_error(</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;              <span class="stringliteral">&quot;Only empty or doubly occupied orbitals are allowed not &quot;</span></div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;              <span class="stringliteral">&quot;running the right kind of DFT calculation&quot;</span>);</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;        }</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        std::string <a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a> = results[2];</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        boost::trim(<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>);</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        energies[i] = boost::lexical_cast&lt;double&gt;(<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>);</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;      }</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    }</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160; </div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    std::string::size_type success =</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;        line.find(<span class="stringliteral">&quot;*                     SUCCESS                       *&quot;</span>);</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    <span class="keywordflow">if</span> (success != std::string::npos) {</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;      found_success = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    }</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  }</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160; </div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#adcab9d59437f5a1cfca97c18596b9fad">SetupDftBasis</a>(basisset_name_);</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;      number_of_electrons = 0;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;      <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(input_file, line);</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;      <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(input_file, line);</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;      <a class="code" href="namespacevotca_1_1tools.html#a7a36b45421bfaa5a38fe45a90f87c3d0">tools::getline</a>(input_file, line);</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;      <span class="keywordflow">if</span> (line.find(<span class="stringliteral">&quot;E(Eh)&quot;</span>) == std::string::npos) {</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;            &lt;&lt; <span class="stringliteral">&quot;Warning: Orbital Energies not found in log file&quot;</span> &lt;&lt; flush;</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;      }</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;      <span class="keywordflow">for</span> (<a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; levels; i++) {</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        results = GetLineAndSplit(input_file, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        std::string no = results[0];</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        boost::trim(no);</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        <a class="code" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> levelnumber = boost::lexical_cast&lt;Index&gt;(no);</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        <span class="keywordflow">if</span> (levelnumber != i) {</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;          <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Have a look at the orbital energies &quot;</span></div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;                                         <span class="stringliteral">&quot;something weird is going on&quot;</span></div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;                                      &lt;&lt; flush;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        }</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        std::string oc = results[1];</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        boost::trim(oc);</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        <span class="keywordtype">double</span> occ = boost::lexical_cast&lt;double&gt;(oc);</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        <span class="comment">// We only count alpha electrons, each orbital must be empty or doubly</span></div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="comment">// occupied</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <span class="keywordflow">if</span> (occ == 2 || occ == 1) {</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;          number_of_electrons++;</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;          occupancy[i] = occ;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;          <span class="keywordflow">if</span> (occ == 1) {</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;            <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_)</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;Watch out! No distinction between alpha and beta &quot;</span></div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                   <span class="stringliteral">&quot;electrons. Check if occ = 1 is suitable for your &quot;</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;                   <span class="stringliteral">&quot;calculation &quot;</span></div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;                &lt;&lt; flush;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;          }</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (occ == 0) {</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;          occupancy[i] = occ;</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;          <span class="keywordflow">throw</span> runtime_error(</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;              <span class="stringliteral">&quot;Only empty or doubly occupied orbitals are allowed not &quot;</span></div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;              <span class="stringliteral">&quot;running the right kind of DFT calculation&quot;</span>);</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;        }</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        std::string <a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a> = results[2];</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        boost::trim(<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>);</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;        energies[i] = boost::lexical_cast&lt;double&gt;(<a class="code" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>);</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;      }</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    }</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160; </div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    std::string::size_type success =</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        line.find(<span class="stringliteral">&quot;*                     SUCCESS                       *&quot;</span>);</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    <span class="keywordflow">if</span> (success != std::string::npos) {</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;      found_success = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    }</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;  }</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160; </div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#adcab9d59437f5a1cfca97c18596b9fad">SetupDftBasis</a>(basisset_name_);</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  <span class="keywordflow">if</span> (options_.exists(<span class="stringliteral">&quot;ecp&quot;</span>)) {</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#aa21cdb66a5a9f0fe7eac3e7e9f03673b">setECPName</a>(options_.get(<span class="stringliteral">&quot;ecp&quot;</span>).as&lt;std::string&gt;());</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  }</div>
 <div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160; </div>
 <div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43ae938605b173b1443dfdfe4f753eb2337">Log::info</a>, *pLog_)</div>
 <div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;      &lt;&lt; <span class="stringliteral">&quot;Alpha electrons: &quot;</span> &lt;&lt; number_of_electrons &lt;&lt; flush;</div>
@@ -835,92 +835,101 @@ $(function() {
 <div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;  molden.<a class="code" href="classvotca_1_1xtp_1_1Molden.html#ac9c77553ccc7a57641b362bff9238a31">parseMoldenFile</a>(file_name, orbitals);</div>
 <div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160; </div>
 <div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;  <a class="code" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, *pLog_) &lt;&lt; <span class="stringliteral">&quot;Done parsing&quot;</span> &lt;&lt; flush;</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;}</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160; </div>
-<div class="line"><a name="l00780"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">  780</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">Orca::indent</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; number) {</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;  std::stringstream ssnumber;</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;  <span class="keywordflow">if</span> (number &gt;= 0) {</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;    ssnumber &lt;&lt; <span class="stringliteral">&quot;    &quot;</span>;</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    ssnumber &lt;&lt; <span class="stringliteral">&quot;   &quot;</span>;</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;  }</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;  ssnumber &lt;&lt; setiosflags(ios::fixed) &lt;&lt; setprecision(15) &lt;&lt; std::scientific</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;           &lt;&lt; number;</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;  std::string snumber = ssnumber.str();</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;  <span class="keywordflow">return</span> snumber;</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;}</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160; </div>
-<div class="line"><a name="l00793"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a6de8845400f739bb07afe1fe254bcdf2">  793</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a6de8845400f739bb07afe1fe254bcdf2">Orca::CreateInputSection</a>(<span class="keyword">const</span> std::string&amp; key)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;  std::stringstream stream;</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;  std::string section = key.substr(key.find(<span class="stringliteral">&quot;.&quot;</span>) + 1);</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;%&quot;</span> &lt;&lt; section;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;  <span class="keywordflow">if</span> (KeywordIsSingleLine(key)) {</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; options_.get(key).as&lt;std::string&gt;() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;           &lt;&lt; options_.get(key).as&lt;std::string&gt;() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;end\n&quot;</span>;</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;  }</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160; </div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;  <span class="keywordflow">return</span> stream.str();</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;}</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160; </div>
-<div class="line"><a name="l00808"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#ad5deaa7f98cd824b5dd049ea055a2baa">  808</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Orca.html#ad5deaa7f98cd824b5dd049ea055a2baa">Orca::KeywordIsSingleLine</a>(<span class="keyword">const</span> std::string&amp; key)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> values(this-&gt;options_.get(key).as&lt;std::string&gt;(), <span class="stringliteral">&quot; &quot;</span>);</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  std::vector&lt;std::string&gt; words = values.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#ad4dc3f2a601d2d0978fb043eed32e16e">ToVector</a>();</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;  <span class="keywordflow">return</span> ((words.size() &lt;= 1) ? <span class="keyword">true</span> : <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;}</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160; </div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;  <span class="comment">// ECP charge correction is only applied in Fill() of ECPAOBasis</span></div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;  <span class="keywordflow">if</span> (orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab6808ee1656b52397bf779944acb30a2">getECPName</a>() != <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ECPBasisSet.html">ECPBasisSet</a> ecpbasisset;</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;    ecpbasisset.<a class="code" href="classvotca_1_1xtp_1_1ECPBasisSet.html#abce90999ca3466403d21d7d37f528508">Load</a>(orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#ab6808ee1656b52397bf779944acb30a2">getECPName</a>());</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    <a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html">ECPAOBasis</a> ecp;</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;    ecp.<a class="code" href="classvotca_1_1xtp_1_1ECPAOBasis.html#a5b95c2685553e865c215bf62e8191a3e">Fill</a>(ecpbasisset, orbitals.<a class="code" href="classvotca_1_1xtp_1_1Orbitals.html#a08260b44bbc7302980c155b8b8434ae4">QMAtoms</a>());</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;  }</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160; </div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;}</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160; </div>
+<div class="line"><a name="l00789"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">  789</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">Orca::indent</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; number) {</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;  std::stringstream ssnumber;</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;  <span class="keywordflow">if</span> (number &gt;= 0) {</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    ssnumber &lt;&lt; <span class="stringliteral">&quot;    &quot;</span>;</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    ssnumber &lt;&lt; <span class="stringliteral">&quot;   &quot;</span>;</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;  }</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;  ssnumber &lt;&lt; setiosflags(ios::fixed) &lt;&lt; setprecision(15) &lt;&lt; std::scientific</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;           &lt;&lt; number;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;  std::string snumber = ssnumber.str();</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;  <span class="keywordflow">return</span> snumber;</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;}</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160; </div>
+<div class="line"><a name="l00802"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a6de8845400f739bb07afe1fe254bcdf2">  802</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a6de8845400f739bb07afe1fe254bcdf2">Orca::CreateInputSection</a>(<span class="keyword">const</span> std::string&amp; key)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;  std::stringstream stream;</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;  std::string section = key.substr(key.find(<span class="stringliteral">&quot;.&quot;</span>) + 1);</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;%&quot;</span> &lt;&lt; section;</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;  <span class="keywordflow">if</span> (KeywordIsSingleLine(key)) {</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; options_.get(key).as&lt;std::string&gt;() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;           &lt;&lt; options_.get(key).as&lt;std::string&gt;() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;           &lt;&lt; <span class="stringliteral">&quot;end\n&quot;</span>;</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;  }</div>
 <div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160; </div>
-<div class="line"><a name="l00814"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a8605b8d6040fb4d7d79c28de0f284a38">  814</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a8605b8d6040fb4d7d79c28de0f284a38">Orca::WriteMethod</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;  std::stringstream stream;</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;  std::string opt = (options_.get(<span class="stringliteral">&quot;optimize&quot;</span>).as&lt;<span class="keywordtype">bool</span>&gt;()) ? <span class="stringliteral">&quot;Opt&quot;</span> : <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>&amp; orca = options_.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;orca&quot;</span>);</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;  std::string user_method =</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;      (orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a62682e5003be4c0fdf440635b57bf8f4">exists</a>(<span class="stringliteral">&quot;method&quot;</span>)) ? orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;method&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;() : <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;  std::string convergence = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;  <span class="keywordflow">if</span> (!orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a62682e5003be4c0fdf440635b57bf8f4">exists</a>(<span class="stringliteral">&quot;scf&quot;</span>)) {</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    convergence = this-&gt;convergence_map_.at(</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;        options_.get(<span class="stringliteral">&quot;convergence_tightness&quot;</span>).as&lt;std::string&gt;());</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  }</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;! DFT &quot;</span> &lt;&lt; this-&gt;GetOrcaFunctionalName() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; convergence</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;         &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; opt</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;         &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;         <span class="comment">// additional properties provided by the user</span></div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;         &lt;&lt; user_method &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;  <span class="keywordflow">return</span> stream.str();</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;}</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160; </div>
-<div class="line"><a name="l00833"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a36eafb49f96651d9d83b31ee4c08d106">  833</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a36eafb49f96651d9d83b31ee4c08d106">Orca::GetOrcaFunctionalName</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160; </div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;  std::map&lt;std::string, std::string&gt; votca_to_orca;</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160; </div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_HYB_GGA_XC_B1LYP&quot;</span>] = <span class="stringliteral">&quot;B1LYP&quot;</span>;</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_HYB_GGA_XC_B3LYP&quot;</span>] = <span class="stringliteral">&quot;B3LYP&quot;</span>;</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_HYB_GGA_XC_PBEH&quot;</span>] = <span class="stringliteral">&quot;PBE0&quot;</span>;</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_GGA_C_PBE&quot;</span>] = <span class="stringliteral">&quot;PBE&quot;</span>;</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_GGA_X_PBE&quot;</span>] = <span class="stringliteral">&quot;PBE&quot;</span>;</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160; </div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;  std::string votca_functional =</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;      options_.get(<span class="stringliteral">&quot;functional&quot;</span>).as&lt;std::vector&lt;std::string&gt;&gt;()[0];</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;  <span class="keywordflow">return</span> stream.str();</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;}</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160; </div>
+<div class="line"><a name="l00817"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#ad5deaa7f98cd824b5dd049ea055a2baa">  817</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classvotca_1_1xtp_1_1Orca.html#ad5deaa7f98cd824b5dd049ea055a2baa">Orca::KeywordIsSingleLine</a>(<span class="keyword">const</span> std::string&amp; key)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;  <a class="code" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> values(this-&gt;options_.get(key).as&lt;std::string&gt;(), <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;  std::vector&lt;std::string&gt; words = values.<a class="code" href="classvotca_1_1tools_1_1Tokenizer.html#ad4dc3f2a601d2d0978fb043eed32e16e">ToVector</a>();</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;  <span class="keywordflow">return</span> ((words.size() &lt;= 1) ? <span class="keyword">true</span> : <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;}</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160; </div>
+<div class="line"><a name="l00823"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a8605b8d6040fb4d7d79c28de0f284a38">  823</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a8605b8d6040fb4d7d79c28de0f284a38">Orca::WriteMethod</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  std::stringstream stream;</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;  std::string opt = (options_.get(<span class="stringliteral">&quot;optimize&quot;</span>).as&lt;<span class="keywordtype">bool</span>&gt;()) ? <span class="stringliteral">&quot;Opt&quot;</span> : <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  <span class="keyword">const</span> <a class="code" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>&amp; orca = options_.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;orca&quot;</span>);</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;  std::string user_method =</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;      (orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a62682e5003be4c0fdf440635b57bf8f4">exists</a>(<span class="stringliteral">&quot;method&quot;</span>)) ? orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a67e348deb9e8b70465765b5ee72a960c">get</a>(<span class="stringliteral">&quot;method&quot;</span>).<a class="code" href="classvotca_1_1tools_1_1Property.html#a67406d5b069305b305c24eb6bfcf17c9">as</a>&lt;std::string&gt;() : <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;  std::string convergence = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;  <span class="keywordflow">if</span> (!orca.<a class="code" href="classvotca_1_1tools_1_1Property.html#a62682e5003be4c0fdf440635b57bf8f4">exists</a>(<span class="stringliteral">&quot;scf&quot;</span>)) {</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    convergence = this-&gt;convergence_map_.at(</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        options_.get(<span class="stringliteral">&quot;convergence_tightness&quot;</span>).as&lt;std::string&gt;());</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;  }</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;! DFT &quot;</span> &lt;&lt; this-&gt;GetOrcaFunctionalName() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; convergence</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;         &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; opt</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;         &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;         <span class="comment">// additional properties provided by the user</span></div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;         &lt;&lt; user_method &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;  <span class="keywordflow">return</span> stream.str();</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;}</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160; </div>
+<div class="line"><a name="l00842"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Orca.html#a36eafb49f96651d9d83b31ee4c08d106">  842</a></span>&#160;std::string <a class="code" href="classvotca_1_1xtp_1_1Orca.html#a36eafb49f96651d9d83b31ee4c08d106">Orca::GetOrcaFunctionalName</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160; </div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  std::map&lt;std::string, std::string&gt; votca_to_orca;</div>
 <div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160; </div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;  std::string orca_functional;</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;  <span class="keywordflow">if</span> (votca_to_orca.count(votca_functional)) {</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    orca_functional = votca_to_orca.at(votca_functional);</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options_.exists(<span class="stringliteral">&quot;orca.&quot;</span> + votca_functional)) {</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;    orca_functional =</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;        options_.get(<span class="stringliteral">&quot;orca.&quot;</span> + votca_functional).as&lt;std::string&gt;();</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;        <span class="stringliteral">&quot;Cannot translate &quot;</span> + votca_functional +</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;        <span class="stringliteral">&quot; to orca functional names. Please add a &lt;&quot;</span> + votca_functional +</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;        <span class="stringliteral">&quot;&gt; to your orca input options with the functional orca should use.&quot;</span>);</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;  }</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;  <span class="keywordflow">return</span> orca_functional;</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;}</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160; </div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_HYB_GGA_XC_B1LYP&quot;</span>] = <span class="stringliteral">&quot;B1LYP&quot;</span>;</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_HYB_GGA_XC_B3LYP&quot;</span>] = <span class="stringliteral">&quot;B3LYP&quot;</span>;</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_HYB_GGA_XC_PBEH&quot;</span>] = <span class="stringliteral">&quot;PBE0&quot;</span>;</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_GGA_C_PBE&quot;</span>] = <span class="stringliteral">&quot;PBE&quot;</span>;</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  votca_to_orca[<span class="stringliteral">&quot;XC_GGA_X_PBE&quot;</span>] = <span class="stringliteral">&quot;PBE&quot;</span>;</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160; </div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;  std::string votca_functional =</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;      options_.get(<span class="stringliteral">&quot;functional&quot;</span>).as&lt;std::vector&lt;std::string&gt;&gt;()[0];</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160; </div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;  std::string orca_functional;</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;  <span class="keywordflow">if</span> (votca_to_orca.count(votca_functional)) {</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    orca_functional = votca_to_orca.at(votca_functional);</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options_.exists(<span class="stringliteral">&quot;orca.&quot;</span> + votca_functional)) {</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    orca_functional =</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;        options_.get(<span class="stringliteral">&quot;orca.&quot;</span> + votca_functional).as&lt;std::string&gt;();</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        <span class="stringliteral">&quot;Cannot translate &quot;</span> + votca_functional +</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;        <span class="stringliteral">&quot; to orca functional names. Please add a &lt;&quot;</span> + votca_functional +</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;        <span class="stringliteral">&quot;&gt; to your orca input options with the functional orca should use.&quot;</span>);</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;  }</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;  <span class="keywordflow">return</span> orca_functional;</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;}</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160; </div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="abasisset_8h_html"><div class="ttname"><a href="basisset_8h.html">basisset.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_ac920a75ff26a610c525cb0f5bf66ae33"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#ac920a75ff26a610c525cb0f5bf66ae33">votca::tools::EigenSystem::eigenvalues</a></div><div class="ttdeci">const Eigen::VectorXd &amp; eigenvalues() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00030">eigensystem.h:30</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Elements_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Elements.html">votca::tools::Elements</a></div><div class="ttdoc">information about an element</div><div class="ttdef"><b>Definition:</b> <a href="elements_8h_source.html#l00042">elements.h:42</a></div></div>
@@ -941,6 +950,8 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html_a02a71ffb6e85f39ae9783b8a75687385"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html#a02a71ffb6e85f39ae9783b8a75687385">votca::xtp::BasisSet::getElement</a></div><div class="ttdeci">const Element &amp; getElement(std::string element_type) const</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00212">basisset.cc:212</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1BasisSet_html_a1e8646dc8d3f6c07e67cac0eecd21e93"><div class="ttname"><a href="classvotca_1_1xtp_1_1BasisSet.html#a1e8646dc8d3f6c07e67cac0eecd21e93">votca::xtp::BasisSet::Load</a></div><div class="ttdeci">void Load(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="basisset_8cc_source.html#l00149">basisset.cc:149</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1ClassicalSegment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ClassicalSegment.html">votca::xtp::ClassicalSegment</a></div><div class="ttdef"><b>Definition:</b> <a href="classicalsegment_8h_source.html#l00032">classicalsegment.h:32</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html">votca::xtp::ECPAOBasis</a></div><div class="ttdoc">Container to hold ECPs for all atoms.</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8h_source.html#l00043">ecpaobasis.h:43</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1ECPAOBasis_html_a5b95c2685553e865c215bf62e8191a3e"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPAOBasis.html#a5b95c2685553e865c215bf62e8191a3e">votca::xtp::ECPAOBasis::Fill</a></div><div class="ttdeci">std::vector&lt; std::string &gt; Fill(const ECPBasisSet &amp;bs, QMMolecule &amp;atoms)</div><div class="ttdef"><b>Definition:</b> <a href="ecpaobasis_8cc_source.html#l00069">ecpaobasis.cc:69</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1ECPBasisSet_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPBasisSet.html">votca::xtp::ECPBasisSet</a></div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8h_source.html#l00114">ecpbasisset.h:114</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1ECPBasisSet_html_abce90999ca3466403d21d7d37f528508"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPBasisSet.html#abce90999ca3466403d21d7d37f528508">votca::xtp::ECPBasisSet::Load</a></div><div class="ttdeci">void Load(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8cc_source.html#l00031">ecpbasisset.cc:31</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1ECPBasisSet_html_acce2a8173bc57fe2b3853bdaa6000616"><div class="ttname"><a href="classvotca_1_1xtp_1_1ECPBasisSet.html#acce2a8173bc57fe2b3853bdaa6000616">votca::xtp::ECPBasisSet::getElement</a></div><div class="ttdeci">const ECPElement &amp; getElement(std::string element_type) const</div><div class="ttdef"><b>Definition:</b> <a href="ecpbasisset_8cc_source.html#l00089">ecpbasisset.cc:89</a></div></div>
@@ -950,7 +961,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Element_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Element.html">votca::xtp::Element</a></div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00107">basisset.h:107</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1GaussianPrimitive_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GaussianPrimitive.html">votca::xtp::GaussianPrimitive</a></div><div class="ttdef"><b>Definition:</b> <a href="basisset_8h_source.html#l00056">basisset.h:56</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Molden_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Molden.html">votca::xtp::Molden</a></div><div class="ttdef"><b>Definition:</b> <a href="molden_8h_source.html#l00033">molden.h:33</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Molden_html_ac9c77553ccc7a57641b362bff9238a31"><div class="ttname"><a href="classvotca_1_1xtp_1_1Molden.html#ac9c77553ccc7a57641b362bff9238a31">votca::xtp::Molden::parseMoldenFile</a></div><div class="ttdeci">void parseMoldenFile(const std::string &amp;filename, Orbitals &amp;orbitals) const</div><div class="ttdef"><b>Definition:</b> <a href="molden_8cc_source.html#l00201">molden.cc:201</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Molden_html_ac9c77553ccc7a57641b362bff9238a31"><div class="ttname"><a href="classvotca_1_1xtp_1_1Molden.html#ac9c77553ccc7a57641b362bff9238a31">votca::xtp::Molden::parseMoldenFile</a></div><div class="ttdeci">void parseMoldenFile(const std::string &amp;filename, Orbitals &amp;orbitals) const</div><div class="ttdef"><b>Definition:</b> <a href="molden_8cc_source.html#l00200">molden.cc:200</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Molden_html_ad6a3100f08af90dba4c05aea1255ab07"><div class="ttname"><a href="classvotca_1_1xtp_1_1Molden.html#ad6a3100f08af90dba4c05aea1255ab07">votca::xtp::Molden::setBasissetInfo</a></div><div class="ttdeci">void setBasissetInfo(const std::string &amp;basisset_name, const std::string &amp;aux_basisset_name=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="molden_8h_source.html#l00041">molden.h:41</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html">votca::xtp::Orbitals</a></div><div class="ttdoc">container for molecular orbitals</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00046">orbitals.h:46</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_a049fa201a781ffe61e8d9ee12e023b13"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#a049fa201a781ffe61e8d9ee12e023b13">votca::xtp::Orbitals::setScaHFX</a></div><div class="ttdeci">void setScaHFX(double ScaHFX)</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00256">orbitals.h:256</a></div></div>
@@ -961,6 +972,7 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_aa21cdb66a5a9f0fe7eac3e7e9f03673b"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#aa21cdb66a5a9f0fe7eac3e7e9f03673b">votca::xtp::Orbitals::setECPName</a></div><div class="ttdeci">void setECPName(const std::string &amp;ECP)</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00089">orbitals.h:89</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_aa27f1c03b4d1e0fd69100f557529a3ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#aa27f1c03b4d1e0fd69100f557529a3ea">votca::xtp::Orbitals::setXCGrid</a></div><div class="ttdeci">void setXCGrid(std::string grid)</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00149">orbitals.h:149</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_aa2dcab363f170efe3bc1c66828eb6694"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#aa2dcab363f170efe3bc1c66828eb6694">votca::xtp::Orbitals::setNumberOfOccupiedLevels</a></div><div class="ttdeci">void setNumberOfOccupiedLevels(Index occupied_levels)</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00069">orbitals.h:69</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_ab6808ee1656b52397bf779944acb30a2"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#ab6808ee1656b52397bf779944acb30a2">votca::xtp::Orbitals::getECPName</a></div><div class="ttdeci">const std::string &amp; getECPName() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00087">orbitals.h:87</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_abb47a17f7c8b9a00615bd39b47280e6d"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#abb47a17f7c8b9a00615bd39b47280e6d">votca::xtp::Orbitals::getBasisSetSize</a></div><div class="ttdeci">Index getBasisSetSize() const</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00058">orbitals.h:58</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_abb691f5c43813c1f9dc030666260799d"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#abb691f5c43813c1f9dc030666260799d">votca::xtp::Orbitals::setQMEnergy</a></div><div class="ttdeci">void setQMEnergy(double qmenergy)</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00157">orbitals.h:157</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orbitals_html_ac4654d1482a53641c427bdb85f9aef77"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orbitals.html#ac4654d1482a53641c427bdb85f9aef77">votca::xtp::Orbitals::setQMpackage</a></div><div class="ttdeci">void setQMpackage(const std::string &amp;qmpackage)</div><div class="ttdef"><b>Definition:</b> <a href="orbitals_8h_source.html#l00097">orbitals.h:97</a></div></div>
@@ -973,20 +985,20 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a1bfab26c7137667a69917daa052a4a23"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a1bfab26c7137667a69917daa052a4a23">votca::xtp::Orca::WriteECP</a></div><div class="ttdeci">void WriteECP(std::ofstream &amp;inp_file, const QMMolecule &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00122">orca.cc:122</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a1debb798be26bbf2b7c00130fa0669c2"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a1debb798be26bbf2b7c00130fa0669c2">votca::xtp::Orca::WriteShellScript</a></div><div class="ttdeci">bool WriteShellScript()</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00306">orca.cc:306</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a33e8377371ae8f15e467098424fb938a"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a33e8377371ae8f15e467098424fb938a">votca::xtp::Orca::WriteBasisset</a></div><div class="ttdeci">void WriteBasisset(const QMMolecule &amp;qmatoms, std::string &amp;bs_name, std::string &amp;el_file_name)</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00066">orca.cc:66</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a36eafb49f96651d9d83b31ee4c08d106"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a36eafb49f96651d9d83b31ee4c08d106">votca::xtp::Orca::GetOrcaFunctionalName</a></div><div class="ttdeci">std::string GetOrcaFunctionalName() const</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00833">orca.cc:833</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a392e624e8bb5a7ed45bf1ad2a0449311"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">votca::xtp::Orca::indent</a></div><div class="ttdeci">std::string indent(const double &amp;number)</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00780">orca.cc:780</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a36eafb49f96651d9d83b31ee4c08d106"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a36eafb49f96651d9d83b31ee4c08d106">votca::xtp::Orca::GetOrcaFunctionalName</a></div><div class="ttdeci">std::string GetOrcaFunctionalName() const</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00842">orca.cc:842</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a392e624e8bb5a7ed45bf1ad2a0449311"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a392e624e8bb5a7ed45bf1ad2a0449311">votca::xtp::Orca::indent</a></div><div class="ttdeci">std::string indent(const double &amp;number)</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00789">orca.cc:789</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a415b94f580669f89e5a8f7a2ac230f72"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a415b94f580669f89e5a8f7a2ac230f72">votca::xtp::Orca::GetPolarizability</a></div><div class="ttdeci">Eigen::Matrix3d GetPolarizability() const override</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00460">orca.cc:460</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a47229ac679d441b4cfff7639aa86f85f"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a47229ac679d441b4cfff7639aa86f85f">votca::xtp::Orca::WriteChargeOption</a></div><div class="ttdeci">void WriteChargeOption() override</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00174">orca.cc:174</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a6de8845400f739bb07afe1fe254bcdf2"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a6de8845400f739bb07afe1fe254bcdf2">votca::xtp::Orca::CreateInputSection</a></div><div class="ttdeci">std::string CreateInputSection(const std::string &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00793">orca.cc:793</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a6de8845400f739bb07afe1fe254bcdf2"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a6de8845400f739bb07afe1fe254bcdf2">votca::xtp::Orca::CreateInputSection</a></div><div class="ttdeci">std::string CreateInputSection(const std::string &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00802">orca.cc:802</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a736c1ef372e42e02f9e0e25527bbe812"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a736c1ef372e42e02f9e0e25527bbe812">votca::xtp::Orca::GetCharges</a></div><div class="ttdeci">StaticSegment GetCharges() const override</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00412">orca.cc:412</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a8605b8d6040fb4d7d79c28de0f284a38"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a8605b8d6040fb4d7d79c28de0f284a38">votca::xtp::Orca::WriteMethod</a></div><div class="ttdeci">std::string WriteMethod() const</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00814">orca.cc:814</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a8605b8d6040fb4d7d79c28de0f284a38"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a8605b8d6040fb4d7d79c28de0f284a38">votca::xtp::Orca::WriteMethod</a></div><div class="ttdeci">std::string WriteMethod() const</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00823">orca.cc:823</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_a8b3f30694817d1d47dd3c46554edaf0e"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#a8b3f30694817d1d47dd3c46554edaf0e">votca::xtp::Orca::WriteBackgroundCharges</a></div><div class="ttdeci">void WriteBackgroundCharges()</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00182">orca.cc:182</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_aaa1126664c09b46e5071c463b60ca838"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#aaa1126664c09b46e5071c463b60ca838">votca::xtp::Orca::CheckLogFile</a></div><div class="ttdeci">bool CheckLogFile()</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00705">orca.cc:705</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_ab2df3f7b974bb224063343ab0affa365"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#ab2df3f7b974bb224063343ab0affa365">votca::xtp::Orca::RunDFT</a></div><div class="ttdeci">bool RunDFT() override</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00337">orca.cc:337</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_ab9f531ed67be65b9a92ac2dc73055ac8"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#ab9f531ed67be65b9a92ac2dc73055ac8">votca::xtp::Orca::ParseLogFile</a></div><div class="ttdeci">bool ParseLogFile(Orbitals &amp;orbitals) override</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00505">orca.cc:505</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_ac1f7fcb71e3b61709ec66e4c64d3fb9c"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#ac1f7fcb71e3b61709ec66e4c64d3fb9c">votca::xtp::Orca::ParseSpecificOptions</a></div><div class="ttdeci">void ParseSpecificOptions(const tools::Property &amp;options) final</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00051">orca.cc:51</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_ad0e8d1e8567b5d427bbb9ac088422c07"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#ad0e8d1e8567b5d427bbb9ac088422c07">votca::xtp::Orca::ParseMOsFile</a></div><div class="ttdeci">bool ParseMOsFile(Orbitals &amp;orbitals) override</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00739">orca.cc:739</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_ad5deaa7f98cd824b5dd049ea055a2baa"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#ad5deaa7f98cd824b5dd049ea055a2baa">votca::xtp::Orca::KeywordIsSingleLine</a></div><div class="ttdeci">bool KeywordIsSingleLine(const std::string &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00808">orca.cc:808</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_ad5deaa7f98cd824b5dd049ea055a2baa"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#ad5deaa7f98cd824b5dd049ea055a2baa">votca::xtp::Orca::KeywordIsSingleLine</a></div><div class="ttdeci">bool KeywordIsSingleLine(const std::string &amp;key) const</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00817">orca.cc:817</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Orca_html_adab17b4f6cbc7eb89f72187426c4ebe3"><div class="ttname"><a href="classvotca_1_1xtp_1_1Orca.html#adab17b4f6cbc7eb89f72187426c4ebe3">votca::xtp::Orca::WriteInputFile</a></div><div class="ttdeci">bool WriteInputFile(const Orbitals &amp;orbitals) override</div><div class="ttdef"><b>Definition:</b> <a href="orca_8cc_source.html#l00223">orca.cc:223</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMAtom_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMAtom.html">votca::xtp::QMAtom</a></div><div class="ttdoc">container for QM atoms</div><div class="ttdef"><b>Definition:</b> <a href="qmatom_8h_source.html#l00037">qmatom.h:37</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition:</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
