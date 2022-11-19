@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zz_8618',['zz',['../classvotca_1_1xtp_1_1AxA.html#ac9e4c86aeed2ec5080ec3232339afb44',1,'votca::xtp::AxA']]]
+  ['zz_0',['zz',['../classvotca_1_1xtp_1_1AxA.html#a036dbd041a5cba521d03aa6c875f255f',1,'votca::xtp::AxA']]]
 ];
