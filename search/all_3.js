@@ -173,7 +173,7 @@ var searchData=
   ['dlpolytrajectorywriter_2eh_170',['dlpolytrajectorywriter.h',['../dlpolytrajectorywriter_8h.html',1,'']]],
   ['dlptopolapp_171',['DLPTopolApp',['../classDLPTopolApp.html',1,'']]],
   ['dmat_172',['DMat',['../test__vxc__potential_8cc.html#ad4d27a019152cadbfeee78ec4bc68731',1,'test_vxc_potential.cc']]],
-  ['dmat_2emm_173',['dmat.mm',['../eris_2dmat_8mm.html',1,'(Global Namespace)'],['../densityintegration_2dmat_8mm.html',1,'(Global Namespace)'],['../vxc__potential_2dmat_8mm.html',1,'(Global Namespace)']]],
+  ['dmat_2emm_173',['dmat.mm',['../densityintegration_2dmat_8mm.html',1,'(Global Namespace)'],['../eris_2dmat_8mm.html',1,'(Global Namespace)'],['../vxc__potential_2dmat_8mm.html',1,'(Global Namespace)']]],
   ['dmat2_2emm_174',['dmat2.mm',['../dmat2_8mm.html',1,'']]],
   ['dmat3_2emm_175',['dmat3.mm',['../dmat3_8mm.html',1,'']]],
   ['dmat_5fgs_5fref_2emm_176',['dmat_gs_ref.mm',['../dmat__gs__ref_8mm.html',1,'']]],
