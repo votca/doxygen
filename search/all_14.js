@@ -26,8 +26,8 @@ var searchData=
   ['unlocklog_23',['UnlockLog',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#ad1205fedeae6f470afba21529279fd57',1,'votca::xtp::ParallelXJobCalc']]],
   ['unocca_5f_24',['unoccA_',['../classvotca_1_1xtp_1_1BSECoupling.html#ac0ffe6e9bf378ceee5d58a168b731b95',1,'votca::xtp::BSECoupling']]],
   ['unoccb_5f_25',['unoccB_',['../classvotca_1_1xtp_1_1BSECoupling.html#a239124e2dc9907daa0f9216ffe506f16',1,'votca::xtp::BSECoupling']]],
-  ['update_26',['Update',['../classvotca_1_1xtp_1_1DIIS.html#ab33608705810d6a8d5e89044cc61c0f6',1,'votca::xtp::DIIS']]],
-  ['update_27',['UPDATE',['../classvotca_1_1xtp_1_1DavidsonSolver.html#abd786a02625d5fb3a2030a510bc4f399',1,'votca::xtp::DavidsonSolver']]],
+  ['update_26',['UPDATE',['../classvotca_1_1xtp_1_1DavidsonSolver.html#abd786a02625d5fb3a2030a510bc4f399',1,'votca::xtp::DavidsonSolver']]],
+  ['update_27',['Update',['../classvotca_1_1xtp_1_1DIIS.html#ab33608705810d6a8d5e89044cc61c0f6',1,'votca::xtp::DIIS']]],
   ['update_5fjobs_28',['UPDATE_JOBS',['../namespacevotca_1_1xtp.html#a3e308698899af0fd295b141b50769449',1,'votca::xtp']]],
   ['update_5fpenalty_29',['update_penalty',['../classvotca_1_1xtp_1_1PMLocalization.html#a9271ace1af9ef9f9b7628c8e13130e1c',1,'votca::xtp::PMLocalization']]],
   ['updateatompostion_30',['updateAtomPostion',['../classvotca_1_1xtp_1_1Orbitals.html#a72d843a3010f6f40b7258ec7d638089f',1,'votca::xtp::Orbitals']]],
@@ -66,8 +66,9 @@ var searchData=
   ['usediis_63',['usediis',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#abd8b825e0622a4ef74c753ac3e62e8b5',1,'votca::xtp::ConvergenceAcc::options']]],
   ['usedmixing_5f_64',['usedmixing_',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#acc7fa16a6e029f80c58794372e19a01a',1,'votca::xtp::ConvergenceAcc']]],
   ['useexcitoncutoff_5f_65',['useExcitonCutoff_',['../classvotca_1_1xtp_1_1Neighborlist.html#a04a160e619afff32580028b95d0c679b',1,'votca::xtp::Neighborlist']]],
-  ['usesymmetry_66',['UseSymmetry',['../classvotca_1_1xtp_1_1Gauss__Legendre__Quadrature.html#aed1d3795970ece916afa53d452948d22',1,'votca::xtp::Gauss_Legendre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__modified__Legendre__Quadrature.html#a3aa5729997345f6d817eee88a696a387',1,'votca::xtp::Gauss_modified_Legendre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__Laguerre__Quadrature.html#a1f30218ae6bd0fce555cc5c4ca6b4847',1,'votca::xtp::Gauss_Laguerre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__Hermite__Quadrature.html#ab287235ebd7bec332b6b86cf17fd7a7f',1,'votca::xtp::Gauss_Hermite_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1GaussianQuadratureBase.html#af1bfed18e4d91e37a0e50d8aef27b173',1,'votca::xtp::GaussianQuadratureBase::UseSymmetry()']]],
-  ['usetda_67',['useTDA',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a659a54cb1fcd033929c79d48476ce374',1,'votca::xtp::BSE::options']]],
-  ['usetda_5f_68',['useTDA_',['../classvotca_1_1xtp_1_1Orbitals.html#a83029c41b0a8ca0933bc5abbe64e55fd',1,'votca::xtp::Orbitals']]],
-  ['usinggpus_69',['UsingGPUs',['../classvotca_1_1xtp_1_1OpenMP__CUDA.html#ab9721426e0dcd1ef8ae9e2fea8912009',1,'votca::xtp::OpenMP_CUDA']]]
+  ['useri_5f_66',['useRI_',['../classvotca_1_1xtp_1_1Diabatization.html#a94daec4911e66cb9b3424e36ad1e3844',1,'votca::xtp::Diabatization::useRI_()'],['../classvotca_1_1xtp_1_1ERDiabatization.html#ad3921a60bf0dc627552f9d60b992d5fa',1,'votca::xtp::ERDiabatization::useRI_()']]],
+  ['usesymmetry_67',['UseSymmetry',['../classvotca_1_1xtp_1_1Gauss__Laguerre__Quadrature.html#a1f30218ae6bd0fce555cc5c4ca6b4847',1,'votca::xtp::Gauss_Laguerre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__modified__Legendre__Quadrature.html#a3aa5729997345f6d817eee88a696a387',1,'votca::xtp::Gauss_modified_Legendre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__Legendre__Quadrature.html#aed1d3795970ece916afa53d452948d22',1,'votca::xtp::Gauss_Legendre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__Hermite__Quadrature.html#ab287235ebd7bec332b6b86cf17fd7a7f',1,'votca::xtp::Gauss_Hermite_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1GaussianQuadratureBase.html#af1bfed18e4d91e37a0e50d8aef27b173',1,'votca::xtp::GaussianQuadratureBase::UseSymmetry()']]],
+  ['usetda_68',['useTDA',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a659a54cb1fcd033929c79d48476ce374',1,'votca::xtp::BSE::options']]],
+  ['usetda_5f_69',['useTDA_',['../classvotca_1_1xtp_1_1Orbitals.html#a83029c41b0a8ca0933bc5abbe64e55fd',1,'votca::xtp::Orbitals']]],
+  ['usinggpus_70',['UsingGPUs',['../classvotca_1_1xtp_1_1OpenMP__CUDA.html#ab9721426e0dcd1ef8ae9e2fea8912009',1,'votca::xtp::OpenMP_CUDA']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['w_5f_0',['w_',['../classvotca_1_1csg_1_1Bead.html#a36752986ef6184691a4d805892a8a61f',1,'votca::csg::Bead']]],
-  ['w_5f_1',['W_',['../classvotca_1_1xtp_1_1PMLocalization.html#a962537003fc2fcb2e2350d13c47f941f',1,'votca::xtp::PMLocalization']]],
+  ['w_5f_0',['W_',['../classvotca_1_1xtp_1_1PMLocalization.html#a962537003fc2fcb2e2350d13c47f941f',1,'votca::xtp::PMLocalization']]],
+  ['w_5f_1',['w_',['../classvotca_1_1csg_1_1Bead.html#a36752986ef6184691a4d805892a8a61f',1,'votca::csg::Bead']]],
   ['w_5fold_5f_2',['W_old_',['../classvotca_1_1xtp_1_1PMLocalization.html#a5576a00d3366f0be4f601b19a2eab886',1,'votca::xtp::PMLocalization']]],
   ['warnpreface_5f_3',['warnPreface_',['../classvotca_1_1xtp_1_1LogBuffer.html#aa40a68306341799a35bc5faaa0fb79e7',1,'votca::xtp::LogBuffer']]],
   ['weight_4',['weight',['../structvotca_1_1xtp_1_1GridContainers_1_1radial__grid.html#abad8a619f2de46cfdfd0ed7edab07d0c',1,'votca::xtp::GridContainers::radial_grid::weight()'],['../structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html#afcae61f2e3ec3137da2e0c7dcfc0363c',1,'votca::xtp::GridContainers::spherical_grid::weight()']]],

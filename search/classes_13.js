@@ -20,10 +20,11 @@ var searchData=
   ['trajectoryreader_17',['TrajectoryReader',['../classvotca_1_1csg_1_1TrajectoryReader.html',1,'votca::csg']]],
   ['trajectorywriter_18',['TrajectoryWriter',['../classvotca_1_1csg_1_1TrajectoryWriter.html',1,'votca::csg']]],
   ['trajforce_19',['TrajForce',['../classTrajForce.html',1,'']]],
-  ['triclinicbox_20',['TriclinicBox',['../classvotca_1_1csg_1_1TriclinicBox.html',1,'votca::csg']]],
-  ['triplelist_21',['TripleList',['../classvotca_1_1csg_1_1TripleList.html',1,'votca::csg']]],
-  ['triplelist_3c_20bead_20_2a_2c_20beadtriple_20_3e_22',['TripleList&lt; Bead *, BeadTriple &gt;',['../classvotca_1_1csg_1_1TripleList.html',1,'votca::csg']]],
-  ['trustregion_23',['TrustRegion',['../classvotca_1_1xtp_1_1TrustRegion.html',1,'votca::xtp']]],
-  ['trustregionfunction_24',['TrustRegionFunction',['../classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html',1,'votca::xtp::TrustRegion']]],
-  ['type_25',['type',['../structvotca_1_1tools_1_1internal_1_1type.html',1,'votca::tools::internal']]]
+  ['transitiondensities_20',['TransitionDensities',['../classvotca_1_1xtp_1_1TransitionDensities.html',1,'votca::xtp']]],
+  ['triclinicbox_21',['TriclinicBox',['../classvotca_1_1csg_1_1TriclinicBox.html',1,'votca::csg']]],
+  ['triplelist_22',['TripleList',['../classvotca_1_1csg_1_1TripleList.html',1,'votca::csg']]],
+  ['triplelist_3c_20bead_20_2a_2c_20beadtriple_20_3e_23',['TripleList&lt; Bead *, BeadTriple &gt;',['../classvotca_1_1csg_1_1TripleList.html',1,'votca::csg']]],
+  ['trustregion_24',['TrustRegion',['../classvotca_1_1xtp_1_1TrustRegion.html',1,'votca::xtp']]],
+  ['trustregionfunction_25',['TrustRegionFunction',['../classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html',1,'votca::xtp::TrustRegion']]],
+  ['type_26',['type',['../structvotca_1_1tools_1_1internal_1_1type.html',1,'votca::tools::internal']]]
 ];
