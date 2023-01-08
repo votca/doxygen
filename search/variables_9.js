@@ -18,6 +18,6 @@ var searchData=
   ['jobsreported_5f_15',['jobsReported_',['../classvotca_1_1xtp_1_1ProgObserver.html#ad219ebfbf72e588c43b479dcf9668706',1,'votca::xtp::ProgObserver']]],
   ['jobstoproc_5f_16',['jobsToProc_',['../classvotca_1_1xtp_1_1ProgObserver.html#a3b5a0f13ae86dbacfb21bd1790bbecc3',1,'votca::xtp::ProgObserver']]],
   ['jobstosync_5f_17',['jobsToSync_',['../classvotca_1_1xtp_1_1ProgObserver.html#af86c78648e33789751e969fd4b8f49c8',1,'votca::xtp::ProgObserver']]],
-  ['junctions_5f_18',['junctions_',['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_()'],['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_()']]],
+  ['junctions_5f_18',['junctions_',['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_()'],['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_()']]],
   ['junctionsuptodate_5f_19',['junctionsUpToDate_',['../classvotca_1_1csg_1_1BeadMotif.html#a78c4cc3f943a69f98ad714c71c16421f',1,'votca::csg::BeadMotif']]]
 ];

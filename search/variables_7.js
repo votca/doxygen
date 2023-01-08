@@ -34,12 +34,12 @@ var searchData=
   ['histlength_5f_31',['histlength_',['../classvotca_1_1xtp_1_1DIIS.html#ae7e4c931848a65e6d33805575bd7265d',1,'votca::xtp::DIIS']]],
   ['hlp_32',['HLP',['../namespacevotca_1_1tools.html#af7d59b326e7b495bc01c55e6fa354fb6',1,'votca::tools']]],
   ['hole_5flevels_5f_33',['hole_levels_',['../classvotca_1_1xtp_1_1IQM.html#ab7e7750b708eca3a578b961691fc6e17',1,'votca::xtp::IQM']]],
-  ['homo_34',['homo',['../structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html#afa2b70b0f97c89c11ea254836e561b7d',1,'votca::xtp::ImaginaryAxisIntegration::options::homo()'],['../structvotca_1_1xtp_1_1Sigma__base_1_1options.html#ab59a27cf4f0b5968a63d2975b890ad90',1,'votca::xtp::Sigma_base::options::homo()'],['../structvotca_1_1xtp_1_1GW_1_1options.html#abdcfac461a76c9869139366ccd2c9677',1,'votca::xtp::GW::options::homo()'],['../structvotca_1_1xtp_1_1BSEOperator__Options.html#a7ae02227cbd56ee667b9b4e44cb57555',1,'votca::xtp::BSEOperator_Options::homo()'],['../structvotca_1_1xtp_1_1BSE_1_1options.html#a57839ecb760e85120a293dab767fcc26',1,'votca::xtp::BSE::options::homo()']]],
+  ['homo_34',['homo',['../structvotca_1_1xtp_1_1GW_1_1options.html#abdcfac461a76c9869139366ccd2c9677',1,'votca::xtp::GW::options::homo()'],['../structvotca_1_1xtp_1_1Sigma__base_1_1options.html#ab59a27cf4f0b5968a63d2975b890ad90',1,'votca::xtp::Sigma_base::options::homo()'],['../structvotca_1_1xtp_1_1BSEOperator__Options.html#a7ae02227cbd56ee667b9b4e44cb57555',1,'votca::xtp::BSEOperator_Options::homo()'],['../structvotca_1_1xtp_1_1BSE_1_1options.html#a57839ecb760e85120a293dab767fcc26',1,'votca::xtp::BSE::options::homo()'],['../structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html#afa2b70b0f97c89c11ea254836e561b7d',1,'votca::xtp::ImaginaryAxisIntegration::options::homo()']]],
   ['homo_5f_35',['homo_',['../classvotca_1_1xtp_1_1RPA.html#af6e249c82f9902441bbed9877aceb880',1,'votca::xtp::RPA']]],
   ['host_5f_36',['host_',['../classvotca_1_1xtp_1_1Job.html#af8ee750babf5f2830af5c346dfd0c414',1,'votca::xtp::Job']]],
   ['hqp_5f_37',['Hqp_',['../classvotca_1_1xtp_1_1BSE.html#a87d361ff07cc864730bb208e57d257d5',1,'votca::xtp::BSE::Hqp_()'],['../classvotca_1_1xtp_1_1BSE__OPERATOR.html#a45fbcec70f58a140945a68d2c24c5377',1,'votca::xtp::BSE_OPERATOR::Hqp_()']]],
   ['hrt2ev_38',['hrt2ev',['../namespacevotca_1_1tools_1_1conv.html#a6f231ae1bc59867ca0e1c76a9fd1f179',1,'votca::tools::conv']]],
   ['hs_5f_39',['HS_',['../classCsgREupdate.html#ad412473a1d027470fd43fd61a6873176',1,'CsgREupdate::HS_()'],['../classCsgREupdateWorker.html#a8bea18dc811b27b01c42d7d399f46ea1',1,'CsgREupdateWorker::HS_()']]],
-  ['htree_40',['hTree',['../classvotca_1_1xtp_1_1GNode.html#ab0f90866a099997644e4167c223133b3',1,'votca::xtp::GNode']]],
-  ['htree_41',['htree',['../classvotca_1_1xtp_1_1huffmanTree.html#aaaae09d9afa515eec70e6a83a039bcfd',1,'votca::xtp::huffmanTree']]]
+  ['htree_40',['htree',['../classvotca_1_1xtp_1_1huffmanTree.html#aaaae09d9afa515eec70e6a83a039bcfd',1,'votca::xtp::huffmanTree']]],
+  ['htree_41',['hTree',['../classvotca_1_1xtp_1_1GNode.html#ab0f90866a099997644e4167c223133b3',1,'votca::xtp::GNode']]]
 ];

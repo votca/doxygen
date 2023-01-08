@@ -29,9 +29,7 @@ var searchData=
   ['bse_5foperator_2ecc_26',['bse_operator.cc',['../bse__operator_8cc.html',1,'']]],
   ['bse_5foperator_2eh_27',['bse_operator.h',['../bse__operator_8h.html',1,'']]],
   ['bse_5fpopulation_2eh_28',['bse_population.h',['../bse__population_8h.html',1,'']]],
-  ['bse_5fvectors1_2emm_29',['BSE_vectors1.mm',['../BSE__vectors1_8mm.html',1,'']]],
-  ['bse_5fvectors2_2emm_30',['BSE_vectors2.mm',['../BSE__vectors2_8mm.html',1,'']]],
-  ['bsecoupling_2ecc_31',['bsecoupling.cc',['../bsecoupling_8cc.html',1,'']]],
-  ['bsecoupling_2eh_32',['bsecoupling.h',['../bsecoupling_8h.html',1,'']]],
-  ['bseoperator_5fbtda_2eh_33',['bseoperator_btda.h',['../bseoperator__btda_8h.html',1,'']]]
+  ['bsecoupling_2ecc_29',['bsecoupling.cc',['../bsecoupling_8cc.html',1,'']]],
+  ['bsecoupling_2eh_30',['bsecoupling.h',['../bsecoupling_8h.html',1,'']]],
+  ['bseoperator_5fbtda_2eh_31',['bseoperator_btda.h',['../bseoperator__btda_8h.html',1,'']]]
 ];

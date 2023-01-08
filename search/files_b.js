@@ -12,9 +12,8 @@ var searchData=
   ['linalg_2eh_9',['linalg.h',['../linalg_8h.html',1,'']]],
   ['linspline_2ecc_10',['linspline.cc',['../linspline_8cc.html',1,'']]],
   ['linspline_2eh_11',['linspline.h',['../linspline_8h.html',1,'']]],
-  ['lmos_2emm_12',['LMOs.mm',['../LMOs_8mm.html',1,'']]],
-  ['localisation_5ffilter_2ecc_13',['Localisation_filter.cc',['../Localisation__filter_8cc.html',1,'']]],
-  ['localisation_5ffilter_2eh_14',['Localisation_filter.h',['../Localisation__filter_8h.html',1,'']]],
-  ['log2mps_2eh_15',['log2mps.h',['../log2mps_8h.html',1,'']]],
-  ['logger_2eh_16',['logger.h',['../logger_8h.html',1,'']]]
+  ['localisation_5ffilter_2ecc_12',['Localisation_filter.cc',['../Localisation__filter_8cc.html',1,'']]],
+  ['localisation_5ffilter_2eh_13',['Localisation_filter.h',['../Localisation__filter_8h.html',1,'']]],
+  ['log2mps_2eh_14',['log2mps.h',['../log2mps_8h.html',1,'']]],
+  ['logger_2eh_15',['logger.h',['../logger_8h.html',1,'']]]
 ];

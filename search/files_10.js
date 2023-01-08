@@ -24,7 +24,6 @@ var searchData=
   ['qmthread_2eh_21',['qmthread.h',['../qmthread_8h.html',1,'']]],
   ['qmtool_2ecc_22',['qmtool.cc',['../qmtool_8cc.html',1,'']]],
   ['qmtool_2eh_23',['qmtool.h',['../qmtool_8h.html',1,'']]],
-  ['quad_5fref_2emm_24',['quad_ref.mm',['../quad__ref_8mm.html',1,'']]],
-  ['quadrature_5ffactory_2ecc_25',['quadrature_factory.cc',['../quadrature__factory_8cc.html',1,'']]],
-  ['quadrature_5ffactory_2eh_26',['quadrature_factory.h',['../quadrature__factory_8h.html',1,'']]]
+  ['quadrature_5ffactory_2ecc_24',['quadrature_factory.cc',['../quadrature__factory_8cc.html',1,'']]],
+  ['quadrature_5ffactory_2eh_25',['quadrature_factory.h',['../quadrature__factory_8h.html',1,'']]]
 ];
