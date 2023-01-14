@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -166,14 +173,14 @@ $(function() {
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> deg = N;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="comment">// Form matrix</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  Eigen::MatrixXd <a class="code hl_class" href="classA.html">A</a> = Eigen::MatrixXd::Zero(N, deg);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  Eigen::MatrixXd A = Eigen::MatrixXd::Zero(N, deg);</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; N; i++) {</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; deg; j++) {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>      <a class="code hl_class" href="classA.html">A</a>(i, j) = std::pow(x(i), j);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>      A(i, j) = std::pow(x(i), j);</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  }</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="comment">// Solve for coefficients: A * c = y</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keywordflow">return</span> <a class="code hl_class" href="classA.html">A</a>.colPivHouseholderQr().solve(y);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keywordflow">return</span> A.colPivHouseholderQr().solve(y);</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1PMLocalization.html#a92e29138af6641b516f19f1806368175">  101</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#a92e29138af6641b516f19f1806368175">PMLocalization::find_smallest_step</a>(<span class="keyword">const</span> Eigen::VectorXd &amp;coeff)<span class="keyword"> const </span>{</div>
@@ -815,7 +822,6 @@ $(function() {
 <div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>}  <span class="comment">// namespace xtp</span></div>
 <div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span>}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aaomatrix_8h_html"><div class="ttname"><a href="aomatrix_8h.html">aomatrix.h</a></div></div>
-<div class="ttc" id="aclassA_html"><div class="ttname"><a href="classA.html">A</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00048">test_objectfactory.cc:48</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_a8e7c2db1e04dcae085b3ba95d298dedd"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#a8e7c2db1e04dcae085b3ba95d298dedd">votca::tools::EigenSystem::eigenvalues</a></div><div class="ttdeci">const Eigen::VectorXd &amp; eigenvalues() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00030">eigensystem.h:30</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_afd8f46808af0552ff1a6ef84a42fe595"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#afd8f46808af0552ff1a6ef84a42fe595">votca::tools::EigenSystem::eigenvectors</a></div><div class="ttdeci">const Eigen::MatrixXd &amp; eigenvectors() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00033">eigensystem.h:33</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a4bcfa569ebd2349520b3c17e1a6bb040"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a4bcfa569ebd2349520b3c17e1a6bb040">votca::xtp::AOBasis::getFuncPerAtom</a></div><div class="ttdeci">const std::vector&lt; Index &gt; &amp; getFuncPerAtom() const</div><div class="ttdef"><b>Definition:</b> <a href="aobasis_8h_source.html#l00072">aobasis.h:72</a></div></div>

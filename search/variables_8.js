@@ -46,7 +46,7 @@ var searchData=
   ['interactor_5f_43',['interactor_',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#acd93823ef81868a6c0fe2f57dae24441',1,'votca::xtp::DipoleDipoleInteraction']]],
   ['intermediateoutput_5ffrequency_5f_44',['intermediateoutput_frequency_',['../classvotca_1_1xtp_1_1KMCMultiple.html#a0f118d51c7493185262c7dac346d949c',1,'votca::xtp::KMCMultiple']]],
   ['interval_5f_45',['interval_',['../classvotca_1_1tools_1_1Histogram.html#a2e1ff3de5261220538bcb2b539478d96',1,'votca::tools::Histogram']]],
-  ['inv_5fr_5fhydr_5f_46',['inv_r_hydr_',['../classCsgTestApp.html#acbc9e82df86aa04032a42112c0e9beea',1,'CsgTestApp']]],
+  ['inv_5fr_5fhydr_5f_46',['inv_r_hydr_',['../classCsgRadiiApp.html#af930f18b43cf85771588df54f7e88a6c',1,'CsgRadiiApp']]],
   ['inv_5franges_47',['inv_ranges',['../classvotca_1_1xtp_1_1GridBox.html#a1aa2295cb065adb1228f283060f66b92',1,'votca::xtp::GridBox']]],
   ['inv_5fsqrt_5f_48',['inv_sqrt_',['../classvotca_1_1xtp_1_1TCMatrix.html#a461f930140d2367480a7b7e2b117eff9',1,'votca::xtp::TCMatrix']]],
   ['ioindex_49',['IOindex',['../classvotca_1_1tools_1_1Property.html#aff5a4cdf04530275a7faf892ee00685d',1,'votca::tools::Property']]],

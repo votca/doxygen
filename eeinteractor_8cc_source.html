@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -439,15 +446,15 @@ $(function() {
 <div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1ClassicalSegment.html">PolarSegment</a>&amp; seg)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>  <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> size = 3 * seg.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ac77977f38fe105f08f894c4c9372f9cb">size</a>();</div>
 <div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span> </div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  Eigen::MatrixXd <a class="code hl_class" href="classA.html">A</a> = Eigen::MatrixXd::Zero(size, size);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  Eigen::MatrixXd A = Eigen::MatrixXd::Zero(size, size);</div>
 <div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 1; i &lt; seg.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ac77977f38fe105f08f894c4c9372f9cb">size</a>(); i++) {</div>
 <div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> j = 0; j &lt; i; j++) {</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>      <a class="code hl_class" href="classA.html">A</a>.block&lt;3, 3&gt;(3 * i, 3 * j) = <a class="code hl_function" href="classvotca_1_1xtp_1_1eeInteractor.html#accea9bc7a11ab72ba50a0354f688296e">FillTholeInteraction</a>(seg[i], seg[j]);</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>      A.block&lt;3, 3&gt;(3 * i, 3 * j) = <a class="code hl_function" href="classvotca_1_1xtp_1_1eeInteractor.html#accea9bc7a11ab72ba50a0354f688296e">FillTholeInteraction</a>(seg[i], seg[j]);</div>
 <div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    }</div>
 <div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  }</div>
 <div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span> </div>
 <div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; seg.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ac77977f38fe105f08f894c4c9372f9cb">size</a>(); i++) {</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    <a class="code hl_class" href="classA.html">A</a>.block&lt;3, 3&gt;(3 * i, 3 * i) = seg[i].getPInv();</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    A.block&lt;3, 3&gt;(3 * i, 3 * i) = seg[i].getPInv();</div>
 <div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>  }</div>
 <div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>  Eigen::VectorXd b = Eigen::VectorXd(size);</div>
 <div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 0; i &lt; seg.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ac77977f38fe105f08f894c4c9372f9cb">size</a>(); i++) {</div>
@@ -455,13 +462,12 @@ $(function() {
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    b.segment&lt;3&gt;(3 * i) = -<a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>;</div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>  }</div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>  Eigen::LLT&lt;Eigen::Ref&lt;Eigen::MatrixXd&gt;&gt; lltOfA(<a class="code hl_class" href="classA.html">A</a>);</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>  Eigen::LLT&lt;Eigen::Ref&lt;Eigen::MatrixXd&gt;&gt; lltOfA(A);</div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>  <span class="keywordflow">return</span> lltOfA.solve(b);</div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>}</div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
 <div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>}  <span class="comment">// namespace xtp</span></div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>}  <span class="comment">// namespace votca</span></div>
-<div class="ttc" id="aclassA_html"><div class="ttname"><a href="classA.html">A</a></div><div class="ttdef"><b>Definition:</b> <a href="test__objectfactory_8cc_source.html#l00048">test_objectfactory.cc:48</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_ac77977f38fe105f08f894c4c9372f9cb"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#ac77977f38fe105f08f894c4c9372f9cb">votca::xtp::AtomContainer::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition:</b> <a href="atomcontainer_8h_source.html#l00067">atomcontainer.h:67</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AxA_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AxA.html">votca::xtp::AxA</a></div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2eigen_8h_source.html#l00091">eigen.h:91</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AxA_html_a036dbd041a5cba521d03aa6c875f255f"><div class="ttname"><a href="classvotca_1_1xtp_1_1AxA.html#a036dbd041a5cba521d03aa6c875f255f">votca::xtp::AxA::zz</a></div><div class="ttdeci">const double &amp; zz() const</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2eigen_8h_source.html#l00103">eigen.h:103</a></div></div>

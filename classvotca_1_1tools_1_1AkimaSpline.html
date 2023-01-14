@@ -12,6 +12,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -293,13 +300,13 @@ procedures"</p>
 <p>Calculate spline function values for given x values on the spline created by <a class="el" href="classvotca_1_1tools_1_1AkimaSpline.html#aa265470e0aec626512c5ef82024d371a" title="Calculate interpolating spline for given (x,y) values. Points on resulting spline can be obtained via...">Interpolate()</a> or <a class="el" href="classvotca_1_1tools_1_1AkimaSpline.html#a8782c27d5657026c2a5a48c2880b8746" title="Fit spline through noisy (x,y) values. Points on resulting fitted spline can be obtained via Calculat...">Fit()</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vector</td><td>of x data values </td></tr>
+    <tr><td class="paramname">x</td><td>vector of data values </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>vector of y value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="spline_8cc_source.html#l00115">115</a> of file <a class="el" href="spline_8cc_source.html">spline.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="spline_8cc_source.html#l00116">116</a> of file <a class="el" href="spline_8cc_source.html">spline.cc</a>.</p>
 
 </div>
 </div>
@@ -398,13 +405,13 @@ procedures"</p>
 <p>Calculate y values for given x values on the derivative of the spline created by function Interpolate or Fit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vector</td><td>of x data values </td></tr>
+    <tr><td class="paramname">x</td><td>vector of data values </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>vector of y value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="spline_8cc_source.html#l00122">122</a> of file <a class="el" href="spline_8cc_source.html">spline.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="spline_8cc_source.html#l00124">124</a> of file <a class="el" href="spline_8cc_source.html">spline.cc</a>.</p>
 
 </div>
 </div>
@@ -576,11 +583,14 @@ Method of Interpolation and Smooth Curve Fitting Based on Local
 Procedures") </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">slopes</td><td>m1 to m4 of line segments connecting the five data points </td></tr>
+    <tr><td class="paramname">m1</td><td>slope of the first line segment connecting the five data points </td></tr>
+    <tr><td class="paramname">m2</td><td>slope of the second line segment connecting the five data points </td></tr>
+    <tr><td class="paramname">m3</td><td>slope of the third line segment connecting the five data points </td></tr>
+    <tr><td class="paramname">m4</td><td>slope of the fourth line segment connecting the five data points </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>slope handles all special cases to determine the slope t based on slopes m1,m2,m3,m4 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>slope handles all special cases to determine the slope based on slopes m1,m2,m3,m4 </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="akimaspline_8cc_source.html#l00174">174</a> of file <a class="el" href="akimaspline_8cc_source.html">akimaspline.cc</a>.</p>
 
@@ -656,7 +666,7 @@ Procedures") </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00080">80</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00088">88</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
 
 </div>
 </div>
@@ -680,7 +690,7 @@ Procedures") </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00081">81</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00089">89</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
 
 </div>
 </div>
@@ -704,7 +714,7 @@ Procedures") </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00082">82</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00090">90</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
 
 </div>
 </div>
@@ -728,7 +738,7 @@ Procedures") </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00083">83</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00091">91</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
 
 </div>
 </div>
@@ -752,7 +762,7 @@ Procedures") </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00084">84</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="akimaspline_8h_source.html#l00092">92</a> of file <a class="el" href="akimaspline_8h_source.html">akimaspline.h</a>.</p>
 
 </div>
 </div>
