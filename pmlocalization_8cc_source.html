@@ -84,7 +84,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="pmlocalization_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *            Copyright 2009-2022 The VOTCA Development Team</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *            Copyright 2009-2023 The VOTCA Development Team</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *                       (http://www.votca.org)</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *      Licensed under the Apache License, Version 2.0 (the &quot;License&quot;)</span></div>
@@ -717,110 +717,111 @@ $(function() {
 <div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>    Qat[iat].diagonal() = <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>.col(iat);</div>
 <div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>  }</div>
 <div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span> </div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>  <span class="comment">// now fill the offdiagonals</span></div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> s = 0; s &lt; noccs; s++) {</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span> </div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    Eigen::MatrixXd s_overlap = occ_orbitals.col(s).asDiagonal() * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a94c2baba679ab85543707c7b90b9c9f5">overlap_</a>;</div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span> </div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> t = s + 1; t &lt; noccs; t++) {</div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span> </div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>      Eigen::MatrixXd splitwiseMullikenPop_orb_SandT =</div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>          s_overlap * occ_orbitals.col(t).asDiagonal();</div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>      Eigen::RowVectorXd MullikenPop_orb_SandT_per_basis =</div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>          0.5 * (splitwiseMullikenPop_orb_SandT.colwise().sum() +</div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>                 splitwiseMullikenPop_orb_SandT.rowwise().sum().transpose());</div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span> </div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>      <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> start = 0;</div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span> </div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> atom_id = 0; atom_id &lt; <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>.size());</div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>           atom_id++) {</div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>        Qat[atom_id](s, t) = MullikenPop_orb_SandT_per_basis</div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>                                 .segment(start, <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>[atom_id])</div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>                                 .sum();</div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>        Qat[atom_id](t, s) = Qat[atom_id](s, t);</div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span> </div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>        start += <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>[atom_id];</div>
-<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>      }</div>
-<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>    }</div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>  }</div>
-<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span> </div>
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>  <span class="keywordflow">return</span> Qat;</div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>}</div>
-<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span> </div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1PMLocalization.html#a86e38fd933210ed3147c7a38525306fc">  665</a></span>Eigen::Vector2d <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#a86e38fd933210ed3147c7a38525306fc">PMLocalization::offdiag_penalty_elements</a>(</div>
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>    <span class="keyword">const</span> Eigen::MatrixXd &amp;s_overlap, <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> s, <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> t) {</div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span> </div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>  Eigen::MatrixXd splitwiseMullikenPop_orb_SandT =</div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>      s_overlap * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.col(t).asDiagonal();</div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>  Eigen::RowVectorXd MullikenPop_orb_SandT_per_basis =</div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>      0.5 * (splitwiseMullikenPop_orb_SandT.colwise().sum() +</div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>             splitwiseMullikenPop_orb_SandT.rowwise().sum().transpose());</div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span> </div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>  <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> start =</div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>      0;  <span class="comment">// This helps to sum only over the basis functions on an atom</span></div>
-<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>  <span class="keywordtype">double</span> Ast = 0;</div>
-<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>  <span class="keywordtype">double</span> Bst = 0;</div>
-<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span> </div>
-<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> atom_id = 0; atom_id &lt; <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>.size()); atom_id++) {</div>
-<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>    <span class="keywordtype">double</span> MullikenPop_orb_SandT_per_atom =</div>
-<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>        MullikenPop_orb_SandT_per_basis.segment(start, <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>[atom_id])</div>
-<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>            .sum();</div>
-<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span> </div>
-<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    Ast += MullikenPop_orb_SandT_per_atom * MullikenPop_orb_SandT_per_atom -</div>
-<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>           0.25 * ((<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(s, atom_id) -</div>
-<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>                    <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(t, atom_id)) *</div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>                   (<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(s, atom_id) -</div>
-<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>                    <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(t, atom_id)));</div>
-<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span> </div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>    Bst += MullikenPop_orb_SandT_per_atom *</div>
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>           (<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(s, atom_id) -</div>
-<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>            <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(t, atom_id));</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>    start += <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>[atom_id];</div>
-<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>  }</div>
-<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span> </div>
-<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>  Eigen::Vector2d out(Ast, Bst);</div>
-<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span> </div>
-<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>  <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>}</div>
-<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span> </div>
-<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span><span class="comment">// Update PM cost function based on Mulliken populations after rotations</span></div>
-<div class="line"><a id="l00702" name="l00702"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1PMLocalization.html#a9271ace1af9ef9f9b7628c8e13130e1c">  702</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#a9271ace1af9ef9f9b7628c8e13130e1c">PMLocalization::update_penalty</a>(<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> orb1, <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> orb2) {</div>
-<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span> </div>
-<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>  <span class="comment">// update the get the s-s elements for orb1 and orb2</span></div>
-<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span><span class="preprocessor">#pragma omp parallel for</span></div>
-<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> s = 0; s &lt; <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.cols(); s++) {</div>
-<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    <span class="keywordflow">if</span> (s == orb1 || s == orb2) {</div>
-<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span> </div>
-<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>      <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>.row(s) =</div>
-<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>          <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#ad27983bc29a64d3457e3b878371ef639">pop_per_atom</a>(<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.col(s));</div>
-<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>    }</div>
-<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>  }</div>
-<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span> </div>
-<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span><span class="comment">// now we only need to calculate the off-diagonals explicitly for all</span></div>
-<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span><span class="comment">// pairs involving orb1 or orb2</span></div>
-<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span><span class="preprocessor">#pragma omp parallel for</span></div>
-<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> s = 0; s &lt; <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.cols(); s++) {</div>
-<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>    Eigen::MatrixXd s_overlap =</div>
-<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>        <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.col(s).asDiagonal() * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a94c2baba679ab85543707c7b90b9c9f5">overlap_</a>;</div>
-<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span> </div>
-<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> t = s + 1; t &lt; <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.cols(); t++) {</div>
-<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span> </div>
-<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>      <span class="comment">// we do this only if any of s or t matches orb1 or orb2</span></div>
-<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>      <span class="keywordflow">if</span> (s == orb1 || s == orb2 || t == orb1 || t == orb2) {</div>
-<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span> </div>
-<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>        Eigen::Vector2d temp = <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#a86e38fd933210ed3147c7a38525306fc">offdiag_penalty_elements</a>(s_overlap, s, t);</div>
-<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>        <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230">A_</a>(s, t) = temp(0);</div>
-<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>        <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a1db9862346cda5e021b5289edcbad0fc">B_</a>(s, t) = temp(1);</div>
-<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>        <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a905f949e82dac0c9470bb57214165d05">PM_penalty_</a>(s, t) =</div>
-<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>            <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230">A_</a>(s, t) + sqrt((<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230">A_</a>(s, t) * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230">A_</a>(s, t)) + (<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a1db9862346cda5e021b5289edcbad0fc">B_</a>(s, t) * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a1db9862346cda5e021b5289edcbad0fc">B_</a>(s, t)));</div>
-<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span>      }</div>
-<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>    }</div>
-<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>  }</div>
-<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span>  <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>}</div>
-<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span> </div>
-<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span>}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span><span class="comment">// now fill the offdiagonals</span></div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span><span class="preprocessor">#pragma omp parallel for</span></div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> s = 0; s &lt; noccs; s++) {</div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span> </div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>    Eigen::MatrixXd s_overlap = occ_orbitals.col(s).asDiagonal() * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a94c2baba679ab85543707c7b90b9c9f5">overlap_</a>;</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span> </div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> t = s + 1; t &lt; noccs; t++) {</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span> </div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>      Eigen::MatrixXd splitwiseMullikenPop_orb_SandT =</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>          s_overlap * occ_orbitals.col(t).asDiagonal();</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>      Eigen::RowVectorXd MullikenPop_orb_SandT_per_basis =</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>          0.5 * (splitwiseMullikenPop_orb_SandT.colwise().sum() +</div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>                 splitwiseMullikenPop_orb_SandT.rowwise().sum().transpose());</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span> </div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>      <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> start = 0;</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span> </div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> atom_id = 0; atom_id &lt; <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>.size());</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>           atom_id++) {</div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>        Qat[atom_id](s, t) = MullikenPop_orb_SandT_per_basis</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>                                 .segment(start, <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>[atom_id])</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>                                 .sum();</div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>        Qat[atom_id](t, s) = Qat[atom_id](s, t);</div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span> </div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>        start += <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>[atom_id];</div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>      }</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    }</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>  }</div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span> </div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>  <span class="keywordflow">return</span> Qat;</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>}</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span> </div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1PMLocalization.html#a86e38fd933210ed3147c7a38525306fc">  666</a></span>Eigen::Vector2d <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#a86e38fd933210ed3147c7a38525306fc">PMLocalization::offdiag_penalty_elements</a>(</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>    <span class="keyword">const</span> Eigen::MatrixXd &amp;s_overlap, <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> s, <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> t) {</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span> </div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>  Eigen::MatrixXd splitwiseMullikenPop_orb_SandT =</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>      s_overlap * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.col(t).asDiagonal();</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>  Eigen::RowVectorXd MullikenPop_orb_SandT_per_basis =</div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>      0.5 * (splitwiseMullikenPop_orb_SandT.colwise().sum() +</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>             splitwiseMullikenPop_orb_SandT.rowwise().sum().transpose());</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span> </div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>  <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> start =</div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>      0;  <span class="comment">// This helps to sum only over the basis functions on an atom</span></div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>  <span class="keywordtype">double</span> Ast = 0;</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>  <span class="keywordtype">double</span> Bst = 0;</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span> </div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> atom_id = 0; atom_id &lt; <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>.size()); atom_id++) {</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>    <span class="keywordtype">double</span> MullikenPop_orb_SandT_per_atom =</div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>        MullikenPop_orb_SandT_per_basis.segment(start, <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>[atom_id])</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>            .sum();</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span> </div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    Ast += MullikenPop_orb_SandT_per_atom * MullikenPop_orb_SandT_per_atom -</div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>           0.25 * ((<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(s, atom_id) -</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>                    <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(t, atom_id)) *</div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>                   (<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(s, atom_id) -</div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>                    <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(t, atom_id)));</div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span> </div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>    Bst += MullikenPop_orb_SandT_per_atom *</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>           (<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(s, atom_id) -</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>            <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>(t, atom_id));</div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    start += <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#ae9bbaae189d1991affd8643b84fbc8ac">numfuncpatom_</a>[atom_id];</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>  }</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span> </div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>  Eigen::Vector2d out(Ast, Bst);</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span> </div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>  <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>}</div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span> </div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span><span class="comment">// Update PM cost function based on Mulliken populations after rotations</span></div>
+<div class="line"><a id="l00703" name="l00703"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1PMLocalization.html#a9271ace1af9ef9f9b7628c8e13130e1c">  703</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#a9271ace1af9ef9f9b7628c8e13130e1c">PMLocalization::update_penalty</a>(<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> orb1, <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> orb2) {</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span> </div>
+<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>  <span class="comment">// update the get the s-s elements for orb1 and orb2</span></div>
+<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span><span class="preprocessor">#pragma omp parallel for</span></div>
+<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> s = 0; s &lt; <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.cols(); s++) {</div>
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>    <span class="keywordflow">if</span> (s == orb1 || s == orb2) {</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span> </div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>      <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a2045545b77cbef82959e2bc8a3a560cb">MullikenPop_orb_per_atom_</a>.row(s) =</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>          <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#ad27983bc29a64d3457e3b878371ef639">pop_per_atom</a>(<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.col(s));</div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>    }</div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>  }</div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span> </div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span><span class="comment">// now we only need to calculate the off-diagonals explicitly for all</span></div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span><span class="comment">// pairs involving orb1 or orb2</span></div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span><span class="preprocessor">#pragma omp parallel for</span></div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> s = 0; s &lt; <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.cols(); s++) {</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>    Eigen::MatrixXd s_overlap =</div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>        <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.col(s).asDiagonal() * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a94c2baba679ab85543707c7b90b9c9f5">overlap_</a>;</div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span> </div>
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> t = s + 1; t &lt; <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#acbea2ca041c4c37f1c5a7f6e91e6f62e">localized_orbitals_</a>.cols(); t++) {</div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span> </div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>      <span class="comment">// we do this only if any of s or t matches orb1 or orb2</span></div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>      <span class="keywordflow">if</span> (s == orb1 || s == orb2 || t == orb1 || t == orb2) {</div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span> </div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>        Eigen::Vector2d temp = <a class="code hl_function" href="classvotca_1_1xtp_1_1PMLocalization.html#a86e38fd933210ed3147c7a38525306fc">offdiag_penalty_elements</a>(s_overlap, s, t);</div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>        <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230">A_</a>(s, t) = temp(0);</div>
+<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>        <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a1db9862346cda5e021b5289edcbad0fc">B_</a>(s, t) = temp(1);</div>
+<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>        <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a905f949e82dac0c9470bb57214165d05">PM_penalty_</a>(s, t) =</div>
+<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span>            <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230">A_</a>(s, t) + sqrt((<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230">A_</a>(s, t) * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230">A_</a>(s, t)) + (<a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a1db9862346cda5e021b5289edcbad0fc">B_</a>(s, t) * <a class="code hl_variable" href="classvotca_1_1xtp_1_1PMLocalization.html#a1db9862346cda5e021b5289edcbad0fc">B_</a>(s, t)));</div>
+<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>      }</div>
+<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>    }</div>
+<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span>  }</div>
+<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>  <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span>}</div>
+<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span> </div>
+<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span>}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aaomatrix_8h_html"><div class="ttname"><a href="aomatrix_8h.html">aomatrix.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_a8e7c2db1e04dcae085b3ba95d298dedd"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#a8e7c2db1e04dcae085b3ba95d298dedd">votca::tools::EigenSystem::eigenvalues</a></div><div class="ttdeci">const Eigen::VectorXd &amp; eigenvalues() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00030">eigensystem.h:30</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1EigenSystem_html_afd8f46808af0552ff1a6ef84a42fe595"><div class="ttname"><a href="classvotca_1_1tools_1_1EigenSystem.html#afd8f46808af0552ff1a6ef84a42fe595">votca::tools::EigenSystem::eigenvectors</a></div><div class="ttdeci">const Eigen::MatrixXd &amp; eigenvectors() const</div><div class="ttdef"><b>Definition:</b> <a href="eigensystem_8h_source.html#l00033">eigensystem.h:33</a></div></div>
@@ -853,10 +854,10 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a5a2414664f575755a02a38affd0ec0dc"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a5a2414664f575755a02a38affd0ec0dc">votca::xtp::PMLocalization::n_occs_</a></div><div class="ttdeci">Index n_occs_</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8h_source.html#l00089">pmlocalization.h:89</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a5f02822116623beb8147fc4a0017ff6b"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a5f02822116623beb8147fc4a0017ff6b">votca::xtp::PMLocalization::J_threshold_</a></div><div class="ttdeci">double J_threshold_</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8h_source.html#l00106">pmlocalization.h:106</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a70579131bf249221799462d7fa110b32"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a70579131bf249221799462d7fa110b32">votca::xtp::PMLocalization::computePML_UT</a></div><div class="ttdeci">void computePML_UT(Orbitals &amp;orbitals)</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00198">pmlocalization.cc:198</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a86e38fd933210ed3147c7a38525306fc"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a86e38fd933210ed3147c7a38525306fc">votca::xtp::PMLocalization::offdiag_penalty_elements</a></div><div class="ttdeci">Eigen::Vector2d offdiag_penalty_elements(const Eigen::MatrixXd &amp;s_overlap, Index s, Index t)</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00665">pmlocalization.cc:665</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a86e38fd933210ed3147c7a38525306fc"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a86e38fd933210ed3147c7a38525306fc">votca::xtp::PMLocalization::offdiag_penalty_elements</a></div><div class="ttdeci">Eigen::Vector2d offdiag_penalty_elements(const Eigen::MatrixXd &amp;s_overlap, Index s, Index t)</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00666">pmlocalization.cc:666</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a8bfea2cf7f9321e819d71641e80beba7"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a8bfea2cf7f9321e819d71641e80beba7">votca::xtp::PMLocalization::sort_lmos</a></div><div class="ttdeci">std::pair&lt; Eigen::MatrixXd, Eigen::VectorXd &gt; sort_lmos(const Eigen::VectorXd &amp;energies)</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00472">pmlocalization.cc:472</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a905f949e82dac0c9470bb57214165d05"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a905f949e82dac0c9470bb57214165d05">votca::xtp::PMLocalization::PM_penalty_</a></div><div class="ttdeci">Eigen::MatrixXd PM_penalty_</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8h_source.html#l00094">pmlocalization.h:94</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a9271ace1af9ef9f9b7628c8e13130e1c"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a9271ace1af9ef9f9b7628c8e13130e1c">votca::xtp::PMLocalization::update_penalty</a></div><div class="ttdeci">void update_penalty(Index s, Index t)</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00702">pmlocalization.cc:702</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a9271ace1af9ef9f9b7628c8e13130e1c"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a9271ace1af9ef9f9b7628c8e13130e1c">votca::xtp::PMLocalization::update_penalty</a></div><div class="ttdeci">void update_penalty(Index s, Index t)</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00703">pmlocalization.cc:703</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a92e29138af6641b516f19f1806368175"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a92e29138af6641b516f19f1806368175">votca::xtp::PMLocalization::find_smallest_step</a></div><div class="ttdeci">double find_smallest_step(const Eigen::VectorXd &amp;coeff) const</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8cc_source.html#l00101">pmlocalization.cc:101</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a9470a95090c0edaa7db6e4bad96b66ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a9470a95090c0edaa7db6e4bad96b66ea">votca::xtp::PMLocalization::G_old_</a></div><div class="ttdeci">Eigen::MatrixXd G_old_</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8h_source.html#l00103">pmlocalization.h:103</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1PMLocalization_html_a94c2baba679ab85543707c7b90b9c9f5"><div class="ttname"><a href="classvotca_1_1xtp_1_1PMLocalization.html#a94c2baba679ab85543707c7b90b9c9f5">votca::xtp::PMLocalization::overlap_</a></div><div class="ttdeci">Eigen::MatrixXd overlap_</div><div class="ttdef"><b>Definition:</b> <a href="pmlocalization_8h_source.html#l00088">pmlocalization.h:88</a></div></div>
