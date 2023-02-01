@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['q_0',['q',['../classvotca_1_1csg_1_1XMLBead.html#a4f2d7f61752d77769a6ddaa23513e80a',1,'votca::csg::XMLBead::q()'],['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html#a298657c3243a930117efbe0455b9006f',1,'votca::xtp::DavidsonSolver::RitzEigenPair::q()']]],
-  ['q_1',['Q',['../classvotca_1_1xtp_1_1StaticSite.html#affcac8e296e6cf5b4beedaf81a2013bc',1,'votca::xtp::StaticSite']]],
+  ['q_0',['Q',['../classvotca_1_1xtp_1_1StaticSite.html#affcac8e296e6cf5b4beedaf81a2013bc',1,'votca::xtp::StaticSite']]],
+  ['q_1',['q',['../classvotca_1_1csg_1_1XMLBead.html#a4f2d7f61752d77769a6ddaa23513e80a',1,'votca::csg::XMLBead::q()'],['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html#a298657c3243a930117efbe0455b9006f',1,'votca::xtp::DavidsonSolver::RitzEigenPair::q()']]],
   ['q00_2',['Q00',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#ac11af0bee880ab59995f9dba8374f724',1,'votca::xtp::PolarSite::data::Q00()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#a64410d9eb43e90e3814ac6d166379afb',1,'votca::xtp::StaticSite::data::Q00()']]],
   ['q10_3',['Q10',['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#a7bdb5c4ef7b6c8aed87aa63055c5176e',1,'votca::xtp::StaticSite::data::Q10()'],['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a361a10173a8628ffdaf84a1110313c74',1,'votca::xtp::PolarSite::data::Q10()']]],
   ['q11c_4',['Q11c',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a0493f0c29682eca9ca5c201b443b8787',1,'votca::xtp::PolarSite::data::Q11c()'],['../structvotca_1_1xtp_1_1StaticSite_1_1data.html#abbe4b3d0789bff661708f01c412beec5',1,'votca::xtp::StaticSite::data::Q11c()']]],
