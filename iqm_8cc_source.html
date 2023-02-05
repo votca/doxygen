@@ -102,26 +102,26 @@ $(function() {
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">// Third party includes</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;boost/algorithm/string/split.hpp&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;boost/filesystem.hpp&gt;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// VOTCA includes</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;<a class="code" href="constants_8h.html">votca/tools/constants.h</a>&gt;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// Local VOTCA includes</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="property_8h.html">votca/tools/property.h</a>&quot;</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="atom_8h.html">votca/xtp/atom.h</a>&quot;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="logger_8h.html">votca/xtp/logger.h</a>&quot;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="qmpackagefactory_8h.html">votca/xtp/qmpackagefactory.h</a>&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="segmentmapper_8h.html">votca/xtp/segmentmapper.h</a>&quot;</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// Local private VOTCA includes</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="iqm_8h.html">iqm.h</a>&quot;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">using </span>boost::format;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">using namespace </span>boost::filesystem;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// Third party includes</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;boost/algorithm/string/split.hpp&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;boost/format.hpp&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// VOTCA includes</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;<a class="code" href="constants_8h.html">votca/tools/constants.h</a>&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// Local VOTCA includes</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="property_8h.html">votca/tools/property.h</a>&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="atom_8h.html">votca/xtp/atom.h</a>&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="logger_8h.html">votca/xtp/logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="qmpackagefactory_8h.html">votca/xtp/qmpackagefactory.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="segmentmapper_8h.html">votca/xtp/segmentmapper.h</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// Local private VOTCA includes</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="iqm_8h.html">iqm.h</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">using </span>boost::format;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevotca.html">votca</a> {</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">namespace </span>xtp {</div>
@@ -298,7 +298,7 @@ $(function() {
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  std::string pair_dir =</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>      (format(<span class="stringliteral">&quot;%1%%2%%3%%4%%5%&quot;</span>) % <span class="stringliteral">&quot;pair&quot;</span> % <span class="stringliteral">&quot;_&quot;</span> % ID_A % <span class="stringliteral">&quot;_&quot;</span> % ID_B).str();</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  boost::filesystem::path arg_path, arg_pathA, arg_pathB, arg_pathAB;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  std::filesystem::path arg_path, arg_pathA, arg_pathB, arg_pathAB;</div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>  std::string orbFileA =</div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>      (arg_pathA / eqm_work_dir / <span class="stringliteral">&quot;molecules&quot;</span> / frame_dir /</div>
@@ -385,7 +385,7 @@ $(function() {
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="comment">// if asked, prepare the input files</span></div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="keywordflow">if</span> (do_dft_input_) {</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>      boost::filesystem::create_directories(qmpackage_work_dir);</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>      std::filesystem::create_directories(qmpackage_work_dir);</div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>      <span class="keywordflow">if</span> (qmpackage-&gt;GuessRequested()) {</div>
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        <span class="keywordflow">if</span> (linkers_.size() &gt; 0) {</div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>          <span class="keywordflow">throw</span> std::runtime_error(</div>
@@ -411,19 +411,19 @@ $(function() {
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>                  .generic_string();</div>
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>          ;</div>
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>          std::string gbwFileA_workdir =</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>              (boost::filesystem::path(qmpackage_work_dir) / <span class="stringliteral">&quot;molA.gbw&quot;</span>)</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>              (std::filesystem::path(qmpackage_work_dir) / <span class="stringliteral">&quot;molA.gbw&quot;</span>)</div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>                  .generic_string();</div>
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>          ;</div>
 <div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>          std::string gbwFileB_workdir =</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>              (boost::filesystem::path(qmpackage_work_dir) / <span class="stringliteral">&quot;molB.gbw&quot;</span>)</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>              (std::filesystem::path(qmpackage_work_dir) / <span class="stringliteral">&quot;molB.gbw&quot;</span>)</div>
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>                  .generic_string();</div>
 <div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>          ;</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>          boost::filesystem::copy_file(</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>          std::filesystem::copy_file(</div>
 <div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>              gbwFileA, gbwFileA_workdir,</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>              boost::filesystem::copy_option::overwrite_if_exists);</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>          boost::filesystem::copy_file(</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>              std::filesystem::copy_options::overwrite_existing);</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>          std::filesystem::copy_file(</div>
 <div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>              gbwFileB, gbwFileB_workdir,</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>              boost::filesystem::copy_option::overwrite_if_exists);</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>              std::filesystem::copy_options::overwrite_existing);</div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>          <a class="code hl_class" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitalsB;</div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>          <a class="code hl_class" href="classvotca_1_1xtp_1_1Orbitals.html">Orbitals</a> orbitalsA;</div>
@@ -618,7 +618,7 @@ $(function() {
 <div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>  <a class="code hl_define" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code hl_enumvalue" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, pLog) &lt;&lt; <a class="code hl_class" href="classvotca_1_1xtp_1_1TimeStamp.html">TimeStamp</a>() &lt;&lt; <span class="stringliteral">&quot; Finished evaluating pair &quot;</span></div>
 <div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>                            &lt;&lt; ID_A &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; ID_B &lt;&lt; std::flush;</div>
 <div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classvotca_1_1xtp_1_1IQM.html#a4b6cc4fabf150879bd0cdd61740f147d">store_dft_</a> || <a class="code hl_variable" href="classvotca_1_1xtp_1_1IQM.html#ad663f00679d80a0c1a9c09bc5da03494">store_gw_</a>) {</div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>    boost::filesystem::create_directories(orb_dir);</div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>    std::filesystem::create_directories(orb_dir);</div>
 <div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>    <a class="code hl_define" href="logger_8h.html#aa4d2d0975262097f01964c7dad86afcc">XTP_LOG</a>(<a class="code hl_enumvalue" href="structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6">Log::error</a>, pLog)</div>
 <div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>        &lt;&lt; <span class="stringliteral">&quot;Saving orbitals to &quot;</span> &lt;&lt; orbFileAB &lt;&lt; std::flush;</div>
 <div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classvotca_1_1xtp_1_1IQM.html#a4b6cc4fabf150879bd0cdd61740f147d">store_dft_</a>) {</div>
@@ -911,8 +911,8 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1xtp_1_1DFTcoupling_html_aa6ae1c67c1fe88e00dac5bed8ee31b6c"><div class="ttname"><a href="classvotca_1_1xtp_1_1DFTcoupling.html#aa6ae1c67c1fe88e00dac5bed8ee31b6c">votca::xtp::DFTcoupling::Addoutput</a></div><div class="ttdeci">void Addoutput(tools::Property &amp;type_summary, const Orbitals &amp;orbitalsA, const Orbitals &amp;orbitalsB) const override</div><div class="ttdef"><b>Definition:</b> <a href="dftcoupling_8cc_source.html#l00055">dftcoupling.cc:55</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1DFTcoupling_html_ac8ffc8f525ba4f2a3cc42a58dd54e402"><div class="ttname"><a href="classvotca_1_1xtp_1_1DFTcoupling.html#ac8ffc8f525ba4f2a3cc42a58dd54e402">votca::xtp::DFTcoupling::CalculateCouplings</a></div><div class="ttdeci">void CalculateCouplings(const Orbitals &amp;orbitalsA, const Orbitals &amp;orbitalsB, const Orbitals &amp;orbitalsAB) override</div><div class="ttdoc">evaluates electronic couplings</div><div class="ttdef"><b>Definition:</b> <a href="dftcoupling_8cc_source.html#l00144">dftcoupling.cc:144</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1GWBSE_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1GWBSE.html">votca::xtp::GWBSE</a></div><div class="ttdoc">Electronic excitations from GW-BSE.</div><div class="ttdef"><b>Definition:</b> <a href="gwbse_8h_source.html#l00056">gwbse.h:56</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GWBSE_html_a14e5b9661eecd20836279aad86de4e9d"><div class="ttname"><a href="classvotca_1_1xtp_1_1GWBSE.html#a14e5b9661eecd20836279aad86de4e9d">votca::xtp::GWBSE::Evaluate</a></div><div class="ttdeci">bool Evaluate()</div><div class="ttdef"><b>Definition:</b> <a href="gwbse_8cc_source.html#l00546">gwbse.cc:546</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1GWBSE_html_abfc0aa0480f855e8fa8baa86d61f4e7c"><div class="ttname"><a href="classvotca_1_1xtp_1_1GWBSE.html#abfc0aa0480f855e8fa8baa86d61f4e7c">votca::xtp::GWBSE::Initialize</a></div><div class="ttdeci">void Initialize(tools::Property &amp;options)</div><div class="ttdef"><b>Definition:</b> <a href="gwbse_8cc_source.html#l00062">gwbse.cc:62</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GWBSE_html_a14e5b9661eecd20836279aad86de4e9d"><div class="ttname"><a href="classvotca_1_1xtp_1_1GWBSE.html#a14e5b9661eecd20836279aad86de4e9d">votca::xtp::GWBSE::Evaluate</a></div><div class="ttdeci">bool Evaluate()</div><div class="ttdef"><b>Definition:</b> <a href="gwbse_8cc_source.html#l00544">gwbse.cc:544</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1GWBSE_html_abfc0aa0480f855e8fa8baa86d61f4e7c"><div class="ttname"><a href="classvotca_1_1xtp_1_1GWBSE.html#abfc0aa0480f855e8fa8baa86d61f4e7c">votca::xtp::GWBSE::Initialize</a></div><div class="ttdeci">void Initialize(tools::Property &amp;options)</div><div class="ttdef"><b>Definition:</b> <a href="gwbse_8cc_source.html#l00060">gwbse.cc:60</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1GWBSE_html_ae4e120856cff3159c642af95551798a1"><div class="ttname"><a href="classvotca_1_1xtp_1_1GWBSE.html#ae4e120856cff3159c642af95551798a1">votca::xtp::GWBSE::setLogger</a></div><div class="ttdeci">void setLogger(Logger *pLog)</div><div class="ttdef"><b>Definition:</b> <a href="gwbse_8h_source.html#l00063">gwbse.h:63</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1IQM_html_a07b52993d5e1c31e4d8e2f66faf89380"><div class="ttname"><a href="classvotca_1_1xtp_1_1IQM.html#a07b52993d5e1c31e4d8e2f66faf89380">votca::xtp::IQM::do_dft_input_</a></div><div class="ttdeci">bool do_dft_input_</div><div class="ttdef"><b>Definition:</b> <a href="iqm_8h_source.html#l00082">iqm.h:82</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1IQM_html_a0fa784fdc7d93a6cec9f1efe45ec774f"><div class="ttname"><a href="classvotca_1_1xtp_1_1IQM.html#a0fa784fdc7d93a6cec9f1efe45ec774f">votca::xtp::IQM::FillParseMaps</a></div><div class="ttdeci">std::map&lt; std::string, QMState &gt; FillParseMaps(const std::string &amp;Mapstring)</div><div class="ttdef"><b>Definition:</b> <a href="iqm_8cc_source.html#l00119">iqm.cc:119</a></div></div>
