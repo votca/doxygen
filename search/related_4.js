@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filter_0',['Filter',['../classvotca_1_1xtp_1_1FilterFactory.html#a7343ea62c998db0aabe4165c5b547888',1,'votca::xtp::FilterFactory']]]
+  ['molecule_0',['Molecule',['../classvotca_1_1csg_1_1Bead.html#ae0d120b8bbafe454abebd374e2402082',1,'votca::csg::Bead']]]
 ];
