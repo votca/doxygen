@@ -59,5 +59,5 @@ var searchData=
   ['isqmmm_5f_56',['isQMMM_',['../classvotca_1_1xtp_1_1Diabatization.html#ac447bf04851067fcdf991e5929a4150b',1,'votca::xtp::Diabatization']]],
   ['iter_5f_57',['iter_',['../classvotca_1_1xtp_1_1NewtonRapson.html#adb7e61c9cfee75ffeb18fb09b4813b06',1,'votca::xtp::NewtonRapson']]],
   ['iter_5fmax_5f_58',['iter_max_',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a60a426f580f0f5a68239b56d2c5b4182',1,'votca::xtp::DavidsonSolver']]],
-  ['iteration_5f_59',['iteration_',['../classvotca_1_1xtp_1_1BFGSTRM.html#a81a59449328feb4f74c5ec21ebe065ec',1,'votca::xtp::BFGSTRM::iteration_()'],['../classvotca_1_1xtp_1_1Energy__costfunction.html#acc42068d0cf340fa414960ce6f552e93',1,'votca::xtp::Energy_costfunction::iteration_()']]]
+  ['iteration_5f_59',['iteration_',['../classvotca_1_1xtp_1_1BFGSTRM.html#a81a59449328feb4f74c5ec21ebe065ec',1,'votca::xtp::BFGSTRM']]]
 ];

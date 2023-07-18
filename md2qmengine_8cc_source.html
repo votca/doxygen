@@ -157,174 +157,188 @@ $(function() {
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a3623fc79818f5f9e93f3b8335d8e90bd">   72</a></span><a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a3623fc79818f5f9e93f3b8335d8e90bd">Md2QmEngine::DetermineAtomNumOffset</a>(</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Molecule.html">csg::Molecule</a>* mol, <span class="keyword">const</span> std::vector&lt;Index&gt;&amp; atom_ids_map)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  std::vector&lt;Index&gt; IDs;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  IDs.reserve(mol-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Molecule.html#a8c8ed966ac9283da27adbd9920b56099">BeadCount</a>());</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Bead.html">csg::Bead</a>* bead : mol-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Molecule.html#ac0afa4869290c9db17289011dd881a52">Beads</a>()) {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    IDs.push_back(bead-&gt;getId());</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  std::sort(IDs.begin(), IDs.end());</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> offset = IDs[0] - atom_ids_map[0];</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 1; i &lt; <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(IDs.size()); i++) {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (IDs[i] - atom_ids_map[i] != offset) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>      <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>          <span class="stringliteral">&quot;AtomIds offset could not be determined, either our MD trajectory or &quot;</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>          <span class="stringliteral">&quot;your mapping file have wrong Atom ids&quot;</span>);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="keywordflow">return</span> offset;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aff1918bb112421cb2e0cbac9a2db811f">   91</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aff1918bb112421cb2e0cbac9a2db811f">Md2QmEngine::CheckMolWhole</a>(<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1Topology.html">Topology</a>&amp; top, <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; seg)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  Eigen::Vector3d CoM = seg.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">getPos</a>();</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  <span class="keywordtype">bool</span> whole = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1Atom.html">Atom</a>&amp; a : seg) {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    Eigen::Vector3d r = a.getPos() - CoM;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    Eigen::Vector3d r_pbc = top.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a3c703a141b50800310b3290aa348bfec">PbShortestConnect</a>(CoM, a.getPos());</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    Eigen::Vector3d shift = r_pbc - r;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">if</span> (shift.norm() &gt; 1<a class="code hl_enumvalue" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-9) {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>      whole = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="keywordflow">return</span> whole;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a2f7811111ae31c9fddb8bf8c649fd1f5">  106</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a2f7811111ae31c9fddb8bf8c649fd1f5">Md2QmEngine::MakeSegmentsWholePBC</a>(<a class="code hl_class" href="classvotca_1_1xtp_1_1Topology.html">Topology</a>&amp; top)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; seg : top.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a524bfac41250a0a3992b401d4caae657">Segments</a>()) {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    seg.calcPos();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">while</span> (!<a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aff1918bb112421cb2e0cbac9a2db811f">CheckMolWhole</a>(top, seg)) {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>      Eigen::Vector3d CoM = seg.getPos();</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1xtp_1_1Atom.html">Atom</a>&amp; a : seg) {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        Eigen::Vector3d r = a.getPos() - CoM;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        Eigen::Vector3d r_pbc = top.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a3c703a141b50800310b3290aa348bfec">PbShortestConnect</a>(CoM, a.getPos());</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        Eigen::Vector3d shift = r_pbc - r;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">if</span> (shift.norm() &gt; 1<a class="code hl_enumvalue" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-9) {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>          a.Translate(shift);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        }</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      }</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>      seg.calcPos();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    }</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aa8ae4a215ea3e601db0d3ce8ee98a89c">  124</a></span><a class="code hl_class" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aa8ae4a215ea3e601db0d3ce8ee98a89c">Md2QmEngine::map</a>(<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Topology.html">csg::Topology</a>&amp; top)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> topology_map;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  topology_map.<a class="code hl_function" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(<a class="code hl_variable" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a4e5af4a7e8a8a56c1c16510dd02e7243">mapfile_</a>);</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a1575cae730661582bb6cae2527bbff92">CheckMappingFile</a>(topology_map);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <a class="code hl_class" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> xtptop;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  xtptop.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#ac2103b6ba1abaadb285fb940e7bc4de4">setStep</a>(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a88263b2615bae8b697c5ec449951daa2">getStep</a>());</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  xtptop.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a3cb0f337ee2f6bd26a93eada7cd70b59">setTime</a>(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a0538da13c8e6d80316aac5ffbdb622b0">getTime</a>());</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  xtptop.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a44c9d9a3cce8e43d0c59a83230facad2">setBox</a>(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a6951e967c3022c5863844c969ce1094b">getBox</a>() * <a class="code hl_variable" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">tools::conv::nm2bohr</a>, top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a0c81bce52083e7412bf2d376aed852ee">getBoxType</a>());</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>  <span class="comment">// which segmentname does an atom belong to molname atomid</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  std::map&lt;std::string, std::map&lt;Index, std::string&gt;&gt; MolToSegMap;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="comment">// which atomids belong to molname</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  std::map&lt;std::string, std::vector&lt;Index&gt;&gt; MolToAtomIds;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  <span class="comment">// names of segments in one molecule;</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  std::map&lt;std::string, std::vector&lt;std::string&gt;&gt; SegsinMol;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  std::string molkey = <span class="stringliteral">&quot;topology.molecules.molecule&quot;</span>;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  std::vector&lt;tools::Property*&gt; molecules = topology_map.<a class="code hl_function" href="classvotca_1_1tools_1_1Property.html#ae3a2fe497ee9492857ffde8d32b8ece8">Select</a>(molkey);</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  std::string segkey = <span class="stringliteral">&quot;segments.segment&quot;</span>;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* mol : molecules) {</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    std::string molname = mol-&gt;get(<span class="stringliteral">&quot;mdname&quot;</span>).as&lt;std::string&gt;();</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    std::vector&lt;tools::Property*&gt; segments = mol-&gt;Select(segkey);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    std::vector&lt;std::string&gt; segnames;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    std::vector&lt;Index&gt; atomids;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* seg : segments) {</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>      std::string segname = seg-&gt;get(<span class="stringliteral">&quot;name&quot;</span>).as&lt;std::string&gt;();</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>      segnames.push_back(segname);</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      std::string fragkey = <span class="stringliteral">&quot;fragments.fragment&quot;</span>;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      std::vector&lt;tools::Property*&gt; fragments = seg-&gt;Select(fragkey);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* frag : fragments) {</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        std::vector&lt;std::string&gt; atomnames =</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            frag-&gt;get(<span class="stringliteral">&quot;mdatoms&quot;</span>).as&lt;std::vector&lt;std::string&gt;&gt;();</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; atomname : atomnames) {</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>          <a class="code hl_class" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok_atom_name(atomname, <span class="stringliteral">&quot;:&quot;</span>);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>          std::vector&lt;std::string&gt; entries = tok_atom_name.<a class="code hl_function" href="classvotca_1_1tools_1_1Tokenizer.html#a96f42a3e9fb59b55e5a9fdc36f5eedf0">ToVector</a>();</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>          <span class="keywordflow">if</span> (entries.size() != 3) {</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Atom entry &quot;</span> + atomname +</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                                     <span class="stringliteral">&quot; is not well formatted&quot;</span>);</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>          }</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>          <span class="comment">// format should be RESNUM:ATOMNAME:ATOMID we do not care about the</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>          <span class="comment">// first two</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>          <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> atomid = 0;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>          <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            atomid = std::stoi(entries[2]);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>          } <span class="keywordflow">catch</span> (std::invalid_argument&amp; <a class="code hl_enumvalue" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>) {</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Atom entry &quot;</span> + atomname +</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                                     <span class="stringliteral">&quot; is not well formatted&quot;</span>);</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>          }</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>          <span class="keywordflow">if</span> (<a class="code hl_function" href="structvotca_1_1Log.html#ac8a2cd3e15d670c88df284075e76504f">votca::Log::verbose</a>()) {</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;... ... processing mapping information for atom &quot;</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                      &lt;&lt; atomname &lt;&lt; <span class="stringliteral">&quot; with ID &quot;</span> &lt;&lt; atomid &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>          }</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>          atomids.push_back(atomid);</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>          MolToSegMap[molname][atomid] = segname;</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        }</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>      }</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    }</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    std::sort(atomids.begin(), atomids.end());</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    MolToAtomIds[molname] = atomids;</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    SegsinMol[molname] = segnames;</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  }</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;... Parsing all mapping entries completed.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  <span class="comment">// go through all molecules in MD topology</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Molecule.html">csg::Molecule</a>&amp; mol : top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ad64719e1c62fb73ba7980659a961d436">Molecules</a>()) {</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keyword">const</span> std::vector&lt;std::string&gt; segnames = SegsinMol[mol.getName()];</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    std::vector&lt;Segment&gt;&amp; topology_segments = xtptop.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a524bfac41250a0a3992b401d4caae657">Segments</a>();</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> IdOffset = <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a3623fc79818f5f9e93f3b8335d8e90bd">DetermineAtomNumOffset</a>(&amp;mol, MolToAtomIds[mol.getName()]);</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="structvotca_1_1Log.html#ac8a2cd3e15d670c88df284075e76504f">votca::Log::verbose</a>()) {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;... Mapping molecule &quot;</span> &lt;&lt; mol.getId() &lt;&lt; <span class="stringliteral">&quot;, name &quot;</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                &lt;&lt; mol.getName() &lt;&lt; <span class="stringliteral">&quot;, # of segments &quot;</span> &lt;&lt; segnames.size()</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                &lt;&lt; <span class="stringliteral">&quot;, atomID offset &quot;</span> &lt;&lt; IdOffset &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    }</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; segname : segnames) {</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>      <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> segid = topology_segments.size();</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>      <span class="comment">// construct a segment</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>      <a class="code hl_class" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> this_segment = <a class="code hl_class" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>(segname, segid);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>      this_segment.<a class="code hl_function" href="classvotca_1_1xtp_1_1Segment.html#a7c449b8a1a1673cf98c6a780f0450005">AddMoleculeId</a>(mol.getId());</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>      <span class="comment">// create atomlist</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Bead.html">csg::Bead</a>* bead : mol.Beads()) {</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="comment">// check if it belongs to this segment, and add it</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">if</span> (segname == MolToSegMap[mol.getName()][bead-&gt;getId() - IdOffset]) {</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>          <a class="code hl_class" href="classvotca_1_1xtp_1_1Atom.html">Atom</a> atom(bead-&gt;getResnr(), bead-&gt;getName(), bead-&gt;getId(),</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                    bead-&gt;getPos() * <a class="code hl_variable" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">tools::conv::nm2bohr</a>, bead-&gt;getType());</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>          this_segment.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">push_back</a>(atom);</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        }</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>      }</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>      <span class="comment">// add segment to topology</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>      topology_segments.push_back(this_segment);</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    }</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>  }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;   atoms in MD molecule &quot;</span> &lt;&lt; mol-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Molecule.html#a8c8ed966ac9283da27adbd9920b56099">BeadCount</a>() &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  IDs.reserve(mol-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Molecule.html#a8c8ed966ac9283da27adbd9920b56099">BeadCount</a>());</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Bead.html">csg::Bead</a>* bead : mol-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Molecule.html#ac0afa4869290c9db17289011dd881a52">Beads</a>()) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    IDs.push_back(bead-&gt;getId());</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  std::sort(IDs.begin(), IDs.end());</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> offset = IDs[0] - atom_ids_map[0];</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> i = 1; i &lt; <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a>(IDs.size()); i++) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span> (IDs[i] - atom_ids_map[i] != offset) {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>          <span class="stringliteral">&quot;AtomIds offset could not be determined, either our MD trajectory or &quot;</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>          <span class="stringliteral">&quot;your mapping file have wrong Atom ids&quot;</span>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keywordflow">return</span> offset;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aff1918bb112421cb2e0cbac9a2db811f">   92</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aff1918bb112421cb2e0cbac9a2db811f">Md2QmEngine::CheckMolWhole</a>(<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1Topology.html">Topology</a>&amp; top, <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; seg)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  Eigen::Vector3d CoM = seg.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">getPos</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  <span class="keywordtype">bool</span> whole = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1Atom.html">Atom</a>&amp; a : seg) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    Eigen::Vector3d r = a.getPos() - CoM;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    Eigen::Vector3d r_pbc = top.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a3c703a141b50800310b3290aa348bfec">PbShortestConnect</a>(CoM, a.getPos());</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    Eigen::Vector3d shift = r_pbc - r;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">if</span> (shift.norm() &gt; 1<a class="code hl_enumvalue" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-9) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      whole = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  <span class="keywordflow">return</span> whole;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a2f7811111ae31c9fddb8bf8c649fd1f5">  107</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a2f7811111ae31c9fddb8bf8c649fd1f5">Md2QmEngine::MakeSegmentsWholePBC</a>(<a class="code hl_class" href="classvotca_1_1xtp_1_1Topology.html">Topology</a>&amp; top)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>&amp; seg : top.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a524bfac41250a0a3992b401d4caae657">Segments</a>()) {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    seg.calcPos();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">while</span> (!<a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aff1918bb112421cb2e0cbac9a2db811f">CheckMolWhole</a>(top, seg)) {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      Eigen::Vector3d CoM = seg.getPos();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1xtp_1_1Atom.html">Atom</a>&amp; a : seg) {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        Eigen::Vector3d r = a.getPos() - CoM;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        Eigen::Vector3d r_pbc = top.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a3c703a141b50800310b3290aa348bfec">PbShortestConnect</a>(CoM, a.getPos());</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        Eigen::Vector3d shift = r_pbc - r;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">if</span> (shift.norm() &gt; 1<a class="code hl_enumvalue" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-9) {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>          a.Translate(shift);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        }</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>      }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>      seg.calcPos();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aa8ae4a215ea3e601db0d3ce8ee98a89c">  125</a></span><a class="code hl_class" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aa8ae4a215ea3e601db0d3ce8ee98a89c">Md2QmEngine::map</a>(<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Topology.html">csg::Topology</a>&amp; top)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a> topology_map;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  topology_map.<a class="code hl_function" href="classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24">LoadFromXML</a>(<a class="code hl_variable" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a4e5af4a7e8a8a56c1c16510dd02e7243">mapfile_</a>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a1575cae730661582bb6cae2527bbff92">CheckMappingFile</a>(topology_map);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <a class="code hl_class" href="classvotca_1_1xtp_1_1Topology.html">Topology</a> xtptop;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  xtptop.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#ac2103b6ba1abaadb285fb940e7bc4de4">setStep</a>(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a88263b2615bae8b697c5ec449951daa2">getStep</a>());</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  xtptop.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a3cb0f337ee2f6bd26a93eada7cd70b59">setTime</a>(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a0538da13c8e6d80316aac5ffbdb622b0">getTime</a>());</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  xtptop.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a44c9d9a3cce8e43d0c59a83230facad2">setBox</a>(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a6951e967c3022c5863844c969ce1094b">getBox</a>() * <a class="code hl_variable" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">tools::conv::nm2bohr</a>, top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a0c81bce52083e7412bf2d376aed852ee">getBoxType</a>());</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  <span class="comment">// which segmentname does an atom belong to molname atomid</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  std::map&lt;std::string, std::map&lt;Index, std::string&gt;&gt; MolToSegMap;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  <span class="comment">// which atomids belong to molname</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  std::map&lt;std::string, std::vector&lt;Index&gt;&gt; MolToAtomIds;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="comment">// names of segments in one molecule;</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  std::map&lt;std::string, std::vector&lt;std::string&gt;&gt; SegsinMol;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  std::string molkey = <span class="stringliteral">&quot;topology.molecules.molecule&quot;</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  std::vector&lt;tools::Property*&gt; molecules = topology_map.<a class="code hl_function" href="classvotca_1_1tools_1_1Property.html#ae3a2fe497ee9492857ffde8d32b8ece8">Select</a>(molkey);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  std::string segkey = <span class="stringliteral">&quot;segments.segment&quot;</span>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* mol : molecules) {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="comment">// get the name of this molecule</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    std::string molname = mol-&gt;get(<span class="stringliteral">&quot;mdname&quot;</span>).as&lt;std::string&gt;();</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="comment">// get all segment-mapping info </span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    std::vector&lt;tools::Property*&gt; segments = mol-&gt;Select(segkey);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    std::vector&lt;std::string&gt; segnames;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    std::vector&lt;Index&gt; atomids;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="comment">// now go through all the defined segments</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* seg : segments) {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      <span class="comment">// get the name of this segment and add to segnames vector</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      std::string segname = seg-&gt;get(<span class="stringliteral">&quot;name&quot;</span>).as&lt;std::string&gt;();</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      segnames.push_back(segname);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      std::string fragkey = <span class="stringliteral">&quot;fragments.fragment&quot;</span>;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      <span class="comment">// get all fragement mapping info</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      std::vector&lt;tools::Property*&gt; fragments = seg-&gt;Select(fragkey);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>      <span class="comment">// go over all fragments in this segement</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* frag : fragments) {</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="comment">// get all mdatom names from this fragment</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        std::vector&lt;std::string&gt; atomnames =</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            frag-&gt;get(<span class="stringliteral">&quot;mdatoms&quot;</span>).as&lt;std::vector&lt;std::string&gt;&gt;();</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="comment">// go over all atoms</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; atomname : atomnames) {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>          <span class="comment">// split atom entry at :</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>          <a class="code hl_class" href="classvotca_1_1tools_1_1Tokenizer.html">tools::Tokenizer</a> tok_atom_name(atomname, <span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>          std::vector&lt;std::string&gt; entries = tok_atom_name.<a class="code hl_function" href="classvotca_1_1tools_1_1Tokenizer.html#a96f42a3e9fb59b55e5a9fdc36f5eedf0">ToVector</a>();</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>          <span class="keywordflow">if</span> (entries.size() != 3) {</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Atom entry &quot;</span> + atomname +</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                                     <span class="stringliteral">&quot; is not well formatted&quot;</span>);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>          }</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>          <span class="comment">// format should be RESNUM:ATOMNAME:ATOMID we do not care about the</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>          <span class="comment">// first two</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>          <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> atomid = 0;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>          <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            atomid = std::stoi(entries[2]);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>          } <span class="keywordflow">catch</span> (std::invalid_argument&amp; <a class="code hl_enumvalue" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>) {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Atom entry &quot;</span> + atomname +</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                                     <span class="stringliteral">&quot; is not well formatted&quot;</span>);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>          }</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>          <span class="keywordflow">if</span> (<a class="code hl_function" href="structvotca_1_1Log.html#ac8a2cd3e15d670c88df284075e76504f">votca::Log::verbose</a>()) {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;... ... processing mapping information for atom &quot;</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                      &lt;&lt; atomname &lt;&lt; <span class="stringliteral">&quot; with ID &quot;</span> &lt;&lt; atomid &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>          }</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>          atomids.push_back(atomid);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>          MolToSegMap[molname][atomid] = segname;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        }</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>      }</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    }</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    std::sort(atomids.begin(), atomids.end());</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    MolToAtomIds[molname] = atomids;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    SegsinMol[molname] = segnames;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  }</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;... Parsing all mapping entries completed.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment">// go through all molecules in MD topology</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Molecule.html">csg::Molecule</a>&amp; mol : top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ad64719e1c62fb73ba7980659a961d436">Molecules</a>()) {</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="comment">//std::cout &lt;&lt; &quot; working on molecule &quot; &lt;&lt; mol.getName() &lt;&lt; &quot;\n&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="comment">// lookup all segment *names* in this molecule</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keyword">const</span> std::vector&lt;std::string&gt; segnames = SegsinMol[mol.getName()];</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    std::vector&lt;Segment&gt;&amp; topology_segments = xtptop.<a class="code hl_function" href="classvotca_1_1xtp_1_1Topology.html#a524bfac41250a0a3992b401d4caae657">Segments</a>();</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> IdOffset = <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a3623fc79818f5f9e93f3b8335d8e90bd">DetermineAtomNumOffset</a>(&amp;mol, MolToAtomIds[mol.getName()]);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="structvotca_1_1Log.html#ac8a2cd3e15d670c88df284075e76504f">votca::Log::verbose</a>()) {</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;... Mapping molecule &quot;</span> &lt;&lt; mol.getId() &lt;&lt; <span class="stringliteral">&quot;, name &quot;</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                &lt;&lt; mol.getName() &lt;&lt; <span class="stringliteral">&quot;, # of segments &quot;</span> &lt;&lt; segnames.size()</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                &lt;&lt; <span class="stringliteral">&quot;, atomID offset &quot;</span> &lt;&lt; IdOffset &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    }</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> std::string&amp; segname : segnames) {</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>      <a class="code hl_typedef" href="namespacevotca.html#ad2c9da4f7634ac9c89e02a192345f276">Index</a> segid = topology_segments.size();</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>      <span class="comment">// construct a segment</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>      <a class="code hl_class" href="classvotca_1_1xtp_1_1Segment.html">Segment</a> this_segment = <a class="code hl_class" href="classvotca_1_1xtp_1_1Segment.html">Segment</a>(segname, segid);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>      this_segment.<a class="code hl_function" href="classvotca_1_1xtp_1_1Segment.html#a7c449b8a1a1673cf98c6a780f0450005">AddMoleculeId</a>(mol.getId());</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a2f7811111ae31c9fddb8bf8c649fd1f5">MakeSegmentsWholePBC</a>(xtptop);</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  <span class="keywordflow">return</span> xtptop;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>}</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a595e0ec60b3a7531aab10be1774b0805">  231</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a595e0ec60b3a7531aab10be1774b0805">Md2QmEngine::SameValueForMultipleEntries</a>(</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keyword">const</span> std::vector&lt;tools::Property*&gt;&amp; props, std::string valuetag)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  std::vector&lt;T&gt; entries;</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* prop : props) {</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    entries.push_back(prop-&gt;get(valuetag).as&lt;T&gt;());</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  }</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>  std::sort(entries.begin(), entries.end());  <span class="comment">// O(N log N)</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  <span class="keywordflow">return</span> adjacent_find(entries.begin(), entries.end()) != entries.end();</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>}</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>      <span class="comment">// create atomlist</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>      <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1csg_1_1Bead.html">csg::Bead</a>* bead : mol.Beads()) {</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="comment">// check if it belongs to this segment, and add it</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="keywordflow">if</span> (segname == MolToSegMap[mol.getName()][bead-&gt;getId() - IdOffset]) {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>          <a class="code hl_class" href="classvotca_1_1xtp_1_1Atom.html">Atom</a> atom(bead-&gt;getResnr(), bead-&gt;getName(), bead-&gt;getId(),</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                    bead-&gt;getPos() * <a class="code hl_variable" href="namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b">tools::conv::nm2bohr</a>, bead-&gt;getType());</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>          this_segment.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">push_back</a>(atom);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        }</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>      }</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>      <span class="comment">// add segment to topology</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>      topology_segments.push_back(this_segment);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    }</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>  }</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a2f7811111ae31c9fddb8bf8c649fd1f5">MakeSegmentsWholePBC</a>(xtptop);</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>  <span class="keywordflow">return</span> xtptop;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>}</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a595e0ec60b3a7531aab10be1774b0805">  245</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classvotca_1_1xtp_1_1Md2QmEngine.html#a595e0ec60b3a7531aab10be1774b0805">Md2QmEngine::SameValueForMultipleEntries</a>(</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keyword">const</span> std::vector&lt;tools::Property*&gt;&amp; props, std::string valuetag)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>  std::vector&lt;T&gt; entries;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>  <span class="keywordflow">for</span> (<a class="code hl_class" href="classvotca_1_1tools_1_1Property.html">tools::Property</a>* prop : props) {</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    entries.push_back(prop-&gt;get(valuetag).as&lt;T&gt;());</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>  }</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>  std::sort(entries.begin(), entries.end());  <span class="comment">// O(N log N)</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>  <span class="keywordflow">return</span> adjacent_find(entries.begin(), entries.end()) != entries.end();</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>}</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html">votca::csg::Bead</a></div><div class="ttdoc">information about a bead</div><div class="ttdef"><b>Definition:</b> <a href="bead_8h_source.html#l00050">bead.h:50</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html">votca::csg::Molecule</a></div><div class="ttdoc">information about molecules</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8h_source.html#l00045">molecule.h:45</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Molecule_html_a8c8ed966ac9283da27adbd9920b56099"><div class="ttname"><a href="classvotca_1_1csg_1_1Molecule.html#a8c8ed966ac9283da27adbd9920b56099">votca::csg::Molecule::BeadCount</a></div><div class="ttdeci">Index BeadCount() const</div><div class="ttdoc">get the number of beads in the molecule</div><div class="ttdef"><b>Definition:</b> <a href="molecule_8h_source.html#l00065">molecule.h:65</a></div></div>
@@ -341,15 +355,15 @@ $(function() {
 <div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html">votca::tools::Tokenizer</a></div><div class="ttdoc">break string into words</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00072">tokenizer.h:72</a></div></div>
 <div class="ttc" id="aclassvotca_1_1tools_1_1Tokenizer_html_a96f42a3e9fb59b55e5a9fdc36f5eedf0"><div class="ttname"><a href="classvotca_1_1tools_1_1Tokenizer.html#a96f42a3e9fb59b55e5a9fdc36f5eedf0">votca::tools::Tokenizer::ToVector</a></div><div class="ttdeci">std::vector&lt; T &gt; ToVector()</div><div class="ttdoc">store all words in a vector of type T, does type conversion.</div><div class="ttdef"><b>Definition:</b> <a href="tokenizer_8h_source.html#l00109">tokenizer.h:109</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_a14b0d7c0a880facaaf9b8b105ede0ae8"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#a14b0d7c0a880facaaf9b8b105ede0ae8">votca::xtp::AtomContainer::push_back</a></div><div class="ttdeci">void push_back(const T &amp;atom)</div><div class="ttdef"><b>Definition:</b> <a href="atomcontainer_8h_source.html#l00069">atomcontainer.h:69</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_ab7e0b5b18022220498df92e7742b3cf4"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">votca::xtp::AtomContainer::getPos</a></div><div class="ttdeci">const Eigen::Vector3d &amp; getPos() const</div><div class="ttdef"><b>Definition:</b> <a href="atomcontainer_8h_source.html#l00094">atomcontainer.h:94</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_ab7e0b5b18022220498df92e7742b3cf4"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">votca::xtp::AtomContainer::getPos</a></div><div class="ttdeci">const Eigen::Vector3d &amp; getPos() const</div><div class="ttdef"><b>Definition:</b> <a href="atomcontainer_8h_source.html#l00096">atomcontainer.h:96</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Atom_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Atom.html">votca::xtp::Atom</a></div><div class="ttdef"><b>Definition:</b> <a href="atom_8h_source.html#l00035">atom.h:35</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_a1575cae730661582bb6cae2527bbff92"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#a1575cae730661582bb6cae2527bbff92">votca::xtp::Md2QmEngine::CheckMappingFile</a></div><div class="ttdeci">void CheckMappingFile(tools::Property &amp;topology_map) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00024">md2qmengine.cc:24</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_a2f7811111ae31c9fddb8bf8c649fd1f5"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#a2f7811111ae31c9fddb8bf8c649fd1f5">votca::xtp::Md2QmEngine::MakeSegmentsWholePBC</a></div><div class="ttdeci">void MakeSegmentsWholePBC(Topology &amp;top) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00106">md2qmengine.cc:106</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_a2f7811111ae31c9fddb8bf8c649fd1f5"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#a2f7811111ae31c9fddb8bf8c649fd1f5">votca::xtp::Md2QmEngine::MakeSegmentsWholePBC</a></div><div class="ttdeci">void MakeSegmentsWholePBC(Topology &amp;top) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00107">md2qmengine.cc:107</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_a3623fc79818f5f9e93f3b8335d8e90bd"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#a3623fc79818f5f9e93f3b8335d8e90bd">votca::xtp::Md2QmEngine::DetermineAtomNumOffset</a></div><div class="ttdeci">Index DetermineAtomNumOffset(const csg::Molecule *mol, const std::vector&lt; Index &gt; &amp;atom_ids_map) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00072">md2qmengine.cc:72</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_a4e5af4a7e8a8a56c1c16510dd02e7243"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#a4e5af4a7e8a8a56c1c16510dd02e7243">votca::xtp::Md2QmEngine::mapfile_</a></div><div class="ttdeci">std::string mapfile_</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8h_source.html#l00050">md2qmengine.h:50</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_a595e0ec60b3a7531aab10be1774b0805"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#a595e0ec60b3a7531aab10be1774b0805">votca::xtp::Md2QmEngine::SameValueForMultipleEntries</a></div><div class="ttdeci">bool SameValueForMultipleEntries(const std::vector&lt; tools::Property * &gt; &amp;props, std::string tag) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00231">md2qmengine.cc:231</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_aa8ae4a215ea3e601db0d3ce8ee98a89c"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#aa8ae4a215ea3e601db0d3ce8ee98a89c">votca::xtp::Md2QmEngine::map</a></div><div class="ttdeci">Topology map(const csg::Topology &amp;top) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00124">md2qmengine.cc:124</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_aff1918bb112421cb2e0cbac9a2db811f"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#aff1918bb112421cb2e0cbac9a2db811f">votca::xtp::Md2QmEngine::CheckMolWhole</a></div><div class="ttdeci">bool CheckMolWhole(const Topology &amp;top, const Segment &amp;seg) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00091">md2qmengine.cc:91</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_a595e0ec60b3a7531aab10be1774b0805"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#a595e0ec60b3a7531aab10be1774b0805">votca::xtp::Md2QmEngine::SameValueForMultipleEntries</a></div><div class="ttdeci">bool SameValueForMultipleEntries(const std::vector&lt; tools::Property * &gt; &amp;props, std::string tag) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00245">md2qmengine.cc:245</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_aa8ae4a215ea3e601db0d3ce8ee98a89c"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#aa8ae4a215ea3e601db0d3ce8ee98a89c">votca::xtp::Md2QmEngine::map</a></div><div class="ttdeci">Topology map(const csg::Topology &amp;top) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00125">md2qmengine.cc:125</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1Md2QmEngine_html_aff1918bb112421cb2e0cbac9a2db811f"><div class="ttname"><a href="classvotca_1_1xtp_1_1Md2QmEngine.html#aff1918bb112421cb2e0cbac9a2db811f">votca::xtp::Md2QmEngine::CheckMolWhole</a></div><div class="ttdeci">bool CheckMolWhole(const Topology &amp;top, const Segment &amp;seg) const</div><div class="ttdef"><b>Definition:</b> <a href="md2qmengine_8cc_source.html#l00092">md2qmengine.cc:92</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Segment_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Segment.html">votca::xtp::Segment</a></div><div class="ttdef"><b>Definition:</b> <a href="segment_8h_source.html#l00036">segment.h:36</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Segment_html_a7c449b8a1a1673cf98c6a780f0450005"><div class="ttname"><a href="classvotca_1_1xtp_1_1Segment.html#a7c449b8a1a1673cf98c6a780f0450005">votca::xtp::Segment::AddMoleculeId</a></div><div class="ttdeci">void AddMoleculeId(Index id)</div><div class="ttdef"><b>Definition:</b> <a href="segment_8h_source.html#l00091">segment.h:91</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1Topology_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1Topology.html">votca::xtp::Topology</a></div><div class="ttdoc">Container for segments and box and atoms.</div><div class="ttdef"><b>Definition:</b> <a href="xtp_2include_2votca_2xtp_2topology_8h_source.html#l00041">topology.h:41</a></div></div>

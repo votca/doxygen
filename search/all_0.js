@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['a_0',['A',['../classvotca_1_1tools_1_1CubicSpline.html#a7cf9d2bb98c99d7736f96b65fbfadd7c',1,'votca::tools::CubicSpline']]],
-  ['a_1',['a',['../structCGForceMatching_1_1SplineInfo.html#acb610d0db7f099f0274a7e2e553cc3d0',1,'CGForceMatching::SplineInfo::a()'],['../classvotca_1_1tools_1_1LinSpline.html#aa7b629597c199fd8e9099349887bb355',1,'votca::tools::LinSpline::a()']]],
+  ['a_0',['a',['../structCGForceMatching_1_1SplineInfo.html#acb610d0db7f099f0274a7e2e553cc3d0',1,'CGForceMatching::SplineInfo::a()'],['../classvotca_1_1tools_1_1LinSpline.html#aa7b629597c199fd8e9099349887bb355',1,'votca::tools::LinSpline::a()']]],
+  ['a_1',['A',['../classvotca_1_1tools_1_1CubicSpline.html#a7cf9d2bb98c99d7736f96b65fbfadd7c',1,'votca::tools::CubicSpline']]],
   ['a_5f_2',['A_',['../classCGForceMatching.html#a2f723cedb09fc0764b67236d26460220',1,'CGForceMatching::A_()'],['../classvotca_1_1xtp_1_1HamiltonianOperator.html#a55c6a50299d582fdaed52ac9d1817f7e',1,'votca::xtp::HamiltonianOperator::A_()'],['../classvotca_1_1xtp_1_1PMLocalization.html#a51894eb1968222d525fbb26e5f2f2230',1,'votca::xtp::PMLocalization::A_()']]],
   ['a_5fprime_5fl_3',['A_prime_l',['../classvotca_1_1tools_1_1CubicSpline.html#af924a7e71d472df6a621e8ce8aac0d56',1,'votca::tools::CubicSpline']]],
   ['a_5fprime_5fr_4',['A_prime_r',['../classvotca_1_1tools_1_1CubicSpline.html#ab70ee3234eb180795e2293903cef4f8a',1,'votca::tools::CubicSpline']]],
@@ -220,8 +220,8 @@ var searchData=
   ['attributes_5f_217',['attributes_',['../classvotca_1_1tools_1_1Property.html#aa287a360f41fbc6d623608f1e7483649',1,'votca::tools::Property']]],
   ['auto_5finterval_5f_218',['auto_interval_',['../structvotca_1_1tools_1_1Histogram_1_1options__t.html#a1c8fa2ab3558a2fc67c8396b5b39bf80',1,'votca::tools::Histogram::options_t']]],
   ['autocorrelate_219',['AutoCorrelate',['../classvotca_1_1tools_1_1CrossCorrelate.html#acc795bfa536422388d19d14fb7c9f7cb',1,'votca::tools::CrossCorrelate']]],
-  ['autodetectboxtype_220',['AutoDetectBoxType',['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology']]],
-  ['autodetectboxtype_221',['autoDetectBoxType',['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology']]],
+  ['autodetectboxtype_220',['autoDetectBoxType',['../classvotca_1_1csg_1_1Topology.html#a111bc764b92ff1c5d529524b79d47154',1,'votca::csg::Topology']]],
+  ['autodetectboxtype_221',['AutoDetectBoxType',['../classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f',1,'votca::xtp::Topology']]],
   ['aux_5fbasisset_5fname_5f_222',['aux_basisset_name_',['../classvotca_1_1xtp_1_1Molden.html#a527793c76aa6779d583290337306a5a3',1,'votca::xtp::Molden::aux_basisset_name_()'],['../classvotca_1_1xtp_1_1Mol2Orb.html#aa3efc5d07de4429eef518dbad73dec6c',1,'votca::xtp::Mol2Orb::aux_basisset_name_()'],['../classvotca_1_1xtp_1_1Orb2Mol.html#a7fedca361ef66e3adf181a5ad726f6b3',1,'votca::xtp::Orb2Mol::aux_basisset_name_()']]],
   ['auxbasis_5f_223',['auxbasis_',['../classvotca_1_1xtp_1_1DFTEngine.html#a7f2d5f53d8ef81d6f107efa6a9aca827',1,'votca::xtp::DFTEngine::auxbasis_()'],['../classvotca_1_1xtp_1_1ERDiabatization.html#ab49ab34f30a3bb6188e6c9033c542e69',1,'votca::xtp::ERDiabatization::auxbasis_()'],['../classvotca_1_1xtp_1_1Orbitals.html#ac343e12cc6b5e6d708e6fd9ab3970b11',1,'votca::xtp::Orbitals::auxbasis_()'],['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a093fbfec7c93e7f9c6dda9d5ba89de80',1,'votca::xtp::TCMatrix_gwbse::auxbasis_()']]],
   ['auxbasis_5fname_5f_224',['auxbasis_name_',['../classvotca_1_1xtp_1_1DFTEngine.html#a082835c4fadef6f3f668ecf4bf287caa',1,'votca::xtp::DFTEngine::auxbasis_name_()'],['../classvotca_1_1xtp_1_1GWBSE.html#a713a872e3b46b2f66847d125c98a6eda',1,'votca::xtp::GWBSE::auxbasis_name_()']]],
