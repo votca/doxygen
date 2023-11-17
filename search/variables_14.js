@@ -6,7 +6,7 @@ var searchData=
   ['u_5fxn_5fxx_5f_3',['U_xN_xX_',['../classvotca_1_1xtp_1_1Segment.html#a65bafcf9c0d51a9bb08400e8ed7b5828',1,'votca::xtp::Segment']]],
   ['u_5fxx_5fnn_5f_4',['U_xX_nN_',['../classvotca_1_1xtp_1_1Segment.html#a4cdc10c8dd7dc10bd0c066638ececc09',1,'votca::xtp::Segment']]],
   ['uavgaa_5f_5',['UavgAA_',['../classCsgREupdate.html#ad0e1142a5a52033dc682eadae92def30',1,'CsgREupdate']]],
-  ['uavgcg_5f_6',['UavgCG_',['../classCsgREupdate.html#ac6066edf6d2cfe654d78dd14bc31443a',1,'CsgREupdate::UavgCG_()'],['../classCsgREupdateWorker.html#a8156511a2b1b7dc50fe57acadbf036f3',1,'CsgREupdateWorker::UavgCG_()']]],
+  ['uavgcg_5f_6',['UavgCG_',['../classCsgREupdate.html#ac6066edf6d2cfe654d78dd14bc31443a',1,'CsgREupdate::UavgCG_'],['../classCsgREupdateWorker.html#a8156511a2b1b7dc50fe57acadbf036f3',1,'CsgREupdateWorker::UavgCG_']]],
   ['ucg_7',['ucg',['../structPotentialInfo.html#adb9f276725446aba334343add01329a6',1,'PotentialInfo']]],
   ['unassigned_5fbead_5ftype_8',['unassigned_bead_type',['../namespacevotca_1_1tools_1_1topology__constants.html#a89b06783ab147bb34dd6df882a5f1155',1,'votca::tools::topology_constants']]],
   ['unassigned_5felement_9',['unassigned_element',['../namespacevotca_1_1tools_1_1topology__constants.html#a404314108bb9ccf5faca3b53fc06f4fa',1,'votca::tools::topology_constants']]],
@@ -31,7 +31,7 @@ var searchData=
   ['usediis_28',['usediis',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#abd8b825e0622a4ef74c753ac3e62e8b5',1,'votca::xtp::ConvergenceAcc::options']]],
   ['usedmixing_5f_29',['usedmixing_',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#acc7fa16a6e029f80c58794372e19a01a',1,'votca::xtp::ConvergenceAcc']]],
   ['useexcitoncutoff_5f_30',['useExcitonCutoff_',['../classvotca_1_1xtp_1_1Neighborlist.html#a04a160e619afff32580028b95d0c679b',1,'votca::xtp::Neighborlist']]],
-  ['useri_5f_31',['useRI_',['../classvotca_1_1xtp_1_1ERDiabatization.html#ad3921a60bf0dc627552f9d60b992d5fa',1,'votca::xtp::ERDiabatization::useRI_()'],['../classvotca_1_1xtp_1_1Diabatization.html#a94daec4911e66cb9b3424e36ad1e3844',1,'votca::xtp::Diabatization::useRI_()']]],
+  ['useri_5f_31',['useRI_',['../classvotca_1_1xtp_1_1ERDiabatization.html#ad3921a60bf0dc627552f9d60b992d5fa',1,'votca::xtp::ERDiabatization::useRI_'],['../classvotca_1_1xtp_1_1Diabatization.html#a94daec4911e66cb9b3424e36ad1e3844',1,'votca::xtp::Diabatization::useRI_']]],
   ['usetda_32',['useTDA',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a659a54cb1fcd033929c79d48476ce374',1,'votca::xtp::BSE::options']]],
   ['usetda_5f_33',['useTDA_',['../classvotca_1_1xtp_1_1Orbitals.html#a83029c41b0a8ca0933bc5abbe64e55fd',1,'votca::xtp::Orbitals']]]
 ];

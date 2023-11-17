@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['u_0',['U',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html#a56ae7b03d9e44a5bc49784f8b1272b2a',1,'votca::xtp::DavidsonSolver::RitzEigenPair::U()'],['../classvotca_1_1csg_1_1Bead.html#ae3e674fc1497dcae5c07650a38488cae',1,'votca::csg::Bead::U()']]],
+  ['u_0',['U',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html#a56ae7b03d9e44a5bc49784f8b1272b2a',1,'votca::xtp::DavidsonSolver::RitzEigenPair::U'],['../classvotca_1_1csg_1_1Bead.html#ae3e674fc1497dcae5c07650a38488cae',1,'votca::csg::Bead::U()']]],
   ['u_5f_1',['u_',['../classvotca_1_1csg_1_1Bead.html#a1c5bc19e6b8f7c107065ab1477faa7b0',1,'votca::csg::Bead']]],
   ['u_5fnx_5fnn_5f_2',['U_nX_nN_',['../classvotca_1_1xtp_1_1Segment.html#a0bdcd229a4f8bd5b9e1d447222214a7c',1,'votca::xtp::Segment']]],
   ['u_5fxn_5fxx_5f_3',['U_xN_xX_',['../classvotca_1_1xtp_1_1Segment.html#a65bafcf9c0d51a9bb08400e8ed7b5828',1,'votca::xtp::Segment']]],
   ['u_5fxx_5fnn_5f_4',['U_xX_nN_',['../classvotca_1_1xtp_1_1Segment.html#a4cdc10c8dd7dc10bd0c066638ececc09',1,'votca::xtp::Segment']]],
   ['uavgaa_5f_5',['UavgAA_',['../classCsgREupdate.html#ad0e1142a5a52033dc682eadae92def30',1,'CsgREupdate']]],
-  ['uavgcg_5f_6',['UavgCG_',['../classCsgREupdateWorker.html#a8156511a2b1b7dc50fe57acadbf036f3',1,'CsgREupdateWorker::UavgCG_()'],['../classCsgREupdate.html#ac6066edf6d2cfe654d78dd14bc31443a',1,'CsgREupdate::UavgCG_()']]],
+  ['uavgcg_5f_6',['UavgCG_',['../classCsgREupdateWorker.html#a8156511a2b1b7dc50fe57acadbf036f3',1,'CsgREupdateWorker::UavgCG_'],['../classCsgREupdate.html#ac6066edf6d2cfe654d78dd14bc31443a',1,'CsgREupdate::UavgCG_']]],
   ['ucg_7',['ucg',['../structPotentialInfo.html#adb9f276725446aba334343add01329a6',1,'PotentialInfo']]],
   ['unassigned_5fbead_5ftype_8',['unassigned_bead_type',['../namespacevotca_1_1tools_1_1topology__constants.html#a89b06783ab147bb34dd6df882a5f1155',1,'votca::tools::topology_constants']]],
   ['unassigned_5felement_9',['unassigned_element',['../namespacevotca_1_1tools_1_1topology__constants.html#a404314108bb9ccf5faca3b53fc06f4fa',1,'votca::tools::topology_constants']]],
@@ -66,7 +66,7 @@ var searchData=
   ['usediis_63',['usediis',['../structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#abd8b825e0622a4ef74c753ac3e62e8b5',1,'votca::xtp::ConvergenceAcc::options']]],
   ['usedmixing_5f_64',['usedmixing_',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#acc7fa16a6e029f80c58794372e19a01a',1,'votca::xtp::ConvergenceAcc']]],
   ['useexcitoncutoff_5f_65',['useExcitonCutoff_',['../classvotca_1_1xtp_1_1Neighborlist.html#a04a160e619afff32580028b95d0c679b',1,'votca::xtp::Neighborlist']]],
-  ['useri_5f_66',['useRI_',['../classvotca_1_1xtp_1_1Diabatization.html#a94daec4911e66cb9b3424e36ad1e3844',1,'votca::xtp::Diabatization::useRI_()'],['../classvotca_1_1xtp_1_1ERDiabatization.html#ad3921a60bf0dc627552f9d60b992d5fa',1,'votca::xtp::ERDiabatization::useRI_()']]],
+  ['useri_5f_66',['useRI_',['../classvotca_1_1xtp_1_1Diabatization.html#a94daec4911e66cb9b3424e36ad1e3844',1,'votca::xtp::Diabatization::useRI_'],['../classvotca_1_1xtp_1_1ERDiabatization.html#ad3921a60bf0dc627552f9d60b992d5fa',1,'votca::xtp::ERDiabatization::useRI_']]],
   ['usesymmetry_67',['UseSymmetry',['../classvotca_1_1xtp_1_1Gauss__Laguerre__Quadrature.html#a1f30218ae6bd0fce555cc5c4ca6b4847',1,'votca::xtp::Gauss_Laguerre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__modified__Legendre__Quadrature.html#a3aa5729997345f6d817eee88a696a387',1,'votca::xtp::Gauss_modified_Legendre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__Legendre__Quadrature.html#aed1d3795970ece916afa53d452948d22',1,'votca::xtp::Gauss_Legendre_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1Gauss__Hermite__Quadrature.html#ab287235ebd7bec332b6b86cf17fd7a7f',1,'votca::xtp::Gauss_Hermite_Quadrature::UseSymmetry()'],['../classvotca_1_1xtp_1_1GaussianQuadratureBase.html#af1bfed18e4d91e37a0e50d8aef27b173',1,'votca::xtp::GaussianQuadratureBase::UseSymmetry()']]],
   ['usetda_68',['useTDA',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a659a54cb1fcd033929c79d48476ce374',1,'votca::xtp::BSE::options']]],
   ['usetda_5f_69',['useTDA_',['../classvotca_1_1xtp_1_1Orbitals.html#a83029c41b0a8ca0933bc5abbe64e55fd',1,'votca::xtp::Orbitals']]],

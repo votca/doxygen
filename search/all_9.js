@@ -11,7 +11,7 @@ var searchData=
   ['jeff2h_8',['jeff2h',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#a36ff07cba5332d8388897756242203c0',1,'votca::xtp::QMPair::data']]],
   ['jeff2s_9',['jeff2s',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#abff5bcc04b25d0a69a22a21df0237083',1,'votca::xtp::QMPair::data']]],
   ['jeff2t_10',['jeff2t',['../structvotca_1_1xtp_1_1QMPair_1_1data.html#ac34a57f126614e18509bbd24a823a94b',1,'votca::xtp::QMPair::data']]],
-  ['job_11',['Job',['../classvotca_1_1xtp_1_1Job.html#a437abb6b9154d85bbe4978758d65b75e',1,'votca::xtp::Job::Job(Index id, const std::string &amp;tag, const tools::Property &amp;input, JobStatus status)'],['../classvotca_1_1xtp_1_1Job.html#a75cebef8e97062f511a540f7d251559a',1,'votca::xtp::Job::Job(const tools::Property &amp;prop)'],['../classvotca_1_1xtp_1_1ProgObserver.html#a11cdcd022530ee405952a6553445aee9',1,'votca::xtp::ProgObserver::Job()'],['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#a64e1352b6d25be8beae37a52cdd613d1',1,'votca::xtp::ParallelXJobCalc::Job()'],['../classvotca_1_1xtp_1_1Job.html',1,'votca::xtp::Job']]],
+  ['job_11',['Job',['../classvotca_1_1xtp_1_1Job.html#a437abb6b9154d85bbe4978758d65b75e',1,'votca::xtp::Job::Job(Index id, const std::string &amp;tag, const tools::Property &amp;input, JobStatus status)'],['../classvotca_1_1xtp_1_1Job.html#a75cebef8e97062f511a540f7d251559a',1,'votca::xtp::Job::Job(const tools::Property &amp;prop)'],['../classvotca_1_1xtp_1_1ProgObserver.html#a11cdcd022530ee405952a6553445aee9',1,'votca::xtp::ProgObserver::Job'],['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#a64e1352b6d25be8beae37a52cdd613d1',1,'votca::xtp::ParallelXJobCalc::Job'],['../classvotca_1_1xtp_1_1Job.html',1,'votca::xtp::Job']]],
   ['job_2ecc_12',['job.cc',['../job_8cc.html',1,'']]],
   ['job_2eh_13',['job.h',['../job_8h.html',1,'']]],
   ['job_5f_14',['job_',['../classvotca_1_1xtp_1_1JobTopology.html#a765e3ea86722164c07c0f29bd8c4f2bb',1,'votca::xtp::JobTopology']]],
@@ -37,6 +37,6 @@ var searchData=
   ['joules_5fper_5fmole_34',['joules_per_mole',['../namespacevotca_1_1tools.html#a2e1c6d4d81c50c4700d9fae168480335a427c4bfe2b6a34d6b8ab22f7044ff24f',1,'votca::tools']]],
   ['jumpaccordingevent_35',['jumpAccordingEvent',['../classvotca_1_1xtp_1_1Chargecarrier.html#a7664d305b29b8c061f2f6f9a67989123',1,'votca::xtp::Chargecarrier']]],
   ['junctionexist_5f_36',['junctionExist_',['../classvotca_1_1csg_1_1BeadMotif.html#abde5d199fb7f4ddd16d0d14dc0b45390',1,'votca::csg::BeadMotif']]],
-  ['junctions_5f_37',['junctions_',['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_()'],['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_()']]],
+  ['junctions_5f_37',['junctions_',['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_'],['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_']]],
   ['junctionsuptodate_5f_38',['junctionsUpToDate_',['../classvotca_1_1csg_1_1BeadMotif.html#a78c4cc3f943a69f98ad714c71c16421f',1,'votca::csg::BeadMotif']]]
 ];
