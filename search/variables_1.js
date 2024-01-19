@@ -2,8 +2,8 @@ var searchData=
 [
   ['b_0',['b',['../classvotca_1_1tools_1_1LinSpline.html#a7aa278fca77c6cbf1cf44deea34211a3',1,'votca::tools::LinSpline']]],
   ['b_1',['B',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af6f5dead42bdfd50316cd0d0223b1f9a',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
-  ['b_5f_2',['b_',['../classCGForceMatching.html#a1db2a80a8039d5b3bf36d10a631217f2',1,'CGForceMatching']]],
-  ['b_5f_3',['B_',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#a6e9873d3e8cf560eea97101b49b3965e',1,'votca::xtp::HamiltonianOperator::B_'],['../classvotca_1_1xtp_1_1PMLocalization.html#a1db9862346cda5e021b5289edcbad0fc',1,'votca::xtp::PMLocalization::B_']]],
+  ['b_5f_2',['B_',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#a6e9873d3e8cf560eea97101b49b3965e',1,'votca::xtp::HamiltonianOperator::B_'],['../classvotca_1_1xtp_1_1PMLocalization.html#a1db9862346cda5e021b5289edcbad0fc',1,'votca::xtp::PMLocalization::B_']]],
+  ['b_5f_3',['b_',['../classCGForceMatching.html#a1db2a80a8039d5b3bf36d10a631217f2',1,'CGForceMatching']]],
   ['b_5fconstr_5f_4',['B_constr_',['../classCGForceMatching.html#a410dfd280899d674cb4f146ff2571255',1,'CGForceMatching']]],
   ['basename_5f_5',['basename_',['../classvotca_1_1xtp_1_1Orb2Fchk.html#a72dd155e578bea3ed9c2a1fa339135f4',1,'votca::xtp::Orb2Fchk']]],
   ['basis_5f_6',['basis_',['../classvotca_1_1xtp_1_1ERIs.html#a26ab4dcd5d380a516bf06c87f0f82175',1,'votca::xtp::ERIs']]],
