@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['s_0',['S',['../namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17da5dbc98dcc983a70728bd082d1a47546e',1,'votca::xtp']]],
-  ['s_1',['s',['../namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903',1,'votca::xtp::Cart']]],
+  ['s_0',['s',['../namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75cac01ef2a93cf0d8dc583e00ed3817b903',1,'votca::xtp::Cart']]],
+  ['s_1',['S',['../namespacevotca_1_1xtp.html#a7336351adc1e9d22c930eb40921bd17da5dbc98dcc983a70728bd082d1a47546e',1,'votca::xtp']]],
   ['safe_2',['SAFE',['../classvotca_1_1xtp_1_1DavidsonSolver.html#abd786a02625d5fb3a2030a510bc4f399a0221062d465ef762d58513dcb21598e8',1,'votca::xtp::DavidsonSolver']]],
   ['seconds_3',['seconds',['../namespacevotca_1_1tools.html#a3db9e566728fce7d4132a1d849f0ef27aaec33998ea28f09699da74d05dfd32d2',1,'votca::tools']]],
   ['single_5fbead_4',['single_bead',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010adee109dd3c2e62142b4c48853dc1f68b',1,'votca::csg::BeadMotif']]],

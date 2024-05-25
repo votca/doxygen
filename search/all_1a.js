@@ -28,7 +28,7 @@ var searchData=
   ['_7eedge_25',['~Edge',['../classvotca_1_1tools_1_1Edge.html#a2ec44564878804e53cfa61bac8da8b5c',1,'votca::tools::Edge']]],
   ['_7eeinternal_26',['~EInternal',['../classvotca_1_1xtp_1_1EInternal.html#a7a77826fe93d80ed1a9070236dcea261',1,'votca::xtp::EInternal']]],
   ['_7eexclusionlist_27',['~ExclusionList',['../classvotca_1_1csg_1_1ExclusionList.html#a5c0b6db57c0a34c59c64f8bf5b67c990',1,'votca::csg::ExclusionList']]],
-  ['_7efunctor_28',['~Functor',['../classvotca_1_1csg_1_1NBList__3Body_1_1Functor.html#a74f468039dca57cd4e94b0e11e4670a4',1,'votca::csg::NBList_3Body::Functor::~Functor()'],['../classvotca_1_1csg_1_1NBList_1_1Functor.html#a512ebde215ee07be38b704770b4e8e16',1,'votca::csg::NBList::Functor::~Functor()']]],
+  ['_7efunctor_28',['~Functor',['../classvotca_1_1csg_1_1NBList_1_1Functor.html#a512ebde215ee07be38b704770b4e8e16',1,'votca::csg::NBList::Functor::~Functor()'],['../classvotca_1_1csg_1_1NBList__3Body_1_1Functor.html#a74f468039dca57cd4e94b0e11e4670a4',1,'votca::csg::NBList_3Body::Functor::~Functor()']]],
   ['_7egaussianquadraturebase_29',['~GaussianQuadratureBase',['../classvotca_1_1xtp_1_1GaussianQuadratureBase.html#a46c3b153e1c4060f0a1f7a2f7c323047',1,'votca::xtp::GaussianQuadratureBase']]],
   ['_7egaussianwriter_30',['~GaussianWriter',['../classvotca_1_1xtp_1_1GaussianWriter.html#a5670774d6e21d74cdc7f473a4623294d',1,'votca::xtp::GaussianWriter']]],
   ['_7egencube_31',['~GenCube',['../classvotca_1_1xtp_1_1GenCube.html#a348b92502fb8d3930f0b0a70f7820b43',1,'votca::xtp::GenCube']]],

@@ -6,7 +6,7 @@ var searchData=
   ['singletoperator_5fbtda_5fb_3',['SingletOperator_BTDA_B',['../namespacevotca_1_1xtp.html#ac2c9af8d79a386ba3317f2bd19ef0592',1,'votca::xtp']]],
   ['singletoperator_5ftda_4',['SingletOperator_TDA',['../namespacevotca_1_1xtp.html#a60a860892c60ecdbdfb24a7575cd1070',1,'votca::xtp']]],
   ['splinecontainer_5',['SplineContainer',['../classCGForceMatching.html#aae1bab56e98c510a4b0e86c8c7a46eec',1,'CGForceMatching']]],
-  ['staticmapper_6',['StaticMapper',['../namespacevotca_1_1xtp.html#a811782b8232dadd89e59dcf18cbbc6a6',1,'votca::xtp']]],
-  ['staticsegment_7',['StaticSegment',['../namespacevotca_1_1xtp.html#aad5d32cf3abe17780b9991be71315598',1,'votca::xtp']]],
+  ['staticmapper_6',['StaticMapper',['../namespacevotca_1_1xtp.html#ad8448bbb3fd190062e9fb38ef7f27418',1,'votca::xtp']]],
+  ['staticsegment_7',['StaticSegment',['../namespacevotca_1_1xtp.html#aa5e328ab0d1d16b6a53591c0c9a8c80d',1,'votca::xtp']]],
   ['storageindex_8',['StorageIndex',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#aa94c3a2d0f9f8a92c75b483205dda934',1,'votca::xtp::HamiltonianOperator::StorageIndex'],['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a560302276d165172db7950064da7dc12',1,'votca::xtp::DipoleDipoleInteraction::StorageIndex']]]
 ];
