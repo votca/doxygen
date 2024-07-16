@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['package_5fbugreport_0',['PACKAGE_BUGREPORT',['../votca__csg__config_8h.html#a1d1d2d7f8d2f95b376954d649ab03233',1,'PACKAGE_BUGREPORT:&#160;votca_csg_config.h'],['../votca__xtp__config_8h.html#a1d1d2d7f8d2f95b376954d649ab03233',1,'PACKAGE_BUGREPORT:&#160;votca_xtp_config.h']]]
+  ['project_5fbugreport_0',['PROJECT_BUGREPORT',['../votca__tools__config_8h.html#a47c86e9a78b67d5717ad6dab784deff7',1,'votca_tools_config.h']]],
+  ['project_5fcitation_1',['PROJECT_CITATION',['../votca__tools__config_8h.html#a5ec8869555902e013c4e3250de0c9b90',1,'votca_tools_config.h']]],
+  ['project_5fversion_2',['PROJECT_VERSION',['../votca__tools__config_8h.html#a4a776fa6ea8b7bdf8dfa04ad42b46407',1,'votca_tools_config.h']]]
 ];
