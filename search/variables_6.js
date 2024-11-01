@@ -13,7 +13,7 @@ var searchData=
   ['gentable_5f_10',['gentable_',['../classCsgREupdate.html#a32e8b9f095b4e3934810cf35f592fd55',1,'CsgREupdate']]],
   ['geometryinput_5f_11',['geometryinput_',['../classCsgFluctuations.html#afbe095ee8460eaa780aea3ae1f11c659',1,'CsgFluctuations']]],
   ['geoopt_5foptions_5f_12',['geoopt_options_',['../classvotca_1_1xtp_1_1DftGwBse.html#a12eb209f08542802d48fbc900819460b',1,'votca::xtp::DftGwBse']]],
-  ['gitversion_13',['gitversion',['../gitversion_8h.html#a8523f099093487e95ff4527d9023bcfd',1,'gitversion.h']]],
+  ['gitversion_13',['gitversion',['../namespacevotca_1_1tools.html#aedeff6ac98ec56a150e384e91def4ecf',1,'votca::tools::gitversion'],['../gitversion_8h.html#a8523f099093487e95ff4527d9023bcfd',1,'gitversion:&#160;gitversion.h']]],
   ['gmx_5fframe_5f_14',['gmx_frame_',['../classvotca_1_1csg_1_1GMXTrajectoryReader.html#a7673275789f5f1d715fcf89357405fe1',1,'votca::csg::GMXTrajectoryReader']]],
   ['gmx_5fstatus_5f_15',['gmx_status_',['../classvotca_1_1csg_1_1GMXTrajectoryReader.html#a9a461ef3e33249c1d9e322575c453479',1,'votca::csg::GMXTrajectoryReader']]],
   ['gq_5f_16',['gq_',['../classvotca_1_1xtp_1_1ImaginaryAxisIntegration.html#ad5f3e351a49256c95c415c93ee4de098',1,'votca::xtp::ImaginaryAxisIntegration::gq_'],['../classvotca_1_1xtp_1_1Sigma__CDA.html#a8643cb933ab76957ae890518fd92d2d9',1,'votca::xtp::Sigma_CDA::gq_']]],
