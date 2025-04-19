@@ -1,0 +1,26 @@
+var classvotca_1_1xtp_1_1ERDiabatization =
+[
+    [ "ERDiabatization", "classvotca_1_1xtp_1_1ERDiabatization.html#a93a05796140f7a58393daf78c4f1da2d", null ],
+    [ "ERDiabatization", "classvotca_1_1xtp_1_1ERDiabatization.html#a0f6a4253856420095969cb184b3d72e9", null ],
+    [ "Calculate_angle", "classvotca_1_1xtp_1_1ERDiabatization.html#a93ed2fae47c9014c778264d006ec797a", null ],
+    [ "Calculate_diabatic_H", "classvotca_1_1xtp_1_1ERDiabatization.html#a6e115b2f3c83424e9d4a726f53c4e295", null ],
+    [ "CalculateR", "classvotca_1_1xtp_1_1ERDiabatization.html#a92d704e14a280eb457957f69df9af3bc", null ],
+    [ "CalculateRtensor", "classvotca_1_1xtp_1_1ERDiabatization.html#a0642d2930eb410f982a12a3ba9293466", null ],
+    [ "CalculateU", "classvotca_1_1xtp_1_1ERDiabatization.html#ab66a6dfcb18f22e73475e62b4c127bcd", null ],
+    [ "configure", "classvotca_1_1xtp_1_1ERDiabatization.html#a4ecee689b3c2154272feb6ea6b5fdbd7", null ],
+    [ "setUpMatrices", "classvotca_1_1xtp_1_1ERDiabatization.html#ac4141b6934f557ffa78541f8217a29f4", null ],
+    [ "auxbasis_", "classvotca_1_1xtp_1_1ERDiabatization.html#ab49ab34f30a3bb6188e6c9033c542e69", null ],
+    [ "dftbasis_", "classvotca_1_1xtp_1_1ERDiabatization.html#a45b431460648c16f8a475c3cf8734734", null ],
+    [ "E1_", "classvotca_1_1xtp_1_1ERDiabatization.html#aaa89d337dd0e73f4a825852b80469cfc", null ],
+    [ "E2_", "classvotca_1_1xtp_1_1ERDiabatization.html#a7c6e91fa27c36b27982e566883810fad", null ],
+    [ "eris_", "classvotca_1_1xtp_1_1ERDiabatization.html#a379b76dd77c9d6455be30daea1a752ea", null ],
+    [ "hasRI_", "classvotca_1_1xtp_1_1ERDiabatization.html#aad2be36a74f18bfefa03088f08934b39", null ],
+    [ "orbitals1_", "classvotca_1_1xtp_1_1ERDiabatization.html#a5b1165555590bc9930971aa8eb9fb95a", null ],
+    [ "orbitals2_", "classvotca_1_1xtp_1_1ERDiabatization.html#aae357842c94e75d60678ce3d4ffbb616", null ],
+    [ "pLog_", "classvotca_1_1xtp_1_1ERDiabatization.html#aeada1a7cedc44ea22d4a61157694bef1", null ],
+    [ "qmtype_", "classvotca_1_1xtp_1_1ERDiabatization.html#a69ec38c665436475650d8a7737e752c2", null ],
+    [ "qmtype_str_", "classvotca_1_1xtp_1_1ERDiabatization.html#a189e39752d5c463e29a26a776f6b1332", null ],
+    [ "state_idx_1_", "classvotca_1_1xtp_1_1ERDiabatization.html#a4f806ff1cdd96be3f22bf5512420cb61", null ],
+    [ "state_idx_2_", "classvotca_1_1xtp_1_1ERDiabatization.html#a0bffb28968486b8e35e0d1a9d0d17e39", null ],
+    [ "useRI_", "classvotca_1_1xtp_1_1ERDiabatization.html#ad3921a60bf0dc627552f9d60b992d5fa", null ]
+];

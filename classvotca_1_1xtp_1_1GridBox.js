@@ -1,0 +1,27 @@
+var classvotca_1_1xtp_1_1GridBox =
+[
+    [ "addGridBox", "classvotca_1_1xtp_1_1GridBox.html#a182a7934a76d7144203db41c259c1da6", null ],
+    [ "addGridPoint", "classvotca_1_1xtp_1_1GridBox.html#ae2f43d8da0252e5da4aabde683e31507", null ],
+    [ "addShell", "classvotca_1_1xtp_1_1GridBox.html#a11d8425a1357484103cf81a3a3896706", null ],
+    [ "AddtoBigMatrix", "classvotca_1_1xtp_1_1GridBox.html#a0efa1b749bf90529851a31eed290e931", null ],
+    [ "CalcAOValues", "classvotca_1_1xtp_1_1GridBox.html#ab243eef9550771a5c0f6dbfd63d794ad", null ],
+    [ "compareGridboxes", "classvotca_1_1xtp_1_1GridBox.html#aa13b8ba9ce88c0e3d619eeaa6cbbefb2", null ],
+    [ "FindSignificantShells", "classvotca_1_1xtp_1_1GridBox.html#ad06180ef246ea0638be1c17c70f047ae", null ],
+    [ "getAOranges", "classvotca_1_1xtp_1_1GridBox.html#a3f15745bc3b2c6fa80b1f96a2e49453a", null ],
+    [ "getGridPoints", "classvotca_1_1xtp_1_1GridBox.html#a0885e6875b6a8ee5f0e70d48bb6ea989", null ],
+    [ "getGridWeights", "classvotca_1_1xtp_1_1GridBox.html#a4a51fa17bee51d874392801cca92210a", null ],
+    [ "getShells", "classvotca_1_1xtp_1_1GridBox.html#a37c3e7c7487f9661361c738799c29a05", null ],
+    [ "Matrixsize", "classvotca_1_1xtp_1_1GridBox.html#acaa7320024ae09e3b9081bd6d26797a5", null ],
+    [ "PrepareForIntegration", "classvotca_1_1xtp_1_1GridBox.html#a03e5f7e56267ab5f4cda1658085d777f", null ],
+    [ "ReadFromBigMatrix", "classvotca_1_1xtp_1_1GridBox.html#a0e0be60755ab71d9ca2d4b15c42d19df", null ],
+    [ "ReadFromBigVector", "classvotca_1_1xtp_1_1GridBox.html#a7d19aba41d10ad96a2b2259af440d168", null ],
+    [ "Shellsize", "classvotca_1_1xtp_1_1GridBox.html#ad920ef43ce6f1fbb7a26019a9989c022", null ],
+    [ "size", "classvotca_1_1xtp_1_1GridBox.html#ab8707075e2b88a8e7beae27481294bf1", null ],
+    [ "aoranges", "classvotca_1_1xtp_1_1GridBox.html#ac5015c340fb285a31bd89db6b28918c6", null ],
+    [ "grid_pos", "classvotca_1_1xtp_1_1GridBox.html#a68fd9f14f76bf5ef50d84f1eec03b1d2", null ],
+    [ "inv_ranges", "classvotca_1_1xtp_1_1GridBox.html#a1aa2295cb065adb1228f283060f66b92", null ],
+    [ "matrix_size", "classvotca_1_1xtp_1_1GridBox.html#aeca807298a6d040a72d29036767de9da", null ],
+    [ "ranges", "classvotca_1_1xtp_1_1GridBox.html#ace0d82ce3708a3a3720486c6170c38ee", null ],
+    [ "significant_shells", "classvotca_1_1xtp_1_1GridBox.html#a59ff711d98e877cb22f99ce9db680fa8", null ],
+    [ "weights", "classvotca_1_1xtp_1_1GridBox.html#a2156a8106766bcc31c048bd819c08c63", null ]
+];

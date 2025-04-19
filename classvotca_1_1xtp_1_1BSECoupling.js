@@ -1,0 +1,28 @@
+var classvotca_1_1xtp_1_1BSECoupling =
+[
+    [ "Addoutput", "classvotca_1_1xtp_1_1BSECoupling.html#a6cb94bff3590747772cf06f9e484d339", null ],
+    [ "CalcJ_dimer", "classvotca_1_1xtp_1_1BSECoupling.html#ae896d96e5178cfedc4e0885e5a927ee2", null ],
+    [ "CalculateCouplings", "classvotca_1_1xtp_1_1BSECoupling.html#a668c987fa5414a7e64a346e1b67de905", null ],
+    [ "Fulldiag", "classvotca_1_1xtp_1_1BSECoupling.html#ad980f4e603d4bb942a2333947e5af147", null ],
+    [ "getSingletCouplingElement", "classvotca_1_1xtp_1_1BSECoupling.html#a1650d21cbae9fa59c004c7b56b295fdf", null ],
+    [ "getTripletCouplingElement", "classvotca_1_1xtp_1_1BSECoupling.html#a3939f3682ee3379ef5ddb27b3a622592", null ],
+    [ "Identify", "classvotca_1_1xtp_1_1BSECoupling.html#a5d2b97afc2ea8e58f720c068833dba08", null ],
+    [ "Initialize", "classvotca_1_1xtp_1_1BSECoupling.html#a960e5449c20781deb9e294044bc601c9", null ],
+    [ "OrthogonalizeCTs", "classvotca_1_1xtp_1_1BSECoupling.html#af75a93f738f7d332235c72d41800fd2d", null ],
+    [ "Perturbation", "classvotca_1_1xtp_1_1BSECoupling.html#a85707cf4d8a604bd8b060e027e4f062b", null ],
+    [ "ProjectExcitons", "classvotca_1_1xtp_1_1BSECoupling.html#ad71077bbdaaa264fd77271ea1acaa550", null ],
+    [ "ProjectFrenkelExcitons", "classvotca_1_1xtp_1_1BSECoupling.html#ac63664de6ed99c3c5df57ea9b6674fd6", null ],
+    [ "SetupCTStates", "classvotca_1_1xtp_1_1BSECoupling.html#acc27105f97ea0f0d33c6b091331afc32", null ],
+    [ "WriteToProperty", "classvotca_1_1xtp_1_1BSECoupling.html#a7b943bf5a80aba5625411a97890e771b", null ],
+    [ "doSinglets_", "classvotca_1_1xtp_1_1BSECoupling.html#a3466819366f33317239d940920cbc72f", null ],
+    [ "doTriplets_", "classvotca_1_1xtp_1_1BSECoupling.html#a5ff873e260399844b04a8686c05208c7", null ],
+    [ "JAB_singlet", "classvotca_1_1xtp_1_1BSECoupling.html#aae070c4cf8699ef7c3011ccb514aedd3", null ],
+    [ "JAB_triplet", "classvotca_1_1xtp_1_1BSECoupling.html#a8375b9e3d5d103b7ccdcdaec0e62a4e7", null ],
+    [ "levA_", "classvotca_1_1xtp_1_1BSECoupling.html#a22227e11213cd6377abe73ff4598d582", null ],
+    [ "levB_", "classvotca_1_1xtp_1_1BSECoupling.html#a29c8f85bbe328a5d77e5643434bf0941", null ],
+    [ "occA_", "classvotca_1_1xtp_1_1BSECoupling.html#a28c82e4b537959b6586fc09841af8c3e", null ],
+    [ "occB_", "classvotca_1_1xtp_1_1BSECoupling.html#a1c1372bfa6e6a104725244bcf7ec8e9c", null ],
+    [ "output_perturbation_", "classvotca_1_1xtp_1_1BSECoupling.html#a578f78f1321229b8236106d707203916", null ],
+    [ "unoccA_", "classvotca_1_1xtp_1_1BSECoupling.html#ac0ffe6e9bf378ceee5d58a168b731b95", null ],
+    [ "unoccB_", "classvotca_1_1xtp_1_1BSECoupling.html#a239124e2dc9907daa0f9216ffe506f16", null ]
+];

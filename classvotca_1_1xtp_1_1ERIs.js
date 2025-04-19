@@ -1,0 +1,25 @@
+var classvotca_1_1xtp_1_1ERIs =
+[
+    [ "CalculateEnergy", "classvotca_1_1xtp_1_1ERIs.html#a8fd1aa8313d4d1502f1c08a33a4bcbed", null ],
+    [ "CalculateERIs_3c", "classvotca_1_1xtp_1_1ERIs.html#a067f2e69059b07a802bbcf2b1c7bd634", null ],
+    [ "CalculateERIs_4c", "classvotca_1_1xtp_1_1ERIs.html#ab1f7806f1a63a68fd187e841c635d9af", null ],
+    [ "CalculateERIs_EXX_3c", "classvotca_1_1xtp_1_1ERIs.html#a9aa677d7e6d5a44c45c89a29fb3b6823", null ],
+    [ "CalculateERIs_EXX_4c", "classvotca_1_1xtp_1_1ERIs.html#a55d43351a3c1cf5dfb943a4853ccd98e", null ],
+    [ "CalculateEXX_dmat", "classvotca_1_1xtp_1_1ERIs.html#ad8f20c606634910129e011d304f87ff5", null ],
+    [ "CalculateEXX_mos", "classvotca_1_1xtp_1_1ERIs.html#af2538789af25aaf9629b740c43cb684b", null ],
+    [ "Compute4c", "classvotca_1_1xtp_1_1ERIs.html#a96c1aafb39301e2488b0c2de951f8f09", null ],
+    [ "ComputeSchwarzShells", "classvotca_1_1xtp_1_1ERIs.html#a270ed3d700c347d01a030699ba2c25d8", null ],
+    [ "ComputeShellBlockNorm", "classvotca_1_1xtp_1_1ERIs.html#ac3c83ead7b1cbbefc7ba5b8bdd52c813", null ],
+    [ "ComputeShellPairData", "classvotca_1_1xtp_1_1ERIs.html#aa1679c9bc7dfe925db6155fbdd1ea2f4", null ],
+    [ "Initialize", "classvotca_1_1xtp_1_1ERIs.html#aadf26ced899b1717355535e3d96e18c3", null ],
+    [ "Initialize_4c", "classvotca_1_1xtp_1_1ERIs.html#a73abfe6f0893a7d83805bb2bec7fddea", null ],
+    [ "Removedfunctions", "classvotca_1_1xtp_1_1ERIs.html#a171883fe38c885ac5889ce676033efbd", null ],
+    [ "basis_", "classvotca_1_1xtp_1_1ERIs.html#a26ab4dcd5d380a516bf06c87f0f82175", null ],
+    [ "maxL_", "classvotca_1_1xtp_1_1ERIs.html#aa01c53019eb9890bccb138850bb94fd7", null ],
+    [ "maxnprim_", "classvotca_1_1xtp_1_1ERIs.html#af1dbc414cad0faaa897a2c433e6b1df5", null ],
+    [ "schwarzscreen_", "classvotca_1_1xtp_1_1ERIs.html#ab8ea2f3b78164a71e2116605c3e17aad", null ],
+    [ "shellpairdata_", "classvotca_1_1xtp_1_1ERIs.html#a20052347cf52846e1b43b7e6885a1cf9", null ],
+    [ "shellpairs_", "classvotca_1_1xtp_1_1ERIs.html#a453b1ed0cdeb7e81e0012fde1bac254c", null ],
+    [ "starts_", "classvotca_1_1xtp_1_1ERIs.html#ad7c94871deea8749c9ad1571a83735fc", null ],
+    [ "threecenter_", "classvotca_1_1xtp_1_1ERIs.html#ada4da320907c85e5fc366742117d64a6", null ]
+];

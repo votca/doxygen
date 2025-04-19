@@ -29,9 +29,8 @@ var searchData=
   ['atom_26',['Atom',['../classvotca_1_1xtp_1_1Atom.html',1,'votca::xtp']]],
   ['atomcontainer_27',['AtomContainer',['../classvotca_1_1xtp_1_1AtomContainer.html',1,'votca::xtp']]],
   ['atomcontainer_3c_20atom_20_3e_28',['AtomContainer&lt; Atom &gt;',['../classvotca_1_1xtp_1_1AtomContainer.html',1,'votca::xtp']]],
-  ['atomcontainer_3c_20polarsite_20_3e_29',['AtomContainer&lt; PolarSite &gt;',['../classvotca_1_1xtp_1_1AtomContainer.html',1,'votca::xtp']]],
-  ['atomcontainer_3c_20qmatom_20_3e_30',['AtomContainer&lt; QMAtom &gt;',['../classvotca_1_1xtp_1_1AtomContainer.html',1,'votca::xtp']]],
-  ['average_31',['Average',['../classvotca_1_1tools_1_1Average.html',1,'votca::tools']]],
-  ['average_3c_20double_20_3e_32',['Average&lt; double &gt;',['../classvotca_1_1tools_1_1Average.html',1,'votca::tools']]],
-  ['axa_33',['AxA',['../classvotca_1_1xtp_1_1AxA.html',1,'votca::xtp']]]
+  ['atomcontainer_3c_20qmatom_20_3e_29',['AtomContainer&lt; QMAtom &gt;',['../classvotca_1_1xtp_1_1AtomContainer.html',1,'votca::xtp']]],
+  ['average_30',['Average',['../classvotca_1_1tools_1_1Average.html',1,'votca::tools']]],
+  ['average_3c_20double_20_3e_31',['Average&lt; double &gt;',['../classvotca_1_1tools_1_1Average.html',1,'votca::tools']]],
+  ['axa_32',['AxA',['../classvotca_1_1xtp_1_1AxA.html',1,'votca::xtp']]]
 ];

@@ -1,0 +1,26 @@
+var classvotca_1_1xtp_1_1Vxc__Grid =
+[
+    [ "begin", "classvotca_1_1xtp_1_1Vxc__Grid.html#a7460518f4c66957d481456acb6e77b0b", null ],
+    [ "begin", "classvotca_1_1xtp_1_1Vxc__Grid.html#a8f228e472fedbbbbda84df9838766d81", null ],
+    [ "CalcDistanceAtomsGridpoints", "classvotca_1_1xtp_1_1Vxc__Grid.html#aec97a5e2070fe02dd3bd50b61b1d33b2", null ],
+    [ "CalcInverseAtomDist", "classvotca_1_1xtp_1_1Vxc__Grid.html#af45babf3083804f9e16cda64a3f38950", null ],
+    [ "CreateCartesianGridpoint", "classvotca_1_1xtp_1_1Vxc__Grid.html#a2c3bda907449a181bcb47717767e68eb", null ],
+    [ "end", "classvotca_1_1xtp_1_1Vxc__Grid.html#a9f6d0451cf55e99fe6817ccfc44ba15a", null ],
+    [ "end", "classvotca_1_1xtp_1_1Vxc__Grid.html#a9bd7f6e0e88c488b3d117ad27890b2fe", null ],
+    [ "erf1c", "classvotca_1_1xtp_1_1Vxc__Grid.html#af920b4459a2b75500725482053d6c4fe", null ],
+    [ "FindSignificantShells", "classvotca_1_1xtp_1_1Vxc__Grid.html#a04382d2b1d84e1404f72b4b1d2c920ff", null ],
+    [ "getBoxesSize", "classvotca_1_1xtp_1_1Vxc__Grid.html#ab94624f639fe2e390b52a95f872c7204", null ],
+    [ "getGridpoints", "classvotca_1_1xtp_1_1Vxc__Grid.html#ae2518466b6fda3910b352cbe86130191", null ],
+    [ "getGridSize", "classvotca_1_1xtp_1_1Vxc__Grid.html#a820c443306af3180137badc56b44c8c7", null ],
+    [ "getWeightedDensities", "classvotca_1_1xtp_1_1Vxc__Grid.html#a812736acf54ed16dfbc7af5363faa6d9", null ],
+    [ "GridSetup", "classvotca_1_1xtp_1_1Vxc__Grid.html#ab787c9bb9cc3225e398809a94b1d388a", null ],
+    [ "operator[]", "classvotca_1_1xtp_1_1Vxc__Grid.html#a6ebdee5c7dbb48e50b8db007a3d9e5e2", null ],
+    [ "operator[]", "classvotca_1_1xtp_1_1Vxc__Grid.html#ade125b116388d5d80f4f411d6e895b61", null ],
+    [ "SortGridpointsintoBlocks", "classvotca_1_1xtp_1_1Vxc__Grid.html#acc754cdd545cc5fd8c1fd08ffa995154", null ],
+    [ "SSWpartition", "classvotca_1_1xtp_1_1Vxc__Grid.html#a4bd51cb536d18d513db03f0ca5e6bf28", null ],
+    [ "SSWpartitionAtom", "classvotca_1_1xtp_1_1Vxc__Grid.html#af2fce6cd79d3d6cc4426d0eb7a602726", null ],
+    [ "UpdateOrder", "classvotca_1_1xtp_1_1Vxc__Grid.html#ac12f08d0edec012072703b737e610065", null ],
+    [ "density_set_", "classvotca_1_1xtp_1_1Vxc__Grid.html#a501f30a8c50c60e0731d9b7d2031d9e4", null ],
+    [ "grid_boxes_", "classvotca_1_1xtp_1_1Vxc__Grid.html#a8e5c321dbfd90450af5eb9c3c4825a61", null ],
+    [ "totalgridsize_", "classvotca_1_1xtp_1_1Vxc__Grid.html#a43a4bb226034994c2344d294941e64cd", null ]
+];

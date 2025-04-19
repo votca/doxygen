@@ -1,0 +1,5 @@
+var structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01Ma8c36deaa0d46648fa468114afa721efa =
+[
+    [ "Scalar", "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01Ma8c36deaa0d46648fa468114afa721efa.html#a56fc5b03d77b410cf68bb7c9446f05c3", null ],
+    [ "scaleAndAddTo", "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01Ma8c36deaa0d46648fa468114afa721efa.html#a88d59fe8d7fa6f98f957c174ef13a3b3", null ]
+];

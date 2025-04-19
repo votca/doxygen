@@ -1,0 +1,25 @@
+var classvotca_1_1tools_1_1HistogramNew =
+[
+    [ "Clear", "classvotca_1_1tools_1_1HistogramNew.html#afee379b998e9b02cbebf9654dd69b891", null ],
+    [ "data", "classvotca_1_1tools_1_1HistogramNew.html#a5c93594f8e29401c932dad1627ca0d9b", null ],
+    [ "data", "classvotca_1_1tools_1_1HistogramNew.html#a61b7186f7fbe116e86627392cda4315e", null ],
+    [ "getInterval", "classvotca_1_1tools_1_1HistogramNew.html#ad43950cf0556a6085fb7a21d73cf4129", null ],
+    [ "getMax", "classvotca_1_1tools_1_1HistogramNew.html#a113adee6ffcccb39656ffb6b87e983fc", null ],
+    [ "getMaxBinVal", "classvotca_1_1tools_1_1HistogramNew.html#a71935cfb677315df77c599a7c69e4900", null ],
+    [ "getMin", "classvotca_1_1tools_1_1HistogramNew.html#a35836ff681da5201c10cc9453f9047ea", null ],
+    [ "getMinBinVal", "classvotca_1_1tools_1_1HistogramNew.html#a97213c837dcd2bd3e13c0418f926d879", null ],
+    [ "getNBins", "classvotca_1_1tools_1_1HistogramNew.html#a18459cd02f40ce60540801ddfdb3329b", null ],
+    [ "getStep", "classvotca_1_1tools_1_1HistogramNew.html#a5570e6aa7cc1571308246df0b4adea08", null ],
+    [ "Initialize", "classvotca_1_1tools_1_1HistogramNew.html#a9e9550f4b00916ebb7ec86d46924c9d6", null ],
+    [ "Initialize_", "classvotca_1_1tools_1_1HistogramNew.html#ad1e856606b89a54e0d2319cb918be6b6", null ],
+    [ "Normalize", "classvotca_1_1tools_1_1HistogramNew.html#a79306f06ffbb4d5d126bee1f69134d25", null ],
+    [ "Process", "classvotca_1_1tools_1_1HistogramNew.html#ac6a8dc44787270c687994eccb3185d46", null ],
+    [ "ProcessRange", "classvotca_1_1tools_1_1HistogramNew.html#ae55fa041483d2d1804de15dd66153bd1", null ],
+    [ "setPeriodic", "classvotca_1_1tools_1_1HistogramNew.html#a36c74af2cee54e74cdbcfa8f039f24d6", null ],
+    [ "data_", "classvotca_1_1tools_1_1HistogramNew.html#a070cb7f70a4e1a08ded94cb9d8a2c9ce", null ],
+    [ "max_", "classvotca_1_1tools_1_1HistogramNew.html#ac8e0c90462ecd8bb8df6de4ad5e88fab", null ],
+    [ "min_", "classvotca_1_1tools_1_1HistogramNew.html#a37eab3ef07a183e91d004d2b681d1531", null ],
+    [ "nbins_", "classvotca_1_1tools_1_1HistogramNew.html#af75cd60849484901db7c59c2b1d3242c", null ],
+    [ "periodic_", "classvotca_1_1tools_1_1HistogramNew.html#ac0689f36c917d47cb9b04ca2cd413224", null ],
+    [ "step_", "classvotca_1_1tools_1_1HistogramNew.html#a14144015203b7cb93f0c936f3a201d2b", null ]
+];

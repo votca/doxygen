@@ -1,0 +1,27 @@
+var classvotca_1_1xtp_1_1Segment =
+[
+    [ "Segment", "classvotca_1_1xtp_1_1Segment.html#acb042015c3aba559169d643a81601df2", null ],
+    [ "Segment", "classvotca_1_1xtp_1_1Segment.html#aeff92496b76dd7e15866011a36ede5c1", null ],
+    [ "~Segment", "classvotca_1_1xtp_1_1Segment.html#a442ca3d5cfb9ab8ca9ba0666c03b4d5c", null ],
+    [ "AddMoleculeId", "classvotca_1_1xtp_1_1Segment.html#a7c449b8a1a1673cf98c6a780f0450005", null ],
+    [ "getApproxSize", "classvotca_1_1xtp_1_1Segment.html#a415c526c560329e2be949b2580ed5532", null ],
+    [ "getAtom", "classvotca_1_1xtp_1_1Segment.html#af40b1b1a161510eaf0ac9462c7f7003c", null ],
+    [ "getEMpoles", "classvotca_1_1xtp_1_1Segment.html#a42e6dd8f839a92698cc7eb0055204a25", null ],
+    [ "getMoleculeIds", "classvotca_1_1xtp_1_1Segment.html#aede14da39a280ee182a8b49e4b6a2b82", null ],
+    [ "getSiteEnergy", "classvotca_1_1xtp_1_1Segment.html#a9d184d96acce56dd4ca42bc8bc2be3ec", null ],
+    [ "getU_nX_nN", "classvotca_1_1xtp_1_1Segment.html#a2049f034726e0b827920bdeaf94dfb6d", null ],
+    [ "getU_xN_xX", "classvotca_1_1xtp_1_1Segment.html#acc1f2bdb60dbefafbd02efe27c474b1d", null ],
+    [ "getU_xX_nN", "classvotca_1_1xtp_1_1Segment.html#a5c46d66d8f0da0b7e8c1588c6d2cc539", null ],
+    [ "ReadFromCpt", "classvotca_1_1xtp_1_1Segment.html#ac7cbb73f100614acf0f8db81fe4adc20", null ],
+    [ "setEMpoles", "classvotca_1_1xtp_1_1Segment.html#adb222c939561ba7deeadaa400a424ca1", null ],
+    [ "setU_nX_nN", "classvotca_1_1xtp_1_1Segment.html#a85a65520837b11358828831f0ae0debb", null ],
+    [ "setU_xN_xX", "classvotca_1_1xtp_1_1Segment.html#af12a17d4f42dc281fca33ac16b568c2b", null ],
+    [ "setU_xX_nN", "classvotca_1_1xtp_1_1Segment.html#a3395dc4968dedbc5d4eed71dd306a4ca", null ],
+    [ "WriteToCpt", "classvotca_1_1xtp_1_1Segment.html#ad14665c10ab9d2d6c8d7375e48d6f787", null ],
+    [ "operator<<", "classvotca_1_1xtp_1_1Segment.html#a4ce126cccdca1e2666c658d600358d8f", null ],
+    [ "molecule_ids_", "classvotca_1_1xtp_1_1Segment.html#a103e5e3ede4a08ce8e0c45d9fc6feae1", null ],
+    [ "site_eng_", "classvotca_1_1xtp_1_1Segment.html#acf39388050b91ace43aad788a2d30387", null ],
+    [ "U_nX_nN_", "classvotca_1_1xtp_1_1Segment.html#a0bdcd229a4f8bd5b9e1d447222214a7c", null ],
+    [ "U_xN_xX_", "classvotca_1_1xtp_1_1Segment.html#a65bafcf9c0d51a9bb08400e8ed7b5828", null ],
+    [ "U_xX_nN_", "classvotca_1_1xtp_1_1Segment.html#a4cdc10c8dd7dc10bd0c066638ececc09", null ]
+];

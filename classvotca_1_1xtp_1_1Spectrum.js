@@ -1,0 +1,26 @@
+var classvotca_1_1xtp_1_1Spectrum =
+[
+    [ "Spectrum", "classvotca_1_1xtp_1_1Spectrum.html#add72b5fbc016977a90783bc883612f27", null ],
+    [ "~Spectrum", "classvotca_1_1xtp_1_1Spectrum.html#adca37be672c636cae7a5b633ad2177c4", null ],
+    [ "evtoinvcm", "classvotca_1_1xtp_1_1Spectrum.html#a548009f3d926091b1cdba825849f58b1", null ],
+    [ "evtonm", "classvotca_1_1xtp_1_1Spectrum.html#af040cd75e8fe47b3eaf3e9e0bad77664", null ],
+    [ "Gaussian", "classvotca_1_1xtp_1_1Spectrum.html#a75d00c4a97515043383c059f786af838", null ],
+    [ "Identify", "classvotca_1_1xtp_1_1Spectrum.html#a63bbaec6d69d5af4df443953b08b50a3", null ],
+    [ "invcmtonm", "classvotca_1_1xtp_1_1Spectrum.html#a23ab5de5f12e47cd1f17874e26ca9a4a", null ],
+    [ "Lorentzian", "classvotca_1_1xtp_1_1Spectrum.html#a2229271607767fc2615f65a7d3e1d705", null ],
+    [ "nmtoev", "classvotca_1_1xtp_1_1Spectrum.html#adb915584b2e3b8b576cdefd431e48689", null ],
+    [ "nmtoinvcm", "classvotca_1_1xtp_1_1Spectrum.html#a6337997940b5f14918c407cdecd2ae7e", null ],
+    [ "ParseOptions", "classvotca_1_1xtp_1_1Spectrum.html#ac986b8620f91c5f65e54034a516fe76c", null ],
+    [ "Run", "classvotca_1_1xtp_1_1Spectrum.html#ab2a8db037045133dd42b0bacab942b16", null ],
+    [ "fwhm_", "classvotca_1_1xtp_1_1Spectrum.html#ab9ec2ef7415d14b279e94d7da4a290b6", null ],
+    [ "log_", "classvotca_1_1xtp_1_1Spectrum.html#a3583bb0dfa231650bd47fc44b6813403", null ],
+    [ "lower_", "classvotca_1_1xtp_1_1Spectrum.html#a4ba0a7f5872d544c77dd2119dd43e966", null ],
+    [ "maxexc_", "classvotca_1_1xtp_1_1Spectrum.html#a0241be1c4e19975862d8749a65e03fc3", null ],
+    [ "minexc_", "classvotca_1_1xtp_1_1Spectrum.html#af23ea511702d75e1520efc6667bf00ac", null ],
+    [ "n_pt_", "classvotca_1_1xtp_1_1Spectrum.html#adc0ca22e9afdddca2549507991bde509", null ],
+    [ "orbfile_", "classvotca_1_1xtp_1_1Spectrum.html#aeb99ff80c8307de39550c4ebc3a0da02", null ],
+    [ "output_file_", "classvotca_1_1xtp_1_1Spectrum.html#a88f150785e0a2c02e96e9c6749d900ae", null ],
+    [ "shiftby_", "classvotca_1_1xtp_1_1Spectrum.html#aa548b9e733927af40ac3f89db6c3f88b", null ],
+    [ "spectrum_type_", "classvotca_1_1xtp_1_1Spectrum.html#a2f5926c889723c489b63ddedea683f5c", null ],
+    [ "upper_", "classvotca_1_1xtp_1_1Spectrum.html#a07ccaf74957693c752ca598c21437699", null ]
+];

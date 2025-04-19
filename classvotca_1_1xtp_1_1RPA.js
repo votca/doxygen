@@ -1,0 +1,27 @@
+var classvotca_1_1xtp_1_1RPA =
+[
+    [ "rpa_eigensolution", "structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html", "structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution" ],
+    [ "RPA", "classvotca_1_1xtp_1_1RPA.html#a0381bed3450918ba5a6bfe7e5921aa7d", null ],
+    [ "calculate_epsilon", "classvotca_1_1xtp_1_1RPA.html#a6f1ab2c02ea0d5ca7d496fefef662213", null ],
+    [ "calculate_epsilon_i", "classvotca_1_1xtp_1_1RPA.html#a179c0826076fa8f14987e3b19a7a3ead", null ],
+    [ "calculate_epsilon_r", "classvotca_1_1xtp_1_1RPA.html#a7d1da38a92a8b89e7ac9fd638bfa2d0f", null ],
+    [ "calculate_epsilon_r", "classvotca_1_1xtp_1_1RPA.html#aced442dd576b3818261e993b870e91f1", null ],
+    [ "Calculate_H2p_AmB", "classvotca_1_1xtp_1_1RPA.html#a9d10d130cbbf46c219638ca2f6d45086", null ],
+    [ "Calculate_H2p_ApB", "classvotca_1_1xtp_1_1RPA.html#a1747c358ec30178bc930257e4b81a4ca", null ],
+    [ "configure", "classvotca_1_1xtp_1_1RPA.html#aa162166bd1101daa5c25cf77388f888f", null ],
+    [ "Diagonalize_H2p", "classvotca_1_1xtp_1_1RPA.html#aceda4f909464f3952e03653de0ec964c", null ],
+    [ "Diagonalize_H2p_C", "classvotca_1_1xtp_1_1RPA.html#aaab60c672db80c1c97f2b4bae5a62239", null ],
+    [ "getEta", "classvotca_1_1xtp_1_1RPA.html#aa666474318d92652cad785335427b0f2", null ],
+    [ "getMaxCorrection", "classvotca_1_1xtp_1_1RPA.html#aee258669c2e12ab4c46cd1d128ce19ca", null ],
+    [ "getRPAInputEnergies", "classvotca_1_1xtp_1_1RPA.html#aa98d35a69c212a45c3a951508a46e4c7", null ],
+    [ "setRPAInputEnergies", "classvotca_1_1xtp_1_1RPA.html#a54a456545772da5c32c452bd782e5b45", null ],
+    [ "ShiftUncorrectedEnergies", "classvotca_1_1xtp_1_1RPA.html#a1a19822f9d79f37c7914aa2f59a8167e", null ],
+    [ "UpdateRPAInputEnergies", "classvotca_1_1xtp_1_1RPA.html#ad95486903835d809aade457442e4ae4e", null ],
+    [ "energies_", "classvotca_1_1xtp_1_1RPA.html#a65575bc2a35addc10ace04aec8bf0deb", null ],
+    [ "eta_", "classvotca_1_1xtp_1_1RPA.html#a97e93555ca564a9932110d3a52aa96e5", null ],
+    [ "homo_", "classvotca_1_1xtp_1_1RPA.html#af6e249c82f9902441bbed9877aceb880", null ],
+    [ "log_", "classvotca_1_1xtp_1_1RPA.html#abd9429e3fa8001d807e59b859c756442", null ],
+    [ "Mmn_", "classvotca_1_1xtp_1_1RPA.html#a923424be2252dfc6103a1ad5b2065645", null ],
+    [ "rpamax_", "classvotca_1_1xtp_1_1RPA.html#a2d2cfec6d586d486f670b9a0f6907033", null ],
+    [ "rpamin_", "classvotca_1_1xtp_1_1RPA.html#a9a26031cab1e5e47ad193690bb0035cd", null ]
+];

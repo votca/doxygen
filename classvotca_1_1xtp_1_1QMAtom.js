@@ -1,0 +1,26 @@
+var classvotca_1_1xtp_1_1QMAtom =
+[
+    [ "data", "structvotca_1_1xtp_1_1QMAtom_1_1data.html", "structvotca_1_1xtp_1_1QMAtom_1_1data" ],
+    [ "QMAtom", "classvotca_1_1xtp_1_1QMAtom.html#aeb40a89640e656d9e1e127f173061448", null ],
+    [ "QMAtom", "classvotca_1_1xtp_1_1QMAtom.html#a682719aef546a8b7206082f14ed3a376", null ],
+    [ "getElement", "classvotca_1_1xtp_1_1QMAtom.html#a87fcbf02a6906cb8fc2c8af310f89af6", null ],
+    [ "getElementNumber", "classvotca_1_1xtp_1_1QMAtom.html#a7ad7d56052758f5267b2c8cb9004d2f1", null ],
+    [ "getId", "classvotca_1_1xtp_1_1QMAtom.html#a85c6d3844baf1cff886f497600c1c3d3", null ],
+    [ "getNuccharge", "classvotca_1_1xtp_1_1QMAtom.html#acc028290f319edbd79a0fc54a10ec300", null ],
+    [ "getPos", "classvotca_1_1xtp_1_1QMAtom.html#a39faa737a4f03fc6afe98b1edb5c71b1", null ],
+    [ "identify", "classvotca_1_1xtp_1_1QMAtom.html#aad655663b6895f5c1352c553cd7aa86b", null ],
+    [ "ReadData", "classvotca_1_1xtp_1_1QMAtom.html#ae4452ed7b3ceaba84680ff88af95ac07", null ],
+    [ "Rotate", "classvotca_1_1xtp_1_1QMAtom.html#a9d05c5f2bc155e732f78a9291e414f9f", null ],
+    [ "setID", "classvotca_1_1xtp_1_1QMAtom.html#af8805c8261d22f68ae979e74d954dc61", null ],
+    [ "setPos", "classvotca_1_1xtp_1_1QMAtom.html#a7cad8cbe665d4b902786854329dafc06", null ],
+    [ "SetupCptTable", "classvotca_1_1xtp_1_1QMAtom.html#aacc8b3f7b3e2d4b48a43023a33059048", null ],
+    [ "Translate", "classvotca_1_1xtp_1_1QMAtom.html#a3d9373a0d07348fcd4e21e80b8f7785a", null ],
+    [ "WriteData", "classvotca_1_1xtp_1_1QMAtom.html#a7cdab814cdd2da534ccbb32495a0b1e2", null ],
+    [ "ECPAOBasis", "classvotca_1_1xtp_1_1QMAtom.html#a7ed03b56d27971cf246954b3d9cc377e", null ],
+    [ "operator<<", "classvotca_1_1xtp_1_1QMAtom.html#a2e913f851600b5c420cd6a776c0e00a6", null ],
+    [ "ecpcharge_", "classvotca_1_1xtp_1_1QMAtom.html#a306502e164dc2bfaf96783ce14ef0dd9", null ],
+    [ "element_", "classvotca_1_1xtp_1_1QMAtom.html#a38dbb411f975874e53193bcb188b681a", null ],
+    [ "index_", "classvotca_1_1xtp_1_1QMAtom.html#a03db0f560b2631ab894f12d7774907d9", null ],
+    [ "nuccharge_", "classvotca_1_1xtp_1_1QMAtom.html#a3e2a36991ea693bebe1da5ade9216832", null ],
+    [ "pos_", "classvotca_1_1xtp_1_1QMAtom.html#a747d588c85181d02d6e26f27bdaedb90", null ]
+];

@@ -1,0 +1,26 @@
+var structvotca_1_1xtp_1_1GW_1_1options =
+[
+    [ "alpha", "structvotca_1_1xtp_1_1GW_1_1options.html#a97d5fec81af9285e4d3594333b913a6e", null ],
+    [ "eta", "structvotca_1_1xtp_1_1GW_1_1options.html#a539e3c4290d5ee9e51fb3ec5056fc4db", null ],
+    [ "g_sc_limit", "structvotca_1_1xtp_1_1GW_1_1options.html#ad062678863bffe6d9147c22d6eb23b0c", null ],
+    [ "g_sc_max_iterations", "structvotca_1_1xtp_1_1GW_1_1options.html#aa301bc6aea19b7dafedfbf5676cbd538", null ],
+    [ "gw_mixing_alpha", "structvotca_1_1xtp_1_1GW_1_1options.html#ad547c5f4b550bdcb91ab2f31835843ab", null ],
+    [ "gw_mixing_order", "structvotca_1_1xtp_1_1GW_1_1options.html#a72af289615da7400c9bc8f17d319d546", null ],
+    [ "gw_sc_limit", "structvotca_1_1xtp_1_1GW_1_1options.html#a55aa21e748352af8d9a630a834a07020", null ],
+    [ "gw_sc_max_iterations", "structvotca_1_1xtp_1_1GW_1_1options.html#a7f75d4d7e567a9aaf5bed2298241a0c9", null ],
+    [ "homo", "structvotca_1_1xtp_1_1GW_1_1options.html#abdcfac461a76c9869139366ccd2c9677", null ],
+    [ "order", "structvotca_1_1xtp_1_1GW_1_1options.html#a28df39176b6c02db1a0663e8635413df", null ],
+    [ "qp_grid_spacing", "structvotca_1_1xtp_1_1GW_1_1options.html#aba588784e12098cb182617b243c668cd", null ],
+    [ "qp_grid_steps", "structvotca_1_1xtp_1_1GW_1_1options.html#a8e9895b3ca3ffef830b88e55d9189772", null ],
+    [ "qp_solver", "structvotca_1_1xtp_1_1GW_1_1options.html#aa00ae167e5fa31ffb6b299eca9bf1cb7", null ],
+    [ "qp_solver_alpha", "structvotca_1_1xtp_1_1GW_1_1options.html#a45cb432226125697841f5b9e5a5b0152", null ],
+    [ "qpmax", "structvotca_1_1xtp_1_1GW_1_1options.html#a0170ee2e88817d2bdbc794a4333985df", null ],
+    [ "qpmin", "structvotca_1_1xtp_1_1GW_1_1options.html#a223ec5eae84eb98a23eeab1e830e632b", null ],
+    [ "quadrature_scheme", "structvotca_1_1xtp_1_1GW_1_1options.html#a973aac9d386ac7bd80104e1c9e260246", null ],
+    [ "reset_3c", "structvotca_1_1xtp_1_1GW_1_1options.html#ae936d4f1f8b67ed9e21777df128da41b", null ],
+    [ "rpamax", "structvotca_1_1xtp_1_1GW_1_1options.html#a94c10b05e094dfc0bd70bcb6c2b1836a", null ],
+    [ "rpamin", "structvotca_1_1xtp_1_1GW_1_1options.html#a2027aaec73a0c08495cd48639377dcfa", null ],
+    [ "ScaHFX", "structvotca_1_1xtp_1_1GW_1_1options.html#ae89429a780978c543df6230e6f99df81", null ],
+    [ "shift", "structvotca_1_1xtp_1_1GW_1_1options.html#a8754db4537ab2d9756e3397add6abe76", null ],
+    [ "sigma_integration", "structvotca_1_1xtp_1_1GW_1_1options.html#addc4a0055ef69df0a1b942fe8939763e", null ]
+];

@@ -1,0 +1,27 @@
+var classvotca_1_1xtp_1_1Chargecarrier =
+[
+    [ "Chargecarrier", "classvotca_1_1xtp_1_1Chargecarrier.html#a6b305ef26307ae90b3c245e73ff99333", null ],
+    [ "get_dRtravelled", "classvotca_1_1xtp_1_1Chargecarrier.html#a8017b9cefcc754309caf0ec4f104684c", null ],
+    [ "getCurrentEnergy", "classvotca_1_1xtp_1_1Chargecarrier.html#a61896fef18b98d129f7c71fcafc46acd", null ],
+    [ "getCurrentEscapeRate", "classvotca_1_1xtp_1_1Chargecarrier.html#a9b02f7d4d4fb1058412da578f2909ff4", null ],
+    [ "getCurrentNode", "classvotca_1_1xtp_1_1Chargecarrier.html#a3a6126c9b40dd9a99f198a141d00b6fd", null ],
+    [ "getCurrentNodeId", "classvotca_1_1xtp_1_1Chargecarrier.html#a2525c8f8c9671f37b9a39e26b19d7809", null ],
+    [ "getCurrentPosition", "classvotca_1_1xtp_1_1Chargecarrier.html#a230a88193cb56dbdcedee461ca05a1b4", null ],
+    [ "getId", "classvotca_1_1xtp_1_1Chargecarrier.html#af966970a05acb1f2d8d7028784ccadc7", null ],
+    [ "getLifetime", "classvotca_1_1xtp_1_1Chargecarrier.html#a9031951924fbe3a6f5348d0ba5375666", null ],
+    [ "getSteps", "classvotca_1_1xtp_1_1Chargecarrier.html#a832e672f29f701a332a39a5878779200", null ],
+    [ "hasNode", "classvotca_1_1xtp_1_1Chargecarrier.html#a15a0d209a8993f46a96811dfdb161a3d", null ],
+    [ "jumpAccordingEvent", "classvotca_1_1xtp_1_1Chargecarrier.html#a7664d305b29b8c061f2f6f9a67989123", null ],
+    [ "ReleaseNode", "classvotca_1_1xtp_1_1Chargecarrier.html#a7dff0b8eeab49dfc64256e61e8307dc4", null ],
+    [ "resetCarrier", "classvotca_1_1xtp_1_1Chargecarrier.html#a5a17dd103506b024306de4857f37f591", null ],
+    [ "setId", "classvotca_1_1xtp_1_1Chargecarrier.html#adc080f03a39fc80c0dce3c92b481ac4b", null ],
+    [ "settoNote", "classvotca_1_1xtp_1_1Chargecarrier.html#a4122857df757018da70854356a5137c8", null ],
+    [ "updateLifetime", "classvotca_1_1xtp_1_1Chargecarrier.html#a6c9d6579b279d0da552caacff51f62e1", null ],
+    [ "updateOccupationtime", "classvotca_1_1xtp_1_1Chargecarrier.html#a301bc9070b39d924a763803bf9444490", null ],
+    [ "updateSteps", "classvotca_1_1xtp_1_1Chargecarrier.html#a469107480e7a675d1653b0690a54b12d", null ],
+    [ "dr_travelled_", "classvotca_1_1xtp_1_1Chargecarrier.html#a5ede18eed8f09a0c35f61054f9f8b80d", null ],
+    [ "id_", "classvotca_1_1xtp_1_1Chargecarrier.html#acf6b68348e4619c3bb312394e8c32cee", null ],
+    [ "lifetime", "classvotca_1_1xtp_1_1Chargecarrier.html#ae0fb2050b1090d304c640543df00e5c3", null ],
+    [ "node", "classvotca_1_1xtp_1_1Chargecarrier.html#a279e1afe7bccd877d4abe8e3e59534fb", null ],
+    [ "steps", "classvotca_1_1xtp_1_1Chargecarrier.html#a583314e40c9b793d3a9c82c7ddd2556c", null ]
+];

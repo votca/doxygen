@@ -1,0 +1,27 @@
+var classvotca_1_1xtp_1_1Atom =
+[
+    [ "data", "structvotca_1_1xtp_1_1Atom_1_1data.html", "structvotca_1_1xtp_1_1Atom_1_1data" ],
+    [ "Atom", "classvotca_1_1xtp_1_1Atom.html#a900e33fc770eb38f46b94b6b3673b722", null ],
+    [ "Atom", "classvotca_1_1xtp_1_1Atom.html#a856f453fe3fd9951016efaffe903aa92", null ],
+    [ "Atom", "classvotca_1_1xtp_1_1Atom.html#a0084ee6f95a15bfd2719fe7741755009", null ],
+    [ "getElement", "classvotca_1_1xtp_1_1Atom.html#af0e2d6d0f46699b00055a29f768739ad", null ],
+    [ "GetElementFromString", "classvotca_1_1xtp_1_1Atom.html#a52933cb1208f6556473b31ea8003a5de", null ],
+    [ "getId", "classvotca_1_1xtp_1_1Atom.html#a88b180e3b5285e1ff372ba47f56c2ee6", null ],
+    [ "getName", "classvotca_1_1xtp_1_1Atom.html#a97cb03fa6c6b550167aaf2688ecebeb2", null ],
+    [ "getPos", "classvotca_1_1xtp_1_1Atom.html#a895296337a2d8dd862426dc3dbe2f577", null ],
+    [ "getResnr", "classvotca_1_1xtp_1_1Atom.html#ae1ecd9898f5b5c875e5d584cece35863", null ],
+    [ "identify", "classvotca_1_1xtp_1_1Atom.html#aec464480b4221e73c30ab3234b0dc3ad", null ],
+    [ "ReadData", "classvotca_1_1xtp_1_1Atom.html#a1e2a3a30dec6095a645a6fa59fc4ffe6", null ],
+    [ "Rotate", "classvotca_1_1xtp_1_1Atom.html#aad1df18e4bdb51dec81ec7dc2f04e911", null ],
+    [ "setPos", "classvotca_1_1xtp_1_1Atom.html#a2d59686013136fd0312c2b228cbd4389", null ],
+    [ "setResnr", "classvotca_1_1xtp_1_1Atom.html#a0bc42b2fad11dab4f0bef360a2a0cfa5", null ],
+    [ "SetupCptTable", "classvotca_1_1xtp_1_1Atom.html#a0d4483801c4559d219358da0e39f0c51", null ],
+    [ "Translate", "classvotca_1_1xtp_1_1Atom.html#a8b4cb2902b65332068be4236fd87728c", null ],
+    [ "WriteData", "classvotca_1_1xtp_1_1Atom.html#a3559b93b24283d70faebee71befc0eb4", null ],
+    [ "operator<<", "classvotca_1_1xtp_1_1Atom.html#abfe132ad47f49bbc08b17239b8a3c360", null ],
+    [ "element_", "classvotca_1_1xtp_1_1Atom.html#af954d05a5335b3a138aec00b7ced642c", null ],
+    [ "id_", "classvotca_1_1xtp_1_1Atom.html#a82ae8323091c4a95f4c1aabf20795b15", null ],
+    [ "name_", "classvotca_1_1xtp_1_1Atom.html#a1f0cc8aec1d423825ec1c554203b7349", null ],
+    [ "pos_", "classvotca_1_1xtp_1_1Atom.html#a4970e3263260ad68cc4425b6c78cfff7", null ],
+    [ "resnr_", "classvotca_1_1xtp_1_1Atom.html#a0454a091ad62107e437e8e498525766c", null ]
+];

@@ -1,0 +1,28 @@
+var classvotca_1_1xtp_1_1GWBSE =
+[
+    [ "GWBSE", "classvotca_1_1xtp_1_1GWBSE.html#a998c88147616e45be6400697e4cc6c5f", null ],
+    [ "addoutput", "classvotca_1_1xtp_1_1GWBSE.html#a5c3daa9e4e65620be018b222836ad0ae", null ],
+    [ "CalculateVXC", "classvotca_1_1xtp_1_1GWBSE.html#a9ed29673e5dc4b8e42eaafe79ad9ff3c", null ],
+    [ "CountCoreLevels", "classvotca_1_1xtp_1_1GWBSE.html#ac4d7898a0df78b9a002aefa310dd47fa", null ],
+    [ "Evaluate", "classvotca_1_1xtp_1_1GWBSE.html#a14e5b9661eecd20836279aad86de4e9d", null ],
+    [ "Identify", "classvotca_1_1xtp_1_1GWBSE.html#a5f14c87a8116c2f1b0eb5b745b13f6a4", null ],
+    [ "Initialize", "classvotca_1_1xtp_1_1GWBSE.html#abfc0aa0480f855e8fa8baa86d61f4e7c", null ],
+    [ "setLogger", "classvotca_1_1xtp_1_1GWBSE.html#ae4e120856cff3159c642af95551798a1", null ],
+    [ "auxbasis_name_", "classvotca_1_1xtp_1_1GWBSE.html#a713a872e3b46b2f66847d125c98a6eda", null ],
+    [ "bseopt_", "classvotca_1_1xtp_1_1GWBSE.html#a564aa763e95a81bf854cfe75c478cace", null ],
+    [ "dftbasis_name_", "classvotca_1_1xtp_1_1GWBSE.html#ab5300ca25aad30ba6af8c9358032e96a", null ],
+    [ "do_bse_singlets_", "classvotca_1_1xtp_1_1GWBSE.html#a7b035895c784cf7532e5c2f7bed69399", null ],
+    [ "do_bse_triplets_", "classvotca_1_1xtp_1_1GWBSE.html#a5db56d4c819f24186312aeb3a703ede5", null ],
+    [ "do_dynamical_screening_bse_", "classvotca_1_1xtp_1_1GWBSE.html#afcb46a7d3183f41723ad081c94931364", null ],
+    [ "do_gw_", "classvotca_1_1xtp_1_1GWBSE.html#a73fffc4105fac7ed8fbbc1a440e05832", null ],
+    [ "fragments_", "classvotca_1_1xtp_1_1GWBSE.html#a305b381bc7dd510bd09ece48324a54de", null ],
+    [ "functional_", "classvotca_1_1xtp_1_1GWBSE.html#aad8f8c11354c22c83aa5ad60456b4927", null ],
+    [ "grid_", "classvotca_1_1xtp_1_1GWBSE.html#a693a759f9a38148b5e5880911f677eb8", null ],
+    [ "gwopt_", "classvotca_1_1xtp_1_1GWBSE.html#ae1e0101df625415b5d6a16120dde83de", null ],
+    [ "orbitals_", "classvotca_1_1xtp_1_1GWBSE.html#a9b88703c0b38dfc107dfe5dd73086644", null ],
+    [ "pLog_", "classvotca_1_1xtp_1_1GWBSE.html#aeab6d3115c6929ab3abf4b85ffea0014", null ],
+    [ "sigma_plot_filename_", "classvotca_1_1xtp_1_1GWBSE.html#af497a77979c02b174d9b30f9ad4db515", null ],
+    [ "sigma_plot_spacing_", "classvotca_1_1xtp_1_1GWBSE.html#ae2b80b773b13cd8efea142b5a2f24c4b", null ],
+    [ "sigma_plot_states_", "classvotca_1_1xtp_1_1GWBSE.html#a312ab9265f08b87ba40f340409e866cc", null ],
+    [ "sigma_plot_steps_", "classvotca_1_1xtp_1_1GWBSE.html#aac55dc63009364dc19fa83aa6c30e25c", null ]
+];

@@ -19,7 +19,14 @@ var searchData=
   ['boundarycondition_16',['BoundaryCondition',['../classvotca_1_1csg_1_1BoundaryCondition.html',1,'votca::csg']]],
   ['bse_17',['BSE',['../classvotca_1_1xtp_1_1BSE.html',1,'votca::xtp']]],
   ['bse_5foperator_18',['BSE_OPERATOR',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
-  ['bse_5fpopulation_19',['BSE_Population',['../structvotca_1_1xtp_1_1BSE__Population.html',1,'votca::xtp']]],
-  ['bsecoupling_20',['BSECoupling',['../classvotca_1_1xtp_1_1BSECoupling.html',1,'votca::xtp']]],
-  ['bseoperator_5foptions_21',['BSEOperator_Options',['../structvotca_1_1xtp_1_1BSEOperator__Options.html',1,'votca::xtp']]]
+  ['bse_5foperator_3c_200_2c_200_2c_200_2c_201_20_3e_19',['BSE_OPERATOR&lt; 0, 0, 0, 1 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
+  ['bse_5foperator_3c_200_2c_200_2c_201_2c_200_20_3e_20',['BSE_OPERATOR&lt; 0, 0, 1, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
+  ['bse_5foperator_3c_200_2c_201_2c_200_2c_200_20_3e_21',['BSE_OPERATOR&lt; 0, 1, 0, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
+  ['bse_5foperator_3c_200_2c_202_2c_200_2c_201_20_3e_22',['BSE_OPERATOR&lt; 0, 2, 0, 1 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
+  ['bse_5foperator_3c_201_2c_200_2c_200_2c_200_20_3e_23',['BSE_OPERATOR&lt; 1, 0, 0, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
+  ['bse_5foperator_3c_201_2c_200_2c_201_2c_200_20_3e_24',['BSE_OPERATOR&lt; 1, 0, 1, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
+  ['bse_5foperator_3c_201_2c_202_2c_201_2c_200_20_3e_25',['BSE_OPERATOR&lt; 1, 2, 1, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
+  ['bse_5fpopulation_26',['BSE_Population',['../structvotca_1_1xtp_1_1BSE__Population.html',1,'votca::xtp']]],
+  ['bsecoupling_27',['BSECoupling',['../classvotca_1_1xtp_1_1BSECoupling.html',1,'votca::xtp']]],
+  ['bseoperator_5foptions_28',['BSEOperator_Options',['../structvotca_1_1xtp_1_1BSEOperator__Options.html',1,'votca::xtp']]]
 ];

@@ -22,7 +22,7 @@ var searchData=
   ['ecp_5f_19',['ECP_',['../classvotca_1_1xtp_1_1Orbitals.html#ae96163a724d7162d59d1f7b2f024ca5d',1,'votca::xtp::Orbitals']]],
   ['ecp_5f_20',['ecp_',['../classvotca_1_1xtp_1_1DFTEngine.html#a2144b27f1002a0e01ba9b7aee5535754',1,'votca::xtp::DFTEngine']]],
   ['ecp_5fname_5f_21',['ecp_name_',['../classvotca_1_1xtp_1_1DFTEngine.html#a3e2990a5665a3863ae9b2f5bf18f2404',1,'votca::xtp::DFTEngine']]],
-  ['ecpaobasis_22',['ECPAOBasis',['../classvotca_1_1xtp_1_1ECPAOBasis.html',1,'votca::xtp::ECPAOBasis'],['../classvotca_1_1xtp_1_1QMAtom.html#a7ed03b56d27971cf246954b3d9cc377e',1,'votca::xtp::QMAtom::ECPAOBasis']]],
+  ['ecpaobasis_22',['ECPAOBasis',['../classvotca_1_1xtp_1_1ECPAOBasis.html',1,'votca::xtp::ECPAOBasis'],['../classvotca_1_1xtp_1_1QMAtom.html#a7ed03b56d27971cf246954b3d9cc377e',1,'votca::xtp::QMAtom::ECPAOBasis()']]],
   ['ecpaobasis_2ecc_23',['ecpaobasis.cc',['../ecpaobasis_8cc.html',1,'']]],
   ['ecpaobasis_2eh_24',['ecpaobasis.h',['../ecpaobasis_8h.html',1,'']]],
   ['ecpaoshelliterator_25',['ECPAOShellIterator',['../classvotca_1_1xtp_1_1ECPAOBasis.html#a1737ab8453975bba6cc1f74d5fc8b7ad',1,'votca::xtp::ECPAOBasis']]],

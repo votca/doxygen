@@ -1,0 +1,38 @@
+var classvotca_1_1xtp_1_1ConvergenceAcc =
+[
+    [ "options", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options" ],
+    [ "KSmode", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71", [
+      [ "closed", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71a47214f6de285dcfd2dcc494cfc5d5368", null ],
+      [ "open", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71a459576309f53a6cb452b3bac5cbde19a", null ],
+      [ "fractional", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71a9f40775d8ea7298b3d0787ef4ebe9cb8", null ]
+    ] ],
+    [ "Configure", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a0fa283825cf73f30e23ab30ea6efaecf", null ],
+    [ "DensityMatrix", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a04bbb927b02ce54413112c4df92f85ac", null ],
+    [ "DensityMatrixGroundState", "classvotca_1_1xtp_1_1ConvergenceAcc.html#adc5c3375e653fff75ddd3709b1702662", null ],
+    [ "DensityMatrixGroundState_frac", "classvotca_1_1xtp_1_1ConvergenceAcc.html#aac92b7825216b748c0176cc98da7063a", null ],
+    [ "DensityMatrixGroundState_unres", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a258707698138b2bc309859b67804367c", null ],
+    [ "getDeltaE", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a9e9fe9ad2dd866ad335b9b0005df83ba", null ],
+    [ "getDIIsError", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a38038d5c990d59832e67b3bab4c48928", null ],
+    [ "getUseMixing", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a43391d6e27876831c35b8a082d79d5b5", null ],
+    [ "isConverged", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a1304ce53a3ea3c2d8386a0df57178e0a", null ],
+    [ "Iterate", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a37707cb4d517287799771fb1a658e7ec", null ],
+    [ "Levelshift", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a8a1779458fc1ee6c80e850caf99ecca1", null ],
+    [ "PrintConfigOptions", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a8100caf819ac42b01babca6466fbd361", null ],
+    [ "setLogger", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a352b4265ac85a02bedf6d40066a66f0a", null ],
+    [ "setOverlap", "classvotca_1_1xtp_1_1ConvergenceAcc.html#ad38d0126d2796d70e36dff2e456a7c3a", null ],
+    [ "SolveFockmatrix", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a54798eef447b8be26e28b40cc6451304", null ],
+    [ "adiis_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a2930555e8e51f14158beb0ccdb0be485", null ],
+    [ "diis_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a06f21ba3e7c817098f848efd3b27848c", null ],
+    [ "diiserror_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#acf29508425cd96d418e87e94b0d3a901", null ],
+    [ "dmatHist_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af313403d4e19eaa83210c2ad85d7a0be", null ],
+    [ "log_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a7d56293c9edbcda4021abe682472c28c", null ],
+    [ "mathist_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a320727375511cbcf6f532ea438763a54", null ],
+    [ "maxerror_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a9149511689e10621468fcaf082f90a01", null ],
+    [ "maxerrorindex_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a3f2590a9847a0d8460ae43a9706e49b8", null ],
+    [ "nocclevels_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#ae292b13feff1716b2a452c571202083c", null ],
+    [ "opt_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#afe24d46844ee40a05e3a909c1c120c17", null ],
+    [ "S_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a2ed5f96bf8783f524a28add47c0a82f5", null ],
+    [ "Sminusahalf", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a62051c4a95b316eb100ba34b92aabeec", null ],
+    [ "totE_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#abf895cc925e9b24de7f52702757a7883", null ],
+    [ "usedmixing_", "classvotca_1_1xtp_1_1ConvergenceAcc.html#acc7fa16a6e029f80c58794372e19a01a", null ]
+];

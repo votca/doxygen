@@ -1,0 +1,25 @@
+var classvotca_1_1csg_1_1LAMMPSDumpReader =
+[
+    [ "LAMMPSDumpReader", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a962f86b81a6a646eee87594cfaab2d6f", null ],
+    [ "~LAMMPSDumpReader", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#aa12fb16c2afca7f100ef9ab5d0580f13", null ],
+    [ "Close", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a3eec48c0c37af80417e6f6231fe96e31", null ],
+    [ "FirstFrame", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#afd131f0bfaf692acad2c62c1ca8d52f5", null ],
+    [ "NextFrame", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a9e6f123abc5434966835c9072893dd87", null ],
+    [ "Open", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#ac84986c2a07dae2b87348e6f2397b434", null ],
+    [ "ReadAtoms", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a544afe7f89c9c2ca7c6e50afa04f6aee", null ],
+    [ "ReadBox", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a7d08984f958da6dfa91a6f10f2644478", null ],
+    [ "ReadNumAtoms", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a56c2823af31efd694cd165080b3cbcb0", null ],
+    [ "ReadTimestep", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#abf86d2db5774d6afc24824bf821e25dd", null ],
+    [ "ReadTopology", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a9351b786a02655a90ffdfe5695eff402", null ],
+    [ "charge_unit", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#afe6089d0830f49a2decbf13eca5b5f0c", null ],
+    [ "distance_unit", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a3e6c9e8dab75870ff2dff2da0b369683", null ],
+    [ "energy_unit", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a0edcbfe1393713365b5b7fc5bc79355a", null ],
+    [ "fl_", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#acef4e0fd34940d617a4b542475dee5ba", null ],
+    [ "fname_", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a8c21c3ef392e7517235af6be5424dd65", null ],
+    [ "force_unit", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a3c0e04dc64b8b6c68317a99156aa5710", null ],
+    [ "mass_unit", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a4cb81d09f2f859076325b57a1323639c", null ],
+    [ "natoms_", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#adf6acb4cc46aa757ad9831a599f5b591", null ],
+    [ "time_unit", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a782c49d80b0dbca2d9db80f7ac08445f", null ],
+    [ "topology_", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a0be47d4d6a875837ddb834037c997dd9", null ],
+    [ "velocity_unit", "classvotca_1_1csg_1_1LAMMPSDumpReader.html#a92a23308e965addbbff73218d769d9fe", null ]
+];
