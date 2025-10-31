@@ -24,7 +24,6 @@ var searchData=
   ['statetracker_21',['StateTracker',['../classvotca_1_1xtp_1_1StateTracker.html',1,'votca::xtp']]],
   ['staticregion_22',['StaticRegion',['../classvotca_1_1xtp_1_1StaticRegion.html',1,'votca::xtp']]],
   ['staticsite_23',['StaticSite',['../classvotca_1_1xtp_1_1StaticSite.html',1,'votca::xtp']]],
-  ['stdanalysis_24',['StdAnalysis',['../classvotca_1_1csg_1_1StdAnalysis.html',1,'votca::csg']]],
-  ['structureparameters_25',['StructureParameters',['../classvotca_1_1tools_1_1StructureParameters.html',1,'votca::tools']]],
-  ['symmetric_5fmatrix_26',['Symmetric_Matrix',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html',1,'votca::xtp']]]
+  ['structureparameters_24',['StructureParameters',['../classvotca_1_1tools_1_1StructureParameters.html',1,'votca::tools']]],
+  ['symmetric_5fmatrix_25',['Symmetric_Matrix',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html',1,'votca::xtp']]]
 ];

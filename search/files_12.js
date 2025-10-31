@@ -33,9 +33,7 @@ var searchData=
   ['staticregion_2eh_30',['staticregion.h',['../staticregion_8h.html',1,'']]],
   ['staticsite_2ecc_31',['staticsite.cc',['../staticsite_8cc.html',1,'']]],
   ['staticsite_2eh_32',['staticsite.h',['../staticsite_8h.html',1,'']]],
-  ['stdanalysis_2ecc_33',['stdanalysis.cc',['../stdanalysis_8cc.html',1,'']]],
-  ['stdanalysis_2eh_34',['stdanalysis.h',['../stdanalysis_8h.html',1,'']]],
-  ['structureparameters_2eh_35',['structureparameters.h',['../structureparameters_8h.html',1,'']]],
-  ['symmetric_5fmatrix_2ecc_36',['symmetric_matrix.cc',['../symmetric__matrix_8cc.html',1,'']]],
-  ['symmetric_5fmatrix_2eh_37',['symmetric_matrix.h',['../symmetric__matrix_8h.html',1,'']]]
+  ['structureparameters_2eh_33',['structureparameters.h',['../structureparameters_8h.html',1,'']]],
+  ['symmetric_5fmatrix_2ecc_34',['symmetric_matrix.cc',['../symmetric__matrix_8cc.html',1,'']]],
+  ['symmetric_5fmatrix_2eh_35',['symmetric_matrix.h',['../symmetric__matrix_8h.html',1,'']]]
 ];

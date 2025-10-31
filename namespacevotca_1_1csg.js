@@ -1,6 +1,5 @@
 var namespacevotca_1_1csg =
 [
-    [ "AnalysisTool", "classvotca_1_1csg_1_1AnalysisTool.html", "classvotca_1_1csg_1_1AnalysisTool" ],
     [ "BaseBead", "classvotca_1_1csg_1_1BaseBead.html", "classvotca_1_1csg_1_1BaseBead" ],
     [ "Bead", "classvotca_1_1csg_1_1Bead.html", "classvotca_1_1csg_1_1Bead" ],
     [ "BeadList", "classvotca_1_1csg_1_1BeadList.html", "classvotca_1_1csg_1_1BeadList" ],
@@ -11,7 +10,6 @@ var namespacevotca_1_1csg =
     [ "BeadStructure", "classvotca_1_1csg_1_1BeadStructure.html", "classvotca_1_1csg_1_1BeadStructure" ],
     [ "BeadTriple", "classvotca_1_1csg_1_1BeadTriple.html", "classvotca_1_1csg_1_1BeadTriple" ],
     [ "BondBead", "classvotca_1_1csg_1_1BondBead.html", "classvotca_1_1csg_1_1BondBead" ],
-    [ "BondedStatistics", "classvotca_1_1csg_1_1BondedStatistics.html", "classvotca_1_1csg_1_1BondedStatistics" ],
     [ "BoundaryCondition", "classvotca_1_1csg_1_1BoundaryCondition.html", "classvotca_1_1csg_1_1BoundaryCondition" ],
     [ "CGEngine", "classvotca_1_1csg_1_1CGEngine.html", "classvotca_1_1csg_1_1CGEngine" ],
     [ "CGMoleculeDef", "classvotca_1_1csg_1_1CGMoleculeDef.html", "classvotca_1_1csg_1_1CGMoleculeDef" ],
@@ -60,8 +58,6 @@ var namespacevotca_1_1csg =
     [ "PotentialFunctionLJG", "classvotca_1_1csg_1_1PotentialFunctionLJG.html", "classvotca_1_1csg_1_1PotentialFunctionLJG" ],
     [ "RDFCalculator", "classvotca_1_1csg_1_1RDFCalculator.html", "classvotca_1_1csg_1_1RDFCalculator" ],
     [ "Residue", "classvotca_1_1csg_1_1Residue.html", "classvotca_1_1csg_1_1Residue" ],
-    [ "StdAnalysis", "classvotca_1_1csg_1_1StdAnalysis.html", "classvotca_1_1csg_1_1StdAnalysis" ],
-    [ "TabulatedPotential", "classvotca_1_1csg_1_1TabulatedPotential.html", "classvotca_1_1csg_1_1TabulatedPotential" ],
     [ "Topology", "classvotca_1_1csg_1_1Topology.html", "classvotca_1_1csg_1_1Topology" ],
     [ "TopologyMap", "classvotca_1_1csg_1_1TopologyMap.html", "classvotca_1_1csg_1_1TopologyMap" ],
     [ "TopologyReader", "classvotca_1_1csg_1_1TopologyReader.html", "classvotca_1_1csg_1_1TopologyReader" ],

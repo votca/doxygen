@@ -3,10 +3,6 @@ var hierarchy =
     [ "votca::xtp::ActiveDensityMatrix", "classvotca_1_1xtp_1_1ActiveDensityMatrix.html", null ],
     [ "votca::xtp::ADIIS", "classvotca_1_1xtp_1_1ADIIS.html", null ],
     [ "votca::xtp::AmplitudeIntegration< Grid >", "classvotca_1_1xtp_1_1AmplitudeIntegration.html", null ],
-    [ "votca::csg::AnalysisTool", "classvotca_1_1csg_1_1AnalysisTool.html", [
-      [ "votca::csg::StdAnalysis", "classvotca_1_1csg_1_1StdAnalysis.html", null ],
-      [ "votca::csg::TabulatedPotential", "classvotca_1_1csg_1_1TabulatedPotential.html", null ]
-    ] ],
     [ "votca::xtp::Anderson", "classvotca_1_1xtp_1_1Anderson.html", null ],
     [ "votca::xtp::AOBasis", "classvotca_1_1xtp_1_1AOBasis.html", null ],
     [ "votca::xtp::AOGaussianPrimitive", "classvotca_1_1xtp_1_1AOGaussianPrimitive.html", null ],
@@ -34,7 +30,6 @@ var hierarchy =
       [ "votca::csg::CsgApplication", "classvotca_1_1csg_1_1CsgApplication.html", [
         [ "CGForceMatching", "classCGForceMatching.html", null ],
         [ "CGOrderParam", "classCGOrderParam.html", null ],
-        [ "CsgBoltzmann", "classCsgBoltzmann.html", null ],
         [ "CsgDensityApp", "classCsgDensityApp.html", null ],
         [ "CsgDumpApp", "classCsgDumpApp.html", null ],
         [ "CsgFluctuations", "classCsgFluctuations.html", null ],
@@ -146,9 +141,7 @@ var hierarchy =
     [ "votca::csg::NBListGrid_3Body::cell_t", "structvotca_1_1csg_1_1NBListGrid__3Body_1_1cell__t.html", null ],
     [ "votca::csg::CGEngine", "classvotca_1_1csg_1_1CGEngine.html", null ],
     [ "votca::csg::CGMoleculeDef", "classvotca_1_1csg_1_1CGMoleculeDef.html", null ],
-    [ "votca::csg::CGObserver", "classvotca_1_1csg_1_1CGObserver.html", [
-      [ "votca::csg::BondedStatistics", "classvotca_1_1csg_1_1BondedStatistics.html", null ]
-    ] ],
+    [ "votca::csg::CGObserver", "classvotca_1_1csg_1_1CGObserver.html", null ],
     [ "votca::xtp::Chargecarrier", "classvotca_1_1xtp_1_1Chargecarrier.html", null ],
     [ "votca::xtp::CheckpointFile", "classvotca_1_1xtp_1_1CheckpointFile.html", null ],
     [ "votca::xtp::CheckpointReader", "classvotca_1_1xtp_1_1CheckpointReader.html", null ],
