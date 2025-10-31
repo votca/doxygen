@@ -1,6 +1,6 @@
 var structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t =
 [
-    [ "average_", "structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html#a850716082e93772c6a8313616a4e4897", null ],
+    [ "average_", "structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html#a8c42f55532ec4c5a1ea4d30b68677786", null ],
     [ "avg_beadlist_1_count_", "structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html#ac53b5bf279eee985dddd5e186a3f4b19", null ],
     [ "avg_beadlist_2_count_", "structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html#a3d1d87beb23c4792730b64ee141b0f9f", null ],
     [ "index_", "structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html#a7271b38801944a299dff66fa6ddecd8c", null ],

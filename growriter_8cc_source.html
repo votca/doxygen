@@ -113,7 +113,7 @@ $(function(){initNavTree('growriter_8cc_source.html',''); initResizable(true); }
 </div><!--header-->
 <div class="contents">
 <a href="growriter_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright 2009-2021 The VOTCA Development Team (http://www.votca.org)</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright 2009-2025 The VOTCA Development Team (http://www.votca.org)</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -171,58 +171,60 @@ $(function(){initNavTree('growriter_8cc_source.html',''); initResizable(true); }
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  vpr = pr + 1;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordflow">if</span> (v) {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    snprintf(format, MAX_FMT_STR_LEN,</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>, l,</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            pr, l, pr, l, pr, l, vpr, l, vpr, l, vpr);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>             <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>             l, pr, l, pr, l, pr, l, vpr, l, vpr, l, vpr);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    snprintf(format, MAX_FMT_STR_LEN, <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>, l, pr, l, pr, l, pr);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordflow">for</span> (i = 0; i &lt; top-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>(); i++) {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> resnr = top-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(i)-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Bead.html#a35641b1029b930bb8583314415890361">getResnr</a>();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">string</span> resname = top-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac25e0092364f97aff8f551bb4782d2e1">getResidue</a>(resnr).<a class="code hl_function" href="classvotca_1_1csg_1_1Residue.html#ad4a1f4ece995428e5c3600683a84cda6">getName</a>();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">string</span> atomname = top-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(i)-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, <span class="stringliteral">&quot;%5ld%-5.5s%5.5s%5ld&quot;</span>, (resnr + 1) % 100000, resname.c_str(),</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            atomname.c_str(), (i + 1) % 100000);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">/* next fprintf uses built format string */</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    Eigen::Vector3d r = conf-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(i)-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (v) {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      Eigen::Vector3d vv = conf-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(i)-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, format, r.x(), r.y(), r.z(), vv.x(), vv.y(), vv.z());</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, format, r.x(), r.y(), r.z());</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  }</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="comment">// write the box</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  Eigen::Matrix3d box = conf-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a6951e967c3022c5863844c969ce1094b">getBox</a>();</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keywordflow">if</span> (pr &lt; 5) {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    pr = 5;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  l = pr + 5;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  Eigen::Matrix3d box_offdiag = box;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  box_offdiag.diagonal().array() = 0.0;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="keywordflow">if</span> (box_offdiag.isApproxToConstant(0, 1<a class="code hl_enumvalue" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-9)) {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    snprintf(format, MAX_FMT_STR_LEN,</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf&quot;</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>,</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, format, box(0, 0), box(1, 1), box(2, 2), box(1, 0), box(2, 0),</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            box(0, 1), box(2, 1), box(0, 2), box(1, 2));</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    snprintf(format, MAX_FMT_STR_LEN, <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>, l, pr, l, pr, l, pr);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, format, box(0, 0), box(1, 1), box(2, 2));</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  fflush(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    snprintf(format, MAX_FMT_STR_LEN, <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>, l, pr,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>             l, pr, l, pr);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordflow">for</span> (i = 0; i &lt; top-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a834c715f33e214e02b30c022d4c3df6b">BeadCount</a>(); i++) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> resnr = top-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(i)-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Bead.html#a35641b1029b930bb8583314415890361">getResnr</a>();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">string</span> resname = top-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac25e0092364f97aff8f551bb4782d2e1">getResidue</a>(resnr).<a class="code hl_function" href="classvotca_1_1csg_1_1Residue.html#ad4a1f4ece995428e5c3600683a84cda6">getName</a>();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">string</span> atomname = top-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(i)-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">getName</a>();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, <span class="stringliteral">&quot;%5ld%-5.5s%5.5s%5ld&quot;</span>, (resnr + 1) % 100000, resname.c_str(),</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            atomname.c_str(), (i + 1) % 100000);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">/* next fprintf uses built format string */</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    Eigen::Vector3d r = conf-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(i)-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">getPos</a>();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">if</span> (v) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      Eigen::Vector3d vv = conf-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(i)-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Bead.html#ab588d73efc4bd91791981b7904a7ca5f">getVel</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, format, r.x(), r.y(), r.z(), vv.x(), vv.y(), vv.z());</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, format, r.x(), r.y(), r.z());</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="comment">// write the box</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  Eigen::Matrix3d box = conf-&gt;<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a6951e967c3022c5863844c969ce1094b">getBox</a>();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="keywordflow">if</span> (pr &lt; 5) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    pr = 5;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  l = pr + 5;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  Eigen::Matrix3d box_offdiag = box;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  box_offdiag.diagonal().array() = 0.0;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  <span class="keywordflow">if</span> (box_offdiag.isApproxToConstant(0, 1<a class="code hl_enumvalue" href="namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f">e</a>-9)) {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    snprintf(format, MAX_FMT_STR_LEN,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>             <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf&quot;</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>             <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>,</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>             l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr, l, pr);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, format, box(0, 0), box(1, 1), box(2, 2), box(1, 0), box(2, 0),</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            box(0, 1), box(2, 1), box(0, 2), box(1, 2));</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    snprintf(format, MAX_FMT_STR_LEN, <span class="stringliteral">&quot;%%%ld.%ldf%%%ld.%ldf%%%ld.%ldf\n&quot;</span>, l, pr,</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>             l, pr, l, pr);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    fprintf(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>, format, box(0, 0), box(1, 1), box(2, 2));</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  fflush(<a class="code hl_variable" href="classvotca_1_1csg_1_1GROWriter.html#afcdd3044b341498d2cf6d0d87eb534e2">out_</a>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
 </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1BaseBead_html_a6b261b998f05cf0ea5fa34eda2895a61"><div class="ttname"><a href="classvotca_1_1csg_1_1BaseBead.html#a6b261b998f05cf0ea5fa34eda2895a61">votca::csg::BaseBead::getPos</a></div><div class="ttdeci">virtual const Eigen::Vector3d &amp; getPos() const</div><div class="ttdef"><b>Definition</b> <a href="basebead_8h_source.html#l00166">basebead.h:166</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1BaseBead_html_a7371f19a9fda8e6016fb06d9938f2208"><div class="ttname"><a href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">votca::csg::BaseBead::getName</a></div><div class="ttdeci">std::string getName() const</div><div class="ttdoc">Gets the name of the bead.</div><div class="ttdef"><b>Definition</b> <a href="basebead_8h_source.html#l00058">basebead.h:58</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html_a35641b1029b930bb8583314415890361"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html#a35641b1029b930bb8583314415890361">votca::csg::Bead::getResnr</a></div><div class="ttdeci">const Index &amp; getResnr() const</div><div class="ttdef"><b>Definition</b> <a href="bead_8h_source.html#l00061">bead.h:61</a></div></div>

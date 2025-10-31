@@ -6,6 +6,6 @@ var classvotca_1_1csg_1_1RDFCalculator_1_1Worker =
     [ "cur_beadlist_1_count_", "classvotca_1_1csg_1_1RDFCalculator_1_1Worker.html#ad0247e23bf5cf03d2f4d443b9579c9ee", null ],
     [ "cur_beadlist_2_count_", "classvotca_1_1csg_1_1RDFCalculator_1_1Worker.html#a22a1f937c29d45107affca5da37d9ef2", null ],
     [ "cur_vol_", "classvotca_1_1csg_1_1RDFCalculator_1_1Worker.html#a9a56645e82073c1c311dfff2b5ba7146", null ],
-    [ "current_hists_", "classvotca_1_1csg_1_1RDFCalculator_1_1Worker.html#afe6c10567b7816e58d95e4cf48bd0883", null ],
+    [ "current_hists_", "classvotca_1_1csg_1_1RDFCalculator_1_1Worker.html#a01619c0221bd568777bc2158b9b92087", null ],
     [ "rdfcalculator_", "classvotca_1_1csg_1_1RDFCalculator_1_1Worker.html#af25cbdb0671a054adaed13f82ba96559", null ]
 ];

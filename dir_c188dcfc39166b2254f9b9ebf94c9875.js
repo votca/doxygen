@@ -28,7 +28,6 @@ var dir_c188dcfc39166b2254f9b9ebf94c9875 =
     [ "graphnode.h", "graphnode_8h.html", "graphnode_8h" ],
     [ "graphvisitor.h", "graphvisitor_8h.html", "graphvisitor_8h" ],
     [ "histogram.h", "histogram_8h.html", "histogram_8h" ],
-    [ "histogramnew.h", "histogramnew_8h.html", "histogramnew_8h" ],
     [ "identity.h", "identity_8h.html", "identity_8h" ],
     [ "lexical_cast.h", "lexical__cast_8h.html", "lexical__cast_8h" ],
     [ "linalg.h", "linalg_8h.html", "linalg_8h" ],

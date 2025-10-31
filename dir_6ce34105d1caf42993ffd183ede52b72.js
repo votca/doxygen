@@ -21,7 +21,6 @@ var dir_6ce34105d1caf42993ffd183ede52b72 =
     [ "graphdistvisitor.cc", "graphdistvisitor_8cc.html", null ],
     [ "graphnode.cc", "graphnode_8cc.html", "graphnode_8cc" ],
     [ "graphvisitor.cc", "graphvisitor_8cc.html", null ],
-    [ "histogram.cc", "histogram_8cc.html", null ],
     [ "histogramnew.cc", "histogramnew_8cc.html", null ],
     [ "linalg.cc", "linalg_8cc.html", "linalg_8cc" ],
     [ "linspline.cc", "linspline_8cc.html", null ],

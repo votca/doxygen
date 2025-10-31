@@ -10,5 +10,5 @@ var classCsgParallelTestApp =
     [ "MergeWorker", "classCsgParallelTestApp.html#a20908c0004f1496bba72456a2edaac00", null ],
     [ "ProgramName", "classCsgParallelTestApp.html#a14b8c714b4b8072d9656c7f85d7842ed", null ],
     [ "cut_off_", "classCsgParallelTestApp.html#a0052642634f51577d0340a9e2828fc67", null ],
-    [ "rdf_", "classCsgParallelTestApp.html#a5f4132bbc899778aa66915322919dd20", null ]
+    [ "rdf_", "classCsgParallelTestApp.html#adb9bfa5785b206987c462c9e3c5a4266", null ]
 ];

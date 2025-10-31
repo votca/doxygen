@@ -9,9 +9,8 @@ var searchData=
   ['hist_3c_20eigen_3a_3amatrixxd_20_3e_6',['hist&lt; Eigen::MatrixXd &gt;',['../classvotca_1_1xtp_1_1hist.html',1,'votca::xtp']]],
   ['hist_3c_20votca_3a_3axtp_3a_3aenergy_5fterms_20_3e_7',['hist&lt; votca::xtp::Energy_terms &gt;',['../classvotca_1_1xtp_1_1hist.html',1,'votca::xtp']]],
   ['histogram_8',['Histogram',['../classvotca_1_1tools_1_1Histogram.html',1,'votca::tools']]],
-  ['histogramnew_9',['HistogramNew',['../classvotca_1_1tools_1_1HistogramNew.html',1,'votca::tools']]],
-  ['huffmannode_10',['huffmanNode',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html',1,'votca::xtp::huffmanTree']]],
-  ['huffmannode_3c_20votca_3a_3axtp_3a_3aglink_20_3e_11',['huffmanNode&lt; votca::xtp::GLink &gt;',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html',1,'votca::xtp::huffmanTree']]],
-  ['huffmantree_12',['huffmanTree',['../classvotca_1_1xtp_1_1huffmanTree.html',1,'votca::xtp']]],
-  ['huffmantree_3c_20votca_3a_3axtp_3a_3aglink_20_3e_13',['huffmanTree&lt; votca::xtp::GLink &gt;',['../classvotca_1_1xtp_1_1huffmanTree.html',1,'votca::xtp']]]
+  ['huffmannode_9',['huffmanNode',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html',1,'votca::xtp::huffmanTree']]],
+  ['huffmannode_3c_20votca_3a_3axtp_3a_3aglink_20_3e_10',['huffmanNode&lt; votca::xtp::GLink &gt;',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html',1,'votca::xtp::huffmanTree']]],
+  ['huffmantree_11',['huffmanTree',['../classvotca_1_1xtp_1_1huffmanTree.html',1,'votca::xtp']]],
+  ['huffmantree_3c_20votca_3a_3axtp_3a_3aglink_20_3e_12',['huffmanTree&lt; votca::xtp::GLink &gt;',['../classvotca_1_1xtp_1_1huffmanTree.html',1,'votca::xtp']]]
 ];

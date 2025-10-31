@@ -69,8 +69,7 @@ var searchData=
   ['expandedmos_5f_66',['expandedMOs_',['../classvotca_1_1xtp_1_1Orbitals.html#a6de4d51e57c6ee2a14a97369aeea4f0f',1,'votca::xtp::Orbitals']]],
   ['expdamping_5f_67',['expdamping_',['../classvotca_1_1xtp_1_1eeInteractor.html#acab6516b2734ea09a2d3b63cdb976102',1,'votca::xtp::eeInteractor']]],
   ['explored_5f_68',['explored_',['../classvotca_1_1tools_1_1GraphVisitor.html#ac38a82f595b69575e020aa9a0ee5207f',1,'votca::tools::GraphVisitor']]],
-  ['extend_5finterval_5f_69',['extend_interval_',['../structvotca_1_1tools_1_1Histogram_1_1options__t.html#afcfd62e9c450cc035bb377a5f7d0eefc',1,'votca::tools::Histogram::options_t']]],
-  ['extension_5f_70',['extension_',['../classCsgStatApp.html#a27f493d8b64de2167ace77f60ba2d947',1,'CsgStatApp::extension_'],['../classvotca_1_1csg_1_1Imc.html#a7c179e13553dbd9c6a74cd511ca41433',1,'votca::csg::Imc::extension_']]],
-  ['externalsites_5f_71',['externalsites_',['../classvotca_1_1xtp_1_1DFTEngine.html#ae8436f2aa71b1a46c219bb16b11dcf5c',1,'votca::xtp::DFTEngine::externalsites_'],['../classvotca_1_1xtp_1_1QMPackage.html#a48940d1d72cd9ffb6445592afd67fe50',1,'votca::xtp::QMPackage::externalsites_']]],
-  ['extfield_5f_72',['extfield_',['../classvotca_1_1xtp_1_1DFTEngine.html#a763bcde09a499929b8b8ec25b3ff9f5c',1,'votca::xtp::DFTEngine']]]
+  ['extension_5f_69',['extension_',['../classCsgStatApp.html#a27f493d8b64de2167ace77f60ba2d947',1,'CsgStatApp::extension_'],['../classvotca_1_1csg_1_1Imc.html#a7c179e13553dbd9c6a74cd511ca41433',1,'votca::csg::Imc::extension_']]],
+  ['externalsites_5f_70',['externalsites_',['../classvotca_1_1xtp_1_1DFTEngine.html#ae8436f2aa71b1a46c219bb16b11dcf5c',1,'votca::xtp::DFTEngine::externalsites_'],['../classvotca_1_1xtp_1_1QMPackage.html#a48940d1d72cd9ffb6445592afd67fe50',1,'votca::xtp::QMPackage::externalsites_']]],
+  ['extfield_5f_71',['extfield_',['../classvotca_1_1xtp_1_1DFTEngine.html#a763bcde09a499929b8b8ec25b3ff9f5c',1,'votca::xtp::DFTEngine']]]
 ];

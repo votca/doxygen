@@ -20,7 +20,7 @@ var searchData=
   ['nmtoev_17',['nmtoev',['../classvotca_1_1xtp_1_1Spectrum.html#adb915584b2e3b8b576cdefd431e48689',1,'votca::xtp::Spectrum']]],
   ['nmtoinvcm_18',['nmtoinvcm',['../classvotca_1_1xtp_1_1Spectrum.html#a6337997940b5f14918c407cdecd2ae7e',1,'votca::xtp::Spectrum']]],
   ['nodeforeveryvertex_5f_19',['nodeForEveryVertex_',['../namespacevotca_1_1tools.html#aa9916f2a332f9e70b84ae8c132b0562e',1,'votca::tools']]],
-  ['normalize_20',['Normalize',['../classvotca_1_1tools_1_1Histogram.html#aad4fb7f52057e93d9eacb5e20571a159',1,'votca::tools::Histogram::Normalize()'],['../classvotca_1_1tools_1_1HistogramNew.html#a79306f06ffbb4d5d126bee1f69134d25',1,'votca::tools::HistogramNew::Normalize()']]],
+  ['normalize_20',['Normalize',['../classvotca_1_1tools_1_1Histogram.html#a3d781053d50dd4cca129c107550fb934',1,'votca::tools::Histogram']]],
   ['normalizecontraction_21',['normalizeContraction',['../classvotca_1_1xtp_1_1AOShell.html#a282d6d9ec22a5106b0e6442a7c8f94a3',1,'votca::xtp::AOShell']]],
   ['nsize_22',['nsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#aa5f18293f9e44e4270d4094d04b3a17e',1,'votca::xtp::TCMatrix_gwbse']]],
   ['nuclearrepulsion_23',['NuclearRepulsion',['../classvotca_1_1xtp_1_1DFTEngine.html#af585e2e49dc29088834b761b6d708c7a',1,'votca::xtp::DFTEngine']]],

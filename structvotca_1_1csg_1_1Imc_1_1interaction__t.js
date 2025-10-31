@@ -1,7 +1,7 @@
 var structvotca_1_1csg_1_1Imc_1_1interaction__t =
 [
-    [ "average_", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html#a2105c52ac96a69d58b1403f1bd686197", null ],
-    [ "average_force_", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html#aab2103ae1f8f80128bd896d12b08764a", null ],
+    [ "average_", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html#a4c37079c7e53332129a23ba7baa1482b", null ],
+    [ "average_force_", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html#ad7bebfb9ba5a7be3a8de4d3c857cdaf6", null ],
     [ "cut_", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html#ae499086c5946621dd541a73462834951", null ],
     [ "force_", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html#a9b03458e5a0daab240bb2262c6913367", null ],
     [ "index_", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html#a6ca9e7caa6fb7c8e36155a09e4227d5f", null ],

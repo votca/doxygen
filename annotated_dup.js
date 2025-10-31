@@ -120,7 +120,6 @@ var annotated_dup =
         [ "GraphNode", "classvotca_1_1tools_1_1GraphNode.html", "classvotca_1_1tools_1_1GraphNode" ],
         [ "GraphVisitor", "classvotca_1_1tools_1_1GraphVisitor.html", "classvotca_1_1tools_1_1GraphVisitor" ],
         [ "Histogram", "classvotca_1_1tools_1_1Histogram.html", "classvotca_1_1tools_1_1Histogram" ],
-        [ "HistogramNew", "classvotca_1_1tools_1_1HistogramNew.html", "classvotca_1_1tools_1_1HistogramNew" ],
         [ "Identity", "classvotca_1_1tools_1_1Identity.html", "classvotca_1_1tools_1_1Identity" ],
         [ "LinSpline", "classvotca_1_1tools_1_1LinSpline.html", "classvotca_1_1tools_1_1LinSpline" ],
         [ "Mutex", "classvotca_1_1tools_1_1Mutex.html", "classvotca_1_1tools_1_1Mutex" ],

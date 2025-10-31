@@ -16,7 +16,7 @@ var classCsgDensityApp =
     [ "axisname_", "classCsgDensityApp.html#a87359edd3ebe8463c1f668ae5a04ae14", null ],
     [ "block_length_", "classCsgDensityApp.html#ae97735704f3a7afd5d8212082c69b1b3", null ],
     [ "dens_type_", "classCsgDensityApp.html#a7f4107307a97e712b1c7ba40db3b01a1", null ],
-    [ "dist_", "classCsgDensityApp.html#a114a90ced2ba916d507eeba8ebb1b7e2", null ],
+    [ "dist_", "classCsgDensityApp.html#ab6890888a7af92951f6fffa396d34de6", null ],
     [ "filter_", "classCsgDensityApp.html#a4cf5976aa1f7df3801cf255eb14b3785", null ],
     [ "frames_", "classCsgDensityApp.html#abb402e8492deff8785e7c6d9db7efc95", null ],
     [ "molname_", "classCsgDensityApp.html#a77dc77665ab121adee7fb5f8b3ffd2c7", null ],
