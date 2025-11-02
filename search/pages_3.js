@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['todo_20list_0',['Todo List',['../todo.html',1,'']]]
+  ['for_20beginners_3a_20how_20to_20avoid_20frustration_0',['For beginners: how to avoid frustration',['../index.html#beginner_sec',1,'']]],
+  ['frustration_1',['For beginners: how to avoid frustration',['../index.html#beginner_sec',1,'']]]
 ];

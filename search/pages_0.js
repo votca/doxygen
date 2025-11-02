@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['c_20reference_0',['VOTCA C++ reference',['../index.html',1,'']]]
+  ['avoid_20frustration_0',['For beginners: how to avoid frustration',['../index.html#beginner_sec',1,'']]]
 ];
