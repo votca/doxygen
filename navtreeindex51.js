@@ -1,9 +1,5 @@
 var NAVTREEINDEX51 =
 {
-"qmatom_8h.html":[4,0,3,0,0,0,91],
-"qmatom_8h.html#ab4a6a8e2bd80873dacf79b01b5863405":[4,0,3,0,0,0,91,2],
-"qmatom_8h_source.html":[4,0,3,0,0,0,91],
-"qmcalculator_8cc.html":[4,0,3,1,0,62],
 "qmcalculator_8cc_source.html":[4,0,3,1,0,62],
 "qmcalculator_8h.html":[4,0,3,0,0,0,92],
 "qmcalculator_8h.html#a6ac7effc5bd843d7644d580551328821":[4,0,3,0,0,0,92,1],
@@ -249,5 +245,9 @@ var NAVTREEINDEX51 =
 "structEigen_1_1internal_1_1traits_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01MatrixReplacementAb39d5a566f93c99b890dd40e1f17fadd.html":[3,0,0,0,4],
 "structEigen_1_1internal_1_1traits_3_01votca_1_1xtp_1_1MatrixFreeOperator_01_4.html":[2,0,0,0,5],
 "structEigen_1_1internal_1_1traits_3_01votca_1_1xtp_1_1MatrixFreeOperator_01_4.html":[3,0,0,0,5],
-"structPotentialInfo.html":[3,0,22]
+"structPotentialInfo.html":[3,0,22],
+"structPotentialInfo.html#a1b015c7d88fcc6660a1e34f31770ba9c":[3,0,22,1],
+"structPotentialInfo.html#a3c57c10cc98d7fb0b506bf658a828af4":[3,0,22,12],
+"structPotentialInfo.html#a681ddc669ab716100acb08430b28dbe7":[3,0,22,5],
+"structPotentialInfo.html#a6853cab4e31a28215d623f89f86f139b":[3,0,22,6]
 };

@@ -1,9 +1,5 @@
 var NAVTREEINDEX52 =
 {
-"structPotentialInfo.html#a1b015c7d88fcc6660a1e34f31770ba9c":[3,0,22,1],
-"structPotentialInfo.html#a3c57c10cc98d7fb0b506bf658a828af4":[3,0,22,12],
-"structPotentialInfo.html#a681ddc669ab716100acb08430b28dbe7":[3,0,22,5],
-"structPotentialInfo.html#a6853cab4e31a28215d623f89f86f139b":[3,0,22,6],
 "structPotentialInfo.html#a8b363a4df2452f030fb6c341c9160c0c":[3,0,22,10],
 "structPotentialInfo.html#a9e2ed3a8865e155b5db6a975f90299c8":[3,0,22,4],
 "structPotentialInfo.html#aa3afe95e924e2888486a6203feeb7797":[3,0,22,3],
@@ -249,5 +245,9 @@ var NAVTREEINDEX52 =
 "structvotca_1_1xtp_1_1Atom_1_1data.html":[3,0,3,2,20,0],
 "structvotca_1_1xtp_1_1Atom_1_1data.html#a019f8678478d2fe1678cf856e7e9821e":[2,0,3,2,22,0,6],
 "structvotca_1_1xtp_1_1Atom_1_1data.html#a019f8678478d2fe1678cf856e7e9821e":[3,0,3,2,20,0,6],
-"structvotca_1_1xtp_1_1Atom_1_1data.html#a1e405d7a94d1ba9604b7267c9432de7f":[2,0,3,2,22,0,1]
+"structvotca_1_1xtp_1_1Atom_1_1data.html#a1e405d7a94d1ba9604b7267c9432de7f":[2,0,3,2,22,0,1],
+"structvotca_1_1xtp_1_1Atom_1_1data.html#a1e405d7a94d1ba9604b7267c9432de7f":[3,0,3,2,20,0,1],
+"structvotca_1_1xtp_1_1Atom_1_1data.html#a2a12013fda9e813f36dbe5421201d420":[2,0,3,2,22,0,2],
+"structvotca_1_1xtp_1_1Atom_1_1data.html#a2a12013fda9e813f36dbe5421201d420":[3,0,3,2,20,0,2],
+"structvotca_1_1xtp_1_1Atom_1_1data.html#a53dcd3d8de57644d090b9d0379b71000":[2,0,3,2,22,0,0]
 };
