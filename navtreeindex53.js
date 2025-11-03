@@ -1,5 +1,6 @@
 var NAVTREEINDEX53 =
 {
+"structvotca_1_1xtp_1_1Atom_1_1data.html#aab9ec42774455c362c2ef28b11fb8d5c":[3,0,3,2,20,0,4],
 "structvotca_1_1xtp_1_1Atom_1_1data.html#abcf8272c771aa890f1028330a5402f3a":[2,0,3,2,22,0,5],
 "structvotca_1_1xtp_1_1Atom_1_1data.html#abcf8272c771aa890f1028330a5402f3a":[3,0,3,2,20,0,5],
 "structvotca_1_1xtp_1_1BSEOperator__Options.html":[2,0,3,2,31],
@@ -248,6 +249,5 @@ var NAVTREEINDEX53 =
 "structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html#afa2b70b0f97c89c11ea254836e561b7d":[3,0,3,2,103,0,1],
 "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html":[2,0,3,2,132,0],
 "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html":[3,0,3,2,130,0],
-"structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#a237157a8d4b756bc31b8a6481e399c52":[2,0,3,2,132,0,4],
-"structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#a237157a8d4b756bc31b8a6481e399c52":[3,0,3,2,130,0,4]
+"structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#a237157a8d4b756bc31b8a6481e399c52":[2,0,3,2,132,0,4]
 };

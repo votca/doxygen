@@ -114,15 +114,15 @@ var NAVTREEINDEX =
 "classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html#acccc967a26776eedc46195464f1a19b3",
 "classvotca_1_1xtp_1_1hist.html#a0632eb33e686228e40ee85c71d7e7a0d",
 "dir_9e0563c12adab20f88a5f3ea19d48def.html",
-"globals_defs.html",
-"mol2orb_8h.html#aacc97385fbc00a9050e4e8df9c2e433c",
-"namespacevotca_1_1tools.html#af92b139599662d5a02e259ed067e2022a832ba035f51f124a24f09cbc6bee5c41",
-"namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca992014bbec89e7c060291ad834d32e3f",
-"qmfragment_8h.html#a1348ac2e427dbe3f97bf05703bc2fc3d",
-"structPotentialInfo.html#ab89c93ffc45eb47e51825886cf281bbf",
-"structvotca_1_1xtp_1_1Atom_1_1data.html#abcf8272c771aa890f1028330a5402f3a",
-"structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#a28e6a02b6f565f938eb093b389e22abe",
-"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType.html"
+"globals_c.html",
+"mol2orb_8h.html",
+"namespacevotca_1_1tools.html#af92b139599662d5a02e259ed067e2022a6a1b9c81dd2ee9361a42ccfc1d517ab3",
+"namespacevotca_1_1xtp_1_1Cart.html#a405f9e5ae3c06d4072309630447ff75ca95c68300b8edc87504a133b9f61f990a",
+"qmfragment_8h.html",
+"structPotentialInfo.html#ab3c823b4569fc95ea9b3e7cff9066ab8",
+"structvotca_1_1xtp_1_1Atom_1_1data.html#aab9ec42774455c362c2ef28b11fb8d5c",
+"structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#a237157a8d4b756bc31b8a6481e399c52",
+"structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#aab85c582bd5002cc818cbd69a7cce868"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

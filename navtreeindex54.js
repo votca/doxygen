@@ -1,5 +1,6 @@
 var NAVTREEINDEX54 =
 {
+"structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#a237157a8d4b756bc31b8a6481e399c52":[3,0,3,2,130,0,4],
 "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#a28e6a02b6f565f938eb093b389e22abe":[2,0,3,2,132,0,2],
 "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#a28e6a02b6f565f938eb093b389e22abe":[3,0,3,2,130,0,2],
 "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#aab020d3bb71111e9e9cc7d9bbdec2c08":[2,0,3,2,132,0,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX54 =
 "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#a3c3147e1889660ce7808f678441451fd":[3,0,3,2,198,0,2],
 "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#a68d39b3f62ea60f4e61d532c8ed0f35a":[2,0,3,2,200,0,1],
 "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#a68d39b3f62ea60f4e61d532c8ed0f35a":[3,0,3,2,198,0,1],
-"structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#aab85c582bd5002cc818cbd69a7cce868":[2,0,3,2,200,0,0],
-"structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#aab85c582bd5002cc818cbd69a7cce868":[3,0,3,2,198,0,0]
+"structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#aab85c582bd5002cc818cbd69a7cce868":[2,0,3,2,200,0,0]
 };
