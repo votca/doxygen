@@ -192,37 +192,30 @@ $(function(){initNavTree('gmxtopologyreader_8cc_source.html','',''); });
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      <span class="comment">// add exclusions</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> iatom = 0; iatom &lt; natoms_mol; iatom++) {</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        std::list&lt;Bead *&gt; excl_list;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#if GMX_VERSION &gt;= 20210000</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        gmx::ListOfLists&lt;int&gt; &amp;excl = mol-&gt;excls;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> k : excl[iatom]) {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>          excl_list.push_back(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(k + ifirstatom));</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        }</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        t_blocka *excl = &amp;(mol-&gt;excls);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> k = excl-&gt;index[iatom]; k &lt; excl-&gt;index[iatom + 1]; k++) {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>          excl_list.push_back(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(excl-&gt;a[k] + ifirstatom));</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ad53d06ddf5eee720e7968e2dd37ac861">InsertExclusion</a>(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(iatom + ifirstatom), excl_list);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>      ifirstatom += natoms_mol;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        gmx::ListOfLists&lt;int&gt; &amp;excl = mol-&gt;excls;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> k : excl[iatom]) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>          excl_list.push_back(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(k + ifirstatom));</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ad53d06ddf5eee720e7968e2dd37ac861">InsertExclusion</a>(top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#ac9101d49989f23a76991adffe7ddbb31">getBead</a>(iatom + ifirstatom), excl_list);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>      }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      ifirstatom += natoms_mol;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  Eigen::Matrix3d m;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> i = 0; i &lt; 3; i++) {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> j = 0; j &lt; 3; j++) {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>      m(i, j) = gbox[j][i];</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  }</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  Eigen::Matrix3d m;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> i = 0; i &lt; 3; i++) {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> j = 0; j &lt; 3; j++) {</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      m(i, j) = gbox[j][i];</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  }</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a12161f1c5d52f233bd513fbb22538506">setBox</a>(m);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  top.<a class="code hl_function" href="classvotca_1_1csg_1_1Topology.html#a12161f1c5d52f233bd513fbb22538506">setBox</a>(m);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
 </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}  <span class="comment">// namespace csg</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}  <span class="comment">// namespace csg</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1BaseBead_html_a7371f19a9fda8e6016fb06d9938f2208"><div class="ttname"><a href="classvotca_1_1csg_1_1BaseBead.html#a7371f19a9fda8e6016fb06d9938f2208">votca::csg::BaseBead::getName</a></div><div class="ttdeci">std::string getName() const</div><div class="ttdoc">Gets the name of the bead.</div><div class="ttdef"><b>Definition</b> <a href="basebead_8h_source.html#l00058">basebead.h:58</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html">votca::csg::Bead</a></div><div class="ttdoc">information about a bead</div><div class="ttdef"><b>Definition</b> <a href="bead_8h_source.html#l00050">bead.h:50</a></div></div>
 <div class="ttc" id="aclassvotca_1_1csg_1_1Bead_html_a35641b1029b930bb8583314415890361"><div class="ttname"><a href="classvotca_1_1csg_1_1Bead.html#a35641b1029b930bb8583314415890361">votca::csg::Bead::getResnr</a></div><div class="ttdeci">const Index &amp; getResnr() const</div><div class="ttdef"><b>Definition</b> <a href="bead_8h_source.html#l00061">bead.h:61</a></div></div>
