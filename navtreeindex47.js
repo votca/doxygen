@@ -1,10 +1,5 @@
 var NAVTREEINDEX47 =
 {
-"globals_8cc.html":[4,0,2,1,0,13],
-"globals_8cc_source.html":[4,0,2,1,0,13],
-"globals_8h.html":[4,0,2,0,0,0,19],
-"globals_8h_source.html":[4,0,2,0,0,0,19],
-"globals_c.html":[4,1,0,1],
 "globals_defs.html":[4,1,4],
 "globals_f.html":[4,1,0,2],
 "globals_func.html":[4,1,1],
@@ -249,5 +244,10 @@ var NAVTREEINDEX47 =
 "md2qmengine_8h_source.html":[4,0,3,0,0,0,74],
 "mmregion_8cc.html":[4,0,3,1,0,49],
 "mmregion_8cc_source.html":[4,0,3,1,0,49],
-"mmregion_8h.html":[4,0,3,0,0,0,75]
+"mmregion_8h.html":[4,0,3,0,0,0,75],
+"mmregion_8h.html#a905b51007e02bcbecef718f047f8738c":[4,0,3,0,0,0,75,1],
+"mmregion_8h_source.html":[4,0,3,0,0,0,75],
+"mol2orb_8cc.html":[4,0,3,1,0,12,14],
+"mol2orb_8cc_source.html":[4,0,3,1,0,12,14],
+"mol2orb_8h.html":[4,0,3,1,0,12,15]
 };

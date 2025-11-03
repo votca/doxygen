@@ -1,10 +1,5 @@
 var NAVTREEINDEX51 =
 {
-"qmcalculator_8cc_source.html":[4,0,3,1,0,62],
-"qmcalculator_8h.html":[4,0,3,0,0,0,92],
-"qmcalculator_8h.html#a6ac7effc5bd843d7644d580551328821":[4,0,3,0,0,0,92,1],
-"qmcalculator_8h_source.html":[4,0,3,0,0,0,92],
-"qmfragment_8h.html":[4,0,3,0,0,0,93],
 "qmfragment_8h.html#a1348ac2e427dbe3f97bf05703bc2fc3d":[4,0,3,0,0,0,93,1],
 "qmfragment_8h_source.html":[4,0,3,0,0,0,93],
 "qmmm_8cc.html":[4,0,3,1,0,7,6],
@@ -249,5 +244,10 @@ var NAVTREEINDEX51 =
 "structPotentialInfo.html#a1b015c7d88fcc6660a1e34f31770ba9c":[3,0,22,1],
 "structPotentialInfo.html#a3c57c10cc98d7fb0b506bf658a828af4":[3,0,22,12],
 "structPotentialInfo.html#a681ddc669ab716100acb08430b28dbe7":[3,0,22,5],
-"structPotentialInfo.html#a6853cab4e31a28215d623f89f86f139b":[3,0,22,6]
+"structPotentialInfo.html#a6853cab4e31a28215d623f89f86f139b":[3,0,22,6],
+"structPotentialInfo.html#a8b363a4df2452f030fb6c341c9160c0c":[3,0,22,10],
+"structPotentialInfo.html#a9e2ed3a8865e155b5db6a975f90299c8":[3,0,22,4],
+"structPotentialInfo.html#aa3afe95e924e2888486a6203feeb7797":[3,0,22,3],
+"structPotentialInfo.html#aac686e0c2e9013d742153c9444056325":[3,0,22,7],
+"structPotentialInfo.html#ab3c823b4569fc95ea9b3e7cff9066ab8":[3,0,22,0]
 };
