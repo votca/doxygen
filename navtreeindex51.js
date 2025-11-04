@@ -1,17 +1,5 @@
 var NAVTREEINDEX51 =
 {
-"qmfragment_8h.html":[4,0,3,0,0,0,93],
-"qmfragment_8h.html#a1348ac2e427dbe3f97bf05703bc2fc3d":[4,0,3,0,0,0,93,1],
-"qmfragment_8h_source.html":[4,0,3,0,0,0,93],
-"qmmm_8cc.html":[4,0,3,1,0,7,6],
-"qmmm_8cc_source.html":[4,0,3,1,0,7,6],
-"qmmm_8h.html":[4,0,3,1,0,7,7],
-"qmmm_8h.html#a69119e5644eb9f67439afb933e0936d1":[4,0,3,1,0,7,7,1],
-"qmmm_8h_source.html":[4,0,3,1,0,7,7],
-"qmmolecule_8cc.html":[4,0,3,1,0,63],
-"qmmolecule_8cc_source.html":[4,0,3,1,0,63],
-"qmmolecule_8h.html":[4,0,3,0,0,0,94],
-"qmmolecule_8h.html#a478878f289d57484b6bccc3318cb730b":[4,0,3,0,0,0,94,1],
 "qmmolecule_8h_source.html":[4,0,3,0,0,0,94],
 "qmnblist_8cc.html":[4,0,3,1,0,64],
 "qmnblist_8cc_source.html":[4,0,3,1,0,64],
@@ -249,5 +237,17 @@ var NAVTREEINDEX51 =
 "structPotentialInfo.html#a8b363a4df2452f030fb6c341c9160c0c":[3,0,22,10],
 "structPotentialInfo.html#a9e2ed3a8865e155b5db6a975f90299c8":[3,0,22,4],
 "structPotentialInfo.html#aa3afe95e924e2888486a6203feeb7797":[3,0,22,3],
-"structPotentialInfo.html#aac686e0c2e9013d742153c9444056325":[3,0,22,7]
+"structPotentialInfo.html#aac686e0c2e9013d742153c9444056325":[3,0,22,7],
+"structPotentialInfo.html#ab3c823b4569fc95ea9b3e7cff9066ab8":[3,0,22,0],
+"structPotentialInfo.html#ab89c93ffc45eb47e51825886cf281bbf":[3,0,22,8],
+"structPotentialInfo.html#adb9f276725446aba334343add01329a6":[3,0,22,11],
+"structPotentialInfo.html#ae7adf05fb1fb6eba96a0109db7b0d8e1":[3,0,22,2],
+"structPotentialInfo.html#af115e4091bba620459ace6bdcc3b6067":[3,0,22,9],
+"structureparameters_8h.html":[4,0,2,0,0,0,44],
+"structureparameters_8h_source.html":[4,0,2,0,0,0,44],
+"structvotca_1_1Log.html":[2,0,3,3],
+"structvotca_1_1Log.html":[3,0,3,3],
+"structvotca_1_1Log.html#a0b1b9ad8af2f61537c7a51b2243958bb":[2,0,3,3,2],
+"structvotca_1_1Log.html#a0b1b9ad8af2f61537c7a51b2243958bb":[3,0,3,3,2],
+"structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43":[2,0,3,3,0]
 };

@@ -25,7 +25,6 @@ var hierarchy =
     [ "votca::xtp::AOShell::AOValues", "structvotca_1_1xtp_1_1AOShell_1_1AOValues.html", null ],
     [ "votca::tools::Application", "classvotca_1_1tools_1_1Application.html", [
       [ "CG_IMC_solve", "classCG__IMC__solve.html", null ],
-      [ "VotcaProperty", "classVotcaProperty.html", null ],
       [ "XtpMap", "classXtpMap.html", null ],
       [ "votca::csg::CsgApplication", "classvotca_1_1csg_1_1CsgApplication.html", [
         [ "CGForceMatching", "classCGForceMatching.html", null ],

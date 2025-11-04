@@ -374,7 +374,6 @@ var annotated_dup =
     [ "PotentialInfo", "structPotentialInfo.html", "structPotentialInfo" ],
     [ "RDFWorker", "classRDFWorker.html", "classRDFWorker" ],
     [ "TrajForce", "classTrajForce.html", "classTrajForce" ],
-    [ "VotcaProperty", "classVotcaProperty.html", "classVotcaProperty" ],
     [ "XtpMap", "classXtpMap.html", "classXtpMap" ],
     [ "XtpParallel", "classXtpParallel.html", "classXtpParallel" ],
     [ "XtpRun", "classXtpRun.html", "classXtpRun" ],

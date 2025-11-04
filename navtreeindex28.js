@@ -1,16 +1,5 @@
 var NAVTREEINDEX28 =
 {
-"classvotca_1_1xtp_1_1GW.html#a2d840ad001971808c93b7fe91f332ffc":[2,0,3,2,96,26],
-"classvotca_1_1xtp_1_1GW.html#a2d840ad001971808c93b7fe91f332ffc":[3,0,3,2,94,26],
-"classvotca_1_1xtp_1_1GW.html#a354fd2c813ae520fa4de15d5103bd303":[2,0,3,2,96,17],
-"classvotca_1_1xtp_1_1GW.html#a354fd2c813ae520fa4de15d5103bd303":[3,0,3,2,94,17],
-"classvotca_1_1xtp_1_1GW.html#a3c5e2c641391d9ea93d658448a5119b7":[2,0,3,2,96,18],
-"classvotca_1_1xtp_1_1GW.html#a3c5e2c641391d9ea93d658448a5119b7":[3,0,3,2,94,18],
-"classvotca_1_1xtp_1_1GW.html#a4d2ea37b7617d7a766a55443fc42fe23":[2,0,3,2,96,7],
-"classvotca_1_1xtp_1_1GW.html#a4d2ea37b7617d7a766a55443fc42fe23":[3,0,3,2,94,7],
-"classvotca_1_1xtp_1_1GW.html#a5fed8f9695d105d41d68ea763d9feacb":[2,0,3,2,96,6],
-"classvotca_1_1xtp_1_1GW.html#a5fed8f9695d105d41d68ea763d9feacb":[3,0,3,2,94,6],
-"classvotca_1_1xtp_1_1GW.html#a65078dec0c2912974799747af53e1778":[2,0,3,2,96,24],
 "classvotca_1_1xtp_1_1GW.html#a65078dec0c2912974799747af53e1778":[3,0,3,2,94,24],
 "classvotca_1_1xtp_1_1GW.html#a690ffdc513cc8fc725f747e17f7f541d":[2,0,3,2,96,10],
 "classvotca_1_1xtp_1_1GW.html#a690ffdc513cc8fc725f747e17f7f541d":[3,0,3,2,94,10],
@@ -249,5 +238,16 @@ var NAVTREEINDEX28 =
 "classvotca_1_1xtp_1_1GaussianQuadratureBase.html#a6a5ec4a638d12025e8065266ea0277c8":[2,0,3,2,85,5],
 "classvotca_1_1xtp_1_1GaussianQuadratureBase.html#a6a5ec4a638d12025e8065266ea0277c8":[3,0,3,2,83,5],
 "classvotca_1_1xtp_1_1GaussianQuadratureBase.html#abbd49433ba9594d954a0af5b8e0bb8f5":[2,0,3,2,85,2],
-"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#abbd49433ba9594d954a0af5b8e0bb8f5":[3,0,3,2,83,2]
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#abbd49433ba9594d954a0af5b8e0bb8f5":[3,0,3,2,83,2],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#abdb5a34ae3a640913d8995da7ce7f386":[2,0,3,2,85,8],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#abdb5a34ae3a640913d8995da7ce7f386":[3,0,3,2,83,8],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#add3469ae4d56aae98731b02d9b4b0c6e":[2,0,3,2,85,7],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#add3469ae4d56aae98731b02d9b4b0c6e":[3,0,3,2,83,7],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#ade8e37f1fafa7e24d6099429b0d758b0":[2,0,3,2,85,0],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#ade8e37f1fafa7e24d6099429b0d758b0":[3,0,3,2,83,0],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#ae085be41c627ca5619c55aafd49dbd19":[2,0,3,2,85,9],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#ae085be41c627ca5619c55aafd49dbd19":[3,0,3,2,83,9],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#ae7c95ffc6331fbe5c31446afc4f452c9":[2,0,3,2,85,14],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#ae7c95ffc6331fbe5c31446afc4f452c9":[3,0,3,2,83,14],
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#ae81c7b645bf17e57c489f77144715980":[2,0,3,2,85,3]
 };

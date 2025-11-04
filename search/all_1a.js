@@ -97,12 +97,11 @@ var searchData=
   ['_7etrajectorywriter_94',['~TrajectoryWriter',['../classvotca_1_1csg_1_1TrajectoryWriter.html#ad8a8bfc905cf87d55f424f08193c414d',1,'votca::csg::TrajectoryWriter']]],
   ['_7etriplelist_95',['~TripleList',['../classvotca_1_1csg_1_1TripleList.html#af54ad29f7cf5b77b54fad296f93736c4',1,'votca::csg::TripleList']]],
   ['_7evaverage_96',['~VAverage',['../classvotca_1_1xtp_1_1VAverage.html#ae091ea11b1b8f6c9eef23c0b7c7c436d',1,'votca::xtp::VAverage']]],
-  ['_7evotcaproperty_97',['~VotcaProperty',['../classVotcaProperty.html#a67c717280ed2ba29029673b29d0f6ffa',1,'VotcaProperty']]],
-  ['_7evxc_5fpotential_98',['~Vxc_Potential',['../classvotca_1_1xtp_1_1Vxc__Potential.html#a4e5b2f030aa2b154ad81042b832ec239',1,'votca::xtp::Vxc_Potential']]],
-  ['_7exmltopologyreader_99',['~XMLTopologyReader',['../classvotca_1_1csg_1_1XMLTopologyReader.html#a698436d34dfbeca4237c8b88c0bface7',1,'votca::csg::XMLTopologyReader']]],
-  ['_7extpapplication_100',['~XtpApplication',['../classvotca_1_1xtp_1_1XtpApplication.html#a9d53b5c02d28ff2cefd8ae53a0aef5ef',1,'votca::xtp::XtpApplication']]],
-  ['_7extpparallel_101',['~XtpParallel',['../classXtpParallel.html#a3d5f954027f4eb7429cc89e9a977b6b3',1,'XtpParallel']]],
-  ['_7extprun_102',['~XtpRun',['../classXtpRun.html#aeed9f6ac5c5496c93850474e8d3db414',1,'XtpRun']]],
-  ['_7extptools_103',['~XtpTools',['../classXtpTools.html#a1c7ba3be93e020c736fd6886bfb7c9bd',1,'XtpTools']]],
-  ['_7exyzreader_104',['~XYZReader',['../classvotca_1_1csg_1_1XYZReader.html#a8c0c23ca0d05eb3e9bc1b460e3beaaf4',1,'votca::csg::XYZReader']]]
+  ['_7evxc_5fpotential_97',['~Vxc_Potential',['../classvotca_1_1xtp_1_1Vxc__Potential.html#a4e5b2f030aa2b154ad81042b832ec239',1,'votca::xtp::Vxc_Potential']]],
+  ['_7exmltopologyreader_98',['~XMLTopologyReader',['../classvotca_1_1csg_1_1XMLTopologyReader.html#a698436d34dfbeca4237c8b88c0bface7',1,'votca::csg::XMLTopologyReader']]],
+  ['_7extpapplication_99',['~XtpApplication',['../classvotca_1_1xtp_1_1XtpApplication.html#a9d53b5c02d28ff2cefd8ae53a0aef5ef',1,'votca::xtp::XtpApplication']]],
+  ['_7extpparallel_100',['~XtpParallel',['../classXtpParallel.html#a3d5f954027f4eb7429cc89e9a977b6b3',1,'XtpParallel']]],
+  ['_7extprun_101',['~XtpRun',['../classXtpRun.html#aeed9f6ac5c5496c93850474e8d3db414',1,'XtpRun']]],
+  ['_7extptools_102',['~XtpTools',['../classXtpTools.html#a1c7ba3be93e020c736fd6886bfb7c9bd',1,'XtpTools']]],
+  ['_7exyzreader_103',['~XYZReader',['../classvotca_1_1csg_1_1XYZReader.html#a8c0c23ca0d05eb3e9bc1b460e3beaaf4',1,'votca::csg::XYZReader']]]
 ];
