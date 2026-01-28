@@ -1,6 +1,7 @@
 var NAVTREEINDEX47 =
 {
-"globals_x.html":[4,1,0,9],
+"globals_vars.html":[4,1,2],
+"globals_x.html":[4,1,0,10],
 "gmhdiabatization_8cc.html":[4,0,3,1,0,38],
 "gmhdiabatization_8cc_source.html":[4,0,3,1,0,38],
 "gmhdiabatization_8h.html":[4,0,3,0,0,0,52],
@@ -248,6 +249,5 @@ var NAVTREEINDEX47 =
 "molden_8h_source.html":[4,0,3,0,0,0,76],
 "molecule_8cc.html":[4,0,1,2,1,15],
 "molecule_8cc_source.html":[4,0,1,2,1,15],
-"molecule_8h.html":[4,0,1,0,0,0,21],
-"molecule_8h.html#ac40b3dbb00f0b7d6309a08e6e19dc1af":[4,0,1,0,0,0,21,1]
+"molecule_8h.html":[4,0,1,0,0,0,21]
 };

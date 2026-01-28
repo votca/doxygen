@@ -1,5 +1,8 @@
 var NAVTREEINDEX51 =
 {
+"qmmolecule_8cc_source.html":[4,0,3,1,0,63],
+"qmmolecule_8h.html":[4,0,3,0,0,0,94],
+"qmmolecule_8h.html#a478878f289d57484b6bccc3318cb730b":[4,0,3,0,0,0,94,1],
 "qmmolecule_8h_source.html":[4,0,3,0,0,0,94],
 "qmnblist_8cc.html":[4,0,3,1,0,64],
 "qmnblist_8cc_source.html":[4,0,3,1,0,64],
@@ -246,8 +249,5 @@ var NAVTREEINDEX51 =
 "structureparameters_8h.html":[4,0,2,0,0,0,44],
 "structureparameters_8h_source.html":[4,0,2,0,0,0,44],
 "structvotca_1_1Log.html":[2,0,3,3],
-"structvotca_1_1Log.html":[3,0,3,3],
-"structvotca_1_1Log.html#a0b1b9ad8af2f61537c7a51b2243958bb":[2,0,3,3,2],
-"structvotca_1_1Log.html#a0b1b9ad8af2f61537c7a51b2243958bb":[3,0,3,3,2],
-"structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43":[2,0,3,3,0]
+"structvotca_1_1Log.html":[3,0,3,3]
 };
