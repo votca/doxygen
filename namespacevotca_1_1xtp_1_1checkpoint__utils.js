@@ -7,6 +7,6 @@ var namespacevotca_1_1xtp_1_1checkpoint__utils =
     [ "InferDataType< long int >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4" ],
     [ "InferDataType< std::string >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4" ],
     [ "InferDataType< unsigned >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4" ],
-    [ "str_scalar", "namespacevotca_1_1xtp_1_1checkpoint__utils.html#a0b89f7bf47231ee9de9a93251ac28c88", null ],
+    [ "Hdf5Mutex", "namespacevotca_1_1xtp_1_1checkpoint__utils.html#a6c4c669a60ed8233c24a365147d856b3", null ],
     [ "StrScalar", "namespacevotca_1_1xtp_1_1checkpoint__utils.html#a7798b156116e99c5d0ad28621fafdc1f", null ]
 ];
