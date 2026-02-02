@@ -122,7 +122,7 @@ var NAVTREEINDEX =
 "structvotca_1_1Log.html#a0b1b9ad8af2f61537c7a51b2243958bb",
 "structvotca_1_1xtp_1_1BSEOperator__Options.html#a7ae02227cbd56ee667b9b4e44cb57555",
 "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#acfe63abcf7a7ee60bbeef26088d4b41b",
-"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01float_01_4.html#a57cf6fc7b02435da95e524c67710adf0"
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html#aa4f918f5abd3ba1e70df1a5301e74452"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

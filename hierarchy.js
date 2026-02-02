@@ -282,11 +282,13 @@ var hierarchy =
     [ "votca::xtp::IncrementalFockBuilder", "classvotca_1_1xtp_1_1IncrementalFockBuilder.html", null ],
     [ "votca::xtp::IndexParser", "classvotca_1_1xtp_1_1IndexParser.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType< T >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType< bool >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType< double >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType< float >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01float_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType< int >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01int_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType< long int >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType< std::string >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType< std::uint8_t >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType< unsigned >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html", null ],
     [ "votca::xtp::DipoleDipoleInteraction::InnerIterator", "classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html", null ],
     [ "votca::csg::Interaction", "classvotca_1_1csg_1_1Interaction.html", [

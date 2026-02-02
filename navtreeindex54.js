@@ -244,10 +244,10 @@ var NAVTREEINDEX54 =
 "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#aab85c582bd5002cc818cbd69a7cce868":[3,0,3,2,198,0,0],
 "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType.html":[2,0,3,2,1,0],
 "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType.html":[3,0,3,2,0,0],
-"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html":[2,0,3,2,1,1],
-"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html":[3,0,3,2,0,1],
-"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html#aa4f918f5abd3ba1e70df1a5301e74452":[2,0,3,2,1,1,0],
-"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html#aa4f918f5abd3ba1e70df1a5301e74452":[3,0,3,2,0,1,0],
-"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01float_01_4.html":[2,0,3,2,1,2],
-"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01float_01_4.html":[3,0,3,2,0,2]
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html":[2,0,3,2,1,1],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html":[3,0,3,2,0,1],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html#a3dec76aad07c0ed22ff3013d1aae9b64":[2,0,3,2,1,1,0],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html#a3dec76aad07c0ed22ff3013d1aae9b64":[3,0,3,2,0,1,0],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html":[2,0,3,2,1,2],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html":[3,0,3,2,0,2]
 };

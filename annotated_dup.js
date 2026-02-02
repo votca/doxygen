@@ -143,11 +143,13 @@ var annotated_dup =
       [ "xtp", "namespacevotca_1_1xtp.html", [
         [ "checkpoint_utils", "namespacevotca_1_1xtp_1_1checkpoint__utils.html", [
           [ "InferDataType", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType.html", null ],
+          [ "InferDataType< bool >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4" ],
           [ "InferDataType< double >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4" ],
           [ "InferDataType< float >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01float_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01float_01_4" ],
           [ "InferDataType< int >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01int_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01int_01_4" ],
           [ "InferDataType< long int >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4" ],
           [ "InferDataType< std::string >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4" ],
+          [ "InferDataType< std::uint8_t >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4" ],
           [ "InferDataType< unsigned >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4" ]
         ] ],
         [ "ActiveDensityMatrix", "classvotca_1_1xtp_1_1ActiveDensityMatrix.html", "classvotca_1_1xtp_1_1ActiveDensityMatrix" ],
