@@ -25,5 +25,6 @@ var searchData=
   ['excitoncoupling_22',['ExcitonCoupling',['../classvotca_1_1xtp_1_1ExcitonCoupling.html',1,'votca::xtp']]],
   ['exclusion_5ft_23',['exclusion_t',['../structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html',1,'votca::csg::ExclusionList']]],
   ['exclusionlist_24',['ExclusionList',['../classvotca_1_1csg_1_1ExclusionList.html',1,'votca::csg']]],
-  ['expectationvalues_25',['ExpectationValues',['../structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html',1,'votca::xtp::BSE']]]
+  ['expectationvalues_25',['ExpectationValues',['../structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html',1,'votca::xtp::BSE']]],
+  ['extendedhuckelparameters_26',['ExtendedHuckelParameters',['../classvotca_1_1xtp_1_1ExtendedHuckelParameters.html',1,'votca::xtp']]]
 ];

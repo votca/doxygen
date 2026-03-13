@@ -172,7 +172,9 @@ var searchData=
   ['bsetriplets_5fdynamic_169',['BSETriplets_dynamic',['../classvotca_1_1xtp_1_1Orbitals.html#ac433d3117e5b4501b67b6165dacfac51',1,'votca::xtp::Orbitals::BSETriplets_dynamic() const'],['../classvotca_1_1xtp_1_1Orbitals.html#ac46d46a7ac11c0a994365a02a6c21b9b',1,'votca::xtp::Orbitals::BSETriplets_dynamic()']]],
   ['bu_5f_170',['bU_',['../classvotca_1_1csg_1_1Bead.html#aca0585b99d2f035a8d7e48c573c44d04',1,'votca::csg::Bead']]],
   ['buffer_5f_171',['buffer_',['../classvotca_1_1xtp_1_1Logger.html#af7b895ea778259fac01c516139a634e6',1,'votca::xtp::Logger']]],
-  ['buildregions_172',['BuildRegions',['../classvotca_1_1xtp_1_1JobTopology.html#ad97a13dc93d87603ad721f9d5c52bd26',1,'votca::xtp::JobTopology']]],
-  ['bv_5f_173',['bV_',['../classvotca_1_1csg_1_1Bead.html#a2c50fd8a7a39588b8cb4eb10613fe5b4',1,'votca::csg::Bead']]],
-  ['bw_5f_174',['bW_',['../classvotca_1_1csg_1_1Bead.html#a6cdfda7d0d399903c3825526c090d5eb',1,'votca::csg::Bead']]]
+  ['buildehthamiltonian_172',['BuildEHTHamiltonian',['../classvotca_1_1xtp_1_1DFTEngine.html#a6ba424f392ec15fb97749261a6a4dad2',1,'votca::xtp::DFTEngine']]],
+  ['buildehtorbitalenergies_173',['BuildEHTOrbitalEnergies',['../classvotca_1_1xtp_1_1DFTEngine.html#aa6c32923735e105b7bd84d5eb5643f71',1,'votca::xtp::DFTEngine']]],
+  ['buildregions_174',['BuildRegions',['../classvotca_1_1xtp_1_1JobTopology.html#ad97a13dc93d87603ad721f9d5c52bd26',1,'votca::xtp::JobTopology']]],
+  ['bv_5f_175',['bV_',['../classvotca_1_1csg_1_1Bead.html#a2c50fd8a7a39588b8cb4eb10613fe5b4',1,'votca::csg::Bead']]],
+  ['bw_5f_176',['bW_',['../classvotca_1_1csg_1_1Bead.html#a6cdfda7d0d399903c3825526c090d5eb',1,'votca::csg::Bead']]]
 ];

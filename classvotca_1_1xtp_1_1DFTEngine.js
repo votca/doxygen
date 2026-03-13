@@ -1,6 +1,8 @@
 var classvotca_1_1xtp_1_1DFTEngine =
 [
     [ "AtomicGuess", "classvotca_1_1xtp_1_1DFTEngine.html#a64f27a8072a65458620fd164bf35a090", null ],
+    [ "BuildEHTHamiltonian", "classvotca_1_1xtp_1_1DFTEngine.html#a6ba424f392ec15fb97749261a6a4dad2", null ],
+    [ "BuildEHTOrbitalEnergies", "classvotca_1_1xtp_1_1DFTEngine.html#aa6c32923735e105b7bd84d5eb5643f71", null ],
     [ "CalcElDipole", "classvotca_1_1xtp_1_1DFTEngine.html#a8baa70eb60075a9b4a7c11467f05dc78", null ],
     [ "CalcERIs", "classvotca_1_1xtp_1_1DFTEngine.html#a0011c94a862a9e985ae5607568efabd5", null ],
     [ "CalcERIs_EXX", "classvotca_1_1xtp_1_1DFTEngine.html#a797973109e7c288a1edade76199fa330", null ],
@@ -8,6 +10,8 @@ var classvotca_1_1xtp_1_1DFTEngine =
     [ "Evaluate", "classvotca_1_1xtp_1_1DFTEngine.html#ad3978c594e67e57d078d469b5aa8bca3", null ],
     [ "EvaluateActiveRegion", "classvotca_1_1xtp_1_1DFTEngine.html#a48db6d20da75e7ed96397a142a3dcce9", null ],
     [ "EvaluateTruncatedActiveRegion", "classvotca_1_1xtp_1_1DFTEngine.html#a05809d4343b9f2559cd2bca04b3ebbbd", null ],
+    [ "ExtendedHuckelDFTGuess", "classvotca_1_1xtp_1_1DFTEngine.html#a934d4230c37e359c7f5a53065bbac1e9", null ],
+    [ "ExtendedHuckelGuess", "classvotca_1_1xtp_1_1DFTEngine.html#acc1ede7ac986eb64687fa43ba597917e", null ],
     [ "ExternalRepulsion", "classvotca_1_1xtp_1_1DFTEngine.html#a8e0d029ad46f7cc12e17498723a4cfbe", null ],
     [ "getDFTBasisName", "classvotca_1_1xtp_1_1DFTEngine.html#a08970e82c88966989976c69f4b480daf", null ],
     [ "IndependentElectronGuess", "classvotca_1_1xtp_1_1DFTEngine.html#a0fec12b8b7555ab5ff4ffe3e08f29706", null ],

@@ -45,5 +45,7 @@ var searchData=
   ['bsesinglets_5fdynamic_42',['BSESinglets_dynamic',['../classvotca_1_1xtp_1_1Orbitals.html#ae7724743c35aa3ba68cfa57d5ad19088',1,'votca::xtp::Orbitals::BSESinglets_dynamic() const'],['../classvotca_1_1xtp_1_1Orbitals.html#a3373bb6e4016008a58bbe0950fee2eae',1,'votca::xtp::Orbitals::BSESinglets_dynamic()']]],
   ['bsetriplets_43',['BSETriplets',['../classvotca_1_1xtp_1_1Orbitals.html#a0a37ee64613787729b5a4e3681300e69',1,'votca::xtp::Orbitals::BSETriplets() const'],['../classvotca_1_1xtp_1_1Orbitals.html#a5c29f3c4940eb73c0070b892b6867cbe',1,'votca::xtp::Orbitals::BSETriplets()']]],
   ['bsetriplets_5fdynamic_44',['BSETriplets_dynamic',['../classvotca_1_1xtp_1_1Orbitals.html#ac433d3117e5b4501b67b6165dacfac51',1,'votca::xtp::Orbitals::BSETriplets_dynamic() const'],['../classvotca_1_1xtp_1_1Orbitals.html#ac46d46a7ac11c0a994365a02a6c21b9b',1,'votca::xtp::Orbitals::BSETriplets_dynamic()']]],
-  ['buildregions_45',['BuildRegions',['../classvotca_1_1xtp_1_1JobTopology.html#ad97a13dc93d87603ad721f9d5c52bd26',1,'votca::xtp::JobTopology']]]
+  ['buildehthamiltonian_45',['BuildEHTHamiltonian',['../classvotca_1_1xtp_1_1DFTEngine.html#a6ba424f392ec15fb97749261a6a4dad2',1,'votca::xtp::DFTEngine']]],
+  ['buildehtorbitalenergies_46',['BuildEHTOrbitalEnergies',['../classvotca_1_1xtp_1_1DFTEngine.html#aa6c32923735e105b7bd84d5eb5643f71',1,'votca::xtp::DFTEngine']]],
+  ['buildregions_47',['BuildRegions',['../classvotca_1_1xtp_1_1JobTopology.html#ad97a13dc93d87603ad721f9d5c52bd26',1,'votca::xtp::JobTopology']]]
 ];

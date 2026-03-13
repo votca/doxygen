@@ -82,11 +82,14 @@ var searchData=
   ['exploregraph_79',['exploreGraph',['../namespacevotca_1_1tools.html#ae7b5853c2747ae4f0ae075eede045c0e',1,'votca::tools']]],
   ['explorenode_80',['exploreNode',['../classvotca_1_1tools_1_1GraphDistVisitor.html#a4f004a7afaa26dc894a49583221baa8d',1,'votca::tools::GraphDistVisitor::exploreNode()'],['../classvotca_1_1tools_1_1GraphVisitor.html#a99e23daa79cb426d0b2641c256e797ab',1,'votca::tools::GraphVisitor::exploreNode()']]],
   ['expvalue_81',['ExpValue',['../namespacevotca_1_1xtp.html#a3837f1b7cb467b8d65134f9efdf3832a',1,'votca::xtp::ExpValue(const Eigen::MatrixXd &amp;state1, OP OPxstate2)'],['../namespacevotca_1_1xtp.html#ae121320383363102fd544f4b76f19374',1,'votca::xtp::ExpValue(const Eigen::MatrixXd &amp;state1, const Eigen::MatrixXd &amp;OPxstate2)']]],
-  ['extendprojection_82',['extendProjection',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a48e5b73a75dfbcc3fdd64c9cd0d1d766',1,'votca::xtp::DavidsonSolver']]],
-  ['extension_83',['Extension',['../classvotca_1_1csg_1_1Imc.html#a3e549a33c04d3a21db81cd06fce144b0',1,'votca::csg::Imc']]],
-  ['externalrepulsion_84',['ExternalRepulsion',['../classvotca_1_1xtp_1_1DFTEngine.html#a8e0d029ad46f7cc12e17498723a4cfbe',1,'votca::xtp::DFTEngine']]],
-  ['extract_5fvectors_85',['extract_vectors',['../classvotca_1_1xtp_1_1DavidsonSolver.html#aa05c50f1f0382c2f34f39858061ddf9c',1,'votca::xtp::DavidsonSolver']]],
-  ['extractfromvector_86',['ExtractFromVector',['../classvotca_1_1xtp_1_1QMFragment.html#ae31581c3add1a33a52eec1f9d515f5d8',1,'votca::xtp::QMFragment']]],
-  ['extractingcharges_87',['Extractingcharges',['../classvotca_1_1xtp_1_1Esp2multipole.html#a63290bd8c7b49cec44902c1cdf445de2',1,'votca::xtp::Esp2multipole']]],
-  ['extrapolexclparam_88',['extrapolExclParam',['../classvotca_1_1csg_1_1PotentialFunctionCBSPL.html#a84147376e8d68abdbfc75558c52ae949',1,'votca::csg::PotentialFunctionCBSPL']]]
+  ['extendedhuckeldftguess_82',['ExtendedHuckelDFTGuess',['../classvotca_1_1xtp_1_1DFTEngine.html#a934d4230c37e359c7f5a53065bbac1e9',1,'votca::xtp::DFTEngine']]],
+  ['extendedhuckelguess_83',['ExtendedHuckelGuess',['../classvotca_1_1xtp_1_1DFTEngine.html#acc1ede7ac986eb64687fa43ba597917e',1,'votca::xtp::DFTEngine']]],
+  ['extendedhuckelparameters_84',['ExtendedHuckelParameters',['../classvotca_1_1xtp_1_1ExtendedHuckelParameters.html#acfb36c326c9ca1a9dca1bae0211da714',1,'votca::xtp::ExtendedHuckelParameters']]],
+  ['extendprojection_85',['extendProjection',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a48e5b73a75dfbcc3fdd64c9cd0d1d766',1,'votca::xtp::DavidsonSolver']]],
+  ['extension_86',['Extension',['../classvotca_1_1csg_1_1Imc.html#a3e549a33c04d3a21db81cd06fce144b0',1,'votca::csg::Imc']]],
+  ['externalrepulsion_87',['ExternalRepulsion',['../classvotca_1_1xtp_1_1DFTEngine.html#a8e0d029ad46f7cc12e17498723a4cfbe',1,'votca::xtp::DFTEngine']]],
+  ['extract_5fvectors_88',['extract_vectors',['../classvotca_1_1xtp_1_1DavidsonSolver.html#aa05c50f1f0382c2f34f39858061ddf9c',1,'votca::xtp::DavidsonSolver']]],
+  ['extractfromvector_89',['ExtractFromVector',['../classvotca_1_1xtp_1_1QMFragment.html#ae31581c3add1a33a52eec1f9d515f5d8',1,'votca::xtp::QMFragment']]],
+  ['extractingcharges_90',['Extractingcharges',['../classvotca_1_1xtp_1_1Esp2multipole.html#a63290bd8c7b49cec44902c1cdf445de2',1,'votca::xtp::Esp2multipole']]],
+  ['extrapolexclparam_91',['extrapolExclParam',['../classvotca_1_1csg_1_1PotentialFunctionCBSPL.html#a84147376e8d68abdbfc75558c52ae949',1,'votca::csg::PotentialFunctionCBSPL']]]
 ];

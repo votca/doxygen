@@ -219,6 +219,7 @@ var hierarchy =
     [ "votca::csg::ExclusionList::exclusion_t", "structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html", null ],
     [ "votca::csg::ExclusionList", "classvotca_1_1csg_1_1ExclusionList.html", null ],
     [ "votca::xtp::BSE::ExpectationValues", "structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html", null ],
+    [ "votca::xtp::ExtendedHuckelParameters", "classvotca_1_1xtp_1_1ExtendedHuckelParameters.html", null ],
     [ "votca::xtp::FCDDiabatization", "classvotca_1_1xtp_1_1FCDDiabatization.html", null ],
     [ "votca::xtp::SegmentMapper< AtomContainer >::FragInfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1FragInfo.html", null ],
     [ "votca::xtp::FunctionEvaluation", "classvotca_1_1xtp_1_1FunctionEvaluation.html", null ],

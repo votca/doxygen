@@ -47,6 +47,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "ERIs.h", "ERIs_8h.html", "ERIs_8h" ],
     [ "esp2multipole.h", "esp2multipole_8h.html", "esp2multipole_8h" ],
     [ "espfit.h", "espfit_8h.html", "espfit_8h" ],
+    [ "extended_hueckel.h", "extended__hueckel_8h.html", "extended__hueckel_8h" ],
     [ "fcddiabatization.h", "fcddiabatization_8h.html", "fcddiabatization_8h" ],
     [ "filterfactory.h", "filterfactory_8h.html", "filterfactory_8h" ],
     [ "GaussianQuadratureBase.h", "GaussianQuadratureBase_8h.html", "GaussianQuadratureBase_8h" ],

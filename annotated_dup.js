@@ -225,6 +225,7 @@ var annotated_dup =
         [ "Espfit", "classvotca_1_1xtp_1_1Espfit.html", "classvotca_1_1xtp_1_1Espfit" ],
         [ "EulerMaclaurinGrid", "classvotca_1_1xtp_1_1EulerMaclaurinGrid.html", "classvotca_1_1xtp_1_1EulerMaclaurinGrid" ],
         [ "ExcitonCoupling", "classvotca_1_1xtp_1_1ExcitonCoupling.html", "classvotca_1_1xtp_1_1ExcitonCoupling" ],
+        [ "ExtendedHuckelParameters", "classvotca_1_1xtp_1_1ExtendedHuckelParameters.html", "classvotca_1_1xtp_1_1ExtendedHuckelParameters" ],
         [ "FCDDiabatization", "classvotca_1_1xtp_1_1FCDDiabatization.html", "classvotca_1_1xtp_1_1FCDDiabatization" ],
         [ "FilterFactory", "classvotca_1_1xtp_1_1FilterFactory.html", "classvotca_1_1xtp_1_1FilterFactory" ],
         [ "FunctionEvaluation", "classvotca_1_1xtp_1_1FunctionEvaluation.html", "classvotca_1_1xtp_1_1FunctionEvaluation" ],

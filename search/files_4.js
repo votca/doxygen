@@ -34,5 +34,7 @@ var searchData=
   ['espfit_2eh_31',['espfit.h',['../espfit_8h.html',1,'']]],
   ['excitoncoupling_2eh_32',['excitoncoupling.h',['../excitoncoupling_8h.html',1,'']]],
   ['exclusionlist_2ecc_33',['exclusionlist.cc',['../exclusionlist_8cc.html',1,'']]],
-  ['exclusionlist_2eh_34',['exclusionlist.h',['../exclusionlist_8h.html',1,'']]]
+  ['exclusionlist_2eh_34',['exclusionlist.h',['../exclusionlist_8h.html',1,'']]],
+  ['extended_5fhueckel_2ecc_35',['extended_hueckel.cc',['../extended__hueckel_8cc.html',1,'']]],
+  ['extended_5fhueckel_2eh_36',['extended_hueckel.h',['../extended__hueckel_8h.html',1,'']]]
 ];

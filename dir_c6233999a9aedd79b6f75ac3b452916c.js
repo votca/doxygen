@@ -5,5 +5,6 @@ var dir_c6233999a9aedd79b6f75ac3b452916c =
     [ "dftengine.cc", "dftengine_8cc.html", null ],
     [ "diis.cc", "diis_8cc.html", null ],
     [ "embeddingengine.cc", "embeddingengine_8cc.html", null ],
-    [ "ERIs.cc", "ERIs_8cc.html", null ]
+    [ "ERIs.cc", "ERIs_8cc.html", null ],
+    [ "extended_hueckel.cc", "extended__hueckel_8cc.html", null ]
 ];
