@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['molecule_0',['Molecule',['../classvotca_1_1csg_1_1Bead.html#ae0d120b8bbafe454abebd374e2402082',1,'votca::csg::Bead']]]
+  ['ecpaobasis_0',['ECPAOBasis',['../classvotca_1_1xtp_1_1QMAtom.html#a7ed03b56d27971cf246954b3d9cc377e',1,'votca::xtp::QMAtom']]]
 ];

@@ -1,5 +1,7 @@
 var NAVTREEINDEX53 =
 {
+"structvotca_1_1xtp_1_1AOShell_1_1AOValues.html":[3,0,3,2,17,0],
+"structvotca_1_1xtp_1_1AOShell_1_1AOValues.html#a4d41170b5855882caaa2a44deb814243":[2,0,3,2,19,0,0],
 "structvotca_1_1xtp_1_1AOShell_1_1AOValues.html#a4d41170b5855882caaa2a44deb814243":[3,0,3,2,17,0,0],
 "structvotca_1_1xtp_1_1AOShell_1_1AOValues.html#a874fd717f661589315ce5af7fa5d8c12":[2,0,3,2,19,0,2],
 "structvotca_1_1xtp_1_1AOShell_1_1AOValues.html#a874fd717f661589315ce5af7fa5d8c12":[3,0,3,2,17,0,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX53 =
 "structvotca_1_1xtp_1_1Gyrationtensor.html#a850665ed4fb027a4d690f72f42ebdde3":[3,0,3,2,98,1],
 "structvotca_1_1xtp_1_1Gyrationtensor.html#adc772ea43635ee1cdb2231220f78f9ad":[2,0,3,2,100,2],
 "structvotca_1_1xtp_1_1Gyrationtensor.html#adc772ea43635ee1cdb2231220f78f9ad":[3,0,3,2,98,2],
-"structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html":[2,0,3,2,106,0],
-"structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html":[3,0,3,2,104,0],
-"structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html#a2b21c3ac0f1c7b6e325a81e55eb9ea6d":[2,0,3,2,106,0,7]
+"structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html":[2,0,3,2,106,0]
 };

@@ -36,6 +36,7 @@ var classvotca_1_1xtp_1_1DFTEngine =
     [ "SphericalAverageShells", "classvotca_1_1xtp_1_1DFTEngine.html#ad359f732786a5dbc19eaeb518a746455", null ],
     [ "TruncateBasis", "classvotca_1_1xtp_1_1DFTEngine.html#a265a887c43aeb5cdc511054378090670", null ],
     [ "TruncMOsFullBasis", "classvotca_1_1xtp_1_1DFTEngine.html#a1413661ee9e987b9c61475a687d0ced5", null ],
+    [ "DFTEngineTestAccess", "classvotca_1_1xtp_1_1DFTEngine.html#a0e339505af1bec5401a12978a8c0e206", null ],
     [ "active_and_border_atoms_", "classvotca_1_1xtp_1_1DFTEngine.html#ac2759f13ae361c2ae48913ec4b07846c", null ],
     [ "active_atoms_as_string_", "classvotca_1_1xtp_1_1DFTEngine.html#a9de12e0e6e56173adaa8ac1de1fdfdb6", null ],
     [ "active_electrons_", "classvotca_1_1xtp_1_1DFTEngine.html#a8c82574ec60f04d3f7072ec1d3c8b601", null ],

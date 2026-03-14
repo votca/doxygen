@@ -1,5 +1,7 @@
 var NAVTREEINDEX51 =
 {
+"property_8cc.html":[4,0,2,1,0,26],
+"property_8cc_source.html":[4,0,2,1,0,26],
 "property_8h.html":[4,0,2,0,0,0,37],
 "property_8h_source.html":[4,0,2,0,0,0,37],
 "propertyiomanipulator_8cc.html":[4,0,2,1,0,27],
@@ -247,7 +249,5 @@ var NAVTREEINDEX51 =
 "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01Ma8c36deaa0d46648fa468114afa721efa.html#a56fc5b03d77b410cf68bb7c9446f05c3":[3,0,0,0,1,0],
 "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01Ma8c36deaa0d46648fa468114afa721efa.html#a88d59fe8d7fa6f98f957c174ef13a3b3":[2,0,0,0,1,1],
 "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01Ma8c36deaa0d46648fa468114afa721efa.html#a88d59fe8d7fa6f98f957c174ef13a3b3":[3,0,0,0,1,1],
-"structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1MatrixFreeOperator_00_01Mta9073d462e534fbbc0a3ab7f66dd7820.html":[2,0,0,0,2],
-"structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1MatrixFreeOperator_00_01Mta9073d462e534fbbc0a3ab7f66dd7820.html":[3,0,0,0,2],
-"structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1MatrixFreeOperator_00_01Mta9073d462e534fbbc0a3ab7f66dd7820.html#a2e634d34e8de3c69b7c71cd594f4f7e4":[2,0,0,0,2,0]
+"structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1MatrixFreeOperator_00_01Mta9073d462e534fbbc0a3ab7f66dd7820.html":[2,0,0,0,2]
 };

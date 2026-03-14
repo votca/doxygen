@@ -1,5 +1,7 @@
 var NAVTREEINDEX40 =
 {
+"classvotca_1_1xtp_1_1QMState.html#a9ad29285bd6dbf88e111f927c2695e48":[3,0,3,2,160,7],
+"classvotca_1_1xtp_1_1QMState.html#aa30e0b21e5dff10052e30077a8c0410d":[2,0,3,2,162,13],
 "classvotca_1_1xtp_1_1QMState.html#aa30e0b21e5dff10052e30077a8c0410d":[3,0,3,2,160,13],
 "classvotca_1_1xtp_1_1QMState.html#ab070fa5bb56a98d0f702d44a1a25f9a1":[2,0,3,2,162,14],
 "classvotca_1_1xtp_1_1QMState.html#ab070fa5bb56a98d0f702d44a1a25f9a1":[3,0,3,2,160,14],
@@ -247,7 +249,5 @@ var NAVTREEINDEX40 =
 "classvotca_1_1xtp_1_1Region.html#ad087154dfc72512176995f1f051ca3be":[3,0,3,2,168,1],
 "classvotca_1_1xtp_1_1Region.html#ad5af9f2c25557cf19f10ac249a897a2f":[2,0,3,2,170,26],
 "classvotca_1_1xtp_1_1Region.html#ad5af9f2c25557cf19f10ac249a897a2f":[3,0,3,2,168,26],
-"classvotca_1_1xtp_1_1Region.html#adfc3f0e11ba4181b34167b6630ea4caa":[2,0,3,2,170,20],
-"classvotca_1_1xtp_1_1Region.html#adfc3f0e11ba4181b34167b6630ea4caa":[3,0,3,2,168,20],
-"classvotca_1_1xtp_1_1Region.html#ae108a6e651554fbd4b4bf9a9c29fc4c5":[2,0,3,2,170,9]
+"classvotca_1_1xtp_1_1Region.html#adfc3f0e11ba4181b34167b6630ea4caa":[2,0,3,2,170,20]
 };

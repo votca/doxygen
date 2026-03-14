@@ -1,5 +1,7 @@
 var NAVTREEINDEX31 =
 {
+"classvotca_1_1xtp_1_1JobCalculatorfactory.html#ae0a5bb07ccea9550ab7b1623f1cd57dc":[3,0,3,2,110,0],
+"classvotca_1_1xtp_1_1JobTopology.html":[2,0,3,2,113],
 "classvotca_1_1xtp_1_1JobTopology.html":[3,0,3,2,111],
 "classvotca_1_1xtp_1_1JobTopology.html#a034ea47dc0547873d452e66c5478efd0":[2,0,3,2,113,21],
 "classvotca_1_1xtp_1_1JobTopology.html#a034ea47dc0547873d452e66c5478efd0":[3,0,3,2,111,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX31 =
 "classvotca_1_1xtp_1_1LebedevGrid.html#a2f7fe3a7dd9f692540eb35eb1f23fd54":[3,0,3,2,115,1],
 "classvotca_1_1xtp_1_1LebedevGrid.html#a32c2865f14457e9f35e14f2bb365801c":[2,0,3,2,117,31],
 "classvotca_1_1xtp_1_1LebedevGrid.html#a32c2865f14457e9f35e14f2bb365801c":[3,0,3,2,115,31],
-"classvotca_1_1xtp_1_1LebedevGrid.html#a3a00afac5cb29fe8bde228ead450e8c9":[2,0,3,2,117,11],
-"classvotca_1_1xtp_1_1LebedevGrid.html#a3a00afac5cb29fe8bde228ead450e8c9":[3,0,3,2,115,11],
-"classvotca_1_1xtp_1_1LebedevGrid.html#a3a42c528baaec4e86cc82139da3f2470":[2,0,3,2,117,39]
+"classvotca_1_1xtp_1_1LebedevGrid.html#a3a00afac5cb29fe8bde228ead450e8c9":[2,0,3,2,117,11]
 };

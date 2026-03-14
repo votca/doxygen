@@ -1,5 +1,7 @@
 var NAVTREEINDEX28 =
 {
+"classvotca_1_1xtp_1_1GPUBenchmark.html#add4e54f205cc24bf86736dc8879f7203":[3,0,3,2,90,4],
+"classvotca_1_1xtp_1_1GPUBenchmark.html#af0a4e61dd38984aef927a9ddf98b965d":[2,0,3,2,92,1],
 "classvotca_1_1xtp_1_1GPUBenchmark.html#af0a4e61dd38984aef927a9ddf98b965d":[3,0,3,2,90,1],
 "classvotca_1_1xtp_1_1GW.html":[2,0,3,2,97],
 "classvotca_1_1xtp_1_1GW.html":[3,0,3,2,95],
@@ -247,7 +249,5 @@ var NAVTREEINDEX28 =
 "classvotca_1_1xtp_1_1GaussianPrimitive.html#af57cd04bdb8968531272c34ed6b7aa6f":[3,0,3,2,83,0],
 "classvotca_1_1xtp_1_1GaussianQuadratureBase.html":[2,0,3,2,86],
 "classvotca_1_1xtp_1_1GaussianQuadratureBase.html":[3,0,3,2,84],
-"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#a0ced855f6dcea6507ba7b383c6fc62bf":[2,0,3,2,86,12],
-"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#a0ced855f6dcea6507ba7b383c6fc62bf":[3,0,3,2,84,12],
-"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#a394c0dc306c14da9ca63c02d81642064":[2,0,3,2,86,11]
+"classvotca_1_1xtp_1_1GaussianQuadratureBase.html#a0ced855f6dcea6507ba7b383c6fc62bf":[2,0,3,2,86,12]
 };

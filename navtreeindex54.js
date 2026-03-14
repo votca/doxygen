@@ -1,5 +1,7 @@
 var NAVTREEINDEX54 =
 {
+"structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html":[3,0,3,2,104,0],
+"structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html#a2b21c3ac0f1c7b6e325a81e55eb9ea6d":[2,0,3,2,106,0,7],
 "structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html#a2b21c3ac0f1c7b6e325a81e55eb9ea6d":[3,0,3,2,104,0,7],
 "structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html#a4197fb7ca2c7eabbd0950138cf4eb545":[2,0,3,2,106,0,3],
 "structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html#a4197fb7ca2c7eabbd0950138cf4eb545":[3,0,3,2,104,0,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX54 =
 "structvotca_1_1xtp_1_1StaticSite_1_1data.html#aa21698b2f461896d7543020b25852e79":[3,0,3,2,186,0,2],
 "structvotca_1_1xtp_1_1StaticSite_1_1data.html#aa333a6b2a365854c2cea66587ffb4ae5":[2,0,3,2,188,0,11],
 "structvotca_1_1xtp_1_1StaticSite_1_1data.html#aa333a6b2a365854c2cea66587ffb4ae5":[3,0,3,2,186,0,11],
-"structvotca_1_1xtp_1_1StaticSite_1_1data.html#ab3b5ba29d0bee035a7bb0573e1fc8933":[2,0,3,2,188,0,12],
-"structvotca_1_1xtp_1_1StaticSite_1_1data.html#ab3b5ba29d0bee035a7bb0573e1fc8933":[3,0,3,2,186,0,12],
-"structvotca_1_1xtp_1_1StaticSite_1_1data.html#ab5946ef6edeba28840602467109d2289":[2,0,3,2,188,0,13]
+"structvotca_1_1xtp_1_1StaticSite_1_1data.html#ab3b5ba29d0bee035a7bb0573e1fc8933":[2,0,3,2,188,0,12]
 };

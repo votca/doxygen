@@ -1,5 +1,7 @@
 var NAVTREEINDEX48 =
 {
+"mapchecker_8h_source.html":[4,0,3,1,0,1,10],
+"matrixfreeoperator_8cc.html":[4,0,3,1,0,47],
 "matrixfreeoperator_8cc_source.html":[4,0,3,1,0,47],
 "matrixfreeoperator_8h.html":[4,0,3,0,0,0,74],
 "matrixfreeoperator_8h.html#aee73c050d3b1734ad733bf732a1038f9":[4,0,3,0,0,0,74,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX48 =
 "namespacevotca_1_1tools.html#ad2c2f6ff1b53462e6fbd3e8a80eb5d5f":[2,0,3,1,118],
 "namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17":[2,0,3,1,50],
 "namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a10c9c1fd3eea1cd9a8a92b5e939e0102":[2,0,3,1,50,1],
-"namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f":[2,0,3,1,50,0],
-"namespacevotca_1_1tools.html#ad6400bb1448528a98f8a5c359e6f30fb":[2,0,3,1,72],
-"namespacevotca_1_1tools.html#ad9e8f81c92087e1b0660e250fdeb776c":[2,0,3,1,84]
+"namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f":[2,0,3,1,50,0]
 };

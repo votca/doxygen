@@ -1,5 +1,7 @@
 var NAVTREEINDEX43 =
 {
+"classvotca_1_1xtp_1_1StaticSite.html#a9febd29eab03f83bc87979d1a7c70541":[3,0,3,2,186,22],
+"classvotca_1_1xtp_1_1StaticSite.html#abe6ef211d11741da15922ff2f89efe21":[2,0,3,2,188,1],
 "classvotca_1_1xtp_1_1StaticSite.html#abe6ef211d11741da15922ff2f89efe21":[3,0,3,2,186,1],
 "classvotca_1_1xtp_1_1StaticSite.html#ac7b70141d6768780c38fed0bd0f89d1c":[2,0,3,2,188,9],
 "classvotca_1_1xtp_1_1StaticSite.html#ac7b70141d6768780c38fed0bd0f89d1c":[3,0,3,2,186,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX43 =
 "classvotca_1_1xtp_1_1TransitionDensities.html#ac80744c832a89be3875151ccdf93a468":[3,0,3,2,193,2],
 "classvotca_1_1xtp_1_1TransitionDensities.html#adbc7e129473554dff2f4df299ee12399":[2,0,3,2,195,11],
 "classvotca_1_1xtp_1_1TransitionDensities.html#adbc7e129473554dff2f4df299ee12399":[3,0,3,2,193,11],
-"classvotca_1_1xtp_1_1TransitionDensities.html#afc46f86c1aa76c9c5d2e22afd399ccee":[2,0,3,2,195,1],
-"classvotca_1_1xtp_1_1TransitionDensities.html#afc46f86c1aa76c9c5d2e22afd399ccee":[3,0,3,2,193,1],
-"classvotca_1_1xtp_1_1TrustRegion.html":[2,0,3,2,196]
+"classvotca_1_1xtp_1_1TransitionDensities.html#afc46f86c1aa76c9c5d2e22afd399ccee":[2,0,3,2,195,1]
 };

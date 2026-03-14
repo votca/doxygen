@@ -1,5 +1,7 @@
 var NAVTREEINDEX44 =
 {
+"classvotca_1_1xtp_1_1TransitionDensities.html#afc46f86c1aa76c9c5d2e22afd399ccee":[3,0,3,2,193,1],
+"classvotca_1_1xtp_1_1TrustRegion.html":[2,0,3,2,196],
 "classvotca_1_1xtp_1_1TrustRegion.html":[3,0,3,2,194],
 "classvotca_1_1xtp_1_1TrustRegion.html#a16f6762fc98ce2f9bc3121e1d0e4160b":[2,0,3,2,196,1],
 "classvotca_1_1xtp_1_1TrustRegion.html#a16f6762fc98ce2f9bc3121e1d0e4160b":[3,0,3,2,194,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX44 =
 "classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html#a0bccd54ab8d71cb7c81771d52533842c":[3,0,3,2,63,0,0],
 "classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html#a103ba6aa53d7fd79d2f36f6a88335b08":[2,0,3,2,65,0,7],
 "classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html#a103ba6aa53d7fd79d2f36f6a88335b08":[3,0,3,2,63,0,7],
-"classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html#a11f4d7a70d8b739455991e74481dfc79":[2,0,3,2,65,0,5],
-"classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html#a11f4d7a70d8b739455991e74481dfc79":[3,0,3,2,63,0,5],
-"classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html#a4008e6ff43b532c10281f222ba7b6472":[2,0,3,2,65,0,1]
+"classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html#a11f4d7a70d8b739455991e74481dfc79":[2,0,3,2,65,0,5]
 };

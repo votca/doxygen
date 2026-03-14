@@ -1,5 +1,7 @@
 var NAVTREEINDEX24 =
 {
+"classvotca_1_1xtp_1_1DavidsonSolver.html#a997fc1323f47a87aee24240e58553edc":[3,0,3,2,45,48],
+"classvotca_1_1xtp_1_1DavidsonSolver.html#a9e4c81e920dac2cc31d560ddc10ac63f":[2,0,3,2,47,52],
 "classvotca_1_1xtp_1_1DavidsonSolver.html#a9e4c81e920dac2cc31d560ddc10ac63f":[3,0,3,2,45,52],
 "classvotca_1_1xtp_1_1DavidsonSolver.html#a9f61a8caad14f0233877488c3b42298d":[2,0,3,2,47,10],
 "classvotca_1_1xtp_1_1DavidsonSolver.html#a9f61a8caad14f0233877488c3b42298d":[3,0,3,2,45,10],
@@ -247,7 +249,5 @@ var NAVTREEINDEX24 =
 "classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#ae0b9a92c59d99ee3223af53135dd6281":[3,0,3,2,56,6],
 "classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html":[2,0,3,2,58,0],
 "classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html":[3,0,3,2,56,0],
-"classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html#a01161076d86f75945f3dd42583e079b9":[2,0,3,2,58,0,8],
-"classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html#a01161076d86f75945f3dd42583e079b9":[3,0,3,2,56,0,8],
-"classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html#a1118ea0f14b30cc3b094270242fba7e5":[2,0,3,2,58,0,9]
+"classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html#a01161076d86f75945f3dd42583e079b9":[2,0,3,2,58,0,8]
 };

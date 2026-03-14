@@ -1,5 +1,7 @@
 var NAVTREEINDEX27 =
 {
+"classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a7e9859122103d4240418c13660057cc9":[3,0,3,2,72,23],
+"classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a92e767495f389632853971a5ff60e5ed":[2,0,3,2,74,17],
 "classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a92e767495f389632853971a5ff60e5ed":[3,0,3,2,72,17],
 "classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a970799fd72d348d9335adb6db74805df":[2,0,3,2,74,5],
 "classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a970799fd72d348d9335adb6db74805df":[3,0,3,2,72,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX27 =
 "classvotca_1_1xtp_1_1GPUBenchmark.html#a52270a5b4c3d9fd059356b462ca71dba":[3,0,3,2,90,6],
 "classvotca_1_1xtp_1_1GPUBenchmark.html#aac4f41d92352ef0c3c66a87a8301aa90":[2,0,3,2,92,3],
 "classvotca_1_1xtp_1_1GPUBenchmark.html#aac4f41d92352ef0c3c66a87a8301aa90":[3,0,3,2,90,3],
-"classvotca_1_1xtp_1_1GPUBenchmark.html#add4e54f205cc24bf86736dc8879f7203":[2,0,3,2,92,4],
-"classvotca_1_1xtp_1_1GPUBenchmark.html#add4e54f205cc24bf86736dc8879f7203":[3,0,3,2,90,4],
-"classvotca_1_1xtp_1_1GPUBenchmark.html#af0a4e61dd38984aef927a9ddf98b965d":[2,0,3,2,92,1]
+"classvotca_1_1xtp_1_1GPUBenchmark.html#add4e54f205cc24bf86736dc8879f7203":[2,0,3,2,92,4]
 };

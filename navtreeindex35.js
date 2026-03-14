@@ -1,5 +1,7 @@
 var NAVTREEINDEX35 =
 {
+"classvotca_1_1xtp_1_1Orbitals.html#a4882813bfe28c60fe0163de7450b506b":[3,0,3,2,135,128],
+"classvotca_1_1xtp_1_1Orbitals.html#a4958b1c4b677049715f3277d7f2e85ac":[2,0,3,2,137,64],
 "classvotca_1_1xtp_1_1Orbitals.html#a4958b1c4b677049715f3277d7f2e85ac":[3,0,3,2,135,64],
 "classvotca_1_1xtp_1_1Orbitals.html#a4a0ccbe7eed6b7e78131b398f79975a2":[2,0,3,2,137,56],
 "classvotca_1_1xtp_1_1Orbitals.html#a4a0ccbe7eed6b7e78131b398f79975a2":[3,0,3,2,135,56],
@@ -247,7 +249,5 @@ var NAVTREEINDEX35 =
 "classvotca_1_1xtp_1_1Orbitals.html#ae7724743c35aa3ba68cfa57d5ad19088":[3,0,3,2,135,4],
 "classvotca_1_1xtp_1_1Orbitals.html#ae96163a724d7162d59d1f7b2f024ca5d":[2,0,3,2,137,157],
 "classvotca_1_1xtp_1_1Orbitals.html#ae96163a724d7162d59d1f7b2f024ca5d":[3,0,3,2,135,157],
-"classvotca_1_1xtp_1_1Orbitals.html#ae9629394c51d517b05787a3a88b0567e":[2,0,3,2,137,104],
-"classvotca_1_1xtp_1_1Orbitals.html#ae9629394c51d517b05787a3a88b0567e":[3,0,3,2,135,104],
-"classvotca_1_1xtp_1_1Orbitals.html#aea075152677ce6bcaf842dedd8ba07e7":[2,0,3,2,137,167]
+"classvotca_1_1xtp_1_1Orbitals.html#ae9629394c51d517b05787a3a88b0567e":[2,0,3,2,137,104]
 };
