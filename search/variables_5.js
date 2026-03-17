@@ -2,7 +2,7 @@ var searchData=
 [
   ['f2_5f_0',['f2_',['../classvotca_1_1tools_1_1CubicSpline.html#a75d57f6aad2a91324ef7d4c2b83bc63a',1,'votca::tools::CubicSpline']]],
   ['f_5f_1',['f_',['../classvotca_1_1tools_1_1CubicSpline.html#aaa42af2bd88892bb8a670544ec428759',1,'votca::tools::CubicSpline']]],
-  ['f_5fxc_2',['f_xc',['../structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#a3c3147e1889660ce7808f678441451fd',1,'votca::xtp::Vxc_Potential::XC_entry']]],
+  ['f_5fxc_2',['f_xc',['../structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#a3c3147e1889660ce7808f678441451fd',1,'votca::xtp::Vxc_Potential::XC_entry::f_xc'],['../structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html#ae55c5b6487e8958ac2a305a5a6a89ef9',1,'votca::xtp::Vxc_Potential::XC_entry_spin::f_xc']]],
   ['factor_5f_3',['factor_',['../classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html#a7bf48f8d29027d2c26e02fbd74923e96',1,'votca::xtp::TrustRegion::TrustRegionFunction']]],
   ['field_5f_4',['field_',['../classvotca_1_1xtp_1_1KMCCalculator.html#a9bed3ecacc1cdb910a3134e729215c57',1,'votca::xtp::KMCCalculator::field_'],['../classvotca_1_1xtp_1_1Rate__Engine.html#a090c41e03404abc3657ef880d7317483',1,'votca::xtp::Rate_Engine::field_']]],
   ['file_5f_5',['file_',['../classvotca_1_1csg_1_1XYZReader.html#acef70663cfbe6a273f5b0fe0efe2994d',1,'votca::csg::XYZReader::file_'],['../classCGOrderParam.html#a2b579a045cf70859f5c3df89b06279a2',1,'CGOrderParam::file_'],['../classvotca_1_1csg_1_1GMXTrajectoryWriter.html#a06075d206ecd6d58d1285bb513977d2f',1,'votca::csg::GMXTrajectoryWriter::file_']]],

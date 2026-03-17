@@ -1,16 +1,20 @@
 var classvotca_1_1xtp_1_1ConvergenceAcc =
 [
     [ "options", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options" ],
+    [ "SpinDensity", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1SpinDensity.html", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1SpinDensity" ],
     [ "KSmode", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71", [
       [ "closed", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71a47214f6de285dcfd2dcc494cfc5d5368", null ],
       [ "open", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71a459576309f53a6cb452b3bac5cbde19a", null ],
-      [ "fractional", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71a9f40775d8ea7298b3d0787ef4ebe9cb8", null ]
+      [ "fractional", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71a9f40775d8ea7298b3d0787ef4ebe9cb8", null ],
+      [ "restricted_open", "classvotca_1_1xtp_1_1ConvergenceAcc.html#af95374a958e87e8990c606505abe3e71a7c16dacc6c4176fcc0fa43f30be77532", null ]
     ] ],
     [ "Configure", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a0fa283825cf73f30e23ab30ea6efaecf", null ],
     [ "DensityMatrix", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a04bbb927b02ce54413112c4df92f85ac", null ],
     [ "DensityMatrixGroundState", "classvotca_1_1xtp_1_1ConvergenceAcc.html#adc5c3375e653fff75ddd3709b1702662", null ],
     [ "DensityMatrixGroundState_frac", "classvotca_1_1xtp_1_1ConvergenceAcc.html#aac92b7825216b748c0176cc98da7063a", null ],
+    [ "DensityMatrixGroundState_restricted_open", "classvotca_1_1xtp_1_1ConvergenceAcc.html#aff6c63ee3f3a88276ff636ecc2077df7", null ],
     [ "DensityMatrixGroundState_unres", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a258707698138b2bc309859b67804367c", null ],
+    [ "DensityMatrixSpinResolved", "classvotca_1_1xtp_1_1ConvergenceAcc.html#afb1b065f5e33719e2886008023591286", null ],
     [ "getDeltaE", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a9e9fe9ad2dd866ad335b9b0005df83ba", null ],
     [ "getDIIsError", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a38038d5c990d59832e67b3bab4c48928", null ],
     [ "getUseMixing", "classvotca_1_1xtp_1_1ConvergenceAcc.html#a43391d6e27876831c35b8a082d79d5b5", null ],

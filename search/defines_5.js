@@ -168,12 +168,13 @@ var searchData=
   ['votca_5fxtp_5ftopology_5fh_165',['VOTCA_XTP_TOPOLOGY_H',['../xtp_2include_2votca_2xtp_2topology_8h.html#ad37f9193761ace9d99b98ac806ee9eb5',1,'topology.h']]],
   ['votca_5fxtp_5ftransition_5fdensities_5fh_166',['VOTCA_XTP_TRANSITION_DENSITIES_H',['../transition__densities_8h.html#acbdad374eb8d4f5aa930a18df464f894',1,'transition_densities.h']]],
   ['votca_5fxtp_5ftrustregion_5fh_167',['VOTCA_XTP_TRUSTREGION_H',['../trustregion_8h.html#af12119e5f0f756241302d1df27673711',1,'trustregion.h']]],
-  ['votca_5fxtp_5fvaverage_5fh_168',['VOTCA_XTP_VAVERAGE_H',['../vaverage_8h.html#a91a77ed218f8704e0e299b4fbc0c67f4',1,'vaverage.h']]],
-  ['votca_5fxtp_5fvc2index_5fh_169',['VOTCA_XTP_VC2INDEX_H',['../vc2index_8h.html#a39fd8fa7c256cf73217ad76797dad33a',1,'vc2index.h']]],
-  ['votca_5fxtp_5fversion_5fh_170',['VOTCA_XTP_VERSION_H',['../xtp_2include_2votca_2xtp_2version_8h.html#a7d88479df3d03c3d1ec4022e8069e3ae',1,'version.h']]],
-  ['votca_5fxtp_5fvxc_5ffunctionals_5fh_171',['VOTCA_XTP_VXC_FUNCTIONALS_H',['../vxc__functionals_8h.html#aac1b7fbc2e9cfeac9423616253afb2a9',1,'vxc_functionals.h']]],
-  ['votca_5fxtp_5fvxc_5fgrid_5fh_172',['VOTCA_XTP_VXC_GRID_H',['../vxc__grid_8h.html#ab7a0ae4e84d26a24e690a43f112c9ce3',1,'vxc_grid.h']]],
-  ['votca_5fxtp_5fvxc_5fpotential_5fh_173',['VOTCA_XTP_VXC_POTENTIAL_H',['../vxc__potential_8h.html#a2c1a01c6b974735eda685bf09c177980',1,'vxc_potential.h']]],
-  ['votca_5fxtp_5fxtpapplication_5fh_174',['VOTCA_XTP_XTPAPPLICATION_H',['../xtpapplication_8h.html#a86c1345e4b58753dc52384bdbaaf715d',1,'xtpapplication.h']]],
-  ['votca_5fxtp_5fxtpdft_5fh_175',['VOTCA_XTP_XTPDFT_H',['../xtpdft_8h.html#a51003b5a50a47765004feeca9590d743',1,'xtpdft.h']]]
+  ['votca_5fxtp_5fuks_5fconvergenceacc_5fh_168',['VOTCA_XTP_UKS_CONVERGENCEACC_H',['../uks__convergenceacc_8h.html#a48cdeb2074d18ef48794ffae47ad3693',1,'uks_convergenceacc.h']]],
+  ['votca_5fxtp_5fvaverage_5fh_169',['VOTCA_XTP_VAVERAGE_H',['../vaverage_8h.html#a91a77ed218f8704e0e299b4fbc0c67f4',1,'vaverage.h']]],
+  ['votca_5fxtp_5fvc2index_5fh_170',['VOTCA_XTP_VC2INDEX_H',['../vc2index_8h.html#a39fd8fa7c256cf73217ad76797dad33a',1,'vc2index.h']]],
+  ['votca_5fxtp_5fversion_5fh_171',['VOTCA_XTP_VERSION_H',['../xtp_2include_2votca_2xtp_2version_8h.html#a7d88479df3d03c3d1ec4022e8069e3ae',1,'version.h']]],
+  ['votca_5fxtp_5fvxc_5ffunctionals_5fh_172',['VOTCA_XTP_VXC_FUNCTIONALS_H',['../vxc__functionals_8h.html#aac1b7fbc2e9cfeac9423616253afb2a9',1,'vxc_functionals.h']]],
+  ['votca_5fxtp_5fvxc_5fgrid_5fh_173',['VOTCA_XTP_VXC_GRID_H',['../vxc__grid_8h.html#ab7a0ae4e84d26a24e690a43f112c9ce3',1,'vxc_grid.h']]],
+  ['votca_5fxtp_5fvxc_5fpotential_5fh_174',['VOTCA_XTP_VXC_POTENTIAL_H',['../vxc__potential_8h.html#a2c1a01c6b974735eda685bf09c177980',1,'vxc_potential.h']]],
+  ['votca_5fxtp_5fxtpapplication_5fh_175',['VOTCA_XTP_XTPAPPLICATION_H',['../xtpapplication_8h.html#a86c1345e4b58753dc52384bdbaaf715d',1,'xtpapplication.h']]],
+  ['votca_5fxtp_5fxtpdft_5fh_176',['VOTCA_XTP_XTPDFT_H',['../xtpdft_8h.html#a51003b5a50a47765004feeca9590d743',1,'xtpdft.h']]]
 ];

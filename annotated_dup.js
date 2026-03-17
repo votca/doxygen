@@ -346,6 +346,7 @@ var annotated_dup =
         [ "Topology", "classvotca_1_1xtp_1_1Topology.html", "classvotca_1_1xtp_1_1Topology" ],
         [ "TransitionDensities", "classvotca_1_1xtp_1_1TransitionDensities.html", "classvotca_1_1xtp_1_1TransitionDensities" ],
         [ "TrustRegion", "classvotca_1_1xtp_1_1TrustRegion.html", "classvotca_1_1xtp_1_1TrustRegion" ],
+        [ "UKSConvergenceAcc", "classvotca_1_1xtp_1_1UKSConvergenceAcc.html", "classvotca_1_1xtp_1_1UKSConvergenceAcc" ],
         [ "VAverage", "classvotca_1_1xtp_1_1VAverage.html", "classvotca_1_1xtp_1_1VAverage" ],
         [ "vc2index", "classvotca_1_1xtp_1_1vc2index.html", "classvotca_1_1xtp_1_1vc2index" ],
         [ "Vxc_Functionals", "classvotca_1_1xtp_1_1Vxc__Functionals.html", "classvotca_1_1xtp_1_1Vxc__Functionals" ],

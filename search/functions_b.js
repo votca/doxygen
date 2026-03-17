@@ -38,7 +38,7 @@ var searchData=
   ['ld5810_35',['ld5810',['../classvotca_1_1xtp_1_1LebedevGrid.html#a91a10ad09da701a2225fa81850a29a8c',1,'votca::xtp::LebedevGrid']]],
   ['ld_5fby_5forder_36',['ld_by_order',['../classvotca_1_1xtp_1_1LebedevGrid.html#a08c4754453bc5ba2127fe928f1ccc148',1,'votca::xtp::LebedevGrid']]],
   ['lebedevgrid_37',['LebedevGrid',['../classvotca_1_1xtp_1_1LebedevGrid.html#a5954bce7939df65f41e9bc9424c28e42',1,'votca::xtp::LebedevGrid']]],
-  ['levelshift_38',['Levelshift',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a8a1779458fc1ee6c80e850caf99ecca1',1,'votca::xtp::ConvergenceAcc']]],
+  ['levelshift_38',['Levelshift',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a8a1779458fc1ee6c80e850caf99ecca1',1,'votca::xtp::ConvergenceAcc::Levelshift()'],['../classvotca_1_1xtp_1_1UKSConvergenceAcc.html#a32d98884cb4824390ab3c6a0d1cad8bf',1,'votca::xtp::UKSConvergenceAcc::Levelshift()']]],
   ['lexical_5fcast_39',['lexical_cast',['../namespacevotca_1_1tools.html#aa8e6d36442ef233cd3f5d59bbd640127',1,'votca::tools']]],
   ['libintshell_40',['LibintShell',['../classvotca_1_1xtp_1_1AOShell.html#a3fe50c56a7ce8621209957e3efefd480',1,'votca::xtp::AOShell']]],
   ['linalg_5fconstrained_5fqrsolve_41',['linalg_constrained_qrsolve',['../namespacevotca_1_1tools.html#a0bd06b3e2ccc1d89f0cd1b0075e1ba87',1,'votca::tools']]],

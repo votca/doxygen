@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s_5f_0',['S_',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a2ed5f96bf8783f524a28add47c0a82f5',1,'votca::xtp::ConvergenceAcc']]],
+  ['s_5f_0',['S_',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a2ed5f96bf8783f524a28add47c0a82f5',1,'votca::xtp::ConvergenceAcc::S_'],['../classvotca_1_1xtp_1_1UKSConvergenceAcc.html#a2c8c48a12540cfa06fac19eb393c7311',1,'votca::xtp::UKSConvergenceAcc::S_']]],
   ['scahfx_1',['ScaHFX',['../structvotca_1_1xtp_1_1GW_1_1options.html#ae89429a780978c543df6230e6f99df81',1,'votca::xtp::GW::options']]],
   ['scahfx_5f_2',['ScaHFX_',['../classvotca_1_1xtp_1_1DFTEngine.html#a0a3f08061aab78696b95e43d9dfcc44e',1,'votca::xtp::DFTEngine::ScaHFX_'],['../classvotca_1_1xtp_1_1Orbitals.html#a40ede97da45d7dbc493e70051711e3f2',1,'votca::xtp::Orbitals::ScaHFX_']]],
   ['scale_3',['scale',['../structvotca_1_1xtp_1_1AOGaussianPrimitive_1_1data.html#a96463bdbf37e48506c00d51cc5dec625',1,'votca::xtp::AOGaussianPrimitive::data']]],
@@ -52,10 +52,10 @@ var searchData=
   ['size_5f_49',['size_',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#af37c14b4f9a0a41e3d9dc5114bc264c0',1,'votca::xtp::HamiltonianOperator::size_'],['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a6c31b7bfdceaca6ed703e23bf2791ceb',1,'votca::xtp::DipoleDipoleInteraction::size_'],['../classvotca_1_1xtp_1_1MatrixFreeOperator.html#a39212809b63b2e38f9ac717620b30783',1,'votca::xtp::MatrixFreeOperator::size_'],['../classvotca_1_1xtp_1_1QMRegion.html#ab2f46b68207060c00a94d13529180608',1,'votca::xtp::QMRegion::size_']]],
   ['size_5fupdate_50',['size_update',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#a061c9d19257cf9f435d16d62b23f2e2b',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
   ['smallesteigenvalue_51',['smallestEigenvalue',['../classvotca_1_1xtp_1_1AOOverlap.html#ad41ecf35a33ebcb707c6d92b9a419755',1,'votca::xtp::AOOverlap']]],
-  ['sminusahalf_52',['Sminusahalf',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a62051c4a95b316eb100ba34b92aabeec',1,'votca::xtp::ConvergenceAcc']]],
+  ['sminusahalf_52',['Sminusahalf',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#a62051c4a95b316eb100ba34b92aabeec',1,'votca::xtp::ConvergenceAcc::Sminusahalf'],['../classvotca_1_1xtp_1_1UKSConvergenceAcc.html#aec74f8527f71f04d330b4d6bbb26e3b7',1,'votca::xtp::UKSConvergenceAcc::Sminusahalf']]],
   ['spectrum_5ftype_5f_53',['spectrum_type_',['../classvotca_1_1xtp_1_1Spectrum.html#a2f5926c889723c489b63ddedea683f5c',1,'votca::xtp::Spectrum']]],
   ['spherical_5fgrids_54',['spherical_grids',['../classvotca_1_1xtp_1_1GridContainers.html#acf461425ce731ad25e036d4eec7db4ea',1,'votca::xtp::GridContainers']]],
-  ['spin_5f_55',['spin_',['../classvotca_1_1xtp_1_1QMPackage.html#aa3d27f0d65e4ef44be53759f608ee8b9',1,'votca::xtp::QMPackage']]],
+  ['spin_5f_55',['spin_',['../classvotca_1_1xtp_1_1DFTEngine.html#ad565c3a26c0dfad597fe2859349359cc',1,'votca::xtp::DFTEngine::spin_'],['../classvotca_1_1xtp_1_1QMPackage.html#aa3d27f0d65e4ef44be53759f608ee8b9',1,'votca::xtp::QMPackage::spin_']]],
   ['spline_56',['Spline',['../structCGForceMatching_1_1SplineInfo.html#abcfea92e66722b062e0ab5a193f3e06f',1,'CGForceMatching::SplineInfo']]],
   ['splineindex_57',['splineIndex',['../structCGForceMatching_1_1SplineInfo.html#a7548abdc075de3ea2b71f36f3c6f63b8',1,'CGForceMatching::SplineInfo']]],
   ['splinename_58',['splineName',['../structCGForceMatching_1_1SplineInfo.html#a4884ba993856aff5b7a0033deef70e38',1,'CGForceMatching::SplineInfo']]],

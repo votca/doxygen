@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lowdin_0',['Lowdin',['../namespacevotca_1_1xtp.html#a6e2b68a6c8d1eb813557b5a761ae1f96',1,'votca::xtp']]]
+  ['ksmode_0',['KSmode',['../classvotca_1_1xtp_1_1UKSConvergenceAcc.html#a0df74e0cfce287c0d5674d47d5b585cb',1,'votca::xtp::UKSConvergenceAcc']]]
 ];

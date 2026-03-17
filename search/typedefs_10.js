@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['transposition_0',['Transposition',['../namespacevotca_1_1xtp.html#a9f98db6f6acef29f1b9e94a507284407',1,'votca::xtp']]],
-  ['triple_5fcreator_5ft_1',['triple_creator_t',['../classvotca_1_1csg_1_1NBList__3Body.html#aa55bb2478c954026d778959c64e6eaba',1,'votca::csg::NBList_3Body']]],
-  ['triple_5ft_2',['triple_t',['../classvotca_1_1csg_1_1TripleList.html#a9f8fe3b3a9133a830ec1b330927b2554',1,'votca::csg::TripleList']]],
-  ['tripletoperator_5ftda_3',['TripletOperator_TDA',['../namespacevotca_1_1xtp.html#ab34bf86fbbc9a910c8135077fc954a52',1,'votca::xtp']]]
+  ['scalar_0',['Scalar',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#ab2f733ece47be5ecb584769ed88cf968',1,'votca::xtp::HamiltonianOperator::Scalar'],['../structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01Ma8c36deaa0d46648fa468114afa721efa.html#a56fc5b03d77b410cf68bb7c9446f05c3',1,'Eigen::internal::generic_product_impl&lt; votca::xtp::HamiltonianOperator&lt; MatrixReplacementA, MatrixReplacementB &gt;, Mtype, DenseShape, DenseShape, GemmProduct &gt;::Scalar'],['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a70236d0c40eeb19330974062d16fe543',1,'votca::xtp::DipoleDipoleInteraction::Scalar'],['../structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1DipoleDipoleInteraction_00de97570f9381c4a05ef5b13b91bb2fcc.html#ae1ec78c836cdef569da64e3491582410',1,'Eigen::internal::generic_product_impl&lt; votca::xtp::DipoleDipoleInteraction, Vtype, DenseShape, DenseShape, GemvProduct &gt;::Scalar'],['../structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1MatrixFreeOperator_00_01Mta9073d462e534fbbc0a3ab7f66dd7820.html#a2e634d34e8de3c69b7c71cd594f4f7e4',1,'Eigen::internal::generic_product_impl&lt; votca::xtp::MatrixFreeOperator, Mtype, DenseShape, DenseShape, GemmProduct &gt;::Scalar']]],
+  ['segmenttype_1',['SegmentType',['../classvotca_1_1xtp_1_1MMRegion.html#a57e893e9ec60c7bbf478a54f3dca4b75',1,'votca::xtp::MMRegion']]],
+  ['shelliterator_2',['ShellIterator',['../classvotca_1_1xtp_1_1Element.html#aa4d3484f22b9da3f905e21cdb6ee6e8d',1,'votca::xtp::Element']]],
+  ['singletoperator_5fbtda_5fb_3',['SingletOperator_BTDA_B',['../namespacevotca_1_1xtp.html#ac2c9af8d79a386ba3317f2bd19ef0592',1,'votca::xtp']]],
+  ['singletoperator_5ftda_4',['SingletOperator_TDA',['../namespacevotca_1_1xtp.html#a60a860892c60ecdbdfb24a7575cd1070',1,'votca::xtp']]],
+  ['splinecontainer_5',['SplineContainer',['../classCGForceMatching.html#aae1bab56e98c510a4b0e86c8c7a46eec',1,'CGForceMatching']]],
+  ['staticmapper_6',['StaticMapper',['../namespacevotca_1_1xtp.html#ad8448bbb3fd190062e9fb38ef7f27418',1,'votca::xtp']]],
+  ['staticsegment_7',['StaticSegment',['../namespacevotca_1_1xtp.html#aa5e328ab0d1d16b6a53591c0c9a8c80d',1,'votca::xtp']]],
+  ['storageindex_8',['StorageIndex',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#aa94c3a2d0f9f8a92c75b483205dda934',1,'votca::xtp::HamiltonianOperator::StorageIndex'],['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a560302276d165172db7950064da7dc12',1,'votca::xtp::DipoleDipoleInteraction::StorageIndex']]]
 ];

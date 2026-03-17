@@ -435,6 +435,11 @@ var hierarchy =
       [ "votca::xtp::Sigma_PPM", "classvotca_1_1xtp_1_1Sigma__PPM.html", null ]
     ] ],
     [ "votca::xtp::GridContainers::spherical_grid", "structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html", null ],
+    [ "votca::xtp::ConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1SpinDensity.html", null ],
+    [ "votca::xtp::DFTEngine::SpinDensity", "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html", null ],
+    [ "votca::xtp::UKSConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1UKSConvergenceAcc_1_1SpinDensity.html", null ],
+    [ "votca::xtp::UKSConvergenceAcc::SpinFock", "structvotca_1_1xtp_1_1UKSConvergenceAcc_1_1SpinFock.html", null ],
+    [ "votca::xtp::Vxc_Potential< Grid >::SpinResult", "structvotca_1_1xtp_1_1Vxc__Potential_1_1SpinResult.html", null ],
     [ "votca::tools::Spline", "classvotca_1_1tools_1_1Spline.html", [
       [ "votca::tools::AkimaSpline", "classvotca_1_1tools_1_1AkimaSpline.html", null ],
       [ "votca::tools::CubicSpline", "classvotca_1_1tools_1_1CubicSpline.html", null ],
@@ -526,6 +531,7 @@ var hierarchy =
       [ "votca::csg::BeadTriple", "classvotca_1_1csg_1_1BeadTriple.html", null ]
     ] ],
     [ "votca::tools::internal::type< T >", "structvotca_1_1tools_1_1internal_1_1type.html", null ],
+    [ "votca::xtp::UKSConvergenceAcc", "classvotca_1_1xtp_1_1UKSConvergenceAcc.html", null ],
     [ "votca::tools::UnitConverter", "classvotca_1_1tools_1_1UnitConverter.html", null ],
     [ "votca::xtp::vc2index", "classvotca_1_1xtp_1_1vc2index.html", null ],
     [ "std::vector< T >", null, [
@@ -535,6 +541,7 @@ var hierarchy =
     [ "votca::xtp::Vxc_Grid", "classvotca_1_1xtp_1_1Vxc__Grid.html", null ],
     [ "votca::xtp::Vxc_Potential< Grid >", "classvotca_1_1xtp_1_1Vxc__Potential.html", null ],
     [ "votca::xtp::Vxc_Potential< Grid >::XC_entry", "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html", null ],
+    [ "votca::xtp::Vxc_Potential< Grid >::XC_entry_spin", "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html", null ],
     [ "votca::csg::XMLBead", "classvotca_1_1csg_1_1XMLBead.html", null ],
     [ "votca::csg::XMLMolecule", "classvotca_1_1csg_1_1XMLMolecule.html", null ],
     [ "pyxtp::XTPCalculators", "classpyxtp_1_1XTPCalculators.html", null ],

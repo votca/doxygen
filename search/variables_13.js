@@ -31,7 +31,7 @@ var searchData=
   ['total_5fe_5ffull_5f_28',['Total_E_full_',['../classvotca_1_1xtp_1_1DFTEngine.html#a6ce0ed35bfb867a471265910c83051f1',1,'votca::xtp::DFTEngine']]],
   ['total_5fspin_5f_29',['total_spin_',['../classvotca_1_1xtp_1_1Orbitals.html#afa62284e0afe61cd019ac6bee38d057a',1,'votca::xtp::Orbitals']]],
   ['totalgridsize_5f_30',['totalgridsize_',['../classvotca_1_1xtp_1_1Regular__Grid.html#a07b6dbfa65bcf60da3c80f50a2802463',1,'votca::xtp::Regular_Grid::totalgridsize_'],['../classvotca_1_1xtp_1_1Vxc__Grid.html#a43a4bb226034994c2344d294941e64cd',1,'votca::xtp::Vxc_Grid::totalgridsize_']]],
-  ['tote_5f_31',['totE_',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#abf895cc925e9b24de7f52702757a7883',1,'votca::xtp::ConvergenceAcc']]],
+  ['tote_5f_31',['totE_',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#abf895cc925e9b24de7f52702757a7883',1,'votca::xtp::ConvergenceAcc::totE_'],['../classvotca_1_1xtp_1_1UKSConvergenceAcc.html#aa7f6d643373a2367248f78be317d4b98',1,'votca::xtp::UKSConvergenceAcc::totE_']]],
   ['traj_5freader_5f_32',['traj_reader_',['../classvotca_1_1csg_1_1CsgApplication.html#ae32487a7c8bba1480108662db219573e',1,'votca::csg::CsgApplication']]],
   ['traj_5freadermutex_5f_33',['traj_readerMutex_',['../classvotca_1_1csg_1_1CsgApplication.html#acf8e7ccaf6382d06cd4982d5d4990cc3',1,'votca::csg::CsgApplication']]],
   ['trajectoryfile_5f_34',['trajectoryfile_',['../classvotca_1_1xtp_1_1KMCCalculator.html#a986e99b3d1bad89e6ba911f8d169d6a7',1,'votca::xtp::KMCCalculator']]],

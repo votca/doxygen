@@ -25,13 +25,14 @@ var searchData=
   ['nsize_22',['nsize',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#aa5f18293f9e44e4270d4094d04b3a17e',1,'votca::xtp::TCMatrix_gwbse']]],
   ['nuclearrepulsion_23',['NuclearRepulsion',['../classvotca_1_1xtp_1_1DFTEngine.html#af585e2e49dc29088834b761b6d708c7a',1,'votca::xtp::DFTEngine']]],
   ['num_5fiterations_24',['num_iterations',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a88e6e2139ad608783d073434817b3b05',1,'votca::xtp::DavidsonSolver']]],
-  ['numberofstates_25',['NumberofStates',['../classvotca_1_1xtp_1_1Orbitals.html#aed54d8a1f9e0b2ddade0c4949379dfd3',1,'votca::xtp::Orbitals']]],
-  ['numfuncshell_26',['NumFuncShell',['../namespacevotca_1_1xtp.html#a0d0fa0d59f33812cc41bbca9d32744db',1,'votca::xtp']]],
-  ['numfuncshell_5fcartesian_27',['NumFuncShell_cartesian',['../namespacevotca_1_1xtp.html#a704f574fbd5a20e19c0c332e7e191676',1,'votca::xtp']]],
-  ['numofshells_28',['NumOfShells',['../classvotca_1_1xtp_1_1Element.html#a2a1273506f6701aad7714cfb6eb15f63',1,'votca::xtp::Element::NumOfShells()'],['../classvotca_1_1xtp_1_1ECPElement.html#ab5379ef582bde9e96d1eaedab03b9801',1,'votca::xtp::ECPElement::NumOfShells()']]],
-  ['numparameters_29',['NumParameters',['../classvotca_1_1xtp_1_1ADIIS__costfunction.html#a144c53a8d0f47cc321e909ed94cad03d',1,'votca::xtp::ADIIS_costfunction::NumParameters()'],['../classvotca_1_1xtp_1_1Optimiser__costfunction.html#ac8c904d93da35bb286e80bf1d672b063',1,'votca::xtp::Optimiser_costfunction::NumParameters()']]],
-  ['numrows_30',['numRows',['../classvotca_1_1xtp_1_1CptTable.html#ab644c748241806f009b2a60f3b78b7df',1,'votca::xtp::CptTable']]],
-  ['nx_31',['nx',['../classvotca_1_1xtp_1_1AOTransform.html#af733305eb495aace2aba1508ec7a0f29',1,'votca::xtp::AOTransform']]],
-  ['ny_32',['ny',['../classvotca_1_1xtp_1_1AOTransform.html#acf1ede1cdd89ee1996498440592d198e',1,'votca::xtp::AOTransform']]],
-  ['nz_33',['nz',['../classvotca_1_1xtp_1_1AOTransform.html#ad2537b7a33ccd603d147487167b9cea0',1,'votca::xtp::AOTransform']]]
+  ['numberofrestrictedoccupiedorbitals_25',['NumberOfRestrictedOccupiedOrbitals',['../classvotca_1_1xtp_1_1DFTEngine.html#a7ad81aefa16501b289555b00c5d5c38f',1,'votca::xtp::DFTEngine']]],
+  ['numberofstates_26',['NumberofStates',['../classvotca_1_1xtp_1_1Orbitals.html#aed54d8a1f9e0b2ddade0c4949379dfd3',1,'votca::xtp::Orbitals']]],
+  ['numfuncshell_27',['NumFuncShell',['../namespacevotca_1_1xtp.html#a0d0fa0d59f33812cc41bbca9d32744db',1,'votca::xtp']]],
+  ['numfuncshell_5fcartesian_28',['NumFuncShell_cartesian',['../namespacevotca_1_1xtp.html#a704f574fbd5a20e19c0c332e7e191676',1,'votca::xtp']]],
+  ['numofshells_29',['NumOfShells',['../classvotca_1_1xtp_1_1Element.html#a2a1273506f6701aad7714cfb6eb15f63',1,'votca::xtp::Element::NumOfShells()'],['../classvotca_1_1xtp_1_1ECPElement.html#ab5379ef582bde9e96d1eaedab03b9801',1,'votca::xtp::ECPElement::NumOfShells()']]],
+  ['numparameters_30',['NumParameters',['../classvotca_1_1xtp_1_1ADIIS__costfunction.html#a144c53a8d0f47cc321e909ed94cad03d',1,'votca::xtp::ADIIS_costfunction::NumParameters()'],['../classvotca_1_1xtp_1_1Optimiser__costfunction.html#ac8c904d93da35bb286e80bf1d672b063',1,'votca::xtp::Optimiser_costfunction::NumParameters()']]],
+  ['numrows_31',['numRows',['../classvotca_1_1xtp_1_1CptTable.html#ab644c748241806f009b2a60f3b78b7df',1,'votca::xtp::CptTable']]],
+  ['nx_32',['nx',['../classvotca_1_1xtp_1_1AOTransform.html#af733305eb495aace2aba1508ec7a0f29',1,'votca::xtp::AOTransform']]],
+  ['ny_33',['ny',['../classvotca_1_1xtp_1_1AOTransform.html#acf1ede1cdd89ee1996498440592d198e',1,'votca::xtp::AOTransform']]],
+  ['nz_34',['nz',['../classvotca_1_1xtp_1_1AOTransform.html#ad2537b7a33ccd603d147487167b9cea0',1,'votca::xtp::AOTransform']]]
 ];

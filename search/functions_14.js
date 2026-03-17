@@ -4,7 +4,7 @@ var searchData=
   ['unlock_1',['Unlock',['../classvotca_1_1tools_1_1Mutex.html#a98b8edeae80de9fa33f06faa55c1c053',1,'votca::tools::Mutex']]],
   ['unlockcout_2',['UnlockCout',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#a96924c465501b40f5f173c89e44c1b8f',1,'votca::xtp::ParallelXJobCalc']]],
   ['unlocklog_3',['UnlockLog',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#ad1205fedeae6f470afba21529279fd57',1,'votca::xtp::ParallelXJobCalc']]],
-  ['update_4',['Update',['../classvotca_1_1xtp_1_1DIIS.html#ab33608705810d6a8d5e89044cc61c0f6',1,'votca::xtp::DIIS']]],
+  ['update_4',['Update',['../classvotca_1_1xtp_1_1DIIS.html#ab33608705810d6a8d5e89044cc61c0f6',1,'votca::xtp::DIIS::Update(Index maxerrorindex, const Eigen::MatrixXd &amp;errormatrix)'],['../classvotca_1_1xtp_1_1DIIS.html#a2b96b492de1ab0fbf6de95dcdb7bb9ec',1,'votca::xtp::DIIS::Update(Index maxerrorindex, const Eigen::MatrixXd &amp;errormatrix_alpha, const Eigen::MatrixXd &amp;errormatrix_beta)']]],
   ['update_5fjobs_5',['UPDATE_JOBS',['../namespacevotca_1_1xtp.html#a3e308698899af0fd295b141b50769449',1,'votca::xtp']]],
   ['update_5fpenalty_6',['update_penalty',['../classvotca_1_1xtp_1_1PMLocalization.html#a9271ace1af9ef9f9b7628c8e13130e1c',1,'votca::xtp::PMLocalization']]],
   ['updateatompostion_7',['updateAtomPostion',['../classvotca_1_1xtp_1_1Orbitals.html#a72d843a3010f6f40b7258ec7d638089f',1,'votca::xtp::Orbitals']]],

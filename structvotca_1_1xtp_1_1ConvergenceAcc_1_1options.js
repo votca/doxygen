@@ -11,6 +11,8 @@ var structvotca_1_1xtp_1_1ConvergenceAcc_1_1options =
     [ "mixingparameter", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#ae365f3aa938a0dea8706ce805d45abd7", null ],
     [ "mode", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a5ef1914c6de26c40700e4cf6f4411ea1", null ],
     [ "noisy", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#af381a6e026c1fa2b7743301736b0416a", null ],
+    [ "number_alpha_electrons", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a54f1d3634dde33742069171dffa6646c", null ],
+    [ "number_beta_electrons", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a4034801b82384eb4265f471ccb9d3601", null ],
     [ "numberofelectrons", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a5a8c5f4c2346e5a9502292fdaa60a1b1", null ],
     [ "usediis", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#abd8b825e0622a4ef74c753ac3e62e8b5", null ]
 ];
