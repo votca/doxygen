@@ -26,7 +26,7 @@ var searchData=
   ['updateoutput_23',['UpdateOutput',['../classvotca_1_1xtp_1_1Anderson.html#a2b2763645b39a813df563ecebfe33476',1,'votca::xtp::Anderson']]],
   ['updatepotentialpositions_24',['UpdatePotentialPositions',['../classvotca_1_1xtp_1_1ECPAOBasis.html#a5930287b326333bdfde48b1aa95e9820',1,'votca::xtp::ECPAOBasis']]],
   ['updateprojection_25',['updateProjection',['../classvotca_1_1xtp_1_1DavidsonSolver.html#acc5c8ad56db9c0c2c7aa86f2aa775370',1,'votca::xtp::DavidsonSolver']]],
-  ['updaterpainputenergies_26',['UpdateRPAInputEnergies',['../classvotca_1_1xtp_1_1RPA.html#ad95486903835d809aade457442e4ae4e',1,'votca::xtp::RPA']]],
+  ['updaterpainputenergies_26',['UpdateRPAInputEnergies',['../classvotca_1_1xtp_1_1RPA.html#ad95486903835d809aade457442e4ae4e',1,'votca::xtp::RPA::UpdateRPAInputEnergies()'],['../classvotca_1_1xtp_1_1RPA__UKS.html#af08924fe7504bca08b68876583c50e1a',1,'votca::xtp::RPA_UKS::UpdateRPAInputEnergies()']]],
   ['updateshellpositions_27',['UpdateShellPositions',['../classvotca_1_1xtp_1_1AOBasis.html#a05d24983a9877085975b6b58a79c7e7b',1,'votca::xtp::AOBasis']]],
   ['updatesteps_28',['updateSteps',['../classvotca_1_1xtp_1_1Chargecarrier.html#a469107480e7a675d1653b0690a54b12d',1,'votca::xtp::Chargecarrier']]],
   ['uppermatrix_29',['UpperMatrix',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html#ac7f2deb025068be396a27d185aa74399',1,'votca::xtp::Symmetric_Matrix']]],

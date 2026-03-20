@@ -20,5 +20,7 @@ var searchData=
   ['regular_5fgrid_2eh_17',['regular_grid.h',['../regular__grid_8h.html',1,'']]],
   ['residue_2eh_18',['residue.h',['../residue_8h.html',1,'']]],
   ['rpa_2ecc_19',['rpa.cc',['../rpa_8cc.html',1,'']]],
-  ['rpa_2eh_20',['rpa.h',['../rpa_8h.html',1,'']]]
+  ['rpa_2eh_20',['rpa.h',['../rpa_8h.html',1,'']]],
+  ['rpa_5fuks_2ecc_21',['rpa_uks.cc',['../rpa__uks_8cc.html',1,'']]],
+  ['rpa_5fuks_2eh_22',['rpa_uks.h',['../rpa__uks_8h.html',1,'']]]
 ];

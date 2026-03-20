@@ -21,7 +21,7 @@ var searchData=
   ['xmltopologyreader_2ecc_18',['xmltopologyreader.cc',['../xmltopologyreader_8cc.html',1,'']]],
   ['xmltopologyreader_2eh_19',['xmltopologyreader.h',['../xmltopologyreader_8h.html',1,'']]],
   ['xpr_5f_20',['xpr_',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html#a1118ea0f14b30cc3b094270242fba7e5',1,'votca::xtp::DipoleDipoleInteraction::InnerIterator']]],
-  ['xpy_21',['XpY',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#a9e9de32253df6f51ee1eec1531c42f82',1,'votca::xtp::RPA::rpa_eigensolution']]],
+  ['xpy_21',['XpY',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#a9e9de32253df6f51ee1eec1531c42f82',1,'votca::xtp::RPA::rpa_eigensolution::XpY'],['../structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#aae5aab17669c5f190f21a7748b3d7ebd',1,'votca::xtp::RPA_UKS::rpa_eigensolution::XpY']]],
   ['xtp_5fbind_5fcalculators_2eh_22',['xtp_bind_calculators.h',['../xtp__bind__calculators_8h.html',1,'']]],
   ['xtp_5fbind_5ftools_2eh_23',['xtp_bind_tools.h',['../xtp__bind__tools_8h.html',1,'']]],
   ['xtp_5fcalculators_2ecc_24',['xtp_calculators.cc',['../xtp__calculators_8cc.html',1,'']]],

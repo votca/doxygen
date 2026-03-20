@@ -3,7 +3,7 @@ var searchData=
   ['k_5f_0',['k_',['../classvotca_1_1xtp_1_1AOPlanewave.html#ac00ce101d85af7c1a304ef2da369ceea',1,'votca::xtp::AOPlanewave']]],
   ['kb_1',['kB',['../namespacevotca_1_1tools_1_1conv.html#a2acd226ee6cfa28078a508b2cf2dffdf',1,'votca::tools::conv']]],
   ['kcal2kj_2',['kcal2kj',['../namespacevotca_1_1tools_1_1conv.html#a39ff797da0c58c07ce20d2c40bf82dd5',1,'votca::tools::conv']]],
-  ['kdielmxinv_5fzero_5f_3',['kDielMxInv_zero_',['../classvotca_1_1xtp_1_1Sigma__CDA.html#afa07ee61a15647ffd36b0c69ff82aca1',1,'votca::xtp::Sigma_CDA']]],
+  ['kdielmxinv_5fzero_5f_3',['kDielMxInv_zero_',['../classvotca_1_1xtp_1_1Sigma__CDA.html#afa07ee61a15647ffd36b0c69ff82aca1',1,'votca::xtp::Sigma_CDA::kDielMxInv_zero_'],['../classvotca_1_1xtp_1_1Sigma__CDA__UKS.html#ada031ec3d5ea8a8274ca080cdd44983b',1,'votca::xtp::Sigma_CDA_UKS::kDielMxInv_zero_']]],
   ['keywordissingleline_4',['KeywordIsSingleLine',['../classvotca_1_1xtp_1_1Orca.html#ad5deaa7f98cd824b5dd049ea055a2baa',1,'votca::xtp::Orca']]],
   ['kilocalories_5',['kilocalories',['../namespacevotca_1_1tools.html#a9bad48919a06a85cfa246ccd38569318acf74f9e33a648fe57f178498ee90e8d4',1,'votca::tools']]],
   ['kilocalories_5fper_5fangstrom_6',['kilocalories_per_angstrom',['../namespacevotca_1_1tools.html#a57cc746da9eee19c1cc299966d7a5c23a73048ee68a0a2b077d306959f687112e',1,'votca::tools']]],

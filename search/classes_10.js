@@ -20,6 +20,6 @@ var searchData=
   ['qmthread_17',['QMThread',['../classvotca_1_1xtp_1_1QMThread.html',1,'votca::xtp']]],
   ['qmtool_18',['QMTool',['../classvotca_1_1xtp_1_1QMTool.html',1,'votca::xtp']]],
   ['qmtoolfactory_19',['QMToolFactory',['../classvotca_1_1xtp_1_1QMToolFactory.html',1,'votca::xtp']]],
-  ['qpfunc_20',['QPFunc',['../classvotca_1_1xtp_1_1GW_1_1QPFunc.html',1,'votca::xtp::GW']]],
+  ['qpfunc_20',['QPFunc',['../classvotca_1_1xtp_1_1GW_1_1QPFunc.html',1,'votca::xtp::GW::QPFunc'],['../classvotca_1_1xtp_1_1GW__UKS_1_1QPFunc.html',1,'votca::xtp::GW_UKS::QPFunc']]],
   ['quadraturefactory_21',['QuadratureFactory',['../classvotca_1_1xtp_1_1QuadratureFactory.html',1,'votca::xtp']]]
 ];

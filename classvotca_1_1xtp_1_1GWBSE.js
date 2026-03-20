@@ -3,6 +3,7 @@ var classvotca_1_1xtp_1_1GWBSE =
     [ "GWBSE", "classvotca_1_1xtp_1_1GWBSE.html#a998c88147616e45be6400697e4cc6c5f", null ],
     [ "addoutput", "classvotca_1_1xtp_1_1GWBSE.html#a5c3daa9e4e65620be018b222836ad0ae", null ],
     [ "CalculateVXC", "classvotca_1_1xtp_1_1GWBSE.html#a9ed29673e5dc4b8e42eaafe79ad9ff3c", null ],
+    [ "CalculateVXCSpinResolved", "classvotca_1_1xtp_1_1GWBSE.html#a1c07723476ae7aa683a063f4b177c688", null ],
     [ "CountCoreLevels", "classvotca_1_1xtp_1_1GWBSE.html#ac4d7898a0df78b9a002aefa310dd47fa", null ],
     [ "Evaluate", "classvotca_1_1xtp_1_1GWBSE.html#a14e5b9661eecd20836279aad86de4e9d", null ],
     [ "Identify", "classvotca_1_1xtp_1_1GWBSE.html#a5f14c87a8116c2f1b0eb5b745b13f6a4", null ],

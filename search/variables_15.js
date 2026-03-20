@@ -34,9 +34,11 @@ var searchData=
   ['vx_5fnoe_31',['Vx_noE',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a6cbffdd5b745d4a881bdf234f40ecafa',1,'votca::xtp::PolarSite::data']]],
   ['vxc_5f_32',['vxc_',['../classvotca_1_1xtp_1_1GW.html#ac854945f5080bfc58fb7cac7f19379b2',1,'votca::xtp::GW']]],
   ['vxc_5falpha_33',['vxc_alpha',['../structvotca_1_1xtp_1_1Vxc__Potential_1_1SpinResult.html#a73aa51d7806040b38ac9b731aedcd5c9',1,'votca::xtp::Vxc_Potential::SpinResult']]],
-  ['vxc_5fbeta_34',['vxc_beta',['../structvotca_1_1xtp_1_1Vxc__Potential_1_1SpinResult.html#aec217fd0c987c3816011285c5e2b0d41',1,'votca::xtp::Vxc_Potential::SpinResult']]],
-  ['vy_35',['Vy',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a07a119eb612686558c29edb3e7403281',1,'votca::xtp::PolarSite::data']]],
-  ['vy_5fnoe_36',['Vy_noE',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#abd8f3db384cd9664700070a4cd4ff997',1,'votca::xtp::PolarSite::data']]],
-  ['vz_37',['Vz',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a6a59852096bd21e6ae806b3a1c7a4ccf',1,'votca::xtp::PolarSite::data']]],
-  ['vz_5fnoe_38',['Vz_noE',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#affc724c5c8d24ea350ee68b5848cb8ac',1,'votca::xtp::PolarSite::data']]]
+  ['vxc_5falpha_5f_34',['vxc_alpha_',['../classvotca_1_1xtp_1_1GW__UKS.html#a5eae8d1c08361e822724b918bb17faa5',1,'votca::xtp::GW_UKS']]],
+  ['vxc_5fbeta_35',['vxc_beta',['../structvotca_1_1xtp_1_1Vxc__Potential_1_1SpinResult.html#aec217fd0c987c3816011285c5e2b0d41',1,'votca::xtp::Vxc_Potential::SpinResult']]],
+  ['vxc_5fbeta_5f_36',['vxc_beta_',['../classvotca_1_1xtp_1_1GW__UKS.html#ab21d1f8b29cbb7c2c36388b6219307af',1,'votca::xtp::GW_UKS']]],
+  ['vy_37',['Vy',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a07a119eb612686558c29edb3e7403281',1,'votca::xtp::PolarSite::data']]],
+  ['vy_5fnoe_38',['Vy_noE',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#abd8f3db384cd9664700070a4cd4ff997',1,'votca::xtp::PolarSite::data']]],
+  ['vz_39',['Vz',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a6a59852096bd21e6ae806b3a1c7a4ccf',1,'votca::xtp::PolarSite::data']]],
+  ['vz_5fnoe_40',['Vz_noE',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#affc724c5c8d24ea350ee68b5848cb8ac',1,'votca::xtp::PolarSite::data']]]
 ];

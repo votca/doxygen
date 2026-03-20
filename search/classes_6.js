@@ -35,7 +35,8 @@ var searchData=
   ['group_5ft_32',['group_t',['../structvotca_1_1csg_1_1Imc_1_1group__t.html',1,'votca::csg::Imc::group_t'],['../structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html',1,'votca::csg::RDFCalculator::group_t']]],
   ['growriter_33',['GROWriter',['../classvotca_1_1csg_1_1GROWriter.html',1,'votca::csg']]],
   ['gw_34',['GW',['../classvotca_1_1xtp_1_1GW.html',1,'votca::xtp']]],
-  ['gwbse_35',['GWBSE',['../classvotca_1_1xtp_1_1GWBSE.html',1,'votca::xtp']]],
-  ['gwbseengine_36',['GWBSEEngine',['../classvotca_1_1xtp_1_1GWBSEEngine.html',1,'votca::xtp']]],
-  ['gyrationtensor_37',['Gyrationtensor',['../structvotca_1_1xtp_1_1Gyrationtensor.html',1,'votca::xtp']]]
+  ['gw_5fuks_35',['GW_UKS',['../classvotca_1_1xtp_1_1GW__UKS.html',1,'votca::xtp']]],
+  ['gwbse_36',['GWBSE',['../classvotca_1_1xtp_1_1GWBSE.html',1,'votca::xtp']]],
+  ['gwbseengine_37',['GWBSEEngine',['../classvotca_1_1xtp_1_1GWBSEEngine.html',1,'votca::xtp']]],
+  ['gyrationtensor_38',['Gyrationtensor',['../structvotca_1_1xtp_1_1Gyrationtensor.html',1,'votca::xtp']]]
 ];

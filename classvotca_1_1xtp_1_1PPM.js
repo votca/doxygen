@@ -6,6 +6,7 @@ var classvotca_1_1xtp_1_1PPM =
     [ "getPpm_phi", "classvotca_1_1xtp_1_1PPM.html#a248ba355cedc074e14fbab250cff1b64", null ],
     [ "getPpm_weight", "classvotca_1_1xtp_1_1PPM.html#ab201948aed89d6485a6b2925fc1331eb", null ],
     [ "PPM_construct_parameters", "classvotca_1_1xtp_1_1PPM.html#a5df90bfbefbff4e461d758a49c3c8daf", null ],
+    [ "PPM_construct_parameters", "classvotca_1_1xtp_1_1PPM.html#a3cfc184a02aaff36943d7921aa133fd8", null ],
     [ "ppm_freq_", "classvotca_1_1xtp_1_1PPM.html#a31a5f6ffbddaf59890db0bc5898d6da8", null ],
     [ "ppm_phi_", "classvotca_1_1xtp_1_1PPM.html#a9453bd42c47c4546eb3c2a0a606a6be9", null ],
     [ "ppm_weight_", "classvotca_1_1xtp_1_1PPM.html#a5469cd610d9569532e4134fd05099d2f", null ],

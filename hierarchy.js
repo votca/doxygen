@@ -267,6 +267,7 @@ var hierarchy =
     [ "votca::csg::Imc::group_t", "structvotca_1_1csg_1_1Imc_1_1group__t.html", null ],
     [ "votca::csg::RDFCalculator::group_t", "structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html", null ],
     [ "votca::xtp::GW", "classvotca_1_1xtp_1_1GW.html", null ],
+    [ "votca::xtp::GW_UKS", "classvotca_1_1xtp_1_1GW__UKS.html", null ],
     [ "votca::xtp::GWBSE", "classvotca_1_1xtp_1_1GWBSE.html", null ],
     [ "votca::xtp::GWBSEEngine", "classvotca_1_1xtp_1_1GWBSEEngine.html", null ],
     [ "votca::xtp::Gyrationtensor", "structvotca_1_1xtp_1_1Gyrationtensor.html", null ],
@@ -349,6 +350,9 @@ var hierarchy =
     [ "votca::tools::ObjectFactory< std::string, Sigma_base, TCMatrix_gwbse &, RPA & >", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::SigmaFactory", "classvotca_1_1xtp_1_1SigmaFactory.html", null ]
     ] ],
+    [ "votca::tools::ObjectFactory< std::string, Sigma_base_UKS, TCMatrix_gwbse_spin &, RPA_UKS &, TCMatrix::SpinChannel >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+      [ "votca::xtp::SigmaFactory_UKS", "classvotca_1_1xtp_1_1SigmaFactory__UKS.html", null ]
+    ] ],
     [ "votca::tools::ObjectFactory< std::string, StateFilter_base >", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::FilterFactory", "classvotca_1_1xtp_1_1FilterFactory.html", null ]
     ] ],
@@ -362,8 +366,10 @@ var hierarchy =
     [ "votca::xtp::BSE::options", "structvotca_1_1xtp_1_1BSE_1_1options.html", null ],
     [ "votca::xtp::ConvergenceAcc::options", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html", null ],
     [ "votca::xtp::GW::options", "structvotca_1_1xtp_1_1GW_1_1options.html", null ],
+    [ "votca::xtp::GW_UKS::options", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html", null ],
     [ "votca::xtp::ImaginaryAxisIntegration::options", "structvotca_1_1xtp_1_1ImaginaryAxisIntegration_1_1options.html", null ],
     [ "votca::xtp::Sigma_base::options", "structvotca_1_1xtp_1_1Sigma__base_1_1options.html", null ],
+    [ "votca::xtp::Sigma_base_UKS::options", "structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html", null ],
     [ "votca::tools::OptionsHandler", "classvotca_1_1tools_1_1OptionsHandler.html", null ],
     [ "votca::xtp::Orbitals", "classvotca_1_1xtp_1_1Orbitals.html", null ],
     [ "votca::xtp::OrbReorder", "classvotca_1_1xtp_1_1OrbReorder.html", null ],
@@ -404,6 +410,7 @@ var hierarchy =
     [ "votca::xtp::QMStateCarrierStorage< T >", "classvotca_1_1xtp_1_1QMStateCarrierStorage.html", null ],
     [ "votca::xtp::QMStateType", "classvotca_1_1xtp_1_1QMStateType.html", null ],
     [ "votca::xtp::GW::QPFunc", "classvotca_1_1xtp_1_1GW_1_1QPFunc.html", null ],
+    [ "votca::xtp::GW_UKS::QPFunc", "classvotca_1_1xtp_1_1GW__UKS_1_1QPFunc.html", null ],
     [ "votca::xtp::GridContainers::radial_grid", "structvotca_1_1xtp_1_1GridContainers_1_1radial__grid.html", null ],
     [ "votca::tools::Random", "classvotca_1_1tools_1_1Random.html", null ],
     [ "votca::tools::RangeParser", "classvotca_1_1tools_1_1RangeParser.html", null ],
@@ -424,6 +431,8 @@ var hierarchy =
     [ "votca::xtp::DavidsonSolver::RitzEigenPair", "structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html", null ],
     [ "votca::xtp::RPA", "classvotca_1_1xtp_1_1RPA.html", null ],
     [ "votca::xtp::RPA::rpa_eigensolution", "structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html", null ],
+    [ "votca::xtp::RPA_UKS::rpa_eigensolution", "structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html", null ],
+    [ "votca::xtp::RPA_UKS", "classvotca_1_1xtp_1_1RPA__UKS.html", null ],
     [ "votca::xtp::SegId", "classvotca_1_1xtp_1_1SegId.html", null ],
     [ "votca::xtp::SegmentMapper< AtomContainer >::Seginfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html", null ],
     [ "votca::xtp::SegmentMapper< AtomContainer >", "classvotca_1_1xtp_1_1SegmentMapper.html", null ],
@@ -433,6 +442,11 @@ var hierarchy =
       [ "votca::xtp::Sigma_CDA", "classvotca_1_1xtp_1_1Sigma__CDA.html", null ],
       [ "votca::xtp::Sigma_Exact", "classvotca_1_1xtp_1_1Sigma__Exact.html", null ],
       [ "votca::xtp::Sigma_PPM", "classvotca_1_1xtp_1_1Sigma__PPM.html", null ]
+    ] ],
+    [ "votca::xtp::Sigma_base_UKS", "classvotca_1_1xtp_1_1Sigma__base__UKS.html", [
+      [ "votca::xtp::Sigma_CDA_UKS", "classvotca_1_1xtp_1_1Sigma__CDA__UKS.html", null ],
+      [ "votca::xtp::Sigma_Exact_UKS", "classvotca_1_1xtp_1_1Sigma__Exact__UKS.html", null ],
+      [ "votca::xtp::Sigma_PPM_UKS", "classvotca_1_1xtp_1_1Sigma__PPM__UKS.html", null ]
     ] ],
     [ "votca::xtp::GridContainers::spherical_grid", "structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html", null ],
     [ "votca::xtp::ConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1SpinDensity.html", null ],
@@ -468,6 +482,7 @@ var hierarchy =
       [ "votca::xtp::TCMatrix_dft", "classvotca_1_1xtp_1_1TCMatrix__dft.html", null ],
       [ "votca::xtp::TCMatrix_gwbse", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html", null ]
     ] ],
+    [ "votca::xtp::TCMatrix_gwbse_spin", "structvotca_1_1xtp_1_1TCMatrix__gwbse__spin.html", null ],
     [ "votca::tools::Thread", "classvotca_1_1tools_1_1Thread.html", [
       [ "votca::csg::CsgApplication::Worker", "classvotca_1_1csg_1_1CsgApplication_1_1Worker.html", [
         [ "CsgREupdateWorker", "classCsgREupdateWorker.html", null ],
