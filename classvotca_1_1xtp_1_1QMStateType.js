@@ -9,7 +9,8 @@ var classvotca_1_1xtp_1_1QMStateType =
       [ "PQPstate", "classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ae0acab0b2ea033ec422edf6307460c21", null ],
       [ "DQPstate", "classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac38ed43cdfb00d13f8d30dd9861f072b", null ],
       [ "KSstate", "classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a734e21875c92fc7531db01ec3af9a745", null ],
-      [ "LMOstate", "classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a56ff4f345deb58de7c991b71d0f9765e", null ]
+      [ "LMOstate", "classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a56ff4f345deb58de7c991b71d0f9765e", null ],
+      [ "ExcitonUKS", "classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac931c3434d2bca4fb1d42c13729ca7c2", null ]
     ] ],
     [ "QMStateType", "classvotca_1_1xtp_1_1QMStateType.html#a38f2ac9d6b6e9d901b5de54e8f65d019", null ],
     [ "QMStateType", "classvotca_1_1xtp_1_1QMStateType.html#a2455b3d00018df9b335a74ae0463e9d9", null ],

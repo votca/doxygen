@@ -93,7 +93,9 @@ var hierarchy =
     ] ],
     [ "votca::xtp::BSE", "classvotca_1_1xtp_1_1BSE.html", null ],
     [ "votca::xtp::BSE_Population", "structvotca_1_1xtp_1_1BSE__Population.html", null ],
+    [ "votca::xtp::BSE_UKS", "classvotca_1_1xtp_1_1BSE__UKS.html", null ],
     [ "votca::xtp::BSEOperator_Options", "structvotca_1_1xtp_1_1BSEOperator__Options.html", null ],
+    [ "votca::xtp::BSEOperatorUKS_Options", "structvotca_1_1xtp_1_1BSEOperatorUKS__Options.html", null ],
     [ "votca::tools::Calculator", "classvotca_1_1tools_1_1Calculator.html", [
       [ "votca::xtp::JobCalculator", "classvotca_1_1xtp_1_1JobCalculator.html", [
         [ "votca::xtp::ParallelXJobCalc< std::vector< Job > >", "classvotca_1_1xtp_1_1ParallelXJobCalc.html", [
@@ -203,7 +205,14 @@ var hierarchy =
         [ "votca::xtp::BSE_OPERATOR< 0, 1, 0, 0 >", "classvotca_1_1xtp_1_1BSE__OPERATOR.html", null ],
         [ "votca::xtp::BSE_OPERATOR< 0, 0, 1, 0 >", "classvotca_1_1xtp_1_1BSE__OPERATOR.html", null ],
         [ "votca::xtp::BSE_OPERATOR< 0, 0, 0, 1 >", "classvotca_1_1xtp_1_1BSE__OPERATOR.html", null ],
-        [ "votca::xtp::BSE_OPERATOR< cqp, cx, cd, cd2 >", "classvotca_1_1xtp_1_1BSE__OPERATOR.html", null ]
+        [ "votca::xtp::BSE_OPERATOR_UKS< 1, 1, 1, 0 >", "classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html", null ],
+        [ "votca::xtp::BSE_OPERATOR_UKS< 0, 1, 0, 1 >", "classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html", null ],
+        [ "votca::xtp::BSE_OPERATOR_UKS< 0, 0, 1, 0 >", "classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html", null ],
+        [ "votca::xtp::BSE_OPERATOR_UKS< 0, 0, 0, 1 >", "classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html", null ],
+        [ "votca::xtp::BSE_OPERATOR_UKS< 1, 0, 0, 0 >", "classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html", null ],
+        [ "votca::xtp::BSE_OPERATOR_UKS< 0, 1, 0, 0 >", "classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html", null ],
+        [ "votca::xtp::BSE_OPERATOR< cqp, cx, cd, cd2 >", "classvotca_1_1xtp_1_1BSE__OPERATOR.html", null ],
+        [ "votca::xtp::BSE_OPERATOR_UKS< cqp, cx, cd, cd2 >", "classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html", null ]
       ] ]
     ] ],
     [ "votca::tools::EigenSystem", "classvotca_1_1tools_1_1EigenSystem.html", null ],
@@ -219,6 +228,7 @@ var hierarchy =
     [ "votca::csg::ExclusionList::exclusion_t", "structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html", null ],
     [ "votca::csg::ExclusionList", "classvotca_1_1csg_1_1ExclusionList.html", null ],
     [ "votca::xtp::BSE::ExpectationValues", "structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html", null ],
+    [ "votca::xtp::BSE_UKS::ExpectationValues", "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html", null ],
     [ "votca::xtp::ExtendedHuckelParameters", "classvotca_1_1xtp_1_1ExtendedHuckelParameters.html", null ],
     [ "votca::xtp::FCDDiabatization", "classvotca_1_1xtp_1_1FCDDiabatization.html", null ],
     [ "votca::xtp::SegmentMapper< AtomContainer >::FragInfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1FragInfo.html", null ],
@@ -364,6 +374,7 @@ var hierarchy =
       [ "votca::xtp::ADIIS_costfunction", "classvotca_1_1xtp_1_1ADIIS__costfunction.html", null ]
     ] ],
     [ "votca::xtp::BSE::options", "structvotca_1_1xtp_1_1BSE_1_1options.html", null ],
+    [ "votca::xtp::BSE_UKS::options", "structvotca_1_1xtp_1_1BSE__UKS_1_1options.html", null ],
     [ "votca::xtp::ConvergenceAcc::options", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html", null ],
     [ "votca::xtp::GW::options", "structvotca_1_1xtp_1_1GW_1_1options.html", null ],
     [ "votca::xtp::GW_UKS::options", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html", null ],
@@ -449,6 +460,7 @@ var hierarchy =
       [ "votca::xtp::Sigma_PPM_UKS", "classvotca_1_1xtp_1_1Sigma__PPM__UKS.html", null ]
     ] ],
     [ "votca::xtp::GridContainers::spherical_grid", "structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html", null ],
+    [ "votca::xtp::BSE_OPERATOR_UKS< cqp, cx, cd, cd2 >::SpinBlockInfo", "structvotca_1_1xtp_1_1BSE__OPERATOR__UKS_1_1SpinBlockInfo.html", null ],
     [ "votca::xtp::ConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1SpinDensity.html", null ],
     [ "votca::xtp::DFTEngine::SpinDensity", "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html", null ],
     [ "votca::xtp::UKSConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1UKSConvergenceAcc_1_1SpinDensity.html", null ],

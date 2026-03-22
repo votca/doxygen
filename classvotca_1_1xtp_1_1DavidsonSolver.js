@@ -48,6 +48,7 @@ var classvotca_1_1xtp_1_1DavidsonSolver =
     [ "set_size_update", "classvotca_1_1xtp_1_1DavidsonSolver.html#a808ef25006a7b405e8d638779e838b98", null ],
     [ "set_tolerance", "classvotca_1_1xtp_1_1DavidsonSolver.html#a890af14cb1f2a17cf118e8af6553d3ea", null ],
     [ "setupInitialEigenvectors", "classvotca_1_1xtp_1_1DavidsonSolver.html#a69766d3f412f4f4243657134db12a78d", null ],
+    [ "solve", "classvotca_1_1xtp_1_1DavidsonSolver.html#a602daa85a1171afc41556f4012ad5fc4", null ],
     [ "solve", "classvotca_1_1xtp_1_1DavidsonSolver.html#a5339b056eba23589435959fd2b3415cf", null ],
     [ "storeConvergedData", "classvotca_1_1xtp_1_1DavidsonSolver.html#ac3af02f122184dec96515746a8f2134f", null ],
     [ "storeEigenPairs", "classvotca_1_1xtp_1_1DavidsonSolver.html#ab2c86ebdd508912ab3e05e63ce89f579", null ],

@@ -22,7 +22,7 @@ var searchData=
   ['url_19',['url',['../structvotca_1_1tools_1_1globals.html#a408070115bc674bc07b2a7578dd5840a',1,'votca::tools::globals']]],
   ['use_5fchelpg_5f_20',['use_CHELPG_',['../classvotca_1_1xtp_1_1Esp2multipole.html#a28be76720141b867039c9e9c0a39d883',1,'votca::xtp::Esp2multipole']]],
   ['use_5fgs_5ffor_5fex_5f_21',['use_gs_for_ex_',['../classvotca_1_1xtp_1_1QMMM.html#af6a9ddb00118e8247c5c17fbd5cdd296',1,'votca::xtp::QMMM']]],
-  ['use_5fhqp_5foffdiag_22',['use_Hqp_offdiag',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a05e6a4fd8a751545141d0567369d2443',1,'votca::xtp::BSE::options']]],
+  ['use_5fhqp_5foffdiag_22',['use_Hqp_offdiag',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a05e6a4fd8a751545141d0567369d2443',1,'votca::xtp::BSE::options::use_Hqp_offdiag'],['../structvotca_1_1xtp_1_1BSE__UKS_1_1options.html#a609f4e7f63e9f79962557ef345a00560',1,'votca::xtp::BSE_UKS::options::use_Hqp_offdiag']]],
   ['use_5fhqp_5foffdiag_5f_23',['use_Hqp_offdiag_',['../classvotca_1_1xtp_1_1Orbitals.html#acb49fb909223157852bb573e0e1a8428',1,'votca::xtp::Orbitals']]],
   ['use_5flowdin_5f_24',['use_lowdin_',['../classvotca_1_1xtp_1_1Esp2multipole.html#a136454d83ee5aa18bf71d7dd74ae9c5f',1,'votca::xtp::Esp2multipole']]],
   ['use_5fmulliken_5f_25',['use_mulliken_',['../classvotca_1_1xtp_1_1Esp2multipole.html#a58c439faf3a2c0f6ed6fb4a68339cedd',1,'votca::xtp::Esp2multipole']]],
@@ -32,6 +32,6 @@ var searchData=
   ['usedmixing_5f_29',['usedmixing_',['../classvotca_1_1xtp_1_1ConvergenceAcc.html#acc7fa16a6e029f80c58794372e19a01a',1,'votca::xtp::ConvergenceAcc::usedmixing_'],['../classvotca_1_1xtp_1_1UKSConvergenceAcc.html#a02145ec1a98712d0596f5145fbbe1308',1,'votca::xtp::UKSConvergenceAcc::usedmixing_']]],
   ['useexcitoncutoff_5f_30',['useExcitonCutoff_',['../classvotca_1_1xtp_1_1Neighborlist.html#a04a160e619afff32580028b95d0c679b',1,'votca::xtp::Neighborlist']]],
   ['useri_5f_31',['useRI_',['../classvotca_1_1xtp_1_1ERDiabatization.html#ad3921a60bf0dc627552f9d60b992d5fa',1,'votca::xtp::ERDiabatization::useRI_'],['../classvotca_1_1xtp_1_1Diabatization.html#a94daec4911e66cb9b3424e36ad1e3844',1,'votca::xtp::Diabatization::useRI_']]],
-  ['usetda_32',['useTDA',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a659a54cb1fcd033929c79d48476ce374',1,'votca::xtp::BSE::options']]],
+  ['usetda_32',['useTDA',['../structvotca_1_1xtp_1_1BSE_1_1options.html#a659a54cb1fcd033929c79d48476ce374',1,'votca::xtp::BSE::options::useTDA'],['../structvotca_1_1xtp_1_1BSE__UKS_1_1options.html#a1898bcf96e4f0c9f8859334789d6dbe8',1,'votca::xtp::BSE_UKS::options::useTDA']]],
   ['usetda_5f_33',['useTDA_',['../classvotca_1_1xtp_1_1Orbitals.html#a83029c41b0a8ca0933bc5abbe64e55fd',1,'votca::xtp::Orbitals']]]
 ];

@@ -12,6 +12,7 @@ var classvotca_1_1xtp_1_1GWBSE =
     [ "auxbasis_name_", "classvotca_1_1xtp_1_1GWBSE.html#a713a872e3b46b2f66847d125c98a6eda", null ],
     [ "bseopt_", "classvotca_1_1xtp_1_1GWBSE.html#a564aa763e95a81bf854cfe75c478cace", null ],
     [ "dftbasis_name_", "classvotca_1_1xtp_1_1GWBSE.html#ab5300ca25aad30ba6af8c9358032e96a", null ],
+    [ "do_bse_exciton_uks_", "classvotca_1_1xtp_1_1GWBSE.html#a184fa600ca52f0cf09ca06413af5fdd5", null ],
     [ "do_bse_singlets_", "classvotca_1_1xtp_1_1GWBSE.html#a7b035895c784cf7532e5c2f7bed69399", null ],
     [ "do_bse_triplets_", "classvotca_1_1xtp_1_1GWBSE.html#a5db56d4c819f24186312aeb3a703ede5", null ],
     [ "do_dynamical_screening_bse_", "classvotca_1_1xtp_1_1GWBSE.html#afcb46a7d3183f41723ad081c94931364", null ],

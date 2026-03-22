@@ -24,10 +24,15 @@ var searchData=
   ['boundarycondition_2eh_21',['boundarycondition.h',['../boundarycondition_8h.html',1,'']]],
   ['bse_2ecc_22',['bse.cc',['../bse_8cc.html',1,'']]],
   ['bse_2eh_23',['bse.h',['../bse_8h.html',1,'']]],
-  ['bse_5foperator_2ecc_24',['bse_operator.cc',['../bse__operator_8cc.html',1,'']]],
-  ['bse_5foperator_2eh_25',['bse_operator.h',['../bse__operator_8h.html',1,'']]],
-  ['bse_5fpopulation_2eh_26',['bse_population.h',['../bse__population_8h.html',1,'']]],
-  ['bsecoupling_2ecc_27',['bsecoupling.cc',['../bsecoupling_8cc.html',1,'']]],
-  ['bsecoupling_2eh_28',['bsecoupling.h',['../bsecoupling_8h.html',1,'']]],
-  ['bseoperator_5fbtda_2eh_29',['bseoperator_btda.h',['../bseoperator__btda_8h.html',1,'']]]
+  ['bse_5finitialization_2eh_24',['bse_initialization.h',['../bse__initialization_8h.html',1,'']]],
+  ['bse_5foperator_2ecc_25',['bse_operator.cc',['../bse__operator_8cc.html',1,'']]],
+  ['bse_5foperator_2eh_26',['bse_operator.h',['../bse__operator_8h.html',1,'']]],
+  ['bse_5foperator_5fuks_2ecc_27',['bse_operator_uks.cc',['../bse__operator__uks_8cc.html',1,'']]],
+  ['bse_5foperator_5fuks_2eh_28',['bse_operator_uks.h',['../bse__operator__uks_8h.html',1,'']]],
+  ['bse_5fpopulation_2eh_29',['bse_population.h',['../bse__population_8h.html',1,'']]],
+  ['bse_5fuks_2ecc_30',['bse_uks.cc',['../bse__uks_8cc.html',1,'']]],
+  ['bse_5fuks_2eh_31',['bse_uks.h',['../bse__uks_8h.html',1,'']]],
+  ['bsecoupling_2ecc_32',['bsecoupling.cc',['../bsecoupling_8cc.html',1,'']]],
+  ['bsecoupling_2eh_33',['bsecoupling.h',['../bsecoupling_8h.html',1,'']]],
+  ['bseoperator_5fbtda_2eh_34',['bseoperator_btda.h',['../bseoperator__btda_8h.html',1,'']]]
 ];

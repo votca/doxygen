@@ -48,7 +48,7 @@ var searchData=
   ['orthogonalize_45',['orthogonalize',['../classvotca_1_1xtp_1_1DavidsonSolver.html#ac51b5b3f371c864f7fe70c594c4203c3',1,'votca::xtp::DavidsonSolver']]],
   ['orthogonalizects_46',['OrthogonalizeCTs',['../classvotca_1_1xtp_1_1BSECoupling.html#af75a93f738f7d332235c72d41800fd2d',1,'votca::xtp::BSECoupling']]],
   ['orthogonalizeguess_47',['OrthogonalizeGuess',['../classvotca_1_1xtp_1_1DFTEngine.html#acf656072c4aba0603545b09aabafa658',1,'votca::xtp::DFTEngine']]],
-  ['oscillatorstrengths_48',['Oscillatorstrengths',['../classvotca_1_1xtp_1_1Orbitals.html#a76309d578fd7165002f6581ca468e4d0',1,'votca::xtp::Orbitals']]],
+  ['oscillatorstrengths_48',['Oscillatorstrengths',['../classvotca_1_1xtp_1_1Orbitals.html#a76309d578fd7165002f6581ca468e4d0',1,'votca::xtp::Orbitals::Oscillatorstrengths() const'],['../classvotca_1_1xtp_1_1Orbitals.html#aca98d2ef4f88619742b46d4b2b46bd07',1,'votca::xtp::Orbitals::Oscillatorstrengths(const QMStateType &amp;type) const']]],
   ['outersize_49',['outerSize',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a41fb3378c0e7d37ee2cd12018c126579',1,'votca::xtp::DipoleDipoleInteraction']]],
   ['outputdimension_50',['OutputDimension',['../namespacevotca_1_1xtp.html#ad7ab6396d778b0f265a9d1b2b41b32b2',1,'votca::xtp']]],
   ['overwritedefaultswithuserinput_51',['OverwriteDefaultsWithUserInput',['../classvotca_1_1tools_1_1OptionsHandler.html#a09325677c2cf6cbbbcbaf297239a1d70',1,'votca::tools::OptionsHandler']]]

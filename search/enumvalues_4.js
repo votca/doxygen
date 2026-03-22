@@ -9,5 +9,6 @@ var searchData=
   ['ellipsoidal_6',['ellipsoidal',['../classvotca_1_1csg_1_1Bead.html#ade14b4e053285b8614fc426792c29497a53bb1e40c2ac60d81570277b36e7960c',1,'votca::csg::Bead']]],
   ['empty_7',['empty',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010adc626e49c6601b86eb0de22ea6c516b9',1,'votca::csg::BeadMotif']]],
   ['error_8',['error',['../structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6',1,'votca::Log']]],
-  ['excitoncl_9',['Excitoncl',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7a6e59cab452055736212bfae1c257974a',1,'votca::xtp::QMPair']]]
+  ['excitoncl_9',['Excitoncl',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7a6e59cab452055736212bfae1c257974a',1,'votca::xtp::QMPair']]],
+  ['excitonuks_10',['ExcitonUKS',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac931c3434d2bca4fb1d42c13729ca7c2',1,'votca::xtp::QMStateType']]]
 ];

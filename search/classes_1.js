@@ -25,7 +25,16 @@ var searchData=
   ['bse_5foperator_3c_201_2c_200_2c_200_2c_200_20_3e_22',['BSE_OPERATOR&lt; 1, 0, 0, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
   ['bse_5foperator_3c_201_2c_200_2c_201_2c_200_20_3e_23',['BSE_OPERATOR&lt; 1, 0, 1, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
   ['bse_5foperator_3c_201_2c_202_2c_201_2c_200_20_3e_24',['BSE_OPERATOR&lt; 1, 2, 1, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR.html',1,'votca::xtp']]],
-  ['bse_5fpopulation_25',['BSE_Population',['../structvotca_1_1xtp_1_1BSE__Population.html',1,'votca::xtp']]],
-  ['bsecoupling_26',['BSECoupling',['../classvotca_1_1xtp_1_1BSECoupling.html',1,'votca::xtp']]],
-  ['bseoperator_5foptions_27',['BSEOperator_Options',['../structvotca_1_1xtp_1_1BSEOperator__Options.html',1,'votca::xtp']]]
+  ['bse_5foperator_5fuks_25',['BSE_OPERATOR_UKS',['../classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html',1,'votca::xtp']]],
+  ['bse_5foperator_5fuks_3c_200_2c_200_2c_200_2c_201_20_3e_26',['BSE_OPERATOR_UKS&lt; 0, 0, 0, 1 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html',1,'votca::xtp']]],
+  ['bse_5foperator_5fuks_3c_200_2c_200_2c_201_2c_200_20_3e_27',['BSE_OPERATOR_UKS&lt; 0, 0, 1, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html',1,'votca::xtp']]],
+  ['bse_5foperator_5fuks_3c_200_2c_201_2c_200_2c_200_20_3e_28',['BSE_OPERATOR_UKS&lt; 0, 1, 0, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html',1,'votca::xtp']]],
+  ['bse_5foperator_5fuks_3c_200_2c_201_2c_200_2c_201_20_3e_29',['BSE_OPERATOR_UKS&lt; 0, 1, 0, 1 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html',1,'votca::xtp']]],
+  ['bse_5foperator_5fuks_3c_201_2c_200_2c_200_2c_200_20_3e_30',['BSE_OPERATOR_UKS&lt; 1, 0, 0, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html',1,'votca::xtp']]],
+  ['bse_5foperator_5fuks_3c_201_2c_201_2c_201_2c_200_20_3e_31',['BSE_OPERATOR_UKS&lt; 1, 1, 1, 0 &gt;',['../classvotca_1_1xtp_1_1BSE__OPERATOR__UKS.html',1,'votca::xtp']]],
+  ['bse_5fpopulation_32',['BSE_Population',['../structvotca_1_1xtp_1_1BSE__Population.html',1,'votca::xtp']]],
+  ['bse_5fuks_33',['BSE_UKS',['../classvotca_1_1xtp_1_1BSE__UKS.html',1,'votca::xtp']]],
+  ['bsecoupling_34',['BSECoupling',['../classvotca_1_1xtp_1_1BSECoupling.html',1,'votca::xtp']]],
+  ['bseoperator_5foptions_35',['BSEOperator_Options',['../structvotca_1_1xtp_1_1BSEOperator__Options.html',1,'votca::xtp']]],
+  ['bseoperatoruks_5foptions_36',['BSEOperatorUKS_Options',['../structvotca_1_1xtp_1_1BSEOperatorUKS__Options.html',1,'votca::xtp']]]
 ];
