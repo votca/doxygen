@@ -108,6 +108,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "qmstate.h", "qmstate_8h.html", "qmstate_8h" ],
     [ "qmthread.h", "qmthread_8h.html", "qmthread_8h" ],
     [ "qmtool.h", "qmtool_8h.html", "qmtool_8h" ],
+    [ "qp_solver_utils.h", "qp__solver__utils_8h.html", "qp__solver__utils_8h" ],
     [ "quadrature_factory.h", "quadrature__factory_8h.html", "quadrature__factory_8h" ],
     [ "radial_euler_maclaurin_rule.h", "radial__euler__maclaurin__rule_8h.html", "radial__euler__maclaurin__rule_8h" ],
     [ "rate_engine.h", "rate__engine_8h.html", "rate__engine_8h" ],

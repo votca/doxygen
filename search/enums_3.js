@@ -4,5 +4,6 @@ var searchData=
   ['eboxtype_1',['eBoxtype',['../classvotca_1_1csg_1_1BoundaryCondition.html#a51b6372db30b8292b9d6cf51716af11c',1,'votca::csg::BoundaryCondition']]],
   ['energyunit_2',['EnergyUnit',['../namespacevotca_1_1tools.html#a9bad48919a06a85cfa246ccd38569318',1,'votca::tools']]],
   ['errors_3',['Errors',['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741',1,'votca::xtp::NewtonRapson']]],
-  ['estatic_4',['Estatic',['../namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102',1,'votca::xtp']]]
+  ['estatic_4',['Estatic',['../namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102',1,'votca::xtp']]],
+  ['evalstage_5',['EvalStage',['../namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036af',1,'votca::xtp::qp_solver']]]
 ];

@@ -152,6 +152,12 @@ var annotated_dup =
           [ "InferDataType< std::uint8_t >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4" ],
           [ "InferDataType< unsigned >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4" ]
         ] ],
+        [ "qp_solver", "namespacevotca_1_1xtp_1_1qp__solver.html", [
+          [ "RootCandidate", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate" ],
+          [ "SolverOptions", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions.html", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions" ],
+          [ "Stats", "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html", "structvotca_1_1xtp_1_1qp__solver_1_1Stats" ],
+          [ "WindowDiagnostics", "structvotca_1_1xtp_1_1qp__solver_1_1WindowDiagnostics.html", "structvotca_1_1xtp_1_1qp__solver_1_1WindowDiagnostics" ]
+        ] ],
         [ "ActiveDensityMatrix", "classvotca_1_1xtp_1_1ActiveDensityMatrix.html", "classvotca_1_1xtp_1_1ActiveDensityMatrix" ],
         [ "ADIIS", "classvotca_1_1xtp_1_1ADIIS.html", "classvotca_1_1xtp_1_1ADIIS" ],
         [ "ADIIS_costfunction", "classvotca_1_1xtp_1_1ADIIS__costfunction.html", "classvotca_1_1xtp_1_1ADIIS__costfunction" ],

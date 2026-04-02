@@ -440,6 +440,7 @@ var hierarchy =
     [ "votca::xtp::Regular_Grid", "classvotca_1_1xtp_1_1Regular__Grid.html", null ],
     [ "votca::csg::Residue", "classvotca_1_1csg_1_1Residue.html", null ],
     [ "votca::xtp::DavidsonSolver::RitzEigenPair", "structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html", null ],
+    [ "votca::xtp::qp_solver::RootCandidate", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html", null ],
     [ "votca::xtp::RPA", "classvotca_1_1xtp_1_1RPA.html", null ],
     [ "votca::xtp::RPA::rpa_eigensolution", "structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html", null ],
     [ "votca::xtp::RPA_UKS::rpa_eigensolution", "structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html", null ],
@@ -459,6 +460,7 @@ var hierarchy =
       [ "votca::xtp::Sigma_Exact_UKS", "classvotca_1_1xtp_1_1Sigma__Exact__UKS.html", null ],
       [ "votca::xtp::Sigma_PPM_UKS", "classvotca_1_1xtp_1_1Sigma__PPM__UKS.html", null ]
     ] ],
+    [ "votca::xtp::qp_solver::SolverOptions", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions.html", null ],
     [ "votca::xtp::GridContainers::spherical_grid", "structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html", null ],
     [ "votca::xtp::BSE_OPERATOR_UKS< cqp, cx, cd, cd2 >::SpinBlockInfo", "structvotca_1_1xtp_1_1BSE__OPERATOR__UKS_1_1SpinBlockInfo.html", null ],
     [ "votca::xtp::ConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1SpinDensity.html", null ],
@@ -484,6 +486,7 @@ var hierarchy =
     [ "votca::xtp::StaticSite", "classvotca_1_1xtp_1_1StaticSite.html", [
       [ "votca::xtp::PolarSite", "classvotca_1_1xtp_1_1PolarSite.html", null ]
     ] ],
+    [ "votca::xtp::qp_solver::Stats", "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html", null ],
     [ "std::stringbuf", null, [
       [ "votca::xtp::LogBuffer", "classvotca_1_1xtp_1_1LogBuffer.html", null ]
     ] ],
@@ -567,6 +570,7 @@ var hierarchy =
     [ "votca::xtp::Vxc_Functionals", "classvotca_1_1xtp_1_1Vxc__Functionals.html", null ],
     [ "votca::xtp::Vxc_Grid", "classvotca_1_1xtp_1_1Vxc__Grid.html", null ],
     [ "votca::xtp::Vxc_Potential< Grid >", "classvotca_1_1xtp_1_1Vxc__Potential.html", null ],
+    [ "votca::xtp::qp_solver::WindowDiagnostics", "structvotca_1_1xtp_1_1qp__solver_1_1WindowDiagnostics.html", null ],
     [ "votca::xtp::Vxc_Potential< Grid >::XC_entry", "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html", null ],
     [ "votca::xtp::Vxc_Potential< Grid >::XC_entry_spin", "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html", null ],
     [ "votca::csg::XMLBead", "classvotca_1_1csg_1_1XMLBead.html", null ],

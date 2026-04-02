@@ -12,5 +12,6 @@ var searchData=
   ['votca_3a_3axtp_9',['xtp',['../namespacevotca_1_1xtp.html',1,'votca']]],
   ['votca_3a_3axtp_3a_3acart_10',['Cart',['../namespacevotca_1_1xtp_1_1Cart.html',1,'votca::xtp']]],
   ['votca_3a_3axtp_3a_3acheckpoint_5futils_11',['checkpoint_utils',['../namespacevotca_1_1xtp_1_1checkpoint__utils.html',1,'votca::xtp']]],
-  ['votca_3a_3axtp_3a_3aopenmp_12',['OPENMP',['../namespacevotca_1_1xtp_1_1OPENMP.html',1,'votca::xtp']]]
+  ['votca_3a_3axtp_3a_3aopenmp_12',['OPENMP',['../namespacevotca_1_1xtp_1_1OPENMP.html',1,'votca::xtp']]],
+  ['votca_3a_3axtp_3a_3aqp_5fsolver_13',['qp_solver',['../namespacevotca_1_1xtp_1_1qp__solver.html',1,'votca::xtp']]]
 ];

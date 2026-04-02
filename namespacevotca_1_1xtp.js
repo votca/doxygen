@@ -176,6 +176,7 @@ var namespacevotca_1_1xtp =
       [ "InsideActiveParallelRegion", "namespacevotca_1_1xtp_1_1OPENMP.html#af9b6c5d5a10dd89659732634d82e6492", null ],
       [ "setMaxThreads", "namespacevotca_1_1xtp_1_1OPENMP.html#a727860882072688364e1a126daa33a0c", null ]
     ] ],
+    [ "qp_solver", "namespacevotca_1_1xtp_1_1qp__solver.html", "namespacevotca_1_1xtp_1_1qp__solver" ],
     [ "ActiveDensityMatrix", "classvotca_1_1xtp_1_1ActiveDensityMatrix.html", "classvotca_1_1xtp_1_1ActiveDensityMatrix" ],
     [ "ADIIS", "classvotca_1_1xtp_1_1ADIIS.html", "classvotca_1_1xtp_1_1ADIIS" ],
     [ "ADIIS_costfunction", "classvotca_1_1xtp_1_1ADIIS__costfunction.html", "classvotca_1_1xtp_1_1ADIIS__costfunction" ],
