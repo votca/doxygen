@@ -1,5 +1,11 @@
 var NAVTREEINDEX56 =
 {
+"structvotca_1_1tools_1_1RangeParser_1_1iterator.html#ac29e65244b9652dc36da29623c2ac85d":[2,0,3,1,41,1,7],
+"structvotca_1_1tools_1_1RangeParser_1_1iterator.html#ac29e65244b9652dc36da29623c2ac85d":[3,0,3,1,36,1,7],
+"structvotca_1_1tools_1_1RangeParser_1_1iterator.html#afa44a0589020ce50d46ac79f8abb33fe":[2,0,3,1,41,1,0],
+"structvotca_1_1tools_1_1RangeParser_1_1iterator.html#afa44a0589020ce50d46ac79f8abb33fe":[3,0,3,1,36,1,0],
+"structvotca_1_1tools_1_1globals.html":[2,0,3,1,23],
+"structvotca_1_1tools_1_1globals.html":[3,0,3,1,18],
 "structvotca_1_1tools_1_1globals.html#a2a5ff603b35ccea3902b413bd4b2f5f9":[2,0,3,1,23,2],
 "structvotca_1_1tools_1_1globals.html#a2a5ff603b35ccea3902b413bd4b2f5f9":[3,0,3,1,18,2],
 "structvotca_1_1tools_1_1globals.html#a408070115bc674bc07b2a7578dd5840a":[2,0,3,1,23,1],
@@ -243,11 +249,5 @@ var NAVTREEINDEX56 =
 "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#afefb9e0d04cdc8ee82ecdc79cf10901b":[2,0,3,2,42,0,1],
 "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#afefb9e0d04cdc8ee82ecdc79cf10901b":[3,0,3,2,40,0,1],
 "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html":[2,0,3,2,58,0],
-"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html":[3,0,3,2,56,0],
-"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a4ee9de437f5ccfa0444318803850e3e9":[2,0,3,2,58,0,2],
-"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a4ee9de437f5ccfa0444318803850e3e9":[3,0,3,2,56,0,2],
-"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a8e1ea77177d50a9306cceb8e54d813d2":[2,0,3,2,58,0,0],
-"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a8e1ea77177d50a9306cceb8e54d813d2":[3,0,3,2,56,0,0],
-"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a960fa31ac350fe6d797b2ed24307f548":[2,0,3,2,58,0,1],
-"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a960fa31ac350fe6d797b2ed24307f548":[3,0,3,2,56,0,1]
+"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html":[3,0,3,2,56,0]
 };

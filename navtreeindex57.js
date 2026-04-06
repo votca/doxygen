@@ -1,5 +1,11 @@
 var NAVTREEINDEX57 =
 {
+"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a4ee9de437f5ccfa0444318803850e3e9":[2,0,3,2,58,0,2],
+"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a4ee9de437f5ccfa0444318803850e3e9":[3,0,3,2,56,0,2],
+"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a8e1ea77177d50a9306cceb8e54d813d2":[2,0,3,2,58,0,0],
+"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a8e1ea77177d50a9306cceb8e54d813d2":[3,0,3,2,56,0,0],
+"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a960fa31ac350fe6d797b2ed24307f548":[2,0,3,2,58,0,1],
+"structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#a960fa31ac350fe6d797b2ed24307f548":[3,0,3,2,56,0,1],
 "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#ac73344d45d4430a63b47324e7a32c118":[2,0,3,2,58,0,3],
 "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html#ac73344d45d4430a63b47324e7a32c118":[3,0,3,2,56,0,3],
 "structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html":[2,0,3,2,51,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX57 =
 "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#af639dae60dbe638377818e42734722bc":[2,0,3,2,138,0,1],
 "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html#af639dae60dbe638377818e42734722bc":[3,0,3,2,136,0,1],
 "structvotca_1_1xtp_1_1PolarSite_1_1data.html":[2,0,3,2,152,0],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html":[3,0,3,2,150,0],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a018592d79c65f7945cd5b428fe03423c":[2,0,3,2,152,0,24],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a018592d79c65f7945cd5b428fe03423c":[3,0,3,2,150,0,24],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a0493f0c29682eca9ca5c201b443b8787":[2,0,3,2,152,0,16],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a0493f0c29682eca9ca5c201b443b8787":[3,0,3,2,150,0,16],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a07a119eb612686558c29edb3e7403281":[2,0,3,2,152,0,26],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a07a119eb612686558c29edb3e7403281":[3,0,3,2,150,0,26]
+"structvotca_1_1xtp_1_1PolarSite_1_1data.html":[3,0,3,2,150,0]
 };

@@ -1,5 +1,11 @@
 var NAVTREEINDEX50 =
 {
+"globals_p.html":[4,1,0,8],
+"globals_type.html":[4,1,3],
+"globals_v.html":[4,1,0,9],
+"globals_vars.html":[4,1,2],
+"globals_x.html":[4,1,0,10],
+"gmhdiabatization_8cc.html":[4,0,3,1,0,38],
 "gmhdiabatization_8cc_source.html":[4,0,3,1,0,38],
 "gmhdiabatization_8h.html":[4,0,3,0,0,0,56],
 "gmhdiabatization_8h.html#ac3b7e5a24ba9be028cd3ac5ec01bdb87":[4,0,3,0,0,0,56,1],
@@ -243,11 +249,5 @@ var NAVTREEINDEX50 =
 "mol2orb_8cc_source.html":[4,0,3,1,0,12,14],
 "mol2orb_8h.html":[4,0,3,1,0,12,15],
 "mol2orb_8h.html#aacc97385fbc00a9050e4e8df9c2e433c":[4,0,3,1,0,12,15,1],
-"mol2orb_8h_source.html":[4,0,3,1,0,12,15],
-"molden_8cc.html":[4,0,3,1,0,50],
-"molden_8cc_source.html":[4,0,3,1,0,50],
-"molden_8h.html":[4,0,3,0,0,0,81],
-"molden_8h.html#a6fe05399360745d80db8b7c91f29b342":[4,0,3,0,0,0,81,1],
-"molden_8h_source.html":[4,0,3,0,0,0,81],
-"molecule_8cc.html":[4,0,1,2,1,15]
+"mol2orb_8h_source.html":[4,0,3,1,0,12,15]
 };
