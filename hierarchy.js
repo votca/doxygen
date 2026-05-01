@@ -2,7 +2,7 @@ var hierarchy =
 [
     [ "votca::xtp::ActiveDensityMatrix", "classvotca_1_1xtp_1_1ActiveDensityMatrix.html", null ],
     [ "votca::xtp::ADIIS", "classvotca_1_1xtp_1_1ADIIS.html", null ],
-    [ "votca::xtp::AmplitudeIntegration< Grid >", "classvotca_1_1xtp_1_1AmplitudeIntegration.html", null ],
+    [ "votca::xtp::AmplitudeIntegration&lt; Grid &gt;", "classvotca_1_1xtp_1_1AmplitudeIntegration.html", null ],
     [ "votca::xtp::Anderson", "classvotca_1_1xtp_1_1Anderson.html", null ],
     [ "votca::xtp::AOBasis", "classvotca_1_1xtp_1_1AOBasis.html", null ],
     [ "votca::xtp::AOGaussianPrimitive", "classvotca_1_1xtp_1_1AOGaussianPrimitive.html", null ],
@@ -12,12 +12,12 @@ var hierarchy =
       [ "votca::xtp::AOKinetic", "classvotca_1_1xtp_1_1AOKinetic.html", null ],
       [ "votca::xtp::AOOverlap", "classvotca_1_1xtp_1_1AOOverlap.html", null ]
     ] ],
-    [ "votca::xtp::AOPotential< T >", "classvotca_1_1xtp_1_1AOPotential.html", null ],
-    [ "votca::xtp::AOPotential< double >", "classvotca_1_1xtp_1_1AOPotential.html", [
+    [ "votca::xtp::AOPotential&lt; T &gt;", "classvotca_1_1xtp_1_1AOPotential.html", null ],
+    [ "votca::xtp::AOPotential&lt; double &gt;", "classvotca_1_1xtp_1_1AOPotential.html", [
       [ "votca::xtp::AOECP", "classvotca_1_1xtp_1_1AOECP.html", null ],
       [ "votca::xtp::AOMultipole", "classvotca_1_1xtp_1_1AOMultipole.html", null ]
     ] ],
-    [ "votca::xtp::AOPotential< std::complex< double > >", "classvotca_1_1xtp_1_1AOPotential.html", [
+    [ "votca::xtp::AOPotential&lt; std::complex&lt; double &gt; &gt;", "classvotca_1_1xtp_1_1AOPotential.html", [
       [ "votca::xtp::AOPlanewave", "classvotca_1_1xtp_1_1AOPlanewave.html", null ]
     ] ],
     [ "votca::xtp::AOShell", "classvotca_1_1xtp_1_1AOShell.html", null ],
@@ -53,18 +53,18 @@ var hierarchy =
       ] ]
     ] ],
     [ "votca::xtp::Atom", "classvotca_1_1xtp_1_1Atom.html", null ],
-    [ "votca::xtp::AtomContainer< T >", "classvotca_1_1xtp_1_1AtomContainer.html", [
+    [ "votca::xtp::AtomContainer&lt; T &gt;", "classvotca_1_1xtp_1_1AtomContainer.html", [
       [ "votca::xtp::ClassicalSegment< PolarSite >", "classvotca_1_1xtp_1_1ClassicalSegment.html", null ],
       [ "votca::xtp::ClassicalSegment< StaticSite >", "classvotca_1_1xtp_1_1ClassicalSegment.html", null ],
       [ "votca::xtp::ClassicalSegment< T >", "classvotca_1_1xtp_1_1ClassicalSegment.html", null ]
     ] ],
-    [ "votca::xtp::AtomContainer< Atom >", "classvotca_1_1xtp_1_1AtomContainer.html", [
+    [ "votca::xtp::AtomContainer&lt; Atom &gt;", "classvotca_1_1xtp_1_1AtomContainer.html", [
       [ "votca::xtp::Segment", "classvotca_1_1xtp_1_1Segment.html", null ]
     ] ],
-    [ "votca::xtp::AtomContainer< QMAtom >", "classvotca_1_1xtp_1_1AtomContainer.html", [
+    [ "votca::xtp::AtomContainer&lt; QMAtom &gt;", "classvotca_1_1xtp_1_1AtomContainer.html", [
       [ "votca::xtp::QMMolecule", "classvotca_1_1xtp_1_1QMMolecule.html", null ]
     ] ],
-    [ "votca::tools::Average< T >", "classvotca_1_1tools_1_1Average.html", null ],
+    [ "votca::tools::Average&lt; T &gt;", "classvotca_1_1tools_1_1Average.html", null ],
     [ "votca::xtp::AxA", "classvotca_1_1xtp_1_1AxA.html", null ],
     [ "votca::csg::BaseBead", "classvotca_1_1csg_1_1BaseBead.html", [
       [ "votca::csg::Bead", "classvotca_1_1csg_1_1Bead.html", null ]
@@ -166,8 +166,8 @@ var hierarchy =
     [ "votca::csg::CsgUnits", "classvotca_1_1csg_1_1CsgUnits.html", null ],
     [ "votca::xtp::CubeFile_Writer", "classvotca_1_1xtp_1_1CubeFile__Writer.html", null ],
     [ "votca::xtp::CudaMatrix", "classvotca_1_1xtp_1_1CudaMatrix.html", null ],
-    [ "votca::xtp::CudaMatrixBlock< M >", "classvotca_1_1xtp_1_1CudaMatrixBlock.html", null ],
-    [ "votca::xtp::CudaMatrixTranspose< M >", "classvotca_1_1xtp_1_1CudaMatrixTranspose.html", null ],
+    [ "votca::xtp::CudaMatrixBlock&lt; M &gt;", "classvotca_1_1xtp_1_1CudaMatrixBlock.html", null ],
+    [ "votca::xtp::CudaMatrixTranspose&lt; M &gt;", "classvotca_1_1xtp_1_1CudaMatrixTranspose.html", null ],
     [ "votca::xtp::CudaPipeline", "classvotca_1_1xtp_1_1CudaPipeline.html", null ],
     [ "votca::xtp::AOGaussianPrimitive::data", "structvotca_1_1xtp_1_1AOGaussianPrimitive_1_1data.html", null ],
     [ "votca::xtp::Atom::data", "structvotca_1_1xtp_1_1Atom_1_1data.html", null ],
@@ -176,11 +176,11 @@ var hierarchy =
     [ "votca::xtp::QMAtom::data", "structvotca_1_1xtp_1_1QMAtom_1_1data.html", null ],
     [ "votca::xtp::QMPair::data", "structvotca_1_1xtp_1_1QMPair_1_1data.html", null ],
     [ "votca::xtp::StaticSite::data", "structvotca_1_1xtp_1_1StaticSite_1_1data.html", null ],
-    [ "votca::tools::DataCollection< T >", "classvotca_1_1tools_1_1DataCollection.html", null ],
+    [ "votca::tools::DataCollection&lt; T &gt;", "classvotca_1_1tools_1_1DataCollection.html", null ],
     [ "votca::xtp::DavidsonSolver", "classvotca_1_1xtp_1_1DavidsonSolver.html", null ],
-    [ "votca::xtp::OpenMP_CUDA::DefaultReference< T >", "classvotca_1_1xtp_1_1OpenMP__CUDA_1_1DefaultReference.html", null ],
+    [ "votca::xtp::OpenMP_CUDA::DefaultReference&lt; T &gt;", "classvotca_1_1xtp_1_1OpenMP__CUDA_1_1DefaultReference.html", null ],
     [ "votca::xtp::Density2Gyration", "classvotca_1_1xtp_1_1Density2Gyration.html", null ],
-    [ "votca::xtp::DensityIntegration< Grid >", "classvotca_1_1xtp_1_1DensityIntegration.html", null ],
+    [ "votca::xtp::DensityIntegration&lt; Grid &gt;", "classvotca_1_1xtp_1_1DensityIntegration.html", null ],
     [ "votca::xtp::DFTEngine", "classvotca_1_1xtp_1_1DFTEngine.html", null ],
     [ "votca::xtp::DIIS", "classvotca_1_1xtp_1_1DIIS.html", null ],
     [ "votca::xtp::eeInteractor::E_terms", "classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html", null ],
@@ -231,7 +231,7 @@ var hierarchy =
     [ "votca::xtp::BSE_UKS::ExpectationValues", "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html", null ],
     [ "votca::xtp::ExtendedHuckelParameters", "classvotca_1_1xtp_1_1ExtendedHuckelParameters.html", null ],
     [ "votca::xtp::FCDDiabatization", "classvotca_1_1xtp_1_1FCDDiabatization.html", null ],
-    [ "votca::xtp::SegmentMapper< AtomContainer >::FragInfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1FragInfo.html", null ],
+    [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;::FragInfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1FragInfo.html", null ],
     [ "votca::xtp::FunctionEvaluation", "classvotca_1_1xtp_1_1FunctionEvaluation.html", null ],
     [ "votca::csg::NBList::Functor", "classvotca_1_1csg_1_1NBList_1_1Functor.html", [
       [ "votca::csg::NBList::FunctorMember< T >", "classvotca_1_1csg_1_1NBList_1_1FunctorMember.html", null ],
@@ -281,27 +281,27 @@ var hierarchy =
     [ "votca::xtp::GWBSE", "classvotca_1_1xtp_1_1GWBSE.html", null ],
     [ "votca::xtp::GWBSEEngine", "classvotca_1_1xtp_1_1GWBSEEngine.html", null ],
     [ "votca::xtp::Gyrationtensor", "structvotca_1_1xtp_1_1Gyrationtensor.html", null ],
-    [ "std::hash< votca::tools::Edge >", "classstd_1_1hash_3_01votca_1_1tools_1_1Edge_01_4.html", null ],
-    [ "std::hash< votca::tools::ReducedEdge >", "classstd_1_1hash_3_01votca_1_1tools_1_1ReducedEdge_01_4.html", null ],
-    [ "votca::xtp::hist< T >", "classvotca_1_1xtp_1_1hist.html", null ],
+    [ "std::hash&lt; votca::tools::Edge &gt;", "classstd_1_1hash_3_01votca_1_1tools_1_1Edge_01_4.html", null ],
+    [ "std::hash&lt; votca::tools::ReducedEdge &gt;", "classstd_1_1hash_3_01votca_1_1tools_1_1ReducedEdge_01_4.html", null ],
+    [ "votca::xtp::hist&lt; T &gt;", "classvotca_1_1xtp_1_1hist.html", null ],
     [ "votca::tools::Histogram", "classvotca_1_1tools_1_1Histogram.html", null ],
-    [ "votca::xtp::huffmanTree< T >::huffmanNode< S >", "structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html", null ],
-    [ "votca::xtp::huffmanTree< T >", "classvotca_1_1xtp_1_1huffmanTree.html", null ],
-    [ "votca::tools::Identity< T >", "classvotca_1_1tools_1_1Identity.html", null ],
+    [ "votca::xtp::huffmanTree&lt; T &gt;::huffmanNode&lt; S &gt;", "structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html", null ],
+    [ "votca::xtp::huffmanTree&lt; T &gt;", "classvotca_1_1xtp_1_1huffmanTree.html", null ],
+    [ "votca::tools::Identity&lt; T &gt;", "classvotca_1_1tools_1_1Identity.html", null ],
     [ "votca::xtp::ImaginaryAxisIntegration", "classvotca_1_1xtp_1_1ImaginaryAxisIntegration.html", null ],
     [ "votca::csg::Imc", "classvotca_1_1csg_1_1Imc.html", null ],
     [ "votca::csg::IMCNBSearchHandler", "classvotca_1_1csg_1_1IMCNBSearchHandler.html", null ],
     [ "votca::xtp::IncrementalFockBuilder", "classvotca_1_1xtp_1_1IncrementalFockBuilder.html", null ],
     [ "votca::xtp::IndexParser", "classvotca_1_1xtp_1_1IndexParser.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< T >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< bool >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< double >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< float >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01float_01_4.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< int >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01int_01_4.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< long int >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< std::string >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< std::uint8_t >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4.html", null ],
-    [ "votca::xtp::checkpoint_utils::InferDataType< unsigned >", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; T &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; bool &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; double &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01double_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; float &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01float_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; int &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01int_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; long int &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; std::string &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; std::uint8_t &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4.html", null ],
+    [ "votca::xtp::checkpoint_utils::InferDataType&lt; unsigned &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html", null ],
     [ "votca::xtp::DipoleDipoleInteraction::InnerIterator", "classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html", null ],
     [ "votca::csg::Interaction", "classvotca_1_1csg_1_1Interaction.html", [
       [ "votca::csg::IAngle", "classvotca_1_1csg_1_1IAngle.html", null ],
@@ -338,35 +338,35 @@ var hierarchy =
     [ "votca::tools::Mutex", "classvotca_1_1tools_1_1Mutex.html", null ],
     [ "votca::tools::Name", "classvotca_1_1tools_1_1Name.html", null ],
     [ "votca::xtp::NBO", "classvotca_1_1xtp_1_1NBO.html", null ],
-    [ "votca::tools::NDimVector< T, dim >", "classvotca_1_1tools_1_1NDimVector.html", null ],
+    [ "votca::tools::NDimVector&lt; T, dim &gt;", "classvotca_1_1tools_1_1NDimVector.html", null ],
     [ "votca::csg::NematicOrder", "classvotca_1_1csg_1_1NematicOrder.html", null ],
-    [ "votca::xtp::NewtonRapson< Func >", "classvotca_1_1xtp_1_1NewtonRapson.html", null ],
-    [ "votca::tools::ObjectFactory< key_t, T, args_t >", "classvotca_1_1tools_1_1ObjectFactory.html", null ],
-    [ "votca::tools::ObjectFactory< std::string, GaussianQuadratureBase >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::xtp::NewtonRapson&lt; Func &gt;", "classvotca_1_1xtp_1_1NewtonRapson.html", null ],
+    [ "votca::tools::ObjectFactory&lt; key_t, T, args_t &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", null ],
+    [ "votca::tools::ObjectFactory&lt; std::string, GaussianQuadratureBase &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::QuadratureFactory", "classvotca_1_1xtp_1_1QuadratureFactory.html", null ]
     ] ],
-    [ "votca::tools::ObjectFactory< std::string, JobCalculator >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::tools::ObjectFactory&lt; std::string, JobCalculator &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::JobCalculatorfactory", "classvotca_1_1xtp_1_1JobCalculatorfactory.html", null ]
     ] ],
-    [ "votca::tools::ObjectFactory< std::string, QMCalculator >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::tools::ObjectFactory&lt; std::string, QMCalculator &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::Calculatorfactory", "classvotca_1_1xtp_1_1Calculatorfactory.html", null ]
     ] ],
-    [ "votca::tools::ObjectFactory< std::string, QMPackage >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::tools::ObjectFactory&lt; std::string, QMPackage &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::QMPackageFactory", "classvotca_1_1xtp_1_1QMPackageFactory.html", null ]
     ] ],
-    [ "votca::tools::ObjectFactory< std::string, QMTool >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::tools::ObjectFactory&lt; std::string, QMTool &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::QMToolFactory", "classvotca_1_1xtp_1_1QMToolFactory.html", null ]
     ] ],
-    [ "votca::tools::ObjectFactory< std::string, Sigma_base, TCMatrix_gwbse &, RPA & >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::tools::ObjectFactory&lt; std::string, Sigma_base, TCMatrix_gwbse &amp;, RPA &amp; &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::SigmaFactory", "classvotca_1_1xtp_1_1SigmaFactory.html", null ]
     ] ],
-    [ "votca::tools::ObjectFactory< std::string, Sigma_base_UKS, TCMatrix_gwbse_spin &, RPA_UKS &, TCMatrix::SpinChannel >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::tools::ObjectFactory&lt; std::string, Sigma_base_UKS, TCMatrix_gwbse_spin &amp;, RPA_UKS &amp;, TCMatrix::SpinChannel &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::SigmaFactory_UKS", "classvotca_1_1xtp_1_1SigmaFactory__UKS.html", null ]
     ] ],
-    [ "votca::tools::ObjectFactory< std::string, StateFilter_base >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::tools::ObjectFactory&lt; std::string, StateFilter_base &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::xtp::FilterFactory", "classvotca_1_1xtp_1_1FilterFactory.html", null ]
     ] ],
-    [ "votca::tools::ObjectFactory< std::string, T >", "classvotca_1_1tools_1_1ObjectFactory.html", [
+    [ "votca::tools::ObjectFactory&lt; std::string, T &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", [
       [ "votca::csg::FileFormatFactory< T >", "classvotca_1_1csg_1_1FileFormatFactory.html", null ]
     ] ],
     [ "votca::xtp::OpenMP_CUDA", "classvotca_1_1xtp_1_1OpenMP__CUDA.html", null ],
@@ -386,18 +386,18 @@ var hierarchy =
     [ "votca::xtp::OrbReorder", "classvotca_1_1xtp_1_1OrbReorder.html", null ],
     [ "votca::csg::Imc::pair_t", "structvotca_1_1csg_1_1Imc_1_1pair__t.html", null ],
     [ "votca::csg::RDFCalculator::pair_t", "structvotca_1_1csg_1_1RDFCalculator_1_1pair__t.html", null ],
-    [ "votca::csg::PairList< element_type, pair_type >", "classvotca_1_1csg_1_1PairList.html", null ],
-    [ "votca::csg::PairList< Bead *, BeadPair >", "classvotca_1_1csg_1_1PairList.html", [
+    [ "votca::csg::PairList&lt; element_type, pair_type &gt;", "classvotca_1_1csg_1_1PairList.html", null ],
+    [ "votca::csg::PairList&lt; Bead *, BeadPair &gt;", "classvotca_1_1csg_1_1PairList.html", [
       [ "votca::csg::NBList", "classvotca_1_1csg_1_1NBList.html", [
         [ "votca::csg::NBListGrid", "classvotca_1_1csg_1_1NBListGrid.html", null ]
       ] ]
     ] ],
-    [ "votca::csg::PairList< const Segment *, QMPair >", "classvotca_1_1csg_1_1PairList.html", [
+    [ "votca::csg::PairList&lt; const Segment *, QMPair &gt;", "classvotca_1_1csg_1_1PairList.html", [
       [ "votca::xtp::QMNBList", "classvotca_1_1xtp_1_1QMNBList.html", null ]
     ] ],
     [ "votca::xtp::Rate_Engine::PairRates", "structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html", null ],
     [ "votca::xtp::PMLocalization", "classvotca_1_1xtp_1_1PMLocalization.html", null ],
-    [ "votca::xtp::Populationanalysis< T >", "classvotca_1_1xtp_1_1Populationanalysis.html", null ],
+    [ "votca::xtp::Populationanalysis&lt; T &gt;", "classvotca_1_1xtp_1_1Populationanalysis.html", null ],
     [ "votca::csg::PotentialFunction", "classvotca_1_1csg_1_1PotentialFunction.html", [
       [ "votca::csg::PotentialFunctionCBSPL", "classvotca_1_1csg_1_1PotentialFunctionCBSPL.html", null ],
       [ "votca::csg::PotentialFunctionLJ126", "classvotca_1_1csg_1_1PotentialFunctionLJ126.html", null ],
@@ -406,19 +406,19 @@ var hierarchy =
     [ "PotentialInfo", "structPotentialInfo.html", null ],
     [ "votca::xtp::PotentialIO", "classvotca_1_1xtp_1_1PotentialIO.html", null ],
     [ "votca::xtp::PPM", "classvotca_1_1xtp_1_1PPM.html", null ],
-    [ "votca::xtp::ProgObserver< JobContainer >", "classvotca_1_1xtp_1_1ProgObserver.html", null ],
+    [ "votca::xtp::ProgObserver&lt; JobContainer &gt;", "classvotca_1_1xtp_1_1ProgObserver.html", null ],
     [ "votca::xtp::DavidsonSolver::ProjectedSpace", "structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html", null ],
     [ "votca::tools::Property", "classvotca_1_1tools_1_1Property.html", null ],
     [ "votca::tools::PropertyIOManipulator", "classvotca_1_1tools_1_1PropertyIOManipulator.html", null ],
     [ "votca::xtp::QMAtom", "classvotca_1_1xtp_1_1QMAtom.html", null ],
-    [ "votca::xtp::QMFragment< T >", "classvotca_1_1xtp_1_1QMFragment.html", null ],
+    [ "votca::xtp::QMFragment&lt; T &gt;", "classvotca_1_1xtp_1_1QMFragment.html", null ],
     [ "votca::xtp::QMPackage", "classvotca_1_1xtp_1_1QMPackage.html", [
       [ "votca::xtp::Orca", "classvotca_1_1xtp_1_1Orca.html", null ],
       [ "votca::xtp::XTPDFT", "classvotca_1_1xtp_1_1XTPDFT.html", null ]
     ] ],
     [ "votca::xtp::QMPair", "classvotca_1_1xtp_1_1QMPair.html", null ],
     [ "votca::xtp::QMState", "classvotca_1_1xtp_1_1QMState.html", null ],
-    [ "votca::xtp::QMStateCarrierStorage< T >", "classvotca_1_1xtp_1_1QMStateCarrierStorage.html", null ],
+    [ "votca::xtp::QMStateCarrierStorage&lt; T &gt;", "classvotca_1_1xtp_1_1QMStateCarrierStorage.html", null ],
     [ "votca::xtp::QMStateType", "classvotca_1_1xtp_1_1QMStateType.html", null ],
     [ "votca::xtp::GW::QPFunc", "classvotca_1_1xtp_1_1GW_1_1QPFunc.html", null ],
     [ "votca::xtp::GW_UKS::QPFunc", "classvotca_1_1xtp_1_1GW__UKS_1_1QPFunc.html", null ],
@@ -446,9 +446,9 @@ var hierarchy =
     [ "votca::xtp::RPA_UKS::rpa_eigensolution", "structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html", null ],
     [ "votca::xtp::RPA_UKS", "classvotca_1_1xtp_1_1RPA__UKS.html", null ],
     [ "votca::xtp::SegId", "classvotca_1_1xtp_1_1SegId.html", null ],
-    [ "votca::xtp::SegmentMapper< AtomContainer >::Seginfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html", null ],
-    [ "votca::xtp::SegmentMapper< AtomContainer >", "classvotca_1_1xtp_1_1SegmentMapper.html", null ],
-    [ "votca::tools::DataCollection< T >::selection", "classvotca_1_1tools_1_1DataCollection_1_1selection.html", null ],
+    [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;::Seginfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html", null ],
+    [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;", "classvotca_1_1xtp_1_1SegmentMapper.html", null ],
+    [ "votca::tools::DataCollection&lt; T &gt;::selection", "classvotca_1_1tools_1_1DataCollection_1_1selection.html", null ],
     [ "votca::xtp::Shell", "classvotca_1_1xtp_1_1Shell.html", null ],
     [ "votca::xtp::Sigma_base", "classvotca_1_1xtp_1_1Sigma__base.html", [
       [ "votca::xtp::Sigma_CDA", "classvotca_1_1xtp_1_1Sigma__CDA.html", null ],
@@ -462,12 +462,12 @@ var hierarchy =
     ] ],
     [ "votca::xtp::qp_solver::SolverOptions", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions.html", null ],
     [ "votca::xtp::GridContainers::spherical_grid", "structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html", null ],
-    [ "votca::xtp::BSE_OPERATOR_UKS< cqp, cx, cd, cd2 >::SpinBlockInfo", "structvotca_1_1xtp_1_1BSE__OPERATOR__UKS_1_1SpinBlockInfo.html", null ],
+    [ "votca::xtp::BSE_OPERATOR_UKS&lt; cqp, cx, cd, cd2 &gt;::SpinBlockInfo", "structvotca_1_1xtp_1_1BSE__OPERATOR__UKS_1_1SpinBlockInfo.html", null ],
     [ "votca::xtp::ConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1SpinDensity.html", null ],
     [ "votca::xtp::DFTEngine::SpinDensity", "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html", null ],
     [ "votca::xtp::UKSConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1UKSConvergenceAcc_1_1SpinDensity.html", null ],
     [ "votca::xtp::UKSConvergenceAcc::SpinFock", "structvotca_1_1xtp_1_1UKSConvergenceAcc_1_1SpinFock.html", null ],
-    [ "votca::xtp::Vxc_Potential< Grid >::SpinResult", "structvotca_1_1xtp_1_1Vxc__Potential_1_1SpinResult.html", null ],
+    [ "votca::xtp::Vxc_Potential&lt; Grid &gt;::SpinResult", "structvotca_1_1xtp_1_1Vxc__Potential_1_1SpinResult.html", null ],
     [ "votca::tools::Spline", "classvotca_1_1tools_1_1Spline.html", [
       [ "votca::tools::AkimaSpline", "classvotca_1_1tools_1_1AkimaSpline.html", null ],
       [ "votca::tools::CubicSpline", "classvotca_1_1tools_1_1CubicSpline.html", null ],
@@ -549,8 +549,8 @@ var hierarchy =
       [ "votca::csg::XYZWriter", "classvotca_1_1csg_1_1XYZWriter.html", null ]
     ] ],
     [ "votca::xtp::TransitionDensities", "classvotca_1_1xtp_1_1TransitionDensities.html", null ],
-    [ "votca::csg::TripleList< element_type, triple_type >", "classvotca_1_1csg_1_1TripleList.html", null ],
-    [ "votca::csg::TripleList< Bead *, BeadTriple >", "classvotca_1_1csg_1_1TripleList.html", [
+    [ "votca::csg::TripleList&lt; element_type, triple_type &gt;", "classvotca_1_1csg_1_1TripleList.html", null ],
+    [ "votca::csg::TripleList&lt; Bead *, BeadTriple &gt;", "classvotca_1_1csg_1_1TripleList.html", [
       [ "votca::csg::NBList_3Body", "classvotca_1_1csg_1_1NBList__3Body.html", [
         [ "votca::csg::NBListGrid_3Body", "classvotca_1_1csg_1_1NBListGrid__3Body.html", null ]
       ] ]
@@ -560,19 +560,19 @@ var hierarchy =
     [ "std::tuple", null, [
       [ "votca::csg::BeadTriple", "classvotca_1_1csg_1_1BeadTriple.html", null ]
     ] ],
-    [ "votca::tools::internal::type< T >", "structvotca_1_1tools_1_1internal_1_1type.html", null ],
+    [ "votca::tools::internal::type&lt; T &gt;", "structvotca_1_1tools_1_1internal_1_1type.html", null ],
     [ "votca::xtp::UKSConvergenceAcc", "classvotca_1_1xtp_1_1UKSConvergenceAcc.html", null ],
     [ "votca::tools::UnitConverter", "classvotca_1_1tools_1_1UnitConverter.html", null ],
     [ "votca::xtp::vc2index", "classvotca_1_1xtp_1_1vc2index.html", null ],
-    [ "std::vector< T >", null, [
+    [ "std::vector&lt; T &gt;", null, [
       [ "votca::tools::DataCollection< T >::array", "classvotca_1_1tools_1_1DataCollection_1_1array.html", null ]
     ] ],
     [ "votca::xtp::Vxc_Functionals", "classvotca_1_1xtp_1_1Vxc__Functionals.html", null ],
     [ "votca::xtp::Vxc_Grid", "classvotca_1_1xtp_1_1Vxc__Grid.html", null ],
-    [ "votca::xtp::Vxc_Potential< Grid >", "classvotca_1_1xtp_1_1Vxc__Potential.html", null ],
+    [ "votca::xtp::Vxc_Potential&lt; Grid &gt;", "classvotca_1_1xtp_1_1Vxc__Potential.html", null ],
     [ "votca::xtp::qp_solver::WindowDiagnostics", "structvotca_1_1xtp_1_1qp__solver_1_1WindowDiagnostics.html", null ],
-    [ "votca::xtp::Vxc_Potential< Grid >::XC_entry", "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html", null ],
-    [ "votca::xtp::Vxc_Potential< Grid >::XC_entry_spin", "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html", null ],
+    [ "votca::xtp::Vxc_Potential&lt; Grid &gt;::XC_entry", "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html", null ],
+    [ "votca::xtp::Vxc_Potential&lt; Grid &gt;::XC_entry_spin", "structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html", null ],
     [ "votca::csg::XMLBead", "classvotca_1_1csg_1_1XMLBead.html", null ],
     [ "votca::csg::XMLMolecule", "classvotca_1_1csg_1_1XMLMolecule.html", null ],
     [ "pyxtp::XTPCalculators", "classpyxtp_1_1XTPCalculators.html", null ],

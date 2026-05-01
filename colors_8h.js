@@ -2,7 +2,7 @@ var colors_8h =
 [
     [ "votca::tools::ColorScheme", "classvotca_1_1tools_1_1ColorScheme.html", "classvotca_1_1tools_1_1ColorScheme" ],
     [ "votca::tools::ColorSchemeBase", "classvotca_1_1tools_1_1ColorSchemeBase.html", "classvotca_1_1tools_1_1ColorSchemeBase" ],
-    [ "votca::tools::Color< TColorScheme >", "classvotca_1_1tools_1_1Color.html", "classvotca_1_1tools_1_1Color" ],
+    [ "votca::tools::Color&lt; TColorScheme &gt;", "classvotca_1_1tools_1_1Color.html", "classvotca_1_1tools_1_1Color" ],
     [ "votca::tools::csDefault", "classvotca_1_1tools_1_1csDefault.html", "classvotca_1_1tools_1_1csDefault" ],
     [ "votca::tools::csRGB", "classvotca_1_1tools_1_1csRGB.html", "classvotca_1_1tools_1_1csRGB" ],
     [ "votca::tools::Colors::Black", "namespacevotca_1_1tools_1_1Colors.html#aa7dd7c564ca0aef1a95dc21574a79c50", null ],

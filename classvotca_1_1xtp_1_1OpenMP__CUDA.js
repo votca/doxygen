@@ -1,7 +1,7 @@
 var classvotca_1_1xtp_1_1OpenMP__CUDA =
 [
-    [ "CPU_data", "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html", "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data" ],
     [ "DefaultReference", "classvotca_1_1xtp_1_1OpenMP__CUDA_1_1DefaultReference.html", "classvotca_1_1xtp_1_1OpenMP__CUDA_1_1DefaultReference" ],
+    [ "CPU_data", "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data.html", "structvotca_1_1xtp_1_1OpenMP__CUDA_1_1CPU__data" ],
     [ "OpenMP_CUDA", "classvotca_1_1xtp_1_1OpenMP__CUDA.html#a6f07d35add1f12a25019b5e7877a6fec", null ],
     [ "A_TDA", "classvotca_1_1xtp_1_1OpenMP__CUDA.html#a096de2fa990985cca064b2c20bb3eb1e", null ],
     [ "Addvec", "classvotca_1_1xtp_1_1OpenMP__CUDA.html#a20fef8893e22f2c288a3fc9e2fe43f81", null ],

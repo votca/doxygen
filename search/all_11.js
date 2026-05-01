@@ -188,7 +188,7 @@ var searchData=
   ['residue_185',['Residue',['../classvotca_1_1csg_1_1Residue.html',1,'votca::csg::Residue'],['../classvotca_1_1csg_1_1Residue.html#a29afc0d27d2e7e86c3be3f3d90f6ed3b',1,'votca::csg::Residue::Residue()']]],
   ['residue_2eh_186',['residue.h',['../residue_8h.html',1,'']]],
   ['residue_5fnumber_5f_187',['residue_number_',['../classvotca_1_1csg_1_1Bead.html#ab5a2d638e449d5bba254662263e09b10',1,'votca::csg::Bead']]],
-  ['residuecontainer_188',['ResidueContainer',['../namespacevotca_1_1csg.html#ad5e53d2594b21bf5b26ad9d53e0c746b',1,'votca::csg']]],
+  ['residuecontainer_188',['ResidueContainer',['../namespacevotca_1_1csg.html#a2c4ca632c4155726e16d8e5204889eca',1,'votca::csg']]],
   ['residuecount_189',['ResidueCount',['../classvotca_1_1csg_1_1Topology.html#a4d5e570d0547c9748b122d92555446b4',1,'votca::csg::Topology']]],
   ['residueid_190',['ResidueId',['../namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a93419c7f12996d1b7dce01bdc2e292dc',1,'votca::tools']]],
   ['residues_191',['Residues',['../classvotca_1_1csg_1_1Topology.html#ae8314ccd6526e2523894e49c7ff70e0d',1,'votca::csg::Topology::Residues()'],['../classvotca_1_1csg_1_1Topology.html#abbe83100d6c5e66fc104eb5726e98b51',1,'votca::csg::Topology::Residues() const']]],

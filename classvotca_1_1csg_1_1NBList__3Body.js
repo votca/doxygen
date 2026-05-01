@@ -3,7 +3,7 @@ var classvotca_1_1csg_1_1NBList__3Body =
     [ "Functor", "classvotca_1_1csg_1_1NBList__3Body_1_1Functor.html", "classvotca_1_1csg_1_1NBList__3Body_1_1Functor" ],
     [ "FunctorMember", "classvotca_1_1csg_1_1NBList__3Body_1_1FunctorMember.html", "classvotca_1_1csg_1_1NBList__3Body_1_1FunctorMember" ],
     [ "FunctorNonMember", "classvotca_1_1csg_1_1NBList__3Body_1_1FunctorNonMember.html", "classvotca_1_1csg_1_1NBList__3Body_1_1FunctorNonMember" ],
-    [ "triple_creator_t", "classvotca_1_1csg_1_1NBList__3Body.html#aa55bb2478c954026d778959c64e6eaba", null ],
+    [ "triple_creator_t", "classvotca_1_1csg_1_1NBList__3Body.html#ada53f87fe3dd3ca8a0994fe6bf7bb582", null ],
     [ "NBList_3Body", "classvotca_1_1csg_1_1NBList__3Body.html#a898b018b13c62e4b4eb43c88be5781ac", null ],
     [ "~NBList_3Body", "classvotca_1_1csg_1_1NBList__3Body.html#af2bac2c0fcefaaf5af3011a86cbde82b", null ],
     [ "beadtriple_create_policy", "classvotca_1_1csg_1_1NBList__3Body.html#a454e1216ed276d4cef41bc6dc91af16d", null ],

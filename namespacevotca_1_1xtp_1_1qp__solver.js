@@ -1,9 +1,9 @@
 var namespacevotca_1_1xtp_1_1qp__solver =
 [
-    [ "RootCandidate", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate" ],
-    [ "SolverOptions", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions.html", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions" ],
     [ "Stats", "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html", "structvotca_1_1xtp_1_1qp__solver_1_1Stats" ],
+    [ "RootCandidate", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate" ],
     [ "WindowDiagnostics", "structvotca_1_1xtp_1_1qp__solver_1_1WindowDiagnostics.html", "structvotca_1_1xtp_1_1qp__solver_1_1WindowDiagnostics" ],
+    [ "SolverOptions", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions.html", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions" ],
     [ "EvalStage", "namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036af", [
       [ "Scan", "namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036afa22efdbe132eabc102306bd7a334fb434", null ],
       [ "Refine", "namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036afa9f79b65055f2201292e5f79666bf2579", null ],

@@ -1,8 +1,8 @@
 var classvotca_1_1xtp_1_1BSE =
 [
-    [ "ExpectationValues", "structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html", "structvotca_1_1xtp_1_1BSE_1_1ExpectationValues" ],
-    [ "Interaction", "structvotca_1_1xtp_1_1BSE_1_1Interaction.html", "structvotca_1_1xtp_1_1BSE_1_1Interaction" ],
     [ "options", "structvotca_1_1xtp_1_1BSE_1_1options.html", "structvotca_1_1xtp_1_1BSE_1_1options" ],
+    [ "Interaction", "structvotca_1_1xtp_1_1BSE_1_1Interaction.html", "structvotca_1_1xtp_1_1BSE_1_1Interaction" ],
+    [ "ExpectationValues", "structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html", "structvotca_1_1xtp_1_1BSE_1_1ExpectationValues" ],
     [ "BSE", "classvotca_1_1xtp_1_1BSE.html#a1060cf93d324f983bd217b3055596723", null ],
     [ "AdjustHqpSize", "classvotca_1_1xtp_1_1BSE.html#aebdbf0b24a07112a69965d19a2f28306", null ],
     [ "Analyze_eh_interaction", "classvotca_1_1xtp_1_1BSE.html#a9e4dde7b361b71696657b6b6532ff633", null ],

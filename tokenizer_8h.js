@@ -1,6 +1,6 @@
 var tokenizer_8h =
 [
-    [ "votca::tools::internal::type< T >", "structvotca_1_1tools_1_1internal_1_1type.html", null ],
+    [ "votca::tools::internal::type&lt; T &gt;", "structvotca_1_1tools_1_1internal_1_1type.html", null ],
     [ "votca::tools::Tokenizer", "classvotca_1_1tools_1_1Tokenizer.html", "classvotca_1_1tools_1_1Tokenizer" ],
     [ "votca::tools::internal::convert_impl", "namespacevotca_1_1tools_1_1internal.html#af435879a46fef9ef21578d58f3279c59", null ],
     [ "votca::tools::internal::convert_impl", "namespacevotca_1_1tools_1_1internal.html#a22a456041730c546ac48c459f63201ef", null ],

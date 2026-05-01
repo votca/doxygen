@@ -1,7 +1,7 @@
 var classvotca_1_1xtp_1_1BSE__UKS =
 [
-    [ "ExpectationValues", "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html", "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues" ],
     [ "options", "structvotca_1_1xtp_1_1BSE__UKS_1_1options.html", "structvotca_1_1xtp_1_1BSE__UKS_1_1options" ],
+    [ "ExpectationValues", "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html", "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues" ],
     [ "BSE_UKS", "classvotca_1_1xtp_1_1BSE__UKS.html#a3048ccbaec55180068b99974cbf6b90d", null ],
     [ "AdjustHqpSize", "classvotca_1_1xtp_1_1BSE__UKS.html#ac24eff85609450a3bb54826212d2a11b", null ],
     [ "Analyze_excitons_uks", "classvotca_1_1xtp_1_1BSE__UKS.html#af700f72e7363a837b9865a0631573a37", null ],

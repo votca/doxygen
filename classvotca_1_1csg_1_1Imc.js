@@ -1,8 +1,8 @@
 var classvotca_1_1csg_1_1Imc =
 [
-    [ "group_t", "structvotca_1_1csg_1_1Imc_1_1group__t.html", "structvotca_1_1csg_1_1Imc_1_1group__t" ],
     [ "interaction_t", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html", "structvotca_1_1csg_1_1Imc_1_1interaction__t" ],
     [ "pair_t", "structvotca_1_1csg_1_1Imc_1_1pair__t.html", "structvotca_1_1csg_1_1Imc_1_1pair__t" ],
+    [ "group_t", "structvotca_1_1csg_1_1Imc_1_1group__t.html", "structvotca_1_1csg_1_1Imc_1_1group__t" ],
     [ "Worker", "classvotca_1_1csg_1_1Imc_1_1Worker.html", "classvotca_1_1csg_1_1Imc_1_1Worker" ],
     [ "group_matrix", "classvotca_1_1csg_1_1Imc.html#a034e55dc1a371c35d31d0585deccd16a", null ],
     [ "pair_matrix", "classvotca_1_1csg_1_1Imc.html#aec5d03de902520bd2b280e271ba46e14", null ],

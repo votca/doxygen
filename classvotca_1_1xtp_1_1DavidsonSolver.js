@@ -1,7 +1,7 @@
 var classvotca_1_1xtp_1_1DavidsonSolver =
 [
-    [ "ProjectedSpace", "structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html", "structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace" ],
     [ "RitzEigenPair", "structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html", "structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair" ],
+    [ "ProjectedSpace", "structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html", "structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace" ],
     [ "ArrayXb", "classvotca_1_1xtp_1_1DavidsonSolver.html#ab7209c8dd0f09b8feb2ec08869547b84", null ],
     [ "CORR", "classvotca_1_1xtp_1_1DavidsonSolver.html#a30f1e8526e6dd95a548585dcf90b46a3", [
       [ "DPR", "classvotca_1_1xtp_1_1DavidsonSolver.html#a30f1e8526e6dd95a548585dcf90b46a3a52a08d6e89e9d93108a45a4189ed0186", null ],

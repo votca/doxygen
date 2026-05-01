@@ -1,6 +1,6 @@
 var aopotential_8h =
 [
-    [ "votca::xtp::AOPotential< T >", "classvotca_1_1xtp_1_1AOPotential.html", "classvotca_1_1xtp_1_1AOPotential" ],
+    [ "votca::xtp::AOPotential&lt; T &gt;", "classvotca_1_1xtp_1_1AOPotential.html", "classvotca_1_1xtp_1_1AOPotential" ],
     [ "votca::xtp::AOECP", "classvotca_1_1xtp_1_1AOECP.html", "classvotca_1_1xtp_1_1AOECP" ],
     [ "votca::xtp::AOMultipole", "classvotca_1_1xtp_1_1AOMultipole.html", "classvotca_1_1xtp_1_1AOMultipole" ],
     [ "votca::xtp::AOPlanewave", "classvotca_1_1xtp_1_1AOPlanewave.html", "classvotca_1_1xtp_1_1AOPlanewave" ],

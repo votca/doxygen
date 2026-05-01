@@ -1,8 +1,8 @@
 var classvotca_1_1csg_1_1RDFCalculator =
 [
-    [ "group_t", "structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html", "structvotca_1_1csg_1_1RDFCalculator_1_1group__t" ],
     [ "interaction_t", "structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html", "structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t" ],
     [ "pair_t", "structvotca_1_1csg_1_1RDFCalculator_1_1pair__t.html", "structvotca_1_1csg_1_1RDFCalculator_1_1pair__t" ],
+    [ "group_t", "structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html", "structvotca_1_1csg_1_1RDFCalculator_1_1group__t" ],
     [ "Worker", "classvotca_1_1csg_1_1RDFCalculator_1_1Worker.html", "classvotca_1_1csg_1_1RDFCalculator_1_1Worker" ],
     [ "group_matrix", "classvotca_1_1csg_1_1RDFCalculator.html#a739545f05cfae1a2a015c595051ee234", null ],
     [ "pair_matrix", "classvotca_1_1csg_1_1RDFCalculator.html#a02c1e6a75d97ab8def0f0367f5d23601", null ],

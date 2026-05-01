@@ -36,6 +36,14 @@ var namespacevotca_1_1tools =
       [ "nm2bohr", "namespacevotca_1_1tools_1_1conv.html#af16c23555a307b8becce3eb4ccfed30b", null ],
       [ "Pi", "namespacevotca_1_1tools_1_1conv.html#acbc22b7fb68de3030af91a60c0afe648", null ]
     ] ],
+    [ "topology_constants", "namespacevotca_1_1tools_1_1topology__constants.html", [
+      [ "unassigned_bead_type", "namespacevotca_1_1tools_1_1topology__constants.html#a89b06783ab147bb34dd6df882a5f1155", null ],
+      [ "unassigned_element", "namespacevotca_1_1tools_1_1topology__constants.html#a404314108bb9ccf5faca3b53fc06f4fa", null ],
+      [ "unassigned_molecule_id", "namespacevotca_1_1tools_1_1topology__constants.html#a88aaa583cc81191321f9e8a491157f00", null ],
+      [ "unassigned_molecule_type", "namespacevotca_1_1tools_1_1topology__constants.html#a916d63ba30981f379a4fbc11f41ce5e2", null ],
+      [ "unassigned_residue_id", "namespacevotca_1_1tools_1_1topology__constants.html#a456c2b904bc094f9d8685f0f603d7652", null ],
+      [ "unassigned_residue_type", "namespacevotca_1_1tools_1_1topology__constants.html#a752b92e0ebf01e410971d764fdfad8b6", null ]
+    ] ],
     [ "EigenIO_MatrixMarket", "namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html", [
       [ "ReadMatrix", "namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#a418e26a64229ee49f7228e548740a4bc", null ],
       [ "ReadVector", "namespacevotca_1_1tools_1_1EigenIO__MatrixMarket.html#abc20f8a3063d82be60686271bc6421a5", null ],
@@ -48,25 +56,18 @@ var namespacevotca_1_1tools =
       [ "GetFileExtension", "namespacevotca_1_1tools_1_1filesystem.html#a8df135658df1a00a8ad60bc498ddc0c2", null ]
     ] ],
     [ "internal", "namespacevotca_1_1tools_1_1internal.html", "namespacevotca_1_1tools_1_1internal" ],
-    [ "topology_constants", "namespacevotca_1_1tools_1_1topology__constants.html", [
-      [ "unassigned_bead_type", "namespacevotca_1_1tools_1_1topology__constants.html#a89b06783ab147bb34dd6df882a5f1155", null ],
-      [ "unassigned_element", "namespacevotca_1_1tools_1_1topology__constants.html#a404314108bb9ccf5faca3b53fc06f4fa", null ],
-      [ "unassigned_molecule_id", "namespacevotca_1_1tools_1_1topology__constants.html#a88aaa583cc81191321f9e8a491157f00", null ],
-      [ "unassigned_molecule_type", "namespacevotca_1_1tools_1_1topology__constants.html#a916d63ba30981f379a4fbc11f41ce5e2", null ],
-      [ "unassigned_residue_id", "namespacevotca_1_1tools_1_1topology__constants.html#a456c2b904bc094f9d8685f0f603d7652", null ],
-      [ "unassigned_residue_type", "namespacevotca_1_1tools_1_1topology__constants.html#a752b92e0ebf01e410971d764fdfad8b6", null ]
-    ] ],
+    [ "NDimVector", "classvotca_1_1tools_1_1NDimVector.html", "classvotca_1_1tools_1_1NDimVector" ],
     [ "AkimaSpline", "classvotca_1_1tools_1_1AkimaSpline.html", "classvotca_1_1tools_1_1AkimaSpline" ],
     [ "Application", "classvotca_1_1tools_1_1Application.html", "classvotca_1_1tools_1_1Application" ],
     [ "Average", "classvotca_1_1tools_1_1Average.html", "classvotca_1_1tools_1_1Average" ],
     [ "Calculator", "classvotca_1_1tools_1_1Calculator.html", "classvotca_1_1tools_1_1Calculator" ],
-    [ "Color", "classvotca_1_1tools_1_1Color.html", "classvotca_1_1tools_1_1Color" ],
     [ "ColorScheme", "classvotca_1_1tools_1_1ColorScheme.html", "classvotca_1_1tools_1_1ColorScheme" ],
     [ "ColorSchemeBase", "classvotca_1_1tools_1_1ColorSchemeBase.html", "classvotca_1_1tools_1_1ColorSchemeBase" ],
-    [ "Correlate", "classvotca_1_1tools_1_1Correlate.html", "classvotca_1_1tools_1_1Correlate" ],
-    [ "CrossCorrelate", "classvotca_1_1tools_1_1CrossCorrelate.html", "classvotca_1_1tools_1_1CrossCorrelate" ],
+    [ "Color", "classvotca_1_1tools_1_1Color.html", "classvotca_1_1tools_1_1Color" ],
     [ "csDefault", "classvotca_1_1tools_1_1csDefault.html", "classvotca_1_1tools_1_1csDefault" ],
     [ "csRGB", "classvotca_1_1tools_1_1csRGB.html", "classvotca_1_1tools_1_1csRGB" ],
+    [ "Correlate", "classvotca_1_1tools_1_1Correlate.html", "classvotca_1_1tools_1_1Correlate" ],
+    [ "CrossCorrelate", "classvotca_1_1tools_1_1CrossCorrelate.html", "classvotca_1_1tools_1_1CrossCorrelate" ],
     [ "CubicSpline", "classvotca_1_1tools_1_1CubicSpline.html", "classvotca_1_1tools_1_1CubicSpline" ],
     [ "DataCollection", "classvotca_1_1tools_1_1DataCollection.html", "classvotca_1_1tools_1_1DataCollection" ],
     [ "Edge", "classvotca_1_1tools_1_1Edge.html", "classvotca_1_1tools_1_1Edge" ],
@@ -85,7 +86,6 @@ var namespacevotca_1_1tools =
     [ "LinSpline", "classvotca_1_1tools_1_1LinSpline.html", "classvotca_1_1tools_1_1LinSpline" ],
     [ "Mutex", "classvotca_1_1tools_1_1Mutex.html", "classvotca_1_1tools_1_1Mutex" ],
     [ "Name", "classvotca_1_1tools_1_1Name.html", "classvotca_1_1tools_1_1Name" ],
-    [ "NDimVector", "classvotca_1_1tools_1_1NDimVector.html", "classvotca_1_1tools_1_1NDimVector" ],
     [ "ObjectFactory", "classvotca_1_1tools_1_1ObjectFactory.html", "classvotca_1_1tools_1_1ObjectFactory" ],
     [ "OptionsHandler", "classvotca_1_1tools_1_1OptionsHandler.html", "classvotca_1_1tools_1_1OptionsHandler" ],
     [ "Property", "classvotca_1_1tools_1_1Property.html", "classvotca_1_1tools_1_1Property" ],
