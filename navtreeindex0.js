@@ -205,7 +205,7 @@ var NAVTREEINDEX0 =
 "bsecoupling_8cc.html":[4,0,3,1,0,20],
 "bsecoupling_8cc_source.html":[4,0,3,1,0,20],
 "bsecoupling_8h.html":[4,0,3,0,0,0,20],
-"bsecoupling_8h.html#ade749b23268d617cb447875549f33d76":[4,0,3,0,0,0,20,1],
+"bsecoupling_8h.html#ade749b23268d617cb447875549f33d76":[4,0,3,0,0,0,20,2],
 "bsecoupling_8h_source.html":[4,0,3,0,0,0,20],
 "bseoperator__btda_8h.html":[4,0,3,0,0,0,21],
 "bseoperator__btda_8h_source.html":[4,0,3,0,0,0,21],

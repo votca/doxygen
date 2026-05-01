@@ -9,11 +9,12 @@ var searchData=
   ['xfineorder_6',['XfineOrder',['../classvotca_1_1xtp_1_1LebedevGrid.html#ad0a50574edaa4481feb1db8c064e13ae',1,'votca::xtp::LebedevGrid']]],
   ['xfunc_7',['xfunc',['../classvotca_1_1xtp_1_1Vxc__Potential.html#a2549bfd7598838d5845d5ac65c3b1265',1,'votca::xtp::Vxc_Potential']]],
   ['xfunc_5fid_8',['xfunc_id',['../classvotca_1_1xtp_1_1Vxc__Potential.html#a572ece8d2939d49eb9c135e69e954be1',1,'votca::xtp::Vxc_Potential']]],
-  ['xjobs_5f_9',['XJobs_',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#a0feb6f07426b726c493f01332b12d66b',1,'votca::xtp::ParallelXJobCalc']]],
-  ['xml_10',['XML',['../namespacevotca_1_1tools.html#a9d8be4dc638961289dffe9e02253351f',1,'votca::tools']]],
-  ['xml_5foutput_5f_11',['xml_output_',['../classvotca_1_1xtp_1_1DftGwBse.html#a8019e5d312f2eb74bb9d934b776701c4',1,'votca::xtp::DftGwBse']]],
-  ['xpr_5f_12',['xpr_',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html#a1118ea0f14b30cc3b094270242fba7e5',1,'votca::xtp::DipoleDipoleInteraction::InnerIterator']]],
-  ['xpy_13',['XpY',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#a9e9de32253df6f51ee1eec1531c42f82',1,'votca::xtp::RPA::rpa_eigensolution::XpY'],['../structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#aae5aab17669c5f190f21a7748b3d7ebd',1,'votca::xtp::RPA_UKS::rpa_eigensolution::XpY']]],
-  ['xtpdft_5foptions_5f_14',['xtpdft_options_',['../classvotca_1_1xtp_1_1XTPDFT.html#ad6c9855f7d4470089b62a7aee9973fbd',1,'votca::xtp::XTPDFT']]],
-  ['xyzfile_5f_15',['xyzfile_',['../classvotca_1_1xtp_1_1DftGwBse.html#af23fc900f71e2da7b6af0cf91183133a',1,'votca::xtp::DftGwBse::xyzfile_'],['../classvotca_1_1xtp_1_1Orb2Mol.html#a1e4eb32c62551e94083ee2698a22c01d',1,'votca::xtp::Orb2Mol::xyzfile_']]]
+  ['xi_9',['xi',['../structvotca_1_1xtp_1_1BSECoupling_1_1Diagnostics.html#a1f2c89a04dcdd94abc1a874f2a4b3c95',1,'votca::xtp::BSECoupling::Diagnostics']]],
+  ['xjobs_5f_10',['XJobs_',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#a0feb6f07426b726c493f01332b12d66b',1,'votca::xtp::ParallelXJobCalc']]],
+  ['xml_11',['XML',['../namespacevotca_1_1tools.html#a9d8be4dc638961289dffe9e02253351f',1,'votca::tools']]],
+  ['xml_5foutput_5f_12',['xml_output_',['../classvotca_1_1xtp_1_1DftGwBse.html#a8019e5d312f2eb74bb9d934b776701c4',1,'votca::xtp::DftGwBse']]],
+  ['xpr_5f_13',['xpr_',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html#a1118ea0f14b30cc3b094270242fba7e5',1,'votca::xtp::DipoleDipoleInteraction::InnerIterator']]],
+  ['xpy_14',['XpY',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#a9e9de32253df6f51ee1eec1531c42f82',1,'votca::xtp::RPA::rpa_eigensolution::XpY'],['../structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#aae5aab17669c5f190f21a7748b3d7ebd',1,'votca::xtp::RPA_UKS::rpa_eigensolution::XpY']]],
+  ['xtpdft_5foptions_5f_15',['xtpdft_options_',['../classvotca_1_1xtp_1_1XTPDFT.html#ad6c9855f7d4470089b62a7aee9973fbd',1,'votca::xtp::XTPDFT']]],
+  ['xyzfile_5f_16',['xyzfile_',['../classvotca_1_1xtp_1_1DftGwBse.html#af23fc900f71e2da7b6af0cf91183133a',1,'votca::xtp::DftGwBse::xyzfile_'],['../classvotca_1_1xtp_1_1Orb2Mol.html#a1e4eb32c62551e94083ee2698a22c01d',1,'votca::xtp::Orb2Mol::xyzfile_']]]
 ];

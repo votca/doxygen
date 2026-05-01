@@ -182,6 +182,7 @@ var hierarchy =
     [ "votca::xtp::Density2Gyration", "classvotca_1_1xtp_1_1Density2Gyration.html", null ],
     [ "votca::xtp::DensityIntegration&lt; Grid &gt;", "classvotca_1_1xtp_1_1DensityIntegration.html", null ],
     [ "votca::xtp::DFTEngine", "classvotca_1_1xtp_1_1DFTEngine.html", null ],
+    [ "votca::xtp::BSECoupling::Diagnostics", "structvotca_1_1xtp_1_1BSECoupling_1_1Diagnostics.html", null ],
     [ "votca::xtp::DIIS", "classvotca_1_1xtp_1_1DIIS.html", null ],
     [ "votca::xtp::eeInteractor::E_terms", "classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html", null ],
     [ "votca::xtp::ECPAOBasis", "classvotca_1_1xtp_1_1ECPAOBasis.html", null ],

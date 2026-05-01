@@ -62,10 +62,11 @@ var searchData=
   ['properties_5f_59',['properties_',['../classvotca_1_1tools_1_1Property.html#adf2cf1e6c9cdeff35437ceafc800b953',1,'votca::tools::Property']]],
   ['props_5f_60',['props_',['../classvotca_1_1xtp_1_1CptTable.html#a104a06bcf85e429aaf1046a7bef51e7e',1,'votca::xtp::CptTable']]],
   ['pruning_5fset_5f_61',['pruning_set_',['../classvotca_1_1xtp_1_1EulerMaclaurinGrid.html#a287953cf3af17408520843103e87045b',1,'votca::xtp::EulerMaclaurinGrid']]],
-  ['pxx_62',['pxx',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a77ac2b253c0e4f0a52bc53cda8fd9286',1,'votca::xtp::PolarSite::data']]],
-  ['pxy_63',['pxy',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a5922ec3e15eab27e9a58bcc3db39df0b',1,'votca::xtp::PolarSite::data']]],
-  ['pxz_64',['pxz',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7de7baadbfe820a80c21c255c6a376b4',1,'votca::xtp::PolarSite::data']]],
-  ['pyy_65',['pyy',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#af7eb2f8a30a5ba65ec585122ffeb22d0',1,'votca::xtp::PolarSite::data']]],
-  ['pyz_66',['pyz',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#ae6bc14ab9fda86330834ae104d574d25',1,'votca::xtp::PolarSite::data']]],
-  ['pzz_67',['pzz',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#aae04436fe1cfdeb5cff3c3f7016d0d71',1,'votca::xtp::PolarSite::data']]]
+  ['pt_5frm_5fdiscrepancy_62',['pt_rm_discrepancy',['../structvotca_1_1xtp_1_1BSECoupling_1_1Diagnostics.html#accf2c57ee5401de6db8f6a00484ea01f',1,'votca::xtp::BSECoupling::Diagnostics']]],
+  ['pxx_63',['pxx',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a77ac2b253c0e4f0a52bc53cda8fd9286',1,'votca::xtp::PolarSite::data']]],
+  ['pxy_64',['pxy',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a5922ec3e15eab27e9a58bcc3db39df0b',1,'votca::xtp::PolarSite::data']]],
+  ['pxz_65',['pxz',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7de7baadbfe820a80c21c255c6a376b4',1,'votca::xtp::PolarSite::data']]],
+  ['pyy_66',['pyy',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#af7eb2f8a30a5ba65ec585122ffeb22d0',1,'votca::xtp::PolarSite::data']]],
+  ['pyz_67',['pyz',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#ae6bc14ab9fda86330834ae104d574d25',1,'votca::xtp::PolarSite::data']]],
+  ['pzz_68',['pzz',['../structvotca_1_1xtp_1_1PolarSite_1_1data.html#aae04436fe1cfdeb5cff3c3f7016d0d71',1,'votca::xtp::PolarSite::data']]]
 ];
