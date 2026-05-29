@@ -14,6 +14,7 @@ var classvotca_1_1xtp_1_1RPA =
     [ "getEta", "classvotca_1_1xtp_1_1RPA.html#aa666474318d92652cad785335427b0f2", null ],
     [ "getMaxCorrection", "classvotca_1_1xtp_1_1RPA.html#aee258669c2e12ab4c46cd1d128ce19ca", null ],
     [ "getRPAInputEnergies", "classvotca_1_1xtp_1_1RPA.html#aa98d35a69c212a45c3a951508a46e4c7", null ],
+    [ "setQSGWRotation", "classvotca_1_1xtp_1_1RPA.html#af9214a166c4b04973d5bcebf753fa9d5", null ],
     [ "setRPAInputEnergies", "classvotca_1_1xtp_1_1RPA.html#a54a456545772da5c32c452bd782e5b45", null ],
     [ "ShiftUncorrectedEnergies", "classvotca_1_1xtp_1_1RPA.html#a1a19822f9d79f37c7914aa2f59a8167e", null ],
     [ "UpdateRPAInputEnergies", "classvotca_1_1xtp_1_1RPA.html#ad95486903835d809aade457442e4ae4e", null ],
@@ -22,6 +23,9 @@ var classvotca_1_1xtp_1_1RPA =
     [ "homo_", "classvotca_1_1xtp_1_1RPA.html#af6e249c82f9902441bbed9877aceb880", null ],
     [ "log_", "classvotca_1_1xtp_1_1RPA.html#abd9429e3fa8001d807e59b859c756442", null ],
     [ "Mmn_", "classvotca_1_1xtp_1_1RPA.html#a923424be2252dfc6103a1ad5b2065645", null ],
+    [ "qsgw_homo_", "classvotca_1_1xtp_1_1RPA.html#af503cee31dafb896eaacdda4db5aa3d0", null ],
+    [ "qsgw_qpmin_", "classvotca_1_1xtp_1_1RPA.html#a85b5e7b628ed6fa3bdb91f082af02b10", null ],
+    [ "qsgw_U_", "classvotca_1_1xtp_1_1RPA.html#a5729f2c87a18f4db9bfe4ba77b1e72d5", null ],
     [ "rpamax_", "classvotca_1_1xtp_1_1RPA.html#a2d2cfec6d586d486f670b9a0f6907033", null ],
     [ "rpamin_", "classvotca_1_1xtp_1_1RPA.html#a9a26031cab1e5e47ad193690bb0035cd", null ]
 ];

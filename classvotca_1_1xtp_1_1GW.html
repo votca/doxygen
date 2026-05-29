@@ -183,6 +183,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab602df0adefa4f6a37cad0ad0861e9eb" id="r_ab602df0adefa4f6a37cad0ad0861e9eb"><td class="memItemLeft">Eigen::VectorXd&#160;</td><td class="memItemRight"><a class="el" href="#ab602df0adefa4f6a37cad0ad0861e9eb">getGWAResults</a> () const</td></tr>
 <tr class="memitem:af655815b7ee998c9d5456536e72244af" id="r_af655815b7ee998c9d5456536e72244af"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af655815b7ee998c9d5456536e72244af">CalculateGWPerturbation</a> ()</td></tr>
 <tr class="memitem:aaa91d1a8b7e512d2397330144a431aed" id="r_aaa91d1a8b7e512d2397330144a431aed"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aaa91d1a8b7e512d2397330144a431aed">CalculateHQP</a> ()</td></tr>
+<tr class="memitem:a4cddbe6c3a5344fcca306689987a6392" id="r_a4cddbe6c3a5344fcca306689987a6392"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4cddbe6c3a5344fcca306689987a6392">CalculateQSGW</a> ()</td></tr>
+<tr class="memdesc:a4cddbe6c3a5344fcca306689987a6392"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run quasiparticle self-consistent <a class="el" href="classvotca_1_1xtp_1_1GW.html">GW</a> (QSGW).  <br /></td></tr>
+<tr class="memitem:ae04e5f9e514cb13b6c684ae64077b77c" id="r_ae04e5f9e514cb13b6c684ae64077b77c"><td class="memItemLeft">const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ae04e5f9e514cb13b6c684ae64077b77c">getQSGWRotation</a> () const</td></tr>
+<tr class="memitem:a0eabc22f0200e4e57bc86b799a9d9310" id="r_a0eabc22f0200e4e57bc86b799a9d9310"><td class="memItemLeft">const Eigen::VectorXd &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a0eabc22f0200e4e57bc86b799a9d9310">getQSGWSeedEnergies</a> () const</td></tr>
+<tr class="memdesc:a0eabc22f0200e4e57bc86b799a9d9310"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the seed (G0W0/evGW) energies that QSGW started from.  <br /></td></tr>
+<tr class="memitem:a40f23e7cb769530bcc9c642f3da4c5c0" id="r_a40f23e7cb769530bcc9c642f3da4c5c0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a40f23e7cb769530bcc9c642f3da4c5c0">PrintQSGW_Energies</a> (const std::string &amp;seed_label, const Eigen::VectorXd &amp;seed_energies, const Eigen::VectorXd &amp;qsgw_energies) const</td></tr>
+<tr class="memdesc:a40f23e7cb769530bcc9c642f3da4c5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a two-column comparison of seed (G0W0 or evGW) vs converged QSGW quasiparticle energies.  <br /></td></tr>
+<tr class="memitem:aa2a7978e48fb4f76aa8d7758b7f53cee" id="r_aa2a7978e48fb4f76aa8d7758b7f53cee"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa2a7978e48fb4f76aa8d7758b7f53cee">PrintQSGW_Composition</a> (double threshold=0.01) const</td></tr>
+<tr class="memdesc:aa2a7978e48fb4f76aa8d7758b7f53cee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the dominant DFT-KS orbital contributions to each converged QSGW quasiparticle state.  <br /></td></tr>
 <tr class="memitem:a690ffdc513cc8fc725f747e17f7f541d" id="r_a690ffdc513cc8fc725f747e17f7f541d"><td class="memItemLeft">Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#a690ffdc513cc8fc725f747e17f7f541d">getHQP</a> () const</td></tr>
 <tr class="memitem:a1754a77d1fa43b608840c4a0c395dd4c" id="r_a1754a77d1fa43b608840c4a0c395dd4c"><td class="memItemLeft">Eigen::SelfAdjointEigenSolver&lt; Eigen::MatrixXd &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1754a77d1fa43b608840c4a0c395dd4c">DiagonalizeQPHamiltonian</a> () const</td></tr>
 <tr class="memitem:a07d67a555606654a9c8e22474a7d99a4" id="r_a07d67a555606654a9c8e22474a7d99a4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a07d67a555606654a9c8e22474a7d99a4">PlotSigma</a> (std::string filename, <a class="el" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> steps, double spacing, std::string states) const</td></tr>
@@ -216,6 +225,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a0d00d125803653660ad925a73ed82549" id="r_a0d00d125803653660ad925a73ed82549"><td class="memItemLeft"><a class="el" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a>&#160;</td><td class="memItemRight"><a class="el" href="#a0d00d125803653660ad925a73ed82549">qptotal_</a></td></tr>
 <tr class="memitem:af223c0f724f159600966dfd5a23e1e4f" id="r_af223c0f724f159600966dfd5a23e1e4f"><td class="memItemLeft">Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#af223c0f724f159600966dfd5a23e1e4f">Sigma_x_</a></td></tr>
 <tr class="memitem:a9b7c2b6e871f343e06fc5c823afa4c8d" id="r_a9b7c2b6e871f343e06fc5c823afa4c8d"><td class="memItemLeft">Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#a9b7c2b6e871f343e06fc5c823afa4c8d">Sigma_c_</a></td></tr>
+<tr class="memitem:af8785adfbf39dbf412a3527ce7527255" id="r_af8785adfbf39dbf412a3527ce7527255"><td class="memItemLeft">Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#af8785adfbf39dbf412a3527ce7527255">qsgw_rotation_</a></td></tr>
+<tr class="memitem:aa6635afcfe706b7d8555faef04170889" id="r_aa6635afcfe706b7d8555faef04170889"><td class="memItemLeft">Eigen::VectorXd&#160;</td><td class="memItemRight"><a class="el" href="#aa6635afcfe706b7d8555faef04170889">qsgw_seed_energies_</a></td></tr>
+<tr class="memitem:ab2678096f2778eb1a1f4e58671af2c5b" id="r_ab2678096f2778eb1a1f4e58671af2c5b"><td class="memItemLeft">Eigen::VectorXd&#160;</td><td class="memItemRight"><a class="el" href="#ab2678096f2778eb1a1f4e58671af2c5b">qsgw_final_energies_</a></td></tr>
 <tr class="memitem:a65078dec0c2912974799747af53e1778" id="r_a65078dec0c2912974799747af53e1778"><td class="memItemLeft"><a class="el" href="structvotca_1_1xtp_1_1GW_1_1options.html">options</a>&#160;</td><td class="memItemRight"><a class="el" href="#a65078dec0c2912974799747af53e1778">opt_</a></td></tr>
 <tr class="memitem:aa73813e4050be49b3dd364058658dfd5" id="r_aa73813e4050be49b3dd364058658dfd5"><td class="memItemLeft">std::unique_ptr&lt; <a class="el" href="classvotca_1_1xtp_1_1Sigma__base.html">Sigma_base</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa73813e4050be49b3dd364058658dfd5">sigma_</a> = nullptr</td></tr>
 <tr class="memitem:ab2a7f93b996bec66e804a024f7bce622" id="r_ab2a7f93b996bec66e804a024f7bce622"><td class="memItemLeft"><a class="el" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ab2a7f93b996bec66e804a024f7bce622">log_</a></td></tr>
@@ -410,7 +422,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00148">148</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00218">218</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -429,7 +441,34 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00696">696</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00772">772</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+
+</div>
+</div>
+<a id="a4cddbe6c3a5344fcca306689987a6392" name="a4cddbe6c3a5344fcca306689987a6392"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cddbe6c3a5344fcca306689987a6392">&#9670;&#160;</a></span>CalculateQSGW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::xtp::GW::CalculateQSGW </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Run quasiparticle self-consistent <a class="el" href="classvotca_1_1xtp_1_1GW.html">GW</a> (QSGW). </p>
+<p>At each iteration:</p><ol type="1">
+<li>Compute the full off-diagonal self-energy matrix tilde_Sigma (symmetrised static approximation) in the current QP basis.</li>
+<li>Diagonalise H_QSGW = diag(e_DFT - v_xc) + tilde_Sigma to obtain new QP energies and a rotation matrix U.</li>
+<li>Rotate the three-centre integrals Mmn via U so that W and Sigma are computed from the updated QP wavefunctions next iteration. Converges when max|e_QP^{k+1} - e_QP^k| &lt; qsgw_sc_limit.</li>
+</ol>
+<p>The accumulated rotation U (DFT MOs -&gt; converged QP wavefunctions) is stored in qsgw_rotation_ and returned via <a class="el" href="#ae04e5f9e514cb13b6c684ae64077b77c">getQSGWRotation()</a>. QPdiag energies and eigenvectors are set to the converged QSGW values. </p>
+
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00798">798</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -484,7 +523,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00683">683</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00759">759</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -522,7 +561,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00242">242</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00312">312</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -542,6 +581,63 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00067">67</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+
+</div>
+</div>
+<a id="ae04e5f9e514cb13b6c684ae64077b77c" name="ae04e5f9e514cb13b6c684ae64077b77c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae04e5f9e514cb13b6c684ae64077b77c">&#9670;&#160;</a></span>getQSGWRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const Eigen::MatrixXd &amp; votca::xtp::GW::getQSGWRotation </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return the accumulated QSGW rotation matrix U (DFT MOs -&gt; QP wavefunctions) </p>
+
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00150">150</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+
+</div>
+</div>
+<a id="a0eabc22f0200e4e57bc86b799a9d9310" name="a0eabc22f0200e4e57bc86b799a9d9310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eabc22f0200e4e57bc86b799a9d9310">&#9670;&#160;</a></span>getQSGWSeedEnergies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const Eigen::VectorXd &amp; votca::xtp::GW::getQSGWSeedEnergies </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the seed (G0W0/evGW) energies that QSGW started from. </p>
+
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00153">153</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -574,7 +670,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00702">702</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l01133">1133</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -628,7 +724,73 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00183">183</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+
+</div>
+</div>
+<a id="aa2a7978e48fb4f76aa8d7758b7f53cee" name="aa2a7978e48fb4f76aa8d7758b7f53cee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2a7978e48fb4f76aa8d7758b7f53cee">&#9670;&#160;</a></span>PrintQSGW_Composition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::xtp::GW::PrintQSGW_Composition </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>threshold</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0.01</span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print the dominant DFT-KS orbital contributions to each converged QSGW quasiparticle state. </p>
+<p>For each QP state n, prints the KS orbitals m with |U_{mn}|^2 &gt; threshold, where U = qsgw_rotation_ (columns = QP states in DFT-KS basis).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">threshold</td><td>Minimum weight to print (default 0.01 = 1%) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00113">113</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+
+</div>
+</div>
+<a id="a40f23e7cb769530bcc9c642f3da4c5c0" name="a40f23e7cb769530bcc9c642f3da4c5c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40f23e7cb769530bcc9c642f3da4c5c0">&#9670;&#160;</a></span>PrintQSGW_Energies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::xtp::GW::PrintQSGW_Energies </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>seed_label</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;</td>          <td class="paramname"><span class="paramname"><em>seed_energies</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;</td>          <td class="paramname"><span class="paramname"><em>qsgw_energies</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print a two-column comparison of seed (G0W0 or evGW) vs converged QSGW quasiparticle energies. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seed_label</td><td>Label for the seed column, e.g. "G0W0" or "evGW". </td></tr>
+    <tr><td class="paramname">seed_energies</td><td>QP energies from the seed calculation (Ha). </td></tr>
+    <tr><td class="paramname">qsgw_energies</td><td>Converged QSGW eigenvalues (Ha). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00156">156</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -704,7 +866,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00120">120</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00189">189</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -731,7 +893,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00140">140</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00210">210</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -758,7 +920,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00247">247</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00323">323</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -799,7 +961,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00665">665</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00741">741</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -840,7 +1002,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00601">601</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00677">677</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -896,7 +1058,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00547">547</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00623">623</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -952,7 +1114,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00357">357</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00433">433</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -1008,7 +1170,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00427">427</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00503">503</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1211,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00336">336</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8cc_source.html#l00412">412</a> of file <a class="el" href="gw_8cc_source.html">gw.cc</a>.</p>
 
 </div>
 </div>
@@ -1074,7 +1236,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00136">136</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00213">213</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1260,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00138">138</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00215">215</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1122,7 +1284,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00133">133</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00210">210</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1146,7 +1308,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00134">134</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00211">211</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1332,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00130">130</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00207">207</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1194,7 +1356,79 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00125">125</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00194">194</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+
+</div>
+</div>
+<a id="ab2678096f2778eb1a1f4e58671af2c5b" name="ab2678096f2778eb1a1f4e58671af2c5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2678096f2778eb1a1f4e58671af2c5b">&#9670;&#160;</a></span>qsgw_final_energies_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::VectorXd votca::xtp::GW::qsgw_final_energies_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00205">205</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+
+</div>
+</div>
+<a id="af8785adfbf39dbf412a3527ce7527255" name="af8785adfbf39dbf412a3527ce7527255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8785adfbf39dbf412a3527ce7527255">&#9670;&#160;</a></span>qsgw_rotation_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::MatrixXd votca::xtp::GW::qsgw_rotation_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00198">198</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+
+</div>
+</div>
+<a id="aa6635afcfe706b7d8555faef04170889" name="aa6635afcfe706b7d8555faef04170889"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6635afcfe706b7d8555faef04170889">&#9670;&#160;</a></span>qsgw_seed_energies_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::VectorXd votca::xtp::GW::qsgw_seed_energies_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00200">200</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1218,7 +1452,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00140">140</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00217">217</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1242,7 +1476,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00132">132</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00209">209</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1266,7 +1500,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00128">128</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00197">197</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1290,7 +1524,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00127">127</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00196">196</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>
@@ -1314,7 +1548,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00135">135</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gw_8h_source.html#l00212">212</a> of file <a class="el" href="gw_8h_source.html">gw.h</a>.</p>
 
 </div>
 </div>

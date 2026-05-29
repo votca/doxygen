@@ -14,6 +14,7 @@ var classvotca_1_1xtp_1_1TCMatrix__gwbse =
     [ "operator[]", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#ad44d9627f10d8bc0ffd8b1325c586baf", null ],
     [ "operator[]", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#acfcdb63fc0f4b7be5b14bada4e9ca86f", null ],
     [ "Rebuild", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a97a9ced036dad5641bc3e5b68c9f3bb6", null ],
+    [ "Rotate", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#ade148f6ed2af0ddc9308e04e786590cd", null ],
     [ "auxbasis_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a093fbfec7c93e7f9c6dda9d5ba89de80", null ],
     [ "auxbasissize_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#aeebcb47d03ec5b6e0abfc8ac698c2f8c", null ],
     [ "dft_orbitals_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a6804e242e4b5068a0e19c18bade6fbb4", null ],

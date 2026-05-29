@@ -14,10 +14,14 @@ var classvotca_1_1xtp_1_1Sigma__base =
     [ "GetDiagEvalCounter", "classvotca_1_1xtp_1_1Sigma__base.html#a59a7c1edf4ce9f1967be7525b43ec74a", null ],
     [ "PrepareScreening", "classvotca_1_1xtp_1_1Sigma__base.html#aad6217736ca74c06efe50b782065d7ae", null ],
     [ "ResetDiagEvalCounter", "classvotca_1_1xtp_1_1Sigma__base.html#afb0d8da7e3815d0a3d2a14507abbb4dd", null ],
+    [ "setQSGWRotation", "classvotca_1_1xtp_1_1Sigma__base.html#ac3486d5ea4dfb536de5de69e6a6f354e", null ],
     [ "diag_eval_counter_", "classvotca_1_1xtp_1_1Sigma__base.html#a2fb7958b1fc1220ab80af45ee382af28", null ],
     [ "Mmn_", "classvotca_1_1xtp_1_1Sigma__base.html#ac909e78b2e0c71f243be4a34e033a5f8", null ],
     [ "opt_", "classvotca_1_1xtp_1_1Sigma__base.html#ace471c2658de4c20fa241bec224635ca", null ],
     [ "qptotal_", "classvotca_1_1xtp_1_1Sigma__base.html#aaf998a6a8d9982b1c9536262bf161dc5", null ],
+    [ "qsgw_homo_", "classvotca_1_1xtp_1_1Sigma__base.html#a7f36fbe8d40a1cb64991a9a6d6fc08c9", null ],
+    [ "qsgw_qpmin_", "classvotca_1_1xtp_1_1Sigma__base.html#a0a333b7d4a2d793ce5c1243c4fa76932", null ],
+    [ "qsgw_U_", "classvotca_1_1xtp_1_1Sigma__base.html#a50e7644cd5c10c212988c0f107fb3781", null ],
     [ "rpa_", "classvotca_1_1xtp_1_1Sigma__base.html#a87316e819f961b1f702455f058925147", null ],
     [ "rpatotal_", "classvotca_1_1xtp_1_1Sigma__base.html#a81aa15701db123fdf4242933676de706", null ]
 ];

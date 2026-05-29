@@ -1,6 +1,7 @@
 var structvotca_1_1xtp_1_1GW_1_1options =
 [
     [ "alpha", "structvotca_1_1xtp_1_1GW_1_1options.html#a97d5fec81af9285e4d3594333b913a6e", null ],
+    [ "do_qsgw", "structvotca_1_1xtp_1_1GW_1_1options.html#a0999bff8a8160a2dbcaf951ceb72f29b", null ],
     [ "eta", "structvotca_1_1xtp_1_1GW_1_1options.html#a539e3c4290d5ee9e51fb3ec5056fc4db", null ],
     [ "g_sc_limit", "structvotca_1_1xtp_1_1GW_1_1options.html#ad062678863bffe6d9147c22d6eb23b0c", null ],
     [ "g_sc_max_iterations", "structvotca_1_1xtp_1_1GW_1_1options.html#aa301bc6aea19b7dafedfbf5676cbd538", null ],
@@ -25,6 +26,9 @@ var structvotca_1_1xtp_1_1GW_1_1options =
     [ "qp_zero_margin", "structvotca_1_1xtp_1_1GW_1_1options.html#a48ae65381b25d044cd29d24801686c6f", null ],
     [ "qpmax", "structvotca_1_1xtp_1_1GW_1_1options.html#a0170ee2e88817d2bdbc794a4333985df", null ],
     [ "qpmin", "structvotca_1_1xtp_1_1GW_1_1options.html#a223ec5eae84eb98a23eeab1e830e632b", null ],
+    [ "qsgw_max_iterations", "structvotca_1_1xtp_1_1GW_1_1options.html#aec2a74c5f7df70f14c2e6fdcb34ecb13", null ],
+    [ "qsgw_max_virt_correction", "structvotca_1_1xtp_1_1GW_1_1options.html#a207e5aa1b45225b898eaf8a6aeebca84", null ],
+    [ "qsgw_sc_limit", "structvotca_1_1xtp_1_1GW_1_1options.html#a1d69ac6db34e7012f6e6d15401402409", null ],
     [ "quadrature_scheme", "structvotca_1_1xtp_1_1GW_1_1options.html#a973aac9d386ac7bd80104e1c9e260246", null ],
     [ "reset_3c", "structvotca_1_1xtp_1_1GW_1_1options.html#ae936d4f1f8b67ed9e21777df128da41b", null ],
     [ "rpamax", "structvotca_1_1xtp_1_1GW_1_1options.html#a94c10b05e094dfc0bd70bcb6c2b1836a", null ],

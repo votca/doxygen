@@ -55,10 +55,11 @@ var searchData=
   ['ioindex_52',['IOindex',['../classvotca_1_1tools_1_1Property.html#aff5a4cdf04530275a7faf892ee00685d',1,'votca::tools::Property']]],
   ['is_5fbonded_5f_53',['is_bonded_',['../structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html#a2ce9b9e19717af74dfb9d23deb4204b3',1,'votca::csg::RDFCalculator::interaction_t::is_bonded_'],['../structvotca_1_1csg_1_1Imc_1_1interaction__t.html#a7f0de0b27e3bcf64df689c83748ad005',1,'votca::csg::Imc::interaction_t::is_bonded_']]],
   ['is_5ffirst_5fframe_5f_54',['is_first_frame_',['../classvotca_1_1csg_1_1CsgApplication.html#adf588d381dff1de0cacc97baf2a5b09a',1,'votca::csg::CsgApplication']]],
-  ['isconfig_5f_55',['isConfig_',['../classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html#a8c82d715970a2d8a59c7f7d93de8361a',1,'votca::csg::DLPOLYTrajectoryReader::isConfig_'],['../classvotca_1_1csg_1_1DLPOLYTrajectoryWriter.html#a33e6e8c7366747c7649e4e185efedc36',1,'votca::csg::DLPOLYTrajectoryWriter::isConfig_']]],
-  ['isonlastlevel_56',['isOnLastLevel',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#aa0a56507d447edeab85ef8b2696679dc',1,'votca::xtp::huffmanTree::huffmanNode']]],
-  ['isqmmm_5f_57',['isQMMM_',['../classvotca_1_1xtp_1_1Diabatization.html#ac447bf04851067fcdf991e5929a4150b',1,'votca::xtp::Diabatization']]],
-  ['iter_5f_58',['iter_',['../classvotca_1_1xtp_1_1NewtonRapson.html#adb7e61c9cfee75ffeb18fb09b4813b06',1,'votca::xtp::NewtonRapson']]],
-  ['iter_5fmax_5f_59',['iter_max_',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a60a426f580f0f5a68239b56d2c5b4182',1,'votca::xtp::DavidsonSolver']]],
-  ['iteration_5f_60',['iteration_',['../classvotca_1_1xtp_1_1BFGSTRM.html#a81a59449328feb4f74c5ec21ebe065ec',1,'votca::xtp::BFGSTRM']]]
+  ['is_5fqsgw_5f_55',['is_qsgw_',['../classvotca_1_1xtp_1_1Orbitals.html#a5e3d097bb33b3d9148b333b420facfae',1,'votca::xtp::Orbitals']]],
+  ['isconfig_5f_56',['isConfig_',['../classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html#a8c82d715970a2d8a59c7f7d93de8361a',1,'votca::csg::DLPOLYTrajectoryReader::isConfig_'],['../classvotca_1_1csg_1_1DLPOLYTrajectoryWriter.html#a33e6e8c7366747c7649e4e185efedc36',1,'votca::csg::DLPOLYTrajectoryWriter::isConfig_']]],
+  ['isonlastlevel_57',['isOnLastLevel',['../structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#aa0a56507d447edeab85ef8b2696679dc',1,'votca::xtp::huffmanTree::huffmanNode']]],
+  ['isqmmm_5f_58',['isQMMM_',['../classvotca_1_1xtp_1_1Diabatization.html#ac447bf04851067fcdf991e5929a4150b',1,'votca::xtp::Diabatization']]],
+  ['iter_5f_59',['iter_',['../classvotca_1_1xtp_1_1NewtonRapson.html#adb7e61c9cfee75ffeb18fb09b4813b06',1,'votca::xtp::NewtonRapson']]],
+  ['iter_5fmax_5f_60',['iter_max_',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a60a426f580f0f5a68239b56d2c5b4182',1,'votca::xtp::DavidsonSolver']]],
+  ['iteration_5f_61',['iteration_',['../classvotca_1_1xtp_1_1BFGSTRM.html#a81a59449328feb4f74c5ec21ebe065ec',1,'votca::xtp::BFGSTRM']]]
 ];
