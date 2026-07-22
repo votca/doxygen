@@ -97,6 +97,7 @@ var menudata={children:[
 {text:"x",url:"namespacemembers_vars.html#index_x"},
 {text:"y",url:"namespacemembers_vars.html#index_y"}]},
 {text:"Typedefs",url:"namespacemembers_type.html",children:[
+{text:"a",url:"namespacemembers_type.html#index_a"},
 {text:"b",url:"namespacemembers_type.html#index_b"},
 {text:"c",url:"namespacemembers_type.html#index_c"},
 {text:"e",url:"namespacemembers_type.html#index_e"},

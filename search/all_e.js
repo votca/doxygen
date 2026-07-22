@@ -150,5 +150,7 @@ var searchData=
   ['overlap_5ffilter_147',['Overlap_filter',['../classvotca_1_1xtp_1_1Overlap__filter.html',1,'votca::xtp']]],
   ['overlap_5ffilter_2ecc_148',['Overlap_filter.cc',['../Overlap__filter_8cc.html',1,'']]],
   ['overlap_5ffilter_2eh_149',['Overlap_filter.h',['../Overlap__filter_8h.html',1,'']]],
-  ['overwritedefaultswithuserinput_150',['OverwriteDefaultsWithUserInput',['../classvotca_1_1tools_1_1OptionsHandler.html#a09325677c2cf6cbbbcbaf297239a1d70',1,'votca::tools::OptionsHandler']]]
+  ['overwritedefaultswithuserinput_150',['OverwriteDefaultsWithUserInput',['../classvotca_1_1tools_1_1OptionsHandler.html#a09325677c2cf6cbbbcbaf297239a1d70',1,'votca::tools::OptionsHandler']]],
+  ['owner_5fatom_151',['owner_atom',['../structvotca_1_1xtp_1_1GridContainers_1_1Cartesian__gridpoint.html#ad77ef1012a5a71277b2c91fb8cba9f35',1,'votca::xtp::GridContainers::Cartesian_gridpoint']]],
+  ['owner_5fatoms_152',['owner_atoms',['../classvotca_1_1xtp_1_1GridBox.html#a08a3e70cb9b9c54f972652788198ba17',1,'votca::xtp::GridBox']]]
 ];

@@ -30,7 +30,7 @@ var searchData=
   ['density_5fset_5f_27',['density_set_',['../classvotca_1_1xtp_1_1Vxc__Grid.html#a501f30a8c50c60e0731d9b7d2031d9e4',1,'votca::xtp::Vxc_Grid']]],
   ['deriv_28',['deriv',['../structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#afaa2f909694a96f55ddd037a422a37f1',1,'votca::xtp::qp_solver::RootCandidate']]],
   ['deriv_5fcalls_29',['deriv_calls',['../structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#a321c5d31c15e964d43ea70b4cb0be49c',1,'votca::xtp::qp_solver::Stats']]],
-  ['derivatives_30',['derivatives',['../structvotca_1_1xtp_1_1AOShell_1_1AOValues.html#a8bf5365750fa20ce298e4f9aa68231df',1,'votca::xtp::AOShell::AOValues']]],
+  ['derivatives_30',['derivatives',['../structvotca_1_1xtp_1_1AOShell_1_1AOValues.html#a8bf5365750fa20ce298e4f9aa68231df',1,'votca::xtp::AOShell::AOValues::derivatives'],['../structvotca_1_1xtp_1_1AOShell_1_1AOValuesHessian.html#af259ba32b15557081520e37e95326cee',1,'votca::xtp::AOShell::AOValuesHessian::derivatives']]],
   ['destination_31',['destination',['../classvotca_1_1xtp_1_1GLink.html#a803bd67dd76b2c50a22ac1c888767bba',1,'votca::xtp::GLink']]],
   ['deviceid_5f_32',['deviceID_',['../classvotca_1_1xtp_1_1CudaPipeline.html#a8462612c62dfdb53c7f24febe5a526d7',1,'votca::xtp::CudaPipeline']]],
   ['df_5fdrho_33',['df_drho',['../structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry.html#aab85c582bd5002cc818cbd69a7cce868',1,'votca::xtp::Vxc_Potential::XC_entry']]],

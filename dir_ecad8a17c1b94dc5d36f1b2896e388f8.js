@@ -39,6 +39,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "density_integration.h", "density__integration_8h.html", "density__integration_8h" ],
     [ "dftcoupling.h", "dftcoupling_8h.html", "dftcoupling_8h" ],
     [ "dftengine.h", "dftengine_8h.html", "dftengine_8h" ],
+    [ "dftgradient.h", "dftgradient_8h.html", "dftgradient_8h" ],
     [ "diis.h", "diis_8h.html", "diis_8h" ],
     [ "dipoledipoleinteraction.h", "dipoledipoleinteraction_8h.html", "dipoledipoleinteraction_8h" ],
     [ "ecpaobasis.h", "ecpaobasis_8h.html", "ecpaobasis_8h" ],

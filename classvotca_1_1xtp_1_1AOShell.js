@@ -1,6 +1,7 @@
 var classvotca_1_1xtp_1_1AOShell =
 [
     [ "AOValues", "structvotca_1_1xtp_1_1AOShell_1_1AOValues.html", "structvotca_1_1xtp_1_1AOShell_1_1AOValues" ],
+    [ "AOValuesHessian", "structvotca_1_1xtp_1_1AOShell_1_1AOValuesHessian.html", "structvotca_1_1xtp_1_1AOShell_1_1AOValuesHessian" ],
     [ "GaussianIterator", "classvotca_1_1xtp_1_1AOShell.html#a26d4cec2d8accacd3c45a7fc179d7a91", null ],
     [ "AOShell", "classvotca_1_1xtp_1_1AOShell.html#aef71f9971ba2cad202830da6305e22d7", null ],
     [ "AOShell", "classvotca_1_1xtp_1_1AOShell.html#a931639cf0f5fb478964a73a993734e6a", null ],
@@ -9,6 +10,7 @@ var classvotca_1_1xtp_1_1AOShell =
     [ "CalcMinDecay", "classvotca_1_1xtp_1_1AOShell.html#aee16e4cc10698d090ba4eb2285810cd7", null ],
     [ "end", "classvotca_1_1xtp_1_1AOShell.html#a9d591b71bcc8d77d7f8d376658a38b4c", null ],
     [ "EvalAOspace", "classvotca_1_1xtp_1_1AOShell.html#a8ec5b2eaf2019243db18b5481a6331a8", null ],
+    [ "EvalAOspaceHessian", "classvotca_1_1xtp_1_1AOShell.html#ac2b00e8d5b9474deba2bfb854e4a9876", null ],
     [ "getAtomIndex", "classvotca_1_1xtp_1_1AOShell.html#a648339c5a0d0f75f502d93eefbfbcc06", null ],
     [ "getCartesianNumFunc", "classvotca_1_1xtp_1_1AOShell.html#a0ba38621e98e2d8f86665bd87cb2ea77", null ],
     [ "getCartesianOffset", "classvotca_1_1xtp_1_1AOShell.html#a9aa1cb1e8eeff7d6c9a622ac62d80dca", null ],

@@ -225,6 +225,7 @@ var annotated_dup =
         [ "DensityIntegration", "classvotca_1_1xtp_1_1DensityIntegration.html", "classvotca_1_1xtp_1_1DensityIntegration" ],
         [ "DFTcoupling", "classvotca_1_1xtp_1_1DFTcoupling.html", "classvotca_1_1xtp_1_1DFTcoupling" ],
         [ "DFTEngine", "classvotca_1_1xtp_1_1DFTEngine.html", "classvotca_1_1xtp_1_1DFTEngine" ],
+        [ "DFTGradient", "classvotca_1_1xtp_1_1DFTGradient.html", "classvotca_1_1xtp_1_1DFTGradient" ],
         [ "DIIS", "classvotca_1_1xtp_1_1DIIS.html", "classvotca_1_1xtp_1_1DIIS" ],
         [ "DipoleDipoleInteraction", "classvotca_1_1xtp_1_1DipoleDipoleInteraction.html", "classvotca_1_1xtp_1_1DipoleDipoleInteraction" ],
         [ "ECPAOBasis", "classvotca_1_1xtp_1_1ECPAOBasis.html", "classvotca_1_1xtp_1_1ECPAOBasis" ],

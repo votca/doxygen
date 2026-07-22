@@ -23,6 +23,7 @@ var hierarchy =
     [ "votca::xtp::AOShell", "classvotca_1_1xtp_1_1AOShell.html", null ],
     [ "votca::xtp::AOTransform", "classvotca_1_1xtp_1_1AOTransform.html", null ],
     [ "votca::xtp::AOShell::AOValues", "structvotca_1_1xtp_1_1AOShell_1_1AOValues.html", null ],
+    [ "votca::xtp::AOShell::AOValuesHessian", "structvotca_1_1xtp_1_1AOShell_1_1AOValuesHessian.html", null ],
     [ "votca::tools::Application", "classvotca_1_1tools_1_1Application.html", [
       [ "CG_IMC_solve", "classCG__IMC__solve.html", null ],
       [ "XtpMap", "classXtpMap.html", null ],
@@ -182,6 +183,7 @@ var hierarchy =
     [ "votca::xtp::Density2Gyration", "classvotca_1_1xtp_1_1Density2Gyration.html", null ],
     [ "votca::xtp::DensityIntegration&lt; Grid &gt;", "classvotca_1_1xtp_1_1DensityIntegration.html", null ],
     [ "votca::xtp::DFTEngine", "classvotca_1_1xtp_1_1DFTEngine.html", null ],
+    [ "votca::xtp::DFTGradient", "classvotca_1_1xtp_1_1DFTGradient.html", null ],
     [ "votca::xtp::BSECoupling::Diagnostics", "structvotca_1_1xtp_1_1BSECoupling_1_1Diagnostics.html", null ],
     [ "votca::xtp::DIIS", "classvotca_1_1xtp_1_1DIIS.html", null ],
     [ "votca::xtp::eeInteractor::E_terms", "classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html", null ],

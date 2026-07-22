@@ -8,12 +8,13 @@ var searchData=
   ['lammpsdumpwriter_2eh_5',['lammpsdumpwriter.h',['../lammpsdumpwriter_8h.html',1,'']]],
   ['lexical_5fcast_2eh_6',['lexical_cast.h',['../lexical__cast_8h.html',1,'']]],
   ['libint2_5fcalls_2ecc_7',['libint2_calls.cc',['../libint2__calls_8cc.html',1,'']]],
-  ['linalg_2ecc_8',['linalg.cc',['../linalg_8cc.html',1,'']]],
-  ['linalg_2eh_9',['linalg.h',['../linalg_8h.html',1,'']]],
-  ['linspline_2ecc_10',['linspline.cc',['../linspline_8cc.html',1,'']]],
-  ['linspline_2eh_11',['linspline.h',['../linspline_8h.html',1,'']]],
-  ['localisation_5ffilter_2ecc_12',['Localisation_filter.cc',['../Localisation__filter_8cc.html',1,'']]],
-  ['localisation_5ffilter_2eh_13',['Localisation_filter.h',['../Localisation__filter_8h.html',1,'']]],
-  ['log2mps_2eh_14',['log2mps.h',['../log2mps_8h.html',1,'']]],
-  ['logger_2eh_15',['logger.h',['../logger_8h.html',1,'']]]
+  ['libint2_5fderivative_5fcalls_2ecc_8',['libint2_derivative_calls.cc',['../libint2__derivative__calls_8cc.html',1,'']]],
+  ['linalg_2ecc_9',['linalg.cc',['../linalg_8cc.html',1,'']]],
+  ['linalg_2eh_10',['linalg.h',['../linalg_8h.html',1,'']]],
+  ['linspline_2ecc_11',['linspline.cc',['../linspline_8cc.html',1,'']]],
+  ['linspline_2eh_12',['linspline.h',['../linspline_8h.html',1,'']]],
+  ['localisation_5ffilter_2ecc_13',['Localisation_filter.cc',['../Localisation__filter_8cc.html',1,'']]],
+  ['localisation_5ffilter_2eh_14',['Localisation_filter.h',['../Localisation__filter_8h.html',1,'']]],
+  ['log2mps_2eh_15',['log2mps.h',['../log2mps_8h.html',1,'']]],
+  ['logger_2eh_16',['logger.h',['../logger_8h.html',1,'']]]
 ];
