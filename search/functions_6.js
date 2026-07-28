@@ -398,12 +398,13 @@ var searchData=
   ['green_395',['Green',['../classvotca_1_1tools_1_1ColorSchemeBase.html#a503e9181c6a99526205971a663a87f60',1,'votca::tools::ColorSchemeBase::Green()'],['../classvotca_1_1tools_1_1Color.html#a953202f9146d304f28887ca50e5572a6',1,'votca::tools::Color::Green()']]],
   ['green_396',['green',['../classvotca_1_1tools_1_1ColorScheme.html#a4578a5d762b9eee55b691a3c9d89ae8e',1,'votca::tools::ColorScheme::green()'],['../classvotca_1_1tools_1_1csDefault.html#a0c9ee50825245cc4d8fae9d88d12e7fd',1,'votca::tools::csDefault::green()'],['../classvotca_1_1tools_1_1csRGB.html#aef260d0519e6d292e84fa3304dd0a8af',1,'votca::tools::csRGB::green()']]],
   ['gridsetup_397',['GridSetup',['../classvotca_1_1xtp_1_1Regular__Grid.html#a248bc6339986af2a73262b476cb1f3e6',1,'votca::xtp::Regular_Grid::GridSetup(const Eigen::Array&lt; Index, 3, 1 &gt; &amp;steps, const Eigen::Array3d &amp;padding, const QMMolecule &amp;atoms, const AOBasis &amp;basis)'],['../classvotca_1_1xtp_1_1Regular__Grid.html#a846e7be9598e1ec6a69533b2ecd9d9e3',1,'votca::xtp::Regular_Grid::GridSetup(const Eigen::Array3d &amp;stepsize, const Eigen::Array3d &amp;padding, const QMMolecule &amp;atoms, const AOBasis &amp;basis)'],['../classvotca_1_1xtp_1_1Vxc__Grid.html#ab787c9bb9cc3225e398809a94b1d388a',1,'votca::xtp::Vxc_Grid::GridSetup()']]],
-  ['gridweightgradient_398',['GridWeightGradient',['../classvotca_1_1xtp_1_1Vxc__Potential.html#a25793e7f6e690ca34f1362ddb467568d',1,'votca::xtp::Vxc_Potential']]],
-  ['gridweightgradientuks_399',['GridWeightGradientUKS',['../classvotca_1_1xtp_1_1Vxc__Potential.html#ad19ca56d2f7f83ebeb58e4fd2f554158',1,'votca::xtp::Vxc_Potential']]],
-  ['groreader_400',['GROReader',['../classvotca_1_1csg_1_1GROReader.html#a58223d06d3cb500c3a72d89894f5cc3c',1,'votca::csg::GROReader']]],
-  ['groupexists_401',['GroupExists',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#acac159ae21d2a9feff963619bc10b643',1,'votca::csg::H5MDTrajectoryReader']]],
-  ['guessrequested_402',['GuessRequested',['../classvotca_1_1xtp_1_1QMPackage.html#a3dd7e4a2e3a7aeaf1b8efdb5827000aa',1,'votca::xtp::QMPackage']]],
-  ['gw_403',['GW',['../classvotca_1_1xtp_1_1GW.html#aeec03baa67973c4014e484856b92e881',1,'votca::xtp::GW']]],
-  ['gw_5fuks_404',['GW_UKS',['../classvotca_1_1xtp_1_1GW__UKS.html#aa4a7aa901dabd93bdc94991ca7a1f9be',1,'votca::xtp::GW_UKS']]],
-  ['gwbse_405',['GWBSE',['../classvotca_1_1xtp_1_1GWBSE.html#a998c88147616e45be6400697e4cc6c5f',1,'votca::xtp::GWBSE']]]
+  ['gridweightderivativecontribution_398',['GridWeightDerivativeContribution',['../classvotca_1_1xtp_1_1HirshfeldPartition.html#a6c3000fb761a4412884fac9e2a61500f',1,'votca::xtp::HirshfeldPartition']]],
+  ['gridweightgradient_399',['GridWeightGradient',['../classvotca_1_1xtp_1_1Vxc__Potential.html#a25793e7f6e690ca34f1362ddb467568d',1,'votca::xtp::Vxc_Potential']]],
+  ['gridweightgradientuks_400',['GridWeightGradientUKS',['../classvotca_1_1xtp_1_1Vxc__Potential.html#ad19ca56d2f7f83ebeb58e4fd2f554158',1,'votca::xtp::Vxc_Potential']]],
+  ['groreader_401',['GROReader',['../classvotca_1_1csg_1_1GROReader.html#a58223d06d3cb500c3a72d89894f5cc3c',1,'votca::csg::GROReader']]],
+  ['groupexists_402',['GroupExists',['../classvotca_1_1csg_1_1H5MDTrajectoryReader.html#acac159ae21d2a9feff963619bc10b643',1,'votca::csg::H5MDTrajectoryReader']]],
+  ['guessrequested_403',['GuessRequested',['../classvotca_1_1xtp_1_1QMPackage.html#a3dd7e4a2e3a7aeaf1b8efdb5827000aa',1,'votca::xtp::QMPackage']]],
+  ['gw_404',['GW',['../classvotca_1_1xtp_1_1GW.html#aeec03baa67973c4014e484856b92e881',1,'votca::xtp::GW']]],
+  ['gw_5fuks_405',['GW_UKS',['../classvotca_1_1xtp_1_1GW__UKS.html#aa4a7aa901dabd93bdc94991ca7a1f9be',1,'votca::xtp::GW_UKS']]],
+  ['gwbse_406',['GWBSE',['../classvotca_1_1xtp_1_1GWBSE.html#a998c88147616e45be6400697e4cc6c5f',1,'votca::xtp::GWBSE']]]
 ];

@@ -10,6 +10,7 @@ var classvotca_1_1xtp_1_1DftGwBse =
     [ "guess_file_", "classvotca_1_1xtp_1_1DftGwBse.html#a03df065618a5430c231ef1019c46e225", null ],
     [ "gwbseengine_options_", "classvotca_1_1xtp_1_1DftGwBse.html#ab8f4dab6d40a72030e1bf78a10ccc735", null ],
     [ "log_", "classvotca_1_1xtp_1_1DftGwBse.html#aef2e307a790bfda4c13c9c13962627c0", null ],
+    [ "moguess_file_", "classvotca_1_1xtp_1_1DftGwBse.html#a7028d4ee33f1fe12c74e8d355950de53", null ],
     [ "mpsfile_", "classvotca_1_1xtp_1_1DftGwBse.html#a37603c04a060e83f317c3dda148878c5", null ],
     [ "package_options_", "classvotca_1_1xtp_1_1DftGwBse.html#a2f32b33eac20700b5fa64c14ec47e42f", null ],
     [ "xml_output_", "classvotca_1_1xtp_1_1DftGwBse.html#a8019e5d312f2eb74bb9d934b776701c4", null ],

@@ -267,6 +267,7 @@ var namespacevotca_1_1xtp =
     [ "GWBSE", "classvotca_1_1xtp_1_1GWBSE.html", "classvotca_1_1xtp_1_1GWBSE" ],
     [ "GWBSEEngine", "classvotca_1_1xtp_1_1GWBSEEngine.html", "classvotca_1_1xtp_1_1GWBSEEngine" ],
     [ "Density2Gyration", "classvotca_1_1xtp_1_1Density2Gyration.html", "classvotca_1_1xtp_1_1Density2Gyration" ],
+    [ "HirshfeldPartition", "classvotca_1_1xtp_1_1HirshfeldPartition.html", "classvotca_1_1xtp_1_1HirshfeldPartition" ],
     [ "hist", "classvotca_1_1xtp_1_1hist.html", "classvotca_1_1xtp_1_1hist" ],
     [ "huffmanTree", "classvotca_1_1xtp_1_1huffmanTree.html", "classvotca_1_1xtp_1_1huffmanTree" ],
     [ "Job", "classvotca_1_1xtp_1_1Job.html", "classvotca_1_1xtp_1_1Job" ],

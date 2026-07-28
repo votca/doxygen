@@ -8,6 +8,8 @@ var structvotca_1_1xtp_1_1ConvergenceAcc_1_1options =
     [ "levelshift", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a7dbf84817a995c5252894e154ca0905d", null ],
     [ "levelshiftend", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a5cbb163454060239cbb1b55b381ea56f", null ],
     [ "maxout", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#ad30d8ec905996a156e4a804fdfa7a8c3", null ],
+    [ "mixingend", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a31c67ff2d652c80bac8b2f59fc7fa20e", null ],
+    [ "mixingmax", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a34bd0e57575a81287bd3bd886feced14", null ],
     [ "mixingparameter", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#ae365f3aa938a0dea8706ce805d45abd7", null ],
     [ "mode", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a5ef1914c6de26c40700e4cf6f4411ea1", null ],
     [ "noisy", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#af381a6e026c1fa2b7743301736b0416a", null ],

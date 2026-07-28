@@ -44,12 +44,14 @@ var searchData=
   ['order_5ftable_41',['order_table',['../classvotca_1_1xtp_1_1LebedevGrid.html#ab9b333faa7ad548ec380cb372b298100',1,'votca::xtp::LebedevGrid']]],
   ['orderchainafterinitialvertex_5f_42',['orderChainAfterInitialVertex_',['../namespacevotca_1_1tools.html#a4cf83bd0a6f2d3d093b8d278e5ac4e21',1,'votca::tools']]],
   ['ordermosbyenergy_43',['OrderMOsbyEnergy',['../classvotca_1_1xtp_1_1Orbitals.html#af6f9e7eca2118d8a3d164a5633a3687a',1,'votca::xtp::Orbitals']]],
-  ['organizeprobabilities_44',['organizeProbabilities',['../classvotca_1_1xtp_1_1GNode.html#a59fed902777feb63c84674a52902fefb',1,'votca::xtp::GNode']]],
-  ['orthogonalize_45',['orthogonalize',['../classvotca_1_1xtp_1_1DavidsonSolver.html#ac51b5b3f371c864f7fe70c594c4203c3',1,'votca::xtp::DavidsonSolver']]],
-  ['orthogonalizects_46',['OrthogonalizeCTs',['../classvotca_1_1xtp_1_1BSECoupling.html#af75a93f738f7d332235c72d41800fd2d',1,'votca::xtp::BSECoupling']]],
-  ['orthogonalizeguess_47',['OrthogonalizeGuess',['../classvotca_1_1xtp_1_1DFTEngine.html#acf656072c4aba0603545b09aabafa658',1,'votca::xtp::DFTEngine']]],
-  ['oscillatorstrengths_48',['Oscillatorstrengths',['../classvotca_1_1xtp_1_1Orbitals.html#a76309d578fd7165002f6581ca468e4d0',1,'votca::xtp::Orbitals::Oscillatorstrengths() const'],['../classvotca_1_1xtp_1_1Orbitals.html#aca98d2ef4f88619742b46d4b2b46bd07',1,'votca::xtp::Orbitals::Oscillatorstrengths(const QMStateType &amp;type) const']]],
-  ['outersize_49',['outerSize',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a41fb3378c0e7d37ee2cd12018c126579',1,'votca::xtp::DipoleDipoleInteraction']]],
-  ['outputdimension_50',['OutputDimension',['../namespacevotca_1_1xtp.html#ad7ab6396d778b0f265a9d1b2b41b32b2',1,'votca::xtp']]],
-  ['overwritedefaultswithuserinput_51',['OverwriteDefaultsWithUserInput',['../classvotca_1_1tools_1_1OptionsHandler.html#a09325677c2cf6cbbbcbaf297239a1d70',1,'votca::tools::OptionsHandler']]]
+  ['ordermosbyenergyalpha_44',['OrderMOsbyEnergyAlpha',['../classvotca_1_1xtp_1_1Orbitals.html#aac4919800944883bd516223d7239d048',1,'votca::xtp::Orbitals']]],
+  ['ordermosbyenergybeta_45',['OrderMOsbyEnergyBeta',['../classvotca_1_1xtp_1_1Orbitals.html#a3bae3d3bd606e8a221b3bf4f1daf2acf',1,'votca::xtp::Orbitals']]],
+  ['organizeprobabilities_46',['organizeProbabilities',['../classvotca_1_1xtp_1_1GNode.html#a59fed902777feb63c84674a52902fefb',1,'votca::xtp::GNode']]],
+  ['orthogonalize_47',['orthogonalize',['../classvotca_1_1xtp_1_1DavidsonSolver.html#ac51b5b3f371c864f7fe70c594c4203c3',1,'votca::xtp::DavidsonSolver']]],
+  ['orthogonalizects_48',['OrthogonalizeCTs',['../classvotca_1_1xtp_1_1BSECoupling.html#af75a93f738f7d332235c72d41800fd2d',1,'votca::xtp::BSECoupling']]],
+  ['orthogonalizeguess_49',['OrthogonalizeGuess',['../classvotca_1_1xtp_1_1DFTEngine.html#acf656072c4aba0603545b09aabafa658',1,'votca::xtp::DFTEngine']]],
+  ['oscillatorstrengths_50',['Oscillatorstrengths',['../classvotca_1_1xtp_1_1Orbitals.html#a76309d578fd7165002f6581ca468e4d0',1,'votca::xtp::Orbitals::Oscillatorstrengths() const'],['../classvotca_1_1xtp_1_1Orbitals.html#aca98d2ef4f88619742b46d4b2b46bd07',1,'votca::xtp::Orbitals::Oscillatorstrengths(const QMStateType &amp;type) const']]],
+  ['outersize_51',['outerSize',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a41fb3378c0e7d37ee2cd12018c126579',1,'votca::xtp::DipoleDipoleInteraction']]],
+  ['outputdimension_52',['OutputDimension',['../namespacevotca_1_1xtp.html#ad7ab6396d778b0f265a9d1b2b41b32b2',1,'votca::xtp']]],
+  ['overwritedefaultswithuserinput_53',['OverwriteDefaultsWithUserInput',['../classvotca_1_1tools_1_1OptionsHandler.html#a09325677c2cf6cbbbcbaf297239a1d70',1,'votca::tools::OptionsHandler']]]
 ];

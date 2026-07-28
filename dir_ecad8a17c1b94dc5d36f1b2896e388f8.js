@@ -67,6 +67,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "gwbse.h", "gwbse_8h.html", "gwbse_8h" ],
     [ "gwbseengine.h", "gwbseengine_8h.html", "gwbseengine_8h" ],
     [ "gyration.h", "gyration_8h.html", "gyration_8h" ],
+    [ "hirshfeldpartition.h", "hirshfeldpartition_8h.html", "hirshfeldpartition_8h" ],
     [ "hist.h", "hist_8h.html", "hist_8h" ],
     [ "huffmantree.h", "huffmantree_8h.html", "huffmantree_8h" ],
     [ "ImaginaryAxisIntegration.h", "ImaginaryAxisIntegration_8h.html", "ImaginaryAxisIntegration_8h" ],

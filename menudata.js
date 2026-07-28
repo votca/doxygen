@@ -288,9 +288,9 @@ var menudata={children:[
 {text:"Typedefs",url:"globals_type.html"},
 {text:"Macros",url:"globals_defs.html",children:[
 {text:"c",url:"globals_defs.html#index_c"},
-{text:"f",url:"globals_defs.html#index_f"},
-{text:"h",url:"globals_defs.html#index_h"},
-{text:"l",url:"globals_defs.html#index_l"},
-{text:"p",url:"globals_defs.html#index_p"},
-{text:"v",url:"globals_defs.html#index_v"},
-{text:"x",url:"globals_defs.html#index_x"}]}]}]}]}
+{text:"f",url:"globals_defs_f.html#index_f"},
+{text:"h",url:"globals_defs_h.html#index_h"},
+{text:"l",url:"globals_defs_l.html#index_l"},
+{text:"p",url:"globals_defs_p.html#index_p"},
+{text:"v",url:"globals_defs_v.html#index_v"},
+{text:"x",url:"globals_defs_x.html#index_x"}]}]}]}]}

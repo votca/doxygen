@@ -65,6 +65,7 @@ var hierarchy =
     [ "votca::xtp::AtomContainer&lt; QMAtom &gt;", "classvotca_1_1xtp_1_1AtomContainer.html", [
       [ "votca::xtp::QMMolecule", "classvotca_1_1xtp_1_1QMMolecule.html", null ]
     ] ],
+    [ "votca::xtp::HirshfeldPartition::AtomicReference", "structvotca_1_1xtp_1_1HirshfeldPartition_1_1AtomicReference.html", null ],
     [ "votca::tools::Average&lt; T &gt;", "classvotca_1_1tools_1_1Average.html", null ],
     [ "votca::xtp::AxA", "classvotca_1_1xtp_1_1AxA.html", null ],
     [ "votca::csg::BaseBead", "classvotca_1_1csg_1_1BaseBead.html", [
@@ -139,6 +140,7 @@ var hierarchy =
       ] ]
     ] ],
     [ "votca::xtp::GridContainers::Cartesian_gridpoint", "structvotca_1_1xtp_1_1GridContainers_1_1Cartesian__gridpoint.html", null ],
+    [ "votca::xtp::DFTEngine::CDFTConstraintSpec", "structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec.html", null ],
     [ "votca::csg::NBListGrid::cell_t", "structvotca_1_1csg_1_1NBListGrid_1_1cell__t.html", null ],
     [ "votca::csg::NBListGrid_3Body::cell_t", "structvotca_1_1csg_1_1NBListGrid__3Body_1_1cell__t.html", null ],
     [ "votca::csg::CGEngine", "classvotca_1_1csg_1_1CGEngine.html", null ],
@@ -155,6 +157,7 @@ var hierarchy =
     [ "votca::tools::ColorSchemeBase", "classvotca_1_1tools_1_1ColorSchemeBase.html", [
       [ "votca::tools::Color< TColorScheme >", "classvotca_1_1tools_1_1Color.html", null ]
     ] ],
+    [ "votca::xtp::HirshfeldPartition::Constraint", "structvotca_1_1xtp_1_1HirshfeldPartition_1_1Constraint.html", null ],
     [ "votca::xtp::ConvergenceAcc", "classvotca_1_1xtp_1_1ConvergenceAcc.html", null ],
     [ "votca::tools::Correlate", "classvotca_1_1tools_1_1Correlate.html", null ],
     [ "votca::xtp::CouplingBase", "classvotca_1_1xtp_1_1CouplingBase.html", [
@@ -294,6 +297,7 @@ var hierarchy =
     [ "votca::xtp::Gyrationtensor", "structvotca_1_1xtp_1_1Gyrationtensor.html", null ],
     [ "std::hash&lt; votca::tools::Edge &gt;", "classstd_1_1hash_3_01votca_1_1tools_1_1Edge_01_4.html", null ],
     [ "std::hash&lt; votca::tools::ReducedEdge &gt;", "classstd_1_1hash_3_01votca_1_1tools_1_1ReducedEdge_01_4.html", null ],
+    [ "votca::xtp::HirshfeldPartition", "classvotca_1_1xtp_1_1HirshfeldPartition.html", null ],
     [ "votca::xtp::hist&lt; T &gt;", "classvotca_1_1xtp_1_1hist.html", null ],
     [ "votca::tools::Histogram", "classvotca_1_1tools_1_1Histogram.html", null ],
     [ "votca::xtp::huffmanTree&lt; T &gt;::huffmanNode&lt; S &gt;", "structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html", null ],
