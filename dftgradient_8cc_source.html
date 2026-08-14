@@ -128,183 +128,255 @@ $(function(){initNavTree('dftgradient_8cc_source.html','',''); });
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; aobasis);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>std::vector&lt;ThreeCenterDerivative&gt; <a class="code hl_function" href="namespacevotca_1_1xtp.html#a77e87d7316a2c93dac67d027797a7655">ComputeThreeCenterDerivatives</a>(</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis, <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>std::vector&lt;Eigen::MatrixXd&gt; <a class="code hl_function" href="namespacevotca_1_1xtp.html#a8c363e9a5ca74b8a1bbc1d542e5f7278">ComputeThreeCenterIntegrals</a>(</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis, <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1DFTGradient.html#a83100f5340c1572557dbb20a54ac1a18">   41</a></span>Eigen::MatrixXd <a class="code hl_function" href="classvotca_1_1xtp_1_1DFTGradient.html#a83100f5340c1572557dbb20a54ac1a18">DFTGradient::NuclearRepulsionDerivative</a>(<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>&amp; mol) {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> natoms = mol.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ac77977f38fe105f08f894c4c9372f9cb">size</a>();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  Eigen::MatrixXd deriv = Eigen::MatrixXd::Zero(natoms, 3);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="comment">// dE_nn/dR_A = sum_{B != A} Z_A Z_B * d(1/R_AB)/dR_A</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="comment">//            = -sum_{B != A} Z_A Z_B (R_A - R_B) / |R_A - R_B|^3</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="comment">// NOTE: this returns the GRADIENT dE/dR, not the force -dE/dR -- the</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="comment">// sign convention for the final assembled total gradient (which this</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="comment">// feeds into) is a decision for whatever code combines this with the</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="comment">// RI-J and XC terms, not fixed here. Keep this consistent when</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="comment">// validating against finite differences: a finite difference of the</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="comment">// energy directly gives dE/dR, matching this function&#39;s output as-is,</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="comment">// with no extra sign flip needed.</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> a = 0; a &lt; natoms; ++a) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">double</span> Za = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(mol[a].getNuccharge());</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> Eigen::Vector3d&amp; Ra = mol[a].<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">getPos</a>();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    Eigen::Vector3d sum = Eigen::Vector3d::Zero();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> b = 0; b &lt; natoms; ++b) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      <span class="keywordflow">if</span> (b == a) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      <span class="keywordtype">double</span> Zb = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(mol[b].getNuccharge());</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      <span class="keyword">const</span> Eigen::Vector3d&amp; Rb = mol[b].<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">getPos</a>();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      Eigen::Vector3d Rab_vec = Ra - Rb;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>      <span class="keywordtype">double</span> Rab = Rab_vec.norm();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      sum += Za * Zb * Rab_vec / (Rab * Rab * Rab);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    deriv.row(a) = -sum.transpose();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordflow">return</span> deriv;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// Memory-efficient alternative to ComputeThreeCenterDerivatives above --</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// see that function&#39;s own header comment in libint2_derivative_calls.cc</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// for why this exists (the full-tensor version is catastrophically</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// memory-unscalable for anything beyond a small, toy-sized system).</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>std::vector&lt;Eigen::MatrixXd&gt; <a class="code hl_function" href="namespacevotca_1_1xtp.html#acf376cac06de07103cb735e34a8d07b1">ComputeThreeCenterDerivativeContraction</a>(</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis, <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">const</span> Eigen::MatrixXd&amp; density);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// CORRECTED, single-pass alternative for RIKGradient&#39;s own, different</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// contraction needs -- see that function&#39;s own header comment in</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// libint2_derivative_calls.cc for the full reasoning, including the</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// arithmetic error that led to an earlier, slower, per-atom approach</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// (ComputeThreeCenterDerivativesForAtom, kept below but no longer</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// used by RIKGradient) being chosen instead.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>std::vector&lt;ThreeCenterDerivative&gt; <a class="code hl_function" href="namespacevotca_1_1xtp.html#a82d30a4a7c341b0279c504b2a1d1f57b">ComputeThreeCenterDerivativesMOTransformed</a>(</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis, <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">const</span> Eigen::MatrixXd&amp; occ_mo_coeffs);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// Per-atom alternative -- superseded by</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">// ComputeThreeCenterDerivativesMOTransformed above for RIKGradient&#39;s</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">// own use (kept, unused by RIKGradient now, since deleting it would</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// remove a real, working, if slower, fallback with no compensating</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">// benefit).</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><a class="code hl_typedef" href="namespacevotca_1_1xtp.html#add55e119f03eaa382f8c434673d57bfb">ThreeCenterDerivative</a> <a class="code hl_function" href="namespacevotca_1_1xtp.html#af838b252dcc9a8695a10a567cbcc3bd5">ComputeThreeCenterDerivativesForAtom</a>(</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis, <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis, <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> target_atom);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>std::vector&lt;Eigen::MatrixXd&gt; <a class="code hl_function" href="namespacevotca_1_1xtp.html#a8c363e9a5ca74b8a1bbc1d542e5f7278">ComputeThreeCenterIntegrals</a>(</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis, <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1DFTGradient.html#a83100f5340c1572557dbb20a54ac1a18">   64</a></span>Eigen::MatrixXd <a class="code hl_function" href="classvotca_1_1xtp_1_1DFTGradient.html#a83100f5340c1572557dbb20a54ac1a18">DFTGradient::NuclearRepulsionDerivative</a>(<span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>&amp; mol) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> natoms = mol.<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ac77977f38fe105f08f894c4c9372f9cb">size</a>();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  Eigen::MatrixXd deriv = Eigen::MatrixXd::Zero(natoms, 3);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="comment">// dE_nn/dR_A = sum_{B != A} Z_A Z_B * d(1/R_AB)/dR_A</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="comment">//            = -sum_{B != A} Z_A Z_B (R_A - R_B) / |R_A - R_B|^3</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="comment">// NOTE: this returns the GRADIENT dE/dR, not the force -dE/dR -- the</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="comment">// sign convention for the final assembled total gradient (which this</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="comment">// feeds into) is a decision for whatever code combines this with the</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="comment">// RI-J and XC terms, not fixed here. Keep this consistent when</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="comment">// validating against finite differences: a finite difference of the</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="comment">// energy directly gives dE/dR, matching this function&#39;s output as-is,</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="comment">// with no extra sign flip needed.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> a = 0; a &lt; natoms; ++a) {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">double</span> Za = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(mol[a].getNuccharge());</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">const</span> Eigen::Vector3d&amp; Ra = mol[a].<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">getPos</a>();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    Eigen::Vector3d sum = Eigen::Vector3d::Zero();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> b = 0; b &lt; natoms; ++b) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>      <span class="keywordflow">if</span> (b == a) {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>      }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>      <span class="keywordtype">double</span> Zb = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(mol[b].getNuccharge());</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      <span class="keyword">const</span> Eigen::Vector3d&amp; Rb = mol[b].<a class="code hl_function" href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">getPos</a>();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      Eigen::Vector3d Rab_vec = Ra - Rb;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      <span class="keywordtype">double</span> Rab = Rab_vec.norm();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      sum += Za * Zb * Rab_vec / (Rab * Rab * Rab);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    deriv.row(a) = -sum.transpose();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  <span class="keywordflow">return</span> deriv;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
 </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1DFTGradient.html#a94909d479951b14d65e615ed5971a50f">   74</a></span>Eigen::MatrixXd <a class="code hl_function" href="classvotca_1_1xtp_1_1DFTGradient.html#a94909d479951b14d65e615ed5971a50f">DFTGradient::RIJGradient</a>(<span class="keyword">const</span> Eigen::MatrixXd&amp; density,</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                         <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis,</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                         <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis) {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> natoms = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a><span class="keyword">&gt;</span>(dftbasis.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOBasis.html#a4bcfa569ebd2349520b3c17e1a6bb040">getFuncPerAtom</a>().size());</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> n_aux_bf = auxbasis.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>();</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="comment">// d_P = sum_{mu,nu} P_{mu,nu} (mu,nu|P)</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  std::vector&lt;Eigen::MatrixXd&gt; tensor =</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a8c363e9a5ca74b8a1bbc1d542e5f7278">ComputeThreeCenterIntegrals</a>(auxbasis, dftbasis);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  Eigen::VectorXd d(n_aux_bf);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> p = 0; p &lt; n_aux_bf; ++p) {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    d(p) = (density.array() * tensor[p].array()).sum();</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="comment">// V_PQ = (P|Q), c = V^-1 d. Using a plain SPD solve here rather than</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="comment">// the eigenvalue-truncated Pseudo_InvSqrt approach AOCoulomb also</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="comment">// offers (used in production for numerical stability against</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <span class="comment">// near-linear-dependence in the aux basis) -- adequate for this</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="comment">// validation-scale use, but worth revisiting if this is ever used on</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  <span class="comment">// a genuinely large or near-linearly-dependent aux basis.</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  <a class="code hl_class" href="classvotca_1_1xtp_1_1AOCoulomb.html">AOCoulomb</a> aocoulomb;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  aocoulomb.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOCoulomb.html#a3230ef39fd45db9e6ca108bd1d28f42b">Fill</a>(auxbasis);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="keyword">const</span> Eigen::MatrixXd&amp; <a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a> = aocoulomb.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOCoulomb.html#a508f11c7a0c66659c7d18d151e23683b">Matrix</a>();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  Eigen::VectorXd c = <a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.ldlt().solve(d);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <span class="comment">// Derivative tensors -- both already validated (finite-difference</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="comment">// tested) in test_aoderivatives.cc.</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  std::vector&lt;ThreeCenterDerivative&gt; d3c =</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a77e87d7316a2c93dac67d027797a7655">ComputeThreeCenterDerivatives</a>(auxbasis, dftbasis);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  std::vector&lt;AOMatrixDerivative&gt; dV =</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a5cde39f46d26ac7a46ec881054ae1359">ComputeCoulombMetricDerivatives</a>(auxbasis);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  <span class="comment">// dE_J/dR = sum_P c_P d(d_P)/dR - 1/2 sum_PQ c_P c_Q d(V_PQ)/dR</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="comment">// d(d_P)/dR = sum_{mu,nu} P_{mu,nu} d(mu,nu|P)/dR (density held fixed --</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  <span class="comment">// see the &quot;IMPORTANT&quot; note on this function in dftgradient.h for why</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="comment">// that&#39;s valid regardless of whether density is a converged SCF</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="comment">// density or an arbitrary fixed matrix).</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  Eigen::MatrixXd grad = Eigen::MatrixXd::Zero(natoms, 3);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> a = 0; a &lt; natoms; ++a) {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> xyz = 0; xyz &lt; 3; ++xyz) {</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      <span class="keywordtype">double</span> term1 = 0.0;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> p = 0; p &lt; n_aux_bf; ++p) {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        term1 += c(p) * (density.array() * d3c[a][xyz][p].array()).sum();</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>      }</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      <span class="keywordtype">double</span> term2 = 0.5 * c.dot(dV[a][xyz] * c);</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>      grad(a, xyz) = term1 - term2;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    }</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="keywordflow">return</span> grad;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1DFTGradient.html#a94909d479951b14d65e615ed5971a50f">   97</a></span>Eigen::MatrixXd <a class="code hl_function" href="classvotca_1_1xtp_1_1DFTGradient.html#a94909d479951b14d65e615ed5971a50f">DFTGradient::RIJGradient</a>(<span class="keyword">const</span> Eigen::MatrixXd&amp; density,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                         <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                                         <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> natoms = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a><span class="keyword">&gt;</span>(dftbasis.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOBasis.html#a4bcfa569ebd2349520b3c17e1a6bb040">getFuncPerAtom</a>().size());</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> n_aux_bf = auxbasis.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="comment">// d_P = sum_{mu,nu} P_{mu,nu} (mu,nu|P)</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  std::vector&lt;Eigen::MatrixXd&gt; tensor =</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a8c363e9a5ca74b8a1bbc1d542e5f7278">ComputeThreeCenterIntegrals</a>(auxbasis, dftbasis);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  Eigen::VectorXd d(n_aux_bf);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> p = 0; p &lt; n_aux_bf; ++p) {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    d(p) = (density.array() * tensor[p].array()).sum();</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="comment">// V_PQ = (P|Q), c = V^-1 d. Using a plain SPD solve here rather than</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="comment">// the eigenvalue-truncated Pseudo_InvSqrt approach AOCoulomb also</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  <span class="comment">// offers (used in production for numerical stability against</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="comment">// near-linear-dependence in the aux basis) -- adequate for this</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="comment">// validation-scale use, but worth revisiting if this is ever used on</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  <span class="comment">// a genuinely large or near-linearly-dependent aux basis.</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  <a class="code hl_class" href="classvotca_1_1xtp_1_1AOCoulomb.html">AOCoulomb</a> aocoulomb;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  aocoulomb.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOCoulomb.html#a3230ef39fd45db9e6ca108bd1d28f42b">Fill</a>(auxbasis);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="keyword">const</span> Eigen::MatrixXd&amp; <a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a> = aocoulomb.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOCoulomb.html#a508f11c7a0c66659c7d18d151e23683b">Matrix</a>();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  Eigen::VectorXd c = <a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>.ldlt().solve(d);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="comment">// Already-contracted against density (sum_{mu,nu} density(mu,nu) *</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  <span class="comment">// d(mu,nu|p)/dR_a[xyz], not a per-(mu,nu) tensor) -- see this</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="comment">// function&#39;s own header comment for why: the full-tensor</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  <span class="comment">// ComputeThreeCenterDerivatives, previously used here, was confirmed</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="comment">// to exhaust hundreds of GB of memory on a real, moderately-sized</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="comment">// molecule (natoms*3*n_aux_bf separate, complete nao x nao matrices</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="comment">// held simultaneously -- roughly 2.6 PETABYTES for a 53-atom, 943</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="comment">// AO / 2320 auxiliary function system). ComputeThreeCenterDerivatives</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="comment">// itself is left unchanged (still used, and still validated, by</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  <span class="comment">// test_aoderivatives.cc and by RIKGradient below, which needs a</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  <span class="comment">// genuinely different contraction of its own -- see that function&#39;s</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  <span class="comment">// own comments).</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>  std::vector&lt;Eigen::MatrixXd&gt; ddP_dR =</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#acf376cac06de07103cb735e34a8d07b1">ComputeThreeCenterDerivativeContraction</a>(auxbasis, dftbasis, density);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  std::vector&lt;AOMatrixDerivative&gt; dV =</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a5cde39f46d26ac7a46ec881054ae1359">ComputeCoulombMetricDerivatives</a>(auxbasis);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  <span class="comment">// dE_J/dR = sum_P c_P d(d_P)/dR - 1/2 sum_PQ c_P c_Q d(V_PQ)/dR</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  <span class="comment">// d(d_P)/dR = sum_{mu,nu} P_{mu,nu} d(mu,nu|P)/dR (density held fixed --</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="comment">// see the &quot;IMPORTANT&quot; note on this function in dftgradient.h for why</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  <span class="comment">// that&#39;s valid regardless of whether density is a converged SCF</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  <span class="comment">// density or an arbitrary fixed matrix). ddP_dR[a](xyz, p) is exactly</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  <span class="comment">// this quantity, already summed over mu,nu -- no further contraction</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  <span class="comment">// against density needed here at all.</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  Eigen::MatrixXd grad = Eigen::MatrixXd::Zero(natoms, 3);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> a = 0; a &lt; natoms; ++a) {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> xyz = 0; xyz &lt; 3; ++xyz) {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>      <span class="keywordtype">double</span> term1 = ddP_dR[a].row(xyz).dot(c);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>      <span class="keywordtype">double</span> term2 = 0.5 * c.dot(dV[a][xyz] * c);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      grad(a, xyz) = term1 - term2;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    }</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  <span class="keywordflow">return</span> grad;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>}</div>
 </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1DFTGradient.html#a1fff12b08a931cf57c8097d135dcb0bb">  125</a></span>Eigen::MatrixXd <a class="code hl_function" href="classvotca_1_1xtp_1_1DFTGradient.html#a1fff12b08a931cf57c8097d135dcb0bb">DFTGradient::RIKGradient</a>(<span class="keyword">const</span> Eigen::MatrixXd&amp; occ_mo_coeffs,</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                                         <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis,</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                                         <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis) {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> natoms = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a><span class="keyword">&gt;</span>(dftbasis.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOBasis.html#a4bcfa569ebd2349520b3c17e1a6bb040">getFuncPerAtom</a>().size());</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> n_aux_bf = auxbasis.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>();</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> nocc = occ_mo_coeffs.cols();</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  std::vector&lt;Eigen::MatrixXd&gt; tensor =</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a8c363e9a5ca74b8a1bbc1d542e5f7278">ComputeThreeCenterIntegrals</a>(auxbasis, dftbasis);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  <a class="code hl_class" href="classvotca_1_1xtp_1_1AOCoulomb.html">AOCoulomb</a> aocoulomb;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  aocoulomb.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOCoulomb.html#a3230ef39fd45db9e6ca108bd1d28f42b">Fill</a>(auxbasis);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="keyword">const</span> Eigen::MatrixXd&amp; <a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a> = aocoulomb.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOCoulomb.html#a508f11c7a0c66659c7d18d151e23683b">Matrix</a>();</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  Eigen::LDLT&lt;Eigen::MatrixXd&gt; V_ldlt(<a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  std::vector&lt;ThreeCenterDerivative&gt; d3c =</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a77e87d7316a2c93dac67d027797a7655">ComputeThreeCenterDerivatives</a>(auxbasis, dftbasis);</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  std::vector&lt;AOMatrixDerivative&gt; dV =</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a5cde39f46d26ac7a46ec881054ae1359">ComputeCoulombMetricDerivatives</a>(auxbasis);</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  Eigen::MatrixXd grad = Eigen::MatrixXd::Zero(natoms, 3);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="comment">// NOTE ON HISTORY: an earlier revision of this function briefly</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="comment">// switched to a &quot;half-transformed&quot; structure (one index MO, one AO),</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  <span class="comment">// reasoned (incorrectly, via error-prone hand algebra) to be needed</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="comment">// to match ERIs::CalculateEXX_mos&#39;s real K matrix. Settled by DIRECT</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="comment">// NUMERICAL SIMULATION of CalculateEXX_mos&#39;s actual algorithm</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  <span class="comment">// (symmetric V^-1/2 fit, TCxMOs_T = occMos^T*B_tilde, etc.) against</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  <span class="comment">// both candidate formulas, on several random test systems: the</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  <span class="comment">// FULLY-MO-transformed structure below (both indices occupied MOs,</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  <span class="comment">// matching the ORIGINAL version of this function) is correct, and</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="comment">// matches the real energy EXACTLY (to ~1e-14) once multiplied by 2 --</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="comment">// not the half-transformed structure, which did not match at all</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="comment">// (not even up to a constant factor). See conversation history for</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <span class="comment">// the verification. This confirms the earlier documented concern</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="comment">// (needing to differentiate a matrix square root) was never actually</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <span class="comment">// a problem -- V^-1 and V^-1/2 fitting give identical energies</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="comment">// (|V^-1/2 x|^2 == x^T V^-1 x exactly, for symmetric positive-definite</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="comment">// V) -- the only real fix needed here was the missing factor of 2.</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  <span class="comment">//</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="comment">// d_ij(P) = C_i^T tensor[P] C_j, c_ij = V^-1 d_ij (i,j both occupied</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="comment">// MOs, all ordered pairs including i==j).</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  <span class="comment">// E_K = -2 * sum_{i,j} [0.5 * c_ij . d_ij] = -sum_{i,j} c_ij . d_ij</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  <span class="comment">// (matches ERIs::CalculateEXX_mos&#39;s real physical exchange energy</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="comment">// exactly, confirmed numerically, not just up to an unknown scale).</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  std::vector&lt;std::vector&lt;Eigen::VectorXd&gt;&gt; c_ij(</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      nocc, std::vector&lt;Eigen::VectorXd&gt;(nocc));</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> i = 0; i &lt; nocc; ++i) {</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> j = 0; j &lt; nocc; ++j) {</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>      Eigen::VectorXd d(n_aux_bf);</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> p = 0; p &lt; n_aux_bf; ++p) {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        d(p) = occ_mo_coeffs.col(i).dot(tensor[p] * occ_mo_coeffs.col(j));</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>      }</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>      c_ij[i][j] = V_ldlt.solve(d);</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    }</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  }</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> a = 0; a &lt; natoms; ++a) {</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> xyz = 0; xyz &lt; 3; ++xyz) {</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>      <span class="keywordtype">double</span> energy_term = 0.0;</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>      <span class="keywordtype">double</span> metric_term = 0.0;</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> i = 0; i &lt; nocc; ++i) {</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> j = 0; j &lt; nocc; ++j) {</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>          <span class="keyword">const</span> Eigen::VectorXd&amp; c = c_ij[i][j];</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>          Eigen::VectorXd dd(n_aux_bf);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>          <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> p = 0; p &lt; n_aux_bf; ++p) {</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            dd(p) =</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                occ_mo_coeffs.col(i).dot(d3c[a][xyz][p] * occ_mo_coeffs.col(j));</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>          }</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>          energy_term += c.dot(dd);</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>          metric_term += c.dot(dV[a][xyz] * c);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        }</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>      }</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>      <span class="comment">// Factor of -2, matching E_K = -2*sum[0.5*c.d] confirmed above --</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>      <span class="comment">// NOT the &quot;-(energy_term - 0.5*metric_term)&quot; (factor of -1) used</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>      <span class="comment">// in the intermediate, incorrect half-transformed revision.</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>      grad(a, xyz) = -2.0 * (energy_term - 0.5 * metric_term);</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    }</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  }</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="keywordflow">return</span> grad;</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>}</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="foldopen" id="foldopen00157" data-start="{" data-end="}">
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classvotca_1_1xtp_1_1DFTGradient.html#a1fff12b08a931cf57c8097d135dcb0bb">  157</a></span>Eigen::MatrixXd <a class="code hl_function" href="classvotca_1_1xtp_1_1DFTGradient.html#a1fff12b08a931cf57c8097d135dcb0bb">DFTGradient::RIKGradient</a>(<span class="keyword">const</span> Eigen::MatrixXd&amp; occ_mo_coeffs,</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                                         <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; auxbasis,</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                                         <span class="keyword">const</span> <a class="code hl_class" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a>&amp; dftbasis) {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> natoms = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a><span class="keyword">&gt;</span>(dftbasis.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOBasis.html#a4bcfa569ebd2349520b3c17e1a6bb040">getFuncPerAtom</a>().size());</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> n_aux_bf = auxbasis.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">AOBasisSize</a>();</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> nocc = occ_mo_coeffs.cols();</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  std::vector&lt;Eigen::MatrixXd&gt; tensor =</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a8c363e9a5ca74b8a1bbc1d542e5f7278">ComputeThreeCenterIntegrals</a>(auxbasis, dftbasis);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  <a class="code hl_class" href="classvotca_1_1xtp_1_1AOCoulomb.html">AOCoulomb</a> aocoulomb;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  aocoulomb.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOCoulomb.html#a3230ef39fd45db9e6ca108bd1d28f42b">Fill</a>(auxbasis);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="keyword">const</span> Eigen::MatrixXd&amp; <a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a> = aocoulomb.<a class="code hl_function" href="classvotca_1_1xtp_1_1AOCoulomb.html#a508f11c7a0c66659c7d18d151e23683b">Matrix</a>();</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  Eigen::LDLT&lt;Eigen::MatrixXd&gt; V_ldlt(<a class="code hl_enumvalue" href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">V</a>);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  std::vector&lt;AOMatrixDerivative&gt; dV =</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a5cde39f46d26ac7a46ec881054ae1359">ComputeCoulombMetricDerivatives</a>(auxbasis);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="comment">// Single pass over ALL atoms at once -- see</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  <span class="comment">// ComputeThreeCenterDerivativesMOTransformed&#39;s own header comment for</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  <span class="comment">// the full reasoning (including the arithmetic error that had</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  <span class="comment">// motivated a slower, per-atom approach instead): ~23.8 GB total for</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  <span class="comment">// the real, 53-atom/943-AO/2320-auxiliary/93-occupied-orbital system</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  <span class="comment">// that originally motivated this whole fix, smaller than even that</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  <span class="comment">// per-atom approach&#39;s own ~46 GB peak, and needing only ONE pass over</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <span class="comment">// the expensive shell-triple loop rather than natoms of them.</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  std::vector&lt;ThreeCenterDerivative&gt; d3c_mo =</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>      <a class="code hl_function" href="namespacevotca_1_1xtp.html#a82d30a4a7c341b0279c504b2a1d1f57b">ComputeThreeCenterDerivativesMOTransformed</a>(auxbasis, dftbasis,</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                                                 occ_mo_coeffs);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  Eigen::MatrixXd grad = Eigen::MatrixXd::Zero(natoms, 3);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  <span class="comment">// d_ij(P) = C_i^T tensor[P] C_j, c_ij = V^-1 d_ij (i,j both occupied</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  <span class="comment">// MOs, all ordered pairs including i==j).</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  <span class="comment">// E_K = -2 * sum_{i,j} [0.5 * c_ij . d_ij] = -sum_{i,j} c_ij . d_ij</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  <span class="comment">// (matches ERIs::CalculateEXX_mos&#39;s real physical exchange energy</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <span class="comment">// exactly, confirmed numerically, not just up to an unknown scale).</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="comment">//</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  <span class="comment">// PERFORMANCE: confirmed directly, via a real run, to be a genuine</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  <span class="comment">// bottleneck in its naive form -- computing tensor[p]*occ_mo_coeffs.col(j)</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="comment">// (an O(nao^2) matrix-vector product) separately for every (i,j)</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <span class="comment">// pair recomputes the SAME result nocc times over (it does not</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="comment">// depend on i at all). Factored out here: tensor[p]*occ_mo_coeffs</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="comment">// (all occupied columns at once) is computed ONCE per p, and every</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="comment">// d(p) for a given (i,j) is then a cheap O(nao) dot product against</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment">// the appropriate column of that already-computed result -- reduces</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="comment">// the dominant cost by roughly a factor of nocc. Purely a</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="comment">// reordering of the SAME formula (see the &quot;NOTE ON HISTORY&quot; comment</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="comment">// below for why changing the formula itself would be dangerous);</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  <span class="comment">// mathematically identical to the original for every element, not a</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <span class="comment">// different computation.</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  std::vector&lt;Eigen::MatrixXd&gt; tensor_half(n_aux_bf);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> p = 0; p &lt; n_aux_bf; ++p) {</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    tensor_half[p] = tensor[p] * occ_mo_coeffs;  <span class="comment">// (nao, nocc)</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  }</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  std::vector&lt;std::vector&lt;Eigen::VectorXd&gt;&gt; c_ij(</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>      nocc, std::vector&lt;Eigen::VectorXd&gt;(nocc));</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> i = 0; i &lt; nocc; ++i) {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> j = 0; j &lt; nocc; ++j) {</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>      Eigen::VectorXd d(n_aux_bf);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> p = 0; p &lt; n_aux_bf; ++p) {</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        d(p) = occ_mo_coeffs.col(i).dot(tensor_half[p].col(j));</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>      }</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>      c_ij[i][j] = V_ldlt.solve(d);</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    }</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  }</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>  <span class="comment">// NOTE ON HISTORY: an earlier revision of this function briefly</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  <span class="comment">// switched to a &quot;half-transformed&quot; structure (one index MO, one AO),</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>  <span class="comment">// reasoned (incorrectly, via error-prone hand algebra) to be needed</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  <span class="comment">// to match ERIs::CalculateEXX_mos&#39;s real K matrix. Settled by DIRECT</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  <span class="comment">// NUMERICAL SIMULATION of CalculateEXX_mos&#39;s actual algorithm</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>  <span class="comment">// (symmetric V^-1/2 fit, TCxMOs_T = occMos^T*B_tilde, etc.) against</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>  <span class="comment">// both candidate formulas, on several random test systems: the</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  <span class="comment">// FULLY-MO-transformed structure below (both indices occupied MOs,</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  <span class="comment">// matching the ORIGINAL version of this function) is correct, and</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  <span class="comment">// matches the real energy EXACTLY (to ~1e-14) once multiplied by 2 --</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  <span class="comment">// not the half-transformed structure, which did not match at all</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>  <span class="comment">// (not even up to a constant factor). See conversation history for</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  <span class="comment">// the verification. This confirms the earlier documented concern</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>  <span class="comment">// (needing to differentiate a matrix square root) was never actually</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  <span class="comment">// a problem -- V^-1 and V^-1/2 fitting give identical energies</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  <span class="comment">// (|V^-1/2 x|^2 == x^T V^-1 x exactly, for symmetric positive-definite</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>  <span class="comment">// V) -- the only real fix needed here was the missing factor of 2.</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>  <span class="comment">// (NOTE: this history comment is about a DIFFERENT half-transformed</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>  <span class="comment">// structure than the one introduced just above -- that one changed</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>  <span class="comment">// the final FORMULA itself and gave a wrong physical answer; the one</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  <span class="comment">// just above only reorders/factors the SAME formula&#39;s own</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>  <span class="comment">// computation and is mathematically identical to the original for</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>  <span class="comment">// every element, not a different computation at all.)</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">#pragma omp parallel for</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> a = 0; a &lt; natoms; ++a) {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> xyz = 0; xyz &lt; 3; ++xyz) {</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>      <span class="keywordtype">double</span> energy_term = 0.0;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>      <span class="keywordtype">double</span> metric_term = 0.0;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> i = 0; i &lt; nocc; ++i) {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> j = 0; j &lt; nocc; ++j) {</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>          <span class="keyword">const</span> Eigen::VectorXd&amp; c = c_ij[i][j];</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>          <span class="comment">// d3c_mo[a][xyz][p] is already the full (nocc, nocc)</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>          <span class="comment">// MO-transformed matrix -- (i, j) is read off directly, no</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>          <span class="comment">// further matrix-vector multiplication needed at all (unlike</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>          <span class="comment">// the old, per-atom AO-basis d3c_atom[xyz][p], which still</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>          <span class="comment">// needed occ_mo_coeffs.col(i).dot(d3c_atom[xyz][p] *</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>          <span class="comment">// occ_mo_coeffs.col(j)) for every (i,j) pair).</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>          Eigen::VectorXd dd(n_aux_bf);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>          <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> p = 0; p &lt; n_aux_bf; ++p) {</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            dd(p) = d3c_mo[a][xyz][p](i, j);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>          }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>          energy_term += c.dot(dd);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>          metric_term += c.dot(dV[a][xyz] * c);</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        }</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>      }</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>      <span class="comment">// Factor of -2, matching E_K = -2*sum[0.5*c.d] confirmed above --</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>      <span class="comment">// NOT the &quot;-(energy_term - 0.5*metric_term)&quot; (factor of -1) used</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>      <span class="comment">// in the intermediate, incorrect half-transformed revision.</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>      grad(a, xyz) = -2.0 * (energy_term - 0.5 * metric_term);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    }</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>  }</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>  <span class="keywordflow">return</span> grad;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>}</div>
 </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>}  <span class="comment">// namespace xtp</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>}  <span class="comment">// namespace xtp</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>}  <span class="comment">// namespace votca</span></div>
 <div class="ttc" id="aaomatrix_8h_html"><div class="ttname"><a href="aomatrix_8h.html">aomatrix.h</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html">votca::xtp::AOBasis</a></div><div class="ttdoc">Container to hold Basisfunctions for all atoms.</div><div class="ttdef"><b>Definition</b> <a href="aobasis_8h_source.html#l00042">aobasis.h:42</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOBasis_html_a11221e2cf441ae7dd0afd79e4588d1ea"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOBasis.html#a11221e2cf441ae7dd0afd79e4588d1ea">votca::xtp::AOBasis::AOBasisSize</a></div><div class="ttdeci">Index AOBasisSize() const</div><div class="ttdef"><b>Definition</b> <a href="aobasis_8h_source.html#l00046">aobasis.h:46</a></div></div>
@@ -314,18 +386,21 @@ $(function(){initNavTree('dftgradient_8cc_source.html','',''); });
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AOCoulomb_html_a508f11c7a0c66659c7d18d151e23683b"><div class="ttname"><a href="classvotca_1_1xtp_1_1AOCoulomb.html#a508f11c7a0c66659c7d18d151e23683b">votca::xtp::AOCoulomb::Matrix</a></div><div class="ttdeci">const Eigen::MatrixXd &amp; Matrix() const</div><div class="ttdef"><b>Definition</b> <a href="aomatrix_8h_source.html#l00072">aomatrix.h:72</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_ab7e0b5b18022220498df92e7742b3cf4"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#ab7e0b5b18022220498df92e7742b3cf4">votca::xtp::AtomContainer::getPos</a></div><div class="ttdeci">const Eigen::Vector3d &amp; getPos() const</div><div class="ttdef"><b>Definition</b> <a href="atomcontainer_8h_source.html#l00094">atomcontainer.h:94</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1AtomContainer_html_ac77977f38fe105f08f894c4c9372f9cb"><div class="ttname"><a href="classvotca_1_1xtp_1_1AtomContainer.html#ac77977f38fe105f08f894c4c9372f9cb">votca::xtp::AtomContainer::size</a></div><div class="ttdeci">Index size() const</div><div class="ttdef"><b>Definition</b> <a href="atomcontainer_8h_source.html#l00067">atomcontainer.h:67</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1DFTGradient_html_a1fff12b08a931cf57c8097d135dcb0bb"><div class="ttname"><a href="classvotca_1_1xtp_1_1DFTGradient.html#a1fff12b08a931cf57c8097d135dcb0bb">votca::xtp::DFTGradient::RIKGradient</a></div><div class="ttdeci">static Eigen::MatrixXd RIKGradient(const Eigen::MatrixXd &amp;occ_mo_coeffs, const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis)</div><div class="ttdef"><b>Definition</b> <a href="#l00125">dftgradient.cc:125</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1DFTGradient_html_a83100f5340c1572557dbb20a54ac1a18"><div class="ttname"><a href="classvotca_1_1xtp_1_1DFTGradient.html#a83100f5340c1572557dbb20a54ac1a18">votca::xtp::DFTGradient::NuclearRepulsionDerivative</a></div><div class="ttdeci">static Eigen::MatrixXd NuclearRepulsionDerivative(const QMMolecule &amp;mol)</div><div class="ttdef"><b>Definition</b> <a href="#l00041">dftgradient.cc:41</a></div></div>
-<div class="ttc" id="aclassvotca_1_1xtp_1_1DFTGradient_html_a94909d479951b14d65e615ed5971a50f"><div class="ttname"><a href="classvotca_1_1xtp_1_1DFTGradient.html#a94909d479951b14d65e615ed5971a50f">votca::xtp::DFTGradient::RIJGradient</a></div><div class="ttdeci">static Eigen::MatrixXd RIJGradient(const Eigen::MatrixXd &amp;density, const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis)</div><div class="ttdef"><b>Definition</b> <a href="#l00074">dftgradient.cc:74</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1DFTGradient_html_a1fff12b08a931cf57c8097d135dcb0bb"><div class="ttname"><a href="classvotca_1_1xtp_1_1DFTGradient.html#a1fff12b08a931cf57c8097d135dcb0bb">votca::xtp::DFTGradient::RIKGradient</a></div><div class="ttdeci">static Eigen::MatrixXd RIKGradient(const Eigen::MatrixXd &amp;occ_mo_coeffs, const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis)</div><div class="ttdef"><b>Definition</b> <a href="#l00157">dftgradient.cc:157</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1DFTGradient_html_a83100f5340c1572557dbb20a54ac1a18"><div class="ttname"><a href="classvotca_1_1xtp_1_1DFTGradient.html#a83100f5340c1572557dbb20a54ac1a18">votca::xtp::DFTGradient::NuclearRepulsionDerivative</a></div><div class="ttdeci">static Eigen::MatrixXd NuclearRepulsionDerivative(const QMMolecule &amp;mol)</div><div class="ttdef"><b>Definition</b> <a href="#l00064">dftgradient.cc:64</a></div></div>
+<div class="ttc" id="aclassvotca_1_1xtp_1_1DFTGradient_html_a94909d479951b14d65e615ed5971a50f"><div class="ttname"><a href="classvotca_1_1xtp_1_1DFTGradient.html#a94909d479951b14d65e615ed5971a50f">votca::xtp::DFTGradient::RIJGradient</a></div><div class="ttdeci">static Eigen::MatrixXd RIJGradient(const Eigen::MatrixXd &amp;density, const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis)</div><div class="ttdef"><b>Definition</b> <a href="#l00097">dftgradient.cc:97</a></div></div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
 <div class="ttc" id="adftgradient_8h_html"><div class="ttname"><a href="dftgradient_8h.html">dftgradient.h</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html"><div class="ttname"><a href="namespacevotca_1_1xtp.html">votca::xtp</a></div><div class="ttdoc">Charge transport classes.</div><div class="ttdef"><b>Definition</b> <a href="ERIs_8h_source.html#l00028">ERIs.h:28</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html_a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102a05c6e2d30075f31a8dbc4c5bde4f509d">votca::xtp::V</a></div><div class="ttdeci">@ V</div><div class="ttdef"><b>Definition</b> <a href="eeinteractor_8h_source.html#l00033">eeinteractor.h:33</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html_a5cde39f46d26ac7a46ec881054ae1359"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a5cde39f46d26ac7a46ec881054ae1359">votca::xtp::ComputeCoulombMetricDerivatives</a></div><div class="ttdeci">std::vector&lt; AOMatrixDerivative &gt; ComputeCoulombMetricDerivatives(const AOBasis &amp;aobasis)</div><div class="ttdef"><b>Definition</b> <a href="libint2__derivative__calls_8cc_source.html#l00642">libint2_derivative_calls.cc:642</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html_a77e87d7316a2c93dac67d027797a7655"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a77e87d7316a2c93dac67d027797a7655">votca::xtp::ComputeThreeCenterDerivatives</a></div><div class="ttdeci">std::vector&lt; ThreeCenterDerivative &gt; ComputeThreeCenterDerivatives(const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis)</div><div class="ttdef"><b>Definition</b> <a href="libint2__derivative__calls_8cc_source.html#l00864">libint2_derivative_calls.cc:864</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html_a8c363e9a5ca74b8a1bbc1d542e5f7278"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a8c363e9a5ca74b8a1bbc1d542e5f7278">votca::xtp::ComputeThreeCenterIntegrals</a></div><div class="ttdeci">std::vector&lt; Eigen::MatrixXd &gt; ComputeThreeCenterIntegrals(const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis)</div><div class="ttdef"><b>Definition</b> <a href="libint2__derivative__calls_8cc_source.html#l00882">libint2_derivative_calls.cc:882</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html_a82d30a4a7c341b0279c504b2a1d1f57b"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a82d30a4a7c341b0279c504b2a1d1f57b">votca::xtp::ComputeThreeCenterDerivativesMOTransformed</a></div><div class="ttdeci">std::vector&lt; ThreeCenterDerivative &gt; ComputeThreeCenterDerivativesMOTransformed(const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis, const Eigen::MatrixXd &amp;occ_mo_coeffs)</div><div class="ttdef"><b>Definition</b> <a href="libint2__derivative__calls_8cc_source.html#l01469">libint2_derivative_calls.cc:1469</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html_a8c363e9a5ca74b8a1bbc1d542e5f7278"><div class="ttname"><a href="namespacevotca_1_1xtp.html#a8c363e9a5ca74b8a1bbc1d542e5f7278">votca::xtp::ComputeThreeCenterIntegrals</a></div><div class="ttdeci">std::vector&lt; Eigen::MatrixXd &gt; ComputeThreeCenterIntegrals(const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis)</div><div class="ttdef"><b>Definition</b> <a href="libint2__derivative__calls_8cc_source.html#l01489">libint2_derivative_calls.cc:1489</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html_acf376cac06de07103cb735e34a8d07b1"><div class="ttname"><a href="namespacevotca_1_1xtp.html#acf376cac06de07103cb735e34a8d07b1">votca::xtp::ComputeThreeCenterDerivativeContraction</a></div><div class="ttdeci">std::vector&lt; Eigen::MatrixXd &gt; ComputeThreeCenterDerivativeContraction(const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis, const Eigen::MatrixXd &amp;density)</div><div class="ttdef"><b>Definition</b> <a href="libint2__derivative__calls_8cc_source.html#l01055">libint2_derivative_calls.cc:1055</a></div></div>
 <div class="ttc" id="anamespacevotca_1_1xtp_html_add55e119f03eaa382f8c434673d57bfb"><div class="ttname"><a href="namespacevotca_1_1xtp.html#add55e119f03eaa382f8c434673d57bfb">votca::xtp::ThreeCenterDerivative</a></div><div class="ttdeci">std::array&lt; std::vector&lt; Eigen::MatrixXd &gt;, 3 &gt; ThreeCenterDerivative</div><div class="ttdef"><b>Definition</b> <a href="#l00033">dftgradient.cc:33</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1xtp_html_ae57297dbee4655adfea85c9409b22dca"><div class="ttname"><a href="namespacevotca_1_1xtp.html#ae57297dbee4655adfea85c9409b22dca">votca::xtp::AOMatrixDerivative</a></div><div class="ttdeci">std::array&lt; Eigen::MatrixXd, 3 &gt; AOMatrixDerivative</div><div class="ttdef"><b>Definition</b> <a href="dftengine_8cc_source.html#l00409">dftengine.cc:409</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html_ae57297dbee4655adfea85c9409b22dca"><div class="ttname"><a href="namespacevotca_1_1xtp.html#ae57297dbee4655adfea85c9409b22dca">votca::xtp::AOMatrixDerivative</a></div><div class="ttdeci">std::array&lt; Eigen::MatrixXd, 3 &gt; AOMatrixDerivative</div><div class="ttdef"><b>Definition</b> <a href="dftengine_8cc_source.html#l00413">dftengine.cc:413</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1xtp_html_af838b252dcc9a8695a10a567cbcc3bd5"><div class="ttname"><a href="namespacevotca_1_1xtp.html#af838b252dcc9a8695a10a567cbcc3bd5">votca::xtp::ComputeThreeCenterDerivativesForAtom</a></div><div class="ttdeci">ThreeCenterDerivative ComputeThreeCenterDerivativesForAtom(const AOBasis &amp;auxbasis, const AOBasis &amp;dftbasis, Index target_atom)</div><div class="ttdef"><b>Definition</b> <a href="libint2__derivative__calls_8cc_source.html#l01250">libint2_derivative_calls.cc:1250</a></div></div>
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition</b> <a href="basebead_8h_source.html#l00033">basebead.h:33</a></div></div>
 <div class="ttc" id="anamespacevotca_html_a947412fbe82041cb9f5ec8dfd56d67b1"><div class="ttname"><a href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">votca::Index</a></div><div class="ttdeci">Eigen::Index Index</div><div class="ttdef"><b>Definition</b> <a href="types_8h_source.html#l00026">types.h:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

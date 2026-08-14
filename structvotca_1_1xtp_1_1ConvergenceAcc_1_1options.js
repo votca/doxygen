@@ -1,6 +1,7 @@
 var structvotca_1_1xtp_1_1ConvergenceAcc_1_1options =
 [
     [ "adiis_start", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a6e0d879eff61ea5d18f04deeddfd2362", null ],
+    [ "davidson_max_iter", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a2cb9d16ca0be6164df886a5e23c6ee48", null ],
     [ "diis_start", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#afefb9e0d04cdc8ee82ecdc79cf10901b", null ],
     [ "Econverged", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#ace99e8e3d6719a0f40dce524f5ccce0a", null ],
     [ "error_converged", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#af6a70c1b58c0811b266539624c9c9f2e", null ],

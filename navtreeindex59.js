@@ -1,5 +1,12 @@
 var NAVTREEINDEX59 =
 {
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#acd9204492df39de6785608dd7cd647cd":[2,0,3,2,90,0,27],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#acd9204492df39de6785608dd7cd647cd":[3,0,3,2,88,0,27],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#ace2ae530aa89ba1af952f77924f0f39d":[2,0,3,2,90,0,7],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#ace2ae530aa89ba1af952f77924f0f39d":[3,0,3,2,88,0,7],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#ad1a1322dfeb00d45cd996a58e9f893cd":[2,0,3,2,90,0,16],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#ad1a1322dfeb00d45cd996a58e9f893cd":[3,0,3,2,88,0,16],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#ad1ad5493cdb5725bbea480a14b93be05":[2,0,3,2,90,0,23],
 "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#ad1ad5493cdb5725bbea480a14b93be05":[3,0,3,2,88,0,23],
 "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#aef6eca50fa83203950a893152a6ac838":[2,0,3,2,90,0,12],
 "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#aef6eca50fa83203950a893152a6ac838":[3,0,3,2,88,0,12],
@@ -242,12 +249,5 @@ var NAVTREEINDEX59 =
 "structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#ab97a5a9efe3fe1fdb3743f7a3b384f9c":[2,0,3,2,141,0,1],
 "structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#ab97a5a9efe3fe1fdb3743f7a3b384f9c":[3,0,3,2,139,0,1],
 "structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#ae3311ff79346ca71b951f7cb03fe665c":[2,0,3,2,141,0,0],
-"structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#ae3311ff79346ca71b951f7cb03fe665c":[3,0,3,2,139,0,0],
-"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html":[2,0,3,2,142,0],
-"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html":[3,0,3,2,140,0],
-"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#a4696bb785265b905fd1f5065e989f8fc":[2,0,3,2,142,0,0],
-"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#a4696bb785265b905fd1f5065e989f8fc":[3,0,3,2,140,0,0],
-"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#aae5aab17669c5f190f21a7748b3d7ebd":[2,0,3,2,142,0,2],
-"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#aae5aab17669c5f190f21a7748b3d7ebd":[3,0,3,2,140,0,2],
-"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#af2fb31d2cb93abce23554c0d2aeda7b6":[2,0,3,2,142,0,1]
+"structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html#ae3311ff79346ca71b951f7cb03fe665c":[3,0,3,2,139,0,0]
 };

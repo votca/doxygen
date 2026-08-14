@@ -1,5 +1,12 @@
 var NAVTREEINDEX61 =
 {
+"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a238f6d10c6953253539587b52d1d4711":[2,0,3,2,3,1,2],
+"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a238f6d10c6953253539587b52d1d4711":[3,0,3,2,1,1,2],
+"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a5edb6c09e8f0dd8a73ac88964ed73f43":[2,0,3,2,3,1,3],
+"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a5edb6c09e8f0dd8a73ac88964ed73f43":[3,0,3,2,1,1,3],
+"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a902900e5e277f157f241e752cc3c97bb":[2,0,3,2,3,1,0],
+"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a902900e5e277f157f241e752cc3c97bb":[3,0,3,2,1,1,0],
+"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#ae40661a5bc291630cc7a5f20f99620b1":[2,0,3,2,3,1,4],
 "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#ae40661a5bc291630cc7a5f20f99620b1":[3,0,3,2,1,1,4],
 "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#ae962b4f53f1264e649dc6e46c63a7a74":[2,0,3,2,3,1,5],
 "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#ae962b4f53f1264e649dc6e46c63a7a74":[3,0,3,2,1,1,5],

@@ -103,9 +103,13 @@ Collaboration diagram for votca::xtp::DFTEngine::CDFTConstraintSpec:</div>
 <div class="dyncontent">
 <div class="center"><img src="structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec__coll__graph.png" border="0" usemap="#avotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="avotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec_coll__map" id="avotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec_coll__map">
-<area shape="rect" title=" " alt="" coords="5,106,169,151"/>
-<area shape="rect" title=" " alt="" coords="9,5,165,33"/>
-<area shape="poly" title=" " alt="" coords="89,47,90,106,84,105,85,50"/>
+<area shape="rect" title=" " alt="" coords="68,200,232,245"/>
+<area shape="rect" title=" " alt="" coords="5,99,162,127"/>
+<area shape="poly" title=" " alt="" coords="85,140,90,159,96,175,118,199,113,200,92,177,85,161,83,145"/>
+<area shape="rect" title=" " alt="" coords="186,99,272,127"/>
+<area shape="poly" title=" " alt="" coords="215,139,191,178,171,202,168,197,187,174,211,142"/>
+<area shape="rect" title=" " alt="" coords="160,5,298,50"/>
+<area shape="poly" title=" " alt="" coords="230,63,231,100,226,98,227,68"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -114,6 +118,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a02b282154f69319e4b7a88e8aeab4146" id="r_a02b282154f69319e4b7a88e8aeab4146"><td class="memItemLeft">std::vector&lt; <a class="el" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a02b282154f69319e4b7a88e8aeab4146">atom_indices</a></td></tr>
 <tr class="memitem:a248aecba2aa43217ebebe51230bbfce6" id="r_a248aecba2aa43217ebebe51230bbfce6"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a248aecba2aa43217ebebe51230bbfce6">target_charge</a> = 0.0</td></tr>
 <tr class="memitem:ae95f809eee8d87e299124ce75248e547" id="r_ae95f809eee8d87e299124ce75248e547"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#ae95f809eee8d87e299124ce75248e547">initial_lambda</a> = 0.0</td></tr>
+<tr class="memitem:ad93e5725f76e770506116f07cdf9ae10" id="r_ad93e5725f76e770506116f07cdf9ae10"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#ad93e5725f76e770506116f07cdf9ae10">guess_strategy</a> = &quot;warmstart&quot;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parsed directly from the &lt;cdft&gt; options block at <a class="el" href="classvotca_1_1xtp_1_1DFTEngine.html#a7dda0935eee021c779d32e6b92032981" title="Read DFT, grid, and SCF settings from the user options tree.">Initialize()</a> time &ndash; atom indices and target charge only, NOT yet a full <a class="el" href="structvotca_1_1xtp_1_1HirshfeldPartition_1_1Constraint.html">HirshfeldPartition::Constraint</a> (which needs the reference densities/weight matrix, neither of which exist until <a class="el" href="classvotca_1_1xtp_1_1DFTEngine.html#ad3978c594e67e57d078d469b5aa8bca3">Evaluate()</a> actually has a real molecule to work with). BuildCDFTConstraint (just below) does that later conversion. Deliberately defined HERE, before BuildCDFTConstraint's own declaration &ndash; a type must already be visible before it is used as a parameter type in a member function DECLARATION (unlike a function body, which can freely reference members declared later in the same class, since the whole class body is parsed first); this was a real compile error caught directly (previously defined near cdft_constraint_spec_ at the end of this class, well after this point). </p>
@@ -133,6 +138,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00330">330</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+
+</div>
+</div>
+<a id="ad93e5725f76e770506116f07cdf9ae10" name="ad93e5725f76e770506116f07cdf9ae10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad93e5725f76e770506116f07cdf9ae10">&#9670;&#160;</a></span>guess_strategy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string votca::xtp::DFTEngine::CDFTConstraintSpec::guess_strategy = &quot;warmstart&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00345">345</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>

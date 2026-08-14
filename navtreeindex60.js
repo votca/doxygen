@@ -1,5 +1,12 @@
 var NAVTREEINDEX60 =
 {
+"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html":[2,0,3,2,142,0],
+"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html":[3,0,3,2,140,0],
+"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#a4696bb785265b905fd1f5065e989f8fc":[2,0,3,2,142,0,0],
+"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#a4696bb785265b905fd1f5065e989f8fc":[3,0,3,2,140,0,0],
+"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#aae5aab17669c5f190f21a7748b3d7ebd":[2,0,3,2,142,0,2],
+"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#aae5aab17669c5f190f21a7748b3d7ebd":[3,0,3,2,140,0,2],
+"structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#af2fb31d2cb93abce23554c0d2aeda7b6":[2,0,3,2,142,0,1],
 "structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html#af2fb31d2cb93abce23554c0d2aeda7b6":[3,0,3,2,140,0,1],
 "structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html":[2,0,3,2,138,0],
 "structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html":[3,0,3,2,136,0],
@@ -242,12 +249,5 @@ var NAVTREEINDEX60 =
 "structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#aa43a32b419f005b861b536b79ef0e7da":[2,0,3,2,96,0,2],
 "structvotca_1_1xtp_1_1huffmanTree_1_1huffmanNode.html#aa43a32b419f005b861b536b79ef0e7da":[3,0,3,2,94,0,2],
 "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html":[2,0,3,2,3,1],
-"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html":[3,0,3,2,1,1],
-"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a238f6d10c6953253539587b52d1d4711":[2,0,3,2,3,1,2],
-"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a238f6d10c6953253539587b52d1d4711":[3,0,3,2,1,1,2],
-"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a5edb6c09e8f0dd8a73ac88964ed73f43":[2,0,3,2,3,1,3],
-"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a5edb6c09e8f0dd8a73ac88964ed73f43":[3,0,3,2,1,1,3],
-"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a902900e5e277f157f241e752cc3c97bb":[2,0,3,2,3,1,0],
-"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#a902900e5e277f157f241e752cc3c97bb":[3,0,3,2,1,1,0],
-"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html#ae40661a5bc291630cc7a5f20f99620b1":[2,0,3,2,3,1,4]
+"structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html":[3,0,3,2,1,1]
 };
