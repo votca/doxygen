@@ -280,6 +280,7 @@ var annotated_dup =
         [ "PairCalculator", "classvotca_1_1xtp_1_1PairCalculator.html", "classvotca_1_1xtp_1_1PairCalculator" ],
         [ "ParallelXJobCalc", "classvotca_1_1xtp_1_1ParallelXJobCalc.html", "classvotca_1_1xtp_1_1ParallelXJobCalc" ],
         [ "PMLocalization", "classvotca_1_1xtp_1_1PMLocalization.html", "classvotca_1_1xtp_1_1PMLocalization" ],
+        [ "PODCoupling", "classvotca_1_1xtp_1_1PODCoupling.html", "classvotca_1_1xtp_1_1PODCoupling" ],
         [ "PolarRegion", "classvotca_1_1xtp_1_1PolarRegion.html", "classvotca_1_1xtp_1_1PolarRegion" ],
         [ "PolarSite", "classvotca_1_1xtp_1_1PolarSite.html", "classvotca_1_1xtp_1_1PolarSite" ],
         [ "Populationanalysis", "classvotca_1_1xtp_1_1Populationanalysis.html", "classvotca_1_1xtp_1_1Populationanalysis" ],
@@ -380,6 +381,7 @@ var annotated_dup =
         [ "Orb2Fchk", "classvotca_1_1xtp_1_1Orb2Fchk.html", "classvotca_1_1xtp_1_1Orb2Fchk" ],
         [ "Orb2Mol", "classvotca_1_1xtp_1_1Orb2Mol.html", "classvotca_1_1xtp_1_1Orb2Mol" ],
         [ "Partialcharges", "classvotca_1_1xtp_1_1Partialcharges.html", "classvotca_1_1xtp_1_1Partialcharges" ],
+        [ "PodCouplingTool", "classvotca_1_1xtp_1_1PodCouplingTool.html", "classvotca_1_1xtp_1_1PodCouplingTool" ],
         [ "Spectrum", "classvotca_1_1xtp_1_1Spectrum.html", "classvotca_1_1xtp_1_1Spectrum" ]
       ] ],
       [ "Log", "structvotca_1_1Log.html", "structvotca_1_1Log" ]

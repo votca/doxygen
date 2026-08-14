@@ -93,6 +93,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "paircalculator.h", "paircalculator_8h.html", "paircalculator_8h" ],
     [ "parallelxjobcalc.h", "parallelxjobcalc_8h.html", "parallelxjobcalc_8h" ],
     [ "pmlocalization.h", "pmlocalization_8h.html", "pmlocalization_8h" ],
+    [ "podcoupling.h", "podcoupling_8h.html", "podcoupling_8h" ],
     [ "polarregion.h", "polarregion_8h.html", "polarregion_8h" ],
     [ "polarsite.h", "polarsite_8h.html", "polarsite_8h" ],
     [ "populationanalysis.h", "populationanalysis_8h.html", "populationanalysis_8h" ],

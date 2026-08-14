@@ -136,6 +136,7 @@ var hierarchy =
         [ "votca::xtp::Orb2Fchk", "classvotca_1_1xtp_1_1Orb2Fchk.html", null ],
         [ "votca::xtp::Orb2Mol", "classvotca_1_1xtp_1_1Orb2Mol.html", null ],
         [ "votca::xtp::Partialcharges", "classvotca_1_1xtp_1_1Partialcharges.html", null ],
+        [ "votca::xtp::PodCouplingTool", "classvotca_1_1xtp_1_1PodCouplingTool.html", null ],
         [ "votca::xtp::Spectrum", "classvotca_1_1xtp_1_1Spectrum.html", null ]
       ] ]
     ] ],
@@ -412,6 +413,7 @@ var hierarchy =
     ] ],
     [ "votca::xtp::Rate_Engine::PairRates", "structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html", null ],
     [ "votca::xtp::PMLocalization", "classvotca_1_1xtp_1_1PMLocalization.html", null ],
+    [ "votca::xtp::PODCoupling", "classvotca_1_1xtp_1_1PODCoupling.html", null ],
     [ "votca::xtp::Populationanalysis&lt; T &gt;", "classvotca_1_1xtp_1_1Populationanalysis.html", null ],
     [ "votca::csg::PotentialFunction", "classvotca_1_1csg_1_1PotentialFunction.html", [
       [ "votca::csg::PotentialFunctionCBSPL", "classvotca_1_1csg_1_1PotentialFunctionCBSPL.html", null ],
