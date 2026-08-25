@@ -24,6 +24,10 @@ var classvotca_1_1xtp_1_1SegmentMapper =
     [ "PlaceMapAtomonMD", "classvotca_1_1xtp_1_1SegmentMapper.html#a8dfb165cb229907d58ba01fd8d8b6793", null ],
     [ "StringToMapIndex", "classvotca_1_1xtp_1_1SegmentMapper.html#a51c35dce288849af33ecc4b4638305b2", null ],
     [ "StringToMDIndex", "classvotca_1_1xtp_1_1SegmentMapper.html#a56605c694e15f9443bb95b575f99490f", null ],
+    [ "TransferBondedPartners", "classvotca_1_1xtp_1_1SegmentMapper.html#af9b068953f0e4a313ae7872d7e42e90a", null ],
+    [ "TransferBondedPartners", "classvotca_1_1xtp_1_1SegmentMapper.html#a382013e49e4178b1cb71c961012bdc22", null ],
+    [ "TransferExternalBondDirection", "classvotca_1_1xtp_1_1SegmentMapper.html#a827b15a4a3f11c77b356f280bec7767c", null ],
+    [ "TransferExternalBondDirection", "classvotca_1_1xtp_1_1SegmentMapper.html#acf5d2490dc44f30f0f38184afca6f1d7", null ],
     [ "log_", "classvotca_1_1xtp_1_1SegmentMapper.html#aa218f95b611044970ec46221313b084d", null ],
     [ "mapatom_xml_", "classvotca_1_1xtp_1_1SegmentMapper.html#a3d2cefbaf5215dc80ce80e96bf7e02ae", null ],
     [ "segment_info_", "classvotca_1_1xtp_1_1SegmentMapper.html#a2e626fad541bc0c9980353868569c631", null ]

@@ -20,6 +20,7 @@ var classvotca_1_1xtp_1_1StaticSite =
     [ "ReadData", "classvotca_1_1xtp_1_1StaticSite.html#ae3242e17e68fc2e9f51db04f86fda675", null ],
     [ "Rotate", "classvotca_1_1xtp_1_1StaticSite.html#affed7dbd35f2f6c2dac2e2cc56cb96e0", null ],
     [ "setCharge", "classvotca_1_1xtp_1_1StaticSite.html#ae4f9bf96e5212151165419810eef9c63", null ],
+    [ "setID", "classvotca_1_1xtp_1_1StaticSite.html#a7b23b0d492cdac02aecef633283e79c5", null ],
     [ "setMultipole", "classvotca_1_1xtp_1_1StaticSite.html#a08df46d6231e8a97ed059c70ab1b1e75", null ],
     [ "setpolarization", "classvotca_1_1xtp_1_1StaticSite.html#a64b910cfc4c6c12cc33cb3dd7f8feb70", null ],
     [ "setPos", "classvotca_1_1xtp_1_1StaticSite.html#a9febd29eab03f83bc87979d1a7c70541", null ],

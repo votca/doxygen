@@ -23,6 +23,7 @@ var searchData=
   ['inneriterator_20',['InnerIterator',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html',1,'votca::xtp::DipoleDipoleInteraction']]],
   ['interaction_21',['Interaction',['../classvotca_1_1csg_1_1Interaction.html',1,'votca::csg::Interaction'],['../structvotca_1_1xtp_1_1BSE_1_1Interaction.html',1,'votca::xtp::BSE::Interaction']]],
   ['interaction_5ft_22',['interaction_t',['../structvotca_1_1csg_1_1Imc_1_1interaction__t.html',1,'votca::csg::Imc::interaction_t'],['../structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html',1,'votca::csg::RDFCalculator::interaction_t']]],
-  ['iqm_23',['IQM',['../classvotca_1_1xtp_1_1IQM.html',1,'votca::xtp']]],
-  ['iterator_24',['iterator',['../structvotca_1_1tools_1_1RangeParser_1_1iterator.html',1,'votca::tools::RangeParser']]]
+  ['ipodcoupling_23',['IPodCoupling',['../classvotca_1_1xtp_1_1IPodCoupling.html',1,'votca::xtp']]],
+  ['iqm_24',['IQM',['../classvotca_1_1xtp_1_1IQM.html',1,'votca::xtp']]],
+  ['iterator_25',['iterator',['../structvotca_1_1tools_1_1RangeParser_1_1iterator.html',1,'votca::tools::RangeParser']]]
 ];

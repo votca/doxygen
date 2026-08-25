@@ -103,6 +103,7 @@ var hierarchy =
         [ "votca::xtp::ParallelXJobCalc< std::vector< Job > >", "classvotca_1_1xtp_1_1ParallelXJobCalc.html", [
           [ "votca::xtp::EQM", "classvotca_1_1xtp_1_1EQM.html", null ],
           [ "votca::xtp::IEXCITON", "classvotca_1_1xtp_1_1IEXCITON.html", null ],
+          [ "votca::xtp::IPodCoupling", "classvotca_1_1xtp_1_1IPodCoupling.html", null ],
           [ "votca::xtp::IQM", "classvotca_1_1xtp_1_1IQM.html", null ],
           [ "votca::xtp::QMMM", "classvotca_1_1xtp_1_1QMMM.html", null ]
         ] ],
@@ -247,6 +248,7 @@ var hierarchy =
     [ "votca::xtp::checkpoint_utils::FileDataType&lt; std::uint8_t &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01std_1_1uint8__t_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::FileDataType&lt; unsigned &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01unsigned_01_4.html", null ],
     [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;::FragInfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1FragInfo.html", null ],
+    [ "votca::xtp::FragmentSaturator", "classvotca_1_1xtp_1_1FragmentSaturator.html", null ],
     [ "votca::xtp::FunctionEvaluation", "classvotca_1_1xtp_1_1FunctionEvaluation.html", null ],
     [ "votca::csg::NBList::Functor", "classvotca_1_1csg_1_1NBList_1_1Functor.html", [
       [ "votca::csg::NBList::FunctorMember< T >", "classvotca_1_1csg_1_1NBList_1_1FunctorMember.html", null ],
@@ -462,6 +464,7 @@ var hierarchy =
     [ "votca::xtp::RPA::rpa_eigensolution", "structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html", null ],
     [ "votca::xtp::RPA_UKS::rpa_eigensolution", "structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html", null ],
     [ "votca::xtp::RPA_UKS", "classvotca_1_1xtp_1_1RPA__UKS.html", null ],
+    [ "votca::xtp::FragmentSaturator::SaturationResult", "structvotca_1_1xtp_1_1FragmentSaturator_1_1SaturationResult.html", null ],
     [ "votca::xtp::SegId", "classvotca_1_1xtp_1_1SegId.html", null ],
     [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;::Seginfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html", null ],
     [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;", "classvotca_1_1xtp_1_1SegmentMapper.html", null ],
