@@ -9,10 +9,6 @@ var hierarchy =
     [ "votca::xtp::AOMatrix", "classvotca_1_1xtp_1_1AOMatrix.html", [
       [ "votca::xtp::AOCoulomb", "classvotca_1_1xtp_1_1AOCoulomb.html", null ],
       [ "votca::xtp::AODipole", "classvotca_1_1xtp_1_1AODipole.html", null ],
-      [ "votca::xtp::AOEwaldForegroundCharges", "classvotca_1_1xtp_1_1AOEwaldForegroundCharges.html", null ],
-      [ "votca::xtp::AOEwaldRealSpaceCharges", "classvotca_1_1xtp_1_1AOEwaldRealSpaceCharges.html", null ],
-      [ "votca::xtp::AOEwaldRealSpaceDipoles", "classvotca_1_1xtp_1_1AOEwaldRealSpaceDipoles.html", null ],
-      [ "votca::xtp::AOEwaldShapeCorrection", "classvotca_1_1xtp_1_1AOEwaldShapeCorrection.html", null ],
       [ "votca::xtp::AOKinetic", "classvotca_1_1xtp_1_1AOKinetic.html", null ],
       [ "votca::xtp::AOOverlap", "classvotca_1_1xtp_1_1AOOverlap.html", null ]
     ] ],
@@ -441,11 +437,7 @@ var hierarchy =
     [ "votca::xtp::PcgIndefinitenessResult", "structvotca_1_1xtp_1_1PcgIndefinitenessResult.html", null ],
     [ "votca::xtp::PMLocalization", "classvotca_1_1xtp_1_1PMLocalization.html", null ],
     [ "votca::xtp::PODCoupling", "classvotca_1_1xtp_1_1PODCoupling.html", null ],
-    [ "votca::xtp::ewaldcontainer::PointCharge", "structvotca_1_1xtp_1_1ewaldcontainer_1_1PointCharge.html", null ],
-    [ "votca::xtp::AOEwaldRealSpaceDipoles::PointDipole", "structvotca_1_1xtp_1_1AOEwaldRealSpaceDipoles_1_1PointDipole.html", null ],
-    [ "votca::xtp::ewaldcontainer::PointDipole", "structvotca_1_1xtp_1_1ewaldcontainer_1_1PointDipole.html", null ],
     [ "votca::xtp::Populationanalysis&lt; T &gt;", "classvotca_1_1xtp_1_1Populationanalysis.html", null ],
-    [ "votca::xtp::ewaldcontainer::PotentialData", "classvotca_1_1xtp_1_1ewaldcontainer_1_1PotentialData.html", null ],
     [ "votca::csg::PotentialFunction", "classvotca_1_1csg_1_1PotentialFunction.html", [
       [ "votca::csg::PotentialFunctionCBSPL", "classvotca_1_1csg_1_1PotentialFunctionCBSPL.html", null ],
       [ "votca::csg::PotentialFunctionLJ126", "classvotca_1_1csg_1_1PotentialFunctionLJ126.html", null ],
@@ -476,7 +468,6 @@ var hierarchy =
     [ "votca::xtp::Rate_Engine", "classvotca_1_1xtp_1_1Rate__Engine.html", null ],
     [ "votca::xtp::EwaldPeriodicDipoleOperator::RawMultiplyTimings", "structvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator_1_1RawMultiplyTimings.html", null ],
     [ "votca::csg::RDFCalculator", "classvotca_1_1csg_1_1RDFCalculator.html", null ],
-    [ "votca::xtp::ewaldcontainer::ReciprocalTerm", "structvotca_1_1xtp_1_1ewaldcontainer_1_1ReciprocalTerm.html", null ],
     [ "votca::xtp::Region", "classvotca_1_1xtp_1_1Region.html", [
       [ "votca::xtp::MMRegion< PolarSegment >", "classvotca_1_1xtp_1_1MMRegion.html", [
         [ "votca::xtp::PolarRegion", "classvotca_1_1xtp_1_1PolarRegion.html", null ]

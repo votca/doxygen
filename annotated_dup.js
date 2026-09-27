@@ -162,12 +162,6 @@ var annotated_dup =
           [ "InferDataType&lt; bool &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4" ],
           [ "InferDataType&lt; std::string &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4" ]
         ] ],
-        [ "ewaldcontainer", "namespacevotca_1_1xtp_1_1ewaldcontainer.html", [
-          [ "PointCharge", "structvotca_1_1xtp_1_1ewaldcontainer_1_1PointCharge.html", "structvotca_1_1xtp_1_1ewaldcontainer_1_1PointCharge" ],
-          [ "PointDipole", "structvotca_1_1xtp_1_1ewaldcontainer_1_1PointDipole.html", "structvotca_1_1xtp_1_1ewaldcontainer_1_1PointDipole" ],
-          [ "ReciprocalTerm", "structvotca_1_1xtp_1_1ewaldcontainer_1_1ReciprocalTerm.html", "structvotca_1_1xtp_1_1ewaldcontainer_1_1ReciprocalTerm" ],
-          [ "PotentialData", "classvotca_1_1xtp_1_1ewaldcontainer_1_1PotentialData.html", "classvotca_1_1xtp_1_1ewaldcontainer_1_1PotentialData" ]
-        ] ],
         [ "qp_solver", "namespacevotca_1_1xtp_1_1qp__solver.html", [
           [ "Stats", "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html", "structvotca_1_1xtp_1_1qp__solver_1_1Stats" ],
           [ "RootCandidate", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate" ],
@@ -190,10 +184,6 @@ var annotated_dup =
         [ "AOOverlap", "classvotca_1_1xtp_1_1AOOverlap.html", "classvotca_1_1xtp_1_1AOOverlap" ],
         [ "AOCoulomb", "classvotca_1_1xtp_1_1AOCoulomb.html", "classvotca_1_1xtp_1_1AOCoulomb" ],
         [ "AODipole", "classvotca_1_1xtp_1_1AODipole.html", "classvotca_1_1xtp_1_1AODipole" ],
-        [ "AOEwaldShapeCorrection", "classvotca_1_1xtp_1_1AOEwaldShapeCorrection.html", "classvotca_1_1xtp_1_1AOEwaldShapeCorrection" ],
-        [ "AOEwaldRealSpaceCharges", "classvotca_1_1xtp_1_1AOEwaldRealSpaceCharges.html", "classvotca_1_1xtp_1_1AOEwaldRealSpaceCharges" ],
-        [ "AOEwaldForegroundCharges", "classvotca_1_1xtp_1_1AOEwaldForegroundCharges.html", "classvotca_1_1xtp_1_1AOEwaldForegroundCharges" ],
-        [ "AOEwaldRealSpaceDipoles", "classvotca_1_1xtp_1_1AOEwaldRealSpaceDipoles.html", "classvotca_1_1xtp_1_1AOEwaldRealSpaceDipoles" ],
         [ "AOPotential", "classvotca_1_1xtp_1_1AOPotential.html", "classvotca_1_1xtp_1_1AOPotential" ],
         [ "AOECP", "classvotca_1_1xtp_1_1AOECP.html", "classvotca_1_1xtp_1_1AOECP" ],
         [ "AOMultipole", "classvotca_1_1xtp_1_1AOMultipole.html", "classvotca_1_1xtp_1_1AOMultipole" ],

@@ -53,7 +53,6 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "espfit.h", "espfit_8h.html", "espfit_8h" ],
     [ "ewald_potential.h", "ewald__potential_8h.html", "ewald__potential_8h" ],
     [ "ewaldblockjacobipreconditioner.h", "ewaldblockjacobipreconditioner_8h.html", "ewaldblockjacobipreconditioner_8h" ],
-    [ "ewaldcontainer.h", "ewaldcontainer_8h.html", "ewaldcontainer_8h" ],
     [ "ewaldparameters.h", "ewaldparameters_8h.html", "ewaldparameters_8h" ],
     [ "ewaldperiodicdipoleoperator.h", "ewaldperiodicdipoleoperator_8h.html", "ewaldperiodicdipoleoperator_8h" ],
     [ "ewaldrealspaceinteractor.h", "ewaldrealspaceinteractor_8h.html", "ewaldrealspaceinteractor_8h" ],
