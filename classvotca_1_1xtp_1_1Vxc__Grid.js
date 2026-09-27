@@ -12,7 +12,7 @@ var classvotca_1_1xtp_1_1Vxc__Grid =
     [ "getBoxesSize", "classvotca_1_1xtp_1_1Vxc__Grid.html#ab94624f639fe2e390b52a95f872c7204", null ],
     [ "getGridpoints", "classvotca_1_1xtp_1_1Vxc__Grid.html#ae2518466b6fda3910b352cbe86130191", null ],
     [ "getGridSize", "classvotca_1_1xtp_1_1Vxc__Grid.html#a820c443306af3180137badc56b44c8c7", null ],
-    [ "getWeightedDensities", "classvotca_1_1xtp_1_1Vxc__Grid.html#a812736acf54ed16dfbc7af5363faa6d9", null ],
+    [ "getPotentialAtGrid", "classvotca_1_1xtp_1_1Vxc__Grid.html#aec8cd1f7612ecb15f7d82d0e12f540d9", null ],
     [ "GridSetup", "classvotca_1_1xtp_1_1Vxc__Grid.html#ab787c9bb9cc3225e398809a94b1d388a", null ],
     [ "operator[]", "classvotca_1_1xtp_1_1Vxc__Grid.html#a6ebdee5c7dbb48e50b8db007a3d9e5e2", null ],
     [ "operator[]", "classvotca_1_1xtp_1_1Vxc__Grid.html#ade125b116388d5d80f4f411d6e895b61", null ],
@@ -20,7 +20,7 @@ var classvotca_1_1xtp_1_1Vxc__Grid =
     [ "SSWpartition", "classvotca_1_1xtp_1_1Vxc__Grid.html#a4bd51cb536d18d513db03f0ca5e6bf28", null ],
     [ "SSWpartitionAtom", "classvotca_1_1xtp_1_1Vxc__Grid.html#af2fce6cd79d3d6cc4426d0eb7a602726", null ],
     [ "UpdateOrder", "classvotca_1_1xtp_1_1Vxc__Grid.html#ac12f08d0edec012072703b737e610065", null ],
-    [ "density_set_", "classvotca_1_1xtp_1_1Vxc__Grid.html#a501f30a8c50c60e0731d9b7d2031d9e4", null ],
     [ "grid_boxes_", "classvotca_1_1xtp_1_1Vxc__Grid.html#a8e5c321dbfd90450af5eb9c3c4825a61", null ],
+    [ "potential_set_", "classvotca_1_1xtp_1_1Vxc__Grid.html#a404615d9cad8be8c1647bda0554fb6af", null ],
     [ "totalgridsize_", "classvotca_1_1xtp_1_1Vxc__Grid.html#a43a4bb226034994c2344d294941e64cd", null ]
 ];

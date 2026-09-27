@@ -7,6 +7,7 @@ var classvotca_1_1xtp_1_1StaticRegion =
     [ "Evaluate", "classvotca_1_1xtp_1_1StaticRegion.html#a9fb819efe883bcec439b8301c945a01e", null ],
     [ "identify", "classvotca_1_1xtp_1_1StaticRegion.html#ad41a614c0344e4a6332f488f2d530aac", null ],
     [ "Initialize", "classvotca_1_1xtp_1_1StaticRegion.html#a87ce9dbd3b5c90cb33a93dbcf75b57c4", null ],
+    [ "InteractwithEwaldRegion", "classvotca_1_1xtp_1_1StaticRegion.html#af5c9319d35ba7161748e5b6b91471b8e", null ],
     [ "InteractwithPolarRegion", "classvotca_1_1xtp_1_1StaticRegion.html#ab440caf1e3f595ec43bba9a2ceadeb51", null ],
     [ "InteractwithQMRegion", "classvotca_1_1xtp_1_1StaticRegion.html#ab51ad2da4a3e91c3e53977e2277909ce", null ],
     [ "InteractwithStaticRegion", "classvotca_1_1xtp_1_1StaticRegion.html#af17de5613ae12e7ad299d3fb6e7d14d3", null ],

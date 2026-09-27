@@ -4,6 +4,7 @@ var dir_d7fd61accc6913abff2bba761fda011c =
     [ "eanalyze.h", "eanalyze_8h.html", "eanalyze_8h" ],
     [ "einternal.cc", "einternal_8cc.html", null ],
     [ "einternal.h", "einternal_8h.html", "einternal_8h" ],
+    [ "ewaldbackground.h", "ewaldbackground_8h.html", "ewaldbackground_8h" ],
     [ "ianalyze.cc", "ianalyze_8cc.html", null ],
     [ "ianalyze.h", "ianalyze_8h.html", "ianalyze_8h" ],
     [ "kmclifetime.cc", "kmclifetime_8cc.html", null ],

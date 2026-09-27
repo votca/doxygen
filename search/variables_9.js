@@ -28,6 +28,7 @@ var searchData=
   ['jobsreported_5f_25',['jobsReported_',['../classvotca_1_1xtp_1_1ProgObserver.html#ad219ebfbf72e588c43b479dcf9668706',1,'votca::xtp::ProgObserver']]],
   ['jobstoproc_5f_26',['jobsToProc_',['../classvotca_1_1xtp_1_1ProgObserver.html#a3b5a0f13ae86dbacfb21bd1790bbecc3',1,'votca::xtp::ProgObserver']]],
   ['jobstosync_5f_27',['jobsToSync_',['../classvotca_1_1xtp_1_1ProgObserver.html#af86c78648e33789751e969fd4b8f49c8',1,'votca::xtp::ProgObserver']]],
-  ['junctions_5f_28',['junctions_',['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_'],['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_']]],
-  ['junctionsuptodate_5f_29',['junctionsUpToDate_',['../classvotca_1_1csg_1_1BeadMotif.html#a78c4cc3f943a69f98ad714c71c16421f',1,'votca::csg::BeadMotif']]]
+  ['jor_5fomega_5f_28',['jor_omega_',['../classvotca_1_1xtp_1_1EwaldBackground.html#a2d949acfaa7024f855a085ac21628836',1,'votca::xtp::EwaldBackground']]],
+  ['junctions_5f_29',['junctions_',['../classvotca_1_1csg_1_1BeadMotif.html#ac5e716433d1584cb9023d56197c4c90b',1,'votca::csg::BeadMotif::junctions_'],['../classvotca_1_1tools_1_1ReducedGraph.html#a48fe257f3e39a9a56b8bd7d143cc3488',1,'votca::tools::ReducedGraph::junctions_']]],
+  ['junctionsuptodate_5f_30',['junctionsUpToDate_',['../classvotca_1_1csg_1_1BeadMotif.html#a78c4cc3f943a69f98ad714c71c16421f',1,'votca::csg::BeadMotif']]]
 ];

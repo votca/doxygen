@@ -5,5 +5,6 @@ var searchData=
   ['jobcalculatorfactory_2',['JobCalculatorfactory',['../classvotca_1_1xtp_1_1JobCalculatorfactory.html',1,'votca::xtp']]],
   ['joboperator_3',['JobOperator',['../classvotca_1_1xtp_1_1ParallelXJobCalc_1_1JobOperator.html',1,'votca::xtp::ParallelXJobCalc']]],
   ['jobresult_4',['JobResult',['../classvotca_1_1xtp_1_1Job_1_1JobResult.html',1,'votca::xtp::Job']]],
-  ['jobtopology_5',['JobTopology',['../classvotca_1_1xtp_1_1JobTopology.html',1,'votca::xtp']]]
+  ['jobtopology_5',['JobTopology',['../classvotca_1_1xtp_1_1JobTopology.html',1,'votca::xtp']]],
+  ['jorresult_6',['JorResult',['../structvotca_1_1xtp_1_1JorResult.html',1,'votca::xtp']]]
 ];

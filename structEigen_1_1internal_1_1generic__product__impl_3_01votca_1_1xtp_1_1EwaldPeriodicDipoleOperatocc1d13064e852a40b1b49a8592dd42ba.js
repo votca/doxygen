@@ -1,0 +1,5 @@
+var structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1EwaldPeriodicDipoleOperatocc1d13064e852a40b1b49a8592dd42ba =
+[
+    [ "Scalar", "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1EwaldPeriodicDipoleOperatocc1d13064e852a40b1b49a8592dd42ba.html#a06da054b739740ea6ef9e4faaa1ec5a3", null ],
+    [ "scaleAndAddTo", "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1EwaldPeriodicDipoleOperatocc1d13064e852a40b1b49a8592dd42ba.html#aa5b0a134b0cd178bd97b14668968be33", null ]
+];

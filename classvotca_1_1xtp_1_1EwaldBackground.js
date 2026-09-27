@@ -1,0 +1,25 @@
+var classvotca_1_1xtp_1_1EwaldBackground =
+[
+    [ "Evaluate", "classvotca_1_1xtp_1_1EwaldBackground.html#a493ace04f3690e421726a6417351db6d", null ],
+    [ "Identify", "classvotca_1_1xtp_1_1EwaldBackground.html#ab812be568de2476f12a9ded102242e9f", null ],
+    [ "ParseOptions", "classvotca_1_1xtp_1_1EwaldBackground.html#a0d72f3978a9f915da6f2eaf1b9dab875", null ],
+    [ "WriteToStateFile", "classvotca_1_1xtp_1_1EwaldBackground.html#af979cc402853edffa18ba050bd79e593", null ],
+    [ "alpha_", "classvotca_1_1xtp_1_1EwaldBackground.html#a97ab1329b15c8ca49ca94cd0f410d6b6", null ],
+    [ "alpha_explicit_", "classvotca_1_1xtp_1_1EwaldBackground.html#a373681abff157cfb1de08a1f7d46761d", null ],
+    [ "checkpoint_file_", "classvotca_1_1xtp_1_1EwaldBackground.html#a5de20e976fd4b801b67d68bcac876b2a", null ],
+    [ "field_tol_", "classvotca_1_1xtp_1_1EwaldBackground.html#a9db8c4267fbb6991fcde47f6ed2ff330", null ],
+    [ "induce_", "classvotca_1_1xtp_1_1EwaldBackground.html#aefe7dd457fa896d0af52c6233ff8295f", null ],
+    [ "jor_omega_", "classvotca_1_1xtp_1_1EwaldBackground.html#a2d949acfaa7024f855a085ac21628836", null ],
+    [ "k_max_", "classvotca_1_1xtp_1_1EwaldBackground.html#af1f2144a04b92369fcf2ecc9a3acccae", null ],
+    [ "k_max_explicit_", "classvotca_1_1xtp_1_1EwaldBackground.html#a734f9a2a8b5af914f4834948f586a131", null ],
+    [ "mapping_file_", "classvotca_1_1xtp_1_1EwaldBackground.html#a60744a828f17580c29a4bff251ab7430", null ],
+    [ "match_legacy_first_step_", "classvotca_1_1xtp_1_1EwaldBackground.html#acb55a7e5f771be2966c2ecd115bd7fe3", null ],
+    [ "max_iter_", "classvotca_1_1xtp_1_1EwaldBackground.html#ae54c35a1cd64f5e6930cdccd32cc6a4b", null ],
+    [ "pcg_tolerance_", "classvotca_1_1xtp_1_1EwaldBackground.html#a3d4e41ac48d212731ff19b24cd36caa1", null ],
+    [ "r_min_", "classvotca_1_1xtp_1_1EwaldBackground.html#ae80e2b274772809ef599e6f3733d186f", null ],
+    [ "screening_factor_", "classvotca_1_1xtp_1_1EwaldBackground.html#a4d89c82f9f90d462d8331ffd9815cddf", null ],
+    [ "shape_", "classvotca_1_1xtp_1_1EwaldBackground.html#a5fb7b148b16868b57bec098ce427c81d", null ],
+    [ "thole_a_", "classvotca_1_1xtp_1_1EwaldBackground.html#afe69701f3032a063329ca31fe5e4a686", null ],
+    [ "use_block_jacobi_preconditioner_", "classvotca_1_1xtp_1_1EwaldBackground.html#ac7e156e5931ea58cd1f064556173f7b6", null ],
+    [ "use_jor_", "classvotca_1_1xtp_1_1EwaldBackground.html#aed97009706975c6bef5bb5fb08858d12", null ]
+];

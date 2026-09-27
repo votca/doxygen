@@ -5,5 +5,7 @@ var searchData=
   ['energyunit_2',['EnergyUnit',['../namespacevotca_1_1tools.html#a9bad48919a06a85cfa246ccd38569318',1,'votca::tools']]],
   ['errors_3',['Errors',['../classvotca_1_1xtp_1_1NewtonRapson.html#af3d3b1b029180a9d4aaa6bfeee3f0741',1,'votca::xtp::NewtonRapson']]],
   ['estatic_4',['Estatic',['../namespacevotca_1_1xtp.html#a0d1b2ee18dafa6449b83e07bc470c102',1,'votca::xtp']]],
-  ['evalstage_5',['EvalStage',['../namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036af',1,'votca::xtp::qp_solver']]]
+  ['evalstage_5',['EvalStage',['../namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036af',1,'votca::xtp::qp_solver']]],
+  ['ewaldchargestate_6',['EwaldChargeState',['../namespacevotca_1_1xtp.html#a0169c139587081c60a508f60a46bc65a',1,'votca::xtp']]],
+  ['ewaldshape_7',['EwaldShape',['../namespacevotca_1_1xtp.html#a805da6509b1003a31951ae4099c3e492',1,'votca::xtp']]]
 ];

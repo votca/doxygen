@@ -17,7 +17,8 @@ var searchData=
   ['molecule_14',['Molecule',['../classvotca_1_1csg_1_1Molecule.html',1,'votca::csg']]],
   ['moleculeitem_15',['MoleculeItem',['../classvotca_1_1csg_1_1MoleculeItem.html',1,'votca::csg']]],
   ['molpol_16',['MolPol',['../classvotca_1_1xtp_1_1MolPol.html',1,'votca::xtp']]],
-  ['motifdeconstructor_5f_17',['MotifDeconstructor_',['../classvotca_1_1csg_1_1MotifDeconstructor__.html',1,'votca::csg']]],
-  ['mutex_18',['Mutex',['../classvotca_1_1tools_1_1Mutex.html',1,'votca::tools']]],
-  ['myworker_19',['MyWorker',['../classMyWorker.html',1,'']]]
+  ['moments_17',['Moments',['../structvotca_1_1xtp_1_1EwaldShapeCorrection_1_1Moments.html',1,'votca::xtp::EwaldShapeCorrection']]],
+  ['motifdeconstructor_5f_18',['MotifDeconstructor_',['../classvotca_1_1csg_1_1MotifDeconstructor__.html',1,'votca::csg']]],
+  ['mutex_19',['Mutex',['../classvotca_1_1tools_1_1Mutex.html',1,'votca::tools']]],
+  ['myworker_20',['MyWorker',['../classMyWorker.html',1,'']]]
 ];

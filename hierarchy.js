@@ -9,6 +9,10 @@ var hierarchy =
     [ "votca::xtp::AOMatrix", "classvotca_1_1xtp_1_1AOMatrix.html", [
       [ "votca::xtp::AOCoulomb", "classvotca_1_1xtp_1_1AOCoulomb.html", null ],
       [ "votca::xtp::AODipole", "classvotca_1_1xtp_1_1AODipole.html", null ],
+      [ "votca::xtp::AOEwaldForegroundCharges", "classvotca_1_1xtp_1_1AOEwaldForegroundCharges.html", null ],
+      [ "votca::xtp::AOEwaldRealSpaceCharges", "classvotca_1_1xtp_1_1AOEwaldRealSpaceCharges.html", null ],
+      [ "votca::xtp::AOEwaldRealSpaceDipoles", "classvotca_1_1xtp_1_1AOEwaldRealSpaceDipoles.html", null ],
+      [ "votca::xtp::AOEwaldShapeCorrection", "classvotca_1_1xtp_1_1AOEwaldShapeCorrection.html", null ],
       [ "votca::xtp::AOKinetic", "classvotca_1_1xtp_1_1AOKinetic.html", null ],
       [ "votca::xtp::AOOverlap", "classvotca_1_1xtp_1_1AOOverlap.html", null ]
     ] ],
@@ -86,6 +90,7 @@ var hierarchy =
       [ "votca::csg::BeadMotif", "classvotca_1_1csg_1_1BeadMotif.html", null ]
     ] ],
     [ "votca::xtp::BFGSTRM", "classvotca_1_1xtp_1_1BFGSTRM.html", null ],
+    [ "votca::xtp::EwaldRealSpaceInteractor::BFunctions", "structvotca_1_1xtp_1_1EwaldRealSpaceInteractor_1_1BFunctions.html", null ],
     [ "votca::tools::RangeParser::block_t", "structvotca_1_1tools_1_1RangeParser_1_1block__t.html", null ],
     [ "votca::csg::BondBead", "classvotca_1_1csg_1_1BondBead.html", null ],
     [ "votca::csg::BoundaryCondition", "classvotca_1_1csg_1_1BoundaryCondition.html", [
@@ -112,6 +117,7 @@ var hierarchy =
       [ "votca::xtp::QMCalculator", "classvotca_1_1xtp_1_1QMCalculator.html", [
         [ "votca::xtp::EAnalyze", "classvotca_1_1xtp_1_1EAnalyze.html", null ],
         [ "votca::xtp::EInternal", "classvotca_1_1xtp_1_1EInternal.html", null ],
+        [ "votca::xtp::EwaldBackground", "classvotca_1_1xtp_1_1EwaldBackground.html", null ],
         [ "votca::xtp::IAnalyze", "classvotca_1_1xtp_1_1IAnalyze.html", null ],
         [ "votca::xtp::KMCCalculator", "classvotca_1_1xtp_1_1KMCCalculator.html", [
           [ "votca::xtp::KMCLifetime", "classvotca_1_1xtp_1_1KMCLifetime.html", null ],
@@ -204,6 +210,7 @@ var hierarchy =
     [ "votca::xtp::eeInteractor", "classvotca_1_1xtp_1_1eeInteractor.html", null ],
     [ "Eigen::EigenBase", null, [
       [ "votca::xtp::DipoleDipoleInteraction", "classvotca_1_1xtp_1_1DipoleDipoleInteraction.html", null ],
+      [ "votca::xtp::EwaldPeriodicDipoleOperator", "classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html", null ],
       [ "votca::xtp::HamiltonianOperator< MatrixReplacementA, MatrixReplacementB >", "classvotca_1_1xtp_1_1HamiltonianOperator.html", null ],
       [ "votca::xtp::MatrixFreeOperator", "classvotca_1_1xtp_1_1MatrixFreeOperator.html", [
         [ "votca::xtp::BSE_OPERATOR< 1, 2, 1, 0 >", "classvotca_1_1xtp_1_1BSE__OPERATOR.html", null ],
@@ -233,6 +240,15 @@ var hierarchy =
     [ "votca::xtp::Esp2multipole", "classvotca_1_1xtp_1_1Esp2multipole.html", null ],
     [ "votca::xtp::Espfit", "classvotca_1_1xtp_1_1Espfit.html", null ],
     [ "votca::xtp::EulerMaclaurinGrid", "classvotca_1_1xtp_1_1EulerMaclaurinGrid.html", null ],
+    [ "votca::xtp::Ewald_Potential&lt; Grid &gt;", "classvotca_1_1xtp_1_1Ewald__Potential.html", null ],
+    [ "votca::xtp::EwaldBlockJacobiPreconditioner", "classvotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner.html", null ],
+    [ "votca::xtp::EwaldParameters", "structvotca_1_1xtp_1_1EwaldParameters.html", null ],
+    [ "votca::xtp::EwaldRealSpaceInteractor", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html", null ],
+    [ "votca::xtp::EwaldRealSpaceSum", "classvotca_1_1xtp_1_1EwaldRealSpaceSum.html", null ],
+    [ "votca::xtp::EwaldReciprocalSpaceSum", "classvotca_1_1xtp_1_1EwaldReciprocalSpaceSum.html", null ],
+    [ "votca::xtp::EwaldRegistry", "classvotca_1_1xtp_1_1EwaldRegistry.html", null ],
+    [ "votca::xtp::EwaldShapeCorrection", "classvotca_1_1xtp_1_1EwaldShapeCorrection.html", null ],
+    [ "votca::xtp::EwaldSitePolarizabilityBlocks", "classvotca_1_1xtp_1_1EwaldSitePolarizabilityBlocks.html", null ],
     [ "votca::csg::ExclusionList::exclusion_t", "structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html", null ],
     [ "votca::csg::ExclusionList", "classvotca_1_1csg_1_1ExclusionList.html", null ],
     [ "votca::xtp::BSE::ExpectationValues", "structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html", null ],
@@ -270,6 +286,7 @@ var hierarchy =
     [ "votca::xtp::GaussianWriter", "classvotca_1_1xtp_1_1GaussianWriter.html", null ],
     [ "generic_product_impl_base", null, [
       [ "Eigen::internal::generic_product_impl< votca::xtp::DipoleDipoleInteraction, Vtype, DenseShape, DenseShape, GemvProduct >", "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1DipoleDipoleInteraction_00de97570f9381c4a05ef5b13b91bb2fcc.html", null ],
+      [ "Eigen::internal::generic_product_impl< votca::xtp::EwaldPeriodicDipoleOperator, Vtype, DenseShape, DenseShape, GemvProduct >", "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1EwaldPeriodicDipoleOperatocc1d13064e852a40b1b49a8592dd42ba.html", null ],
       [ "Eigen::internal::generic_product_impl< votca::xtp::HamiltonianOperator< MatrixReplacementA, MatrixReplacementB >, Mtype, DenseShape, DenseShape, GemmProduct >", "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01Ma8c36deaa0d46648fa468114afa721efa.html", null ],
       [ "Eigen::internal::generic_product_impl< votca::xtp::MatrixFreeOperator, Mtype, DenseShape, DenseShape, GemmProduct >", "structEigen_1_1internal_1_1generic__product__impl_3_01votca_1_1xtp_1_1MatrixFreeOperator_00_01Mta9073d462e534fbbc0a3ab7f66dd7820.html", null ]
     ] ],
@@ -321,6 +338,7 @@ var hierarchy =
     [ "votca::xtp::checkpoint_utils::InferDataType&lt; std::uint8_t &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType&lt; unsigned &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html", null ],
     [ "votca::xtp::DipoleDipoleInteraction::InnerIterator", "classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html", null ],
+    [ "votca::xtp::EwaldPeriodicDipoleOperator::InnerIterator", "classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator_1_1InnerIterator.html", null ],
     [ "votca::csg::Interaction", "classvotca_1_1csg_1_1Interaction.html", [
       [ "votca::csg::IAngle", "classvotca_1_1csg_1_1IAngle.html", null ],
       [ "votca::csg::IBond", "classvotca_1_1csg_1_1IBond.html", null ],
@@ -342,6 +360,9 @@ var hierarchy =
     [ "votca::xtp::Job", "classvotca_1_1xtp_1_1Job.html", null ],
     [ "votca::xtp::Job::JobResult", "classvotca_1_1xtp_1_1Job_1_1JobResult.html", null ],
     [ "votca::xtp::JobTopology", "classvotca_1_1xtp_1_1JobTopology.html", null ],
+    [ "votca::xtp::JorResult", "structvotca_1_1xtp_1_1JorResult.html", null ],
+    [ "votca::xtp::EwaldRegistry::KeyLess", "structvotca_1_1xtp_1_1EwaldRegistry_1_1KeyLess.html", null ],
+    [ "votca::xtp::EwaldReciprocalSpaceSum::KVector", "structvotca_1_1xtp_1_1EwaldReciprocalSpaceSum_1_1KVector.html", null ],
     [ "votca::xtp::LebedevGrid", "classvotca_1_1xtp_1_1LebedevGrid.html", null ],
     [ "votca::Log", "structvotca_1_1Log.html", null ],
     [ "votca::csg::Map", "classvotca_1_1csg_1_1Map.html", null ],
@@ -352,11 +373,13 @@ var hierarchy =
     [ "votca::xtp::Molden", "classvotca_1_1xtp_1_1Molden.html", null ],
     [ "votca::csg::Molecule", "classvotca_1_1csg_1_1Molecule.html", null ],
     [ "votca::csg::MoleculeItem", "classvotca_1_1csg_1_1MoleculeItem.html", null ],
+    [ "votca::xtp::EwaldShapeCorrection::Moments", "structvotca_1_1xtp_1_1EwaldShapeCorrection_1_1Moments.html", null ],
     [ "votca::csg::MotifDeconstructor_", "classvotca_1_1csg_1_1MotifDeconstructor__.html", null ],
     [ "votca::tools::Mutex", "classvotca_1_1tools_1_1Mutex.html", null ],
     [ "votca::tools::Name", "classvotca_1_1tools_1_1Name.html", null ],
     [ "votca::xtp::NBO", "classvotca_1_1xtp_1_1NBO.html", null ],
     [ "votca::tools::NDimVector&lt; T, dim &gt;", "classvotca_1_1tools_1_1NDimVector.html", null ],
+    [ "votca::xtp::EwaldRealSpaceSum::NeighborStats", "structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1NeighborStats.html", null ],
     [ "votca::csg::NematicOrder", "classvotca_1_1csg_1_1NematicOrder.html", null ],
     [ "votca::xtp::NewtonRapson&lt; Func &gt;", "classvotca_1_1xtp_1_1NewtonRapson.html", null ],
     [ "votca::tools::ObjectFactory&lt; key_t, T, args_t &gt;", "classvotca_1_1tools_1_1ObjectFactory.html", null ],
@@ -404,6 +427,7 @@ var hierarchy =
     [ "votca::xtp::OrbReorder", "classvotca_1_1xtp_1_1OrbReorder.html", null ],
     [ "votca::csg::Imc::pair_t", "structvotca_1_1csg_1_1Imc_1_1pair__t.html", null ],
     [ "votca::csg::RDFCalculator::pair_t", "structvotca_1_1csg_1_1RDFCalculator_1_1pair__t.html", null ],
+    [ "votca::xtp::EwaldRealSpaceSum::PairHash", "structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1PairHash.html", null ],
     [ "votca::csg::PairList&lt; element_type, pair_type &gt;", "classvotca_1_1csg_1_1PairList.html", null ],
     [ "votca::csg::PairList&lt; Bead *, BeadPair &gt;", "classvotca_1_1csg_1_1PairList.html", [
       [ "votca::csg::NBList", "classvotca_1_1csg_1_1NBList.html", [
@@ -414,9 +438,14 @@ var hierarchy =
       [ "votca::xtp::QMNBList", "classvotca_1_1xtp_1_1QMNBList.html", null ]
     ] ],
     [ "votca::xtp::Rate_Engine::PairRates", "structvotca_1_1xtp_1_1Rate__Engine_1_1PairRates.html", null ],
+    [ "votca::xtp::PcgIndefinitenessResult", "structvotca_1_1xtp_1_1PcgIndefinitenessResult.html", null ],
     [ "votca::xtp::PMLocalization", "classvotca_1_1xtp_1_1PMLocalization.html", null ],
     [ "votca::xtp::PODCoupling", "classvotca_1_1xtp_1_1PODCoupling.html", null ],
+    [ "votca::xtp::ewaldcontainer::PointCharge", "structvotca_1_1xtp_1_1ewaldcontainer_1_1PointCharge.html", null ],
+    [ "votca::xtp::AOEwaldRealSpaceDipoles::PointDipole", "structvotca_1_1xtp_1_1AOEwaldRealSpaceDipoles_1_1PointDipole.html", null ],
+    [ "votca::xtp::ewaldcontainer::PointDipole", "structvotca_1_1xtp_1_1ewaldcontainer_1_1PointDipole.html", null ],
     [ "votca::xtp::Populationanalysis&lt; T &gt;", "classvotca_1_1xtp_1_1Populationanalysis.html", null ],
+    [ "votca::xtp::ewaldcontainer::PotentialData", "classvotca_1_1xtp_1_1ewaldcontainer_1_1PotentialData.html", null ],
     [ "votca::csg::PotentialFunction", "classvotca_1_1csg_1_1PotentialFunction.html", [
       [ "votca::csg::PotentialFunctionCBSPL", "classvotca_1_1csg_1_1PotentialFunctionCBSPL.html", null ],
       [ "votca::csg::PotentialFunctionLJ126", "classvotca_1_1csg_1_1PotentialFunctionLJ126.html", null ],
@@ -445,7 +474,9 @@ var hierarchy =
     [ "votca::tools::Random", "classvotca_1_1tools_1_1Random.html", null ],
     [ "votca::tools::RangeParser", "classvotca_1_1tools_1_1RangeParser.html", null ],
     [ "votca::xtp::Rate_Engine", "classvotca_1_1xtp_1_1Rate__Engine.html", null ],
+    [ "votca::xtp::EwaldPeriodicDipoleOperator::RawMultiplyTimings", "structvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator_1_1RawMultiplyTimings.html", null ],
     [ "votca::csg::RDFCalculator", "classvotca_1_1csg_1_1RDFCalculator.html", null ],
+    [ "votca::xtp::ewaldcontainer::ReciprocalTerm", "structvotca_1_1xtp_1_1ewaldcontainer_1_1ReciprocalTerm.html", null ],
     [ "votca::xtp::Region", "classvotca_1_1xtp_1_1Region.html", [
       [ "votca::xtp::MMRegion< PolarSegment >", "classvotca_1_1xtp_1_1MMRegion.html", [
         [ "votca::xtp::PolarRegion", "classvotca_1_1xtp_1_1PolarRegion.html", null ]
@@ -453,6 +484,7 @@ var hierarchy =
       [ "votca::xtp::MMRegion< StaticSegment >", "classvotca_1_1xtp_1_1MMRegion.html", [
         [ "votca::xtp::StaticRegion", "classvotca_1_1xtp_1_1StaticRegion.html", null ]
       ] ],
+      [ "votca::xtp::EwaldRegion", "classvotca_1_1xtp_1_1EwaldRegion.html", null ],
       [ "votca::xtp::MMRegion< T >", "classvotca_1_1xtp_1_1MMRegion.html", null ],
       [ "votca::xtp::QMRegion", "classvotca_1_1xtp_1_1QMRegion.html", null ]
     ] ],
@@ -518,6 +550,7 @@ var hierarchy =
       [ "votca::xtp::TCMatrix_gwbse", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html", null ]
     ] ],
     [ "votca::xtp::TCMatrix_gwbse_spin", "structvotca_1_1xtp_1_1TCMatrix__gwbse__spin.html", null ],
+    [ "votca::xtp::EwaldRealSpaceInteractor::TholeFactors", "structvotca_1_1xtp_1_1EwaldRealSpaceInteractor_1_1TholeFactors.html", null ],
     [ "votca::tools::Thread", "classvotca_1_1tools_1_1Thread.html", [
       [ "votca::csg::CsgApplication::Worker", "classvotca_1_1csg_1_1CsgApplication_1_1Worker.html", [
         [ "CsgREupdateWorker", "classCsgREupdateWorker.html", null ],
@@ -547,6 +580,7 @@ var hierarchy =
     ] ],
     [ "Eigen::internal::traits", null, [
       [ "Eigen::internal::traits< votca::xtp::DipoleDipoleInteraction >", "structEigen_1_1internal_1_1traits_3_01votca_1_1xtp_1_1DipoleDipoleInteraction_01_4.html", null ],
+      [ "Eigen::internal::traits< votca::xtp::EwaldPeriodicDipoleOperator >", "structEigen_1_1internal_1_1traits_3_01votca_1_1xtp_1_1EwaldPeriodicDipoleOperator_01_4.html", null ],
       [ "Eigen::internal::traits< votca::xtp::HamiltonianOperator< MatrixReplacementA, MatrixReplacementB > >", "structEigen_1_1internal_1_1traits_3_01votca_1_1xtp_1_1HamiltonianOperator_3_01MatrixReplacementAb39d5a566f93c99b890dd40e1f17fadd.html", null ],
       [ "Eigen::internal::traits< votca::xtp::MatrixFreeOperator >", "structEigen_1_1internal_1_1traits_3_01votca_1_1xtp_1_1MatrixFreeOperator_01_4.html", null ]
     ] ],
@@ -569,6 +603,7 @@ var hierarchy =
       [ "votca::csg::XYZWriter", "classvotca_1_1csg_1_1XYZWriter.html", null ]
     ] ],
     [ "votca::xtp::TransitionDensities", "classvotca_1_1xtp_1_1TransitionDensities.html", null ],
+    [ "votca::xtp::EwaldRealSpaceSum::Translation", "structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1Translation.html", null ],
     [ "votca::csg::TripleList&lt; element_type, triple_type &gt;", "classvotca_1_1csg_1_1TripleList.html", null ],
     [ "votca::csg::TripleList&lt; Bead *, BeadTriple &gt;", "classvotca_1_1csg_1_1TripleList.html", [
       [ "votca::csg::NBList_3Body", "classvotca_1_1csg_1_1NBList__3Body.html", [

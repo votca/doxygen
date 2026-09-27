@@ -7,6 +7,6 @@ var searchData=
   ['hatree_5fper_5fbohr_4',['hatree_per_bohr',['../namespacevotca_1_1tools.html#a57cc746da9eee19c1cc299966d7a5c23a55d4fb5a73cf04a9b7125e0c0ab90d4f',1,'votca::tools']]],
   ['hatree_5fper_5fmole_5fbohr_5',['hatree_per_mole_bohr',['../namespacevotca_1_1tools.html#a3dcc9b8baac70960cb94c0edc2c8f858a9dfb0be233baa474060c2e12053fb046',1,'votca::tools']]],
   ['hlp_6',['HLP',['../classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268a8089a36fbf8bc8854dcd0510b0b07b5e',1,'votca::tools::PropertyIOManipulator']]],
-  ['hole_7',['Hole',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a3a56862aa0951018fa19253c6beba87f',1,'votca::xtp::QMStateType']]],
+  ['hole_7',['Hole',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a3a56862aa0951018fa19253c6beba87f',1,'votca::xtp::QMStateType::Hole'],['../namespacevotca_1_1xtp.html#a0169c139587081c60a508f60a46bc65aa6368a5bde7853b2f6c660f010adbb988',1,'votca::xtp::Hole']]],
   ['hopping_8',['Hopping',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7a697909d7a40aa2caf084053e5cb4b1c0',1,'votca::xtp::QMPair']]]
 ];

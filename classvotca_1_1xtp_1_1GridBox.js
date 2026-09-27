@@ -12,6 +12,8 @@ var classvotca_1_1xtp_1_1GridBox =
     [ "getGridPoints", "classvotca_1_1xtp_1_1GridBox.html#a0885e6875b6a8ee5f0e70d48bb6ea989", null ],
     [ "getGridWeights", "classvotca_1_1xtp_1_1GridBox.html#a4a51fa17bee51d874392801cca92210a", null ],
     [ "getOwnerAtoms", "classvotca_1_1xtp_1_1GridBox.html#a4e81c1061dd568701e2353c6f5bea0d5", null ],
+    [ "getPotentialValues", "classvotca_1_1xtp_1_1GridBox.html#af779c208fe1b784be8ee255d3778677c", null ],
+    [ "getPotentialValues", "classvotca_1_1xtp_1_1GridBox.html#aec7251a9e66dc69e642a21f330bc7ee7", null ],
     [ "getShells", "classvotca_1_1xtp_1_1GridBox.html#a37c3e7c7487f9661361c738799c29a05", null ],
     [ "Matrixsize", "classvotca_1_1xtp_1_1GridBox.html#acaa7320024ae09e3b9081bd6d26797a5", null ],
     [ "PrepareForIntegration", "classvotca_1_1xtp_1_1GridBox.html#a03e5f7e56267ab5f4cda1658085d777f", null ],
@@ -24,6 +26,7 @@ var classvotca_1_1xtp_1_1GridBox =
     [ "inv_ranges", "classvotca_1_1xtp_1_1GridBox.html#a1aa2295cb065adb1228f283060f66b92", null ],
     [ "matrix_size", "classvotca_1_1xtp_1_1GridBox.html#aeca807298a6d040a72d29036767de9da", null ],
     [ "owner_atoms", "classvotca_1_1xtp_1_1GridBox.html#a08a3e70cb9b9c54f972652788198ba17", null ],
+    [ "potential_values", "classvotca_1_1xtp_1_1GridBox.html#ad5a4a7ed7a49ac43d425a85b46387b5f", null ],
     [ "ranges", "classvotca_1_1xtp_1_1GridBox.html#ace0d82ce3708a3a3720486c6170c38ee", null ],
     [ "significant_shells", "classvotca_1_1xtp_1_1GridBox.html#a59ff711d98e877cb22f99ce9db680fa8", null ],
     [ "weights", "classvotca_1_1xtp_1_1GridBox.html#a2156a8106766bcc31c048bd819c08c63", null ]

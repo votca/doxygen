@@ -13,6 +13,7 @@ var classvotca_1_1xtp_1_1Region =
     [ "getId", "classvotca_1_1xtp_1_1Region.html#a67cb6d77ae5765021d7f0bd032e05347", null ],
     [ "identify", "classvotca_1_1xtp_1_1Region.html#aff0bcd638f8629f04dd0ad3c76dffe52", null ],
     [ "Initialize", "classvotca_1_1xtp_1_1Region.html#a56c115000c3b87b59d63de51a90b9d8e", null ],
+    [ "InteractwithEwaldRegion", "classvotca_1_1xtp_1_1Region.html#acec711102a4bf64e02bd6b625b8e1d05", null ],
     [ "InteractwithPolarRegion", "classvotca_1_1xtp_1_1Region.html#a91b12908a9f5f6ea78916d548fae8c8a", null ],
     [ "InteractwithQMRegion", "classvotca_1_1xtp_1_1Region.html#a4ccbcf8f83e974a8f87b73306c7a044e", null ],
     [ "InteractwithStaticRegion", "classvotca_1_1xtp_1_1Region.html#a818596e1833dd61070be61d35c25ebbd", null ],

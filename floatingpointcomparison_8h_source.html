@@ -124,26 +124,42 @@ $(function(){initNavTree('floatingpointcomparison_8h_source.html','',''); });
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevotca.html">votca</a> {</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevotca_1_1tools.html">tools</a> {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespacevotca_1_1tools.html#a9e9efdfc4c85c2ac1815387daa22a05f">   45</a></span><span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacevotca_1_1tools.html#a9e9efdfc4c85c2ac1815387daa22a05f">isApproximatelyEqual</a>(T a, T b, T tolerance) {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  T diff = std::abs(a - b);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keywordflow">if</span> (diff &lt;= tolerance) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordflow">if</span> (diff &lt; std::max(std::abs(a), std::abs(b)) * tolerance) {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// NOT `static`. A `static` function template in a header has internal</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// linkage, so every translation unit that includes the header gets its</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// own private copy -- and in every TU that includes the header without</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// calling the function, that copy is dead code. Clang reports it under</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// -Wunused-template, which newer releases enable as part of the general</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// warning set this project already builds with, and -DENABLE_WERROR=ON</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// turns into a build failure. The first casualty is csg&#39;s</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">// lammpsdatareader.cc, whose #include of this header is left over: it</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">// calls nothing from it.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">//</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// Dropping `static` is not a workaround for the warning, it is the</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">// correct declaration: a function template needs neither `static` nor</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">// `inline` to be defined in a header. Implicit instantiations are</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// already exempt from the one-definition rule, so several TUs</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">// instantiating the same specialisation share one copy rather than</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">// colliding.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespacevotca_1_1tools.html#adde2f66a4d5bc166ab7fd298b61f360b">   61</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacevotca_1_1tools.html#adde2f66a4d5bc166ab7fd298b61f360b">isApproximatelyEqual</a>(T a, T b, T tolerance) {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  T diff = std::abs(a - b);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordflow">if</span> (diff &lt;= tolerance) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keywordflow">if</span> (diff &lt; std::max(std::abs(a), std::abs(b)) * tolerance) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
 </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}  <span class="comment">// namespace tools</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}  <span class="comment">// namespace votca</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif  </span><span class="comment">// VOTCA_TOOLS_FLOATINGPOINTCOMPARISON_H</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}  <span class="comment">// namespace tools</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}  <span class="comment">// namespace votca</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif  </span><span class="comment">// VOTCA_TOOLS_FLOATINGPOINTCOMPARISON_H</span></div>
 <div class="ttc" id="anamespacevotca_1_1tools_html"><div class="ttname"><a href="namespacevotca_1_1tools.html">votca::tools</a></div><div class="ttdef"><b>Definition</b> <a href="beadmotifalgorithms_8cc_source.html#l00035">beadmotifalgorithms.cc:35</a></div></div>
-<div class="ttc" id="anamespacevotca_1_1tools_html_a9e9efdfc4c85c2ac1815387daa22a05f"><div class="ttname"><a href="namespacevotca_1_1tools.html#a9e9efdfc4c85c2ac1815387daa22a05f">votca::tools::isApproximatelyEqual</a></div><div class="ttdeci">static bool isApproximatelyEqual(T a, T b, T tolerance)</div><div class="ttdef"><b>Definition</b> <a href="#l00045">floatingpointcomparison.h:45</a></div></div>
+<div class="ttc" id="anamespacevotca_1_1tools_html_adde2f66a4d5bc166ab7fd298b61f360b"><div class="ttname"><a href="namespacevotca_1_1tools.html#adde2f66a4d5bc166ab7fd298b61f360b">votca::tools::isApproximatelyEqual</a></div><div class="ttdeci">bool isApproximatelyEqual(T a, T b, T tolerance)</div><div class="ttdef"><b>Definition</b> <a href="#l00061">floatingpointcomparison.h:61</a></div></div>
 <div class="ttc" id="anamespacevotca_html"><div class="ttname"><a href="namespacevotca.html">votca</a></div><div class="ttdoc">Provides a means for comparing floating point numbers.</div><div class="ttdef"><b>Definition</b> <a href="basebead_8h_source.html#l00033">basebead.h:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['e_0',['e',['../namespacevotca_1_1tools.html#ad593ffcbc7a96312e5f11b81700aad17a5dd80bccefb34f7ef1ca94ef17e9612f',1,'votca::tools']]],
-  ['electron_1',['Electron',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224',1,'votca::xtp::QMStateType']]],
+  ['electron_1',['Electron',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7a2a2b52d9d50337edde3fa8bf21eea224',1,'votca::xtp::QMStateType::Electron'],['../namespacevotca_1_1xtp.html#a0169c139587081c60a508f60a46bc65aa0df2da9cf88450e6758356da45b4d04f',1,'votca::xtp::Electron']]],
   ['electron_5fvolts_2',['electron_volts',['../namespacevotca_1_1tools.html#a9bad48919a06a85cfa246ccd38569318a315c656a74bb87f210bad44aecd433d2',1,'votca::tools']]],
   ['electron_5fvolts_5fper_5fmole_3',['electron_volts_per_mole',['../namespacevotca_1_1tools.html#a2e1c6d4d81c50c4700d9fae168480335a6f013c63f54d0113343e29b8394340e7',1,'votca::tools']]],
   ['element_4',['Element',['../namespacevotca_1_1tools.html#a685d5f73c7d949c92b53510193cc89e1a2c1f84509e616290fdd9d2f6edc3a818',1,'votca::tools']]],

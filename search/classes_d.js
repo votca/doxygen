@@ -9,6 +9,7 @@ var searchData=
   ['ndimvector_6',['NDimVector',['../classvotca_1_1tools_1_1NDimVector.html',1,'votca::tools']]],
   ['ndimvector_3c_20votca_3a_3acsg_3a_3anblistgrid_3a_3acell_5ft_2c_203_20_3e_7',['NDimVector&lt; votca::csg::NBListGrid::cell_t, 3 &gt;',['../classvotca_1_1tools_1_1NDimVector.html',1,'votca::tools']]],
   ['neighborlist_8',['Neighborlist',['../classvotca_1_1xtp_1_1Neighborlist.html',1,'votca::xtp']]],
-  ['nematicorder_9',['NematicOrder',['../classvotca_1_1csg_1_1NematicOrder.html',1,'votca::csg']]],
-  ['newtonrapson_10',['NewtonRapson',['../classvotca_1_1xtp_1_1NewtonRapson.html',1,'votca::xtp']]]
+  ['neighborstats_9',['NeighborStats',['../structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1NeighborStats.html',1,'votca::xtp::EwaldRealSpaceSum']]],
+  ['nematicorder_10',['NematicOrder',['../classvotca_1_1csg_1_1NematicOrder.html',1,'votca::csg']]],
+  ['newtonrapson_11',['NewtonRapson',['../classvotca_1_1xtp_1_1NewtonRapson.html',1,'votca::xtp']]]
 ];

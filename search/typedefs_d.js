@@ -6,5 +6,6 @@ var searchData=
   ['partners_3',['partners',['../classvotca_1_1csg_1_1PairList.html#a2834f08e91753a2a3bef31298889ae0d',1,'votca::csg::PairList']]],
   ['polarmapper_4',['PolarMapper',['../namespacevotca_1_1xtp.html#a7662242aab857161c69864044788e94e',1,'votca::xtp']]],
   ['polarsegment_5',['PolarSegment',['../namespacevotca_1_1xtp.html#a6aa00a5a3898bc0f9c6f161a2eb4f9b4',1,'votca::xtp']]],
-  ['potentialcontainer_6',['PotentialContainer',['../classCsgREupdate.html#afdd3b83cda036ca8908b725d6a0b19e7',1,'CsgREupdate::PotentialContainer'],['../classCsgREupdateWorker.html#ac3fa6aca36091a356cb7e88b7e92f523',1,'CsgREupdateWorker::PotentialContainer']]]
+  ['potentialcontainer_6',['PotentialContainer',['../classCsgREupdate.html#afdd3b83cda036ca8908b725d6a0b19e7',1,'CsgREupdate::PotentialContainer'],['../classCsgREupdateWorker.html#ac3fa6aca36091a356cb7e88b7e92f523',1,'CsgREupdateWorker::PotentialContainer']]],
+  ['progresscallback_7',['ProgressCallback',['../classvotca_1_1xtp_1_1EwaldReciprocalSpaceSum.html#a237ebbfc9e86b51b50de618b3721322d',1,'votca::xtp::EwaldReciprocalSpaceSum']]]
 ];
