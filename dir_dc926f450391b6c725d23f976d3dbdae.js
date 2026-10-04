@@ -33,6 +33,7 @@ var dir_dc926f450391b6c725d23f976d3dbdae =
     [ "ecpaobasis.cc", "ecpaobasis_8cc.html", "ecpaobasis_8cc" ],
     [ "ecpbasisset.cc", "ecpbasisset_8cc.html", "ecpbasisset_8cc" ],
     [ "eeinteractor.cc", "eeinteractor_8cc.html", "eeinteractor_8cc" ],
+    [ "environmentscreening.cc", "environmentscreening_8cc.html", "environmentscreening_8cc" ],
     [ "erdiabatization.cc", "erdiabatization_8cc.html", null ],
     [ "esp2multipole.cc", "esp2multipole_8cc.html", null ],
     [ "espfit.cc", "espfit_8cc.html", null ],

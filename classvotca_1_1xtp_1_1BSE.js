@@ -23,6 +23,8 @@ var classvotca_1_1xtp_1_1BSE =
     [ "printFragInfo", "classvotca_1_1xtp_1_1BSE.html#a221aa111183bbe415b0fd9652aa2606e", null ],
     [ "PrintWeights", "classvotca_1_1xtp_1_1BSE.html#a315dd1a8867848f5999bfac9cce369f2", null ],
     [ "printWeights", "classvotca_1_1xtp_1_1BSE.html#a3b879fe654827c0db91b3c2dd69115d6", null ],
+    [ "ReactionFieldExchange", "classvotca_1_1xtp_1_1BSE.html#a5a4f78c1160b17b54eb9d408a8a68fb6", null ],
+    [ "setReactionField", "classvotca_1_1xtp_1_1BSE.html#a05a682f39a8fa20d77d2ce4e026c4d3c", null ],
     [ "SetupDirectInteractionOperator", "classvotca_1_1xtp_1_1BSE.html#a84c038bd5b1c604b36bb3a367d7890a8", null ],
     [ "solve_hermitian", "classvotca_1_1xtp_1_1BSE.html#adafcbc07a797f26a80d7c37af0be3a0a", null ],
     [ "Solve_nonhermitian", "classvotca_1_1xtp_1_1BSE.html#addbadaf42bdafe21d939543478273999", null ],
@@ -41,11 +43,14 @@ var classvotca_1_1xtp_1_1BSE =
     [ "bse_size_", "classvotca_1_1xtp_1_1BSE.html#aacae6388a7e28c415557e22eb29c75e6", null ],
     [ "bse_vmax_", "classvotca_1_1xtp_1_1BSE.html#a7f732fe65244dc37450673629904a33e", null ],
     [ "bse_vtotal_", "classvotca_1_1xtp_1_1BSE.html#af5104a5be911d499a58d8fc384e8108e", null ],
+    [ "dressing_", "classvotca_1_1xtp_1_1BSE.html#af9c1d00b317473b74318e8ed5a7e9645", null ],
     [ "dyn_tolerance_", "classvotca_1_1xtp_1_1BSE.html#a3d6fd938daafcaa67ef0b1adaa09e1f9", null ],
     [ "epsilon_0_inv_", "classvotca_1_1xtp_1_1BSE.html#a8c32007e699554947fda493acef8a519", null ],
     [ "Hqp_", "classvotca_1_1xtp_1_1BSE.html#a87d361ff07cc864730bb208e57d257d5", null ],
+    [ "include_kreac_", "classvotca_1_1xtp_1_1BSE.html#acf64e069bba225d21f4575e874c2c9e9", null ],
     [ "log_", "classvotca_1_1xtp_1_1BSE.html#ae75ea17735f2d3d4111c29b6b215c8cb", null ],
     [ "max_dyn_iter_", "classvotca_1_1xtp_1_1BSE.html#acf6e75e0f618de952fb1e05076b6745a", null ],
     [ "Mmn_", "classvotca_1_1xtp_1_1BSE.html#aa964eaf4fd59afb1ab17bbbb47bad4d6", null ],
-    [ "opt_", "classvotca_1_1xtp_1_1BSE.html#a66644cf517702e15e5073f55f017d3a8", null ]
+    [ "opt_", "classvotca_1_1xtp_1_1BSE.html#a66644cf517702e15e5073f55f017d3a8", null ],
+    [ "reaction_field_", "classvotca_1_1xtp_1_1BSE.html#abe14d1b3dd4e01052cd376c3f2695505", null ]
 ];

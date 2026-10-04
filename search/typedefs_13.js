@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['vector_0',['Vector',['../classvotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner.html#a3df7350986ee1fb5c0536793f0fdcf9a',1,'votca::xtp::EwaldBlockJacobiPreconditioner']]],
-  ['vector9d_1',['Vector9d',['../xtp_2include_2votca_2xtp_2eigen_8h.html#ab8dd5c0572073f0a612237d2a6b527df',1,'eigen.h']]]
+  ['unique_5fptr_5fto_5fgpu_5fdata_0',['Unique_ptr_to_GPU_data',['../classvotca_1_1xtp_1_1CudaMatrix.html#a4734a25d6eb991fb48776d8537f919ff',1,'votca::xtp::CudaMatrix']]]
 ];

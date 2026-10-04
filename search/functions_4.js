@@ -78,5 +78,9 @@ var searchData=
   ['dovolumecorrection_75',['DoVolumeCorrection',['../classvotca_1_1csg_1_1RDFCalculator.html#a628908cd0056707904ef6fc06458870f',1,'votca::csg::RDFCalculator']]],
   ['dpr_76',['dpr',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a91439aaf527184540c5eaaaf8515e35d',1,'votca::xtp::DavidsonSolver']]],
   ['dprime_77',['Dprime',['../classvotca_1_1tools_1_1CubicSpline.html#a34b2952d5c9acd4f8ed929a64e7289e5',1,'votca::tools::CubicSpline']]],
-  ['dummy_5fedge_78',['DUMMY_EDGE',['../namespacevotca_1_1tools.html#a780fd88987f03904071461de9df7f7f8',1,'votca::tools']]]
+  ['dressauxindex_78',['DressAuxIndex',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a10ec809ae04ae1c814e4d1c9247cf8d4',1,'votca::xtp::TCMatrix_gwbse']]],
+  ['dressed_79',['Dressed',['../classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a0fe27daafc51f594c7b266de80760761',1,'votca::xtp::TCMatrix_gwbse']]],
+  ['dressforenvironment_80',['DressForEnvironment',['../classvotca_1_1xtp_1_1GW.html#abee71564a9db158f210aea81740495ce',1,'votca::xtp::GW']]],
+  ['dressingmatrix_81',['DressingMatrix',['../classvotca_1_1xtp_1_1EnvironmentScreening.html#a798f293deac16f9e4a9aaa80e1f9f4bf',1,'votca::xtp::EnvironmentScreening']]],
+  ['dummy_5fedge_82',['DUMMY_EDGE',['../namespacevotca_1_1tools.html#a780fd88987f03904071461de9df7f7f8',1,'votca::tools']]]
 ];

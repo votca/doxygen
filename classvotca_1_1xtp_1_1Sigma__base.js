@@ -9,6 +9,7 @@ var classvotca_1_1xtp_1_1Sigma__base =
     [ "CalcCorrelationOffDiag", "classvotca_1_1xtp_1_1Sigma__base.html#a5d3e2b45639d0cf4131f52d7c5bbc897", null ],
     [ "CalcCorrelationOffDiagElement", "classvotca_1_1xtp_1_1Sigma__base.html#a8a76908154cd8a3061bf6a7c4639d27b", null ],
     [ "CalcExchangeMatrix", "classvotca_1_1xtp_1_1Sigma__base.html#af0063537902a53dd7539e3a25b176efa", null ],
+    [ "CalcReactionFieldMatrix", "classvotca_1_1xtp_1_1Sigma__base.html#aec88a3be4fdaf07295acd59cdf95f02c", null ],
     [ "configure", "classvotca_1_1xtp_1_1Sigma__base.html#aa7c9e734c52cc3f2c77feff0f355cb75", null ],
     [ "CountDiagEval", "classvotca_1_1xtp_1_1Sigma__base.html#af9dc0e73676025ee5b7bf6bf47da36f3", null ],
     [ "GetDiagEvalCounter", "classvotca_1_1xtp_1_1Sigma__base.html#a59a7c1edf4ce9f1967be7525b43ec74a", null ],

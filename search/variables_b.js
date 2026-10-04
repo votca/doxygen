@@ -53,5 +53,6 @@ var searchData=
   ['loglevel_5f_50',['LogLevel_',['../classvotca_1_1xtp_1_1LogBuffer.html#a03cc80cd30a417ccb2f3ac1fe6c2d79d',1,'votca::xtp::LogBuffer']]],
   ['logmutex_5f_51',['logMutex_',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#acb705cc00b753984d6c8bea48a6dc678',1,'votca::xtp::ParallelXJobCalc']]],
   ['lop_5f_52',['lOP_',['../classvotca_1_1xtp_1_1OpenMP__CUDA.html#ad7a11f4d7674cedc6a11068763f615ca',1,'votca::xtp::OpenMP_CUDA']]],
-  ['lower_5f_53',['lower_',['../classvotca_1_1xtp_1_1Spectrum.html#a4ba0a7f5872d544c77dd2119dd43e966',1,'votca::xtp::Spectrum']]]
+  ['lower_5f_53',['lower_',['../classvotca_1_1xtp_1_1Spectrum.html#a4ba0a7f5872d544c77dd2119dd43e966',1,'votca::xtp::Spectrum']]],
+  ['lowest_54',['lowest',['../structvotca_1_1xtp_1_1ScreeningCheck.html#a714481d5e3052dc5f97bc10dab57f462',1,'votca::xtp::ScreeningCheck']]]
 ];

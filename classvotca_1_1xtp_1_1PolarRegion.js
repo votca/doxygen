@@ -9,6 +9,7 @@ var classvotca_1_1xtp_1_1PolarRegion =
     [ "Converged", "classvotca_1_1xtp_1_1PolarRegion.html#a4fc9b7acec5195a0b5ef1a8504170a81", null ],
     [ "Etotal", "classvotca_1_1xtp_1_1PolarRegion.html#ae4447e9a849b956d0279afbd1e8cac6e", null ],
     [ "Evaluate", "classvotca_1_1xtp_1_1PolarRegion.html#ad7fd825fb2a052266eda6686adb75e5c", null ],
+    [ "ExpDamp", "classvotca_1_1xtp_1_1PolarRegion.html#abc411b0994b3a1e1f992126d48f298b4", null ],
     [ "identify", "classvotca_1_1xtp_1_1PolarRegion.html#a7e77187a7af51a0b498f20a543cb3517", null ],
     [ "Initialize", "classvotca_1_1xtp_1_1PolarRegion.html#a431edafd5b727d416de0c23378bd56c5", null ],
     [ "InteractwithEwaldRegion", "classvotca_1_1xtp_1_1PolarRegion.html#a189d70226c8cb7749ab27060f16d63c5", null ],

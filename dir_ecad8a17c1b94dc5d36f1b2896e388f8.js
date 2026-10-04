@@ -47,6 +47,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "eeinteractor.h", "eeinteractor_8h.html", "eeinteractor_8h" ],
     [ "eigen.h", "xtp_2include_2votca_2xtp_2eigen_8h.html", "xtp_2include_2votca_2xtp_2eigen_8h" ],
     [ "energy_terms.h", "energy__terms_8h.html", "energy__terms_8h" ],
+    [ "environmentscreening.h", "environmentscreening_8h.html", "environmentscreening_8h" ],
     [ "erdiabatization.h", "erdiabatization_8h.html", "erdiabatization_8h" ],
     [ "ERIs.h", "ERIs_8h.html", "ERIs_8h" ],
     [ "esp2multipole.h", "esp2multipole_8h.html", "esp2multipole_8h" ],

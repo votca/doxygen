@@ -105,6 +105,7 @@ var classvotca_1_1xtp_1_1DFTEngine =
     [ "numfuncpatom_", "classvotca_1_1xtp_1_1DFTEngine.html#ab9ab0336d9ac95f21edc3505576af731", null ],
     [ "numofelectrons_", "classvotca_1_1xtp_1_1DFTEngine.html#af7231d577dffbf42f3b2add2e2d381de", null ],
     [ "orbfilename_", "classvotca_1_1xtp_1_1DFTEngine.html#a54dd7140059a7ad6d595374530d058eb", null ],
+    [ "overlap_tolerance_", "classvotca_1_1xtp_1_1DFTEngine.html#a7685f6586a4973eabcef9dd77a233b97", null ],
     [ "pLog_", "classvotca_1_1xtp_1_1DFTEngine.html#a77468dcba2a374aa432247d8fe035725", null ],
     [ "ScaHFX_", "classvotca_1_1xtp_1_1DFTEngine.html#a0a3f08061aab78696b95e43d9dfcc44e", null ],
     [ "screening_eps_", "classvotca_1_1xtp_1_1DFTEngine.html#a239e62b9d67297ce51a6085b179077fb", null ],

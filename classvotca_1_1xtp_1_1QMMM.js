@@ -3,6 +3,7 @@ var classvotca_1_1xtp_1_1QMMM =
     [ "createJob", "classvotca_1_1xtp_1_1QMMM.html#afa07b42474b3994f02eda4e0b96ecbe6", null ],
     [ "EvalJob", "classvotca_1_1xtp_1_1QMMM.html#acf6b32cabf9e9545ca988bbf674fe0bd", null ],
     [ "getFirstRegionName", "classvotca_1_1xtp_1_1QMMM.html#a4b3f6bf1af4aaeb395706a6f25ad65e5", null ],
+    [ "hasEnvironmentScreening", "classvotca_1_1xtp_1_1QMMM.html#ac192b877717286548711caae72f35f2d", null ],
     [ "hasQMRegion", "classvotca_1_1xtp_1_1QMMM.html#aa5c50ce33c0489455977a028cd2e5dc8", null ],
     [ "Identify", "classvotca_1_1xtp_1_1QMMM.html#ad7962babe3ce00eed8582e0fe328e155", null ],
     [ "ParseSpecificOptions", "classvotca_1_1xtp_1_1QMMM.html#ae06c533c49d68fc5a36da08cc7aad55d", null ],

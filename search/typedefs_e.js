@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['qmmapper_0',['QMMapper',['../namespacevotca_1_1xtp.html#a9b6cdcd79d10bd6be5b7043843578433',1,'votca::xtp']]],
-  ['qprootcandidate_1',['QPRootCandidate',['../classvotca_1_1xtp_1_1GW.html#a9b8e564a98826a8f00841cb56f6dff1c',1,'votca::xtp::GW::QPRootCandidate'],['../classvotca_1_1xtp_1_1GW__UKS.html#abb5a2b7648cb6bd59b70dfc91ebacfcf',1,'votca::xtp::GW_UKS::QPRootCandidate']]],
-  ['qpstats_2',['QPStats',['../classvotca_1_1xtp_1_1GW.html#a8920259a9af100b004a410279d924000',1,'votca::xtp::GW::QPStats'],['../classvotca_1_1xtp_1_1GW__UKS.html#a7573299425386856fdd15ea8c098764d',1,'votca::xtp::GW_UKS::QPStats']]],
-  ['qpuksoperator_3',['QpUKSOperator',['../namespacevotca_1_1xtp.html#ac69000e7614dfcff0fc5c113835f3081',1,'votca::xtp']]],
-  ['qpwindowdiagnostics_4',['QPWindowDiagnostics',['../classvotca_1_1xtp_1_1GW.html#ac0e7b0961827b276ddfb87f89879de3e',1,'votca::xtp::GW::QPWindowDiagnostics'],['../classvotca_1_1xtp_1_1GW__UKS.html#a732d45746baf850ca95004922a32437f',1,'votca::xtp::GW_UKS::QPWindowDiagnostics']]]
+  ['pair_5fcreator_5ft_0',['pair_creator_t',['../classvotca_1_1csg_1_1NBList.html#a29ee382513f75937235bb42c28cb9c32',1,'votca::csg::NBList']]],
+  ['pair_5fmatrix_1',['pair_matrix',['../classvotca_1_1csg_1_1RDFCalculator.html#a02c1e6a75d97ab8def0f0367f5d23601',1,'votca::csg::RDFCalculator::pair_matrix'],['../classvotca_1_1csg_1_1Imc.html#aec5d03de902520bd2b280e271ba46e14',1,'votca::csg::Imc::pair_matrix']]],
+  ['pair_5ft_2',['pair_t',['../classvotca_1_1csg_1_1PairList.html#aa55cc4699986d516d27b6cae65bf8c24',1,'votca::csg::PairList']]],
+  ['partners_3',['partners',['../classvotca_1_1csg_1_1PairList.html#a2834f08e91753a2a3bef31298889ae0d',1,'votca::csg::PairList']]],
+  ['polarmapper_4',['PolarMapper',['../namespacevotca_1_1xtp.html#a7662242aab857161c69864044788e94e',1,'votca::xtp']]],
+  ['polarsegment_5',['PolarSegment',['../namespacevotca_1_1xtp.html#a6aa00a5a3898bc0f9c6f161a2eb4f9b4',1,'votca::xtp']]],
+  ['potentialcontainer_6',['PotentialContainer',['../classCsgREupdate.html#afdd3b83cda036ca8908b725d6a0b19e7',1,'CsgREupdate::PotentialContainer'],['../classCsgREupdateWorker.html#ac3fa6aca36091a356cb7e88b7e92f523',1,'CsgREupdateWorker::PotentialContainer']]],
+  ['progresscallback_7',['ProgressCallback',['../classvotca_1_1xtp_1_1EwaldReciprocalSpaceSum.html#a237ebbfc9e86b51b50de618b3721322d',1,'votca::xtp::EwaldReciprocalSpaceSum']]]
 ];

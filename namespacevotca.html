@@ -141,6 +141,7 @@ Typedefs</h2></td></tr>
 <p>Real-space, erfc(alpha*r)-screened multipole interaction tensor for use in a 3D Ewald summation.</p>
 <p>Matrix-free periodic induced-dipole self-consistent-field operator, for use with Eigen::ConjugateGradient.</p>
 <p>Takes a list of atoms, and the corresponding density matrix and puts out a table of partial charges.</p>
+<p>Screening of a GW-BSE calculation by a classical polarizable environment, folded into the screened interaction rather than iterated against it.</p>
 <p>Small container for the individual energy terms in a polar region.</p>
 <p>Writes an orbital file to a .cube file.</p>
 <p>Small container to keep occupation of BSE states for each atom.</p>
@@ -167,6 +168,16 @@ Typedefs</h2></td></tr>
 <li>Explore the edge and operate on the unexplored node(optional) add more edges to the edge queue.</li>
 <li>Repeat until no more edges exist in the queue.</li>
 </ol>
+<p>Follows Li, D'Avino, Duchemin, Beljonne and Blase, Phys. Rev. B (2018) (arXiv:1801.01755), with a Thole induced-dipole environment in place of their charge-response model. The bare Coulomb interaction of the QM subsystem is replaced by</p>
+<p>v -&gt; v + v_reac, v_reac = v_12 chi^(2) v_21,</p>
+<p>the static response of the environment to a change in the QM charge density, felt back by the QM subsystem. For inducible point dipoles, mu = A^-1 E with A = alpha^-1 + T_Thole &ndash; the same operator PolarRegion solves &ndash; so</p>
+<p>v_reac = -F A^-1 F^T,</p>
+<p>with F mapping a charge density to the field it produces at the sites. It is negative semidefinite: it screens.</p>
+<p>This class provides the pieces, each separately testable:</p>
+<p>AuxFieldAtPoints F, per auxiliary function ReactionFieldKernel B = -F A^-1 F^T for the explicit Thole region ShellKernel the cheap tail beyond it (legacy radial_dielectric) SymmetrizedReactionField R = T^T B T, in the metric of the stored three-centre integrals</p>
+<p>B lives between auxiliary functions taken as charge densities. In the RI representation used by TCMatrix_gwbse, M = (mn|Q) T with T = TCMatrix_gwbse::InvSqrt(), a density rho_mn has fit coefficients c = V^-1 (Q|mn), and</p>
+<p>(mn|v_reac|kl) = c_mn^T B c_kl = M_mn (T^T B T) M_kl^T,</p>
+<p>using V^-1 = T T^T. That is what R = T^T B T is for: it acts on M exactly as the bare interaction does, which is the identity in that metric.</p>
 <p>This mirrors DipoleDipoleInteraction's own existing interface (see <a class="el" href="dipoledipoleinteraction_8h.html">dipoledipoleinteraction.h</a>) exactly &ndash; same required Eigen::EigenBase typedefs/constants, same InnerIterator/operator()/multiply() shape &ndash; so it plugs into Eigen::ConjugateGradient the same way PolarRegion::CalcInducedDipolesViaPCG already uses DipoleDipoleInteraction, with the periodic real+reciprocal field (EwaldRealSpaceSum + EwaldReciprocalSpaceSum) standing in for DipoleDipoleInteraction's own aperiodic eeInteractor:: FillTholeInteraction wherever the "interaction between two sites" building block is needed.</p>
 <p>Segments in <span class="tt">ids</span> may have any number of sites each (this was not always true of this class &ndash; an earlier version required exactly one site per segment; generalizing it was deliberately sequenced after that simpler version was already validated, so that any new bug introduced by the generalization itself would be easy to isolate from bugs in the underlying physics, which by this point had already been separately confirmed). The vector layout any v/x this operator is applied to must follow is: for each id in ids (in order), 3 entries per site of that segment (xyz), in the order EwaldRegistry::Get(id,
 Neutral)'s own site iteration gives them &ndash; i.e. a variable-width, offset-table ("CSR-style") layout, not a fixed 3-per-segment one.</p>

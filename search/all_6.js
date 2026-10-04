@@ -153,7 +153,7 @@ var searchData=
   ['force_5fweight_5f_150',['force_weight_',['../structvotca_1_1csg_1_1Map__Sphere_1_1element__t.html#af0759353fcb342154a6516c231b4324f',1,'votca::csg::Map_Sphere::element_t']]],
   ['forces_5f_151',['forces_',['../classvotca_1_1xtp_1_1Orbitals.html#a6839ed61b3556b584258ace520bf1a99',1,'votca::xtp::Orbitals']]],
   ['forceunit_152',['ForceUnit',['../namespacevotca_1_1tools.html#a57cc746da9eee19c1cc299966d7a5c23',1,'votca::tools']]],
-  ['foreground_153',['foreground',['../structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1NeighborStats.html#aa2b6b6b0b8e4ec286a01e377c8a239e6',1,'votca::xtp::EwaldRealSpaceSum::NeighborStats']]],
+  ['foreground_153',['foreground',['../structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1NeighborStats.html#aa2b6b6b0b8e4ec286a01e377c8a239e6',1,'votca::xtp::EwaldRealSpaceSum::NeighborStats::foreground'],['../structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1SearchCounts.html#ae9056119fe79b46ab8f95e6de1116c6a',1,'votca::xtp::EwaldRealSpaceSum::SearchCounts::foreground']]],
   ['foreground_5f_154',['foreground_',['../classvotca_1_1xtp_1_1EwaldRealSpaceSum.html#a6068eefde7904ae5402a3ae4ff41bc01',1,'votca::xtp::EwaldRealSpaceSum']]],
   ['foreground_5fcopies_5f_155',['foreground_copies_',['../classvotca_1_1xtp_1_1EwaldRegion.html#acd1a53177f6f65976ed2d3b3b268e6d9',1,'votca::xtp::EwaldRegion']]],
   ['foreground_5fentries_5f_156',['foreground_entries_',['../classvotca_1_1xtp_1_1EwaldRealSpaceSum.html#ac0dbd674d5d2ba2d08c302aea5e99836',1,'votca::xtp::EwaldRealSpaceSum']]],

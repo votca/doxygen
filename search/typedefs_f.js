@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['realscalar_0',['RealScalar',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#a5ffd3559a14dcdbaa4633b9b17e6dfb4',1,'votca::xtp::HamiltonianOperator::RealScalar'],['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a3040f25127aa3fc3aa05b88aca825b12',1,'votca::xtp::DipoleDipoleInteraction::RealScalar'],['../classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html#a8e3f703459cea2cd2b517fcdcb17bf52',1,'votca::xtp::EwaldPeriodicDipoleOperator::RealScalar']]],
-  ['reduced_5fedge_5fto_5fedges_5fmap_1',['reduced_edge_to_edges_map',['../namespacevotca_1_1csg.html#a8e2c88d8752f2c97223df4edae4f0b5c',1,'votca::csg']]],
-  ['residuecontainer_2',['ResidueContainer',['../namespacevotca_1_1csg.html#a2c4ca632c4155726e16d8e5204889eca',1,'votca::csg']]],
-  ['result_3',['Result',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#a9fb18d80eb0447bdc33c59d77c10f87d',1,'votca::xtp::ParallelXJobCalc::Result'],['../classvotca_1_1xtp_1_1ProgObserver.html#ab03101225740814ab7b7390fe8d62ce3',1,'votca::xtp::ProgObserver::Result']]]
+  ['qmmapper_0',['QMMapper',['../namespacevotca_1_1xtp.html#a9b6cdcd79d10bd6be5b7043843578433',1,'votca::xtp']]],
+  ['qprootcandidate_1',['QPRootCandidate',['../classvotca_1_1xtp_1_1GW.html#a9b8e564a98826a8f00841cb56f6dff1c',1,'votca::xtp::GW::QPRootCandidate'],['../classvotca_1_1xtp_1_1GW__UKS.html#abb5a2b7648cb6bd59b70dfc91ebacfcf',1,'votca::xtp::GW_UKS::QPRootCandidate']]],
+  ['qpstats_2',['QPStats',['../classvotca_1_1xtp_1_1GW.html#a8920259a9af100b004a410279d924000',1,'votca::xtp::GW::QPStats'],['../classvotca_1_1xtp_1_1GW__UKS.html#a7573299425386856fdd15ea8c098764d',1,'votca::xtp::GW_UKS::QPStats']]],
+  ['qpuksoperator_3',['QpUKSOperator',['../namespacevotca_1_1xtp.html#ac69000e7614dfcff0fc5c113835f3081',1,'votca::xtp']]],
+  ['qpwindowdiagnostics_4',['QPWindowDiagnostics',['../classvotca_1_1xtp_1_1GW.html#ac0e7b0961827b276ddfb87f89879de3e',1,'votca::xtp::GW::QPWindowDiagnostics'],['../classvotca_1_1xtp_1_1GW__UKS.html#a732d45746baf850ca95004922a32437f',1,'votca::xtp::GW_UKS::QPWindowDiagnostics']]]
 ];
