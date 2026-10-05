@@ -1,5 +1,6 @@
 var dftengine_8h =
 [
+    [ "votca::xtp::DFTSetupCache", "structvotca_1_1xtp_1_1DFTSetupCache.html", "structvotca_1_1xtp_1_1DFTSetupCache" ],
     [ "votca::xtp::DFTEngine", "classvotca_1_1xtp_1_1DFTEngine.html", "classvotca_1_1xtp_1_1DFTEngine" ],
     [ "votca::xtp::DFTEngine::SpinDensity", "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html", "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity" ],
     [ "votca::xtp::DFTEngine::CDFTConstraintSpec", "structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec.html", "structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec" ],

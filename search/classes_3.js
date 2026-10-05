@@ -16,12 +16,14 @@ var searchData=
   ['dftengine_13',['DFTEngine',['../classvotca_1_1xtp_1_1DFTEngine.html',1,'votca::xtp']]],
   ['dftgradient_14',['DFTGradient',['../classvotca_1_1xtp_1_1DFTGradient.html',1,'votca::xtp']]],
   ['dftgwbse_15',['DftGwBse',['../classvotca_1_1xtp_1_1DftGwBse.html',1,'votca::xtp']]],
-  ['diabatization_16',['Diabatization',['../classvotca_1_1xtp_1_1Diabatization.html',1,'votca::xtp']]],
-  ['diagnostics_17',['Diagnostics',['../structvotca_1_1xtp_1_1BSECoupling_1_1Diagnostics.html',1,'votca::xtp::BSECoupling']]],
-  ['diis_18',['DIIS',['../classvotca_1_1xtp_1_1DIIS.html',1,'votca::xtp']]],
-  ['dipoledipoleinteraction_19',['DipoleDipoleInteraction',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html',1,'votca::xtp']]],
-  ['dlpolytopologyreader_20',['DLPOLYTopologyReader',['../classvotca_1_1csg_1_1DLPOLYTopologyReader.html',1,'votca::csg']]],
-  ['dlpolytrajectoryreader_21',['DLPOLYTrajectoryReader',['../classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html',1,'votca::csg']]],
-  ['dlpolytrajectorywriter_22',['DLPOLYTrajectoryWriter',['../classvotca_1_1csg_1_1DLPOLYTrajectoryWriter.html',1,'votca::csg']]],
-  ['dlptopolapp_23',['DLPTopolApp',['../classDLPTopolApp.html',1,'']]]
+  ['dftsetupcache_16',['DFTSetupCache',['../structvotca_1_1xtp_1_1DFTSetupCache.html',1,'votca::xtp']]],
+  ['dfttimings_17',['DFTTimings',['../classvotca_1_1xtp_1_1DFTTimings.html',1,'votca::xtp']]],
+  ['diabatization_18',['Diabatization',['../classvotca_1_1xtp_1_1Diabatization.html',1,'votca::xtp']]],
+  ['diagnostics_19',['Diagnostics',['../structvotca_1_1xtp_1_1BSECoupling_1_1Diagnostics.html',1,'votca::xtp::BSECoupling']]],
+  ['diis_20',['DIIS',['../classvotca_1_1xtp_1_1DIIS.html',1,'votca::xtp']]],
+  ['dipoledipoleinteraction_21',['DipoleDipoleInteraction',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html',1,'votca::xtp']]],
+  ['dlpolytopologyreader_22',['DLPOLYTopologyReader',['../classvotca_1_1csg_1_1DLPOLYTopologyReader.html',1,'votca::csg']]],
+  ['dlpolytrajectoryreader_23',['DLPOLYTrajectoryReader',['../classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html',1,'votca::csg']]],
+  ['dlpolytrajectorywriter_24',['DLPOLYTrajectoryWriter',['../classvotca_1_1csg_1_1DLPOLYTrajectoryWriter.html',1,'votca::csg']]],
+  ['dlptopolapp_25',['DLPTopolApp',['../classDLPTopolApp.html',1,'']]]
 ];

@@ -29,6 +29,7 @@ var classvotca_1_1xtp_1_1QMRegion =
     [ "ScreeningAuxBasisName", "classvotca_1_1xtp_1_1QMRegion.html#a544590514d0f11c214493a5ffd41d571", null ],
     [ "size", "classvotca_1_1xtp_1_1QMRegion.html#a7a80db580e111944ca783e8525d76684", null ],
     [ "StateEnergy", "classvotca_1_1xtp_1_1QMRegion.html#a77a5fc9612166586c3da54d915fae54e", null ],
+    [ "UpdateOverlapSqrt", "classvotca_1_1xtp_1_1QMRegion.html#adfc7a0daf0d400fd57c861a8a5cd0b01", null ],
     [ "WritePDB", "classvotca_1_1xtp_1_1QMRegion.html#a8654aa39537544cd93c96bc9617e11c3", null ],
     [ "WriteToCpt", "classvotca_1_1xtp_1_1QMRegion.html#a3f2d94fafd4f028a5f2f9384bb529aa0", null ],
     [ "DeltaD_", "classvotca_1_1xtp_1_1QMRegion.html#a33c28588b501804d55f3a22af72081f7", null ],
@@ -49,6 +50,7 @@ var classvotca_1_1xtp_1_1QMRegion =
     [ "initstate_", "classvotca_1_1xtp_1_1QMRegion.html#a782a5a35772fb87358c888790fa4973f", null ],
     [ "localize_options_", "classvotca_1_1xtp_1_1QMRegion.html#a9edaae64db76514fa27fa0aa4786044a", null ],
     [ "orb_", "classvotca_1_1xtp_1_1QMRegion.html#aac3106169b4a3e7499dae47b17a75b94", null ],
+    [ "overlap_sqrt_", "classvotca_1_1xtp_1_1QMRegion.html#ac80aa1ceb54aab34cb0a2ef6ab3134a6", null ],
     [ "qmpackage_", "classvotca_1_1xtp_1_1QMRegion.html#a34d2a1d0f6cb6d20658124bc599aaa4e", null ],
     [ "screened_done_", "classvotca_1_1xtp_1_1QMRegion.html#a109cd62bdfa4ff76279ab64936a93ac1", null ],
     [ "screened_state_", "classvotca_1_1xtp_1_1QMRegion.html#a6a79ea33aa9376bc70ab66bf87707fd3", null ],
@@ -57,6 +59,7 @@ var classvotca_1_1xtp_1_1QMRegion =
     [ "screening_shell_dielectric_", "classvotca_1_1xtp_1_1QMRegion.html#ac8cb50222ae8ff2a9c5bcc1b30dba7b2", null ],
     [ "screening_shell_regions_", "classvotca_1_1xtp_1_1QMRegion.html#adfa5e7d144051ace9c30d0c592818cc6", null ],
     [ "screening_site_width_", "classvotca_1_1xtp_1_1QMRegion.html#ae8409e4d293a54a21d1ebe650402346e", null ],
+    [ "setup_cache_", "classvotca_1_1xtp_1_1QMRegion.html#a33a4ea677e717b949e248590853a7e04", null ],
     [ "size_", "classvotca_1_1xtp_1_1QMRegion.html#ab2f46b68207060c00a94d13529180608", null ],
     [ "statetracker_", "classvotca_1_1xtp_1_1QMRegion.html#a084126479f07c0bf7e37296c932624c7", null ],
     [ "workdir_", "classvotca_1_1xtp_1_1QMRegion.html#a5e31f0b32fe8067fd85a5ee6b44c2723", null ]

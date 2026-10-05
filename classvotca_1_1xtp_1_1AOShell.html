@@ -120,6 +120,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:aabe6b9fd117cad932c8a361078f46978" id="r_aabe6b9fd117cad932c8a361078f46978"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#aabe6b9fd117cad932c8a361078f46978">AODerivativeBlock</a></td></tr>
 <tr class="memitem:a26d4cec2d8accacd3c45a7fc179d7a91" id="r_a26d4cec2d8accacd3c45a7fc179d7a91"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a26d4cec2d8accacd3c45a7fc179d7a91">GaussianIterator</a> = std::vector&lt;<a class="el" href="classvotca_1_1xtp_1_1AOGaussianPrimitive.html">AOGaussianPrimitive</a>&gt;::const_iterator</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -139,6 +140,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aee16e4cc10698d090ba4eb2285810cd7" id="r_aee16e4cc10698d090ba4eb2285810cd7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aee16e4cc10698d090ba4eb2285810cd7">CalcMinDecay</a> ()</td></tr>
 <tr class="memitem:ad665e76f6fbb039179477f92a810062b" id="r_ad665e76f6fbb039179477f92a810062b"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#ad665e76f6fbb039179477f92a810062b">getMinDecay</a> () const</td></tr>
 <tr class="memitem:a8ec5b2eaf2019243db18b5481a6331a8" id="r_a8ec5b2eaf2019243db18b5481a6331a8"><td class="memItemLeft"><a class="el" href="structvotca_1_1xtp_1_1AOShell_1_1AOValues.html">AOValues</a>&#160;</td><td class="memItemRight"><a class="el" href="#a8ec5b2eaf2019243db18b5481a6331a8">EvalAOspace</a> (const Eigen::Vector3d &amp;grid_pos) const</td></tr>
+<tr class="memitem:adaec72185313c6da36bf41bb717cfa79" id="r_adaec72185313c6da36bf41bb717cfa79"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#adaec72185313c6da36bf41bb717cfa79">EvalAOspace</a> (const Eigen::Vector3d &amp;grid_pos, Eigen::Ref&lt; Eigen::VectorXd &gt; values, <a class="el" href="#aabe6b9fd117cad932c8a361078f46978">AODerivativeBlock</a> derivatives) const</td></tr>
 <tr class="memitem:ac2b00e8d5b9474deba2bfb854e4a9876" id="r_ac2b00e8d5b9474deba2bfb854e4a9876"><td class="memItemLeft"><a class="el" href="structvotca_1_1xtp_1_1AOShell_1_1AOValuesHessian.html">AOValuesHessian</a>&#160;</td><td class="memItemRight"><a class="el" href="#ac2b00e8d5b9474deba2bfb854e4a9876">EvalAOspaceHessian</a> (const Eigen::Vector3d &amp;grid_pos) const</td></tr>
 <tr class="memitem:a969172a69602ca11de965e0df75abe5d" id="r_a969172a69602ca11de965e0df75abe5d"><td class="memItemLeft"><a class="el" href="#a26d4cec2d8accacd3c45a7fc179d7a91">GaussianIterator</a>&#160;</td><td class="memItemRight"><a class="el" href="#a969172a69602ca11de965e0df75abe5d">begin</a> () const</td></tr>
 <tr class="memitem:a9d591b71bcc8d77d7f8d376658a38b4c" id="r_a9d591b71bcc8d77d7f8d376658a38b4c"><td class="memItemLeft"><a class="el" href="#a26d4cec2d8accacd3c45a7fc179d7a91">GaussianIterator</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9d591b71bcc8d77d7f8d376658a38b4c">end</a> () const</td></tr>
@@ -163,6 +165,25 @@ Friends</h2></td></tr>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00088">88</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
+<a id="aabe6b9fd117cad932c8a361078f46978" name="aabe6b9fd117cad932c8a361078f46978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabe6b9fd117cad932c8a361078f46978">&#9670;&#160;</a></span>AODerivativeBlock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#aabe6b9fd117cad932c8a361078f46978">votca::xtp::AOShell::AODerivativeBlock</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">Eigen::Ref&lt;Eigen::Matrix&lt;double, Eigen::Dynamic, 3&gt;,</div>
+<div class="line">                                      0, Eigen::OuterStride&lt;&gt;&gt;</div>
+</div><!-- fragment --><p>Writable view of this shell's rows in a (functions x 3) gradient block that may sit inside a larger matrix. </p>
+
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00138">138</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+
+</div>
+</div>
 <a id="a26d4cec2d8accacd3c45a7fc179d7a91" name="a26d4cec2d8accacd3c45a7fc179d7a91"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26d4cec2d8accacd3c45a7fc179d7a91">&#9670;&#160;</a></span>GaussianIterator</h2>
 
@@ -175,7 +196,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00175">175</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00186">186</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
@@ -259,7 +280,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00180">180</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00191">191</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
@@ -286,7 +307,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00176">176</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00187">187</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
@@ -340,12 +361,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00177">177</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00188">188</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
 <a id="a8ec5b2eaf2019243db18b5481a6331a8" name="a8ec5b2eaf2019243db18b5481a6331a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ec5b2eaf2019243db18b5481a6331a8">&#9670;&#160;</a></span>EvalAOspace()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ec5b2eaf2019243db18b5481a6331a8">&#9670;&#160;</a></span>EvalAOspace() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -360,6 +381,35 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="aoshell_8cc_source.html#l00091">91</a> of file <a class="el" href="aoshell_8cc_source.html">aoshell.cc</a>.</p>
+
+</div>
+</div>
+<a id="adaec72185313c6da36bf41bb717cfa79" name="adaec72185313c6da36bf41bb717cfa79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaec72185313c6da36bf41bb717cfa79">&#9670;&#160;</a></span>EvalAOspace() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::xtp::AOShell::EvalAOspace </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Vector3d &amp;</td>          <td class="paramname"><span class="paramname"><em>grid_pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Ref&lt; Eigen::VectorXd &gt;</td>          <td class="paramname"><span class="paramname"><em>values</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aabe6b9fd117cad932c8a361078f46978">AODerivativeBlock</a></td>          <td class="paramname"><span class="paramname"><em>derivatives</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Same as above, but ADDS the values and gradients into caller-provided storage (<a class="el" href="#aec039ef81525f03ec5cb5a327bf2a358">getNumFunc()</a> rows), so batched grid code can fill one matrix for many points without allocating per shell and point. </p>
+
+<p class="definition">Definition at line <a class="el" href="aoshell_8cc_source.html#l00097">97</a> of file <a class="el" href="aoshell_8cc_source.html">aoshell.cc</a>.</p>
 
 </div>
 </div>
@@ -378,7 +428,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8cc_source.html#l00306">306</a> of file <a class="el" href="aoshell_8cc_source.html">aoshell.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8cc_source.html#l00310">310</a> of file <a class="el" href="aoshell_8cc_source.html">aoshell.cc</a>.</p>
 
 </div>
 </div>
@@ -718,7 +768,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8cc_source.html#l00664">664</a> of file <a class="el" href="aoshell_8cc_source.html">aoshell.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8cc_source.html#l00668">668</a> of file <a class="el" href="aoshell_8cc_source.html">aoshell.cc</a>.</p>
 
 </div>
 </div>
@@ -767,7 +817,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00196">196</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00207">207</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
@@ -791,7 +841,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00199">199</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00210">210</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
@@ -815,7 +865,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00190">190</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00201">201</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
@@ -839,7 +889,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00193">193</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00204">204</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
@@ -863,7 +913,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00195">195</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00206">206</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>
@@ -887,7 +937,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00194">194</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aoshell_8h_source.html#l00205">205</a> of file <a class="el" href="aoshell_8h_source.html">aoshell.h</a>.</p>
 
 </div>
 </div>

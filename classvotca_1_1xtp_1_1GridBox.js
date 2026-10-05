@@ -5,6 +5,7 @@ var classvotca_1_1xtp_1_1GridBox =
     [ "addShell", "classvotca_1_1xtp_1_1GridBox.html#a11d8425a1357484103cf81a3a3896706", null ],
     [ "AddtoBigMatrix", "classvotca_1_1xtp_1_1GridBox.html#a0efa1b749bf90529851a31eed290e931", null ],
     [ "CalcAOValues", "classvotca_1_1xtp_1_1GridBox.html#ab243eef9550771a5c0f6dbfd63d794ad", null ],
+    [ "CalcAOValues", "classvotca_1_1xtp_1_1GridBox.html#a95cee7855f2ba73a4a45577c2425a935", null ],
     [ "CalcAOValuesHessian", "classvotca_1_1xtp_1_1GridBox.html#a5ee8e7927192ce1550ee06e7ba9f0d47", null ],
     [ "compareGridboxes", "classvotca_1_1xtp_1_1GridBox.html#aa13b8ba9ce88c0e3d619eeaa6cbbefb2", null ],
     [ "FindSignificantShells", "classvotca_1_1xtp_1_1GridBox.html#ad06180ef246ea0638be1c17c70f047ae", null ],

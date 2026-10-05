@@ -4,5 +4,6 @@ var searchData=
   ['matrix_5ftype_1',['MATRIX_TYPE',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a41135fe9cee4cfc37775e3d65cd2c646',1,'votca::xtp::DavidsonSolver']]],
   ['molarenergyunit_2',['MolarEnergyUnit',['../namespacevotca_1_1tools.html#a2e1c6d4d81c50c4700d9fae168480335',1,'votca::tools']]],
   ['molarforceunit_3',['MolarForceUnit',['../namespacevotca_1_1tools.html#a3dcc9b8baac70960cb94c0edc2c8f858',1,'votca::tools']]],
-  ['motiftype_4',['MotifType',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010',1,'votca::csg::BeadMotif']]]
+  ['moments_4',['Moments',['../classvotca_1_1xtp_1_1AOMultipole.html#abf579551ac38a7d4ffd4e54f1d066749',1,'votca::xtp::AOMultipole']]],
+  ['motiftype_5',['MotifType',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010',1,'votca::csg::BeadMotif']]]
 ];

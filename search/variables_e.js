@@ -12,7 +12,7 @@ var searchData=
   ['occupied_5f_9',['occupied_',['../classvotca_1_1xtp_1_1GNode.html#a550d78026e9b2d98f1f6331cc9a39a6a',1,'votca::xtp::GNode']]],
   ['occupied_5flevels_5f_10',['occupied_levels_',['../classvotca_1_1xtp_1_1Orbitals.html#acbeb7caec928a11684f1ff366ff59df1',1,'votca::xtp::Orbitals']]],
   ['occupied_5flevels_5fbeta_5f_11',['occupied_levels_beta_',['../classvotca_1_1xtp_1_1Orbitals.html#aa45a3bc6000ea07e2d285ec895ee806f',1,'votca::xtp::Orbitals']]],
-  ['offset_12',['offset',['../structvotca_1_1xtp_1_1BSE__OPERATOR__UKS_1_1SpinBlockInfo.html#adf7651d37dce91625b9a1746ac8d7717',1,'votca::xtp::BSE_OPERATOR_UKS::SpinBlockInfo']]],
+  ['offset_12',['offset',['../structvotca_1_1xtp_1_1BSE__OPERATOR__UKS_1_1SpinBlockInfo.html#adf7651d37dce91625b9a1746ac8d7717',1,'votca::xtp::BSE_OPERATOR_UKS::SpinBlockInfo::offset'],['../structvotca_1_1xtp_1_1TCMatrix__dft_1_1Run.html#aa7b449201ec05849c430996fec2b29c6',1,'votca::xtp::TCMatrix_dft::Run::offset']]],
   ['offset_5f_13',['offset_',['../classvotca_1_1xtp_1_1GW_1_1QPFunc.html#a211e99cb9c84b6f23a30dff0ef81ce79',1,'votca::xtp::GW::QPFunc::offset_'],['../classvotca_1_1xtp_1_1GW__UKS_1_1QPFunc.html#a0149f69e69bb95b326e480bdb2a2daba',1,'votca::xtp::GW_UKS::QPFunc::offset_']]],
   ['offset_5fi_5f_14',['offset_i_',['../structvotca_1_1csg_1_1RDFCalculator_1_1pair__t.html#a34f49c4cd9a8dac5c7d8ac2bf672f881',1,'votca::csg::RDFCalculator::pair_t::offset_i_'],['../structvotca_1_1csg_1_1Imc_1_1pair__t.html#a5bc999d54eb9a1e591b2cab34c7a6898',1,'votca::csg::Imc::pair_t::offset_i_']]],
   ['offset_5fj_5f_15',['offset_j_',['../structvotca_1_1csg_1_1RDFCalculator_1_1pair__t.html#a9b1be17b19b485f57aefe7369ea8539a',1,'votca::csg::RDFCalculator::pair_t::offset_j_'],['../structvotca_1_1csg_1_1Imc_1_1pair__t.html#a1ecd0f76ed6f6e29d5c37e4cea1f8ecf',1,'votca::csg::Imc::pair_t::offset_j_']]],
@@ -54,7 +54,8 @@ var searchData=
   ['outputsteps_5f_51',['outputsteps_',['../classvotca_1_1xtp_1_1KMCLifetime.html#a9a41df6d9603c46b2973a345cf331e32',1,'votca::xtp::KMCLifetime']]],
   ['outputtime_5f_52',['outputtime_',['../classvotca_1_1xtp_1_1KMCMultiple.html#aad2cf7590a1fbbb96f40b2c5d4fb8def',1,'votca::xtp::KMCMultiple']]],
   ['overlap_5f_53',['overlap_',['../classvotca_1_1xtp_1_1PMLocalization.html#a94c2baba679ab85543707c7b90b9c9f5',1,'votca::xtp::PMLocalization']]],
-  ['overlap_5ftolerance_5f_54',['overlap_tolerance_',['../classvotca_1_1xtp_1_1DFTEngine.html#a7685f6586a4973eabcef9dd77a233b97',1,'votca::xtp::DFTEngine']]],
-  ['owner_5fatom_55',['owner_atom',['../structvotca_1_1xtp_1_1GridContainers_1_1Cartesian__gridpoint.html#ad77ef1012a5a71277b2c91fb8cba9f35',1,'votca::xtp::GridContainers::Cartesian_gridpoint']]],
-  ['owner_5fatoms_56',['owner_atoms',['../classvotca_1_1xtp_1_1GridBox.html#a08a3e70cb9b9c54f972652788198ba17',1,'votca::xtp::GridBox']]]
+  ['overlap_5fsqrt_5f_54',['overlap_sqrt_',['../classvotca_1_1xtp_1_1QMRegion.html#ac80aa1ceb54aab34cb0a2ef6ab3134a6',1,'votca::xtp::QMRegion']]],
+  ['overlap_5ftolerance_5f_55',['overlap_tolerance_',['../classvotca_1_1xtp_1_1DFTEngine.html#a7685f6586a4973eabcef9dd77a233b97',1,'votca::xtp::DFTEngine']]],
+  ['owner_5fatom_56',['owner_atom',['../structvotca_1_1xtp_1_1GridContainers_1_1Cartesian__gridpoint.html#ad77ef1012a5a71277b2c91fb8cba9f35',1,'votca::xtp::GridContainers::Cartesian_gridpoint']]],
+  ['owner_5fatoms_57',['owner_atoms',['../classvotca_1_1xtp_1_1GridBox.html#a08a3e70cb9b9c54f972652788198ba17',1,'votca::xtp::GridBox']]]
 ];

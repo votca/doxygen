@@ -15,6 +15,8 @@ var classvotca_1_1xtp_1_1EwaldRealSpaceInteractor =
     [ "ComputeB", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html#a4e7c251704bb53e5d8dfb26e3aac234a", null ],
     [ "ComputeErfB", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html#ab0f9aa917202c273309e5330ed112b45", null ],
     [ "ComputeThole", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html#ab69d1ee7b6c32986dbde6740636178a5", null ],
+    [ "ErfPotential", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html#ab15b0f8fe7f5cf5ee7dcf5eaaf5e2160", null ],
+    [ "ScreenedPotential", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html#acbac30157352dae143e5e3c00a3c685a", null ],
     [ "alpha_", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html#a8b421e1194b3c5c41a8b1c2340763a8a", null ],
     [ "kCoincidenceTol", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html#abe67ff2d7303d1c02626e989a6f42a08", null ],
     [ "thole_", "classvotca_1_1xtp_1_1EwaldRealSpaceInteractor.html#a4eb3c191f5994fbf2f75530dfcf47bff", null ]

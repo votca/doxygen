@@ -13,5 +13,6 @@ var classvotca_1_1xtp_1_1AOTransform =
     [ "ny", "classvotca_1_1xtp_1_1AOTransform.html#acf1ede1cdd89ee1996498440592d198e", null ],
     [ "nz", "classvotca_1_1xtp_1_1AOTransform.html#ad2537b7a33ccd603d147487167b9cea0", null ],
     [ "tform", "classvotca_1_1xtp_1_1AOTransform.html#ab1bec7519dcac5deb36f89663fc5f976", null ],
-    [ "XIntegrate", "classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464", null ]
+    [ "XIntegrate", "classvotca_1_1xtp_1_1AOTransform.html#a171e35b5d33d2ea2edf07f0d8addf464", null ],
+    [ "XIntegrate", "classvotca_1_1xtp_1_1AOTransform.html#ae199d8a5874022017a78604b44d4bf21", null ]
 ];

@@ -16,5 +16,6 @@ var searchData=
   ['rootcandidate_13',['RootCandidate',['../structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html',1,'votca::xtp::qp_solver']]],
   ['rpa_14',['RPA',['../classvotca_1_1xtp_1_1RPA.html',1,'votca::xtp']]],
   ['rpa_5feigensolution_15',['rpa_eigensolution',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html',1,'votca::xtp::RPA::rpa_eigensolution'],['../structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html',1,'votca::xtp::RPA_UKS::rpa_eigensolution']]],
-  ['rpa_5fuks_16',['RPA_UKS',['../classvotca_1_1xtp_1_1RPA__UKS.html',1,'votca::xtp']]]
+  ['rpa_5fuks_16',['RPA_UKS',['../classvotca_1_1xtp_1_1RPA__UKS.html',1,'votca::xtp']]],
+  ['run_17',['Run',['../structvotca_1_1xtp_1_1TCMatrix__dft_1_1Run.html',1,'votca::xtp::TCMatrix_dft']]]
 ];

@@ -30,6 +30,9 @@ var classvotca_1_1xtp_1_1QMPackage =
     [ "setLogFileName", "classvotca_1_1xtp_1_1QMPackage.html#a590db9e07579e00e7c2593e8eeaeb410", null ],
     [ "setMOsFileName", "classvotca_1_1xtp_1_1QMPackage.html#ae233dd07ab87d33435de81ab83fbcdc3", null ],
     [ "setRunDir", "classvotca_1_1xtp_1_1QMPackage.html#a7bb2020a58e1c224e1b5f7051090a16b", null ],
+    [ "setSCFToleranceFloor", "classvotca_1_1xtp_1_1QMPackage.html#a3a5e6ed08d49a4234a48644e3056ed53", null ],
+    [ "setSetupCache", "classvotca_1_1xtp_1_1QMPackage.html#a02ddc9ebc356894f14e6aaf1bb9cb32e", null ],
+    [ "setWarmStart", "classvotca_1_1xtp_1_1QMPackage.html#af15319581a5b9389ec45680a5246ba7c", null ],
     [ "ShellMulitplier", "classvotca_1_1xtp_1_1QMPackage.html#abe09626a7f927109a7b9b4cb4688a32f", null ],
     [ "ShellReorder", "classvotca_1_1xtp_1_1QMPackage.html#a2394b493289d92d7184ffd2b1b9075fb", null ],
     [ "SplitMultipoles", "classvotca_1_1xtp_1_1QMPackage.html#a5763db82393a860b94a9fbd0841166ec", null ],
@@ -51,5 +54,6 @@ var classvotca_1_1xtp_1_1QMPackage =
     [ "run_dir_", "classvotca_1_1xtp_1_1QMPackage.html#a39e80c4a4e796da4d8a01fcf1898a7b3", null ],
     [ "scratch_dir_", "classvotca_1_1xtp_1_1QMPackage.html#ae4f2db24ca1395310e586864aac01370", null ],
     [ "shell_file_name_", "classvotca_1_1xtp_1_1QMPackage.html#adbc63467db17bf86f81b1b535d4891c1", null ],
-    [ "spin_", "classvotca_1_1xtp_1_1QMPackage.html#aa3d27f0d65e4ef44be53759f608ee8b9", null ]
+    [ "spin_", "classvotca_1_1xtp_1_1QMPackage.html#aa3d27f0d65e4ef44be53759f608ee8b9", null ],
+    [ "warm_start_", "classvotca_1_1xtp_1_1QMPackage.html#ac70bf2391f3637d51403ab48e5c29e96", null ]
 ];
