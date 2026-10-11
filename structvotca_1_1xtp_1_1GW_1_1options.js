@@ -11,6 +11,7 @@ var structvotca_1_1xtp_1_1GW_1_1options =
     [ "gw_sc_max_iterations", "structvotca_1_1xtp_1_1GW_1_1options.html#a7f75d4d7e567a9aaf5bed2298241a0c9", null ],
     [ "homo", "structvotca_1_1xtp_1_1GW_1_1options.html#abdcfac461a76c9869139366ccd2c9677", null ],
     [ "order", "structvotca_1_1xtp_1_1GW_1_1options.html#a28df39176b6c02db1a0663e8635413df", null ],
+    [ "out_of_window_shift", "structvotca_1_1xtp_1_1GW_1_1options.html#a09ce1f630ff832741b68c088814621f6", null ],
     [ "qp_adaptive_shell_count", "structvotca_1_1xtp_1_1GW_1_1options.html#a24df0aa06454e8fc9b8ac91e29ec0b91", null ],
     [ "qp_adaptive_shell_width", "structvotca_1_1xtp_1_1GW_1_1options.html#a424349bdedb047b92f2c2af5c464e371", null ],
     [ "qp_dense_spacing", "structvotca_1_1xtp_1_1GW_1_1options.html#adefb398cb1edcebd89aaecc7956b83f0", null ],
@@ -19,7 +20,9 @@ var structvotca_1_1xtp_1_1GW_1_1options =
     [ "qp_grid_spacing", "structvotca_1_1xtp_1_1GW_1_1options.html#aba588784e12098cb182617b243c668cd", null ],
     [ "qp_grid_steps", "structvotca_1_1xtp_1_1GW_1_1options.html#a8e9895b3ca3ffef830b88e55d9189772", null ],
     [ "qp_restrict_search", "structvotca_1_1xtp_1_1GW_1_1options.html#af11c4f1e3bb04c2e082564699be60fe3", null ],
+    [ "qp_root_continuity", "structvotca_1_1xtp_1_1GW_1_1options.html#ade3c79c3a563f98bb2bfff06f0c97ce2", null ],
     [ "qp_root_finder", "structvotca_1_1xtp_1_1GW_1_1options.html#ad230f012f1700ee06c5a9d185846aefb", null ],
+    [ "qp_root_tracking", "structvotca_1_1xtp_1_1GW_1_1options.html#ad3c4e9475b5d4aba4129d082e22c9fff", null ],
     [ "qp_solver", "structvotca_1_1xtp_1_1GW_1_1options.html#aa00ae167e5fa31ffb6b299eca9bf1cb7", null ],
     [ "qp_solver_alpha", "structvotca_1_1xtp_1_1GW_1_1options.html#a45cb432226125697841f5b9e5a5b0152", null ],
     [ "qp_virtual_min_energy", "structvotca_1_1xtp_1_1GW_1_1options.html#a656e9937b3a82fe11cf5661197ec84e6", null ],
@@ -34,6 +37,9 @@ var structvotca_1_1xtp_1_1GW_1_1options =
     [ "rpamax", "structvotca_1_1xtp_1_1GW_1_1options.html#a94c10b05e094dfc0bd70bcb6c2b1836a", null ],
     [ "rpamin", "structvotca_1_1xtp_1_1GW_1_1options.html#a2027aaec73a0c08495cd48639377dcfa", null ],
     [ "ScaHFX", "structvotca_1_1xtp_1_1GW_1_1options.html#ae89429a780978c543df6230e6f99df81", null ],
+    [ "screening_update", "structvotca_1_1xtp_1_1GW_1_1options.html#a43f6dfffb5e90d3877caad187a361154", null ],
+    [ "screening_update_max_inner", "structvotca_1_1xtp_1_1GW_1_1options.html#a6b26baa41d39ef1fa245ad9179755669", null ],
+    [ "screening_update_ratio", "structvotca_1_1xtp_1_1GW_1_1options.html#a4840fb673759f994a9e0fd35f5577d91", null ],
     [ "shift", "structvotca_1_1xtp_1_1GW_1_1options.html#a8754db4537ab2d9756e3397add6abe76", null ],
     [ "sigma_integration", "structvotca_1_1xtp_1_1GW_1_1options.html#addc4a0055ef69df0a1b942fe8939763e", null ]
 ];

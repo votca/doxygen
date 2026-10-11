@@ -1,5 +1,6 @@
 var classvotca_1_1xtp_1_1EnvironmentScreening =
 [
+    [ "AuxCharges", "classvotca_1_1xtp_1_1EnvironmentScreening.html#a14ef25c84c32667241c6b14b9b54da46", null ],
     [ "AuxFieldAtPoints", "classvotca_1_1xtp_1_1EnvironmentScreening.html#ae68f3e082131227547ee944472e92096", null ],
     [ "Check", "classvotca_1_1xtp_1_1EnvironmentScreening.html#a93432fb0e6ae1718c538252bef87c877", null ],
     [ "DressingMatrix", "classvotca_1_1xtp_1_1EnvironmentScreening.html#a798f293deac16f9e4a9aaa80e1f9f4bf", null ],

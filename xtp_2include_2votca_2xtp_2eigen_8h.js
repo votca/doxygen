@@ -6,6 +6,7 @@ var xtp_2include_2votca_2xtp_2eigen_8h =
     [ "ArrayXl", "xtp_2include_2votca_2xtp_2eigen_8h.html#a773f1d39685ab418f356fb5513d6fcf5", null ],
     [ "Matrix9d", "xtp_2include_2votca_2xtp_2eigen_8h.html#a88c0506efcafad2216f519a6980bc59b", null ],
     [ "Vector9d", "xtp_2include_2votca_2xtp_2eigen_8h.html#ab8dd5c0572073f0a612237d2a6b527df", null ],
+    [ "votca::xtp::EigenBackendDescription", "namespacevotca_1_1xtp.html#ac58996d9957956975b5f50013b76709c", null ],
     [ "votca::xtp::OPENMP::getMaxThreads", "namespacevotca_1_1xtp_1_1OPENMP.html#a3dd0c386c291a20e63dc0f2590cd38ea", null ],
     [ "votca::xtp::OPENMP::getThreadId", "namespacevotca_1_1xtp_1_1OPENMP.html#ab693ea8efb3489c31c4a72eccde4e004", null ],
     [ "votca::xtp::OPENMP::InsideActiveParallelRegion", "namespacevotca_1_1xtp_1_1OPENMP.html#af9b6c5d5a10dd89659732634d82e6492", null ],

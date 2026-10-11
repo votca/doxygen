@@ -11,8 +11,6 @@ var dir_5200b88b6423914a3bc5bdd3decc51e8 =
     [ "excitoncoupling.h", "excitoncoupling_8h.html", "excitoncoupling_8h" ],
     [ "gencube.cc", "gencube_8cc.html", null ],
     [ "gencube.h", "gencube_8h.html", "gencube_8h" ],
-    [ "gpu_benchmark.cc", "gpu__benchmark_8cc.html", "gpu__benchmark_8cc" ],
-    [ "gpu_benchmark.h", "gpu__benchmark_8h.html", "gpu__benchmark_8h" ],
     [ "log2mps.h", "log2mps_8h.html", "log2mps_8h" ],
     [ "mol2orb.cc", "mol2orb_8cc.html", null ],
     [ "mol2orb.h", "mol2orb_8h.html", "mol2orb_8h" ],

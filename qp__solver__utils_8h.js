@@ -4,6 +4,7 @@ var qp__solver__utils_8h =
     [ "votca::xtp::qp_solver::RootCandidate", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate" ],
     [ "votca::xtp::qp_solver::WindowDiagnostics", "structvotca_1_1xtp_1_1qp__solver_1_1WindowDiagnostics.html", "structvotca_1_1xtp_1_1qp__solver_1_1WindowDiagnostics" ],
     [ "votca::xtp::qp_solver::SolverOptions", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions.html", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions" ],
+    [ "votca::xtp::qp_solver::CompetingRoots", "structvotca_1_1xtp_1_1qp__solver_1_1CompetingRoots.html", "structvotca_1_1xtp_1_1qp__solver_1_1CompetingRoots" ],
     [ "VOTCA_XTP_QP_SOLVER_UTILS_H", "qp__solver__utils_8h.html#a2b069063c6673f040f3fbb62f718b502", null ],
     [ "votca::xtp::qp_solver::EvalStage", "namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036af", [
       [ "votca::xtp::qp_solver::EvalStage::Scan", "namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036afa22efdbe132eabc102306bd7a334fb434", null ],
@@ -12,13 +13,21 @@ var qp__solver__utils_8h =
       [ "votca::xtp::qp_solver::EvalStage::Other", "namespacevotca_1_1xtp_1_1qp__solver.html#ac8380f35de038d77169534df7e0036afa6311ae17c1ee52b36e68aaf4ad066387", null ]
     ] ],
     [ "votca::xtp::qp_solver::AcceptRoot", "namespacevotca_1_1xtp_1_1qp__solver.html#a4eeb6abf19e2d69aa9fd0928636c3d22", null ],
+    [ "votca::xtp::qp_solver::CheckCompetingRoots", "namespacevotca_1_1xtp_1_1qp__solver.html#a245f61b5e3bf9afbe0c7a794ee8a1937", null ],
     [ "votca::xtp::qp_solver::EffectiveAdaptiveShellWidth", "namespacevotca_1_1xtp_1_1qp__solver.html#af29a117ed92ec153afb459e9ebe6b975", null ],
+    [ "votca::xtp::qp_solver::LargestResiduals", "namespacevotca_1_1xtp_1_1qp__solver.html#a7b0ee97416fe95e79350604320b1f425", null ],
     [ "votca::xtp::qp_solver::LegacyAdaptiveShellWidth", "namespacevotca_1_1xtp_1_1qp__solver.html#a0bb3b52b864e73b843b6054f4d7c8b9b", null ],
     [ "votca::xtp::qp_solver::LegacyFullWindowHalfWidth", "namespacevotca_1_1xtp_1_1qp__solver.html#ae89faf2f20811c411b163a17c1fb1edc", null ],
+    [ "votca::xtp::qp_solver::LinearisedRoot", "namespacevotca_1_1xtp_1_1qp__solver.html#ab5e78774a62db85931ecdf9a22035fe0", null ],
     [ "votca::xtp::qp_solver::NormalizeGridSearchOptions", "namespacevotca_1_1xtp_1_1qp__solver.html#a81af4e52a02b8b9c5eaf73dfc7029955", null ],
+    [ "votca::xtp::qp_solver::PrefetchIfAvailable", "namespacevotca_1_1xtp_1_1qp__solver.html#ac079bdaf3f1fd6cbbbca7d3f76a00301", null ],
+    [ "votca::xtp::qp_solver::PrefetchIfAvailable", "namespacevotca_1_1xtp_1_1qp__solver.html#a5eb5f45e1286b440c6a88a604729922f", null ],
     [ "votca::xtp::qp_solver::RefineQPInterval", "namespacevotca_1_1xtp_1_1qp__solver.html#ac4c16af2b4f56c73393a8fb036610d52", null ],
+    [ "votca::xtp::qp_solver::RootBracketTolerance", "namespacevotca_1_1xtp_1_1qp__solver.html#a88605a204152834d30254ff299ddbc78", null ],
     [ "votca::xtp::qp_solver::ScoreRoot", "namespacevotca_1_1xtp_1_1qp__solver.html#a6b3679c19a865423ed9df5bbe62d0421", null ],
+    [ "votca::xtp::qp_solver::SelectRoot", "namespacevotca_1_1xtp_1_1qp__solver.html#ab6f2d3f5609cbfcd0daac7ed42f878a6", null ],
     [ "votca::xtp::qp_solver::SolveQP_Bisection", "namespacevotca_1_1xtp_1_1qp__solver.html#aa5d1367752088766c65327f76bfe1596", null ],
     [ "votca::xtp::qp_solver::SolveQP_Brent", "namespacevotca_1_1xtp_1_1qp__solver.html#a84e3afcf6745cb723749d1fd85dc4b9c", null ],
-    [ "votca::xtp::qp_solver::SolveQP_Grid_Windowed", "namespacevotca_1_1xtp_1_1qp__solver.html#a42d8f4378c96f294f9c10d6ffc567ce3", null ]
+    [ "votca::xtp::qp_solver::SolveQP_Grid_Windowed", "namespacevotca_1_1xtp_1_1qp__solver.html#a42d8f4378c96f294f9c10d6ffc567ce3", null ],
+    [ "votca::xtp::qp_solver::SolveQP_Tracked", "namespacevotca_1_1xtp_1_1qp__solver.html#a03fad87fd3e1eb99f1dbb86546e81742", null ]
 ];

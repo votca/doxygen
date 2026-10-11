@@ -5,8 +5,9 @@ var searchData=
   ['shelliterator_2',['ShellIterator',['../classvotca_1_1xtp_1_1Element.html#aa4d3484f22b9da3f905e21cdb6ee6e8d',1,'votca::xtp::Element']]],
   ['singletoperator_5fbtda_5fb_3',['SingletOperator_BTDA_B',['../namespacevotca_1_1xtp.html#ac2c9af8d79a386ba3317f2bd19ef0592',1,'votca::xtp']]],
   ['singletoperator_5ftda_4',['SingletOperator_TDA',['../namespacevotca_1_1xtp.html#a60a860892c60ecdbdfb24a7575cd1070',1,'votca::xtp']]],
-  ['splinecontainer_5',['SplineContainer',['../classCGForceMatching.html#aae1bab56e98c510a4b0e86c8c7a46eec',1,'CGForceMatching']]],
-  ['staticmapper_6',['StaticMapper',['../namespacevotca_1_1xtp.html#ad8448bbb3fd190062e9fb38ef7f27418',1,'votca::xtp']]],
-  ['staticsegment_7',['StaticSegment',['../namespacevotca_1_1xtp.html#aa5e328ab0d1d16b6a53591c0c9a8c80d',1,'votca::xtp']]],
-  ['storageindex_8',['StorageIndex',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#aa94c3a2d0f9f8a92c75b483205dda934',1,'votca::xtp::HamiltonianOperator::StorageIndex'],['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a560302276d165172db7950064da7dc12',1,'votca::xtp::DipoleDipoleInteraction::StorageIndex'],['../classvotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner.html#a5a4a6f63ca505d578f216fa899df845b',1,'votca::xtp::EwaldBlockJacobiPreconditioner::StorageIndex'],['../classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html#a2ec8e3da85ad6d380ec4a7ac0611f4df',1,'votca::xtp::EwaldPeriodicDipoleOperator::StorageIndex']]]
+  ['spinweightsfn_5',['SpinWeightsFn',['../classvotca_1_1xtp_1_1RPA__UKS.html#a0fdd759fea975f3718dd9e1f90b22c48',1,'votca::xtp::RPA_UKS']]],
+  ['splinecontainer_6',['SplineContainer',['../classCGForceMatching.html#aae1bab56e98c510a4b0e86c8c7a46eec',1,'CGForceMatching']]],
+  ['staticmapper_7',['StaticMapper',['../namespacevotca_1_1xtp.html#ad8448bbb3fd190062e9fb38ef7f27418',1,'votca::xtp']]],
+  ['staticsegment_8',['StaticSegment',['../namespacevotca_1_1xtp.html#aa5e328ab0d1d16b6a53591c0c9a8c80d',1,'votca::xtp']]],
+  ['storageindex_9',['StorageIndex',['../classvotca_1_1xtp_1_1HamiltonianOperator.html#aa94c3a2d0f9f8a92c75b483205dda934',1,'votca::xtp::HamiltonianOperator::StorageIndex'],['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html#a560302276d165172db7950064da7dc12',1,'votca::xtp::DipoleDipoleInteraction::StorageIndex'],['../classvotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner.html#a5a4a6f63ca505d578f216fa899df845b',1,'votca::xtp::EwaldBlockJacobiPreconditioner::StorageIndex'],['../classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html#a2ec8e3da85ad6d380ec4a7ac0611f4df',1,'votca::xtp::EwaldPeriodicDipoleOperator::StorageIndex']]]
 ];

@@ -121,11 +121,42 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5e4568e13d6d452589703242be94bcd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">T for an auxiliary basis on its own: the metric <a class="el" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a018fa3660424ff3cd9a08fe295149f36">TCMatrix_gwbse::Fill</a> folds into the three-centre integrals, built the same way (Pseudo_InvSqrt_GWBSE with the same tolerance), so R from it is the R the GW-BSE run will see.  <br /></td></tr>
 <tr class="memitem:a93432fb0e6ae1718c538252bef87c877" id="r_a93432fb0e6ae1718c538252bef87c877"><td class="memItemLeft">static <a class="el" href="structvotca_1_1xtp_1_1ScreeningCheck.html">ScreeningCheck</a>&#160;</td><td class="memItemRight"><a class="el" href="#a93432fb0e6ae1718c538252bef87c877">Check</a> (const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;auxbasis, const <a class="el" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> &amp;atoms, const <a class="el" href="structvotca_1_1xtp_1_1ScreeningEnvironment.html">ScreeningEnvironment</a> &amp;env, const Eigen::MatrixXd &amp;T, <a class="el" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> n_modes=3)</td></tr>
 <tr class="memdesc:a93432fb0e6ae1718c538252bef87c877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds R for env and reports whether 1 + R is positive definite, and why not.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a14ef25c84c32667241c6b14b9b54da46" id="r_a14ef25c84c32667241c6b14b9b54da46"><td class="memItemLeft">static Eigen::VectorXd&#160;</td><td class="memItemRight"><a class="el" href="#a14ef25c84c32667241c6b14b9b54da46">AuxCharges</a> (const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;auxbasis)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="environmentscreening_8h_source.html#l00121">121</a> of file <a class="el" href="environmentscreening_8h_source.html">environmentscreening.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a14ef25c84c32667241c6b14b9b54da46" name="a14ef25c84c32667241c6b14b9b54da46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14ef25c84c32667241c6b14b9b54da46">&#9670;&#160;</a></span>AuxCharges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::VectorXd votca::xtp::EnvironmentScreening::AuxCharges </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>auxbasis</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="libint2__calls_8cc_source.html#l00895">895</a> of file <a class="el" href="libint2__calls_8cc_source.html">libint2_calls.cc</a>.</p>
+
+</div>
+</div>
 <a id="ae68f3e082131227547ee944472e92096" name="ae68f3e082131227547ee944472e92096"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae68f3e082131227547ee944472e92096">&#9670;&#160;</a></span>AuxFieldAtPoints()</h2>
 
@@ -163,7 +194,7 @@ Static Public Member Functions</h2></td></tr>
 <p>The potential of a single auxiliary function at a point is a libint2 nuclear-attraction integral against Shell::unit(), which needs no derivative support from libint2. The field is its gradient with respect to the point, taken by a four-point central difference with h = 1e-3 bohr. Measured against the closed-form field of a diffuse s-Gaussian (exponent 0.12) at 2 to 15 bohr, that is accurate to about 1e-12 relative; the two-point stencil at the same h is only 1e-8.</p>
 <p>The points are assumed to lie outside the auxiliary functions' significant extent, as the method itself assumes &ndash; the environment does not overlap the QM subsystem. Inside a function the field is still correct, but the reaction field would no longer mean anything. </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00061">61</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="libint2__calls_8cc_source.html#l00778">778</a> of file <a class="el" href="libint2__calls_8cc_source.html">libint2_calls.cc</a>.</p>
 
 </div>
 </div>
@@ -213,7 +244,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Everything R depends on &ndash; the QM atoms, the auxiliary basis on them, the polar sites and their polarizabilities &ndash; is fixed before the QM/MM loop starts, so this is what a job runs up front rather than discovering the problem after the ground state has converged.</p>
 <p>The eigenvalues of R are those of B c = lambda V c: for the charge distribution rho = sum_Q c_Q chi_Q, lambda is its reaction energy relative to its own Coulomb energy. For inducible points outside rho that ratio is bounded by the dielectric limit, above -1. What can push it lower is a site inside the tail of rho, where the undamped point-dipole response is no longer bounded &ndash; so the report lists, for the n_modes lowest modes, their charge, the QM atoms and auxiliary shells carrying them, and the polar sites carrying their reaction, with the distance of each to the nearest QM atom. </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00406">406</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00247">247</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
 
 </div>
 </div>
@@ -243,7 +274,7 @@ Static Public Member Functions</h2></td></tr>
 <p>S = (1 + R)^(1/2), the dressing of the auxiliary index that turns the bare interaction into u = v + v_reac in the <a class="el" href="classvotca_1_1xtp_1_1RPA.html">RPA</a> and the correlation self-energy (<a class="el" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a10ec809ae04ae1c814e4d1c9247cf8d4" title="Dress the auxiliary index with S: M_fill -&gt; M_fill S.">TCMatrix_gwbse::DressAuxIndex</a>). </p>
 <p>Symmetric positive definite. Throws unless 1 + R is. </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00349">349</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00214">214</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
 
 </div>
 </div>
@@ -276,7 +307,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>B for a whole environment: ReactionFieldKernel of the explicit segments plus ShellKernel of the shell, over the auxiliary basis. The two do not couple to each other, as in legacy. </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00323">323</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00188">188</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
 
 </div>
 </div>
@@ -305,7 +336,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>T for an auxiliary basis on its own: the metric <a class="el" href="classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a018fa3660424ff3cd9a08fe295149f36">TCMatrix_gwbse::Fill</a> folds into the three-centre integrals, built the same way (Pseudo_InvSqrt_GWBSE with the same tolerance), so R from it is the R the GW-BSE run will see. </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00363">363</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00227">227</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
 
 </div>
 </div>
@@ -346,7 +377,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Dense on purpose. B needs A^-1 applied to N_aux right-hand sides at once. A matrix-free CG re-evaluates every Thole block on every iteration of every solve; assembling A once and factorizing it costs one pass over the pairs plus O((3N)^3), which is far cheaper for any polar region that fits in memory. Formed as -Y^T Y with Y = L^-1 F^T from the Cholesky factor, so B is symmetric and negative semidefinite by construction rather than up to round-off.</p>
 <p>Throws if A is not positive definite &ndash; a Thole polarization catastrophe, i.e. sites too close together for their damping &ndash; since then there is no stable induced-dipole response to speak of. </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00222">222</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00088">88</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
 
 </div>
 </div>
@@ -387,7 +418,7 @@ Static Public Member Functions</h2></td></tr>
 <p>B_shell = - sum_j F_j (alpha_j / epsilon) F_j^T,</p>
 <p>which needs no linear solve. The 1/epsilon stands in for the mutual induction it leaves out. Because the sum runs over real sites, the geometry is whatever the morphology is &ndash; a slab simply has no sites in the vacuum &ndash; which is why this, rather than an analytic Born term, is the tail treatment. </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00252">252</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00118">118</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
 
 </div>
 </div>
@@ -421,7 +452,7 @@ Static Public Member Functions</h2></td></tr>
 <p>R per site, in bohr: site_width * alpha_iso^(1/3), with alpha_iso = tr(alpha)/3. </p>
 <p>Why smear at all: for a charge density rho and inducible points outside it, &lt;rho|v_reac|rho&gt; is bounded by the dielectric limit, above -&lt;rho|v|rho&gt;. A point dipole inside the tail of a diffuse auxiliary function is not bounded, and 1 + R can lose positive definiteness without any unphysical geometry: measured on a production QM/MM job (55 QM atoms, def2-tzvp/aux-def2-tzvp, 3900 Thole sites, closest contact 2.62 A), three carbons (alpha = 18.8 bohr^3) of a neighbouring C60 at 3.05-3.3 A carried 86% of a mode at lambda = -1.056. Smearing each site over a Gaussian of width proportional to alpha^(1/3) &ndash; the length scale Thole damping itself uses &ndash; removes that: at site_width 0.5 the same job has lambda_min = -0.755, while 1/2 &lt;rho|v_reac|rho&gt; for the HOMO, LUMO and HOMO-LUMO densities moves by 1e-4 relative (0.8: 2e-3, 1.0: 7e-3). </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00308">308</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00173">173</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
 
 </div>
 </div>
@@ -455,13 +486,14 @@ Static Public Member Functions</h2></td></tr>
 <p>R = T^T B T, the reaction field in the metric of the stored three-centre integrals, where the bare interaction is the identity. </p>
 <p>Throws unless 1 + R is positive definite. R itself is negative semidefinite, and 1 + R is the effective interaction u = v + v_reac in this metric; an eigenvalue of R at or below -1 would mean the environment screens a charge fluctuation by more than the fluctuation itself, which no stable environment does. </p>
 
-<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00280">280</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="environmentscreening_8cc_source.html#l00146">146</a> of file <a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>xtp/include/votca/xtp/<a class="el" href="environmentscreening_8h_source.html">environmentscreening.h</a></li>
 <li>xtp/src/libxtp/<a class="el" href="environmentscreening_8cc_source.html">environmentscreening.cc</a></li>
+<li>xtp/src/libxtp/<a class="el" href="libint2__calls_8cc_source.html">libint2_calls.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

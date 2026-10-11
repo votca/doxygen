@@ -336,7 +336,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Coupled analogue of BuildSigmaVector: rotates BOTH spin channels SIMULTANEOUSLY by +-a small step (unlike BuildSigmaVector, which rotates one channel while holding the other fixed), builds BOTH new densities together, and calls coupled_fock_builder ONCE per perturbation to get BOTH new Fock matrices together &ndash; capturing the genuine alpha-beta coupling (through the shared Coulomb potential and the XC kernel's cross-spin terms) that BuildSigmaVector's own, deliberately decoupled treatment discards. Returns the combined sigma vector (alpha's own block first, beta's immediately after, matching v's own layout). Central difference, for the identical reason BuildSigmaVector itself uses one (see that function's own header comment). </p>
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00132">132</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00130">130</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -367,7 +367,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00600">600</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00598">598</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -398,7 +398,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00606">606</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00604">604</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -421,7 +421,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00030">30</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00031">31</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -480,7 +480,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Solves ONE augmented-Hessian eigenvalue problem over the COMBINED (alpha+beta) rotation space, rather than treating the two spin channels independently &ndash; see this class's own <a class="el" href="#adc767d0bb0dee2a2018292e753961dca">CoupledFockBuilder</a> comment for the full motivation. Returns BOTH new MO coefficient matrices together, since a single, coupled step inherently produces both simultaneously. predicted_energy_change (output): the ONE, combined quadratic model's own predicted energy change for this step &ndash; Iterate's own Fletcher accept/reject logic uses this directly. </p>
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00356">356</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00354">354</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -503,7 +503,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00569">569</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00567">567</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -534,7 +534,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00560">560</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00558">558</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -577,7 +577,7 @@ Static Private Attributes</h2></td></tr>
 <p>Approximate ARH-style direct energy minimization step: builds new MO coefficients directly via an orbital rotation (occ-virt block only, since occ-occ/virt-virt rotations leave the density matrix unchanged), using the orbital gradient (the occ-virt block of the MO-basis Fock matrix, which vanishes exactly at self-consistency) and an approximate, diagonal Hessian (orbital energy differences &ndash; the same cheap approximation used as the starting point for most quasi-Newton SCF methods, e.g. SOSCF's own initial Hessian guess). The step is trust-radius bounded, and the resulting (only approximately unitary) rotation is re-orthonormalized via the same <a class="el" href="namespacevotca_1_1xtp.html#a6e2b68a6c8d1eb813557b5a761ae1f96">Lowdin</a> approach as OrthogonalizeGuess. See the design discussion this grew out of for the full reasoning: this is a deliberately simplified relative of the ARH/TRAH family of direct-minimization SCF methods (confirmed directly, on this exact system, to resolve an ADIIS/DIIS convergence failure that ORCA's own auto-TRAH fallback also had to invoke), not a full implementation of either. predicted_energy_change (output): the quadratic model's own predicted E_new - E_old, Sum_ia[g_ia*kappa_ia + 0.5*h_ia*kappa_ia^2] using the SAME (possibly per-element- and trust-radius-clamped) kappa actually applied &ndash; needed by Iterate's own Fletcher-style accept/reject logic (see its own header comment) to compute the ratio r = E_actual_change / E_predicted_change once the actual, post-step energy becomes available (on the NEXT <a class="el" href="#a6b7c6916fbf2be51c3f850d4f73301c7">Iterate()</a> call, once the caller has built a new Fock matrix from this step's own density and passed its energy back in).</p>
 <p>STATUS: superseded by CoupledAugmentedHessianStep below whenever a coupled Fock-builder callback has been injected (i.e. <a class="el" href="classvotca_1_1xtp_1_1DFTEngine.html" title="Electronic ground-state via Density-Functional Theory.">DFTEngine</a> has wired up setCoupledFockBuilder) &ndash; kept as the fallback for any caller that has not done so (e.g. <a class="el" href="classvotca_1_1xtp_1_1DFTEngine.html#a335126b65db54066e397a7931df805dc">DFTEngine::RunAtomicDFT_unrestricted</a>), and because CoupledAugmentedHessianStep itself still uses this same diagonal approximation as the Davidson preconditioner, exactly as the TRAH paper's own Sec. II B describes doing. </p>
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00214">214</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00212">212</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -596,7 +596,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l01055">1055</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l01053">1053</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -669,7 +669,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l01062">1062</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l01060">1060</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -707,7 +707,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00612">612</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00610">610</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -748,7 +748,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00580">580</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00578">578</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -794,7 +794,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00043">43</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00044">44</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -817,7 +817,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00045">45</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00046">46</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -875,7 +875,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Coupled analogue of UnflattenRotation: splits ONE combined vector v (size n_ov_alpha + n_ov_beta &ndash; alpha's own occ-virt block first, beta's own immediately after) into TWO separate antisymmetric rotation matrices, kappa_alpha (nao_alpha x nao_alpha) and kappa_beta (nao_beta x nao_beta). Public for the same reason as UnflattenRotation itself. </p>
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00117">117</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00115">115</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>
@@ -904,7 +904,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>One column of the Davidson trial-vector matrix V, containing [v0; v_ov] (the scalar augmented component and the flattened occ-virt rotation-space vector), mapped back to a full nao x nao antisymmetric matrix (occ-virt/virt-occ blocks only, matching DirectMinimizationRotation's own convention) &ndash; needed to actually apply a trial rotation direction when building the finite-difference sigma vector. Public so it can be exercised directly by unit tests (see test_uks_convergenceacc.cc), given how cheaply this pure, self-contained math can be checked in isolation compared to the SCF machinery that otherwise relies on it. </p>
 
-<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00102">102</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="uks__convergenceacc_8cc_source.html#l00100">100</a> of file <a class="el" href="uks__convergenceacc_8cc_source.html">uks_convergenceacc.cc</a>.</p>
 
 </div>
 </div>

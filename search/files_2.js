@@ -48,9 +48,5 @@ var searchData=
   ['cubefile_5fwriter_2ecc_45',['cubefile_writer.cc',['../cubefile__writer_8cc.html',1,'']]],
   ['cubefile_5fwriter_2eh_46',['cubefile_writer.h',['../cubefile__writer_8h.html',1,'']]],
   ['cubicspline_2ecc_47',['cubicspline.cc',['../cubicspline_8cc.html',1,'']]],
-  ['cubicspline_2eh_48',['cubicspline.h',['../cubicspline_8h.html',1,'']]],
-  ['cudamatrix_2ecc_49',['cudamatrix.cc',['../cudamatrix_8cc.html',1,'']]],
-  ['cudamatrix_2eh_50',['cudamatrix.h',['../cudamatrix_8h.html',1,'']]],
-  ['cudapipeline_2ecc_51',['cudapipeline.cc',['../cudapipeline_8cc.html',1,'']]],
-  ['cudapipeline_2eh_52',['cudapipeline.h',['../cudapipeline_8h.html',1,'']]]
+  ['cubicspline_2eh_48',['cubicspline.h',['../cubicspline_8h.html',1,'']]]
 ];

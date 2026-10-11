@@ -1,6 +1,7 @@
 var classvotca_1_1xtp_1_1RPA__UKS =
 [
     [ "rpa_eigensolution", "structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html", "structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution" ],
+    [ "SpinWeightsFn", "classvotca_1_1xtp_1_1RPA__UKS.html#a0fdd759fea975f3718dd9e1f90b22c48", null ],
     [ "RPA_UKS", "classvotca_1_1xtp_1_1RPA__UKS.html#adb9f7b1245787d5bb486fbf840ceb94f", null ],
     [ "BuildCachedScreeningModes", "classvotca_1_1xtp_1_1RPA__UKS.html#a04152f7c2dbb4732ae8bfaf7be529b6b", null ],
     [ "calculate_epsilon", "classvotca_1_1xtp_1_1RPA__UKS.html#a30d8011da0a856a87de4618365991999", null ],
@@ -11,16 +12,18 @@ var classvotca_1_1xtp_1_1RPA__UKS =
     [ "Calculate_H2p_ApB", "classvotca_1_1xtp_1_1RPA__UKS.html#ab5cfb6017a565f911515d06fc2131c54", null ],
     [ "configure", "classvotca_1_1xtp_1_1RPA__UKS.html#aea4309239d9defec7cf9edc055dde403", null ],
     [ "Diagonalize_H2p", "classvotca_1_1xtp_1_1RPA__UKS.html#ae85634f5b2aa359f43458b7b8e3308b1", null ],
-    [ "Diagonalize_H2p_C", "classvotca_1_1xtp_1_1RPA__UKS.html#abe03cdd42f0daea6d3cb9095cf1d51ff", null ],
+    [ "Diagonalize_H2p_C", "classvotca_1_1xtp_1_1RPA__UKS.html#aee70dbf56bc089baa62ff4953e1b0be5", null ],
     [ "GetCachedScreeningModes", "classvotca_1_1xtp_1_1RPA__UKS.html#a700ec6e207975ebdfd89271a958a997b", null ],
     [ "getEta", "classvotca_1_1xtp_1_1RPA__UKS.html#a92eb20a28733f0518b4510c169fa0ff9", null ],
     [ "getHomoAlpha", "classvotca_1_1xtp_1_1RPA__UKS.html#a34f1982136b7c93e81fd397dac200d3a", null ],
     [ "getHomoBeta", "classvotca_1_1xtp_1_1RPA__UKS.html#a33d27a84c2758055250ebb10481b5ea8", null ],
-    [ "getMaxCorrection", "classvotca_1_1xtp_1_1RPA__UKS.html#a570e6de46c807d2260cbc709ecdaca08", null ],
     [ "getRPAInputEnergiesAlpha", "classvotca_1_1xtp_1_1RPA__UKS.html#a9aafce0c597f70ae87b2c126a0ad2276", null ],
     [ "getRPAInputEnergiesBeta", "classvotca_1_1xtp_1_1RPA__UKS.html#a1db25d9a687afc0c8ab1523f34743ac7", null ],
     [ "InvalidateH2pCache", "classvotca_1_1xtp_1_1RPA__UKS.html#a44ec9daffb3209c1c4789fe811192dcf", null ],
+    [ "ResponseSum", "classvotca_1_1xtp_1_1RPA__UKS.html#a1172cce6e06d01977d0d800d5bc11e23", null ],
+    [ "setOutOfWindowShift", "classvotca_1_1xtp_1_1RPA__UKS.html#af4de4386d9b59eb6d92ee020709e4e7e", null ],
     [ "setRPAInputEnergies", "classvotca_1_1xtp_1_1RPA__UKS.html#ab42fde4bcbd0a8b68db64f884eaeb660", null ],
+    [ "setTimings", "classvotca_1_1xtp_1_1RPA__UKS.html#a7ef3ebe9957b47254bd9f664d1fc5e0d", null ],
     [ "ShiftUncorrectedEnergies", "classvotca_1_1xtp_1_1RPA__UKS.html#a9ee0e2f2304ea447a0f5f5d552294db1", null ],
     [ "UpdateRPAInputEnergies", "classvotca_1_1xtp_1_1RPA__UKS.html#af08924fe7504bca08b68876583c50e1a", null ],
     [ "energies_alpha_", "classvotca_1_1xtp_1_1RPA__UKS.html#a748c151121f302c336e880eafa1cef7f", null ],
@@ -32,9 +35,11 @@ var classvotca_1_1xtp_1_1RPA__UKS =
     [ "homo_beta_", "classvotca_1_1xtp_1_1RPA__UKS.html#ab308d6ea46c4418a0a8253df8bb16b92", null ],
     [ "log_", "classvotca_1_1xtp_1_1RPA__UKS.html#abdd457300c5d33b212c61b5dad6ed05a", null ],
     [ "Mmn_", "classvotca_1_1xtp_1_1RPA__UKS.html#a304d9dd25f80c82b0b9e9a1d238f958b", null ],
+    [ "out_of_window_", "classvotca_1_1xtp_1_1RPA__UKS.html#aa196b98dfb38c6eb9739d72332290657", null ],
     [ "rpamax_", "classvotca_1_1xtp_1_1RPA__UKS.html#ab6f990511f4f37de5d6caf6ef95e5853", null ],
     [ "rpamin_", "classvotca_1_1xtp_1_1RPA__UKS.html#ae7054b76eff85846e2da561efc523222", null ],
     [ "screening_cached_", "classvotca_1_1xtp_1_1RPA__UKS.html#a396b082d45035169ae5d2fef7075a092", null ],
     [ "screening_modes_", "classvotca_1_1xtp_1_1RPA__UKS.html#a67fdd289082f83ff87c2c899d871e2b0", null ],
-    [ "screening_omegas_", "classvotca_1_1xtp_1_1RPA__UKS.html#a05348b8f33ffc5b9580058ca36b6eb65", null ]
+    [ "screening_omegas_", "classvotca_1_1xtp_1_1RPA__UKS.html#a05348b8f33ffc5b9580058ca36b6eb65", null ],
+    [ "timings_", "classvotca_1_1xtp_1_1RPA__UKS.html#a7ad6810baecc55b3f6ff5be7d0f3245b", null ]
 ];

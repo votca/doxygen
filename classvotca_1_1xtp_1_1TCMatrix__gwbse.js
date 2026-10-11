@@ -3,6 +3,7 @@ var classvotca_1_1xtp_1_1TCMatrix__gwbse =
     [ "AuxFrame", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#af4951294b16b2fb66072b8af4028791d", null ],
     [ "AuxFrameIsOrthogonal", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a74337318980f1f44ec6b5e9443e5c879", null ],
     [ "auxsize", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a1e3665caf22aded3f0e2c4cb038022bf", null ],
+    [ "CoreExchange", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a9b2f53b3c990ecbd0f34269d2b3dbb73", null ],
     [ "DressAuxIndex", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a10ec809ae04ae1c814e4d1c9247cf8d4", null ],
     [ "Dressed", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a0fe27daafc51f594c7b266de80760761", null ],
     [ "Fill", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a018fa3660424ff3cd9a08fe295149f36", null ],
@@ -16,12 +17,14 @@ var classvotca_1_1xtp_1_1TCMatrix__gwbse =
     [ "msize", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a988dcf5206b18b70f6c7bf436fae7e13", null ],
     [ "MultiplyInFillFrame", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#aea86250f386e78aa0ddaabcf06d073e7", null ],
     [ "MultiplyRightWithAuxMatrix", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a7cafcb1a0a39a7ab1e75162886739f55", null ],
+    [ "MultiplyRightWithAuxMatrixLeading", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a445390a45b85405dc25b7f57030f8545", null ],
     [ "nsize", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#aa5f18293f9e44e4270d4094d04b3a17e", null ],
     [ "operator[]", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#ad44d9627f10d8bc0ffd8b1325c586baf", null ],
     [ "operator[]", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#acfcdb63fc0f4b7be5b14bada4e9ca86f", null ],
+    [ "PartiallyRotated", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a81182c91fc2cf23d4fc8bd7c4e4c3cdd", null ],
     [ "Rebuild", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a97a9ced036dad5641bc3e5b68c9f3bb6", null ],
     [ "RestoreAuxFrame", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a6fddbb7427027c39cb5c5faf99430432", null ],
-    [ "Rotate", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#ade148f6ed2af0ddc9308e04e786590cd", null ],
+    [ "RotateOrbitals", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#aa6043839ba03ca4ef6f187be8101e415", null ],
     [ "ToCurrentAuxFrame", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#af83b331260da31560b9f9bd1a713ae42", null ],
     [ "UndressAuxIndex", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a325086433ce2db8660fa09df0fb6775d", null ],
     [ "aux_frame_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a51e719ade8d6ac7d076862862bb85872", null ],
@@ -38,5 +41,6 @@ var classvotca_1_1xtp_1_1TCMatrix__gwbse =
     [ "mtotal_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#accbd224d77bf7282762ababc20929a2e", null ],
     [ "nmax_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a232bcf3f7c93d10d9c294d7990b3f71d", null ],
     [ "nmin_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a084293fe7adcd07560dd0fc3a4b235dc", null ],
-    [ "ntotal_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#accba58252f7b23f7ac4c0af1aaf87b4f", null ]
+    [ "ntotal_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#accba58252f7b23f7ac4c0af1aaf87b4f", null ],
+    [ "partially_rotated_", "classvotca_1_1xtp_1_1TCMatrix__gwbse.html#a693b453f96beb9e0532b05dee33a5c4e", null ]
 ];

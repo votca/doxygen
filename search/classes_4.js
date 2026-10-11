@@ -36,9 +36,10 @@ var searchData=
   ['ewaldregistry_33',['EwaldRegistry',['../classvotca_1_1xtp_1_1EwaldRegistry.html',1,'votca::xtp']]],
   ['ewaldshapecorrection_34',['EwaldShapeCorrection',['../classvotca_1_1xtp_1_1EwaldShapeCorrection.html',1,'votca::xtp']]],
   ['ewaldsitepolarizabilityblocks_35',['EwaldSitePolarizabilityBlocks',['../classvotca_1_1xtp_1_1EwaldSitePolarizabilityBlocks.html',1,'votca::xtp']]],
-  ['excitoncoupling_36',['ExcitonCoupling',['../classvotca_1_1xtp_1_1ExcitonCoupling.html',1,'votca::xtp']]],
-  ['exclusion_5ft_37',['exclusion_t',['../structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html',1,'votca::csg::ExclusionList']]],
-  ['exclusionlist_38',['ExclusionList',['../classvotca_1_1csg_1_1ExclusionList.html',1,'votca::csg']]],
-  ['expectationvalues_39',['ExpectationValues',['../structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html',1,'votca::xtp::BSE::ExpectationValues'],['../structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html',1,'votca::xtp::BSE_UKS::ExpectationValues']]],
-  ['extendedhuckelparameters_40',['ExtendedHuckelParameters',['../classvotca_1_1xtp_1_1ExtendedHuckelParameters.html',1,'votca::xtp']]]
+  ['exactpoles_36',['ExactPoles',['../structvotca_1_1xtp_1_1ExactPoles.html',1,'votca::xtp']]],
+  ['excitoncoupling_37',['ExcitonCoupling',['../classvotca_1_1xtp_1_1ExcitonCoupling.html',1,'votca::xtp']]],
+  ['exclusion_5ft_38',['exclusion_t',['../structvotca_1_1csg_1_1ExclusionList_1_1exclusion__t.html',1,'votca::csg::ExclusionList']]],
+  ['exclusionlist_39',['ExclusionList',['../classvotca_1_1csg_1_1ExclusionList.html',1,'votca::csg']]],
+  ['expectationvalues_40',['ExpectationValues',['../structvotca_1_1xtp_1_1BSE_1_1ExpectationValues.html',1,'votca::xtp::BSE::ExpectationValues'],['../structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html',1,'votca::xtp::BSE_UKS::ExpectationValues']]],
+  ['extendedhuckelparameters_41',['ExtendedHuckelParameters',['../classvotca_1_1xtp_1_1ExtendedHuckelParameters.html',1,'votca::xtp']]]
 ];

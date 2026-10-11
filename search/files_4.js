@@ -55,9 +55,11 @@ var searchData=
   ['ewaldshapecorrection_2ecc_52',['ewaldshapecorrection.cc',['../ewaldshapecorrection_8cc.html',1,'']]],
   ['ewaldshapecorrection_2eh_53',['ewaldshapecorrection.h',['../ewaldshapecorrection_8h.html',1,'']]],
   ['ewaldsolvers_2eh_54',['ewaldsolvers.h',['../ewaldsolvers_8h.html',1,'']]],
-  ['excitoncoupling_2eh_55',['excitoncoupling.h',['../excitoncoupling_8h.html',1,'']]],
-  ['exclusionlist_2ecc_56',['exclusionlist.cc',['../exclusionlist_8cc.html',1,'']]],
-  ['exclusionlist_2eh_57',['exclusionlist.h',['../exclusionlist_8h.html',1,'']]],
-  ['extended_5fhueckel_2ecc_58',['extended_hueckel.cc',['../extended__hueckel_8cc.html',1,'']]],
-  ['extended_5fhueckel_2eh_59',['extended_hueckel.h',['../extended__hueckel_8h.html',1,'']]]
+  ['exact_5fpole_5fsums_2ecc_55',['exact_pole_sums.cc',['../exact__pole__sums_8cc.html',1,'']]],
+  ['exact_5fpole_5fsums_2eh_56',['exact_pole_sums.h',['../exact__pole__sums_8h.html',1,'']]],
+  ['excitoncoupling_2eh_57',['excitoncoupling.h',['../excitoncoupling_8h.html',1,'']]],
+  ['exclusionlist_2ecc_58',['exclusionlist.cc',['../exclusionlist_8cc.html',1,'']]],
+  ['exclusionlist_2eh_59',['exclusionlist.h',['../exclusionlist_8h.html',1,'']]],
+  ['extended_5fhueckel_2ecc_60',['extended_hueckel.cc',['../extended__hueckel_8cc.html',1,'']]],
+  ['extended_5fhueckel_2eh_61',['extended_hueckel.h',['../extended__hueckel_8h.html',1,'']]]
 ];

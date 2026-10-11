@@ -451,7 +451,7 @@ Friends</h2></td></tr>
 
 <p>Build an atomic-density based initial guess in the AO basis. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02833">2833</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02832">2832</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -483,7 +483,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Converts a parsed <a class="el" href="structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec.html">CDFTConstraintSpec</a> (atom indices + relative target charge, from <a class="el" href="#a7dda0935eee021c779d32e6b92032981" title="Read DFT, grid, and SCF settings from the user options tree.">Initialize()</a>'s own &lt;cdft&gt; options parsing) into a fully-built <a class="el" href="structvotca_1_1xtp_1_1HirshfeldPartition_1_1Constraint.html">HirshfeldPartition::Constraint</a>, given the real molecule this calculation is actually running on. Builds the weight matrix as the SUM of BuildWeightMatrix over every atom in spec.atom_indices &ndash; Hirshfeld weights are additive across atoms in a fragment (w_fragment(r) = sum_{i in fragment} w_i(r)), so this generalizes correctly to a multi-atom region, not just a single atom. The absolute target_population is computed as (sum of the fragment atoms' own nuclear charges) - spec.target_charge, matching CP2K's own internal (absolute) TARGET convention &ndash; only the OPTIONS-file syntax is charge-relative, per the earlier design discussion on this; the underlying Constraint/RunCDFT machinery itself was never changed and still only ever deals in absolute populations. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02896">2896</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02895">2895</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -530,7 +530,7 @@ Friends</h2></td></tr>
 <p>Build a dimer guess (both alpha and beta MOs, genuinely different from each other in general) by loading two independently-converged monomer .orb files (dimer_guess_orbA_name_/dimer_guess_orbB_name_) and combining them via <a class="el" href="classvotca_1_1xtp_1_1Orbitals.html#a8b321c9498e4eaec231e210055b60956" title="Guess for a dimer of two monomers with independently ARBITRARY charge and spin, built by combining ea...">Orbitals::PrepareDimerGuessMixedSpin</a>.</p>
 <p>Runs two sanity checks against dimer_mol (this calculation's own, real molecule) before trusting either monomer file at all: (1) element-sequence match &ndash; monomer A's own elements, in order, must exactly match dimer_mol's first N_A atoms, and monomer B's must match the remaining atoms; (2) internal-geometry match &ndash; every pairwise interatomic distance WITHIN monomer A must match the corresponding pairwise distance within dimer_mol's own first N_A atoms, to a tight numerical tolerance (and likewise for monomer B against the remaining atoms). Deliberately NOT an absolute-position comparison: after being optimized as a standalone monomer and then placed into the dimer, a monomer's atoms are expected to be translated/rotated relative to their own, independent optimization &ndash; only the INTERNAL geometry (bond lengths/angles, which no translation or rotation changes) should still match if the supplied file genuinely corresponds to that fragment. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03501">3501</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03493">3493</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -559,7 +559,7 @@ Friends</h2></td></tr>
 
 <p>Build the extended-Hückel Hamiltonian for the current molecule. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03444">3444</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03436">3436</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -588,7 +588,7 @@ Friends</h2></td></tr>
 
 <p>Build orbital energies used in the extended-Hückel starting guess. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03416">3416</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03408">3408</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -635,7 +635,7 @@ Friends</h2></td></tr>
 
 <p>Evaluate and print the electronic dipole moment from the final density. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00396">396</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00395">395</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -668,7 +668,7 @@ Friends</h2></td></tr>
 
 <p>Build the Coulomb matrix contribution from the current density matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00887">887</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00886">886</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -705,7 +705,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Build Coulomb and exact-exchange matrix contributions from the current MO coefficients and density. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00861">861</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00860">860</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -748,7 +748,7 @@ Friends</h2></td></tr>
 <p>SCOPE, explicitly checked and logged rather than silently producing a wrong result: only supported when RI is actually in use for the SCF (auxbasis_name_ non-empty &ndash; <a class="el" href="classvotca_1_1xtp_1_1DFTGradient.html#a94909d479951b14d65e615ed5971a50f">DFTGradient::RIJGradient</a>/RIKGradient only implement the RI path, not conventional 4-center <a class="el" href="classvotca_1_1xtp_1_1ERIs.html" title="Takes a density matrix and and an auxiliary basis set and calculates the electron repulsion integrals...">ERIs</a>).</p>
 <p>OPT-IN: only called at all if compute_forces_ is true (see its declaration below), settable via &lt;xtpdft&gt;&lt;compute_forces&gt;true&lt;/compute_forces&gt;&lt;/xtpdft&gt; in the options tree, defaulting to false. Computing forces adds real, non-trivial cost to every converged SCF, so this is deliberately not silently always-on &ndash; added after this was pointed out as an unflagged side effect of the original, unconditional wiring. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00434">434</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00433">433</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -797,7 +797,7 @@ Friends</h2></td></tr>
 <p>STATUS: PARTIAL, deliberately. Four of the five non-XC-adjacent terms generalize cleanly to UKS and are implemented here: nuclear repulsion (unchanged), one-electron [kinetic + nuclear attraction] (uses D_total = Dspin.alpha + Dspin.beta, exactly the same convention RKS's Dmat already uses), the overlap Pulay force (W = W_alpha + W_beta, each WITHOUT the factor of 2 RKS uses, since UKS spin densities are not pre-doubled), and RI-K exact exchange for hybrids (0.5 * ScaHFX_ * [RIKGradient(C_alpha_occ,...) + RIKGradient(C_beta_occ,...)] &ndash; the extra factor of 0.5 relative to the naive guess of ScaHFX_*(...) confirmed both algebraically and numerically: ERIs::CalculateEXX_dmat(P) == 0.5 * ERIs::CalculateEXX_mos(C) when P = C*C^T, checked directly rather than assumed, since UKS's exact exchange goes through CalculateEXX_dmat, a different code path than the one RIKGradient/CalculateEXX_mos were validated against).</p>
 <p>The XC gradient (PulayGradientUKS + GridWeightGradientUKS, LDA and GGA) is now included too &ndash; initially deferred as new derivation work (spin-polarized rho_alpha/rho_beta, and for GGA a genuinely new sigma_alpha-alpha/alpha-beta/beta-beta cross-term structure with no analog in the spin-restricted case), then completed and validated (Python-verified formulas first, then a real C++ finite- difference test against IntegrateVXCSpin &ndash; caught and fixed one real transcription bug, a missing factor of 2 in the GGA sigma term's Hessian contraction, found by careful line-by-line comparison against the verified Python once the first real test run showed a partial, non-catastrophic discrepancy). With XC now included, this function DOES call <a class="el" href="classvotca_1_1xtp_1_1Orbitals.html#a9f75541231db0a60c8cd5ee69996b664">Orbitals::setForces()</a>, same as the RKS ComputeAndStoreForces. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00756">756</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00755">755</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -826,7 +826,7 @@ Friends</h2></td></tr>
 <p>Build one isolated-atom reference density per unique element in mol, keyed by element symbol &ndash; the promolecular densities Hirshfeld-based CDFT constraints need. Mirrors AtomicGuess's own "find unique elements, run RunAtomicDFT_unrestricted once each,
 cache by element" structure exactly, but (a) always passes use_hunds_rule_occupation=true (unlike AtomicGuess's own call, which never does), and (b) returns the per-element densities directly rather than assembling them into one combined, molecule-sized AO-basis matrix &ndash; Hirshfeld only ever needs each reference density evaluated as a real-space scalar function, using that element's own (small, atom-only) basis re-centered on each real atom's actual position, never embedded into the full molecule's AO basis at all, so there is no molecule-sized object to assemble here in the first place. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02875">2875</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02874">2874</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -868,7 +868,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>The four non-XC-adjacent gradient terms that generalize cleanly to UKS &ndash; see the detailed derivation on ComputeAndStoreForcesUKS below, which calls this and then decides whether/how to report the result (currently: never stores it, since XC is missing). Returns the (natoms x 3) dE/dR gradient directly (NOT negated to the physical force convention &ndash; that flip, if/when this becomes part of a complete, storable UKS gradient, belongs at the point of storage, same as the RKS path). </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00703">703</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00702">702</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -905,7 +905,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>UKS overlap Pulay force &ndash; W = W_alpha + W_beta, each WITHOUT the factor of 2 RKS uses. Split out as its own method (rather than inlined in ComputeNonXCGradientUKS) because it needs a genuinely DIFFERENT validation strategy than the other four terms: it is NOT checkable against a fixed-C finite difference (confirmed directly by a failed attempt to do exactly that &ndash; see git history), since it specifically corrects for C's implicit R-dependence through the orthonormality constraint, valid only at a genuine SCF stationary point. See test_dftengine_private.cc for how this is actually validated instead (reduction to the already-validated RKS formula when alpha==beta). </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00655">655</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00654">654</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -934,7 +934,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Propagate basis-set, XC, and metadata settings into the orbital container. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02958">2958</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02957">2957</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -954,7 +954,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Run a full ground-state DFT calculation and store the results in the orbital container. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00971">971</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00970">970</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -974,7 +974,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Run an embedded active-region DFT calculation for the supplied orbital container. </p>
 
-<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00063">63</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00062">62</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1003,7 +1003,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p><a class="el" href="#ad3978c594e67e57d078d469b5aa8bca3">Evaluate()</a> without the timing report. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00984">984</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00983">983</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1041,7 +1041,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Run the restricted closed-shell SCF loop and store the converged result. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01315">1315</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01314">1314</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1061,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Run the truncated active-region workflow used for reduced embedded calculations. </p>
 
-<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00354">354</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00353">353</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1098,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Run the unrestricted Kohn-Sham SCF loop and store alpha and beta orbitals separately. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01547">1547</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01546">1546</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1135,7 +1135,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Generate an extended-Hückel based guess refined with the one-electron DFT Hamiltonian. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03477">3477</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03469">3469</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1163,7 +1163,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Generate an initial guess by diagonalizing the extended-Hückel Hamiltonian. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03464">3464</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03456">3456</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1195,7 +1195,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Compute the classical interaction energy between nuclei and external multipoles. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03219">3219</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03211">3211</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1253,7 +1253,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Generate an initial guess by diagonalizing the core Hamiltonian only. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00933">933</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00932">932</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1277,7 +1277,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 <p>The SCF cycle solves F C = S C eps in a Gaussian AO basis. In the restricted branch a single density matrix is iterated, whereas in the UKS branch separate alpha and beta densities are propagated while sharing the same one-electron Hamiltonian, Coulomb term, and AO overlap matrix.</p>
 <p>Relative to the earlier restricted implementation, the UKS extension keeps the spin channels separate only where the equations require it: exchange, spin-resolved XC potentials, occupations, and convergence acceleration. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00103">103</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00102">102</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1350,7 +1350,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Insert zero rows into an MO coefficient matrix at the requested position. </p>
 
-<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00687">687</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00686">686</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1382,7 +1382,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Integrate an external electron density represented by another orbital container. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03366">3366</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03358">3358</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1411,7 +1411,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Integrate a homogeneous external electric field into the AO basis. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03284">3284</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03276">3276</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1443,7 +1443,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Integrate the electrostatic potential generated by external multipoles into the AO basis. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03297">3297</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03289">3289</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1503,7 +1503,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Apply McWeeny purification to improve the idempotency of a density-matrix guess. </p>
 
-<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00649">649</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00648">648</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1540,7 +1540,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Generate an initial guess from a model potential including numerical XC contributions. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00944">944</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00943">943</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1569,7 +1569,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Compute the classical nucleus-nucleus repulsion energy. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03172">3172</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03164">3164</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1626,7 +1626,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Orthonormalize an initial MO guess with respect to the AO overlap matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03404">3404</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03396">3396</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1658,7 +1658,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Initialize basis sets, integral engines, and electron counts before entering the SCF loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03031">3031</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03030">3030</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1691,7 +1691,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Print a one-spin list of orbital energies and occupations to the logger. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00316">316</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00315">315</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1729,7 +1729,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Print separate alpha and beta orbital energies for a UKS calculation. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00336">336</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00335">335</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1758,7 +1758,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Basis dimensions and the memory of the large intermediates. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00898">898</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00897">897</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1777,7 +1777,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02101">2101</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02100">2100</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1805,7 +1805,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Identifies what the RI integrals depend on: basis sets (shell types, primitives, centres) and the pair threshold. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02074">2074</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02073">2073</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1838,7 +1838,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 <p>Run an unrestricted atomic reference calculation used in open-shell atomic guesses.</p>
 <p>use_hunds_rule_occupation (default false, preserving all EXISTING callers' behavior exactly): when true, use a small, explicit Hund's-rule ground-state alpha/beta electron-count table for common main-group (s/p-block) elements, instead of the simpler parity-based split (odd nuclear charge -&gt; one extra alpha electron; even -&gt; alpha == beta) used by default. That default split is wrong for many real ground states &ndash; e.g. carbon (true ground state alpha=4,beta=2, a triplet) gets alpha=beta=3 (an artificial singlet) &ndash; but this does not matter for a SAD initial-guess starting DENSITY MATRIX SHAPE (AtomicGuess, this function's only existing caller), since the full molecule's own SCF reshapes the density regardless of the isolated reference atom's spin state. It DOES matter for promolecular reference densities used in Hirshfeld-based CDFT constraints, which is what this parameter exists for. Falls back to the default, parity-based split (with a logged warning) for any element not covered by the table &ndash; currently d/f-block only, where the ground-state configuration is genuinely ambiguous/functional-dependent rather than a simple, textbook Hund's-rule case; see HundsRuleAlphaBetaElectrons's own comment in <a class="el" href="dftengine_8cc.html">dftengine.cc</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02541">2541</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02540">2540</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1864,7 +1864,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 <p>constraint.lambda is used as the initial guess for the bisection search (0.0 is a reasonable default for most systems) and is left holding the converged value on return. Returns false (with constraints_ left populated, holding the last-attempted lambda) if EITHER a root cannot be bracketed at all, OR the outer bisection loop exhausts max_cdft_iterations_ without reaching cdft_population_tolerance_. If any individual INNER SCF call itself fails to converge, this throws std::runtime_error instead (does not return false) &ndash; an inner SCF failure means something more fundamental than "the outer loop needs more iterations" is wrong (e.g. a genuinely bad initial guess, or too tight an SCF convergence threshold for this system), and silently returning false would look identical to the ordinary "ran out of outer
 iterations" case, which it is not. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01174">1174</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01173">1173</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2026,7 +2026,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Raise the SCF convergence thresholds (energy in Hartree, <a class="el" href="classvotca_1_1xtp_1_1DIIS.html">DIIS</a> error) to at least these values; call after Initialize. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02089">2089</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02088">2088</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2083,7 +2083,7 @@ iterations" case, which it is not. </p>
 
 <p>Assemble the one-electron core Hamiltonian for the current molecule. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01873">1873</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01872">1872</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2112,7 +2112,7 @@ iterations" case, which it is not. </p>
 
 <p>Precompute AO matrices that remain unchanged throughout the SCF procedure. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02114">2114</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02113">2113</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2140,7 +2140,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Build the numerical exchange-correlation integration object for the current molecule. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03152">3152</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03144">3144</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2200,7 +2200,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p><a class="el" href="classvotca_1_1tools_1_1Average.html">Average</a> density-matrix elements over functions belonging to the same atomic shell. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03197">3197</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03189">3189</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2252,7 +2252,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Project the full-system Hamiltonian and densities onto the selected truncated active basis. </p>
 
-<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00496">496</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00495">495</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2289,7 +2289,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Expand truncated active-region orbitals back into the full AO basis with zero padding. </p>
 
-<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00670">670</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="embeddingengine_8cc_source.html#l00669">669</a> of file <a class="el" href="embeddingengine_8cc_source.html">embeddingengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2326,7 +2326,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Whether orb's MOs (computed in previous_basis) can serve as the guess for this calculation; if not, why not. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01149">1149</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01148">1148</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>

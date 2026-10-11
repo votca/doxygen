@@ -11,6 +11,7 @@ var structvotca_1_1xtp_1_1GW__UKS_1_1options =
     [ "homo_alpha", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a895420642c70a376d0f711efadc41e1a", null ],
     [ "homo_beta", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a37b9ce6ff8cf7ee6b0168099d27fe345", null ],
     [ "order", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#aa9f8fea07d511a18f1e70903ae8375f6", null ],
+    [ "out_of_window_shift", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a47862aca3fd9393f74d2329e0dff4714", null ],
     [ "qp_adaptive_shell_count", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a1e3ae8af3d5e41634b2367412e28a1b8", null ],
     [ "qp_adaptive_shell_width", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#aef6eca50fa83203950a893152a6ac838", null ],
     [ "qp_dense_spacing", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a9653e5d2ab4cb7acdb5ada5f9eb96294", null ],
@@ -19,7 +20,9 @@ var structvotca_1_1xtp_1_1GW__UKS_1_1options =
     [ "qp_grid_spacing", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#ad1a1322dfeb00d45cd996a58e9f893cd", null ],
     [ "qp_grid_steps", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a5556c8c6a767ac8f479e4231c2a85eb0", null ],
     [ "qp_restrict_search", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a5258e183196c3c2cf84a02d4c46ea499", null ],
+    [ "qp_root_continuity", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a35b711f5d3aa48421aa3fe1e03970f53", null ],
     [ "qp_root_finder", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#acb2cd91d3848ff1938b994ec5bf4346f", null ],
+    [ "qp_root_tracking", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a5460c77178a0516a17d36fed4c704a06", null ],
     [ "qp_solver", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a5a341099d64568c1a017ecbeda85eb98", null ],
     [ "qp_solver_alpha", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#ab0a9244addf72aeb0f48d562e613b952", null ],
     [ "qp_virtual_min_energy", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a3ebe84800b8e96f50b0ce3ab8f264b0e", null ],
@@ -31,6 +34,9 @@ var structvotca_1_1xtp_1_1GW__UKS_1_1options =
     [ "rpamax", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a1a345c2fc05967af38b1e40f670fdf0a", null ],
     [ "rpamin", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a674cfc147d612f270c7f56d79fc26fa1", null ],
     [ "ScaHFX", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a4d21339eec372629abb0f66308ffcc7b", null ],
+    [ "screening_update", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a2a2691b8289fd8e48088285f39be6d10", null ],
+    [ "screening_update_max_inner", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a4d206cfbb6948ad2b8c38ea6e4b706f2", null ],
+    [ "screening_update_ratio", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a42355c459428eefd41538ff0de187f66", null ],
     [ "shift", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a94f0dcae96a63fe7251c5ae4324ea205", null ],
     [ "sigma_integration", "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a745f9a13759fee0306c1856da47d716e", null ]
 ];

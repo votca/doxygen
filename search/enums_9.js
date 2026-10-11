@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pairtype_0',['PairType',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7',1,'votca::xtp::QMPair']]]
+  ['next_0',['Next',['../classvotca_1_1xtp_1_1ScreeningUpdate.html#ab64b075279ebe722e1ece9bf525436b8',1,'votca::xtp::ScreeningUpdate']]]
 ];
