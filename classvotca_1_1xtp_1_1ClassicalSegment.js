@@ -5,6 +5,8 @@ var classvotca_1_1xtp_1_1ClassicalSegment =
     [ "CalcDipole", "classvotca_1_1xtp_1_1ClassicalSegment.html#ad7050468c91cc7214b504e8428e8f16c", null ],
     [ "CalcStaticDipole", "classvotca_1_1xtp_1_1ClassicalSegment.html#a149c8f2a22e331874533b30c39b9b9ea", null ],
     [ "CalcTotalQ", "classvotca_1_1xtp_1_1ClassicalSegment.html#a7e692df4d4b46189743da4bc9159b288", null ],
+    [ "getChargeResponse", "classvotca_1_1xtp_1_1ClassicalSegment.html#ac0025afaa1be2045d783aae187bb5ab7", null ],
+    [ "hasChargeResponse", "classvotca_1_1xtp_1_1ClassicalSegment.html#a7289efbd48bb31bd8d45e98f9d14e613", null ],
     [ "identify", "classvotca_1_1xtp_1_1ClassicalSegment.html#a107f3051d70fcb2170b799a09f145d99", null ],
     [ "identify", "classvotca_1_1xtp_1_1ClassicalSegment.html#a9f404e4c2cec72ff0fba8b6f340ca45b", null ],
     [ "identify", "classvotca_1_1xtp_1_1ClassicalSegment.html#a6fd1f7a75d5adc9e53d576d6cf66e7d6", null ],
@@ -13,6 +15,11 @@ var classvotca_1_1xtp_1_1ClassicalSegment =
     [ "IsPolarizable", "classvotca_1_1xtp_1_1ClassicalSegment.html#ae95d4c99d95cc3fb632f3aa5850ebbad", null ],
     [ "IsPolarizable", "classvotca_1_1xtp_1_1ClassicalSegment.html#ab0faf7eda07817482f3870c508aaea9d", null ],
     [ "LoadFromFile", "classvotca_1_1xtp_1_1ClassicalSegment.html#aa0564471205b153e214b61266af2e02e", null ],
+    [ "ReadChargeResponseFromCpt", "classvotca_1_1xtp_1_1ClassicalSegment.html#a2ad1bfcccee21a7e7bcf594dfb5cbd54", null ],
+    [ "ReadFromCpt", "classvotca_1_1xtp_1_1ClassicalSegment.html#a25866f87d35bd8a20a898a92daeb3986", null ],
+    [ "setChargeResponse", "classvotca_1_1xtp_1_1ClassicalSegment.html#af914d2ad41ffd9e3e90b0e4710760b1c", null ],
     [ "WriteMPS", "classvotca_1_1xtp_1_1ClassicalSegment.html#ae8124b4dc4d93d5affa4a7bf16e8de21", null ],
-    [ "operator<<", "classvotca_1_1xtp_1_1ClassicalSegment.html#a8d2508cec7b796d68f8a134af9ba8042", null ]
+    [ "WriteToCpt", "classvotca_1_1xtp_1_1ClassicalSegment.html#a5f31c92557f04665a7d19894436cd1ea", null ],
+    [ "operator<<", "classvotca_1_1xtp_1_1ClassicalSegment.html#a8d2508cec7b796d68f8a134af9ba8042", null ],
+    [ "chargeresponse_", "classvotca_1_1xtp_1_1ClassicalSegment.html#a8994caf416aa015f55fff299cf3718e5", null ]
 ];

@@ -3,6 +3,8 @@ var dir_5200b88b6423914a3bc5bdd3decc51e8 =
     [ "apdft.cc", "apdft_8cc.html", null ],
     [ "apdft.h", "apdft_8h.html", "apdft_8h" ],
     [ "coupling.h", "coupling_8h.html", "coupling_8h" ],
+    [ "crfit.cc", "crfit_8cc.html", null ],
+    [ "crfit.h", "crfit_8h.html", "crfit_8h" ],
     [ "densityanalysis.h", "densityanalysis_8h.html", "densityanalysis_8h" ],
     [ "dftgwbse.cc", "dftgwbse_8cc.html", null ],
     [ "dftgwbse.h", "dftgwbse_8h.html", "dftgwbse_8h" ],

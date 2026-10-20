@@ -12,10 +12,11 @@ var searchData=
   ['region_9',['Region',['../classvotca_1_1xtp_1_1Region.html',1,'votca::xtp']]],
   ['regular_5fgrid_10',['Regular_Grid',['../classvotca_1_1xtp_1_1Regular__Grid.html',1,'votca::xtp']]],
   ['residue_11',['Residue',['../classvotca_1_1csg_1_1Residue.html',1,'votca::csg']]],
-  ['ritzeigenpair_12',['RitzEigenPair',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html',1,'votca::xtp::DavidsonSolver']]],
-  ['rootcandidate_13',['RootCandidate',['../structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html',1,'votca::xtp::qp_solver']]],
-  ['rpa_14',['RPA',['../classvotca_1_1xtp_1_1RPA.html',1,'votca::xtp']]],
-  ['rpa_5feigensolution_15',['rpa_eigensolution',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html',1,'votca::xtp::RPA::rpa_eigensolution'],['../structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html',1,'votca::xtp::RPA_UKS::rpa_eigensolution']]],
-  ['rpa_5fuks_16',['RPA_UKS',['../classvotca_1_1xtp_1_1RPA__UKS.html',1,'votca::xtp']]],
-  ['run_17',['Run',['../structvotca_1_1xtp_1_1TCMatrix__dft_1_1Run.html',1,'votca::xtp::TCMatrix_dft']]]
+  ['result_12',['Result',['../structvotca_1_1xtp_1_1ChargeResponseFit_1_1Result.html',1,'votca::xtp::ChargeResponseFit']]],
+  ['ritzeigenpair_13',['RitzEigenPair',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html',1,'votca::xtp::DavidsonSolver']]],
+  ['rootcandidate_14',['RootCandidate',['../structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html',1,'votca::xtp::qp_solver']]],
+  ['rpa_15',['RPA',['../classvotca_1_1xtp_1_1RPA.html',1,'votca::xtp']]],
+  ['rpa_5feigensolution_16',['rpa_eigensolution',['../structvotca_1_1xtp_1_1RPA_1_1rpa__eigensolution.html',1,'votca::xtp::RPA::rpa_eigensolution'],['../structvotca_1_1xtp_1_1RPA__UKS_1_1rpa__eigensolution.html',1,'votca::xtp::RPA_UKS::rpa_eigensolution']]],
+  ['rpa_5fuks_17',['RPA_UKS',['../classvotca_1_1xtp_1_1RPA__UKS.html',1,'votca::xtp']]],
+  ['run_18',['Run',['../structvotca_1_1xtp_1_1TCMatrix__dft_1_1Run.html',1,'votca::xtp::TCMatrix_dft']]]
 ];

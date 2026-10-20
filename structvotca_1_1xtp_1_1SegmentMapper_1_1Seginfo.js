@@ -1,6 +1,7 @@
 var structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo =
 [
     [ "coordfiles", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html#aea90ac73f17781279e8a7f55f2d36b18", null ],
+    [ "crfiles", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html#abee42d70910cd9bbc62c948d3db8f884", null ],
     [ "fragments", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html#ab04f1aa00b9f6da78bacfcba0cdd0b59", null ],
     [ "map2md", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html#af07cb93547725c130bc1d8d85db52055", null ],
     [ "mapatoms", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html#afe50b31bf4a93f08394ed8fbef6a2768", null ],

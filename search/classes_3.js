@@ -16,11 +16,12 @@ var searchData=
   ['dfttimings_13',['DFTTimings',['../classvotca_1_1xtp_1_1DFTTimings.html',1,'votca::xtp']]],
   ['diabatization_14',['Diabatization',['../classvotca_1_1xtp_1_1Diabatization.html',1,'votca::xtp']]],
   ['diagnostics_15',['Diagnostics',['../structvotca_1_1xtp_1_1BSECoupling_1_1Diagnostics.html',1,'votca::xtp::BSECoupling']]],
-  ['diis_16',['DIIS',['../classvotca_1_1xtp_1_1DIIS.html',1,'votca::xtp']]],
-  ['dipoledipoleinteraction_17',['DipoleDipoleInteraction',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html',1,'votca::xtp']]],
-  ['directcaches_18',['DirectCaches',['../structvotca_1_1xtp_1_1BSE_1_1DirectCaches.html',1,'votca::xtp::BSE']]],
-  ['dlpolytopologyreader_19',['DLPOLYTopologyReader',['../classvotca_1_1csg_1_1DLPOLYTopologyReader.html',1,'votca::csg']]],
-  ['dlpolytrajectoryreader_20',['DLPOLYTrajectoryReader',['../classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html',1,'votca::csg']]],
-  ['dlpolytrajectorywriter_21',['DLPOLYTrajectoryWriter',['../classvotca_1_1csg_1_1DLPOLYTrajectoryWriter.html',1,'votca::csg']]],
-  ['dlptopolapp_22',['DLPTopolApp',['../classDLPTopolApp.html',1,'']]]
+  ['diagpoleform_16',['DiagPoleForm',['../structvotca_1_1xtp_1_1Sigma__base_1_1DiagPoleForm.html',1,'votca::xtp::Sigma_base']]],
+  ['diis_17',['DIIS',['../classvotca_1_1xtp_1_1DIIS.html',1,'votca::xtp']]],
+  ['dipoledipoleinteraction_18',['DipoleDipoleInteraction',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction.html',1,'votca::xtp']]],
+  ['directcaches_19',['DirectCaches',['../structvotca_1_1xtp_1_1BSE_1_1DirectCaches.html',1,'votca::xtp::BSE']]],
+  ['dlpolytopologyreader_20',['DLPOLYTopologyReader',['../classvotca_1_1csg_1_1DLPOLYTopologyReader.html',1,'votca::csg']]],
+  ['dlpolytrajectoryreader_21',['DLPOLYTrajectoryReader',['../classvotca_1_1csg_1_1DLPOLYTrajectoryReader.html',1,'votca::csg']]],
+  ['dlpolytrajectorywriter_22',['DLPOLYTrajectoryWriter',['../classvotca_1_1csg_1_1DLPOLYTrajectoryWriter.html',1,'votca::csg']]],
+  ['dlptopolapp_23',['DLPTopolApp',['../classDLPTopolApp.html',1,'']]]
 ];

@@ -29,6 +29,8 @@ var structvotca_1_1xtp_1_1GW_1_1options =
     [ "qp_zero_margin", "structvotca_1_1xtp_1_1GW_1_1options.html#a48ae65381b25d044cd29d24801686c6f", null ],
     [ "qpmax", "structvotca_1_1xtp_1_1GW_1_1options.html#a0170ee2e88817d2bdbc794a4333985df", null ],
     [ "qpmin", "structvotca_1_1xtp_1_1GW_1_1options.html#a223ec5eae84eb98a23eeab1e830e632b", null ],
+    [ "qsgw_hartree_screened", "structvotca_1_1xtp_1_1GW_1_1options.html#a326799ce2816831c2ddd18c43c01a85f", null ],
+    [ "qsgw_hartree_update", "structvotca_1_1xtp_1_1GW_1_1options.html#a2d0157d359c30be3f453bc9ed95232e6", null ],
     [ "qsgw_max_iterations", "structvotca_1_1xtp_1_1GW_1_1options.html#aec2a74c5f7df70f14c2e6fdcb34ecb13", null ],
     [ "qsgw_max_virt_correction", "structvotca_1_1xtp_1_1GW_1_1options.html#a207e5aa1b45225b898eaf8a6aeebca84", null ],
     [ "qsgw_sc_limit", "structvotca_1_1xtp_1_1GW_1_1options.html#a1d69ac6db34e7012f6e6d15401402409", null ],

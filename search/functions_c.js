@@ -53,7 +53,7 @@ var searchData=
   ['load_5fjobs_50',['LOAD_JOBS',['../namespacevotca_1_1xtp.html#ac8d1e70d4343752569ff918f1912cbf3',1,'votca::xtp']]],
   ['load_5fproperty_5ffrom_5fxml_51',['load_property_from_xml',['../namespacevotca_1_1tools.html#a5bbfb40ad5ed1da696b53f79ddb0f7cc',1,'votca::tools']]],
   ['loaddefaults_52',['LoadDefaults',['../classvotca_1_1tools_1_1OptionsHandler.html#a7af70be25ed37a3dba7096f416996808',1,'votca::tools::OptionsHandler']]],
-  ['loadfromfile_53',['LoadFromFile',['../classvotca_1_1xtp_1_1ClassicalSegment.html#aa0564471205b153e214b61266af2e02e',1,'votca::xtp::ClassicalSegment::LoadFromFile()'],['../classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530',1,'votca::xtp::QMMolecule::LoadFromFile()']]],
+  ['loadfromfile_53',['LoadFromFile',['../classvotca_1_1xtp_1_1ChargeResponse.html#ae2c20c2724427b5959fb8d0f086da718',1,'votca::xtp::ChargeResponse::LoadFromFile()'],['../classvotca_1_1xtp_1_1ClassicalSegment.html#aa0564471205b153e214b61266af2e02e',1,'votca::xtp::ClassicalSegment::LoadFromFile()'],['../classvotca_1_1xtp_1_1QMMolecule.html#a1393697647490d3fd425f0950d222530',1,'votca::xtp::QMMolecule::LoadFromFile()']]],
   ['loadfromxml_54',['LoadFromXML',['../classvotca_1_1tools_1_1Property.html#af6eb6f6c54e6399059538cbfdc676a24',1,'votca::tools::Property']]],
   ['loadgraph_55',['LoadGraph',['../classvotca_1_1xtp_1_1KMCCalculator.html#a1951438d0e248ef35204fb2e99114a54',1,'votca::xtp::KMCCalculator']]],
   ['loadmappingfile_56',['LoadMappingFile',['../classvotca_1_1xtp_1_1SegmentMapper.html#a2617581b1ff4ebd670151e48b487cf8b',1,'votca::xtp::SegmentMapper']]],
@@ -65,8 +65,9 @@ var searchData=
   ['locklog_62',['LockLog',['../classvotca_1_1xtp_1_1ParallelXJobCalc.html#ae447770b20550ac91d032b50d0eb207e',1,'votca::xtp::ParallelXJobCalc']]],
   ['lockprogfile_63',['LockProgFile',['../classvotca_1_1xtp_1_1ProgObserver.html#a0897dd32dfb7d8710592adf9a04626ed',1,'votca::xtp::ProgObserver']]],
   ['log2mps_64',['Log2Mps',['../classvotca_1_1xtp_1_1Log2Mps.html#a98a938a40704d323f90c2b8adde27fd5',1,'votca::xtp::Log2Mps']]],
-  ['logbuffer_65',['LogBuffer',['../classvotca_1_1xtp_1_1LogBuffer.html#a87c4a8e934845dd4439daa56e3d67f6d',1,'votca::xtp::LogBuffer']]],
-  ['logger_66',['Logger',['../classvotca_1_1xtp_1_1Logger.html#ac84115f59d1c4fc4aaea197019424d39',1,'votca::xtp::Logger::Logger()'],['../classvotca_1_1xtp_1_1Logger.html#af2b7a5eb2631943ff459f53b9548184d',1,'votca::xtp::Logger::Logger(Log::Level ReportLevel)']]],
-  ['loop_67',['loop',['../classvotca_1_1tools_1_1Edge.html#aca47b6004e80478ed5fd684140631209',1,'votca::tools::Edge']]],
-  ['lorentzian_68',['Lorentzian',['../classvotca_1_1xtp_1_1Spectrum.html#a2229271607767fc2615f65a7d3e1d705',1,'votca::xtp::Spectrum']]]
+  ['logandstoreenergies_65',['LogAndStoreEnergies',['../classvotca_1_1xtp_1_1PolarRegion.html#a981edb46d24285452e2b4676a5879662',1,'votca::xtp::PolarRegion']]],
+  ['logbuffer_66',['LogBuffer',['../classvotca_1_1xtp_1_1LogBuffer.html#a87c4a8e934845dd4439daa56e3d67f6d',1,'votca::xtp::LogBuffer']]],
+  ['logger_67',['Logger',['../classvotca_1_1xtp_1_1Logger.html#ac84115f59d1c4fc4aaea197019424d39',1,'votca::xtp::Logger::Logger()'],['../classvotca_1_1xtp_1_1Logger.html#af2b7a5eb2631943ff459f53b9548184d',1,'votca::xtp::Logger::Logger(Log::Level ReportLevel)']]],
+  ['loop_68',['loop',['../classvotca_1_1tools_1_1Edge.html#aca47b6004e80478ed5fd684140631209',1,'votca::tools::Edge']]],
+  ['lorentzian_69',['Lorentzian',['../classvotca_1_1xtp_1_1Spectrum.html#a2229271607767fc2615f65a7d3e1d705',1,'votca::xtp::Spectrum']]]
 ];

@@ -7,8 +7,12 @@ var classvotca_1_1xtp_1_1Sigma__PPM =
     [ "CalcCorrelationDiagElements", "classvotca_1_1xtp_1_1Sigma__PPM.html#a5460df55916c91429e042a9834fd3943", null ],
     [ "CalcCorrelationOffDiag", "classvotca_1_1xtp_1_1Sigma__PPM.html#ae922e3bbecd091c22ff92db7e0dd2a56", null ],
     [ "CalcCorrelationOffDiagElement", "classvotca_1_1xtp_1_1Sigma__PPM.html#a0d90a1fb53591352792ad2274dfc8290", null ],
+    [ "HasPoleForm", "classvotca_1_1xtp_1_1Sigma__PPM.html#acddc6d7a2bbfabae4913b5382c087539", null ],
+    [ "PoleForm", "classvotca_1_1xtp_1_1Sigma__PPM.html#a3c0c0e5a61d68705d11a217e6b3c6111", null ],
     [ "PrepareScreening", "classvotca_1_1xtp_1_1Sigma__PPM.html#aa2a8b7497d754b1e628c66bb99ee80e5", null ],
+    [ "ScreeningDump", "classvotca_1_1xtp_1_1Sigma__PPM.html#a98c293e6b2938ea14e378286b78303f9", null ],
     [ "ScreeningSummary", "classvotca_1_1xtp_1_1Sigma__PPM.html#afaa5f36002c97e18517796db07cbcb45", null ],
     [ "mode_factors_", "classvotca_1_1xtp_1_1Sigma__PPM.html#a808156d10c2919f2c57f74ca1fe019bc", null ],
-    [ "ppm_", "classvotca_1_1xtp_1_1Sigma__PPM.html#a4b3a5241a0e30f4f53fa8cc06253fa4b", null ]
+    [ "ppm_", "classvotca_1_1xtp_1_1Sigma__PPM.html#a4b3a5241a0e30f4f53fa8cc06253fa4b", null ],
+    [ "screening_energies_", "classvotca_1_1xtp_1_1Sigma__PPM.html#a13a07ab31ad94bbd2ee877fb652f294c", null ]
 ];

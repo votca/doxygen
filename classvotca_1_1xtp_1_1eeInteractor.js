@@ -16,7 +16,9 @@ var classvotca_1_1xtp_1_1eeInteractor =
     [ "CalcStaticEnergy_IntraSegment", "classvotca_1_1xtp_1_1eeInteractor.html#ad2cd97d697507f9c5a537078d741cb53", null ],
     [ "CalcStaticEnergy_site", "classvotca_1_1xtp_1_1eeInteractor.html#a6c8223e9d039330b70e73c37b984283e", null ],
     [ "Cholesky_IntraSegment", "classvotca_1_1xtp_1_1eeInteractor.html#aa52501ef73dc2c856f1277f22092f031", null ],
+    [ "FillDipoleInteraction", "classvotca_1_1xtp_1_1eeInteractor.html#a3f2d0e0904e2392dd5148bbf67c7efaf", null ],
     [ "FillTholeInteraction", "classvotca_1_1xtp_1_1eeInteractor.html#accea9bc7a11ab72ba50a0354f688296e", null ],
+    [ "PairWidth", "classvotca_1_1xtp_1_1eeInteractor.html#ac681439599912657e4c232dd7bd5b809", null ],
     [ "VSiteA", "classvotca_1_1xtp_1_1eeInteractor.html#a81310cea87be2911c0ae5578844edb27", null ],
     [ "expdamping_", "classvotca_1_1xtp_1_1eeInteractor.html#acab6516b2734ea09a2d3b63cdb976102", null ]
 ];

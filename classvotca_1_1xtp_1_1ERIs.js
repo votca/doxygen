@@ -9,6 +9,7 @@ var classvotca_1_1xtp_1_1ERIs =
     [ "CalculateERIs_EXX_4c", "classvotca_1_1xtp_1_1ERIs.html#a55d43351a3c1cf5dfb943a4853ccd98e", null ],
     [ "CalculateEXX_3c", "classvotca_1_1xtp_1_1ERIs.html#a75e9f7fd8f2dc9e8ae2ee8409709e23d", null ],
     [ "CalculateEXX_dmat", "classvotca_1_1xtp_1_1ERIs.html#ad8f20c606634910129e011d304f87ff5", null ],
+    [ "CalculateEXX_factors", "classvotca_1_1xtp_1_1ERIs.html#a9dfc16d015ac34e45f2fd22ee7ea1f87", null ],
     [ "CalculateEXX_mos", "classvotca_1_1xtp_1_1ERIs.html#af2538789af25aaf9629b740c43cb684b", null ],
     [ "Compute4c", "classvotca_1_1xtp_1_1ERIs.html#a96c1aafb39301e2488b0c2de951f8f09", null ],
     [ "ComputeSchwarzShells", "classvotca_1_1xtp_1_1ERIs.html#a270ed3d700c347d01a030699ba2c25d8", null ],

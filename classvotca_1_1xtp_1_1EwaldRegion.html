@@ -231,6 +231,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa91f945443117403f34d8481d5f946bc" id="r_aa91f945443117403f34d8481d5f946bc"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#aa91f945443117403f34d8481d5f946bc">ApplyFieldTo</a> (std::vector&lt; <a class="el" href="namespacevotca_1_1xtp.html#a6aa00a5a3898bc0f9c6f161a2eb4f9b4">PolarSegment</a> &gt; &amp;foreground) const</td></tr>
 <tr class="memitem:a7d9742027f38b0fd67dc3915128adc04" id="r_a7d9742027f38b0fd67dc3915128adc04"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7d9742027f38b0fd67dc3915128adc04">RegisterForeground</a> (const std::vector&lt; std::pair&lt; <a class="el" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a>, Eigen::Vector3d &gt; &gt; &amp;foreground)</td></tr>
 <tr class="memitem:a4462033c7f37d0ebd435bd27b62970a5" id="r_a4462033c7f37d0ebd435bd27b62970a5"><td class="memItemLeft">Eigen::VectorXd&#160;</td><td class="memItemRight"><a class="el" href="#a4462033c7f37d0ebd435bd27b62970a5">PotentialAt</a> (const std::vector&lt; Eigen::Vector3d &gt; &amp;points) const</td></tr>
+<tr class="memitem:a9223345be2d16f23eb98b1cef1cf197f" id="r_a9223345be2d16f23eb98b1cef1cf197f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9223345be2d16f23eb98b1cef1cf197f">ApplyPotentialTo</a> (std::vector&lt; <a class="el" href="namespacevotca_1_1xtp.html#a6aa00a5a3898bc0f9c6f161a2eb4f9b4">PolarSegment</a> &gt; &amp;foreground) const</td></tr>
 <tr class="inherit_header pub_methods_classvotca_1_1xtp_1_1Region"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classvotca_1_1xtp_1_1Region')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classvotca_1_1xtp_1_1Region.html">votca::xtp::Region</a></td></tr>
 <tr class="memitem:a742d18dea493c663fcf535c1f5085cb0 inherit pub_methods_classvotca_1_1xtp_1_1Region" id="r_a742d18dea493c663fcf535c1f5085cb0"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="classvotca_1_1xtp_1_1Region.html#a742d18dea493c663fcf535c1f5085cb0">Region</a> (<a class="el" href="namespacevotca.html#a947412fbe82041cb9f5ec8dfd56d67b1">Index</a> id, <a class="el" href="classvotca_1_1xtp_1_1Logger.html">Logger</a> &amp;log)</td></tr>
 <tr class="memitem:ad087154dfc72512176995f1f051ca3be inherit pub_methods_classvotca_1_1xtp_1_1Region" id="r_ad087154dfc72512176995f1f051ca3be"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="classvotca_1_1xtp_1_1Region.html#ad087154dfc72512176995f1f051ca3be">~Region</a> ()=default</td></tr>
@@ -251,6 +252,7 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a5f7c71cfafd5a829e33d7256f21393da" id="r_a5f7c71cfafd5a829e33d7256f21393da"><td class="memItemLeft">Eigen::VectorXd&#160;</td><td class="memItemRight"><a class="el" href="#a5f7c71cfafd5a829e33d7256f21393da">PotentialAtPoints</a> (const std::vector&lt; Eigen::Vector3d &gt; &amp;points) const</td></tr>
 <tr class="memitem:acf2ac51574cb5739a00f0cd919854797" id="r_acf2ac51574cb5739a00f0cd919854797"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#acf2ac51574cb5739a00f0cd919854797">BuildSums</a> (const std::vector&lt; <a class="el" href="namespacevotca_1_1xtp.html#a6aa00a5a3898bc0f9c6f161a2eb4f9b4">PolarSegment</a> &gt; &amp;fallback) const</td></tr>
 <tr class="memitem:a3a3e191f90d8de1e389f98a3e3ebae7d" id="r_a3a3e191f90d8de1e389f98a3e3ebae7d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3a3e191f90d8de1e389f98a3e3ebae7d">CheckForegroundIsSubset</a> (const std::vector&lt; <a class="el" href="namespacevotca_1_1xtp.html#a6aa00a5a3898bc0f9c6f161a2eb4f9b4">PolarSegment</a> &gt; &amp;foreground) const</td></tr>
 </table><table class="memberdecls">
@@ -391,7 +393,26 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00404">404</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00436">436</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+
+</div>
+</div>
+<a id="a9223345be2d16f23eb98b1cef1cf197f" name="a9223345be2d16f23eb98b1cef1cf197f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9223345be2d16f23eb98b1cef1cf197f">&#9670;&#160;</a></span>ApplyPotentialTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void votca::xtp::EwaldRegion::ApplyPotentialTo </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="namespacevotca_1_1xtp.html#a6aa00a5a3898bc0f9c6f161a2eb4f9b4">PolarSegment</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>foreground</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00343">343</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -785,6 +806,33 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a5f7c71cfafd5a829e33d7256f21393da" name="a5f7c71cfafd5a829e33d7256f21393da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f7c71cfafd5a829e33d7256f21393da">&#9670;&#160;</a></span>PotentialAtPoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::VectorXd votca::xtp::EwaldRegion::PotentialAtPoints </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Vector3d &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>points</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00371">371</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+
+</div>
+</div>
 <a id="ad7f1d5e1586d8bf7ad5ecd0af3cb9d65" name="ad7f1d5e1586d8bf7ad5ecd0af3cb9d65"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7f1d5e1586d8bf7ad5ecd0af3cb9d65">&#9670;&#160;</a></span>ReadFromCpt()</h2>
 
@@ -997,7 +1045,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00235">235</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00251">251</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1021,7 +1069,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00241">241</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00257">257</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1045,7 +1093,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00229">229</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00245">245</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1069,7 +1117,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00225">225</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00241">241</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1141,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00244">244</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00260">260</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1165,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00243">243</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00259">259</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1141,7 +1189,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00222">222</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00238">238</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1165,7 +1213,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00223">223</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00239">239</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1189,7 +1237,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00238">238</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00254">254</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1213,7 +1261,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00242">242</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00258">258</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1237,7 +1285,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00224">224</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00240">240</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1261,7 +1309,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00239">239</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00255">255</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>

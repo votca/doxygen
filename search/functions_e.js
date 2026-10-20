@@ -33,13 +33,14 @@ var searchData=
   ['num_5fiterations_30',['num_iterations',['../classvotca_1_1xtp_1_1DavidsonSolver.html#a88e6e2139ad608783d073434817b3b05',1,'votca::xtp::DavidsonSolver']]],
   ['numberofrestrictedoccupiedorbitals_31',['NumberOfRestrictedOccupiedOrbitals',['../classvotca_1_1xtp_1_1DFTEngine.html#a7ad81aefa16501b289555b00c5d5c38f',1,'votca::xtp::DFTEngine']]],
   ['numberofstates_32',['NumberofStates',['../classvotca_1_1xtp_1_1Orbitals.html#aed54d8a1f9e0b2ddade0c4949379dfd3',1,'votca::xtp::Orbitals']]],
-  ['numfuncshell_33',['NumFuncShell',['../namespacevotca_1_1xtp.html#a0d0fa0d59f33812cc41bbca9d32744db',1,'votca::xtp']]],
-  ['numfuncshell_5fcartesian_34',['NumFuncShell_cartesian',['../namespacevotca_1_1xtp.html#a704f574fbd5a20e19c0c332e7e191676',1,'votca::xtp']]],
-  ['numkvectors_35',['NumKVectors',['../classvotca_1_1xtp_1_1EwaldReciprocalSpaceSum.html#a9dd25086424b384ce74a80f80b49f8dc',1,'votca::xtp::EwaldReciprocalSpaceSum']]],
-  ['numofshells_36',['NumOfShells',['../classvotca_1_1xtp_1_1Element.html#a2a1273506f6701aad7714cfb6eb15f63',1,'votca::xtp::Element::NumOfShells()'],['../classvotca_1_1xtp_1_1ECPElement.html#ab5379ef582bde9e96d1eaedab03b9801',1,'votca::xtp::ECPElement::NumOfShells()']]],
-  ['numparameters_37',['NumParameters',['../classvotca_1_1xtp_1_1ADIIS__costfunction.html#a144c53a8d0f47cc321e909ed94cad03d',1,'votca::xtp::ADIIS_costfunction::NumParameters()'],['../classvotca_1_1xtp_1_1Optimiser__costfunction.html#ac8c904d93da35bb286e80bf1d672b063',1,'votca::xtp::Optimiser_costfunction::NumParameters()']]],
-  ['numrows_38',['numRows',['../classvotca_1_1xtp_1_1CptTable.html#ab644c748241806f009b2a60f3b78b7df',1,'votca::xtp::CptTable']]],
-  ['nx_39',['nx',['../classvotca_1_1xtp_1_1AOTransform.html#af733305eb495aace2aba1508ec7a0f29',1,'votca::xtp::AOTransform']]],
-  ['ny_40',['ny',['../classvotca_1_1xtp_1_1AOTransform.html#acf1ede1cdd89ee1996498440592d198e',1,'votca::xtp::AOTransform']]],
-  ['nz_41',['nz',['../classvotca_1_1xtp_1_1AOTransform.html#ad2537b7a33ccd603d147487167b9cea0',1,'votca::xtp::AOTransform']]]
+  ['numcharges_33',['NumCharges',['../classvotca_1_1xtp_1_1ChargeResponseSolver.html#ae5c07a93d059a0159daadee5355091a5',1,'votca::xtp::ChargeResponseSolver']]],
+  ['numfuncshell_34',['NumFuncShell',['../namespacevotca_1_1xtp.html#a0d0fa0d59f33812cc41bbca9d32744db',1,'votca::xtp']]],
+  ['numfuncshell_5fcartesian_35',['NumFuncShell_cartesian',['../namespacevotca_1_1xtp.html#a704f574fbd5a20e19c0c332e7e191676',1,'votca::xtp']]],
+  ['numkvectors_36',['NumKVectors',['../classvotca_1_1xtp_1_1EwaldReciprocalSpaceSum.html#a9dd25086424b384ce74a80f80b49f8dc',1,'votca::xtp::EwaldReciprocalSpaceSum']]],
+  ['numofshells_37',['NumOfShells',['../classvotca_1_1xtp_1_1Element.html#a2a1273506f6701aad7714cfb6eb15f63',1,'votca::xtp::Element::NumOfShells()'],['../classvotca_1_1xtp_1_1ECPElement.html#ab5379ef582bde9e96d1eaedab03b9801',1,'votca::xtp::ECPElement::NumOfShells()']]],
+  ['numparameters_38',['NumParameters',['../classvotca_1_1xtp_1_1ADIIS__costfunction.html#a144c53a8d0f47cc321e909ed94cad03d',1,'votca::xtp::ADIIS_costfunction::NumParameters()'],['../classvotca_1_1xtp_1_1Optimiser__costfunction.html#ac8c904d93da35bb286e80bf1d672b063',1,'votca::xtp::Optimiser_costfunction::NumParameters()']]],
+  ['numrows_39',['numRows',['../classvotca_1_1xtp_1_1CptTable.html#ab644c748241806f009b2a60f3b78b7df',1,'votca::xtp::CptTable']]],
+  ['nx_40',['nx',['../classvotca_1_1xtp_1_1AOTransform.html#af733305eb495aace2aba1508ec7a0f29',1,'votca::xtp::AOTransform']]],
+  ['ny_41',['ny',['../classvotca_1_1xtp_1_1AOTransform.html#acf1ede1cdd89ee1996498440592d198e',1,'votca::xtp::AOTransform']]],
+  ['nz_42',['nz',['../classvotca_1_1xtp_1_1AOTransform.html#ad2537b7a33ccd603d147487167b9cea0',1,'votca::xtp::AOTransform']]]
 ];

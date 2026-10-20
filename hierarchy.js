@@ -6,6 +6,7 @@ var hierarchy =
     [ "votca::xtp::Anderson", "classvotca_1_1xtp_1_1Anderson.html", null ],
     [ "votca::xtp::AOBasis", "classvotca_1_1xtp_1_1AOBasis.html", null ],
     [ "votca::xtp::AOGaussianPrimitive", "classvotca_1_1xtp_1_1AOGaussianPrimitive.html", null ],
+    [ "votca::xtp::AOGaussianSites", "classvotca_1_1xtp_1_1AOGaussianSites.html", null ],
     [ "votca::xtp::AOMatrix", "classvotca_1_1xtp_1_1AOMatrix.html", [
       [ "votca::xtp::AOCoulomb", "classvotca_1_1xtp_1_1AOCoulomb.html", null ],
       [ "votca::xtp::AODipole", "classvotca_1_1xtp_1_1AODipole.html", null ],
@@ -127,6 +128,7 @@ var hierarchy =
       ] ],
       [ "votca::xtp::QMTool", "classvotca_1_1xtp_1_1QMTool.html", [
         [ "votca::xtp::APDFT", "classvotca_1_1xtp_1_1APDFT.html", null ],
+        [ "votca::xtp::CRFit", "classvotca_1_1xtp_1_1CRFit.html", null ],
         [ "votca::xtp::Coupling", "classvotca_1_1xtp_1_1Coupling.html", null ],
         [ "votca::xtp::DensityAnalysis", "classvotca_1_1xtp_1_1DensityAnalysis.html", null ],
         [ "votca::xtp::DftGwBse", "classvotca_1_1xtp_1_1DftGwBse.html", null ],
@@ -151,6 +153,9 @@ var hierarchy =
     [ "votca::csg::CGMoleculeDef", "classvotca_1_1csg_1_1CGMoleculeDef.html", null ],
     [ "votca::csg::CGObserver", "classvotca_1_1csg_1_1CGObserver.html", null ],
     [ "votca::xtp::Chargecarrier", "classvotca_1_1xtp_1_1Chargecarrier.html", null ],
+    [ "votca::xtp::ChargeResponse", "classvotca_1_1xtp_1_1ChargeResponse.html", null ],
+    [ "votca::xtp::ChargeResponseFit", "classvotca_1_1xtp_1_1ChargeResponseFit.html", null ],
+    [ "votca::xtp::ChargeResponseSolver", "classvotca_1_1xtp_1_1ChargeResponseSolver.html", null ],
     [ "votca::xtp::CheckpointFile", "classvotca_1_1xtp_1_1CheckpointFile.html", null ],
     [ "votca::xtp::CheckpointReader", "classvotca_1_1xtp_1_1CheckpointReader.html", null ],
     [ "votca::xtp::CheckpointWriter", "classvotca_1_1xtp_1_1CheckpointWriter.html", null ],
@@ -166,6 +171,7 @@ var hierarchy =
     [ "votca::xtp::HirshfeldPartition::Constraint", "structvotca_1_1xtp_1_1HirshfeldPartition_1_1Constraint.html", null ],
     [ "votca::xtp::ConvergenceAcc", "classvotca_1_1xtp_1_1ConvergenceAcc.html", null ],
     [ "votca::tools::Correlate", "classvotca_1_1tools_1_1Correlate.html", null ],
+    [ "votca::xtp::ChargeResponseSolver::Coupling", "structvotca_1_1xtp_1_1ChargeResponseSolver_1_1Coupling.html", null ],
     [ "votca::xtp::CouplingBase", "classvotca_1_1xtp_1_1CouplingBase.html", [
       [ "votca::xtp::BSECoupling", "classvotca_1_1xtp_1_1BSECoupling.html", null ],
       [ "votca::xtp::DFTcoupling", "classvotca_1_1xtp_1_1DFTcoupling.html", null ]
@@ -190,6 +196,7 @@ var hierarchy =
     [ "votca::xtp::DFTSetupCache", "structvotca_1_1xtp_1_1DFTSetupCache.html", null ],
     [ "votca::xtp::DFTTimings", "classvotca_1_1xtp_1_1DFTTimings.html", null ],
     [ "votca::xtp::BSECoupling::Diagnostics", "structvotca_1_1xtp_1_1BSECoupling_1_1Diagnostics.html", null ],
+    [ "votca::xtp::Sigma_base::DiagPoleForm", "structvotca_1_1xtp_1_1Sigma__base_1_1DiagPoleForm.html", null ],
     [ "votca::xtp::DIIS", "classvotca_1_1xtp_1_1DIIS.html", null ],
     [ "votca::xtp::BSE::DirectCaches", "structvotca_1_1xtp_1_1BSE_1_1DirectCaches.html", null ],
     [ "votca::xtp::eeInteractor::E_terms", "classvotca_1_1xtp_1_1eeInteractor_1_1E__terms.html", null ],
@@ -261,6 +268,7 @@ var hierarchy =
     [ "votca::xtp::checkpoint_utils::FileDataType&lt; long int &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01long_01int_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::FileDataType&lt; std::uint8_t &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01std_1_1uint8__t_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::FileDataType&lt; unsigned &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01unsigned_01_4.html", null ],
+    [ "votca::xtp::ChargeResponseFit::FitOptions", "structvotca_1_1xtp_1_1ChargeResponseFit_1_1FitOptions.html", null ],
     [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;::FragInfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1FragInfo.html", null ],
     [ "votca::xtp::FragmentSaturator", "classvotca_1_1xtp_1_1FragmentSaturator.html", null ],
     [ "votca::xtp::FullBSEDavidson", "classvotca_1_1xtp_1_1FullBSEDavidson.html", null ],
@@ -273,6 +281,7 @@ var hierarchy =
       [ "votca::csg::NBList_3Body::FunctorMember< T >", "classvotca_1_1csg_1_1NBList__3Body_1_1FunctorMember.html", null ],
       [ "votca::csg::NBList_3Body::FunctorNonMember", "classvotca_1_1csg_1_1NBList__3Body_1_1FunctorNonMember.html", null ]
     ] ],
+    [ "votca::xtp::GaussianKernel", "structvotca_1_1xtp_1_1GaussianKernel.html", null ],
     [ "votca::xtp::GaussianPrimitive", "classvotca_1_1xtp_1_1GaussianPrimitive.html", null ],
     [ "votca::xtp::GaussianQuadratureBase", "classvotca_1_1xtp_1_1GaussianQuadratureBase.html", [
       [ "votca::xtp::Gauss_Hermite_Quadrature", "classvotca_1_1xtp_1_1Gauss__Hermite__Quadrature.html", null ],
@@ -336,6 +345,7 @@ var hierarchy =
     [ "votca::xtp::checkpoint_utils::InferDataType&lt; std::string &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType&lt; std::uint8_t &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType&lt; unsigned &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html", null ],
+    [ "votca::xtp::ChargeResponseSolver::Info", "structvotca_1_1xtp_1_1ChargeResponseSolver_1_1Info.html", null ],
     [ "votca::xtp::DipoleDipoleInteraction::InnerIterator", "classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html", null ],
     [ "votca::xtp::EwaldPeriodicDipoleOperator::InnerIterator", "classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator_1_1InnerIterator.html", null ],
     [ "votca::csg::Interaction", "classvotca_1_1csg_1_1Interaction.html", [
@@ -346,6 +356,7 @@ var hierarchy =
     [ "votca::xtp::BSE::Interaction", "structvotca_1_1xtp_1_1BSE_1_1Interaction.html", null ],
     [ "votca::csg::Imc::interaction_t", "structvotca_1_1csg_1_1Imc_1_1interaction__t.html", null ],
     [ "votca::csg::RDFCalculator::interaction_t", "structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html", null ],
+    [ "votca::xtp::ChargeResponseFit::Inversion", "structvotca_1_1xtp_1_1ChargeResponseFit_1_1Inversion.html", null ],
     [ "std::ios_base", null, [
       [ "std::basic_ios< Char >", null, [
         [ "std::basic_ostream< Char >", null, [
@@ -487,6 +498,7 @@ var hierarchy =
     ] ],
     [ "votca::xtp::Regular_Grid", "classvotca_1_1xtp_1_1Regular__Grid.html", null ],
     [ "votca::csg::Residue", "classvotca_1_1csg_1_1Residue.html", null ],
+    [ "votca::xtp::ChargeResponseFit::Result", "structvotca_1_1xtp_1_1ChargeResponseFit_1_1Result.html", null ],
     [ "votca::xtp::DavidsonSolver::RitzEigenPair", "structvotca_1_1xtp_1_1DavidsonSolver_1_1RitzEigenPair.html", null ],
     [ "votca::xtp::qp_solver::RootCandidate", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html", null ],
     [ "votca::xtp::RPA", "classvotca_1_1xtp_1_1RPA.html", null ],
@@ -497,11 +509,13 @@ var hierarchy =
     [ "votca::xtp::FragmentSaturator::SaturationResult", "structvotca_1_1xtp_1_1FragmentSaturator_1_1SaturationResult.html", null ],
     [ "votca::xtp::DFTTimings::Scope", "classvotca_1_1xtp_1_1DFTTimings_1_1Scope.html", null ],
     [ "votca::xtp::ScreeningCheck", "structvotca_1_1xtp_1_1ScreeningCheck.html", null ],
+    [ "votca::xtp::Sigma_base::ScreeningData", "structvotca_1_1xtp_1_1Sigma__base_1_1ScreeningData.html", null ],
     [ "votca::xtp::ScreeningEnvironment", "structvotca_1_1xtp_1_1ScreeningEnvironment.html", null ],
     [ "votca::xtp::ScreeningUpdate", "classvotca_1_1xtp_1_1ScreeningUpdate.html", null ],
     [ "votca::xtp::EwaldRealSpaceSum::SearchCounts", "structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1SearchCounts.html", null ],
     [ "votca::xtp::SegId", "classvotca_1_1xtp_1_1SegId.html", null ],
     [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;::Seginfo", "structvotca_1_1xtp_1_1SegmentMapper_1_1Seginfo.html", null ],
+    [ "votca::xtp::ChargeResponseSolver::SegmentBlock", "structvotca_1_1xtp_1_1ChargeResponseSolver_1_1SegmentBlock.html", null ],
     [ "votca::xtp::SegmentMapper&lt; AtomContainer &gt;", "classvotca_1_1xtp_1_1SegmentMapper.html", null ],
     [ "votca::tools::DataCollection&lt; T &gt;::selection", "classvotca_1_1tools_1_1DataCollection_1_1selection.html", null ],
     [ "votca::xtp::Shell", "classvotca_1_1xtp_1_1Shell.html", null ],
@@ -515,8 +529,11 @@ var hierarchy =
       [ "votca::xtp::Sigma_Exact_UKS", "classvotca_1_1xtp_1_1Sigma__Exact__UKS.html", null ],
       [ "votca::xtp::Sigma_PPM_UKS", "classvotca_1_1xtp_1_1Sigma__PPM__UKS.html", null ]
     ] ],
+    [ "votca::xtp::GW::sigma_dump_options", "structvotca_1_1xtp_1_1GW_1_1sigma__dump__options.html", null ],
     [ "votca::xtp::AOMultipole::SiteData", "structvotca_1_1xtp_1_1AOMultipole_1_1SiteData.html", null ],
+    [ "votca::xtp::ChargeResponseSolver::SiteRef", "structvotca_1_1xtp_1_1ChargeResponseSolver_1_1SiteRef.html", null ],
     [ "votca::xtp::qp_solver::SolverOptions", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions.html", null ],
+    [ "votca::xtp::AOGaussianSites::Source", "structvotca_1_1xtp_1_1AOGaussianSites_1_1Source.html", null ],
     [ "votca::xtp::GridContainers::spherical_grid", "structvotca_1_1xtp_1_1GridContainers_1_1spherical__grid.html", null ],
     [ "votca::xtp::BSE_OPERATOR_UKS&lt; cqp, cx, cd, cd2 &gt;::SpinBlockInfo", "structvotca_1_1xtp_1_1BSE__OPERATOR__UKS_1_1SpinBlockInfo.html", null ],
     [ "votca::xtp::ConvergenceAcc::SpinDensity", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1SpinDensity.html", null ],

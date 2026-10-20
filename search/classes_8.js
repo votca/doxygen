@@ -20,10 +20,12 @@ var searchData=
   ['inferdatatype_3c_20std_3a_3astring_20_3e_17',['InferDataType&lt; std::string &gt;',['../structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html',1,'votca::xtp::checkpoint_utils']]],
   ['inferdatatype_3c_20std_3a_3auint8_5ft_20_3e_18',['InferDataType&lt; std::uint8_t &gt;',['../structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1uint8__t_01_4.html',1,'votca::xtp::checkpoint_utils']]],
   ['inferdatatype_3c_20unsigned_20_3e_19',['InferDataType&lt; unsigned &gt;',['../structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01unsigned_01_4.html',1,'votca::xtp::checkpoint_utils']]],
-  ['inneriterator_20',['InnerIterator',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html',1,'votca::xtp::DipoleDipoleInteraction::InnerIterator'],['../classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator_1_1InnerIterator.html',1,'votca::xtp::EwaldPeriodicDipoleOperator::InnerIterator']]],
-  ['interaction_21',['Interaction',['../classvotca_1_1csg_1_1Interaction.html',1,'votca::csg::Interaction'],['../structvotca_1_1xtp_1_1BSE_1_1Interaction.html',1,'votca::xtp::BSE::Interaction']]],
-  ['interaction_5ft_22',['interaction_t',['../structvotca_1_1csg_1_1Imc_1_1interaction__t.html',1,'votca::csg::Imc::interaction_t'],['../structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html',1,'votca::csg::RDFCalculator::interaction_t']]],
-  ['ipodcoupling_23',['IPodCoupling',['../classvotca_1_1xtp_1_1IPodCoupling.html',1,'votca::xtp']]],
-  ['iqm_24',['IQM',['../classvotca_1_1xtp_1_1IQM.html',1,'votca::xtp']]],
-  ['iterator_25',['iterator',['../structvotca_1_1tools_1_1RangeParser_1_1iterator.html',1,'votca::tools::RangeParser']]]
+  ['info_20',['Info',['../structvotca_1_1xtp_1_1ChargeResponseSolver_1_1Info.html',1,'votca::xtp::ChargeResponseSolver']]],
+  ['inneriterator_21',['InnerIterator',['../classvotca_1_1xtp_1_1DipoleDipoleInteraction_1_1InnerIterator.html',1,'votca::xtp::DipoleDipoleInteraction::InnerIterator'],['../classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator_1_1InnerIterator.html',1,'votca::xtp::EwaldPeriodicDipoleOperator::InnerIterator']]],
+  ['interaction_22',['Interaction',['../classvotca_1_1csg_1_1Interaction.html',1,'votca::csg::Interaction'],['../structvotca_1_1xtp_1_1BSE_1_1Interaction.html',1,'votca::xtp::BSE::Interaction']]],
+  ['interaction_5ft_23',['interaction_t',['../structvotca_1_1csg_1_1Imc_1_1interaction__t.html',1,'votca::csg::Imc::interaction_t'],['../structvotca_1_1csg_1_1RDFCalculator_1_1interaction__t.html',1,'votca::csg::RDFCalculator::interaction_t']]],
+  ['inversion_24',['Inversion',['../structvotca_1_1xtp_1_1ChargeResponseFit_1_1Inversion.html',1,'votca::xtp::ChargeResponseFit']]],
+  ['ipodcoupling_25',['IPodCoupling',['../classvotca_1_1xtp_1_1IPodCoupling.html',1,'votca::xtp']]],
+  ['iqm_26',['IQM',['../classvotca_1_1xtp_1_1IQM.html',1,'votca::xtp']]],
+  ['iterator_27',['iterator',['../structvotca_1_1tools_1_1RangeParser_1_1iterator.html',1,'votca::tools::RangeParser']]]
 ];
