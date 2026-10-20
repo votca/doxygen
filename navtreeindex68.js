@@ -1,5 +1,11 @@
 var NAVTREEINDEX68 =
 {
+"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7de7baadbfe820a80c21c255c6a376b4":[2,0,3,2,146,0,10],
+"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7de7baadbfe820a80c21c255c6a376b4":[3,0,3,2,142,0,10],
+"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a884b3844962654b9673c3868015258b4":[2,0,3,2,146,0,5],
+"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a884b3844962654b9673c3868015258b4":[3,0,3,2,142,0,5],
+"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a95766a9964e81a84bdd1da27eea0c9e9":[2,0,3,2,146,0,4],
+"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a95766a9964e81a84bdd1da27eea0c9e9":[3,0,3,2,142,0,4],
 "structvotca_1_1xtp_1_1PolarSite_1_1data.html#aa4d0f7eb875e4a3c8829cd50d152029d":[2,0,3,2,146,0,1],
 "structvotca_1_1xtp_1_1PolarSite_1_1data.html#aa4d0f7eb875e4a3c8829cd50d152029d":[3,0,3,2,142,0,1],
 "structvotca_1_1xtp_1_1PolarSite_1_1data.html#aa713481f7414ca53de070258a232e93b":[2,0,3,2,146,0,18],
@@ -243,11 +249,5 @@ var NAVTREEINDEX68 =
 "structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a002bcd1c4e9359905597d1ec257fa34c":[2,0,3,2,179,0,3],
 "structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a002bcd1c4e9359905597d1ec257fa34c":[3,0,3,2,175,0,3],
 "structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a219e56ea1c585329c929840039fb3fd0":[2,0,3,2,179,0,4],
-"structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a219e56ea1c585329c929840039fb3fd0":[3,0,3,2,175,0,4],
-"structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a319b33d2bdd64a701a99d7f2af3df697":[2,0,3,2,179,0,2],
-"structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a319b33d2bdd64a701a99d7f2af3df697":[3,0,3,2,175,0,2],
-"structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a5d4e7113d6ed089b33ba4b95e72398e4":[2,0,3,2,179,0,1],
-"structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a5d4e7113d6ed089b33ba4b95e72398e4":[3,0,3,2,175,0,1],
-"structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a6562ca89a6125638ed11618c019e4c3a":[2,0,3,2,179,0,7],
-"structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a6562ca89a6125638ed11618c019e4c3a":[3,0,3,2,175,0,7]
+"structvotca_1_1xtp_1_1Sigma__base__UKS_1_1options.html#a219e56ea1c585329c929840039fb3fd0":[3,0,3,2,175,0,4]
 };

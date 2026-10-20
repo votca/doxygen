@@ -1,5 +1,7 @@
 var NAVTREEINDEX57 =
 {
+"functions_func.html":[3,3,1,0],
+"functions_func_a.html":[3,3,1,1],
 "functions_func_b.html":[3,3,1,2],
 "functions_func_c.html":[3,3,1,3],
 "functions_func_d.html":[3,3,1,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX57 =
 "hirshfeldpartition_8h.html#a89cdc2929b7c77dadcd6ec99f80e1f31":[4,0,3,0,0,0,88,3],
 "hirshfeldpartition_8h_source.html":[4,0,3,0,0,0,88],
 "hist_8h.html":[4,0,3,0,0,0,89],
-"hist_8h.html#af39969e83135d5ab2440af166b48b250":[4,0,3,0,0,0,89,1],
-"hist_8h_source.html":[4,0,3,0,0,0,89],
-"histogram_8h.html":[4,0,2,0,0,0,27]
+"hist_8h.html#af39969e83135d5ab2440af166b48b250":[4,0,3,0,0,0,89,1]
 };

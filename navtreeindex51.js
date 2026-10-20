@@ -1,5 +1,7 @@
 var NAVTREEINDEX51 =
 {
+"classvotca_1_1xtp_1_1Spectrum.html#a2229271607767fc2615f65a7d3e1d705":[2,0,3,2,254,7],
+"classvotca_1_1xtp_1_1Spectrum.html#a2229271607767fc2615f65a7d3e1d705":[3,0,3,2,250,7],
 "classvotca_1_1xtp_1_1Spectrum.html#a23ab5de5f12e47cd1f17874e26ca9a4a":[2,0,3,2,254,6],
 "classvotca_1_1xtp_1_1Spectrum.html#a23ab5de5f12e47cd1f17874e26ca9a4a":[3,0,3,2,250,6],
 "classvotca_1_1xtp_1_1Spectrum.html#a2f5926c889723c489b63ddedea683f5c":[2,0,3,2,254,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX51 =
 "classvotca_1_1xtp_1_1SymmetricTiles.html#a0cbdc7afed23b1b94c986cdd98df32ce":[2,0,3,2,190,19],
 "classvotca_1_1xtp_1_1SymmetricTiles.html#a0cbdc7afed23b1b94c986cdd98df32ce":[3,0,3,2,186,19],
 "classvotca_1_1xtp_1_1SymmetricTiles.html#a2261eade519ab2af93b62bc0ede80f83":[2,0,3,2,190,24],
-"classvotca_1_1xtp_1_1SymmetricTiles.html#a2261eade519ab2af93b62bc0ede80f83":[3,0,3,2,186,24],
-"classvotca_1_1xtp_1_1SymmetricTiles.html#a2a65bef7b5481219415aa1025e32d57a":[2,0,3,2,190,3],
-"classvotca_1_1xtp_1_1SymmetricTiles.html#a2a65bef7b5481219415aa1025e32d57a":[3,0,3,2,186,3]
+"classvotca_1_1xtp_1_1SymmetricTiles.html#a2261eade519ab2af93b62bc0ede80f83":[3,0,3,2,186,24]
 };

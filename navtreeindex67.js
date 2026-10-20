@@ -1,5 +1,11 @@
 var NAVTREEINDEX67 =
 {
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a040996c4fbdc3d38f4e943eb5562ee64":[2,0,3,2,115,0,6],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a040996c4fbdc3d38f4e943eb5562ee64":[3,0,3,2,111,0,6],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a1a345c2fc05967af38b1e40f670fdf0a":[2,0,3,2,115,0,31],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a1a345c2fc05967af38b1e40f670fdf0a":[3,0,3,2,111,0,31],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a1e3ae8af3d5e41634b2367412e28a1b8":[2,0,3,2,115,0,12],
+"structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a1e3ae8af3d5e41634b2367412e28a1b8":[3,0,3,2,111,0,12],
 "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a2a2691b8289fd8e48088285f39be6d10":[2,0,3,2,115,0,34],
 "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a2a2691b8289fd8e48088285f39be6d10":[3,0,3,2,111,0,34],
 "structvotca_1_1xtp_1_1GW__UKS_1_1options.html#a35b711f5d3aa48421aa3fe1e03970f53":[2,0,3,2,115,0,20],
@@ -243,11 +249,5 @@ var NAVTREEINDEX67 =
 "structvotca_1_1xtp_1_1PolarSite_1_1data.html#a77ac2b253c0e4f0a52bc53cda8fd9286":[2,0,3,2,146,0,8],
 "structvotca_1_1xtp_1_1PolarSite_1_1data.html#a77ac2b253c0e4f0a52bc53cda8fd9286":[3,0,3,2,142,0,8],
 "structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7d607600f59176a2491780be867e56e2":[2,0,3,2,146,0,23],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7d607600f59176a2491780be867e56e2":[3,0,3,2,142,0,23],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7de7baadbfe820a80c21c255c6a376b4":[2,0,3,2,146,0,10],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7de7baadbfe820a80c21c255c6a376b4":[3,0,3,2,142,0,10],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a884b3844962654b9673c3868015258b4":[2,0,3,2,146,0,5],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a884b3844962654b9673c3868015258b4":[3,0,3,2,142,0,5],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a95766a9964e81a84bdd1da27eea0c9e9":[2,0,3,2,146,0,4],
-"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a95766a9964e81a84bdd1da27eea0c9e9":[3,0,3,2,142,0,4]
+"structvotca_1_1xtp_1_1PolarSite_1_1data.html#a7d607600f59176a2491780be867e56e2":[3,0,3,2,142,0,23]
 };

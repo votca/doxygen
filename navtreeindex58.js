@@ -1,5 +1,7 @@
 var NAVTREEINDEX58 =
 {
+"hist_8h_source.html":[4,0,3,0,0,0,89],
+"histogram_8h.html":[4,0,2,0,0,0,27],
 "histogram_8h_source.html":[4,0,2,0,0,0,27],
 "histogramnew_8cc.html":[4,0,2,1,0,21],
 "histogramnew_8cc_source.html":[4,0,2,1,0,21],
@@ -247,7 +249,5 @@ var NAVTREEINDEX58 =
 "namespacemembers_z.html":[2,1,0,25],
 "namespacepyxtp.html":[2,0,1],
 "namespacepyxtp.html#a33936adb7d7da0398ddaef11b39421b8":[2,0,1,2],
-"namespacepyxtp.html#aedea7938b5b6fc1f9897455929589d60":[2,0,1,3],
-"namespaces.html":[2,0],
-"namespacestd.html":[2,0,2]
+"namespacepyxtp.html#aedea7938b5b6fc1f9897455929589d60":[2,0,1,3]
 };

@@ -204,6 +204,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aec88a3be4fdaf07295acd59cdf95f02c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static self-energy of an environment reaction field: the COH+SEX pair for v_reac, in the QP window.  <br /></td></tr>
 <tr class="memitem:ac19fde832aee422e93da3ffc3bd0df06" id="r_ac19fde832aee422e93da3ffc3bd0df06"><td class="memItemLeft">Eigen::VectorXd&#160;</td><td class="memItemRight"><a class="el" href="#ac19fde832aee422e93da3ffc3bd0df06">CalcCorrelationDiag</a> (const Eigen::VectorXd &amp;frequencies) const</td></tr>
 <tr class="memitem:a5d3e2b45639d0cf4131f52d7c5bbc897" id="r_a5d3e2b45639d0cf4131f52d7c5bbc897"><td class="memItemLeft">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#a5d3e2b45639d0cf4131f52d7c5bbc897">CalcCorrelationOffDiag</a> (const Eigen::VectorXd &amp;frequencies) const</td></tr>
+<tr class="memitem:a76a4d28b7cfad384ac6557d3302f65e8" id="r_a76a4d28b7cfad384ac6557d3302f65e8"><td class="memItemLeft">Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#a76a4d28b7cfad384ac6557d3302f65e8">CalcCorrelationSRG</a> (const Eigen::VectorXd &amp;frequencies, double s) const</td></tr>
 <tr class="memitem:aad6217736ca74c06efe50b782065d7ae" id="r_aad6217736ca74c06efe50b782065d7ae"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aad6217736ca74c06efe50b782065d7ae">PrepareScreening</a> ()=0</td></tr>
 <tr class="memitem:a12db373c21ad14a14ce59f4c6d897cf6" id="r_a12db373c21ad14a14ce59f4c6d897cf6"><td class="memItemLeft">virtual std::string&#160;</td><td class="memItemRight"><a class="el" href="#a12db373c21ad14a14ce59f4c6d897cf6">ScreeningSummary</a> () const</td></tr>
 <tr class="memdesc:a12db373c21ad14a14ce59f4c6d897cf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">One line about the screening just prepared (empty if nothing to say).  <br /></td></tr>
@@ -420,7 +421,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classvotca_1_1xtp_1_1Sigma__Exact.html#a3be077857df9013b272979a574ed1b69">votca::xtp::Sigma_Exact</a>, and <a class="el" href="classvotca_1_1xtp_1_1Sigma__PPM.html#a5460df55916c91429e042a9834fd3943">votca::xtp::Sigma_PPM</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00168">168</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00179">179</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -449,7 +450,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classvotca_1_1xtp_1_1Sigma__Exact.html#a7410b9cc87cd08a855559b712148ce27">votca::xtp::Sigma_Exact</a>, and <a class="el" href="classvotca_1_1xtp_1_1Sigma__PPM.html#ae922e3bbecd091c22ff92db7e0dd2a56">votca::xtp::Sigma_PPM</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8cc_source.html#l00205">205</a> of file <a class="el" href="sigma__base_8cc_source.html">sigma_base.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8cc_source.html#l00267">267</a> of file <a class="el" href="sigma__base_8cc_source.html">sigma_base.cc</a>.</p>
 
 </div>
 </div>
@@ -491,6 +492,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="classvotca_1_1xtp_1_1Sigma__CDA.html#a4f8397df4c771d3b28e3e354d2aec573">votca::xtp::Sigma_CDA</a>, <a class="el" href="classvotca_1_1xtp_1_1Sigma__Exact.html#af50d6aecddfb54d274303c7afc627631">votca::xtp::Sigma_Exact</a>, and <a class="el" href="classvotca_1_1xtp_1_1Sigma__PPM.html#a0d90a1fb53591352792ad2274dfc8290">votca::xtp::Sigma_PPM</a>.</p>
+
+</div>
+</div>
+<a id="a76a4d28b7cfad384ac6557d3302f65e8" name="a76a4d28b7cfad384ac6557d3302f65e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76a4d28b7cfad384ac6557d3302f65e8">&#9670;&#160;</a></span>CalcCorrelationSRG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::MatrixXd votca::xtp::Sigma_base::CalcCorrelationSRG </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::VectorXd &amp;</td>          <td class="paramname"><span class="paramname"><em>frequencies</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Static correlation self-energy of SRG-regularized QSGW (Marie and Loos, arXiv:2303.05984, eq. 44), diagonal and off-diagonal, from the pole form (exact and ppm): with D_n(p) = w_n - z_p, S_n1n2 = prefactor sum_p c_p r_n1(p) r_n2(p) (D1 + D2) / (D1^2 + D2^2) [1 - exp(-s (D1^2 + D2^2))], on the diagonal (1 - exp(-2 s D^2)) / D. Hermitian without symmetrisation; s -&gt; infinity gives the eta -&gt; 0 limit of the symmetrised form on the diagonal. Throws without a pole form. </p>
+
+<p class="definition">Definition at line <a class="el" href="sigma__base_8cc_source.html#l00205">205</a> of file <a class="el" href="sigma__base_8cc_source.html">sigma_base.cc</a>.</p>
 
 </div>
 </div>
@@ -611,7 +636,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00210">210</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00221">221</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -680,7 +705,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00192">192</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00203">203</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -711,7 +736,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classvotca_1_1xtp_1_1Sigma__CDA.html#adc9b995c1a912cbe869a95fa1438462d">votca::xtp::Sigma_CDA</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00122">122</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00133">133</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -740,7 +765,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classvotca_1_1xtp_1_1Sigma__Exact.html#a6012808f0afa72b31255a211459c84c6">votca::xtp::Sigma_Exact</a>, and <a class="el" href="classvotca_1_1xtp_1_1Sigma__PPM.html#acddc6d7a2bbfabae4913b5382c087539">votca::xtp::Sigma_PPM</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00137">137</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00148">148</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -855,7 +880,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00191">191</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00202">202</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -915,7 +940,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classvotca_1_1xtp_1_1Sigma__PPM.html#afaa5f36002c97e18517796db07cbcb45">votca::xtp::Sigma_PPM</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00120">120</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00131">131</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -943,7 +968,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Keep what ScreeningDump needs from the next PrepareScreening on (the exact evaluator then keeps the aux x modes array Z). </p>
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00158">158</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00169">169</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -975,7 +1000,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Memory (bytes) for the level block and the integral chunk of PairContraction; smaller values only mean more passes. </p>
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00183">183</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00194">194</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1004,7 +1029,7 @@ Private Attributes</h2></td></tr>
 
 <p>Times the parts of PrepareScreening in these timings (optional). </p>
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00189">189</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00200">200</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1029,7 +1054,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00222">222</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00233">233</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1078,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00223">223</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00234">234</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1077,7 +1102,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00224">224</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00235">235</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1101,7 +1126,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00202">202</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00213">213</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1125,7 +1150,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00196">196</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00207">207</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1149,7 +1174,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00195">195</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00206">206</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1173,7 +1198,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00200">200</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00211">211</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1197,7 +1222,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00197">197</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00208">208</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1246,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00201">201</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00212">212</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>
@@ -1245,7 +1270,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00198">198</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sigma__base_8h_source.html#l00209">209</a> of file <a class="el" href="sigma__base_8h_source.html">sigma_base.h</a>.</p>
 
 </div>
 </div>

@@ -11,6 +11,7 @@ var classvotca_1_1xtp_1_1Sigma__base =
     [ "CalcCorrelationDiagElements", "classvotca_1_1xtp_1_1Sigma__base.html#afe2b60afaa0ec904cd32b8a0f3916464", null ],
     [ "CalcCorrelationOffDiag", "classvotca_1_1xtp_1_1Sigma__base.html#a5d3e2b45639d0cf4131f52d7c5bbc897", null ],
     [ "CalcCorrelationOffDiagElement", "classvotca_1_1xtp_1_1Sigma__base.html#a8a76908154cd8a3061bf6a7c4639d27b", null ],
+    [ "CalcCorrelationSRG", "classvotca_1_1xtp_1_1Sigma__base.html#a76a4d28b7cfad384ac6557d3302f65e8", null ],
     [ "CalcExchangeMatrix", "classvotca_1_1xtp_1_1Sigma__base.html#af0063537902a53dd7539e3a25b176efa", null ],
     [ "CalcHartreeMatrix", "classvotca_1_1xtp_1_1Sigma__base.html#a34340e150c0a2e3f1452da6abd30f34b", null ],
     [ "CalcReactionFieldMatrix", "classvotca_1_1xtp_1_1Sigma__base.html#aec88a3be4fdaf07295acd59cdf95f02c", null ],

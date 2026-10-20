@@ -1,5 +1,11 @@
 var NAVTREEINDEX70 =
 {
+"structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#a4fdad8e098f66fde3bbbdeea2772744e":[2,0,3,2,5,0,3],
+"structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#a4fdad8e098f66fde3bbbdeea2772744e":[3,0,3,2,1,0,3],
+"structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#a50ef4343e1e5a185b7cba15996212153":[2,0,3,2,5,0,0],
+"structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#a50ef4343e1e5a185b7cba15996212153":[3,0,3,2,1,0,0],
+"structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#a7f0d1f831d7a6795e9cfbc215eece3d4":[2,0,3,2,5,0,1],
+"structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#a7f0d1f831d7a6795e9cfbc215eece3d4":[3,0,3,2,1,0,1],
 "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#adafac9aed0b7ed021d9c95b0fd59e8e0":[2,0,3,2,5,0,5],
 "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#adafac9aed0b7ed021d9c95b0fd59e8e0":[3,0,3,2,1,0,5],
 "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html#aec39503efa6dbf2c2f67d334f4ecc43d":[2,0,3,2,5,0,4],

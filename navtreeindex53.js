@@ -1,5 +1,7 @@
 var NAVTREEINDEX53 =
 {
+"classvotca_1_1xtp_1_1Topology.html#a3113495f9736d93cd15f7cb0a299cecf":[2,0,3,2,196,26],
+"classvotca_1_1xtp_1_1Topology.html#a3113495f9736d93cd15f7cb0a299cecf":[3,0,3,2,192,26],
 "classvotca_1_1xtp_1_1Topology.html#a34e5f312ce1169b07e4203e47d3792b9":[2,0,3,2,196,2],
 "classvotca_1_1xtp_1_1Topology.html#a34e5f312ce1169b07e4203e47d3792b9":[3,0,3,2,192,2],
 "classvotca_1_1xtp_1_1Topology.html#a363036ab0c30c9cbb647da2fcd1f9235":[2,0,3,2,196,28],
@@ -247,7 +249,5 @@ var NAVTREEINDEX53 =
 "classvotca_1_1xtp_1_1VAverage.html#a6cdc9d8c752ff96978121e103445aaeb":[2,0,3,2,214,3],
 "classvotca_1_1xtp_1_1VAverage.html#a6cdc9d8c752ff96978121e103445aaeb":[3,0,3,2,210,3],
 "classvotca_1_1xtp_1_1VAverage.html#a841167c4f20c4389075b3497a57577a6":[2,0,3,2,214,11],
-"classvotca_1_1xtp_1_1VAverage.html#a841167c4f20c4389075b3497a57577a6":[3,0,3,2,210,11],
-"classvotca_1_1xtp_1_1VAverage.html#a88ea5dc51c968dba3acf450e8e5052a2":[2,0,3,2,214,0],
-"classvotca_1_1xtp_1_1VAverage.html#a88ea5dc51c968dba3acf450e8e5052a2":[3,0,3,2,210,0]
+"classvotca_1_1xtp_1_1VAverage.html#a841167c4f20c4389075b3497a57577a6":[3,0,3,2,210,11]
 };

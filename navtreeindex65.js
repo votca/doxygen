@@ -1,5 +1,7 @@
 var NAVTREEINDEX65 =
 {
+"structvotca_1_1xtp_1_1BSE__Population.html#afb78403fe23f8e3d9b23b5dcb6bb4b26":[2,0,3,2,45,3],
+"structvotca_1_1xtp_1_1BSE__Population.html#afb78403fe23f8e3d9b23b5dcb6bb4b26":[3,0,3,2,41,3],
 "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html":[2,0,3,2,46,1],
 "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html":[3,0,3,2,42,1],
 "structvotca_1_1xtp_1_1BSE__UKS_1_1ExpectationValues.html#a45f381a8d685d6e7b0a8b2eab659c1e2":[2,0,3,2,46,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX65 =
 "structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#a42460cd02d8777e35b4ac8939239639f":[2,0,3,2,164,0,1],
 "structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#a42460cd02d8777e35b4ac8939239639f":[3,0,3,2,160,0,1],
 "structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#a72a025d6928435b752ef41ccdef75c14":[2,0,3,2,164,0,0],
-"structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#a72a025d6928435b752ef41ccdef75c14":[3,0,3,2,160,0,0],
-"structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#aceb253f746e5bcadfe3fdd28ff40c3b4":[2,0,3,2,164,0,2],
-"structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#aceb253f746e5bcadfe3fdd28ff40c3b4":[3,0,3,2,160,0,2]
+"structvotca_1_1xtp_1_1EulerMaclaurinGrid_1_1min__exp.html#a72a025d6928435b752ef41ccdef75c14":[3,0,3,2,160,0,0]
 };
