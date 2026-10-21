@@ -169,6 +169,12 @@ var annotated_dup =
           [ "SolverOptions", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions.html", "structvotca_1_1xtp_1_1qp__solver_1_1SolverOptions" ],
           [ "CompetingRoots", "structvotca_1_1xtp_1_1qp__solver_1_1CompetingRoots.html", "structvotca_1_1xtp_1_1qp__solver_1_1CompetingRoots" ]
         ] ],
+        [ "trah", "namespacevotca_1_1xtp_1_1trah.html", [
+          [ "StepOptions", "structvotca_1_1xtp_1_1trah_1_1StepOptions.html", "structvotca_1_1xtp_1_1trah_1_1StepOptions" ],
+          [ "StepResult", "structvotca_1_1xtp_1_1trah_1_1StepResult.html", "structvotca_1_1xtp_1_1trah_1_1StepResult" ],
+          [ "Subspace", "structvotca_1_1xtp_1_1trah_1_1Subspace.html", "structvotca_1_1xtp_1_1trah_1_1Subspace" ],
+          [ "TrustRadius", "classvotca_1_1xtp_1_1trah_1_1TrustRadius.html", "classvotca_1_1xtp_1_1trah_1_1TrustRadius" ]
+        ] ],
         [ "ERIs", "classvotca_1_1xtp_1_1ERIs.html", "classvotca_1_1xtp_1_1ERIs" ],
         [ "GaussianQuadratureBase", "classvotca_1_1xtp_1_1GaussianQuadratureBase.html", "classvotca_1_1xtp_1_1GaussianQuadratureBase" ],
         [ "ImaginaryAxisIntegration", "classvotca_1_1xtp_1_1ImaginaryAxisIntegration.html", "classvotca_1_1xtp_1_1ImaginaryAxisIntegration" ],

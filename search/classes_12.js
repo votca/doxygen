@@ -47,8 +47,11 @@ var searchData=
   ['staticregion_44',['StaticRegion',['../classvotca_1_1xtp_1_1StaticRegion.html',1,'votca::xtp']]],
   ['staticsite_45',['StaticSite',['../classvotca_1_1xtp_1_1StaticSite.html',1,'votca::xtp']]],
   ['stats_46',['Stats',['../structvotca_1_1xtp_1_1qp__solver_1_1Stats.html',1,'votca::xtp::qp_solver']]],
-  ['structureparameters_47',['StructureParameters',['../classvotca_1_1tools_1_1StructureParameters.html',1,'votca::tools']]],
-  ['symmetric_5fmatrix_48',['Symmetric_Matrix',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html',1,'votca::xtp']]],
-  ['symmetriceigensystem_49',['SymmetricEigenSystem',['../structvotca_1_1xtp_1_1SymmetricEigenSystem.html',1,'votca::xtp']]],
-  ['symmetrictiles_50',['SymmetricTiles',['../classvotca_1_1xtp_1_1SymmetricTiles.html',1,'votca::xtp']]]
+  ['stepoptions_47',['StepOptions',['../structvotca_1_1xtp_1_1trah_1_1StepOptions.html',1,'votca::xtp::trah']]],
+  ['stepresult_48',['StepResult',['../structvotca_1_1xtp_1_1trah_1_1StepResult.html',1,'votca::xtp::trah']]],
+  ['structureparameters_49',['StructureParameters',['../classvotca_1_1tools_1_1StructureParameters.html',1,'votca::tools']]],
+  ['subspace_50',['Subspace',['../structvotca_1_1xtp_1_1trah_1_1Subspace.html',1,'votca::xtp::trah']]],
+  ['symmetric_5fmatrix_51',['Symmetric_Matrix',['../classvotca_1_1xtp_1_1Symmetric__Matrix.html',1,'votca::xtp']]],
+  ['symmetriceigensystem_52',['SymmetricEigenSystem',['../structvotca_1_1xtp_1_1SymmetricEigenSystem.html',1,'votca::xtp']]],
+  ['symmetrictiles_53',['SymmetricTiles',['../classvotca_1_1xtp_1_1SymmetricTiles.html',1,'votca::xtp']]]
 ];

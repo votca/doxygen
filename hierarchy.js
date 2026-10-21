@@ -560,10 +560,13 @@ var hierarchy =
       [ "votca::xtp::PolarSite", "classvotca_1_1xtp_1_1PolarSite.html", null ]
     ] ],
     [ "votca::xtp::qp_solver::Stats", "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html", null ],
+    [ "votca::xtp::trah::StepOptions", "structvotca_1_1xtp_1_1trah_1_1StepOptions.html", null ],
+    [ "votca::xtp::trah::StepResult", "structvotca_1_1xtp_1_1trah_1_1StepResult.html", null ],
     [ "std::stringbuf", null, [
       [ "votca::xtp::LogBuffer", "classvotca_1_1xtp_1_1LogBuffer.html", null ]
     ] ],
     [ "votca::tools::StructureParameters", "classvotca_1_1tools_1_1StructureParameters.html", null ],
+    [ "votca::xtp::trah::Subspace", "structvotca_1_1xtp_1_1trah_1_1Subspace.html", null ],
     [ "votca::xtp::Symmetric_Matrix", "classvotca_1_1xtp_1_1Symmetric__Matrix.html", null ],
     [ "votca::xtp::SymmetricEigenSystem", "structvotca_1_1xtp_1_1SymmetricEigenSystem.html", null ],
     [ "votca::xtp::SymmetricTiles", "classvotca_1_1xtp_1_1SymmetricTiles.html", null ],
@@ -633,6 +636,7 @@ var hierarchy =
         [ "votca::csg::NBListGrid_3Body", "classvotca_1_1csg_1_1NBListGrid__3Body.html", null ]
       ] ]
     ] ],
+    [ "votca::xtp::trah::TrustRadius", "classvotca_1_1xtp_1_1trah_1_1TrustRadius.html", null ],
     [ "votca::xtp::TrustRegion", "classvotca_1_1xtp_1_1TrustRegion.html", null ],
     [ "votca::xtp::TrustRegion::TrustRegionFunction", "classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html", null ],
     [ "std::tuple", null, [

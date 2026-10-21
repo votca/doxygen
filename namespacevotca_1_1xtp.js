@@ -194,6 +194,7 @@ var namespacevotca_1_1xtp =
       [ "ValuesDirectWeighted", "namespacevotca_1_1xtp_1_1exact__pole__sums.html#ad4dc17262c929911a8f13bd31cc76087", null ]
     ] ],
     [ "qp_solver", "namespacevotca_1_1xtp_1_1qp__solver.html", "namespacevotca_1_1xtp_1_1qp__solver" ],
+    [ "trah", "namespacevotca_1_1xtp_1_1trah.html", "namespacevotca_1_1xtp_1_1trah" ],
     [ "ERIs", "classvotca_1_1xtp_1_1ERIs.html", "classvotca_1_1xtp_1_1ERIs" ],
     [ "GaussianQuadratureBase", "classvotca_1_1xtp_1_1GaussianQuadratureBase.html", "classvotca_1_1xtp_1_1GaussianQuadratureBase" ],
     [ "ImaginaryAxisIntegration", "classvotca_1_1xtp_1_1ImaginaryAxisIntegration.html", "classvotca_1_1xtp_1_1ImaginaryAxisIntegration" ],

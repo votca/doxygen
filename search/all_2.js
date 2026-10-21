@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b_0',['B',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af6f5dead42bdfd50316cd0d0223b1f9a',1,'votca::xtp::DavidsonSolver::ProjectedSpace::B'],['../classvotca_1_1tools_1_1CubicSpline.html#afea019d210a91cb49d514992f1cfd5b3',1,'votca::tools::CubicSpline::B()']]],
+  ['b_0',['B',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af6f5dead42bdfd50316cd0d0223b1f9a',1,'votca::xtp::DavidsonSolver::ProjectedSpace::B'],['../structvotca_1_1xtp_1_1trah_1_1Subspace.html#ab4f25c1f48964a391b0fbfa692bf5a39',1,'votca::xtp::trah::Subspace::B'],['../classvotca_1_1tools_1_1CubicSpline.html#afea019d210a91cb49d514992f1cfd5b3',1,'votca::tools::CubicSpline::B()']]],
   ['b_1',['b',['../classvotca_1_1tools_1_1LinSpline.html#a7aa278fca77c6cbf1cf44deea34211a3',1,'votca::tools::LinSpline']]],
   ['b0_2',['B0',['../structvotca_1_1xtp_1_1ChargeResponseSolver_1_1Coupling.html#ac50a37866453de576b2f45362b3cd031',1,'votca::xtp::ChargeResponseSolver::Coupling::B0'],['../structvotca_1_1xtp_1_1EwaldRealSpaceInteractor_1_1BFunctions.html#a78abc35cf6e6bc5e486e0d946135697d',1,'votca::xtp::EwaldRealSpaceInteractor::BFunctions::B0'],['../structvotca_1_1xtp_1_1GaussianKernel.html#aae5a058728851ea503c76498af052dc2',1,'votca::xtp::GaussianKernel::B0']]],
   ['b1_3',['B1',['../structvotca_1_1xtp_1_1ChargeResponseSolver_1_1Coupling.html#a53eb68ee163ac7fba3be8e9b8584198d',1,'votca::xtp::ChargeResponseSolver::Coupling::B1'],['../structvotca_1_1xtp_1_1EwaldRealSpaceInteractor_1_1BFunctions.html#af9063634453afcca930a3b18b7385d92',1,'votca::xtp::EwaldRealSpaceInteractor::BFunctions::B1'],['../structvotca_1_1xtp_1_1GaussianKernel.html#a88652d6bd781ba95c79846dce9221a8a',1,'votca::xtp::GaussianKernel::B1']]],
@@ -241,13 +241,14 @@ var searchData=
   ['buildscreeningenvironment_238',['BuildScreeningEnvironment',['../classvotca_1_1xtp_1_1QMRegion.html#a8e47eeeabf2f7456231cf5ca1e0afb4f',1,'votca::xtp::QMRegion']]],
   ['buildspindensity_239',['BuildSpinDensity',['../classvotca_1_1xtp_1_1DFTEngine.html#ae0fbc3134d2ffde466e672cff45380e5',1,'votca::xtp::DFTEngine']]],
   ['buildsums_240',['BuildSums',['../classvotca_1_1xtp_1_1EwaldRegion.html#acf2ac51574cb5739a00f0cd919854797',1,'votca::xtp::EwaldRegion']]],
-  ['buildweightmatrix_241',['BuildWeightMatrix',['../classvotca_1_1xtp_1_1HirshfeldPartition.html#a9f156c07d9f2c8dd17976d9cd6637203',1,'votca::xtp::HirshfeldPartition']]],
-  ['built_242',['Built',['../classvotca_1_1xtp_1_1ScreeningUpdate.html#a2f02febb8a4b84678a45017d2b832091',1,'votca::xtp::ScreeningUpdate']]],
-  ['built_243',['built',['../classvotca_1_1xtp_1_1SymmetricTiles.html#aacf17798dd95e1628015611cd1f81800',1,'votca::xtp::SymmetricTiles']]],
-  ['built_5f_244',['built_',['../classvotca_1_1xtp_1_1SymmetricTiles.html#aa4451065e0951c7150e3eb517dabc056',1,'votca::xtp::SymmetricTiles']]],
-  ['built_5fforeground_5f_245',['built_foreground_',['../classvotca_1_1xtp_1_1EwaldRegion.html#a57d0ecfa3c877428546dd51622abf051',1,'votca::xtp::EwaldRegion']]],
-  ['built_5ffrom_5f_246',['built_from_',['../classvotca_1_1xtp_1_1ScreeningUpdate.html#ab448656bbb826911884bdaa861bda399',1,'votca::xtp::ScreeningUpdate']]],
-  ['bv_5f_247',['bV_',['../classvotca_1_1csg_1_1Bead.html#a2c50fd8a7a39588b8cb4eb10613fe5b4',1,'votca::csg::Bead']]],
-  ['bw_5f_248',['bW_',['../classvotca_1_1csg_1_1Bead.html#a6cdfda7d0d399903c3825526c090d5eb',1,'votca::csg::Bead']]],
-  ['bytes_249',['Bytes',['../classvotca_1_1xtp_1_1SymmetricTiles.html#ad67a6c35245f767e396ca506557b17fe',1,'votca::xtp::SymmetricTiles']]]
+  ['builduksfock_241',['BuildUKSFock',['../classvotca_1_1xtp_1_1DFTEngine.html#a54ebddb23a23be87d8220955060f364e',1,'votca::xtp::DFTEngine']]],
+  ['buildweightmatrix_242',['BuildWeightMatrix',['../classvotca_1_1xtp_1_1HirshfeldPartition.html#a9f156c07d9f2c8dd17976d9cd6637203',1,'votca::xtp::HirshfeldPartition']]],
+  ['built_243',['Built',['../classvotca_1_1xtp_1_1ScreeningUpdate.html#a2f02febb8a4b84678a45017d2b832091',1,'votca::xtp::ScreeningUpdate']]],
+  ['built_244',['built',['../classvotca_1_1xtp_1_1SymmetricTiles.html#aacf17798dd95e1628015611cd1f81800',1,'votca::xtp::SymmetricTiles']]],
+  ['built_5f_245',['built_',['../classvotca_1_1xtp_1_1SymmetricTiles.html#aa4451065e0951c7150e3eb517dabc056',1,'votca::xtp::SymmetricTiles']]],
+  ['built_5fforeground_5f_246',['built_foreground_',['../classvotca_1_1xtp_1_1EwaldRegion.html#a57d0ecfa3c877428546dd51622abf051',1,'votca::xtp::EwaldRegion']]],
+  ['built_5ffrom_5f_247',['built_from_',['../classvotca_1_1xtp_1_1ScreeningUpdate.html#ab448656bbb826911884bdaa861bda399',1,'votca::xtp::ScreeningUpdate']]],
+  ['bv_5f_248',['bV_',['../classvotca_1_1csg_1_1Bead.html#a2c50fd8a7a39588b8cb4eb10613fe5b4',1,'votca::csg::Bead']]],
+  ['bw_5f_249',['bW_',['../classvotca_1_1csg_1_1Bead.html#a6cdfda7d0d399903c3825526c090d5eb',1,'votca::csg::Bead']]],
+  ['bytes_250',['Bytes',['../classvotca_1_1xtp_1_1SymmetricTiles.html#ad67a6c35245f767e396ca506557b17fe',1,'votca::xtp::SymmetricTiles']]]
 ];

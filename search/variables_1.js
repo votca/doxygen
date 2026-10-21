@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b_0',['B',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af6f5dead42bdfd50316cd0d0223b1f9a',1,'votca::xtp::DavidsonSolver::ProjectedSpace']]],
+  ['b_0',['B',['../structvotca_1_1xtp_1_1DavidsonSolver_1_1ProjectedSpace.html#af6f5dead42bdfd50316cd0d0223b1f9a',1,'votca::xtp::DavidsonSolver::ProjectedSpace::B'],['../structvotca_1_1xtp_1_1trah_1_1Subspace.html#ab4f25c1f48964a391b0fbfa692bf5a39',1,'votca::xtp::trah::Subspace::B']]],
   ['b_1',['b',['../classvotca_1_1tools_1_1LinSpline.html#a7aa278fca77c6cbf1cf44deea34211a3',1,'votca::tools::LinSpline']]],
   ['b0_2',['B0',['../structvotca_1_1xtp_1_1ChargeResponseSolver_1_1Coupling.html#ac50a37866453de576b2f45362b3cd031',1,'votca::xtp::ChargeResponseSolver::Coupling::B0'],['../structvotca_1_1xtp_1_1EwaldRealSpaceInteractor_1_1BFunctions.html#a78abc35cf6e6bc5e486e0d946135697d',1,'votca::xtp::EwaldRealSpaceInteractor::BFunctions::B0'],['../structvotca_1_1xtp_1_1GaussianKernel.html#aae5a058728851ea503c76498af052dc2',1,'votca::xtp::GaussianKernel::B0']]],
   ['b1_3',['B1',['../structvotca_1_1xtp_1_1ChargeResponseSolver_1_1Coupling.html#a53eb68ee163ac7fba3be8e9b8584198d',1,'votca::xtp::ChargeResponseSolver::Coupling::B1'],['../structvotca_1_1xtp_1_1EwaldRealSpaceInteractor_1_1BFunctions.html#af9063634453afcca930a3b18b7385d92',1,'votca::xtp::EwaldRealSpaceInteractor::BFunctions::B1'],['../structvotca_1_1xtp_1_1GaussianKernel.html#a88652d6bd781ba95c79846dce9221a8a',1,'votca::xtp::GaussianKernel::B1']]],

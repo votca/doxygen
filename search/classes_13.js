@@ -24,7 +24,8 @@ var searchData=
   ['triclinicbox_21',['TriclinicBox',['../classvotca_1_1csg_1_1TriclinicBox.html',1,'votca::csg']]],
   ['triplelist_22',['TripleList',['../classvotca_1_1csg_1_1TripleList.html',1,'votca::csg']]],
   ['triplelist_3c_20bead_20_2a_2c_20beadtriple_20_3e_23',['TripleList&lt; Bead *, BeadTriple &gt;',['../classvotca_1_1csg_1_1TripleList.html',1,'votca::csg']]],
-  ['trustregion_24',['TrustRegion',['../classvotca_1_1xtp_1_1TrustRegion.html',1,'votca::xtp']]],
-  ['trustregionfunction_25',['TrustRegionFunction',['../classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html',1,'votca::xtp::TrustRegion']]],
-  ['type_26',['type',['../structvotca_1_1tools_1_1internal_1_1type.html',1,'votca::tools::internal']]]
+  ['trustradius_24',['TrustRadius',['../classvotca_1_1xtp_1_1trah_1_1TrustRadius.html',1,'votca::xtp::trah']]],
+  ['trustregion_25',['TrustRegion',['../classvotca_1_1xtp_1_1TrustRegion.html',1,'votca::xtp']]],
+  ['trustregionfunction_26',['TrustRegionFunction',['../classvotca_1_1xtp_1_1TrustRegion_1_1TrustRegionFunction.html',1,'votca::xtp::TrustRegion']]],
+  ['type_27',['type',['../structvotca_1_1tools_1_1internal_1_1type.html',1,'votca::tools::internal']]]
 ];

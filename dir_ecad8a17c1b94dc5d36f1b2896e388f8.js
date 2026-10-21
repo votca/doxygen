@@ -162,6 +162,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "threecenter.h", "threecenter_8h.html", "threecenter_8h" ],
     [ "toolfactory.h", "toolfactory_8h.html", "toolfactory_8h" ],
     [ "topology.h", "xtp_2include_2votca_2xtp_2topology_8h.html", "xtp_2include_2votca_2xtp_2topology_8h" ],
+    [ "trah.h", "trah_8h.html", "trah_8h" ],
     [ "transition_densities.h", "transition__densities_8h.html", "transition__densities_8h" ],
     [ "trustregion.h", "trustregion_8h.html", "trustregion_8h" ],
     [ "uks_convergenceacc.h", "uks__convergenceacc_8h.html", "uks__convergenceacc_8h" ],

@@ -15,5 +15,6 @@ var searchData=
   ['votca_3a_3axtp_3a_3acheckpoint_5futils_12',['checkpoint_utils',['../namespacevotca_1_1xtp_1_1checkpoint__utils.html',1,'votca::xtp']]],
   ['votca_3a_3axtp_3a_3aexact_5fpole_5fsums_13',['exact_pole_sums',['../namespacevotca_1_1xtp_1_1exact__pole__sums.html',1,'votca::xtp']]],
   ['votca_3a_3axtp_3a_3aopenmp_14',['OPENMP',['../namespacevotca_1_1xtp_1_1OPENMP.html',1,'votca::xtp']]],
-  ['votca_3a_3axtp_3a_3aqp_5fsolver_15',['qp_solver',['../namespacevotca_1_1xtp_1_1qp__solver.html',1,'votca::xtp']]]
+  ['votca_3a_3axtp_3a_3aqp_5fsolver_15',['qp_solver',['../namespacevotca_1_1xtp_1_1qp__solver.html',1,'votca::xtp']]],
+  ['votca_3a_3axtp_3a_3atrah_16',['trah',['../namespacevotca_1_1xtp_1_1trah.html',1,'votca::xtp']]]
 ];

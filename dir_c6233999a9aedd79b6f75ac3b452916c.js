@@ -8,5 +8,6 @@ var dir_c6233999a9aedd79b6f75ac3b452916c =
     [ "embeddingengine.cc", "embeddingengine_8cc.html", null ],
     [ "ERIs.cc", "ERIs_8cc.html", null ],
     [ "extended_hueckel.cc", "extended__hueckel_8cc.html", null ],
+    [ "trah.cc", "trah_8cc.html", "trah_8cc" ],
     [ "uks_convergenceacc.cc", "uks__convergenceacc_8cc.html", null ]
 ];

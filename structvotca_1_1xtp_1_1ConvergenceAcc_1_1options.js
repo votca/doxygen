@@ -18,5 +18,6 @@ var structvotca_1_1xtp_1_1ConvergenceAcc_1_1options =
     [ "number_alpha_electrons", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a54f1d3634dde33742069171dffa6646c", null ],
     [ "number_beta_electrons", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a4034801b82384eb4265f471ccb9d3601", null ],
     [ "numberofelectrons", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a5a8c5f4c2346e5a9502292fdaa60a1b1", null ],
+    [ "second_order", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#a5a76ea3cf66cdab657360820e7def5f1", null ],
     [ "usediis", "structvotca_1_1xtp_1_1ConvergenceAcc_1_1options.html#abd8b825e0622a4ef74c753ac3e62e8b5", null ]
 ];
