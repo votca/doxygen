@@ -11,5 +11,8 @@ var searchData=
   ['neighborlist_8',['Neighborlist',['../classvotca_1_1xtp_1_1Neighborlist.html',1,'votca::xtp']]],
   ['neighborstats_9',['NeighborStats',['../structvotca_1_1xtp_1_1EwaldRealSpaceSum_1_1NeighborStats.html',1,'votca::xtp::EwaldRealSpaceSum']]],
   ['nematicorder_10',['NematicOrder',['../classvotca_1_1csg_1_1NematicOrder.html',1,'votca::csg']]],
-  ['newtonrapson_11',['NewtonRapson',['../classvotca_1_1xtp_1_1NewtonRapson.html',1,'votca::xtp']]]
+  ['networkfit_11',['NetworkFit',['../classvotca_1_1xtp_1_1NetworkFit.html',1,'votca::xtp']]],
+  ['networkgen_12',['NetworkGen',['../classvotca_1_1xtp_1_1NetworkGen.html',1,'votca::xtp']]],
+  ['newtonrapson_13',['NewtonRapson',['../classvotca_1_1xtp_1_1NewtonRapson.html',1,'votca::xtp']]],
+  ['normalgenerator_14',['NormalGenerator',['../classvotca_1_1xtp_1_1LatticeModel_1_1NormalGenerator.html',1,'votca::xtp::LatticeModel']]]
 ];

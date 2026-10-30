@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['timeunit_0',['TimeUnit',['../namespacevotca_1_1tools.html#a3db9e566728fce7d4132a1d849f0ef27',1,'votca::tools']]],
-  ['type_1',['Type',['../classvotca_1_1tools_1_1PropertyIOManipulator.html#ac77f68a3f780f11d8b218f17425dc268',1,'votca::tools::PropertyIOManipulator']]]
+  ['role_0',['Role',['../classvotca_1_1xtp_1_1ToFGraph.html#a113d5fa81ea4e55e484c12327f904797',1,'votca::xtp::ToFGraph']]]
 ];

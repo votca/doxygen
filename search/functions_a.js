@@ -7,6 +7,5 @@ var searchData=
   ['joboperator_4',['JobOperator',['../classvotca_1_1xtp_1_1ParallelXJobCalc_1_1JobOperator.html#af9188e7a6d1297da82e33d01bfd67d6f',1,'votca::xtp::ParallelXJobCalc::JobOperator']]],
   ['jobtopology_5',['JobTopology',['../classvotca_1_1xtp_1_1JobTopology.html#ae6186fdca6cc753605b98c024d683f98',1,'votca::xtp::JobTopology']]],
   ['jobtopology_5fversion_6',['jobtopology_version',['../classvotca_1_1xtp_1_1JobTopology.html#a6732052c97f3b269e0804ba73347d39a',1,'votca::xtp::JobTopology']]],
-  ['jumpaccordingevent_7',['jumpAccordingEvent',['../classvotca_1_1xtp_1_1Chargecarrier.html#a7664d305b29b8c061f2f6f9a67989123',1,'votca::xtp::Chargecarrier']]],
-  ['junctionexist_5f_8',['junctionExist_',['../classvotca_1_1csg_1_1BeadMotif.html#abde5d199fb7f4ddd16d0d14dc0b45390',1,'votca::csg::BeadMotif']]]
+  ['junctionexist_5f_7',['junctionExist_',['../classvotca_1_1csg_1_1BeadMotif.html#abde5d199fb7f4ddd16d0d14dc0b45390',1,'votca::csg::BeadMotif']]]
 ];

@@ -7,6 +7,5 @@ var searchData=
   ['hirshfeldpartition_2eh_4',['hirshfeldpartition.h',['../hirshfeldpartition_8h.html',1,'']]],
   ['hist_2eh_5',['hist.h',['../hist_8h.html',1,'']]],
   ['histogram_2eh_6',['histogram.h',['../histogram_8h.html',1,'']]],
-  ['histogramnew_2ecc_7',['histogramnew.cc',['../histogramnew_8cc.html',1,'']]],
-  ['huffmantree_2eh_8',['huffmantree.h',['../huffmantree_8h.html',1,'']]]
+  ['histogramnew_2ecc_7',['histogramnew.cc',['../histogramnew_8cc.html',1,'']]]
 ];

@@ -1,5 +1,7 @@
 var NAVTREEINDEX12 =
 {
+"classvotca_1_1csg_1_1XMLMolecule.html":[2,0,3,0,67],
+"classvotca_1_1csg_1_1XMLMolecule.html":[3,0,3,0,67],
 "classvotca_1_1csg_1_1XMLMolecule.html#a1f8e70eed3ba940ba73f61423fadfe16":[2,0,3,0,67,2],
 "classvotca_1_1csg_1_1XMLMolecule.html#a1f8e70eed3ba940ba73f61423fadfe16":[3,0,3,0,67,2],
 "classvotca_1_1csg_1_1XMLMolecule.html#a4c171c6f640d086fa8e86f65148faea2":[2,0,3,0,67,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX12 =
 "classvotca_1_1tools_1_1Color.html#a953202f9146d304f28887ca50e5572a6":[2,0,3,1,13,3],
 "classvotca_1_1tools_1_1Color.html#a953202f9146d304f28887ca50e5572a6":[3,0,3,1,8,3],
 "classvotca_1_1tools_1_1Color.html#aac3f8f146a9aa22ba4d2615f3b43342e":[2,0,3,1,13,8],
-"classvotca_1_1tools_1_1Color.html#aac3f8f146a9aa22ba4d2615f3b43342e":[3,0,3,1,8,8],
-"classvotca_1_1tools_1_1Color.html#ab70bc0cec37cee3df95c7ef1cb00e205":[2,0,3,1,13,0],
-"classvotca_1_1tools_1_1Color.html#ab70bc0cec37cee3df95c7ef1cb00e205":[3,0,3,1,8,0]
+"classvotca_1_1tools_1_1Color.html#aac3f8f146a9aa22ba4d2615f3b43342e":[3,0,3,1,8,8]
 };

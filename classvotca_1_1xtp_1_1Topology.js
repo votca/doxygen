@@ -5,6 +5,7 @@ var classvotca_1_1xtp_1_1Topology =
     [ "AddSegment", "classvotca_1_1xtp_1_1Topology.html#a34e5f312ce1169b07e4203e47d3792b9", null ],
     [ "AutoDetectBoxType", "classvotca_1_1xtp_1_1Topology.html#a7995dd4e619791b948138c05c8f2977f", null ],
     [ "BoxVolume", "classvotca_1_1xtp_1_1Topology.html#abdcd9768e0054d57c7be6bb2691d1efa", null ],
+    [ "CopyPairs", "classvotca_1_1xtp_1_1Topology.html#afbe60a32200f5fbd18eb050e01d59887", null ],
     [ "FindAllSegmentsOnMolecule", "classvotca_1_1xtp_1_1Topology.html#a77071c3dfbd23331324800cc3795d27d", null ],
     [ "FindLinkingSegments", "classvotca_1_1xtp_1_1Topology.html#a7dc717cdaf91532e28be80c11a7228e3", null ],
     [ "getBox", "classvotca_1_1xtp_1_1Topology.html#a7c524dfb0e899a80558a7cbc10a39faf", null ],

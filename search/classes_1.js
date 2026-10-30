@@ -38,5 +38,6 @@ var searchData=
   ['bsecoupling_35',['BSECoupling',['../classvotca_1_1xtp_1_1BSECoupling.html',1,'votca::xtp']]],
   ['bseoperator_5foptions_36',['BSEOperator_Options',['../structvotca_1_1xtp_1_1BSEOperator__Options.html',1,'votca::xtp']]],
   ['bseoperatoruks_5foptions_37',['BSEOperatorUKS_Options',['../structvotca_1_1xtp_1_1BSEOperatorUKS__Options.html',1,'votca::xtp']]],
-  ['bsewindow_38',['BSEWindow',['../structvotca_1_1xtp_1_1BSEWindow.html',1,'votca::xtp']]]
+  ['bsewindow_38',['BSEWindow',['../structvotca_1_1xtp_1_1BSEWindow.html',1,'votca::xtp']]],
+  ['bulksimulation_39',['BulkSimulation',['../classvotca_1_1xtp_1_1BulkSimulation.html',1,'votca::xtp']]]
 ];

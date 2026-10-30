@@ -16,5 +16,9 @@ var searchData=
   ['neighborlist_2eh_13',['neighborlist.h',['../neighborlist_8h.html',1,'']]],
   ['nematicorder_2ecc_14',['nematicorder.cc',['../nematicorder_8cc.html',1,'']]],
   ['nematicorder_2eh_15',['nematicorder.h',['../nematicorder_8h.html',1,'']]],
-  ['newton_5frapson_2eh_16',['newton_rapson.h',['../newton__rapson_8h.html',1,'']]]
+  ['networkfit_2ecc_16',['networkfit.cc',['../networkfit_8cc.html',1,'']]],
+  ['networkfit_2eh_17',['networkfit.h',['../networkfit_8h.html',1,'']]],
+  ['networkgen_2ecc_18',['networkgen.cc',['../networkgen_8cc.html',1,'']]],
+  ['networkgen_2eh_19',['networkgen.h',['../networkgen_8h.html',1,'']]],
+  ['newton_5frapson_2eh_20',['newton_rapson.h',['../newton__rapson_8h.html',1,'']]]
 ];

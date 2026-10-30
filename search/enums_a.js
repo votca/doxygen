@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pairtype_0',['PairType',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7',1,'votca::xtp::QMPair']]]
+  ['observable_0',['Observable',['../classvotca_1_1xtp_1_1GraphRandomWalk.html#a3c3e5595429fd5b06543b934695f50d0',1,'votca::xtp::GraphRandomWalk']]]
 ];

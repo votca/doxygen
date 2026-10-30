@@ -36,5 +36,7 @@ var searchData=
   ['bse_5fuks_2eh_33',['bse_uks.h',['../bse__uks_8h.html',1,'']]],
   ['bsecoupling_2ecc_34',['bsecoupling.cc',['../bsecoupling_8cc.html',1,'']]],
   ['bsecoupling_2eh_35',['bsecoupling.h',['../bsecoupling_8h.html',1,'']]],
-  ['bseoperator_5fbtda_2eh_36',['bseoperator_btda.h',['../bseoperator__btda_8h.html',1,'']]]
+  ['bseoperator_5fbtda_2eh_36',['bseoperator_btda.h',['../bseoperator__btda_8h.html',1,'']]],
+  ['bulksimulation_2ecc_37',['bulksimulation.cc',['../bulksimulation_8cc.html',1,'']]],
+  ['bulksimulation_2eh_38',['bulksimulation.h',['../bulksimulation_8h.html',1,'']]]
 ];

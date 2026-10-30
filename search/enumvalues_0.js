@@ -9,5 +9,6 @@ var searchData=
   ['assigned_6',['ASSIGNED',['../classvotca_1_1xtp_1_1Job.html#a6d513fce9236d7fc7e0fd97dff92d7bfa8bfcaaf24e85e0ec4c13062de5f918a8',1,'votca::xtp::Job']]],
   ['atomic_5fmass_5funits_7',['atomic_mass_units',['../namespacevotca_1_1tools.html#af92b139599662d5a02e259ed067e2022aa3ae8f027749b931490560fd94a8820b',1,'votca::tools']]],
   ['attograms_8',['attograms',['../namespacevotca_1_1tools.html#af92b139599662d5a02e259ed067e2022a9d0976cb974e2381d6df0d38ce319f92',1,'votca::tools']]],
-  ['available_9',['AVAILABLE',['../classvotca_1_1xtp_1_1Job.html#a6d513fce9236d7fc7e0fd97dff92d7bfa6f9a8d5568d7a5d089bc9314b16d460b',1,'votca::xtp::Job']]]
+  ['auto_9',['Auto',['../classvotca_1_1xtp_1_1GraphRandomWalk.html#a45458352114153750cae5a6ce508b4f7a06b9281e396db002010bde1de57262eb',1,'votca::xtp::GraphRandomWalk']]],
+  ['available_10',['AVAILABLE',['../classvotca_1_1xtp_1_1Job.html#a6d513fce9236d7fc7e0fd97dff92d7bfa6f9a8d5568d7a5d089bc9314b16d460b',1,'votca::xtp::Job']]]
 ];
