@@ -177,6 +177,7 @@ var namespacevotca_1_1xtp =
       ] ]
     ] ],
     [ "checkpoint_utils", "namespacevotca_1_1xtp_1_1checkpoint__utils.html", "namespacevotca_1_1xtp_1_1checkpoint__utils" ],
+    [ "citations", "namespacevotca_1_1xtp_1_1citations.html", "namespacevotca_1_1xtp_1_1citations" ],
     [ "OPENMP", "namespacevotca_1_1xtp_1_1OPENMP.html", [
       [ "getMaxThreads", "namespacevotca_1_1xtp_1_1OPENMP.html#a3dd0c386c291a20e63dc0f2590cd38ea", null ],
       [ "getThreadId", "namespacevotca_1_1xtp_1_1OPENMP.html#ab693ea8efb3489c31c4a72eccde4e004", null ],

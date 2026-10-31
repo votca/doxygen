@@ -26,6 +26,7 @@ var dir_dc926f450391b6c725d23f976d3dbdae =
     [ "chargeresponsefit.cc", "chargeresponsefit_8cc.html", null ],
     [ "chargeresponsesolver.cc", "chargeresponsesolver_8cc.html", null ],
     [ "checkpoint.cc", "checkpoint_8cc.html", "checkpoint_8cc" ],
+    [ "citations.cc", "citations_8cc.html", "citations_8cc" ],
     [ "classicalsegment.cc", "classicalsegment_8cc.html", null ],
     [ "couplingbase.cc", "couplingbase_8cc.html", null ],
     [ "cubefile_writer.cc", "cubefile__writer_8cc.html", "cubefile__writer_8cc" ],

@@ -36,6 +36,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "checkpointreader.h", "checkpointreader_8h.html", "checkpointreader_8h" ],
     [ "checkpointtable.h", "checkpointtable_8h.html", "checkpointtable_8h" ],
     [ "checkpointwriter.h", "checkpointwriter_8h.html", "checkpointwriter_8h" ],
+    [ "citations.h", "citations_8h.html", "citations_8h" ],
     [ "classicalsegment.h", "classicalsegment_8h.html", "classicalsegment_8h" ],
     [ "convergenceacc.h", "convergenceacc_8h.html", "convergenceacc_8h" ],
     [ "couplingbase.h", "couplingbase_8h.html", "couplingbase_8h" ],

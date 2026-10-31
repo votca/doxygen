@@ -149,6 +149,7 @@ var hierarchy =
         [ "votca::xtp::Spectrum", "classvotca_1_1xtp_1_1Spectrum.html", null ]
       ] ]
     ] ],
+    [ "votca::xtp::citations::CalculatorEntry", "structvotca_1_1xtp_1_1citations_1_1CalculatorEntry.html", null ],
     [ "votca::xtp::StochasticNetwork::Carrier", "structvotca_1_1xtp_1_1StochasticNetwork_1_1Carrier.html", null ],
     [ "votca::xtp::GridContainers::Cartesian_gridpoint", "structvotca_1_1xtp_1_1GridContainers_1_1Cartesian__gridpoint.html", null ],
     [ "votca::xtp::DFTEngine::CDFTConstraintSpec", "structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec.html", null ],
@@ -447,6 +448,7 @@ var hierarchy =
     [ "votca::xtp::Optimiser_costfunction", "classvotca_1_1xtp_1_1Optimiser__costfunction.html", [
       [ "votca::xtp::ADIIS_costfunction", "classvotca_1_1xtp_1_1ADIIS__costfunction.html", null ]
     ] ],
+    [ "votca::xtp::citations::Optional", "structvotca_1_1xtp_1_1citations_1_1Optional.html", null ],
     [ "votca::xtp::OptionalTiming", "classvotca_1_1xtp_1_1OptionalTiming.html", null ],
     [ "votca::xtp::FullBSEDavidson::Options", "structvotca_1_1xtp_1_1FullBSEDavidson_1_1Options.html", null ],
     [ "votca::xtp::LatticeModel::Options", "structvotca_1_1xtp_1_1LatticeModel_1_1Options.html", null ],
@@ -518,6 +520,7 @@ var hierarchy =
     [ "votca::xtp::EwaldPeriodicDipoleOperator::RawMultiplyTimings", "structvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator_1_1RawMultiplyTimings.html", null ],
     [ "votca::csg::RDFCalculator", "classvotca_1_1csg_1_1RDFCalculator.html", null ],
     [ "votca::xtp::LifetimeSimulation::Record", "structvotca_1_1xtp_1_1LifetimeSimulation_1_1Record.html", null ],
+    [ "votca::xtp::citations::Reference", "structvotca_1_1xtp_1_1citations_1_1Reference.html", null ],
     [ "votca::xtp::Region", "classvotca_1_1xtp_1_1Region.html", [
       [ "votca::xtp::MMRegion< PolarSegment >", "classvotca_1_1xtp_1_1MMRegion.html", [
         [ "votca::xtp::PolarRegion", "classvotca_1_1xtp_1_1PolarRegion.html", null ]

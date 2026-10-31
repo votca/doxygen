@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"classCsgREupdate.html#ac7e27c31c884e9fbc9180d812d07fc38":[3,0,14,8],
+"classCsgREupdate.html#ace5af5765f6ff0b99f8d1c66931289c6":[3,0,14,19],
+"classCsgREupdate.html#ad0e1142a5a52033dc682eadae92def30":[3,0,14,42],
+"classCsgREupdate.html#ad412473a1d027470fd43fd61a6873176":[3,0,14,30],
+"classCsgREupdate.html#ad6de4dfba18a9c5f02997f81cff2b0fd":[3,0,14,5],
 "classCsgREupdate.html#aef937d984499dc80113112b2b5f87b71":[3,0,14,26],
 "classCsgREupdate.html#af429e7214bb4b1688f1a16f6982d05da":[3,0,14,16],
 "classCsgREupdate.html#af852f6f4cb1bf2ca16152386cd9e7063":[3,0,14,37],
@@ -181,11 +186,11 @@ var NAVTREEINDEX2 =
 "classXtpTools.html#ab7dad515c83c7b6d67136219f90f4d4e":[3,0,28,8],
 "classXtpTools.html#acd8d94cf3f8fd7091f63b3d6f7e7ecbb":[3,0,28,4],
 "classes.html":[3,1],
-"classicalsegment_8cc.html":[4,0,3,1,0,26],
-"classicalsegment_8cc_source.html":[4,0,3,1,0,26],
-"classicalsegment_8h.html":[4,0,3,0,0,0,36],
-"classicalsegment_8h.html#a1d081737a1933f78aeb387f021c4445a":[4,0,3,0,0,0,36,1],
-"classicalsegment_8h_source.html":[4,0,3,0,0,0,36],
+"classicalsegment_8cc.html":[4,0,3,1,0,27],
+"classicalsegment_8cc_source.html":[4,0,3,1,0,27],
+"classicalsegment_8h.html":[4,0,3,0,0,0,37],
+"classicalsegment_8h.html#a1d081737a1933f78aeb387f021c4445a":[4,0,3,0,0,0,37,1],
+"classicalsegment_8h_source.html":[4,0,3,0,0,0,37],
 "classpyxtp_1_1XTPCalculators.html":[2,0,1,0],
 "classpyxtp_1_1XTPCalculators.html":[3,0,1,0],
 "classpyxtp_1_1XTPCalculators.html#a58a0f6cf864fd794baff71cd98509305":[2,0,1,0,1],
@@ -244,10 +249,5 @@ var NAVTREEINDEX2 =
 "classvotca_1_1csg_1_1BaseBead.html#a8cfd7fae492b3d556cd94b10c058105e":[3,0,3,0,0,21],
 "classvotca_1_1csg_1_1BaseBead.html#a9ae144f1fdbd52fa5591cf0d37073e9a":[2,0,3,0,0,13],
 "classvotca_1_1csg_1_1BaseBead.html#a9ae144f1fdbd52fa5591cf0d37073e9a":[3,0,3,0,0,13],
-"classvotca_1_1csg_1_1BaseBead.html#a9f852c18150b68ed6f66b3c28e77d107":[2,0,3,0,0,18],
-"classvotca_1_1csg_1_1BaseBead.html#a9f852c18150b68ed6f66b3c28e77d107":[3,0,3,0,0,18],
-"classvotca_1_1csg_1_1BaseBead.html#aa38b4dcaf0965d2c4f724b1963f852b5":[2,0,3,0,0,15],
-"classvotca_1_1csg_1_1BaseBead.html#aa38b4dcaf0965d2c4f724b1963f852b5":[3,0,3,0,0,15],
-"classvotca_1_1csg_1_1BaseBead.html#aadc503005dc9cba42aae4929f234b518":[2,0,3,0,0,22],
-"classvotca_1_1csg_1_1BaseBead.html#aadc503005dc9cba42aae4929f234b518":[3,0,3,0,0,22]
+"classvotca_1_1csg_1_1BaseBead.html#a9f852c18150b68ed6f66b3c28e77d107":[2,0,3,0,0,18]
 };

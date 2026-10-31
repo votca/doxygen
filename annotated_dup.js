@@ -162,6 +162,11 @@ var annotated_dup =
           [ "InferDataType&lt; bool &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01bool_01_4" ],
           [ "InferDataType&lt; std::string &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4" ]
         ] ],
+        [ "citations", "namespacevotca_1_1xtp_1_1citations.html", [
+          [ "Reference", "structvotca_1_1xtp_1_1citations_1_1Reference.html", "structvotca_1_1xtp_1_1citations_1_1Reference" ],
+          [ "Optional", "structvotca_1_1xtp_1_1citations_1_1Optional.html", "structvotca_1_1xtp_1_1citations_1_1Optional" ],
+          [ "CalculatorEntry", "structvotca_1_1xtp_1_1citations_1_1CalculatorEntry.html", "structvotca_1_1xtp_1_1citations_1_1CalculatorEntry" ]
+        ] ],
         [ "qp_solver", "namespacevotca_1_1xtp_1_1qp__solver.html", [
           [ "Stats", "structvotca_1_1xtp_1_1qp__solver_1_1Stats.html", "structvotca_1_1xtp_1_1qp__solver_1_1Stats" ],
           [ "RootCandidate", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate.html", "structvotca_1_1xtp_1_1qp__solver_1_1RootCandidate" ],
