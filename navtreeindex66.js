@@ -1,5 +1,9 @@
 var NAVTREEINDEX66 =
 {
+"sigmafactory__uks_8h_source.html":[4,0,3,0,0,0,155],
+"spectrum_8cc.html":[4,0,3,1,0,12,31],
+"spectrum_8cc_source.html":[4,0,3,1,0,12,31],
+"spectrum_8h.html":[4,0,3,1,0,12,32],
 "spectrum_8h.html#a34658fa8ad2be42b68f82b4f341d26ab":[4,0,3,1,0,12,32,1],
 "spectrum_8h_source.html":[4,0,3,1,0,12,32],
 "sphere__lebedev__rule_8cc.html":[4,0,3,1,0,5,4],
@@ -245,9 +249,5 @@ var NAVTREEINDEX66 =
 "structvotca_1_1csg_1_1NBListGrid__3Body_1_1cell__t.html#a7af8a9fb9d452fd049d632dd4dcfc21e":[3,0,3,0,26,0,0],
 "structvotca_1_1csg_1_1NBListGrid__3Body_1_1cell__t.html#a89a3d9ca593cafc5b009a753c14cdc8a":[2,0,3,0,26,0,3],
 "structvotca_1_1csg_1_1NBListGrid__3Body_1_1cell__t.html#a89a3d9ca593cafc5b009a753c14cdc8a":[3,0,3,0,26,0,3],
-"structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html":[2,0,3,0,48,2],
-"structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html":[3,0,3,0,48,2],
-"structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html#a07cbd54bd85c4a44110e66ef57e253ca":[2,0,3,0,48,2,1],
-"structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html#a07cbd54bd85c4a44110e66ef57e253ca":[3,0,3,0,48,2,1],
-"structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html#a4f843d80203fe3082424a254adc68d20":[2,0,3,0,48,2,0]
+"structvotca_1_1csg_1_1RDFCalculator_1_1group__t.html":[2,0,3,0,48,2]
 };

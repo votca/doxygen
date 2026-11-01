@@ -1,5 +1,9 @@
 var NAVTREEINDEX69 =
 {
+"structvotca_1_1xtp_1_1ChargeResponseSolver_1_1Info.html#ad8187e0f04aeff0c91e951b1f452d98d":[3,0,3,2,51,0,2],
+"structvotca_1_1xtp_1_1ChargeResponseSolver_1_1SegmentBlock.html":[2,0,3,2,55,3],
+"structvotca_1_1xtp_1_1ChargeResponseSolver_1_1SegmentBlock.html":[3,0,3,2,51,3],
+"structvotca_1_1xtp_1_1ChargeResponseSolver_1_1SegmentBlock.html#a3497c35a734079a27326d9519561eea1":[2,0,3,2,55,3,2],
 "structvotca_1_1xtp_1_1ChargeResponseSolver_1_1SegmentBlock.html#a3497c35a734079a27326d9519561eea1":[3,0,3,2,51,3,2],
 "structvotca_1_1xtp_1_1ChargeResponseSolver_1_1SegmentBlock.html#aac1de1853e515e5ef14efcb4e6d87138":[2,0,3,2,55,3,0],
 "structvotca_1_1xtp_1_1ChargeResponseSolver_1_1SegmentBlock.html#aac1de1853e515e5ef14efcb4e6d87138":[3,0,3,2,51,3,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX69 =
 "structvotca_1_1xtp_1_1EwaldRegistry_1_1KeyLess.html":[3,0,3,2,93,0],
 "structvotca_1_1xtp_1_1EwaldRegistry_1_1KeyLess.html#a0d1a4a5417c7946af9e06fef3e29d6b1":[2,0,3,2,97,0,0],
 "structvotca_1_1xtp_1_1EwaldRegistry_1_1KeyLess.html#a0d1a4a5417c7946af9e06fef3e29d6b1":[3,0,3,2,93,0,0],
-"structvotca_1_1xtp_1_1EwaldShapeCorrection_1_1Moments.html":[2,0,3,2,98,0],
-"structvotca_1_1xtp_1_1EwaldShapeCorrection_1_1Moments.html":[3,0,3,2,94,0],
-"structvotca_1_1xtp_1_1EwaldShapeCorrection_1_1Moments.html#a0eee037e6d648adf3849cd4d8e3ad14c":[2,0,3,2,98,0,2],
-"structvotca_1_1xtp_1_1EwaldShapeCorrection_1_1Moments.html#a0eee037e6d648adf3849cd4d8e3ad14c":[3,0,3,2,94,0,2],
-"structvotca_1_1xtp_1_1EwaldShapeCorrection_1_1Moments.html#abd5ec4adbbdc73ce2d4098f9d30b89ee":[2,0,3,2,98,0,0]
+"structvotca_1_1xtp_1_1EwaldShapeCorrection_1_1Moments.html":[2,0,3,2,98,0]
 };

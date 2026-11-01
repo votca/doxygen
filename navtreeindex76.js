@@ -1,5 +1,9 @@
 var NAVTREEINDEX76 =
 {
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01int_01_4.html#af50db166147b5c268dc888456438b607":[3,0,3,2,0,6,0],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html":[2,0,3,2,2,7],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html":[3,0,3,2,0,7],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html#af731c65b2f4a40ae1adcfb92c38ffb79":[2,0,3,2,2,7,0],
 "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01long_01int_01_4.html#af731c65b2f4a40ae1adcfb92c38ffb79":[3,0,3,2,0,7,0],
 "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html":[2,0,3,2,2,16],
 "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType_3_01std_1_1string_01_4.html":[3,0,3,2,0,16],
@@ -245,9 +249,5 @@ var NAVTREEINDEX76 =
 "transition__densities_8cc_source.html":[4,0,3,1,0,108],
 "transition__densities_8h.html":[4,0,3,0,0,0,173],
 "transition__densities_8h.html#acbdad374eb8d4f5aa930a18df464f894":[4,0,3,0,0,0,173,1],
-"transition__densities_8h_source.html":[4,0,3,0,0,0,173],
-"trapfinder_8cc.html":[4,0,3,1,0,109],
-"trapfinder_8cc_source.html":[4,0,3,1,0,109],
-"trapfinder_8h.html":[4,0,3,0,0,0,174],
-"trapfinder_8h.html#abc06583a19bfc4149bfb77635ae7eecc":[4,0,3,0,0,0,174,4]
+"transition__densities_8h_source.html":[4,0,3,0,0,0,173]
 };

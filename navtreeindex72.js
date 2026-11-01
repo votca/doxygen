@@ -1,5 +1,9 @@
 var NAVTREEINDEX72 =
 {
+"structvotca_1_1xtp_1_1LifetimeSimulation_1_1DecaySums.html#adc1a01d10c4dd396471a93831ffa24f0":[3,0,3,2,131,2,1],
+"structvotca_1_1xtp_1_1LifetimeSimulation_1_1DecaySums.html#ae82ec57b6d2f647bf302cf47eddf67f7":[2,0,3,2,135,2,2],
+"structvotca_1_1xtp_1_1LifetimeSimulation_1_1DecaySums.html#ae82ec57b6d2f647bf302cf47eddf67f7":[3,0,3,2,131,2,2],
+"structvotca_1_1xtp_1_1LifetimeSimulation_1_1EnergySample.html":[2,0,3,2,135,3],
 "structvotca_1_1xtp_1_1LifetimeSimulation_1_1EnergySample.html":[3,0,3,2,131,3],
 "structvotca_1_1xtp_1_1LifetimeSimulation_1_1EnergySample.html#a56072a49930d3479bde285b72e12c2cc":[2,0,3,2,135,3,1],
 "structvotca_1_1xtp_1_1LifetimeSimulation_1_1EnergySample.html#a56072a49930d3479bde285b72e12c2cc":[3,0,3,2,131,3,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX72 =
 "structvotca_1_1xtp_1_1QMAtom_1_1data.html#a97f4bed0e0fc098ca406e0bdc638e013":[3,0,3,2,155,0,3],
 "structvotca_1_1xtp_1_1QMAtom_1_1data.html#a9e4c86a181cb9da857ace80b77352eb3":[2,0,3,2,159,0,11],
 "structvotca_1_1xtp_1_1QMAtom_1_1data.html#a9e4c86a181cb9da857ace80b77352eb3":[3,0,3,2,155,0,11],
-"structvotca_1_1xtp_1_1QMAtom_1_1data.html#aa55c09219b1d7cac3651953d597a4ecd":[2,0,3,2,159,0,9],
-"structvotca_1_1xtp_1_1QMAtom_1_1data.html#aa55c09219b1d7cac3651953d597a4ecd":[3,0,3,2,155,0,9],
-"structvotca_1_1xtp_1_1QMAtom_1_1data.html#aa9fda8b6a82d7f6a76c496d7106745f6":[2,0,3,2,159,0,8],
-"structvotca_1_1xtp_1_1QMAtom_1_1data.html#aa9fda8b6a82d7f6a76c496d7106745f6":[3,0,3,2,155,0,8],
-"structvotca_1_1xtp_1_1QMAtom_1_1data.html#ac77fa9d52642fee47beaf5a1e0d55cec":[2,0,3,2,159,0,0]
+"structvotca_1_1xtp_1_1QMAtom_1_1data.html#aa55c09219b1d7cac3651953d597a4ecd":[2,0,3,2,159,0,9]
 };

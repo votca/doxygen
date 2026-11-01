@@ -99,7 +99,7 @@ $(function(){initNavTree('classvotca_1_1xtp_1_1FragmentSaturator.html','','class
 </div><!--header-->
 <div class="contents">
 
-<p>Saturates a mapped <a class="el" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>'s own, real, external (i.e. covalently bonded at the MD level, but mapped out of this fragment/segment) bonds with new H atoms.  
+<p>Saturates the external bonds of a mapped <a class="el" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> (bonds that exist at the MD level but cross the segment boundary) with H atoms.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fragmentsaturator_8h_source.html">fragmentsaturator.h</a>&gt;</code></p>
@@ -118,10 +118,10 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a615c69c93ae412fad5e3c3c681d44cb0" id="r_a615c69c93ae412fad5e3c3c681d44cb0"><td class="memItemLeft">static constexpr double&#160;</td><td class="memItemRight"><a class="el" href="#a615c69c93ae412fad5e3c3c681d44cb0">kDefaultCHBondLengthAngstrom</a> = 1.09</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Saturates a mapped <a class="el" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>'s own, real, external (i.e. covalently bonded at the MD level, but mapped out of this fragment/segment) bonds with new H atoms. </p>
-<p>This is deliberately the isolated, purely geometric placement step only &ndash; given a direction (already recorded on each <a class="el" href="classvotca_1_1xtp_1_1QMAtom.html" title="container for QM atoms">QMAtom</a> by <a class="el" href="classvotca_1_1xtp_1_1SegmentMapper.html">SegmentMapper</a>, and already rigid-body-transformed into this fragment's own, mapped/idealized reference frame &ndash; see <a class="el" href="classvotca_1_1xtp_1_1QMAtom.html#aae484b8cec52b9a5050391187be072d8">QMAtom::hasExternalBond()</a>/getExternalBondDirection() and <a class="el" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aa8ae4a215ea3e601db0d3ce8ee98a89c">Md2QmEngine::map()</a>'s own header comment for how that direction was originally computed), places a new H atom at a standard, typical bond length along it. It does NOT attempt any relaxation of the new H's own position at all &ndash; confirmed directly, this session, by an actual, real DFT-level test, that this initial, purely geometric placement alone carries a real, non-trivial error (~0.08 Angstrom, for a deliberately, realistically distorted MD segment) &ndash; a follow-up, constrained relaxation step (planned separately, not yet implemented) is expected to be necessary for most real use, not merely an optional refinement. This class's own, single responsibility is only the initial placement itself. </p>
+<div class="textblock"><p>Saturates the external bonds of a mapped <a class="el" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> (bonds that exist at the MD level but cross the segment boundary) with H atoms. </p>
+<p>SaturateExternalBonds places each H at a fixed bond length along the external-bond direction stored on the <a class="el" href="classvotca_1_1xtp_1_1QMAtom.html" title="container for QM atoms">QMAtom</a> by <a class="el" href="classvotca_1_1xtp_1_1SegmentMapper.html">SegmentMapper</a> (already transformed into the mapped frame; see <a class="el" href="classvotca_1_1xtp_1_1QMAtom.html#a94546f33eec223c2285683e82bd4e645">QMAtom::getExternalBondDirection()</a> and <a class="el" href="classvotca_1_1xtp_1_1Md2QmEngine.html#aa8ae4a215ea3e601db0d3ce8ee98a89c">Md2QmEngine::map()</a>). This placement alone has errors of about 0.08 Angstrom for distorted MD geometries, so RelaxNewAtoms subsequently relaxes the added H atoms with all other atoms fixed. </p>
 
-<p class="definition">Definition at line <a class="el" href="fragmentsaturator_8h_source.html#l00052">52</a> of file <a class="el" href="fragmentsaturator_8h_source.html">fragmentsaturator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fragmentsaturator_8h_source.html#l00043">43</a> of file <a class="el" href="fragmentsaturator_8h_source.html">fragmentsaturator.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a190ea0a0e0636f569afce869322caa01" name="a190ea0a0e0636f569afce869322caa01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a190ea0a0e0636f569afce869322caa01">&#9670;&#160;</a></span>RelaxNewAtoms()</h2>
@@ -155,7 +155,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="fragmentsaturator_8cc_source.html#l00105">105</a> of file <a class="el" href="fragmentsaturator_8cc_source.html">fragmentsaturator.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fragmentsaturator_8cc_source.html#l00076">76</a> of file <a class="el" href="fragmentsaturator_8cc_source.html">fragmentsaturator.cc</a>.</p>
 
 </div>
 </div>
@@ -211,7 +211,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="fragmentsaturator_8h_source.html#l00064">64</a> of file <a class="el" href="fragmentsaturator_8h_source.html">fragmentsaturator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fragmentsaturator_8h_source.html#l00047">47</a> of file <a class="el" href="fragmentsaturator_8h_source.html">fragmentsaturator.h</a>.</p>
 
 </div>
 </div>

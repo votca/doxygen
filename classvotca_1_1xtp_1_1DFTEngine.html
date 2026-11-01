@@ -445,7 +445,7 @@ Friends</h2></td></tr>
 <div class="textblock"><p>Electronic ground-state via Density-Functional Theory. </p>
 <p>This class assembles the one- and two-electron matrix contributions needed for self-consistent Kohn-Sham calculations in a Gaussian AO basis. The SCF machinery supports restricted closed-shell calculations and unrestricted spin-polarized calculations, while reusing the same integral and numerical XC infrastructure whenever possible. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00095">95</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00088">88</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a64f27a8072a65458620fd164bf35a090" name="a64f27a8072a65458620fd164bf35a090"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a64f27a8072a65458620fd164bf35a090">&#9670;&#160;</a></span>AtomicGuess()</h2>
@@ -472,7 +472,7 @@ Friends</h2></td></tr>
 
 <p>Build an atomic-density based initial guess in the AO basis. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02897">2897</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02627">2627</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -502,9 +502,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Converts a parsed <a class="el" href="structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec.html">CDFTConstraintSpec</a> (atom indices + relative target charge, from <a class="el" href="#a7dda0935eee021c779d32e6b92032981" title="Read DFT, grid, and SCF settings from the user options tree.">Initialize()</a>'s own &lt;cdft&gt; options parsing) into a fully-built <a class="el" href="structvotca_1_1xtp_1_1HirshfeldPartition_1_1Constraint.html">HirshfeldPartition::Constraint</a>, given the real molecule this calculation is actually running on. Builds the weight matrix as the SUM of BuildWeightMatrix over every atom in spec.atom_indices &ndash; Hirshfeld weights are additive across atoms in a fragment (w_fragment(r) = sum_{i in fragment} w_i(r)), so this generalizes correctly to a multi-atom region, not just a single atom. The absolute target_population is computed as (sum of the fragment atoms' own nuclear charges) - spec.target_charge, matching CP2K's own internal (absolute) TARGET convention &ndash; only the OPTIONS-file syntax is charge-relative, per the earlier design discussion on this; the underlying Constraint/RunCDFT machinery itself was never changed and still only ever deals in absolute populations. </p>
+<p>Build the <a class="el" href="structvotca_1_1xtp_1_1HirshfeldPartition_1_1Constraint.html">HirshfeldPartition::Constraint</a> for spec on mol. The weight matrix is the sum of BuildWeightMatrix over spec.atom_indices (Hirshfeld weights are additive, w_fragment(r) = sum_{i in fragment} w_i(r)). The absolute target population is sum_{i in fragment} Z_i - spec.target_charge. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03350">3350</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03078">3078</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -548,10 +548,10 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Build a dimer guess (both alpha and beta MOs, genuinely different from each other in general) by loading two independently-converged monomer .orb files (dimer_guess_orbA_name_/dimer_guess_orbB_name_) and combining them via <a class="el" href="classvotca_1_1xtp_1_1Orbitals.html#a8b321c9498e4eaec231e210055b60956" title="Guess for a dimer of two monomers with independently ARBITRARY charge and spin, built by combining ea...">Orbitals::PrepareDimerGuessMixedSpin</a>.</p>
-<p>Runs two sanity checks against dimer_mol (this calculation's own, real molecule) before trusting either monomer file at all: (1) element-sequence match &ndash; monomer A's own elements, in order, must exactly match dimer_mol's first N_A atoms, and monomer B's must match the remaining atoms; (2) internal-geometry match &ndash; every pairwise interatomic distance WITHIN monomer A must match the corresponding pairwise distance within dimer_mol's own first N_A atoms, to a tight numerical tolerance (and likewise for monomer B against the remaining atoms). Deliberately NOT an absolute-position comparison: after being optimized as a standalone monomer and then placed into the dimer, a monomer's atoms are expected to be translated/rotated relative to their own, independent optimization &ndash; only the INTERNAL geometry (bond lengths/angles, which no translation or rotation changes) should still match if the supplied file genuinely corresponds to that fragment. </p>
+<p>Build a dimer guess (separate alpha and beta MOs) from two converged monomer .orb files (dimer_guess_orbA_name_/dimer_guess_orbB_name_), combined via <a class="el" href="classvotca_1_1xtp_1_1Orbitals.html#a8b321c9498e4eaec231e210055b60956" title="Dimer guess from two converged monomers of arbitrary charge and spin.">Orbitals::PrepareDimerGuessMixedSpin</a>.</p>
+<p>Checks each monomer against dimer_mol: (1) its element sequence must match the first N_A (monomer A) or the remaining (monomer B) atoms; (2) all intra-monomer interatomic distances must match those of the corresponding dimer atoms to a tight tolerance. Absolute positions are not compared, since a monomer may be translated/rotated in the dimer. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l04004">4004</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03707">3707</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -580,7 +580,7 @@ Friends</h2></td></tr>
 
 <p>Build the extended-Hückel Hamiltonian for the current molecule. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03947">3947</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03650">3650</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -609,7 +609,7 @@ Friends</h2></td></tr>
 
 <p>Build orbital energies used in the extended-Hückel starting guess. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03919">3919</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03622">3622</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -669,7 +669,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>C_v^T G[dP_k] C_o for dP_k = 2 (C_v U_k C_o^T + C_o U_k^T C_v^T), with G the closed-shell response of J, 0.5 a_x K and V_xc (f_xc at the density P0): the coupling part of the orbital Hessian, shared by StaticResponse and the second-order SCF. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02963">2963</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02691">2691</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -698,7 +698,7 @@ Friends</h2></td></tr>
 
 <p>Evaluate and print the electronic dipole moment from the final density. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00411">411</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00364">364</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -731,7 +731,7 @@ Friends</h2></td></tr>
 
 <p>Build the Coulomb matrix contribution from the current density matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00902">902</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00730">730</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -768,7 +768,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Build Coulomb and exact-exchange matrix contributions from the current MO coefficients and density. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00876">876</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00704">704</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -806,12 +806,11 @@ Friends</h2></td></tr>
 <p>Assemble the total ground-state nuclear gradient (one-electron [kinetic + nuclear attraction] + overlap "Pulay force" + nuclear repulsion + RI-J Coulomb + RI-K exact exchange [hybrid functionals]</p><ul>
 <li>XC, LDA or GGA) from a converged density matrix and store it in the orbital container via <a class="el" href="classvotca_1_1xtp_1_1Orbitals.html#a9f75541231db0a60c8cd5ee69996b664">Orbitals::setForces()</a>, as the physical force (-dE/dR, matching the convention external tools such as ASE expect from a <a class="el" href="classvotca_1_1tools_1_1Calculator.html" title="Base class for all calculators.">Calculator</a>'s getForces()).</li>
 </ul>
-<p>The one-electron term and the overlap Pulay force were initially MISSING entirely &ndash; discovered by the first genuine end-to-end SCF+forces test (test_dftengine_forces.cc), since every earlier gradient test in this branch validated individual terms against fixed density matrices without ever checking the complete gradient against a real total SCF energy. The overlap Pulay force (arising because the MO orthonormality constraint C^T S C = I depends on geometry through the moving basis functions, weighted by orbital energies rather than occupation) is a standard part of any Gaussian-basis SCF gradient, distinct from the "PulayGradient" naming used elsewhere in this codebase for the XC-integral basis-function term.</p>
-<p>RI-K/hybrid-functional support was added after <a class="el" href="classvotca_1_1xtp_1_1DFTGradient.html">DFTGradient</a>:: RIKGradient's energy convention was fixed (a self-introduced regression during that work: a plausible-looking hand-algebra "correction" to a half-transformed structure was wrong, caught by directly, numerically simulating <a class="el" href="classvotca_1_1xtp_1_1ERIs.html#af2538789af25aaf9629b740c43cb684b">ERIs::CalculateEXX_mos</a>'s real algorithm before committing to it &ndash; the original fully-MO- transformed structure was correct, needing only a missing factor of 2) and then verified via a real C++ finite-difference test against <a class="el" href="classvotca_1_1xtp_1_1ERIs.html#af2538789af25aaf9629b740c43cb684b">ERIs::CalculateEXX_mos</a> itself, not just a self-consistent formula. Also confirmed (numerically, to machine precision): CalculateEXX_mos's symmetric V^-1/2 RI fitting and RIKGradient's simpler asymmetric V^-1 fitting give IDENTICAL exchange energies (an exact algebraic identity for symmetric positive-definite V), so no matrix square root derivative was ever actually needed.</p>
-<p>SCOPE, explicitly checked and logged rather than silently producing a wrong result: only supported when RI is actually in use for the SCF (auxbasis_name_ non-empty &ndash; <a class="el" href="classvotca_1_1xtp_1_1DFTGradient.html#a94909d479951b14d65e615ed5971a50f">DFTGradient::RIJGradient</a>/RIKGradient only implement the RI path, not conventional 4-center <a class="el" href="classvotca_1_1xtp_1_1ERIs.html" title="Takes a density matrix and and an auxiliary basis set and calculates the electron repulsion integrals...">ERIs</a>).</p>
-<p>OPT-IN: only called at all if compute_forces_ is true (see its declaration below), settable via &lt;xtpdft&gt;&lt;compute_forces&gt;true&lt;/compute_forces&gt;&lt;/xtpdft&gt; in the options tree, defaulting to false. Computing forces adds real, non-trivial cost to every converged SCF, so this is deliberately not silently always-on &ndash; added after this was pointed out as an unflagged side effect of the original, unconditional wiring. </p>
+<p>The overlap Pulay term, -tr(W dS/dR) with the energy-weighted density W, arises because C^T S C = I depends on the geometry through the basis functions; it is distinct from DFTGradient::PulayGradient, the basis-function term of the XC integral.</p>
+<p>The exchange gradient uses the asymmetric V^-1 RI fit, which gives the same exchange energy as the symmetric V^-1/2 fit in <a class="el" href="classvotca_1_1xtp_1_1ERIs.html#af2538789af25aaf9629b740c43cb684b">ERIs::CalculateEXX_mos</a> (exact identity for positive-definite V), so no derivative of V^-1/2 is needed.</p>
+<p>Requires RI (auxbasis_name_ non-empty); RIJGradient/RIKGradient have no 4-centre implementation. Only called if compute_forces_ is set (&lt;xtpdft&gt;&lt;compute_forces&gt;true&lt;/compute_forces&gt;&lt;/xtpdft&gt;, default false), since it adds non-trivial cost to every SCF. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00449">449</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00388">388</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -856,11 +855,10 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>UKS (open-shell) analog of ComputeAndStoreForces.</p>
-<p>STATUS: PARTIAL, deliberately. Four of the five non-XC-adjacent terms generalize cleanly to UKS and are implemented here: nuclear repulsion (unchanged), one-electron [kinetic + nuclear attraction] (uses D_total = Dspin.alpha + Dspin.beta, exactly the same convention RKS's Dmat already uses), the overlap Pulay force (W = W_alpha + W_beta, each WITHOUT the factor of 2 RKS uses, since UKS spin densities are not pre-doubled), and RI-K exact exchange for hybrids (0.5 * ScaHFX_ * [RIKGradient(C_alpha_occ,...) + RIKGradient(C_beta_occ,...)] &ndash; the extra factor of 0.5 relative to the naive guess of ScaHFX_*(...) confirmed both algebraically and numerically: ERIs::CalculateEXX_dmat(P) == 0.5 * ERIs::CalculateEXX_mos(C) when P = C*C^T, checked directly rather than assumed, since UKS's exact exchange goes through CalculateEXX_dmat, a different code path than the one RIKGradient/CalculateEXX_mos were validated against).</p>
-<p>The XC gradient (PulayGradientUKS + GridWeightGradientUKS, LDA and GGA) is now included too &ndash; initially deferred as new derivation work (spin-polarized rho_alpha/rho_beta, and for GGA a genuinely new sigma_alpha-alpha/alpha-beta/beta-beta cross-term structure with no analog in the spin-restricted case), then completed and validated (Python-verified formulas first, then a real C++ finite- difference test against IntegrateVXCSpin &ndash; caught and fixed one real transcription bug, a missing factor of 2 in the GGA sigma term's Hessian contraction, found by careful line-by-line comparison against the verified Python once the first real test run showed a partial, non-catastrophic discrepancy). With XC now included, this function DOES call <a class="el" href="classvotca_1_1xtp_1_1Orbitals.html#a9f75541231db0a60c8cd5ee69996b664">Orbitals::setForces()</a>, same as the RKS ComputeAndStoreForces. </p>
+<p>UKS (open-shell) analog of ComputeAndStoreForces; stores the force via <a class="el" href="classvotca_1_1xtp_1_1Orbitals.html#a9f75541231db0a60c8cd5ee69996b664">Orbitals::setForces()</a>.</p>
+<p>Terms: nuclear repulsion; one-electron [kinetic + nuclear attraction] and RI-J with D_total = D_alpha + D_beta; overlap Pulay with W = W_alpha + W_beta (spin densities are not pre-doubled); RI-K for hybrids as 0.5 * ScaHFX_ * [RIKGradient(C_alpha_occ) + RIKGradient(C_beta_occ)], the 0.5 because UKS exchange uses ERIs::CalculateEXX_dmat(P) = 0.5 * ERIs::CalculateEXX_mos(C) for P = C C^T; and XC (PulayGradientUKS + GridWeightGradientUKS, LDA and GGA, including the sigma_aa/sigma_ab/sigma_bb terms), checked against finite differences of IntegrateVXCSpin. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00771">771</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00617">617</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -886,10 +884,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Build one isolated-atom reference density per unique element in mol, keyed by element symbol &ndash; the promolecular densities Hirshfeld-based CDFT constraints need. Mirrors AtomicGuess's own "find unique elements, run RunAtomicDFT_unrestricted once each,
-cache by element" structure exactly, but (a) always passes use_hunds_rule_occupation=true (unlike AtomicGuess's own call, which never does), and (b) returns the per-element densities directly rather than assembling them into one combined, molecule-sized AO-basis matrix &ndash; Hirshfeld only ever needs each reference density evaluated as a real-space scalar function, using that element's own (small, atom-only) basis re-centered on each real atom's actual position, never embedded into the full molecule's AO basis at all, so there is no molecule-sized object to assemble here in the first place. </p>
+<p>Isolated-atom reference density (in the atom's own basis) for each unique element in mol, keyed by element symbol: the promolecular densities for Hirshfeld-based CDFT. Same structure as AtomicGuess, but with use_hunds_rule_occupation=true, and the per-element densities are returned instead of being assembled into a molecular AO matrix, since Hirshfeld evaluates them in real space on each atom's position. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02939">2939</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02669">2669</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -929,9 +926,9 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The four non-XC-adjacent gradient terms that generalize cleanly to UKS &ndash; see the detailed derivation on ComputeAndStoreForcesUKS below, which calls this and then decides whether/how to report the result (currently: never stores it, since XC is missing). Returns the (natoms x 3) dE/dR gradient directly (NOT negated to the physical force convention &ndash; that flip, if/when this becomes part of a complete, storable UKS gradient, belongs at the point of storage, same as the RKS path). </p>
+<p>Non-XC part of the UKS gradient (nuclear repulsion, one-electron, overlap Pulay, RI-J, RI-K), see ComputeAndStoreForcesUKS. Returns dE/dR (natoms x 3), not the force; the sign flip is done on storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00718">718</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00574">574</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -966,9 +963,9 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
   </tr>
 </table>
 </div><div class="memdoc">
-<p>UKS overlap Pulay force &ndash; W = W_alpha + W_beta, each WITHOUT the factor of 2 RKS uses. Split out as its own method (rather than inlined in ComputeNonXCGradientUKS) because it needs a genuinely DIFFERENT validation strategy than the other four terms: it is NOT checkable against a fixed-C finite difference (confirmed directly by a failed attempt to do exactly that &ndash; see git history), since it specifically corrects for C's implicit R-dependence through the orthonormality constraint, valid only at a genuine SCF stationary point. See test_dftengine_private.cc for how this is actually validated instead (reduction to the already-validated RKS formula when alpha==beta). </p>
+<p>UKS overlap Pulay gradient with W = W_alpha + W_beta (no factor of 2, unlike RKS). Separate method because it cannot be checked against a fixed-C finite difference: it accounts for the implicit R-dependence of C through orthonormality and is only valid at an SCF stationary point. test_dftengine_private.cc checks it against the RKS formula for alpha == beta. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00670">670</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00541">541</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -996,7 +993,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Static polarizability of the converged closed-shell state in orb (StaticResponse with the dipole operators), stored in orb. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01007">1007</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00835">835</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1025,7 +1022,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Propagate basis-set, XC, and metadata settings into the orbital container. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03412">3412</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03136">3136</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1071,7 +1068,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03139">3139</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02867">2867</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1091,7 +1088,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Run a full ground-state DFT calculation and store the results in the orbital container. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00986">986</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00814">814</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1140,7 +1137,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p><a class="el" href="#ad3978c594e67e57d078d469b5aa8bca3">Evaluate()</a> without the timing report. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01039">1039</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00867">867</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1178,7 +1175,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Run the restricted closed-shell SCF loop and store the converged result. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01370">1370</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01137">1137</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1235,7 +1232,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Run the unrestricted Kohn-Sham SCF loop and store alpha and beta orbitals separately. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01615">1615</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01382">1382</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1272,7 +1269,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Generate an extended-Hückel based guess refined with the one-electron DFT Hamiltonian. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03980">3980</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03683">3683</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1300,7 +1297,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Generate an initial guess by diagonalizing the extended-Hückel Hamiltonian. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03967">3967</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03670">3670</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1332,7 +1329,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Compute the classical interaction energy between nuclei and external multipoles. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03675">3675</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03399">3399</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1361,7 +1358,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Return the configured AO basis-set name for the DFT calculation. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00182">182</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00161">161</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -1390,7 +1387,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p><a class="el" href="classvotca_1_1tools_1_1Name.html" title="Name object.">Name</a> of the integration grid of the SCF (xtpdft.integration_grid). </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00199">199</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00178">178</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -1410,7 +1407,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Free-atom reference densities of the Hirshfeld partition of mol (the ones CDFT uses), as atom-centred references for <a class="el" href="classvotca_1_1xtp_1_1HirshfeldPartition.html">HirshfeldPartition</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03344">3344</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03072">3072</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1439,7 +1436,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Generate an initial guess by diagonalizing the core Hamiltonian only. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00948">948</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00776">776</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1463,7 +1460,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 <p>The SCF cycle solves F C = S C eps in a Gaussian AO basis. In the restricted branch a single density matrix is iterated, whereas in the UKS branch separate alpha and beta densities are propagated while sharing the same one-electron Hamiltonian, Coulomb term, and AO overlap matrix.</p>
 <p>Relative to the earlier restricted implementation, the UKS extension keeps the spin channels separate only where the equations require it: exchange, spin-resolved XC potentials, occupations, and convergence acceleration. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00105">105</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00099">99</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1568,7 +1565,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Integrate an external electron density represented by another orbital container. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03869">3869</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03572">3572</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1597,7 +1594,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Integrate a homogeneous external electric field into the AO basis. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03749">3749</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03452">3452</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1629,7 +1626,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Integrate the electrostatic potential generated by external multipoles into the AO basis. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03762">3762</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03465">3465</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1657,7 +1654,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Report whether the current electron counts define a spin-polarized reference. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00230">230</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00209">209</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -1726,7 +1723,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Generate an initial guess from a model potential including numerical XC contributions. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00959">959</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00787">787</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1755,7 +1752,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Compute the classical nucleus-nucleus repulsion energy. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03619">3619</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03343">3343</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1783,7 +1780,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Return the number of spatial orbitals occupied by at least one electron in a restricted open-shell reference. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00236">236</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00215">215</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -1812,7 +1809,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Orthonormalize an initial MO guess with respect to the AO overlap matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03907">3907</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03610">3610</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1844,7 +1841,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Initialize basis sets, integral engines, and electron counts before entering the SCF loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03485">3485</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03209">3209</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1877,7 +1874,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Print a one-spin list of orbital energies and occupations to the logger. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00331">331</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00284">284</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1915,7 +1912,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Print separate alpha and beta orbital energies for a UKS calculation. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00351">351</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00304">304</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1944,7 +1941,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 
 <p>Basis dimensions and the memory of the large intermediates. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00913">913</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00741">741</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1963,7 +1960,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02165">2165</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01914">1914</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -1991,7 +1988,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </div><div class="memdoc">
 <p>Identifies what the RI integrals depend on: basis sets (shell types, primitives, centres) and the pair threshold. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02138">2138</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01887">1887</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2032,7 +2029,7 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03001">3001</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02729">2729</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2063,9 +2060,9 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
 </table>
 </div><div class="memdoc">
 <p>Run an unrestricted atomic reference calculation used in open-shell atomic guesses.</p>
-<p>use_hunds_rule_occupation (default false, preserving all EXISTING callers' behavior exactly): when true, use a small, explicit Hund's-rule ground-state alpha/beta electron-count table for common main-group (s/p-block) elements, instead of the simpler parity-based split (odd nuclear charge -&gt; one extra alpha electron; even -&gt; alpha == beta) used by default. That default split is wrong for many real ground states &ndash; e.g. carbon (true ground state alpha=4,beta=2, a triplet) gets alpha=beta=3 (an artificial singlet) &ndash; but this does not matter for a SAD initial-guess starting DENSITY MATRIX SHAPE (AtomicGuess, this function's only existing caller), since the full molecule's own SCF reshapes the density regardless of the isolated reference atom's spin state. It DOES matter for promolecular reference densities used in Hirshfeld-based CDFT constraints, which is what this parameter exists for. Falls back to the default, parity-based split (with a logged warning) for any element not covered by the table &ndash; currently d/f-block only, where the ground-state configuration is genuinely ambiguous/functional-dependent rather than a simple, textbook Hund's-rule case; see HundsRuleAlphaBetaElectrons's own comment in <a class="el" href="dftengine_8cc.html">dftengine.cc</a>. </p>
+<p>use_hunds_rule_occupation: if true, take the alpha/beta electron counts from a Hund's-rule ground-state table for main-group (s/p-block) elements instead of the default parity split (odd Z -&gt; one extra alpha electron, even Z -&gt; alpha == beta). The parity split is wrong for e.g. carbon (triplet, alpha=4, beta=2), which is irrelevant for the SAD guess (AtomicGuess) but not for Hirshfeld reference densities in CDFT. <a class="el" href="classvotca_1_1tools_1_1Elements.html" title="information about an element">Elements</a> not in the table (d/f-block, where the ground state is functional-dependent) fall back to the parity split with a warning; see HundsRuleAlphaBetaElectrons in <a class="el" href="dftengine_8cc.html">dftengine.cc</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02605">2605</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02336">2336</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2087,11 +2084,10 @@ cache by element" structure exactly, but (a) always passes use_hunds_rule_occupa
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Run a single, charge-constrained DFT (CDFT) calculation: finds the Lagrange multiplier lambda such that Tr[(P_alpha + P_beta) * constraint.weight_matrix] equals constraint.target_population, then converges the SCF at that lambda &ndash; the standard Wu-Van Voorhis outer loop, warm-started (matching CP2K's own documented approach: each new trial's SCF is restarted from the PREVIOUS trial's converged density, not a cold start) via the existing "orbfile" initial-guess mechanism, reusing it exactly as written rather than building new warm-start machinery. Only ever wires through EvaluateUKS (never EvaluateClosedShell) &ndash; CDFT charge constraints are built on UKS from the start, per the design discussion that preceded this: a localized extra charge is almost always naturally an open-shell/ radical situation regardless of whether spin constraints are ever added later.</p>
-<p>constraint.lambda is used as the initial guess for the bisection search (0.0 is a reasonable default for most systems) and is left holding the converged value on return. Returns false (with constraints_ left populated, holding the last-attempted lambda) if EITHER a root cannot be bracketed at all, OR the outer bisection loop exhausts max_cdft_iterations_ without reaching cdft_population_tolerance_. If any individual INNER SCF call itself fails to converge, this throws std::runtime_error instead (does not return false) &ndash; an inner SCF failure means something more fundamental than "the outer loop needs more iterations" is wrong (e.g. a genuinely bad initial guess, or too tight an SCF convergence threshold for this system), and silently returning false would look identical to the ordinary "ran out of outer
-iterations" case, which it is not. </p>
+<p>Run a single, charge-constrained DFT (CDFT) calculation: finds the Lagrange multiplier lambda such that Tr[(P_alpha + P_beta) * constraint.weight_matrix] equals constraint.target_population, then converges the SCF at that lambda (Wu-Van Voorhis outer loop). Each trial SCF is warm-started from the previous trial's converged density via the "orbfile" initial guess, as in CP2K. Always uses EvaluateUKS, since a localized extra charge is usually an open-shell situation.</p>
+<p>constraint.lambda is the initial guess for the bisection (0.0 is a reasonable default) and holds the converged value on return. Returns false if no root can be bracketed (constraints_ cleared, lambda unchanged) or if the bisection exhausts max_cdft_iterations_ without reaching cdft_population_tolerance_ (lambda set to the last bracket midpoint). Throws std::runtime_error if an inner SCF does not converge, to distinguish that from running out of outer iterations. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01229">1229</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01012">1012</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2118,7 +2114,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00110">110</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00103">103</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2145,7 +2141,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00120">120</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00113">113</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2173,7 +2169,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Provide external static sites whose electrostatic potential enters the Hamiltonian. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00105">105</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00098">98</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2201,7 +2197,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>A static one-electron perturbation (AO matrix, Hartree) added to the core Hamiltonian of every following Evaluate: the potential energy operator of an electron, e.g. lambda * W_k for a Hirshfeld-localized potential. Its size must match the DFT basis; an empty matrix removes it. Used for finite-difference response calculations (<a class="el" href="classvotca_1_1xtp_1_1ChargeResponseFit.html" title="Parametrization of a charge-response molecule (see ChargeResponse) from the static density response o...">ChargeResponseFit</a>). </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00207">207</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00186">186</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2228,7 +2224,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00249">249</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00228">228</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2257,7 +2253,7 @@ iterations" case, which it is not. </p>
 
 <p>Attach the logger used for SCF progress and diagnostics. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00101">101</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00094">94</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2281,7 +2277,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Raise the SCF convergence thresholds (energy in Hartree, <a class="el" href="classvotca_1_1xtp_1_1DIIS.html">DIIS</a> error) to at least these values; call after Initialize. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02153">2153</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01902">1902</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2309,7 +2305,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Reuse setup from, and keep it in, this cache (see <a class="el" href="structvotca_1_1xtp_1_1DFTSetupCache.html" title="Parts of the DFT setup that stay the same between runs on the same molecule with the same basis sets,...">DFTSetupCache</a>). The RI integrals are taken out of the cache while the engine runs; call <a class="el" href="#a776cd69058c2d418a6f292f9e0838d4e">ReturnSetupCache()</a> afterwards to put them back. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00131">131</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00124">124</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2338,7 +2334,7 @@ iterations" case, which it is not. </p>
 
 <p>Assemble the one-electron core Hamiltonian for the current molecule. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01927">1927</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01680">1680</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2367,7 +2363,7 @@ iterations" case, which it is not. </p>
 
 <p>Precompute AO matrices that remain unchanged throughout the SCF procedure. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02178">2178</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01927">1927</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2395,7 +2391,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Build the numerical exchange-correlation integration object for the current molecule. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03599">3599</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03323">3323</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2423,7 +2419,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Use the MOs already in the <a class="el" href="classvotca_1_1xtp_1_1Orbitals.html" title="Container for molecular orbitals and derived one-particle data.">Orbitals</a> passed to Evaluate as the SCF guess when they fit this calculation (same basis set and size, same electron counts); otherwise the configured initial_guess is used. Set by QM/MM for iterations after the first, where only the environment changed. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00126">126</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00119">119</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2455,7 +2451,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p><a class="el" href="classvotca_1_1tools_1_1Average.html">Average</a> density-matrix elements over functions belonging to the same atomic shell. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03644">3644</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03368">3368</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2489,7 +2485,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Static linear response of the converged closed-shell ground state in orb (same basis, functional and grid as this engine) to one-electron perturbations h_k (AO matrices of an electron's potential energy, per unit strength): coupled-perturbed Kohn-Sham, (e_a - e_i) U_ai + [C_v^T G[dP] C_o]_ai = -[C_v^T h C_o]_ai, dP = 2 (C_v U C_o^T + C_o U^T C_v^T), G = J + 0.5 a_x K + f_xc (LDA/GGA, global hybrids), solved by preconditioned conjugate gradients for all h_k together until |residual| &lt; tolerance |rhs|. Returns the first-order density matrices dP_k (total). Throws for open-shell states or if CG does not converge. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03183">3183</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02911">2911</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2629,7 +2625,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l03039">3039</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l02767">2767</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2666,7 +2662,7 @@ iterations" case, which it is not. </p>
 </div><div class="memdoc">
 <p>Whether orb's MOs (computed in previous_basis) can serve as the guess for this calculation; if not, why not. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l01204">1204</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8cc_source.html#l00987">987</a> of file <a class="el" href="dftengine_8cc_source.html">dftengine.cc</a>.</p>
 
 </div>
 </div>
@@ -2691,7 +2687,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00252">252</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00231">231</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2716,7 +2712,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00726">726</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00590">590</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2740,7 +2736,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00713">713</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00577">577</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2764,7 +2760,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00722">722</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00586">586</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2788,7 +2784,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00714">714</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00578">578</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2815,7 +2811,7 @@ iterations" case, which it is not. </p>
 <div class="line"><a class="code hl_class" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a>(<span class="stringliteral">&quot;molecule made of atoms participating in Active region&quot;</span>, 1)</div>
 <div class="ttc" id="aclassvotca_1_1xtp_1_1QMMolecule_html"><div class="ttname"><a href="classvotca_1_1xtp_1_1QMMolecule.html">votca::xtp::QMMolecule</a></div><div class="ttdef"><b>Definition</b> <a href="qmmolecule_8h_source.html#l00031">qmmolecule.h:31</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00704">704</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00568">568</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2839,7 +2835,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00642">642</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00507">507</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2863,7 +2859,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00638">638</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00503">503</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2887,7 +2883,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00784">784</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00622">622</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2911,7 +2907,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00783">783</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00621">621</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2935,7 +2931,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00781">781</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00619">619</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2959,7 +2955,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00739">739</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00603">603</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -2983,7 +2979,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00753">753</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00608">608</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3007,7 +3003,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00710">710</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00574">574</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3031,7 +3027,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00770">770</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00613">613</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3055,7 +3051,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00674">674</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00538">538</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3079,7 +3075,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00672">672</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00536">536</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3103,7 +3099,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00659">659</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00524">524</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3127,7 +3123,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00641">641</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00506">506</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3151,7 +3147,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00639">639</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00504">504</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3175,7 +3171,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00666">666</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00530">530</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3199,7 +3195,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00667">667</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00531">531</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3223,7 +3219,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00724">724</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00588">588</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3247,7 +3243,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00643">643</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00508">508</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3271,7 +3267,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00640">640</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00505">505</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3295,7 +3291,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00676">676</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00540">540</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3319,7 +3315,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00682">682</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00546">546</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3343,7 +3339,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00732">732</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00596">596</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3367,7 +3363,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00711">711</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00575">575</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3391,7 +3387,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00730">730</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00594">594</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3415,7 +3411,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00692">692</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00556">556</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3439,7 +3435,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00707">707</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00571">571</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3463,7 +3459,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00645">645</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00510">510</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3487,7 +3483,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00740">740</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00604">604</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3511,7 +3507,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00656">656</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00521">521</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3535,7 +3531,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00701">701</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00565">565</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3559,7 +3555,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00718">718</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00582">582</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3583,7 +3579,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00731">731</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00595">595</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3607,7 +3603,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00661">661</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00526">526</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3631,7 +3627,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00719">719</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00583">583</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3655,7 +3651,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00698">698</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00562">562</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3679,7 +3675,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00708">708</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00572">572</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3703,7 +3699,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00715">715</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00579">579</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3727,7 +3723,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00780">780</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00618">618</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3751,7 +3747,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00671">671</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00535">535</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3775,7 +3771,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00734">734</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00598">598</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3799,7 +3795,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00735">735</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00599">599</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3823,7 +3819,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00736">736</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00600">600</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3847,7 +3843,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00737">737</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00601">601</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3871,7 +3867,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00727">727</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00591">591</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3895,7 +3891,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00670">670</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00534">534</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3919,7 +3915,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00700">700</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00564">564</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3943,7 +3939,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00650">650</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00515">515</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3967,7 +3963,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00635">635</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00500">500</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -3991,7 +3987,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00653">653</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00518">518</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4015,7 +4011,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00695">695</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00559">559</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4039,7 +4035,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00647">647</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00512">512</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4063,7 +4059,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00681">681</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00545">545</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4087,7 +4083,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00738">738</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00602">602</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4111,7 +4107,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00702">702</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00566">566</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4135,7 +4131,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00678">678</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00542">542</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4159,7 +4155,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00723">723</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00587">587</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4183,7 +4179,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00721">721</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00585">585</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4207,7 +4203,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00725">725</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00589">589</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4231,7 +4227,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00720">720</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00584">584</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4255,7 +4251,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00679">679</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00543">543</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4279,7 +4275,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00680">680</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00544">544</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>
@@ -4303,7 +4299,7 @@ iterations" case, which it is not. </p>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00696">696</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftengine_8h_source.html#l00560">560</a> of file <a class="el" href="dftengine_8h_source.html">dftengine.h</a>.</p>
 
 </div>
 </div>

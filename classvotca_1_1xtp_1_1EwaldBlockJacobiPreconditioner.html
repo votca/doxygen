@@ -99,7 +99,7 @@ $(function(){initNavTree('classvotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner.ht
 </div><!--header-->
 <div class="contents">
 
-<p>Block-Jacobi preconditioner for <a class="el" href="classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html">EwaldPeriodicDipoleOperator</a>'s own PCG solve.  
+<p>Block-Jacobi preconditioner for the PCG solve of <a class="el" href="classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html">EwaldPeriodicDipoleOperator</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>&gt;</code></p>
@@ -108,7 +108,7 @@ Collaboration diagram for votca::xtp::EwaldBlockJacobiPreconditioner:</div>
 <div class="dyncontent">
 <div class="center"><img src="classvotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner__coll__graph.png" border="0" usemap="#avotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="avotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner_coll__map" id="avotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner_coll__map">
-<area shape="rect" title="Block&#45;Jacobi preconditioner for EwaldPeriodicDipoleOperator&#39;s own PCG solve." alt="" coords="1640,119,1848,163"/>
+<area shape="rect" title="Block&#45;Jacobi preconditioner for the PCG solve of EwaldPeriodicDipoleOperator." alt="" coords="1640,119,1848,163"/>
 <area shape="rect" href="classvotca_1_1xtp_1_1EwaldRegistry.html" title=" " alt="" coords="1290,48,1478,76"/>
 <area shape="poly" title=" " alt="" coords="1493,68,1554,76,1617,89,1695,118,1690,118,1615,94,1554,82,1492,73"/>
 <area shape="rect" title=" " alt="" coords="986,23,1184,102"/>
@@ -176,16 +176,14 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a87cd793669862907534cd5690fb1bd16" id="r_a87cd793669862907534cd5690fb1bd16"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a87cd793669862907534cd5690fb1bd16">is_initialized_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Block-Jacobi preconditioner for <a class="el" href="classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html">EwaldPeriodicDipoleOperator</a>'s own PCG solve. </p>
-<p>USAGE: Eigen::ConjugateGradient owns its own preconditioner as a plain (default-constructed) member (Eigen::IterativeSolverBase&lt;&gt;:: m_preconditioner), and cg.compute(op) calls that member's own compute(op.matrix()) &ndash; it never passes a caller-supplied preconditioner instance through. Confirmed directly (a real, not hypothetical, failure caught by an actual compiled-and-run test): calling EwaldBlockJacobiPreconditioner(registry, ids, alpha, thole_a) and then handing that instance to a template parameter alone is NOT enough &ndash; cg.compute(op) still default-constructs its own (uninitialized) instance over it. The construct that actually works, verified end to end via Eigen::ConjugateGradient with a genuine block-diagonal test operator (0 iterations to machine precision, since the preconditioner exactly matched the operator there):</p>
-<p>Eigen::ConjugateGradient&lt;Op, Lower|Upper, <a class="el" href="classvotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner.html" title="Block-Jacobi preconditioner for EwaldPeriodicDipoleOperator&#39;s own PCG solve.">EwaldBlockJacobiPreconditioner</a>&gt; cg; cg.compute(op); cg.preconditioner() = EwaldBlockJacobiPreconditioner(registry, ids, alpha_ewald, thole_a); x = cg.solveWithGuess(b, x0);</p>
-<p>i.e. assign the real, already-built preconditioner via IterativeSolverBase&lt;&gt;::preconditioner()'s own public, non-const accessor, AFTER <a class="el" href="#a2de08196c31a88aea405dd6275ab4077">compute()</a>, not by relying on <a class="el" href="#a2de08196c31a88aea405dd6275ab4077">compute()</a> to build it.</p>
-<p>This exists because Eigen::DiagonalPreconditioner&lt;double&gt; &ndash; the default used with <a class="el" href="classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html">EwaldPeriodicDipoleOperator</a> &ndash; reads only operator()(i,j)'s own same-site diagonal (getPInv()), with zero knowledge of the intramolecular (Thole-damped) coupling <a class="el" href="classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html">EwaldPeriodicDipoleOperator</a>:: AddIntraSegmentCoupling actually adds for multi-site segments. That gap was found, this session, to matter a great deal in practice: enabling Thole damping on the intramolecular term (the physically correct, legacy-matching behavior &ndash; confirmed directly against legacy's own FU12_ERFC_At_By/UpdateAllBls) made a real, large ~5000-site PCG solve diverge outright (residual growing past its own starting value, not merely converging slowly) with the bare-diagonal preconditioner, while disabling that same damping (reverting to the undamped erfc-only tensor) let the identical system converge cleanly in 51 iterations. Since the physics itself is confirmed correct (matching legacy), the fix pursued here is a better preconditioner, not reverting the physics.</p>
-<p>A direct numerical check (methane geometry, realistic atomic polarizabilities, thole_a=0.6) found the intramolecular block ALONE, isolated from the rest of the system, IS positive-definite when Thole-damped (min eigenvalue ~0.05, comfortably positive) and is NOT when undamped (min eigenvalue ~-0.12) &ndash; the opposite of what a first, trace-based argument suggested (a real correction made mid-session: a negative trace does not by itself imply a negative eigenvalue exists, and here it doesn't). This means the observed divergence is NOT because the local, per-segment intramolecular coupling is itself indefinite &ndash; whatever is happening lives either in how that locally-SPD block combines with the periodic (intermolecular, shape, self-field) terms across the full ~5000-site system, or is purely a preconditioner- tracking problem (the true global operator staying SPD throughout, but DiagonalPreconditioner's blindness to the intramolecular term causing CG's implicit preconditioned-residual bookkeeping to behave as though it doesn't). This class was not built having resolved which of those is true &ndash; only having confirmed the local block itself is a valid (SPD) building block either way, and that a preconditioner genuinely reflecting the intramolecular coupling should track the true operator far better than the bare diagonal does regardless of which explanation is correct. Whether this actually resolves the real ~5000-site divergence, as opposed to just being well-motivated, has not yet been tested against that real system &ndash; only the mechanics above have been verified, with a synthetic operator, not the real EwaldPeriodicDipole Operator/real molecular system.</p>
-<p>What this computes: for every segment in ids with 2+ sites, the full dense 3*N_site x 3*N_site local block &ndash; getPInv() on each site's own diagonal, PLUS the same Thole-damped intramolecular coupling AddIntraSegmentCoupling itself adds (identical B-function/ComputeThole calls, same sign convention) &ndash; factorized ONCE via LDLT (chosen over LLT/Cholesky specifically because the local block was found to be only marginally SPD at higher thole_a, e.g. min eigenvalue ~0.0016 at thole_a=1.0 in the same methane test above &ndash; LDLT degrades gracefully on a near-singular or, for some future geometry/polarizability combination, genuinely indefinite block, where LLT would simply fail). Single-site segments fall back to the plain diagonal (getPInv()), identical to what DiagonalPreconditioner itself would do for them.</p>
-<p>solve(b) applies each segment's own precomputed factorization to that segment's own slice of b independently &ndash; a genuine block-Jacobi scheme: exact within each segment's own local block, still ignoring inter-segment (periodic, real+reciprocal-space) coupling entirely, the same simplification DiagonalPreconditioner itself already makes at the single-site level. The intermolecular coupling is left to PCG's own outer iteration to resolve, same as before &ndash; only the intramolecular piece moves from "completely ignored" to "handled exactly." </p>
+<div class="textblock"><p>Block-Jacobi preconditioner for the PCG solve of <a class="el" href="classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html">EwaldPeriodicDipoleOperator</a>. </p>
+<p>Usage: Eigen::ConjugateGradient default-constructs its preconditioner member and cg.compute(op) only calls that member's <a class="el" href="#a2de08196c31a88aea405dd6275ab4077">compute()</a>, so a constructed instance must be assigned after <a class="el" href="#a2de08196c31a88aea405dd6275ab4077">compute()</a>:</p>
+<p>Eigen::ConjugateGradient&lt;Op, Lower|Upper, <a class="el" href="classvotca_1_1xtp_1_1EwaldBlockJacobiPreconditioner.html" title="Block-Jacobi preconditioner for the PCG solve of EwaldPeriodicDipoleOperator.">EwaldBlockJacobiPreconditioner</a>&gt; cg; cg.compute(op); cg.preconditioner() = EwaldBlockJacobiPreconditioner(registry, ids, alpha_ewald, thole_a); x = cg.solveWithGuess(b, x0);</p>
+<p>Eigen::DiagonalPreconditioner only sees the same-site getPInv() blocks and ignores the Thole-damped intramolecular coupling of <a class="el" href="classvotca_1_1xtp_1_1EwaldPeriodicDipoleOperator.html#a61f51c1582fab53c799ec1e69035da02">EwaldPeriodicDipoleOperator::AddIntraSegmentCoupling</a>. With that preconditioner a ~5000-site PCG solve diverged once intramolecular Thole damping was enabled. The isolated intramolecular block itself is SPD when Thole damped (methane, thole_a = 0.6: min eigenvalue ~0.05; undamped ~-0.12), so it is a valid preconditioner block.</p>
+<p>For every segment in ids the dense 3*N_site x 3*N_site block of getPInv() on the diagonal minus the intramolecular coupling is built and factorized once with LDLT. LDLT rather than LLT because the block can be nearly singular (min eigenvalue ~0.0016 at thole_a = 1.0 for methane). Single-site segments reduce to the plain diagonal block.</p>
+<p>solve(b) applies each segment's factorization to its slice of b (block Jacobi): intramolecular coupling is treated exactly, intermolecular (periodic) coupling is left to the outer PCG iteration. </p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00110">110</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00050">50</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
 <a id="a16fce24310ce99c14ad6c7b08893861f" name="a16fce24310ce99c14ad6c7b08893861f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a16fce24310ce99c14ad6c7b08893861f">&#9670;&#160;</a></span>Scalar</h2>
@@ -207,7 +205,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00111">111</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00051">51</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -223,7 +221,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00115">115</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00055">55</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -247,7 +245,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00112">112</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00052">52</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -268,7 +266,7 @@ Private Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="a79a7c9af25fb5dfc665eb3515b0cc164afa2078c0b4b4aaf3fdfb1f790c8ad842" name="a79a7c9af25fb5dfc665eb3515b0cc164afa2078c0b4b4aaf3fdfb1f790c8ad842"></a>MaxColsAtCompileTime&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00116">116</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00056">56</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -296,7 +294,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00121">121</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00061">61</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -337,7 +335,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00127">127</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00065">65</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -371,7 +369,7 @@ template&lt;typename Rhs, typename Dest&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00161">161</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00095">95</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -400,7 +398,7 @@ template&lt;typename MatType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00148">148</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00082">82</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -427,7 +425,7 @@ template&lt;typename MatType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00192">192</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00123">123</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -454,7 +452,7 @@ template&lt;typename MatType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00138">138</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00076">76</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -483,7 +481,7 @@ template&lt;typename MatType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00156">156</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00090">90</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -512,7 +510,7 @@ template&lt;typename MatType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00152">152</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00086">86</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -539,7 +537,7 @@ template&lt;typename MatType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00220">220</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00142">142</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -566,7 +564,7 @@ template&lt;typename MatType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00189">189</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00120">120</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -593,7 +591,7 @@ template&lt;typename MatType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00137">137</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00075">75</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -622,7 +620,7 @@ template&lt;typename Rhs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00178">178</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00109">109</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -647,7 +645,7 @@ template&lt;typename Rhs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00281">281</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00196">196</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -671,7 +669,7 @@ template&lt;typename Rhs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00277">277</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00192">192</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -695,7 +693,7 @@ template&lt;typename Rhs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00278">278</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00193">193</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -719,7 +717,7 @@ template&lt;typename Rhs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00282">282</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00197">197</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -743,7 +741,7 @@ template&lt;typename Rhs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00279">279</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00194">194</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -767,7 +765,7 @@ template&lt;typename Rhs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00276">276</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00191">191</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>
@@ -791,7 +789,7 @@ template&lt;typename Rhs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00280">280</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html#l00195">195</a> of file <a class="el" href="ewaldblockjacobipreconditioner_8h_source.html">ewaldblockjacobipreconditioner.h</a>.</p>
 
 </div>
 </div>

@@ -25,6 +25,8 @@ var classvotca_1_1xtp_1_1SegmentMapper =
     [ "MapMapAtomonMD", "classvotca_1_1xtp_1_1SegmentMapper.html#a3027f89832cdbcdf2947075269ce924f", null ],
     [ "ParseFragment", "classvotca_1_1xtp_1_1SegmentMapper.html#a43492d1a895eb673d10d097d4a71b3ec", null ],
     [ "PlaceMapAtomonMD", "classvotca_1_1xtp_1_1SegmentMapper.html#a8dfb165cb229907d58ba01fd8d8b6793", null ],
+    [ "RemapBondedPartners", "classvotca_1_1xtp_1_1SegmentMapper.html#ad030203e123b521bc8d8e665229bc0a9", null ],
+    [ "RemapBondedPartners", "classvotca_1_1xtp_1_1SegmentMapper.html#abb5b89d4977f1d866c08b28b1a852a4d", null ],
     [ "StringToMapIndex", "classvotca_1_1xtp_1_1SegmentMapper.html#a51c35dce288849af33ecc4b4638305b2", null ],
     [ "StringToMDIndex", "classvotca_1_1xtp_1_1SegmentMapper.html#a56605c694e15f9443bb95b575f99490f", null ],
     [ "TransferBondedPartners", "classvotca_1_1xtp_1_1SegmentMapper.html#af9b068953f0e4a313ae7872d7e42e90a", null ],

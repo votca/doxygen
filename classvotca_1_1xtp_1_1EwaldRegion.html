@@ -281,16 +281,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The periodic Ewald background, as a <a class="el" href="classvotca_1_1xtp_1_1Region.html">Region</a>. </p>
-<p>SKELETON. The region plumbing is complete and correct; the periodic field evaluation is deliberately absent, and every entry point that would need it throws rather than returning a plausible zero. Filling it in is the next step.</p>
+<p>The periodic field and potential are implemented (ApplyFieldTo, PotentialAt, ApplyPotentialTo); the background energy is not yet.</p>
 <p>This region is unlike the others in three ways, all consequences of the same fact &ndash; it represents an environment that was converged once, beforehand, by the ewaldbackground calculator:</p>
 <ol type="1">
-<li>Its induced dipoles are FROZEN. Other regions do not polarize it, so InteractwithQMRegion/PolarRegion/StaticRegion genuinely return 0.0. Those are not stubs: "nothing happens" is the correct physics, and the same one-way relationship legacy has, where the background is computed once and the foreground alone re-polarizes.</li>
+<li>Its induced dipoles are FROZEN. Other regions do not polarize it, so InteractwithQMRegion/PolarRegion/StaticRegion return 0.0. Those are not stubs: "nothing happens" is the correct physics, and the same one-way relationship legacy has, where the background is computed once and the foreground alone re-polarizes.</li>
 <li>It is therefore always <a class="el" href="#a27cc7acdd86b9b92d71752cf6f75c0c2">Converged()</a>, and <a class="el" href="#a05271f062c847107e943d3be2a56ea23">Reset()</a> does nothing. Including it in a job cannot prevent the inter-region SCF loop from terminating.</li>
-<li>It does not own segments carved out of the job's topology. It represents the whole periodic cell, read from the background calculator's own checkpoint, and the segments a polar region holds explicitly are SUPPRESSED from it (see <a class="el" href="classvotca_1_1xtp_1_1EwaldRealSpaceSum.html">EwaldRealSpaceSum</a>'s own foreground documentation) rather than removed from its ownership. <a class="el" href="#a8c525e9fdb724976c07bba2fbd18d0b0">size()</a> therefore reports the background's segment count, not a share of the job's segments.</li>
+<li>It does not own segments carved out of the job's topology. It represents the whole periodic cell, read from the background calculator's checkpoint, and the segments a polar region holds explicitly are SUPPRESSED from it (see the foreground documentation of <a class="el" href="classvotca_1_1xtp_1_1EwaldRealSpaceSum.html">EwaldRealSpaceSum</a>) rather than removed from its ownership. <a class="el" href="#a8c525e9fdb724976c07bba2fbd18d0b0">size()</a> therefore reports the background's segment count, not a share of the job's segments.</li>
 </ol>
-<p>The influence in the other direction &ndash; this region acting ON a polar or QM region &ndash; is implemented by THAT region's own InteractwithEwaldRegion, following the existing convention in <a class="el" href="classvotca_1_1xtp_1_1Region.html#a1173b6d23a5d95f79c9cf41abe04dc7d">Region::ApplyInfluenceOfOtherRegions</a>, where each region computes the influence of others upon itself. </p>
+<p>The influence in the other direction &ndash; this region acting ON a polar or QM region &ndash; is implemented by THAT region's InteractwithEwaldRegion, following the existing convention in <a class="el" href="classvotca_1_1xtp_1_1Region.html#a1173b6d23a5d95f79c9cf41abe04dc7d">Region::ApplyInfluenceOfOtherRegions</a>, where each region computes the influence of others upon itself. </p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00076">76</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00074">74</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8af196057211e4c42824757c6ea0d17c" name="a8af196057211e4c42824757c6ea0d17c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8af196057211e4c42824757c6ea0d17c">&#9670;&#160;</a></span>EwaldRegion()</h2>
@@ -319,7 +319,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00078">78</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00076">76</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -374,7 +374,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#a68d11a681093264ee41d71d41b3ddd66">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00156">156</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00151">151</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -393,7 +393,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00438">438</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00433">433</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -412,7 +412,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00345">345</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00340">340</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -439,7 +439,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00243">243</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00238">238</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -495,7 +495,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00208">208</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00203">203</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -524,7 +524,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#ac5f78ec141e75dccf9605093c3c0149d">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00087">87</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00084">84</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -611,7 +611,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#aff0bcd638f8629f04dd0ad3c76dffe52">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00081">81</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00079">79</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -669,7 +669,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#acec711102a4bf64e02bd6b625b8e1d05">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00115">115</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00111">111</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -698,7 +698,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#a91b12908a9f5f6ea78916d548fae8c8a">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00113">113</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00109">109</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -727,7 +727,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#a4ccbcf8f83e974a8f87b73306c7a044e">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00112">112</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00108">108</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -756,7 +756,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#a818596e1833dd61070be61d35c25ebbd">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00114">114</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00110">110</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -783,7 +783,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00125">125</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00121">121</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -802,7 +802,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00326">326</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00321">321</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -829,7 +829,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00373">373</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00368">368</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -858,7 +858,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#a8203cf9b83821bd9fff1b72b5ec00cd8">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00125">125</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00120">120</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -877,7 +877,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00179">179</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00174">174</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -904,7 +904,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00120">120</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00116">116</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -933,7 +933,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#a15e4abcffcd2d01740ddad0209ba8f70">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00092">92</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00089">89</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -991,7 +991,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#adfc3f0e11ba4181b34167b6630ea4caa">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00150">150</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00145">145</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -1020,7 +1020,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classvotca_1_1xtp_1_1Region.html#a0455d36dd17b2e1924c69fdcc137f2e8">votca::xtp::Region</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00116">116</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8cc_source.html#l00111">111</a> of file <a class="el" href="ewaldregion_8cc_source.html">ewaldregion.cc</a>.</p>
 
 </div>
 </div>
@@ -1045,7 +1045,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00251">251</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00247">247</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1069,7 +1069,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00257">257</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00253">253</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1093,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00245">245</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00241">241</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1117,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00241">241</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00237">237</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1141,7 +1141,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00260">260</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00256">256</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1165,7 +1165,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00259">259</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00255">255</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1189,7 +1189,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00238">238</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00234">234</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1213,7 +1213,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00239">239</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00235">235</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1237,7 +1237,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00254">254</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00250">250</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1261,7 +1261,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00258">258</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00254">254</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1285,7 +1285,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00240">240</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00236">236</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
@@ -1309,7 +1309,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00255">255</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ewaldregion_8h_source.html#l00251">251</a> of file <a class="el" href="ewaldregion_8h_source.html">ewaldregion.h</a>.</p>
 
 </div>
 </div>
