@@ -303,6 +303,7 @@ var namespacevotca_1_1xtp =
     [ "GridContainers", "classvotca_1_1xtp_1_1GridContainers.html", "classvotca_1_1xtp_1_1GridContainers" ],
     [ "GridboxRange", "structvotca_1_1xtp_1_1GridboxRange.html", "structvotca_1_1xtp_1_1GridboxRange" ],
     [ "GridBox", "classvotca_1_1xtp_1_1GridBox.html", "classvotca_1_1xtp_1_1GridBox" ],
+    [ "GridBoxAccumulator", "classvotca_1_1xtp_1_1GridBoxAccumulator.html", "classvotca_1_1xtp_1_1GridBoxAccumulator" ],
     [ "GW", "classvotca_1_1xtp_1_1GW.html", "classvotca_1_1xtp_1_1GW" ],
     [ "GW_UKS", "classvotca_1_1xtp_1_1GW__UKS.html", "classvotca_1_1xtp_1_1GW__UKS" ],
     [ "GWBSE", "classvotca_1_1xtp_1_1GWBSE.html", "classvotca_1_1xtp_1_1GWBSE" ],

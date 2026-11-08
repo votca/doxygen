@@ -83,6 +83,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "grid.h", "grid_8h.html", "grid_8h" ],
     [ "grid_containers.h", "grid__containers_8h.html", "grid__containers_8h" ],
     [ "gridbox.h", "gridbox_8h.html", "gridbox_8h" ],
+    [ "gridboxaccumulator.h", "gridboxaccumulator_8h.html", "gridboxaccumulator_8h" ],
     [ "gw.h", "gw_8h.html", "gw_8h" ],
     [ "gw_uks.h", "gw__uks_8h.html", "gw__uks_8h" ],
     [ "gwbse.h", "gwbse_8h.html", "gwbse_8h" ],

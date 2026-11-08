@@ -331,6 +331,7 @@ var hierarchy =
     ] ],
     [ "votca::xtp::Grid", "classvotca_1_1xtp_1_1Grid.html", null ],
     [ "votca::xtp::GridBox", "classvotca_1_1xtp_1_1GridBox.html", null ],
+    [ "votca::xtp::GridBoxAccumulator", "classvotca_1_1xtp_1_1GridBoxAccumulator.html", null ],
     [ "votca::xtp::GridboxRange", "structvotca_1_1xtp_1_1GridboxRange.html", null ],
     [ "votca::xtp::GridContainers", "classvotca_1_1xtp_1_1GridContainers.html", null ],
     [ "votca::csg::Imc::group_t", "structvotca_1_1csg_1_1Imc_1_1group__t.html", null ],
