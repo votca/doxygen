@@ -132,42 +132,58 @@ $(function(){initNavTree('interface_8cc_source.html','',''); });
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            std::cout, py::module_::import(&quot;sys&quot;).attr(&quot;stdout&quot;));</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        py::scoped_ostream_redirect redirect_cerr(</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            std::cerr, py::module_::import(<span class="stringliteral">&quot;sys&quot;</span>).attr(<span class="stringliteral">&quot;stderr&quot;</span>));</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_function" href="namespacepyxtp.html#a33936adb7d7da0398ddaef11b39421b8">pyxtp::call_calculator</a>(name, dict);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      },</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      R<span class="stringliteral">&quot;pbdoc(</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="stringliteral">        Invoke a Votca XTP calculator</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="stringliteral">        Parameters</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="stringliteral">        ----------</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="stringliteral">        name</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="stringliteral">          Calculator&#39;s name</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="stringliteral">        dict</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">          Calculator options</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">  )pbdoc&quot;);</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="comment">// Release the GIL while VOTCA runs: OpenMP worker threads that</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment">// write to std::cout go through the redirect above, whose sync()</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// acquires the GIL. If this thread kept it while waiting for them</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// (e.g. at a critical section), nthreads &gt; 1 would deadlock. The</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// redirects are destroyed after the GIL is re-acquired.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>          py::gil_scoped_release release;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>          <a class="code hl_function" href="namespacepyxtp.html#a33936adb7d7da0398ddaef11b39421b8">pyxtp::call_calculator</a>(name, dict);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      },</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      R<span class="stringliteral">&quot;pbdoc(</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">        Invoke a Votca XTP calculator</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="stringliteral">  </span><span class="keyword">module</span>.def(</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>      &quot;call_tool&quot;,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="stringliteral">        Parameters</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="stringliteral">        ----------</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="stringliteral">        name</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="stringliteral">          Calculator&#39;s name</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="stringliteral">        dict</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="stringliteral">          Calculator options</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="stringliteral">  )pbdoc&quot;);</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral">  </span><span class="keyword">module</span>.def(</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      &quot;call_tool&quot;,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      [](const std::string&amp; name, Index nthreads, const std::string&amp; xml_file) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        py::scoped_ostream_redirect redirect_cout(</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            std::cout, py::module_::import(&quot;sys&quot;).attr(&quot;stdout&quot;));</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        py::scoped_ostream_redirect redirect_cerr(</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            std::cerr, py::module_::import(<span class="stringliteral">&quot;sys&quot;</span>).attr(<span class="stringliteral">&quot;stderr&quot;</span>));</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment">// Release the GIL while VOTCA runs: OpenMP worker threads that</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// write to std::cout go through the redirect above, whose sync()</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="comment">// acquires the GIL. If this thread kept it while waiting for them</span></div>
 </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      [](const std::string&amp; name, Index nthreads, const std::string&amp; xml_file) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        py::scoped_ostream_redirect redirect_cout(</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            std::cout, py::module_::import(&quot;sys&quot;).attr(&quot;stdout&quot;));</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        py::scoped_ostream_redirect redirect_cerr(</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            std::cerr, py::module_::import(<span class="stringliteral">&quot;sys&quot;</span>).attr(<span class="stringliteral">&quot;stderr&quot;</span>));</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_function" href="namespacepyxtp.html#aedea7938b5b6fc1f9897455929589d60">pyxtp::call_tool</a>(name, nthreads, xml_file);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      },</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      R<span class="stringliteral">&quot;pbdoc(</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="stringliteral">        Invoke a Votca XTP Tool</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="stringliteral">        Parameters</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="stringliteral">        ----------</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="stringliteral">        name</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="stringliteral">          Tool&#39;s name</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="stringliteral">        threads</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="stringliteral">          Number of threads to perform the computation</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="stringliteral">        xml_file</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="stringliteral">          Input file specification</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="stringliteral">  )pbdoc&quot;);</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="stringliteral">}</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="comment">// (e.g. at a critical section), nthreads &gt; 1 would deadlock. The</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="comment">// redirects are destroyed after the GIL is re-acquired.</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>          py::gil_scoped_release release;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>          <a class="code hl_function" href="namespacepyxtp.html#aedea7938b5b6fc1f9897455929589d60">pyxtp::call_tool</a>(name, nthreads, xml_file);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      },</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>      R<span class="stringliteral">&quot;pbdoc(</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="stringliteral">        Invoke a Votca XTP Tool</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="stringliteral">        Parameters</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="stringliteral">        ----------</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="stringliteral">        name</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="stringliteral">          Tool&#39;s name</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="stringliteral">        threads</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="stringliteral">          Number of threads to perform the computation</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="stringliteral">        xml_file</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="stringliteral">          Input file specification</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="stringliteral">  )pbdoc&quot;);</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="stringliteral">}</span></div>
 <div class="ttc" id="ainterface_8cc_html_ac43591eec93ecfb0a902ae7f32e1ff6b"><div class="ttname"><a href="interface_8cc.html#ac43591eec93ecfb0a902ae7f32e1ff6b">PYBIND11_MODULE</a></div><div class="ttdeci">PYBIND11_MODULE(xtp_binds, module)</div><div class="ttdef"><b>Definition</b> <a href="#l00027">interface.cc:27</a></div></div>
 <div class="ttc" id="anamespacepyxtp_html_a33936adb7d7da0398ddaef11b39421b8"><div class="ttname"><a href="namespacepyxtp.html#a33936adb7d7da0398ddaef11b39421b8">pyxtp::call_calculator</a></div><div class="ttdeci">void call_calculator(const std::string &amp;calculatorName, const std::map&lt; std::string, std::string &gt; &amp;dict)</div><div class="ttdoc">Construct a new pybind11 module object to invoke a votca-xtp Calculator.</div><div class="ttdef"><b>Definition</b> <a href="xtp__calculators_8cc_source.html#l00029">xtp_calculators.cc:29</a></div></div>
 <div class="ttc" id="anamespacepyxtp_html_aedea7938b5b6fc1f9897455929589d60"><div class="ttname"><a href="namespacepyxtp.html#aedea7938b5b6fc1f9897455929589d60">pyxtp::call_tool</a></div><div class="ttdeci">void call_tool(const std::string &amp;calculatorName, Index nThreads, std::string xmlfile)</div><div class="ttdoc">Construct a new pybind11 module object to invoke a votca-xtp QMTool.</div><div class="ttdef"><b>Definition</b> <a href="pyxtp_2binds_2xtp__tools_8cc_source.html#l00025">xtp_tools.cc:25</a></div></div>
