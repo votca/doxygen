@@ -209,7 +209,7 @@ var searchData=
   ['reorderoutput_206',['ReorderOutput',['../classvotca_1_1xtp_1_1QMPackage.html#afe04cfb510f3675414758f54b50960a1',1,'votca::xtp::QMPackage']]],
   ['reorganization_207',['reorganization',['../structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#aab30f01128c6790e67e0897d296e059e',1,'votca::xtp::LatticeModel::Options']]],
   ['replace_208',['replace',['../structvotca_1_1xtp_1_1KMCEngine_1_1DecaySettings.html#acf69f5ef5bb3e9afcec16d0acdef5630',1,'votca::xtp::KMCEngine::DecaySettings']]],
-  ['report_209',['Report',['../classvotca_1_1xtp_1_1DFTTimings.html#ae86536d66eb082ab65a4a52ca5134cd8',1,'votca::xtp::DFTTimings::Report()'],['../namespacevotca_1_1xtp_1_1citations.html#adcbbbd885e4508fa75334270347e224e',1,'votca::xtp::citations::Report()']]],
+  ['report_209',['Report',['../structvotca_1_1xtp_1_1ActiveRegion_1_1Report.html',1,'votca::xtp::ActiveRegion::Report'],['../classvotca_1_1xtp_1_1DFTTimings.html#ae86536d66eb082ab65a4a52ca5134cd8',1,'votca::xtp::DFTTimings::Report()'],['../namespacevotca_1_1xtp_1_1citations.html#adcbbbd885e4508fa75334270347e224e',1,'votca::xtp::citations::Report()']]],
   ['report_210',['report',['../structvotca_1_1xtp_1_1ScreeningCheck.html#aa3f6b5f936d8776ac287f00ccef78d89',1,'votca::xtp::ScreeningCheck']]],
   ['reportanalysis_211',['ReportAnalysis',['../classvotca_1_1xtp_1_1Density2Gyration.html#a749ad31126684ae39b212d9b2bf7e607',1,'votca::xtp::Density2Gyration']]],
   ['reportdimensionsandmemory_212',['ReportDimensionsAndMemory',['../classvotca_1_1xtp_1_1DFTEngine.html#a2cf87d94d4baa6735ab062ad126c6676',1,'votca::xtp::DFTEngine']]],

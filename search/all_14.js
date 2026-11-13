@@ -51,7 +51,7 @@ var searchData=
   ['threecenter_2eh_48',['threecenter.h',['../threecenter_8h.html',1,'']]],
   ['threecenter_5f_49',['threecenter_',['../classvotca_1_1xtp_1_1ERIs.html#ada4da320907c85e5fc366742117d64a6',1,'votca::xtp::ERIs']]],
   ['threecenterderivative_50',['ThreeCenterDerivative',['../namespacevotca_1_1xtp.html#add55e119f03eaa382f8c434673d57bfb',1,'votca::xtp']]],
-  ['threshold_51',['threshold',['../structvotca_1_1xtp_1_1TrapFinder_1_1Settings.html#a43d103626e0b35d874f69b33faf1288d',1,'votca::xtp::TrapFinder::Settings']]],
+  ['threshold_51',['threshold',['../structvotca_1_1xtp_1_1ActiveRegion_1_1Options.html#affa415542865632fa0e4e6b044e3630c',1,'votca::xtp::ActiveRegion::Options::threshold'],['../structvotca_1_1xtp_1_1TrapFinder_1_1Settings.html#a43d103626e0b35d874f69b33faf1288d',1,'votca::xtp::TrapFinder::Settings::threshold']]],
   ['threshold_5f_52',['threshold_',['../classvotca_1_1xtp_1_1ActiveDensityMatrix.html#a4deb1daf229d2a606893227091c179ed',1,'votca::xtp::ActiveDensityMatrix::threshold_'],['../classvotca_1_1xtp_1_1Density__filter.html#a5ed130fdba62560493ae42b4dc3a218a',1,'votca::xtp::Density_filter::threshold_'],['../classvotca_1_1xtp_1_1OscillatorStrength__filter.html#aa8c4bf499d4ec94bdebff58b372343e1',1,'votca::xtp::OscillatorStrength_filter::threshold_'],['../classvotca_1_1xtp_1_1Overlap__filter.html#a3d83ba6550b558425bc87ecbfb549622',1,'votca::xtp::Overlap_filter::threshold_']]],
   ['tile_5f_53',['tile_',['../classvotca_1_1xtp_1_1SymmetricTiles.html#a2261eade519ab2af93b62bc0ede80f83',1,'votca::xtp::SymmetricTiles']]],
   ['tiledata_54',['TileData',['../classvotca_1_1xtp_1_1SymmetricTiles.html#acee6d4aa9a22305f16e72fea0988d846',1,'votca::xtp::SymmetricTiles']]],

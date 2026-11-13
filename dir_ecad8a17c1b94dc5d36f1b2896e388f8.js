@@ -2,6 +2,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
 [
     [ "accelerate_lapack.h", "accelerate__lapack_8h.html", "accelerate__lapack_8h" ],
     [ "activedensitymatrix.h", "activedensitymatrix_8h.html", "activedensitymatrix_8h" ],
+    [ "activeregion.h", "activeregion_8h.html", "activeregion_8h" ],
     [ "adiis.h", "adiis_8h.html", "adiis_8h" ],
     [ "adiis_costfunction.h", "adiis__costfunction_8h.html", "adiis__costfunction_8h" ],
     [ "amplitude_integration.h", "amplitude__integration_8h.html", "amplitude__integration_8h" ],

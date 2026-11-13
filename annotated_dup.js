@@ -186,6 +186,7 @@ var annotated_dup =
         [ "IncrementalFockBuilder", "classvotca_1_1xtp_1_1IncrementalFockBuilder.html", "classvotca_1_1xtp_1_1IncrementalFockBuilder" ],
         [ "IndexParser", "classvotca_1_1xtp_1_1IndexParser.html", "classvotca_1_1xtp_1_1IndexParser" ],
         [ "ActiveDensityMatrix", "classvotca_1_1xtp_1_1ActiveDensityMatrix.html", "classvotca_1_1xtp_1_1ActiveDensityMatrix" ],
+        [ "ActiveRegion", "classvotca_1_1xtp_1_1ActiveRegion.html", "classvotca_1_1xtp_1_1ActiveRegion" ],
         [ "ADIIS", "classvotca_1_1xtp_1_1ADIIS.html", "classvotca_1_1xtp_1_1ADIIS" ],
         [ "ADIIS_costfunction", "classvotca_1_1xtp_1_1ADIIS__costfunction.html", "classvotca_1_1xtp_1_1ADIIS__costfunction" ],
         [ "AmplitudeIntegration", "classvotca_1_1xtp_1_1AmplitudeIntegration.html", "classvotca_1_1xtp_1_1AmplitudeIntegration" ],

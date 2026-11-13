@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "votca::xtp::ActiveDensityMatrix", "classvotca_1_1xtp_1_1ActiveDensityMatrix.html", null ],
+    [ "votca::xtp::ActiveRegion", "classvotca_1_1xtp_1_1ActiveRegion.html", null ],
     [ "votca::xtp::ADIIS", "classvotca_1_1xtp_1_1ADIIS.html", null ],
     [ "votca::xtp::AmplitudeIntegration&lt; Grid &gt;", "classvotca_1_1xtp_1_1AmplitudeIntegration.html", null ],
     [ "votca::xtp::Anderson", "classvotca_1_1xtp_1_1Anderson.html", null ],
@@ -453,6 +454,7 @@ var hierarchy =
     ] ],
     [ "votca::xtp::citations::Optional", "structvotca_1_1xtp_1_1citations_1_1Optional.html", null ],
     [ "votca::xtp::OptionalTiming", "classvotca_1_1xtp_1_1OptionalTiming.html", null ],
+    [ "votca::xtp::ActiveRegion::Options", "structvotca_1_1xtp_1_1ActiveRegion_1_1Options.html", null ],
     [ "votca::xtp::FullBSEDavidson::Options", "structvotca_1_1xtp_1_1FullBSEDavidson_1_1Options.html", null ],
     [ "votca::xtp::LatticeModel::Options", "structvotca_1_1xtp_1_1LatticeModel_1_1Options.html", null ],
     [ "votca::xtp::StochasticNetwork::Options", "structvotca_1_1xtp_1_1StochasticNetwork_1_1Options.html", null ],
@@ -536,6 +538,7 @@ var hierarchy =
       [ "votca::xtp::QMRegion", "classvotca_1_1xtp_1_1QMRegion.html", null ]
     ] ],
     [ "votca::xtp::Regular_Grid", "classvotca_1_1xtp_1_1Regular__Grid.html", null ],
+    [ "votca::xtp::ActiveRegion::Report", "structvotca_1_1xtp_1_1ActiveRegion_1_1Report.html", null ],
     [ "votca::csg::Residue", "classvotca_1_1csg_1_1Residue.html", null ],
     [ "votca::xtp::BulkSimulation::Result", "structvotca_1_1xtp_1_1BulkSimulation_1_1Result.html", null ],
     [ "votca::xtp::ChargeResponseFit::Result", "structvotca_1_1xtp_1_1ChargeResponseFit_1_1Result.html", null ],

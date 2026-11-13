@@ -77,6 +77,7 @@ var classvotca_1_1xtp_1_1DFTEngine =
     [ "active_and_border_atoms_", "classvotca_1_1xtp_1_1DFTEngine.html#ac2759f13ae361c2ae48913ec4b07846c", null ],
     [ "active_atoms_as_string_", "classvotca_1_1xtp_1_1DFTEngine.html#a9de12e0e6e56173adaa8ac1de1fdfdb6", null ],
     [ "active_electrons_", "classvotca_1_1xtp_1_1DFTEngine.html#a8c82574ec60f04d3f7072ec1d3c8b601", null ],
+    [ "active_growth_", "classvotca_1_1xtp_1_1DFTEngine.html#a067b4f38e97a0c1a36b7d5b7390d7baa", null ],
     [ "active_threshold_", "classvotca_1_1xtp_1_1DFTEngine.html#ad281e544f7f00327ac56724bc9fa5346", null ],
     [ "activemol_", "classvotca_1_1xtp_1_1DFTEngine.html#aaf6ee51c1406d83f14456984009a9f0c", null ],
     [ "auxbasis_", "classvotca_1_1xtp_1_1DFTEngine.html#a7f2d5f53d8ef81d6f107efa6a9aca827", null ],

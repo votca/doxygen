@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"classCsgREupdate.html#aa9e49a7f2c54da09a4e8bc962ff6abc2":[3,0,14,3],
+"classCsgREupdate.html#ab72af11b768705d90ce307c1d840321c":[3,0,14,22],
+"classCsgREupdate.html#abab401f15887d36559f7031ca76252a3":[3,0,14,36],
+"classCsgREupdate.html#ac6066edf6d2cfe654d78dd14bc31443a":[3,0,14,43],
+"classCsgREupdate.html#ac76bebcbe8d0df0a578e00c264467912":[3,0,14,4],
 "classCsgREupdate.html#ac7e27c31c884e9fbc9180d812d07fc38":[3,0,14,8],
 "classCsgREupdate.html#ace5af5765f6ff0b99f8d1c66931289c6":[3,0,14,19],
 "classCsgREupdate.html#ad0e1142a5a52033dc682eadae92def30":[3,0,14,42],
@@ -188,9 +193,9 @@ var NAVTREEINDEX2 =
 "classes.html":[3,1],
 "classicalsegment_8cc.html":[4,0,3,1,0,27],
 "classicalsegment_8cc_source.html":[4,0,3,1,0,27],
-"classicalsegment_8h.html":[4,0,3,0,0,0,37],
-"classicalsegment_8h.html#a1d081737a1933f78aeb387f021c4445a":[4,0,3,0,0,0,37,1],
-"classicalsegment_8h_source.html":[4,0,3,0,0,0,37],
+"classicalsegment_8h.html":[4,0,3,0,0,0,38],
+"classicalsegment_8h.html#a1d081737a1933f78aeb387f021c4445a":[4,0,3,0,0,0,38,1],
+"classicalsegment_8h_source.html":[4,0,3,0,0,0,38],
 "classpyxtp_1_1XTPCalculators.html":[2,0,1,0],
 "classpyxtp_1_1XTPCalculators.html":[3,0,1,0],
 "classpyxtp_1_1XTPCalculators.html#a58a0f6cf864fd794baff71cd98509305":[2,0,1,0,1],
@@ -244,10 +249,5 @@ var NAVTREEINDEX2 =
 "classvotca_1_1csg_1_1BaseBead.html#a8ab85d12d729a1135f12ecbfc6f6f10a":[2,0,3,0,0,5],
 "classvotca_1_1csg_1_1BaseBead.html#a8ab85d12d729a1135f12ecbfc6f6f10a":[3,0,3,0,0,5],
 "classvotca_1_1csg_1_1BaseBead.html#a8b7f3362d25bc14c10a9bf9ef4071ef3":[2,0,3,0,0,0],
-"classvotca_1_1csg_1_1BaseBead.html#a8b7f3362d25bc14c10a9bf9ef4071ef3":[3,0,3,0,0,0],
-"classvotca_1_1csg_1_1BaseBead.html#a8cfd7fae492b3d556cd94b10c058105e":[2,0,3,0,0,21],
-"classvotca_1_1csg_1_1BaseBead.html#a8cfd7fae492b3d556cd94b10c058105e":[3,0,3,0,0,21],
-"classvotca_1_1csg_1_1BaseBead.html#a9ae144f1fdbd52fa5591cf0d37073e9a":[2,0,3,0,0,13],
-"classvotca_1_1csg_1_1BaseBead.html#a9ae144f1fdbd52fa5591cf0d37073e9a":[3,0,3,0,0,13],
-"classvotca_1_1csg_1_1BaseBead.html#a9f852c18150b68ed6f66b3c28e77d107":[2,0,3,0,0,18]
+"classvotca_1_1csg_1_1BaseBead.html#a8b7f3362d25bc14c10a9bf9ef4071ef3":[3,0,3,0,0,0]
 };
