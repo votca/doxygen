@@ -353,6 +353,9 @@ var hierarchy =
     [ "votca::xtp::ImaginaryAxisIntegration", "classvotca_1_1xtp_1_1ImaginaryAxisIntegration.html", null ],
     [ "votca::csg::Imc", "classvotca_1_1csg_1_1Imc.html", null ],
     [ "votca::csg::IMCNBSearchHandler", "classvotca_1_1csg_1_1IMCNBSearchHandler.html", null ],
+    [ "votca::xtp::InactiveScreening", "classvotca_1_1xtp_1_1InactiveScreening.html", null ],
+    [ "votca::xtp::InactiveScreeningInput", "structvotca_1_1xtp_1_1InactiveScreeningInput.html", null ],
+    [ "votca::xtp::InactiveSpace", "structvotca_1_1xtp_1_1InactiveSpace.html", null ],
     [ "votca::xtp::IncrementalFockBuilder", "classvotca_1_1xtp_1_1IncrementalFockBuilder.html", null ],
     [ "votca::xtp::IndexParser", "classvotca_1_1xtp_1_1IndexParser.html", null ],
     [ "votca::xtp::checkpoint_utils::InferDataType&lt; T &gt;", "structvotca_1_1xtp_1_1checkpoint__utils_1_1InferDataType.html", null ],
@@ -492,6 +495,7 @@ var hierarchy =
     [ "votca::xtp::PODCoupling", "classvotca_1_1xtp_1_1PODCoupling.html", null ],
     [ "votca::xtp::StochasticNetworkFit::PointFit", "structvotca_1_1xtp_1_1StochasticNetworkFit_1_1PointFit.html", null ],
     [ "votca::xtp::StochasticNetwork::PointProcess", "structvotca_1_1xtp_1_1StochasticNetwork_1_1PointProcess.html", null ],
+    [ "votca::xtp::InactiveScreening::PoleFit", "structvotca_1_1xtp_1_1InactiveScreening_1_1PoleFit.html", null ],
     [ "votca::xtp::Populationanalysis&lt; T &gt;", "classvotca_1_1xtp_1_1Populationanalysis.html", null ],
     [ "votca::csg::PotentialFunction", "classvotca_1_1csg_1_1PotentialFunction.html", [
       [ "votca::csg::PotentialFunctionCBSPL", "classvotca_1_1csg_1_1PotentialFunctionCBSPL.html", null ],
@@ -526,6 +530,7 @@ var hierarchy =
     [ "votca::csg::RDFCalculator", "classvotca_1_1csg_1_1RDFCalculator.html", null ],
     [ "votca::xtp::LifetimeSimulation::Record", "structvotca_1_1xtp_1_1LifetimeSimulation_1_1Record.html", null ],
     [ "votca::xtp::citations::Reference", "structvotca_1_1xtp_1_1citations_1_1Reference.html", null ],
+    [ "votca::xtp::QMRegion::ReferenceOrbitals", "structvotca_1_1xtp_1_1QMRegion_1_1ReferenceOrbitals.html", null ],
     [ "votca::xtp::Region", "classvotca_1_1xtp_1_1Region.html", [
       [ "votca::xtp::MMRegion< PolarSegment >", "classvotca_1_1xtp_1_1MMRegion.html", [
         [ "votca::xtp::PolarRegion", "classvotca_1_1xtp_1_1PolarRegion.html", null ]
@@ -540,6 +545,7 @@ var hierarchy =
     [ "votca::xtp::Regular_Grid", "classvotca_1_1xtp_1_1Regular__Grid.html", null ],
     [ "votca::xtp::ActiveRegion::Report", "structvotca_1_1xtp_1_1ActiveRegion_1_1Report.html", null ],
     [ "votca::csg::Residue", "classvotca_1_1csg_1_1Residue.html", null ],
+    [ "votca::xtp::TCMatrix_gwbse::ResponsePoint", "structvotca_1_1xtp_1_1TCMatrix__gwbse_1_1ResponsePoint.html", null ],
     [ "votca::xtp::BulkSimulation::Result", "structvotca_1_1xtp_1_1BulkSimulation_1_1Result.html", null ],
     [ "votca::xtp::ChargeResponseFit::Result", "structvotca_1_1xtp_1_1ChargeResponseFit_1_1Result.html", null ],
     [ "votca::xtp::GraphRandomWalk::Result", "structvotca_1_1xtp_1_1GraphRandomWalk_1_1Result.html", null ],

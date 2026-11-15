@@ -1,5 +1,6 @@
 var classvotca_1_1xtp_1_1QMRegion =
 [
+    [ "ReferenceOrbitals", "structvotca_1_1xtp_1_1QMRegion_1_1ReferenceOrbitals.html", "structvotca_1_1xtp_1_1QMRegion_1_1ReferenceOrbitals" ],
     [ "QMRegion", "classvotca_1_1xtp_1_1QMRegion.html#a6fa5d663ee2a2a86042d37eaa2758b85", null ],
     [ "~QMRegion", "classvotca_1_1xtp_1_1QMRegion.html#ace672867a6e37fd67fc0c87deddb1cdf", null ],
     [ "AddNucleiFields", "classvotca_1_1xtp_1_1QMRegion.html#a328161387ac5b3cc7e550c207b83f145", null ],
@@ -22,10 +23,12 @@ var classvotca_1_1xtp_1_1QMRegion =
     [ "InteractwithQMRegion", "classvotca_1_1xtp_1_1QMRegion.html#abd818daeb1f0a43a3e19e9fc72a28faf", null ],
     [ "InteractwithStaticRegion", "classvotca_1_1xtp_1_1QMRegion.html#a4d18df30f975a8095389f423dbe43cee", null ],
     [ "PrepareEwaldPotentialGrid", "classvotca_1_1xtp_1_1QMRegion.html#a10cfe78b3cb5b1a6472e9b7b14f19fb5", null ],
-    [ "PrepareOrbitalsForGWBSE", "classvotca_1_1xtp_1_1QMRegion.html#aaf2a5bc883c0a33fae1728646e575660", null ],
+    [ "PrepareOrbitalsForGWBSE", "classvotca_1_1xtp_1_1QMRegion.html#a9849c3398f3757791f9aab569b61faa8", null ],
     [ "push_back", "classvotca_1_1xtp_1_1QMRegion.html#a38aa6f8418fd74126b57946b205bb3a2", null ],
     [ "ReadFromCpt", "classvotca_1_1xtp_1_1QMRegion.html#a8b459d6c55b731fc672455dc358177a8", null ],
     [ "Reset", "classvotca_1_1xtp_1_1QMRegion.html#a5e71e269e1e6caa49ed29fb3fa206b64", null ],
+    [ "RestoreReferenceOrbitals", "classvotca_1_1xtp_1_1QMRegion.html#a87fd4204ac3265ee840147989d0428a4", null ],
+    [ "SaveReferenceOrbitals", "classvotca_1_1xtp_1_1QMRegion.html#a34704eda5a10656b6d9b12745b1627cd", null ],
     [ "ScreeningAuxBasisName", "classvotca_1_1xtp_1_1QMRegion.html#a544590514d0f11c214493a5ffd41d571", null ],
     [ "size", "classvotca_1_1xtp_1_1QMRegion.html#a7a80db580e111944ca783e8525d76684", null ],
     [ "StateEnergy", "classvotca_1_1xtp_1_1QMRegion.html#a77a5fc9612166586c3da54d915fae54e", null ],
@@ -52,6 +55,7 @@ var classvotca_1_1xtp_1_1QMRegion =
     [ "orb_", "classvotca_1_1xtp_1_1QMRegion.html#aac3106169b4a3e7499dae47b17a75b94", null ],
     [ "overlap_sqrt_", "classvotca_1_1xtp_1_1QMRegion.html#ac80aa1ceb54aab34cb0a2ef6ab3134a6", null ],
     [ "qmpackage_", "classvotca_1_1xtp_1_1QMRegion.html#a34d2a1d0f6cb6d20658124bc599aaa4e", null ],
+    [ "reference_", "classvotca_1_1xtp_1_1QMRegion.html#a3ec66e0234a4ae57047d95d5d158a608", null ],
     [ "screened_done_", "classvotca_1_1xtp_1_1QMRegion.html#a109cd62bdfa4ff76279ab64936a93ac1", null ],
     [ "screened_state_", "classvotca_1_1xtp_1_1QMRegion.html#a6a79ea33aa9376bc70ab66bf87707fd3", null ],
     [ "screening_", "classvotca_1_1xtp_1_1QMRegion.html#a3bfdc3d1391ef974120b6215901a6fa5", null ],

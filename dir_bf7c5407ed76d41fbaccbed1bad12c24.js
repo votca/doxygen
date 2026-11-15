@@ -1,5 +1,6 @@
 var dir_bf7c5407ed76d41fbaccbed1bad12c24 =
 [
+    [ "scaled_erfc.h", "scaled__erfc_8h.html", "scaled__erfc_8h" ],
     [ "sigma_cda.cc", "sigma__cda_8cc.html", null ],
     [ "sigma_cda.h", "sigma__cda_8h.html", "sigma__cda_8h" ],
     [ "sigma_cda_uks.cc", "sigma__cda__uks_8cc.html", null ],

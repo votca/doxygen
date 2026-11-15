@@ -94,6 +94,7 @@ var dir_ecad8a17c1b94dc5d36f1b2896e388f8 =
     [ "hirshfeldpartition.h", "hirshfeldpartition_8h.html", "hirshfeldpartition_8h" ],
     [ "hist.h", "hist_8h.html", "hist_8h" ],
     [ "ImaginaryAxisIntegration.h", "ImaginaryAxisIntegration_8h.html", "ImaginaryAxisIntegration_8h" ],
+    [ "inactivescreening.h", "inactivescreening_8h.html", "inactivescreening_8h" ],
     [ "IncrementalFockBuilder.h", "IncrementalFockBuilder_8h.html", "IncrementalFockBuilder_8h" ],
     [ "IndexParser.h", "IndexParser_8h.html", "IndexParser_8h" ],
     [ "job.h", "job_8h.html", "job_8h" ],

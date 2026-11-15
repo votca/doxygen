@@ -10,6 +10,7 @@ var searchData=
   ['empty_7',['empty',['../classvotca_1_1csg_1_1BeadMotif.html#a76a909b77d9c3a337957f30c46506010adc626e49c6601b86eb0de22ea6c516b9',1,'votca::csg::BeadMotif']]],
   ['error_8',['error',['../structvotca_1_1Log.html#a469c72e17c2d11eeb67e994f66335d43aae07bdfb1f4aa8036ab45b8e471017f6',1,'votca::Log']]],
   ['every_9',['Every',['../classvotca_1_1xtp_1_1ScreeningUpdate.html#a6dc43297d25de0f88802fe8f3fbe585daffcf70e892b8ac3facbac0f88602396b',1,'votca::xtp::ScreeningUpdate']]],
-  ['excitoncl_10',['Excitoncl',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7a6e59cab452055736212bfae1c257974a',1,'votca::xtp::QMPair']]],
-  ['excitonuks_11',['ExcitonUKS',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac931c3434d2bca4fb1d42c13729ca7c2',1,'votca::xtp::QMStateType']]]
+  ['exact_10',['Exact',['../structvotca_1_1xtp_1_1InactiveScreeningInput.html#a46e325bb4540c828720d6657e7b594bfa1649aed298f99d587e2eb30c1db5946b',1,'votca::xtp::InactiveScreeningInput']]],
+  ['excitoncl_11',['Excitoncl',['../classvotca_1_1xtp_1_1QMPair.html#a245552b198e5221b5b1ebd400ae121a7a6e59cab452055736212bfae1c257974a',1,'votca::xtp::QMPair']]],
+  ['excitonuks_12',['ExcitonUKS',['../classvotca_1_1xtp_1_1QMStateType.html#ac99cbd6d6ed98f669041f0840b09dfe7ac931c3434d2bca4fb1d42c13729ca7c2',1,'votca::xtp::QMStateType']]]
 ];

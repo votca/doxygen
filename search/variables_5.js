@@ -76,8 +76,9 @@ var searchData=
   ['frame_5fmoments_73',['frame_moments',['../structvotca_1_1xtp_1_1Sigma__base_1_1ScreeningData.html#ad303fc4f7dd59a9cde38dd2bf29343ba',1,'votca::xtp::Sigma_base::ScreeningData']]],
   ['frame_5fweights_74',['frame_weights',['../structvotca_1_1xtp_1_1Sigma__base_1_1ScreeningData.html#abe844a42813ef4240ec5bd9d17e6b3ee',1,'votca::xtp::Sigma_base::ScreeningData']]],
   ['frames_5f_75',['frames_',['../classCsgDensityApp.html#abb402e8492deff8785e7c6d9db7efc95',1,'CsgDensityApp']]],
-  ['funcperatom_5f_76',['FuncperAtom_',['../classvotca_1_1xtp_1_1AOBasis.html#ab5c6cec5f58430559e47c8d79d075cb7',1,'votca::xtp::AOBasis']]],
-  ['functional_5f_77',['functional_',['../classvotca_1_1xtp_1_1GWBSE.html#aad8f8c11354c22c83aa5ad60456b4927',1,'votca::xtp::GWBSE']]],
-  ['functionalname_5f_78',['functionalname_',['../classvotca_1_1xtp_1_1Orbitals.html#a7968485ad53f67e20aede0bd47fae597',1,'votca::xtp::Orbitals']]],
-  ['fwhm_5f_79',['fwhm_',['../classvotca_1_1xtp_1_1Spectrum.html#ab9ec2ef7415d14b279e94d7da4a290b6',1,'votca::xtp::Spectrum']]]
+  ['frequency_76',['frequency',['../structvotca_1_1xtp_1_1TCMatrix__gwbse_1_1ResponsePoint.html#aeb5adf394521a2bc15ff41647f3c35c8',1,'votca::xtp::TCMatrix_gwbse::ResponsePoint']]],
+  ['funcperatom_5f_77',['FuncperAtom_',['../classvotca_1_1xtp_1_1AOBasis.html#ab5c6cec5f58430559e47c8d79d075cb7',1,'votca::xtp::AOBasis']]],
+  ['functional_5f_78',['functional_',['../classvotca_1_1xtp_1_1GWBSE.html#aad8f8c11354c22c83aa5ad60456b4927',1,'votca::xtp::GWBSE']]],
+  ['functionalname_5f_79',['functionalname_',['../classvotca_1_1xtp_1_1Orbitals.html#a7968485ad53f67e20aede0bd47fae597',1,'votca::xtp::Orbitals']]],
+  ['fwhm_5f_80',['fwhm_',['../classvotca_1_1xtp_1_1Spectrum.html#ab9ec2ef7415d14b279e94d7da4a290b6',1,'votca::xtp::Spectrum']]]
 ];
