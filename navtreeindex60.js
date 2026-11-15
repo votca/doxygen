@@ -1,5 +1,17 @@
 var NAVTREEINDEX60 =
 {
+"edgecontainer_8h.html":[4,0,2,0,0,0,11],
+"edgecontainer_8h_source.html":[4,0,2,0,0,0,11],
+"eeinteractor_8cc.html":[4,0,3,1,0,36],
+"eeinteractor_8cc_source.html":[4,0,3,1,0,36],
+"eeinteractor_8h.html":[4,0,3,0,0,0,53],
+"eeinteractor_8h.html#af21083ef14ea01b2cb1070585cbdcb91":[4,0,3,0,0,0,53,2],
+"eeinteractor_8h_source.html":[4,0,3,0,0,0,53],
+"eigenio__matrixmarket_8cc.html":[4,0,2,1,0,10],
+"eigenio__matrixmarket_8cc_source.html":[4,0,2,1,0,10],
+"eigenio__matrixmarket_8h.html":[4,0,2,0,0,0,13],
+"eigenio__matrixmarket_8h_source.html":[4,0,2,0,0,0,13],
+"eigensystem_8h.html":[4,0,2,0,0,0,14],
 "eigensystem_8h_source.html":[4,0,2,0,0,0,14],
 "einternal_8cc.html":[4,0,3,1,0,1,2],
 "einternal_8cc_source.html":[4,0,3,1,0,1,2],
@@ -237,17 +249,5 @@ var NAVTREEINDEX60 =
 "gauss__legendre__quadrature_8cc_source.html":[4,0,3,1,0,4,4],
 "gauss__legendre__quadrature_8h.html":[4,0,3,1,0,4,5],
 "gauss__legendre__quadrature_8h_source.html":[4,0,3,1,0,4,5],
-"gaussiankernel_8h.html":[4,0,3,0,0,0,77],
-"gaussiankernel_8h.html#a067d7889c62f84dc86cdffa11b54d75c":[4,0,3,0,0,0,77,1],
-"gaussiankernel_8h_source.html":[4,0,3,0,0,0,77],
-"gaussianwriter_8cc.html":[4,0,3,1,0,53],
-"gaussianwriter_8cc_source.html":[4,0,3,1,0,53],
-"gaussianwriter_8h.html":[4,0,3,0,0,0,79],
-"gaussianwriter_8h.html#a44a4f162f5c4f0153d5f2a1ce19e851e":[4,0,3,0,0,0,79,1],
-"gaussianwriter_8h_source.html":[4,0,3,0,0,0,79],
-"gencube_8cc.html":[4,0,3,1,0,12,11],
-"gencube_8cc_source.html":[4,0,3,1,0,12,11],
-"gencube_8h.html":[4,0,3,1,0,12,12],
-"gencube_8h.html#a5b164fb359dd6bbd9414238de211e5f8":[4,0,3,1,0,12,12,1],
-"gencube_8h_source.html":[4,0,3,1,0,12,12]
+"gaussiankernel_8h.html":[4,0,3,0,0,0,77]
 };

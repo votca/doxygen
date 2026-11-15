@@ -1,5 +1,17 @@
 var NAVTREEINDEX35 =
 {
+"classvotca_1_1xtp_1_1GaussianWriter.html":[2,0,3,2,110],
+"classvotca_1_1xtp_1_1GaussianWriter.html":[3,0,3,2,106],
+"classvotca_1_1xtp_1_1GaussianWriter.html#a5670774d6e21d74cdc7f473a4623294d":[2,0,3,2,110,1],
+"classvotca_1_1xtp_1_1GaussianWriter.html#a5670774d6e21d74cdc7f473a4623294d":[3,0,3,2,106,1],
+"classvotca_1_1xtp_1_1GaussianWriter.html#a5e8204934f632d2cdf8cedd1d4069d79":[2,0,3,2,110,12],
+"classvotca_1_1xtp_1_1GaussianWriter.html#a5e8204934f632d2cdf8cedd1d4069d79":[3,0,3,2,106,12],
+"classvotca_1_1xtp_1_1GaussianWriter.html#a7cdc3c0190b350f40b4114421b1dbfa6":[2,0,3,2,110,9],
+"classvotca_1_1xtp_1_1GaussianWriter.html#a7cdc3c0190b350f40b4114421b1dbfa6":[3,0,3,2,106,9],
+"classvotca_1_1xtp_1_1GaussianWriter.html#a99b852092b90fe4341be4467d27181bc":[2,0,3,2,110,2],
+"classvotca_1_1xtp_1_1GaussianWriter.html#a99b852092b90fe4341be4467d27181bc":[3,0,3,2,106,2],
+"classvotca_1_1xtp_1_1GaussianWriter.html#aa83cd5877928102672db1f707e1c2e06":[2,0,3,2,110,10],
+"classvotca_1_1xtp_1_1GaussianWriter.html#aa83cd5877928102672db1f707e1c2e06":[3,0,3,2,106,10],
 "classvotca_1_1xtp_1_1GaussianWriter.html#aa9dca8b02ad072100606ebea75c5091f":[2,0,3,2,110,5],
 "classvotca_1_1xtp_1_1GaussianWriter.html#aa9dca8b02ad072100606ebea75c5091f":[3,0,3,2,106,5],
 "classvotca_1_1xtp_1_1GaussianWriter.html#aba4ee76d08a8255cf9be527ded9a5a1e":[2,0,3,2,110,3],
@@ -237,17 +249,5 @@ var NAVTREEINDEX35 =
 "classvotca_1_1xtp_1_1HamiltonianOperator.html#af37c14b4f9a0a41e3d9dc5114bc264c0":[2,0,3,2,51,12],
 "classvotca_1_1xtp_1_1HamiltonianOperator.html#af37c14b4f9a0a41e3d9dc5114bc264c0":[3,0,3,2,47,12],
 "classvotca_1_1xtp_1_1HirshfeldPartition.html":[2,0,3,2,123],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html":[3,0,3,2,119],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a09c1fead2d1d32cedea9a330a3b749f8":[2,0,3,2,123,2],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a09c1fead2d1d32cedea9a330a3b749f8":[3,0,3,2,119,2],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a0de67f60b18bb0d00a24423835411c3a":[2,0,3,2,123,8],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a0de67f60b18bb0d00a24423835411c3a":[3,0,3,2,119,8],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a159fb4dde0fd6b1d1add54f4b8b47921":[2,0,3,2,123,5],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a159fb4dde0fd6b1d1add54f4b8b47921":[3,0,3,2,119,5],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a4231a58dc0ae261fdbbe4adabaf6cc5c":[2,0,3,2,123,12],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a4231a58dc0ae261fdbbe4adabaf6cc5c":[3,0,3,2,119,12],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a4e771a6cb77106db769a69edc3e60eca":[2,0,3,2,123,7],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a4e771a6cb77106db769a69edc3e60eca":[3,0,3,2,119,7],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a6be1ebcf28107c4b0bf5be500fc43962":[2,0,3,2,123,9],
-"classvotca_1_1xtp_1_1HirshfeldPartition.html#a6be1ebcf28107c4b0bf5be500fc43962":[3,0,3,2,119,9]
+"classvotca_1_1xtp_1_1HirshfeldPartition.html":[3,0,3,2,119]
 };

@@ -1,5 +1,17 @@
 var NAVTREEINDEX77 =
 {
+"structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html#adf6841a00ecbd93b1422fea0ca025052":[2,0,3,2,226,2,5],
+"structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html#adf6841a00ecbd93b1422fea0ca025052":[3,0,3,2,222,2,5],
+"structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html#ae55c5b6487e8958ac2a305a5a6a89ef9":[2,0,3,2,226,2,0],
+"structvotca_1_1xtp_1_1Vxc__Potential_1_1XC__entry__spin.html#ae55c5b6487e8958ac2a305a5a6a89ef9":[3,0,3,2,222,2,0],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType.html":[2,0,3,2,2,3],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType.html":[3,0,3,2,0,3],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType.html#a7ad4df02a8263e7823e735e2b6cb5580":[2,0,3,2,2,3,0],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType.html#a7ad4df02a8263e7823e735e2b6cb5580":[3,0,3,2,0,3,0],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01bool_01_4.html":[2,0,3,2,2,14],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01bool_01_4.html":[3,0,3,2,0,14],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01bool_01_4.html#a3285ba99dfeedf815bda6723861285d5":[2,0,3,2,2,14,0],
+"structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01bool_01_4.html#a3285ba99dfeedf815bda6723861285d5":[3,0,3,2,0,14,0],
 "structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01double_01_4.html":[2,0,3,2,2,5],
 "structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01double_01_4.html":[3,0,3,2,0,5],
 "structvotca_1_1xtp_1_1checkpoint__utils_1_1FileDataType_3_01double_01_4.html#a0f9df5b1cdd8ff901296d70c6b9cf5d3":[2,0,3,2,2,5,0],
@@ -237,17 +249,5 @@ var NAVTREEINDEX77 =
 "tofgraph_8h.html":[4,0,3,0,0,0,172],
 "tofgraph_8h.html#ae8e5d2dc302e7963b2953f7f03fcdd01":[4,0,3,0,0,0,172,5],
 "tofgraph_8h_source.html":[4,0,3,0,0,0,172],
-"tofsimulation_8cc.html":[4,0,3,1,0,107],
-"tofsimulation_8cc_source.html":[4,0,3,1,0,107],
-"tofsimulation_8h.html":[4,0,3,0,0,0,173],
-"tofsimulation_8h.html#a064390fe750d888c3bc032093adafdef":[4,0,3,0,0,0,173,5],
-"tofsimulation_8h_source.html":[4,0,3,0,0,0,173],
-"tokenizer_8cc.html":[4,0,2,1,0,34],
-"tokenizer_8cc_source.html":[4,0,2,1,0,34],
-"tokenizer_8h.html":[4,0,2,0,0,0,47],
-"tokenizer_8h_source.html":[4,0,2,0,0,0,47],
-"toolfactory_8cc.html":[4,0,3,1,0,3,7],
-"toolfactory_8cc_source.html":[4,0,3,1,0,3,7],
-"toolfactory_8h.html":[4,0,3,0,0,0,174],
-"toolfactory_8h.html#a40fdc35cb76e370326a1f808e8a2abf2":[4,0,3,0,0,0,174,1]
+"tofsimulation_8cc.html":[4,0,3,1,0,107]
 };

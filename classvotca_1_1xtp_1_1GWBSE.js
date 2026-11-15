@@ -11,6 +11,7 @@ var classvotca_1_1xtp_1_1GWBSE =
     [ "setInactiveScreening", "classvotca_1_1xtp_1_1GWBSE.html#ab8d6a506630209689f1ebba12b69f363", null ],
     [ "setLogger", "classvotca_1_1xtp_1_1GWBSE.html#ae4e120856cff3159c642af95551798a1", null ],
     [ "setScreeningEnvironment", "classvotca_1_1xtp_1_1GWBSE.html#a347eea67acb09342915414c8e3732f52", null ],
+    [ "StreamedResponse", "classvotca_1_1xtp_1_1GWBSE.html#a138935c036f1c1ca42ddd8832c4668c6", null ],
     [ "auxbasis_name_", "classvotca_1_1xtp_1_1GWBSE.html#a713a872e3b46b2f66847d125c98a6eda", null ],
     [ "bseopt_", "classvotca_1_1xtp_1_1GWBSE.html#a564aa763e95a81bf854cfe75c478cace", null ],
     [ "core_exchange_", "classvotca_1_1xtp_1_1GWBSE.html#a87bb3ed858c3e2127fd83a4c905dfa5c", null ],
@@ -36,5 +37,7 @@ var classvotca_1_1xtp_1_1GWBSE =
     [ "sigma_plot_filename_", "classvotca_1_1xtp_1_1GWBSE.html#af497a77979c02b174d9b30f9ad4db515", null ],
     [ "sigma_plot_spacing_", "classvotca_1_1xtp_1_1GWBSE.html#ae2b80b773b13cd8efea142b5a2f24c4b", null ],
     [ "sigma_plot_states_", "classvotca_1_1xtp_1_1GWBSE.html#a312ab9265f08b87ba40f340409e866cc", null ],
-    [ "sigma_plot_steps_", "classvotca_1_1xtp_1_1GWBSE.html#aac55dc63009364dc19fa83aa6c30e25c", null ]
+    [ "sigma_plot_steps_", "classvotca_1_1xtp_1_1GWBSE.html#aac55dc63009364dc19fa83aa6c30e25c", null ],
+    [ "stream_rpa_", "classvotca_1_1xtp_1_1GWBSE.html#a4388a5e2fb07e237a58ed6fb4715d5e9", null ],
+    [ "streamed_holes_", "classvotca_1_1xtp_1_1GWBSE.html#a533c10d2b6e35fa9bf48ed6c03527ec1", null ]
 ];

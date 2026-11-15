@@ -1,5 +1,17 @@
 var NAVTREEINDEX72 =
 {
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Settings.html#a4436c58e240925c3fbe8741ef734b769":[2,0,3,2,112,0,0],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Settings.html#a4436c58e240925c3fbe8741ef734b769":[3,0,3,2,108,0,0],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Settings.html#a73e5eb7dc6b48ca57c74fa7fd9f850bd":[2,0,3,2,112,0,2],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Settings.html#a73e5eb7dc6b48ca57c74fa7fd9f850bd":[3,0,3,2,108,0,2],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Settings.html#ac81b79f1f63e940512f84ffd0c8049c8":[2,0,3,2,112,0,1],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Settings.html#ac81b79f1f63e940512f84ffd0c8049c8":[3,0,3,2,108,0,1],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Transient.html":[2,0,3,2,112,2],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Transient.html":[3,0,3,2,108,2],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Transient.html#a05896d5e7cc86a5b247bfbd106b5b209":[2,0,3,2,112,2,1],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Transient.html#a05896d5e7cc86a5b247bfbd106b5b209":[3,0,3,2,108,2,1],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Transient.html#a72ef3032e1c6ef6c5a8930cc6a5362d6":[2,0,3,2,112,2,2],
+"structvotca_1_1xtp_1_1GraphRandomWalk_1_1Transient.html#a72ef3032e1c6ef6c5a8930cc6a5362d6":[3,0,3,2,108,2,2],
 "structvotca_1_1xtp_1_1GraphRandomWalk_1_1Transient.html#ab285f0296169911fffbbd4943746feb9":[2,0,3,2,112,2,0],
 "structvotca_1_1xtp_1_1GraphRandomWalk_1_1Transient.html#ab285f0296169911fffbbd4943746feb9":[3,0,3,2,108,2,0],
 "structvotca_1_1xtp_1_1GridContainers_1_1Cartesian__gridpoint.html":[2,0,3,2,114,2],
@@ -237,17 +249,5 @@ var NAVTREEINDEX72 =
 "structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a551f6e18adc0dea26851fa7e0a969370":[2,0,3,2,140,0,2],
 "structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a551f6e18adc0dea26851fa7e0a969370":[3,0,3,2,136,0,2],
 "structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a5bfbf54f1ee56c49d1c0d92ee25383da":[2,0,3,2,140,0,12],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a5bfbf54f1ee56c49d1c0d92ee25383da":[3,0,3,2,136,0,12],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a643753010ed4f9478e1d823ceb7f3c7b":[2,0,3,2,140,0,1],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a643753010ed4f9478e1d823ceb7f3c7b":[3,0,3,2,136,0,1],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a7203d9974d1fdd7c8ac7877910fce7ce":[2,0,3,2,140,0,10],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a7203d9974d1fdd7c8ac7877910fce7ce":[3,0,3,2,136,0,10],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a7d2361793da34493bdf731137fa0d7d4":[2,0,3,2,140,0,16],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a7d2361793da34493bdf731137fa0d7d4":[3,0,3,2,136,0,16],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a92257cb19513f7dc5051de7010e2f2d6":[2,0,3,2,140,0,8],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a92257cb19513f7dc5051de7010e2f2d6":[3,0,3,2,136,0,8],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a9f8ea59f23e9f1bac3d6080bf11b396c":[2,0,3,2,140,0,9],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a9f8ea59f23e9f1bac3d6080bf11b396c":[3,0,3,2,136,0,9],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#aab30f01128c6790e67e0897d296e059e":[2,0,3,2,140,0,11],
-"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#aab30f01128c6790e67e0897d296e059e":[3,0,3,2,136,0,11]
+"structvotca_1_1xtp_1_1LatticeModel_1_1Options.html#a5bfbf54f1ee56c49d1c0d92ee25383da":[3,0,3,2,136,0,12]
 };

@@ -1,5 +1,17 @@
 var NAVTREEINDEX65 =
 {
+"namespacevotca_1_1xtp_1_1citations.html#a78dd78e72e32e2322bb9e74828b2c169":[2,0,3,2,3,11],
+"namespacevotca_1_1xtp_1_1citations.html#a7cf89ce751bf01e727f5edf2e6b196a0":[2,0,3,2,3,12],
+"namespacevotca_1_1xtp_1_1citations.html#aa1a898af8dc296e80edee3535bbaf0e6":[2,0,3,2,3,6],
+"namespacevotca_1_1xtp_1_1citations.html#ac04049c0a9c3ff2319ad27f3d09ade4c":[2,0,3,2,3,4],
+"namespacevotca_1_1xtp_1_1citations.html#adcbbbd885e4508fa75334270347e224e":[2,0,3,2,3,10],
+"namespacevotca_1_1xtp_1_1citations.html#af7beab93a91c02843b406171a3694232":[2,0,3,2,3,8],
+"namespacevotca_1_1xtp_1_1exact__pole__sums.html":[2,0,3,2,5],
+"namespacevotca_1_1xtp_1_1exact__pole__sums.html#a265916014aa1f4d57fde978b78f61f83":[2,0,3,2,5,2],
+"namespacevotca_1_1xtp_1_1exact__pole__sums.html#a3274ffc62ade21ad7c79b68de1f6af0a":[2,0,3,2,5,0],
+"namespacevotca_1_1xtp_1_1exact__pole__sums.html#a3f3cd0b521f52088132d4636c222567e":[2,0,3,2,5,6],
+"namespacevotca_1_1xtp_1_1exact__pole__sums.html#a693f258740035d81ffa3f9f251e1e902":[2,0,3,2,5,5],
+"namespacevotca_1_1xtp_1_1exact__pole__sums.html#a91cc95b87c75177afa860d145d233939":[2,0,3,2,5,1],
 "namespacevotca_1_1xtp_1_1exact__pole__sums.html#ab9e7193cd96da73f7b29a877aa26e0ac":[2,0,3,2,5,3],
 "namespacevotca_1_1xtp_1_1exact__pole__sums.html#ac556fc07ced585b499fed20e4df4061e":[2,0,3,2,5,4],
 "namespacevotca_1_1xtp_1_1exact__pole__sums.html#ad4dc17262c929911a8f13bd31cc76087":[2,0,3,2,5,7],
@@ -237,17 +249,5 @@ var NAVTREEINDEX65 =
 "qmcalculator_8h.html":[4,0,3,0,0,0,130],
 "qmcalculator_8h.html#a6ac7effc5bd843d7644d580551328821":[4,0,3,0,0,0,130,1],
 "qmcalculator_8h_source.html":[4,0,3,0,0,0,130],
-"qmfragment_8h.html":[4,0,3,0,0,0,131],
-"qmfragment_8h.html#a1348ac2e427dbe3f97bf05703bc2fc3d":[4,0,3,0,0,0,131,1],
-"qmfragment_8h_source.html":[4,0,3,0,0,0,131],
-"qmmm_8cc.html":[4,0,3,1,0,7,8],
-"qmmm_8cc_source.html":[4,0,3,1,0,7,8],
-"qmmm_8h.html":[4,0,3,1,0,7,9],
-"qmmm_8h.html#a69119e5644eb9f67439afb933e0936d1":[4,0,3,1,0,7,9,1],
-"qmmm_8h_source.html":[4,0,3,1,0,7,9],
-"qmmolecule_8cc.html":[4,0,3,1,0,85],
-"qmmolecule_8cc_source.html":[4,0,3,1,0,85],
-"qmmolecule_8h.html":[4,0,3,0,0,0,132],
-"qmmolecule_8h.html#a478878f289d57484b6bccc3318cb730b":[4,0,3,0,0,0,132,1],
-"qmmolecule_8h_source.html":[4,0,3,0,0,0,132]
+"qmfragment_8h.html":[4,0,3,0,0,0,131]
 };
