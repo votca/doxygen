@@ -1,5 +1,7 @@
 var NAVTREEINDEX12 =
 {
+"classvotca_1_1csg_1_1XMLBead.html#a368ab42fd293743c82ec1da6279cce6f":[2,0,3,0,66,1],
+"classvotca_1_1csg_1_1XMLBead.html#a368ab42fd293743c82ec1da6279cce6f":[3,0,3,0,66,1],
 "classvotca_1_1csg_1_1XMLBead.html#a3697bcf15c3fdcc47e7544b6713e2d3b":[2,0,3,0,66,3],
 "classvotca_1_1csg_1_1XMLBead.html#a3697bcf15c3fdcc47e7544b6713e2d3b":[3,0,3,0,66,3],
 "classvotca_1_1csg_1_1XMLBead.html#a4f2d7f61752d77769a6ddaa23513e80a":[2,0,3,0,66,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX12 =
 "classvotca_1_1tools_1_1Calculator.html#af74e710b60dc657f7dad9b4cb3cee30b":[2,0,3,1,10,4],
 "classvotca_1_1tools_1_1Calculator.html#af74e710b60dc657f7dad9b4cb3cee30b":[3,0,3,1,5,4],
 "classvotca_1_1tools_1_1Color.html":[2,0,3,1,13],
-"classvotca_1_1tools_1_1Color.html":[3,0,3,1,8],
-"classvotca_1_1tools_1_1Color.html#a0309a4c5498ea343ed8b726a5edb59e5":[2,0,3,1,13,6],
-"classvotca_1_1tools_1_1Color.html#a0309a4c5498ea343ed8b726a5edb59e5":[3,0,3,1,8,6]
+"classvotca_1_1tools_1_1Color.html":[3,0,3,1,8]
 };

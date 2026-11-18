@@ -106,6 +106,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a83100f5340c1572557dbb20a54ac1a18" id="r_a83100f5340c1572557dbb20a54ac1a18"><td class="memItemLeft">static Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#a83100f5340c1572557dbb20a54ac1a18">NuclearRepulsionDerivative</a> (const <a class="el" href="classvotca_1_1xtp_1_1QMMolecule.html">QMMolecule</a> &amp;mol)</td></tr>
 <tr class="memitem:a94909d479951b14d65e615ed5971a50f" id="r_a94909d479951b14d65e615ed5971a50f"><td class="memItemLeft">static Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#a94909d479951b14d65e615ed5971a50f">RIJGradient</a> (const Eigen::MatrixXd &amp;density, const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;auxbasis, const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;dftbasis)</td></tr>
 <tr class="memitem:a1fff12b08a931cf57c8097d135dcb0bb" id="r_a1fff12b08a931cf57c8097d135dcb0bb"><td class="memItemLeft">static Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#a1fff12b08a931cf57c8097d135dcb0bb">RIKGradient</a> (const Eigen::MatrixXd &amp;occ_mo_coeffs, const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;auxbasis, const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;dftbasis)</td></tr>
+<tr class="memitem:ae3391bce46a7d96fb14a2426b379bb02" id="r_ae3391bce46a7d96fb14a2426b379bb02"><td class="memItemLeft">static Eigen::MatrixXd&#160;</td><td class="memItemRight"><a class="el" href="#ae3391bce46a7d96fb14a2426b379bb02">RIPairGradient</a> (const Eigen::MatrixXd &amp;U, const Eigen::VectorXd &amp;w, const Eigen::MatrixXd &amp;C, const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;auxbasis, const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;dftbasis)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -136,7 +137,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Derivative of the classical nuclear-nuclear repulsion energy E_nn = sum over atom pairs A,B with A &lt; B of Z_A Z_B / R_AB, with respect to nuclear coordinates. Returns an (Natoms x 3) matrix in Hartree/Bohr (positions are in Bohr).</p>
 <p>Uses <a class="el" href="classvotca_1_1xtp_1_1QMAtom.html#acc028290f319edbd79a0fc54a10ec300">QMAtom::getNuccharge()</a> (nuclear charge minus ECP core charge, if an ECP is in use), the effective charge that should enter the classical repulsion term consistently with an ECP-modified Hamiltonian. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftgradient_8cc_source.html#l00050">50</a> of file <a class="el" href="dftgradient_8cc_source.html">dftgradient.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftgradient_8cc_source.html#l00029">29</a> of file <a class="el" href="dftgradient_8cc_source.html">dftgradient.cc</a>.</p>
 
 </div>
 </div>
@@ -174,7 +175,7 @@ Static Public Member Functions</h2></td></tr>
 <p>RI-J (Coulomb) gradient for a fixed density matrix, contracting the two- and three-centre integral derivatives with the RI fitting coefficients c = V^-1 d. Returns dE_J/dR (Natoms x 3, Hartree/Bohr).</p>
 <p>The response of c need not be differentiated: E_J(c) = c^T d - 1/2 c^T V c is stationary in c for any fixed d. The formula is therefore valid for any density; for forces it must be the converged SCF density. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftgradient_8cc_source.html#l00077">77</a> of file <a class="el" href="dftgradient_8cc_source.html">dftgradient.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftgradient_8cc_source.html#l00072">72</a> of file <a class="el" href="dftgradient_8cc_source.html">dftgradient.cc</a>.</p>
 
 </div>
 </div>
@@ -212,7 +213,54 @@ Static Public Member Functions</h2></td></tr>
 <p>RI-K (exchange) gradient, without the hybrid scaling factor.</p>
 <p>occ_mo_coeffs: (nbf x nocc) occupied MO coefficients C. With d_ij(P) = C_i^T (mu nu|P) C_j, c_ij = V^-1 d_ij, E_K = -2 * sum_{i,j} [0.5 * c_ij . d_ij] = -sum_{i,j} c_ij . d_ij over all ordered pairs of occupied MOs, which equals the exchange energy of <a class="el" href="classvotca_1_1xtp_1_1ERIs.html#af2538789af25aaf9629b740c43cb684b">ERIs::CalculateEXX_mos</a>. That uses the symmetric V^-1/2 fit, which gives the same energy as the V^-1 fit used here (|V^-1/2 x|^2 = x^T V^-1 x for positive-definite V), so no derivative of V^-1/2 is needed. As for RIJGradient, c_ij is stationary for any fixed C, so the formula holds for any C; for forces C must be the converged occupied MOs. </p>
 
-<p class="definition">Definition at line <a class="el" href="dftgradient_8cc_source.html#l00124">124</a> of file <a class="el" href="dftgradient_8cc_source.html">dftgradient.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dftgradient_8cc_source.html#l00096">96</a> of file <a class="el" href="dftgradient_8cc_source.html">dftgradient.cc</a>.</p>
+
+</div>
+</div>
+<a id="ae3391bce46a7d96fb14a2426b379bb02" name="ae3391bce46a7d96fb14a2426b379bb02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3391bce46a7d96fb14a2426b379bb02">&#9670;&#160;</a></span>RIPairGradient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::MatrixXd votca::xtp::DFTGradient::RIPairGradient </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;</td>          <td class="paramname"><span class="paramname"><em>U</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;</td>          <td class="paramname"><span class="paramname"><em>C</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>auxbasis</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classvotca_1_1xtp_1_1AOBasis.html">AOBasis</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>dftbasis</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Gradient of E = sum_{k,i} w_k d_ki^T V^-1 d_ki with d_ki(P) = U_k^T (mu nu|P) C_i, for fixed U (nbf x nk), weights w (nk) and C (nbf x ni). RIKGradient(C) = -RIPairGradient(C, 1, C). With U, w the eigen-decomposition of a symmetric matrix P and D = 2 C C^T, it gives the exchange part of sum_munu P_munu dF_munu/dR at fixed density: -ScaHFX * RIPairGradient(U, w, C). </p>
+
+<p class="definition">Definition at line <a class="el" href="dftgradient_8cc_source.html#l00109">109</a> of file <a class="el" href="dftgradient_8cc_source.html">dftgradient.cc</a>.</p>
 
 </div>
 </div>

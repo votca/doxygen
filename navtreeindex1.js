@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"cgmoleculedef_8h.html":[4,0,1,0,0,0,13],
+"cgmoleculedef_8h_source.html":[4,0,1,0,0,0,13],
 "cgobserver_8h.html":[4,0,1,0,0,0,14],
 "cgobserver_8h_source.html":[4,0,1,0,0,0,14],
 "chargeresponse_8cc.html":[4,0,3,1,0,22],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "classCsgREupdate.html#a79d1e3cbba5c379a77c2e7f45f7298f6":[3,0,14,32],
 "classCsgREupdate.html#a7fed4da06edd00f84f2ef305f7504976":[3,0,14,24],
 "classCsgREupdate.html#a80a5d60164d40a1383963f8f75c1d0eb":[3,0,14,31],
-"classCsgREupdate.html#a8704792523e6e865f05b93ae06f814ce":[3,0,14,7],
-"classCsgREupdate.html#a8889266a63a2968aa8b85a625a95bc6e":[3,0,14,10],
-"classCsgREupdate.html#a9e4d7eca61dd49ff6142e6174607dd2a":[3,0,14,13]
+"classCsgREupdate.html#a8704792523e6e865f05b93ae06f814ce":[3,0,14,7]
 };

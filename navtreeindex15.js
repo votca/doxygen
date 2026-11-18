@@ -1,5 +1,7 @@
 var NAVTREEINDEX15 =
 {
+"classvotca_1_1tools_1_1GraphNode.html#a4a216cc745ed781fbdd245fba4a937f7":[2,0,3,1,29,6],
+"classvotca_1_1tools_1_1GraphNode.html#a4a216cc745ed781fbdd245fba4a937f7":[3,0,3,1,24,6],
 "classvotca_1_1tools_1_1GraphNode.html#a5c594fc25ca84a519d4feb50ab4f2aae":[2,0,3,1,29,12],
 "classvotca_1_1tools_1_1GraphNode.html#a5c594fc25ca84a519d4feb50ab4f2aae":[3,0,3,1,24,12],
 "classvotca_1_1tools_1_1GraphNode.html#a5ca07061d8370701252b0ed3b49f08a6":[2,0,3,1,29,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX15 =
 "classvotca_1_1tools_1_1OptionsHandler.html":[2,0,3,1,37],
 "classvotca_1_1tools_1_1OptionsHandler.html":[3,0,3,1,32],
 "classvotca_1_1tools_1_1OptionsHandler.html#a012ecbe452d5218f23b9ec7b42bbd69b":[2,0,3,1,37,7],
-"classvotca_1_1tools_1_1OptionsHandler.html#a012ecbe452d5218f23b9ec7b42bbd69b":[3,0,3,1,32,7],
-"classvotca_1_1tools_1_1OptionsHandler.html#a065543037cf7307b3839becc899299ab":[2,0,3,1,37,8],
-"classvotca_1_1tools_1_1OptionsHandler.html#a065543037cf7307b3839becc899299ab":[3,0,3,1,32,8]
+"classvotca_1_1tools_1_1OptionsHandler.html#a012ecbe452d5218f23b9ec7b42bbd69b":[3,0,3,1,32,7]
 };

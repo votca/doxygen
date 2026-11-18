@@ -58,8 +58,10 @@ var searchData=
   ['exact_5fpole_5fsums_2ecc_55',['exact_pole_sums.cc',['../exact__pole__sums_8cc.html',1,'']]],
   ['exact_5fpole_5fsums_2eh_56',['exact_pole_sums.h',['../exact__pole__sums_8h.html',1,'']]],
   ['excitoncoupling_2eh_57',['excitoncoupling.h',['../excitoncoupling_8h.html',1,'']]],
-  ['exclusionlist_2ecc_58',['exclusionlist.cc',['../exclusionlist_8cc.html',1,'']]],
-  ['exclusionlist_2eh_59',['exclusionlist.h',['../exclusionlist_8h.html',1,'']]],
-  ['extended_5fhueckel_2ecc_60',['extended_hueckel.cc',['../extended__hueckel_8cc.html',1,'']]],
-  ['extended_5fhueckel_2eh_61',['extended_hueckel.h',['../extended__hueckel_8h.html',1,'']]]
+  ['excitonfollow_2ecc_58',['excitonfollow.cc',['../excitonfollow_8cc.html',1,'']]],
+  ['excitonfollow_2eh_59',['excitonfollow.h',['../excitonfollow_8h.html',1,'']]],
+  ['exclusionlist_2ecc_60',['exclusionlist.cc',['../exclusionlist_8cc.html',1,'']]],
+  ['exclusionlist_2eh_61',['exclusionlist.h',['../exclusionlist_8h.html',1,'']]],
+  ['extended_5fhueckel_2ecc_62',['extended_hueckel.cc',['../extended__hueckel_8cc.html',1,'']]],
+  ['extended_5fhueckel_2eh_63',['extended_hueckel.h',['../extended__hueckel_8h.html',1,'']]]
 ];

@@ -96,9 +96,12 @@ var hierarchy =
       [ "votca::csg::OrthorhombicBox", "classvotca_1_1csg_1_1OrthorhombicBox.html", null ],
       [ "votca::csg::TriclinicBox", "classvotca_1_1csg_1_1TriclinicBox.html", null ]
     ] ],
+    [ "votca::xtp::Vxc_Potential&lt; Grid &gt;::FXCKernel::Box", "structvotca_1_1xtp_1_1Vxc__Potential_1_1FXCKernel_1_1Box.html", null ],
     [ "votca::xtp::BSE", "classvotca_1_1xtp_1_1BSE.html", null ],
     [ "votca::xtp::BSE_Population", "structvotca_1_1xtp_1_1BSE__Population.html", null ],
     [ "votca::xtp::BSE_UKS", "classvotca_1_1xtp_1_1BSE__UKS.html", null ],
+    [ "votca::xtp::DFTEngine::BSEGradientInput", "structvotca_1_1xtp_1_1DFTEngine_1_1BSEGradientInput.html", null ],
+    [ "votca::xtp::DFTEngine::BSEGradientResult", "structvotca_1_1xtp_1_1DFTEngine_1_1BSEGradientResult.html", null ],
     [ "votca::xtp::BSEOperator_Options", "structvotca_1_1xtp_1_1BSEOperator__Options.html", null ],
     [ "votca::xtp::BSEOperatorUKS_Options", "structvotca_1_1xtp_1_1BSEOperatorUKS__Options.html", null ],
     [ "votca::xtp::BSEWindow", "structvotca_1_1xtp_1_1BSEWindow.html", null ],
@@ -302,6 +305,7 @@ var hierarchy =
       [ "votca::csg::NBList_3Body::FunctorMember< T >", "classvotca_1_1csg_1_1NBList__3Body_1_1FunctorMember.html", null ],
       [ "votca::csg::NBList_3Body::FunctorNonMember", "classvotca_1_1csg_1_1NBList__3Body_1_1FunctorNonMember.html", null ]
     ] ],
+    [ "votca::xtp::Vxc_Potential&lt; Grid &gt;::FXCKernel", "structvotca_1_1xtp_1_1Vxc__Potential_1_1FXCKernel.html", null ],
     [ "votca::xtp::GaussianKernel", "structvotca_1_1xtp_1_1GaussianKernel.html", null ],
     [ "votca::xtp::GaussianPrimitive", "classvotca_1_1xtp_1_1GaussianPrimitive.html", null ],
     [ "votca::xtp::GaussianQuadratureBase", "classvotca_1_1xtp_1_1GaussianQuadratureBase.html", [

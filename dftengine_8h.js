@@ -2,6 +2,8 @@ var dftengine_8h =
 [
     [ "votca::xtp::DFTSetupCache", "structvotca_1_1xtp_1_1DFTSetupCache.html", "structvotca_1_1xtp_1_1DFTSetupCache" ],
     [ "votca::xtp::DFTEngine", "classvotca_1_1xtp_1_1DFTEngine.html", "classvotca_1_1xtp_1_1DFTEngine" ],
+    [ "votca::xtp::DFTEngine::BSEGradientInput", "structvotca_1_1xtp_1_1DFTEngine_1_1BSEGradientInput.html", "structvotca_1_1xtp_1_1DFTEngine_1_1BSEGradientInput" ],
+    [ "votca::xtp::DFTEngine::BSEGradientResult", "structvotca_1_1xtp_1_1DFTEngine_1_1BSEGradientResult.html", "structvotca_1_1xtp_1_1DFTEngine_1_1BSEGradientResult" ],
     [ "votca::xtp::DFTEngine::SpinDensity", "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity.html", "structvotca_1_1xtp_1_1DFTEngine_1_1SpinDensity" ],
     [ "votca::xtp::DFTEngine::CDFTConstraintSpec", "structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec.html", "structvotca_1_1xtp_1_1DFTEngine_1_1CDFTConstraintSpec" ],
     [ "VOTCA_XTP_DFTENGINE_H", "dftengine_8h.html#aaf785412f3e8baa29cb3d9d4a38c2740", null ],

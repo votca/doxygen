@@ -1,5 +1,7 @@
 var NAVTREEINDEX11 =
 {
+"classvotca_1_1csg_1_1Residue.html#ad4a1f4ece995428e5c3600683a84cda6":[2,0,3,0,36,2],
+"classvotca_1_1csg_1_1Residue.html#ad4a1f4ece995428e5c3600683a84cda6":[3,0,3,0,36,2],
 "classvotca_1_1csg_1_1Residue.html#af2a865dffcf01d2ce40c8a2f9b35a3dd":[2,0,3,0,36,5],
 "classvotca_1_1csg_1_1Residue.html#af2a865dffcf01d2ce40c8a2f9b35a3dd":[3,0,3,0,36,5],
 "classvotca_1_1csg_1_1Topology.html":[2,0,3,0,37],
@@ -247,7 +249,5 @@ var NAVTREEINDEX11 =
 "classvotca_1_1csg_1_1XMLBead.html":[2,0,3,0,66],
 "classvotca_1_1csg_1_1XMLBead.html":[3,0,3,0,66],
 "classvotca_1_1csg_1_1XMLBead.html#a0a223d55f45206dbe0fd06def7342c08":[2,0,3,0,66,6],
-"classvotca_1_1csg_1_1XMLBead.html#a0a223d55f45206dbe0fd06def7342c08":[3,0,3,0,66,6],
-"classvotca_1_1csg_1_1XMLBead.html#a368ab42fd293743c82ec1da6279cce6f":[2,0,3,0,66,1],
-"classvotca_1_1csg_1_1XMLBead.html#a368ab42fd293743c82ec1da6279cce6f":[3,0,3,0,66,1]
+"classvotca_1_1csg_1_1XMLBead.html#a0a223d55f45206dbe0fd06def7342c08":[3,0,3,0,66,6]
 };

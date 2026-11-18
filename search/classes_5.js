@@ -18,5 +18,6 @@ var searchData=
   ['functionevaluation_15',['FunctionEvaluation',['../classvotca_1_1xtp_1_1FunctionEvaluation.html',1,'votca::xtp']]],
   ['functor_16',['Functor',['../classvotca_1_1csg_1_1NBList_1_1Functor.html',1,'votca::csg::NBList::Functor'],['../classvotca_1_1csg_1_1NBList__3Body_1_1Functor.html',1,'votca::csg::NBList_3Body::Functor']]],
   ['functormember_17',['FunctorMember',['../classvotca_1_1csg_1_1NBList_1_1FunctorMember.html',1,'votca::csg::NBList::FunctorMember&lt; T &gt;'],['../classvotca_1_1csg_1_1NBList__3Body_1_1FunctorMember.html',1,'votca::csg::NBList_3Body::FunctorMember&lt; T &gt;']]],
-  ['functornonmember_18',['FunctorNonMember',['../classvotca_1_1csg_1_1NBList_1_1FunctorNonMember.html',1,'votca::csg::NBList::FunctorNonMember'],['../classvotca_1_1csg_1_1NBList__3Body_1_1FunctorNonMember.html',1,'votca::csg::NBList_3Body::FunctorNonMember']]]
+  ['functornonmember_18',['FunctorNonMember',['../classvotca_1_1csg_1_1NBList_1_1FunctorNonMember.html',1,'votca::csg::NBList::FunctorNonMember'],['../classvotca_1_1csg_1_1NBList__3Body_1_1FunctorNonMember.html',1,'votca::csg::NBList_3Body::FunctorNonMember']]],
+  ['fxckernel_19',['FXCKernel',['../structvotca_1_1xtp_1_1Vxc__Potential_1_1FXCKernel.html',1,'votca::xtp::Vxc_Potential']]]
 ];
